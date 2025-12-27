@@ -15,6 +15,7 @@
     "home": "首页",
     "docs": "文档",
     "dashboard": "仪表盘",
+    "lab": "实验室设计",
     "github": "GitHub",
     "toggleMenu": "切换菜单",
     "toggleTheme": "切换主题"
@@ -87,6 +88,99 @@
       "views": "浏览量",
       "uniqueVisitors": "独立访客",
       "avgTime": "平均时长"
+    }
+  },
+  "lab": {
+    "badge": "AI 智能设计",
+    "title": "实验室空间设计器",
+    "description": "使用智能助手设计和可视化 AI 研究实验室",
+    "explore": "探索",
+    "modules": {
+      "floor-plan": {
+        "title": "平面图编辑器",
+        "description": "交互式画布，支持 AI 辅助的区域布置和优化设计。"
+      },
+      "concepts": {
+        "title": "概念可视化",
+        "description": "使用 AI 图像生成技术创建概念图和建筑可视化效果。"
+      },
+      "case-studies": {
+        "title": "案例研究",
+        "description": "浏览真实的 AI 实验室设计案例，学习行业最佳实践。"
+      }
+    },
+    "features": {
+      "title": "平台功能",
+      "ai-design": {
+        "title": "AI 设计助手",
+        "description": "自然语言界面生成布局"
+      },
+      "interactive": {
+        "title": "交互式画布",
+        "description": "拖拽式区域编辑器，实时预览"
+      },
+      "export": {
+        "title": "多格式导出",
+        "description": "导出为 PNG、PDF、JSON 或 Markdown"
+      },
+      "multilang": {
+        "title": "多语言支持",
+        "description": "完整支持中英文"
+      }
+    },
+    "floorPlan": {
+      "title": "平面图编辑器",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "toggleGrid": "切换网格",
+      "aiAssist": "AI 助手",
+      "export": "导出"
+    },
+    "concepts": {
+      "title": "概念可视化",
+      "description": "生成 AI 驱动的概念图和建筑可视化效果",
+      "promptLabel": "描述您的概念",
+      "promptPlaceholder": "描述您想要可视化的 AI 实验室概念...",
+      "generate": "生成图像",
+      "generating": "生成中...",
+      "generatedImages": "已生成的图像"
+    },
+    "caseStudies": {
+      "title": "案例研究",
+      "description": "探索来自领先组织的真实 AI 实验室设计",
+      "searchPlaceholder": "搜索案例研究...",
+      "viewDetails": "查看详情",
+      "noResults": "未找到符合条件的案例研究"
+    },
+    "chat": {
+      "title": "AI 设计助手",
+      "subtitle": "由 Claude 驱动",
+      "welcome": "你好！我是您的 AI 设计助手。我可以帮助您创建和修改实验室布局。试试让我添加服务器机房、优化工作流程，或为某个区域推荐设备。",
+      "placeholder": "让我帮您修改布局...",
+      "thinking": "思考中...",
+      "error": "抱歉，遇到了错误。请重试。",
+      "actions": {
+        "optimize": "优化布局",
+        "addServer": "添加服务器机房",
+        "addMeeting": "添加会议室",
+        "suggest": "建议改进"
+      },
+      "prompts": {
+        "optimize": "优化当前布局以提高工作流程效率",
+        "addServer": "添加带有适当冷却系统的 GPU 服务器机房",
+        "addMeeting": "添加用于团队协作的会议室",
+        "suggest": "分析布局并提出改进建议"
+      }
+    },
+    "export": {
+      "title": "导出布局",
+      "includeDocumentation": "包含 AI 生成的文档",
+      "formats": {
+        "png": "用于演示的高分辨率图像",
+        "pdf": "包含布局详情的专业文档",
+        "json": "用于导入/导出的原始数据",
+        "md": "用于 Wiki 的 Markdown 文档"
+      }
     }
   },
   "footer": {

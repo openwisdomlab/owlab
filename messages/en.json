@@ -15,6 +15,7 @@
     "home": "Home",
     "docs": "Documentation",
     "dashboard": "Dashboard",
+    "lab": "Lab Designer",
     "github": "GitHub",
     "toggleMenu": "Toggle menu",
     "toggleTheme": "Toggle theme"
@@ -87,6 +88,99 @@
       "views": "Views",
       "uniqueVisitors": "Unique Visitors",
       "avgTime": "Avg. Time"
+    }
+  },
+  "lab": {
+    "badge": "AI-Powered Design",
+    "title": "Lab Space Designer",
+    "description": "Design and visualize AI research laboratories with intelligent assistance",
+    "explore": "Explore",
+    "modules": {
+      "floor-plan": {
+        "title": "Floor Plan Editor",
+        "description": "Interactive canvas for designing lab layouts with AI-assisted zone placement and optimization."
+      },
+      "concepts": {
+        "title": "Concept Visualizer",
+        "description": "Generate concept diagrams and architectural visualizations using AI image generation."
+      },
+      "case-studies": {
+        "title": "Case Studies",
+        "description": "Browse real-world AI lab designs and learn from industry best practices."
+      }
+    },
+    "features": {
+      "title": "Platform Features",
+      "ai-design": {
+        "title": "AI Design Assistant",
+        "description": "Natural language interface for layout generation"
+      },
+      "interactive": {
+        "title": "Interactive Canvas",
+        "description": "Drag-and-drop zone editor with real-time preview"
+      },
+      "export": {
+        "title": "Multi-format Export",
+        "description": "Export to PNG, PDF, JSON, or Markdown"
+      },
+      "multilang": {
+        "title": "Multi-language",
+        "description": "Full support for English and Chinese"
+      }
+    },
+    "floorPlan": {
+      "title": "Floor Plan Editor",
+      "zoomIn": "Zoom In",
+      "zoomOut": "Zoom Out",
+      "toggleGrid": "Toggle Grid",
+      "aiAssist": "AI Assistant",
+      "export": "Export"
+    },
+    "concepts": {
+      "title": "Concept Visualizer",
+      "description": "Generate AI-powered concept diagrams and architectural visualizations",
+      "promptLabel": "Describe your concept",
+      "promptPlaceholder": "Describe the AI lab concept you want to visualize...",
+      "generate": "Generate Image",
+      "generating": "Generating...",
+      "generatedImages": "Generated Images"
+    },
+    "caseStudies": {
+      "title": "Case Studies",
+      "description": "Explore real-world AI lab designs from leading organizations",
+      "searchPlaceholder": "Search case studies...",
+      "viewDetails": "View Details",
+      "noResults": "No case studies found matching your criteria"
+    },
+    "chat": {
+      "title": "AI Design Assistant",
+      "subtitle": "Powered by Claude",
+      "welcome": "Hello! I'm your AI design assistant. I can help you create and modify lab layouts. Try asking me to add a server room, optimize the workflow, or suggest equipment for a zone.",
+      "placeholder": "Ask me to modify the layout...",
+      "thinking": "Thinking...",
+      "error": "Sorry, I encountered an error. Please try again.",
+      "actions": {
+        "optimize": "Optimize Layout",
+        "addServer": "Add Server Room",
+        "addMeeting": "Add Meeting Room",
+        "suggest": "Suggest Improvements"
+      },
+      "prompts": {
+        "optimize": "Optimize the current layout for better workflow efficiency",
+        "addServer": "Add a GPU server room with proper cooling",
+        "addMeeting": "Add a meeting room for team collaboration",
+        "suggest": "Analyze the layout and suggest improvements"
+      }
+    },
+    "export": {
+      "title": "Export Layout",
+      "includeDocumentation": "Include AI-generated documentation",
+      "formats": {
+        "png": "High-resolution image for presentations",
+        "pdf": "Professional document with layout details",
+        "json": "Raw data for import/export",
+        "md": "Markdown documentation for wikis"
+      }
     }
   },
   "footer": {
