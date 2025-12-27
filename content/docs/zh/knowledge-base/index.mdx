@@ -1,0 +1,250 @@
+---
+title: OWL 建设与运营标准手册
+description: 模块化知识库架构 | Modular Knowledge Base Architecture
+---
+
+# OWL《建设与运营标准手册》模块化知识库
+
+**版本**: 0.1.0-alpha
+**状态**: 架构定稿 / 内容填充中
+**最后更新**: 2025-01
+
+---
+
+## 一、知识库总信息架构 (IA)
+
+```
+OWL-Knowledge-Base/
+│
+├── M00｜导读与使用说明 (Meta)
+│   ├── 知识库导航图
+│   ├── 模块阅读顺序建议
+│   ├── 术语表与分级体系
+│   └── 版本演进说明
+│
+├── M01｜理念与理论基础 (Foundations)
+│   ├── OWL 使命与愿景
+│   ├── 教育哲学与学习理论
+│   ├── 创客教育与 STEAM 理论框架
+│   └── 开放创新与社区学习理论
+│
+├── M02｜治理与网络结构 (Governance & Network)
+│   ├── 组织架构与决策机制
+│   ├── 节点类型与准入标准
+│   ├── 网络协作与资源共享机制
+│   └── 品牌授权与质量保障
+│
+├── M03｜空间与环境标准 (Space & Environment)
+│   ├── 物理空间设计标准
+│   ├── 数字环境与平台标准
+│   ├── 文化氛围营造指南
+│   └── 无障碍与包容性设计
+│
+├── M04｜课程与项目体系 (Program Design)
+│   ├── 课程设计框架
+│   ├── 项目制学习 (PBL) 设计
+│   ├── 年龄分层与能力进阶
+│   └── 跨学科整合方法
+│
+├── M05｜工具、设备与资产管理 (Tools & Assets)
+│   ├── 核心工具与设备清单
+│   ├── 采购与维护标准
+│   ├── 数字工具与软件管理
+│   └── 资产生命周期管理
+│
+├── M06｜安全、合规与伦理 (Safety, Compliance, Ethics)
+│   ├── 物理安全标准
+│   ├── 数据隐私与网络安全
+│   ├── 未成年人保护机制
+│   ├── AI 伦理与使用边界
+│   └── 知识产权与版权管理
+│
+├── M07｜角色体系与师资发展 (People & Capability)
+│   ├── 角色定义与职责矩阵
+│   ├── 能力模型与发展路径
+│   ├── 培训体系与认证机制
+│   └── 社区导师与志愿者管理
+│
+├── M08｜运营 Playbook (Operations)
+│   ├── 日常运营 SOP
+│   ├── 活动策划与执行
+│   ├── 会员管理与服务
+│   └── 危机响应与应急预案
+│
+├── M09｜评价与影响力 (Assessment & Impact)
+│   ├── 学习评价框架
+│   ├── 运营效能指标
+│   ├── 影响力评估方法
+│   └── 持续改进机制
+│
+└── M10｜模板、清单与引用库 (Appendix)
+    ├── 通用模板库
+    ├── 检查清单库
+    ├── 参考文献总库
+    └── 术语与缩略语索引
+```
+
+---
+
+## 二、仓库目录树与命名规范
+
+### 2.1 完整目录结构
+
+```
+knowledge-base/
+│
+├── index.mdx                          # 知识库入口与导航
+├── GLOBAL-DEFINITIONS.mdx             # 全局术语与分级定义
+├── REFERENCES-LIBRARY.mdx             # 引用库总索引
+├── COLLABORATION-PROTOCOL.mdx         # 协作与版本机制
+├── CHANGELOG.mdx                      # 变更日志
+│
+├── M00-Meta/
+│   ├── README.mdx                     # 模块概览
+│   ├── Module.mdx                     # 主内容
+│   ├── References.mdx                 # 文献引用
+│   ├── Templates/
+│   │   ├── TPL-M00-001-ReadingGuide.mdx
+│   │   └── TPL-M00-002-QuickStart.mdx
+│   └── SOP/
+│       └── SOP-M00-001-HowToUse.mdx
+│
+├── M01-Foundations/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   ├── Rubrics/
+│   └── Examples/
+│
+├── M02-Governance-Network/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Data-Dictionary.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   └── Examples/
+│
+├── M03-Space-Environment/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   ├── Rubrics/
+│   └── Examples/
+│
+├── M04-Program-Design/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Data-Dictionary.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   ├── Rubrics/
+│   └── Examples/
+│
+├── M05-Tools-Assets/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Data-Dictionary.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   └── Examples/
+│
+├── M06-Safety-Compliance-Ethics/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   ├── Rubrics/
+│   └── Examples/
+│
+├── M07-People-Capability/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Data-Dictionary.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   ├── Rubrics/
+│   └── Examples/
+│
+├── M08-Operations-Playbook/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   └── Examples/
+│
+├── M09-Assessment-Impact/
+│   ├── README.mdx
+│   ├── Module.mdx
+│   ├── References.mdx
+│   ├── Data-Dictionary.mdx
+│   ├── Templates/
+│   ├── SOP/
+│   ├── Rubrics/
+│   └── Examples/
+│
+└── M10-Appendix/
+    ├── README.mdx
+    ├── Templates-Index.mdx
+    ├── Checklists-Index.mdx
+    ├── Glossary.mdx
+    └── References-Master.mdx
+```
+
+### 2.2 文件命名规范
+
+| 类型 | 格式 | 示例 |
+|------|------|------|
+| 模板 | `TPL-M{XX}-{NNN}-{Name}.mdx` | `TPL-M04-001-LessonPlan.mdx` |
+| SOP | `SOP-M{XX}-{NNN}-{Name}.mdx` | `SOP-M08-003-EmergencyResponse.mdx` |
+| 清单 | `CKL-M{XX}-{NNN}-{Name}.mdx` | `CKL-M06-002-SafetyAudit.mdx` |
+| 量规 | `RBR-M{XX}-{NNN}-{Name}.mdx` | `RBR-M09-001-LearnerAssessment.mdx` |
+| 案例 | `EXP-M{XX}-{NNN}-{Name}.mdx` | `EXP-M03-001-SpaceDesign-Beijing.mdx` |
+| 数据字典 | `Data-Dictionary.mdx` | 固定命名 |
+
+---
+
+## 三、模块阅读路径建议
+
+### 新建节点路径
+```
+M00 → M01 → M06 → M02 → M03 → M05 → M07 → M04 → M08 → M09
+```
+
+### 课程开发路径
+```
+M01 → M04 → M07 → M09 → M06
+```
+
+### 合规审计路径
+```
+M06 → M02 → M05 → M08 → M09
+```
+
+---
+
+## 四、快速链接
+
+- [全局定义 →](./GLOBAL-DEFINITIONS)
+- [M00 导读与使用说明 →](./M00-Meta)
+- [M01 理念与理论基础 →](./M01-Foundations)
+- [M02 治理与网络结构 →](./M02-Governance-Network)
+- [M03 空间与环境标准 →](./M03-Space-Environment)
+- [M04 课程与项目体系 →](./M04-Program-Design)
+- [M05 工具设备与资产管理 →](./M05-Tools-Assets)
+- [M06 安全合规与伦理 →](./M06-Safety-Compliance-Ethics)
+- [M07 角色体系与师资发展 →](./M07-People-Capability)
+- [M08 运营 Playbook →](./M08-Operations-Playbook)
+- [M09 评价与影响力 →](./M09-Assessment-Impact)
+- [M10 模板清单与引用库 →](./M10-Appendix)
+- [协作与版本机制 →](./COLLABORATION-PROTOCOL)
+- [变更日志 →](./CHANGELOG)

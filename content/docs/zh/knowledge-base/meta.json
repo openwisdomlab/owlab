@@ -1,0 +1,23 @@
+{
+  "title": "知识库",
+  "pages": [
+    "index",
+    "GLOBAL-DEFINITIONS",
+    "---",
+    "M00-Meta",
+    "M01-Foundations",
+    "M02-Governance-Network",
+    "M03-Space-Environment",
+    "M04-Program-Design",
+    "M05-Tools-Assets",
+    "M06-Safety-Compliance-Ethics",
+    "M07-People-Capability",
+    "M08-Operations-Playbook",
+    "M09-Assessment-Impact",
+    "M10-Appendix",
+    "---",
+    "REFERENCES-LIBRARY",
+    "COLLABORATION-PROTOCOL",
+    "CHANGELOG"
+  ]
+}
