@@ -1,0 +1,97 @@
+{
+  "common": {
+    "title": "AI Space",
+    "description": "Agentic Documentation Framework",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search documentation...",
+    "noResults": "No results found",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "docs": "Documentation",
+    "dashboard": "Dashboard",
+    "github": "GitHub",
+    "toggleMenu": "Toggle menu",
+    "toggleTheme": "Toggle theme"
+  },
+  "home": {
+    "hero": {
+      "title": "AI Space",
+      "subtitle": "Agentic Documentation",
+      "description": "Build intelligent, self-evolving documentation with AI agents. A futuristic framework for the next generation of technical documentation.",
+      "cta": {
+        "primary": "Get Started",
+        "secondary": "View Demo"
+      }
+    },
+    "features": {
+      "title": "Features",
+      "ai": {
+        "title": "AI-Powered",
+        "description": "Leverage intelligent agents to automate documentation generation and maintenance."
+      },
+      "i18n": {
+        "title": "Multi-Language",
+        "description": "Built-in internationalization with seamless language switching."
+      },
+      "viz": {
+        "title": "Data Visualization",
+        "description": "Interactive charts and tables with a futuristic neon aesthetic."
+      },
+      "fast": {
+        "title": "Lightning Fast",
+        "description": "Optimized for performance with Next.js 15 and Turbopack."
+      }
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "gettingStarted": "Getting Started",
+      "introduction": "Introduction",
+      "installation": "Installation",
+      "configuration": "Configuration",
+      "guides": "Guides",
+      "components": "Components",
+      "api": "API Reference"
+    },
+    "toc": {
+      "title": "On This Page"
+    },
+    "meta": {
+      "lastUpdated": "Last updated",
+      "readingTime": "min read"
+    }
+  },
+  "dashboard": {
+    "title": "Analytics Dashboard",
+    "description": "Real-time metrics and performance data",
+    "metrics": {
+      "visitors": "Visitors",
+      "pageViews": "Page Views",
+      "bounceRate": "Bounce Rate",
+      "avgSession": "Avg. Session"
+    },
+    "chart": {
+      "title": "Traffic Overview",
+      "visitors": "Visitors",
+      "pageViews": "Page Views"
+    },
+    "table": {
+      "title": "Top Pages",
+      "page": "Page",
+      "views": "Views",
+      "uniqueVisitors": "Unique Visitors",
+      "avgTime": "Avg. Time"
+    }
+  },
+  "footer": {
+    "copyright": "AI Space. All rights reserved.",
+    "builtWith": "Built with",
+    "and": "and"
+  }
+}

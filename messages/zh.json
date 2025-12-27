@@ -1,0 +1,97 @@
+{
+  "common": {
+    "title": "AI 空间",
+    "description": "智能体驱动的文档框架",
+    "loading": "加载中...",
+    "error": "发生错误",
+    "back": "返回",
+    "next": "下一页",
+    "previous": "上一页",
+    "search": "搜索文档...",
+    "noResults": "未找到结果",
+    "language": "语言"
+  },
+  "nav": {
+    "home": "首页",
+    "docs": "文档",
+    "dashboard": "仪表盘",
+    "github": "GitHub",
+    "toggleMenu": "切换菜单",
+    "toggleTheme": "切换主题"
+  },
+  "home": {
+    "hero": {
+      "title": "AI 空间",
+      "subtitle": "智能体文档",
+      "description": "使用 AI 智能体构建智能、自我进化的文档系统。下一代技术文档的未来框架。",
+      "cta": {
+        "primary": "快速开始",
+        "secondary": "查看演示"
+      }
+    },
+    "features": {
+      "title": "核心功能",
+      "ai": {
+        "title": "AI 驱动",
+        "description": "利用智能体自动化文档生成和维护流程。"
+      },
+      "i18n": {
+        "title": "多语言支持",
+        "description": "内置国际化功能，无缝切换语言。"
+      },
+      "viz": {
+        "title": "数据可视化",
+        "description": "交互式图表和表格，采用未来感霓虹美学设计。"
+      },
+      "fast": {
+        "title": "极速响应",
+        "description": "基于 Next.js 15 和 Turbopack 优化性能。"
+      }
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "gettingStarted": "快速开始",
+      "introduction": "简介",
+      "installation": "安装",
+      "configuration": "配置",
+      "guides": "指南",
+      "components": "组件",
+      "api": "API 参考"
+    },
+    "toc": {
+      "title": "本页目录"
+    },
+    "meta": {
+      "lastUpdated": "最后更新",
+      "readingTime": "分钟阅读"
+    }
+  },
+  "dashboard": {
+    "title": "数据分析仪表盘",
+    "description": "实时指标和性能数据",
+    "metrics": {
+      "visitors": "访问者",
+      "pageViews": "页面浏览",
+      "bounceRate": "跳出率",
+      "avgSession": "平均会话"
+    },
+    "chart": {
+      "title": "流量概览",
+      "visitors": "访问者",
+      "pageViews": "页面浏览"
+    },
+    "table": {
+      "title": "热门页面",
+      "page": "页面",
+      "views": "浏览量",
+      "uniqueVisitors": "独立访客",
+      "avgTime": "平均时长"
+    }
+  },
+  "footer": {
+    "copyright": "AI 空间。保留所有权利。",
+    "builtWith": "使用",
+    "and": "和"
+  }
+}

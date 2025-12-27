@@ -1,0 +1,85 @@
+---
+title: Welcome to AI Space
+description: Build intelligent, self-evolving documentation with AI agents
+locale: en
+---
+
+# Welcome to AI Space
+
+**AI Space** is a next-generation documentation framework designed for the agentic era. Built with cutting-edge technologies and a futuristic aesthetic, it empowers teams to create intelligent, self-evolving documentation.
+
+## Quick Start
+
+Get started with AI Space in just a few minutes:
+
+```bash
+# Clone the repository
+git clone https://github.com/your-org/ai-space.git
+
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+```
+
+## Key Features
+
+### AI-Powered Documentation
+
+Leverage intelligent agents to automate documentation generation, maintenance, and updates. Our AI understands your codebase and keeps docs in sync.
+
+### Multi-Language Support
+
+Built-in internationalization with `next-intl` integration. Seamlessly switch between languages with automatic content detection.
+
+### Futuristic Design
+
+A stunning "Cyber-Space" aesthetic with:
+- **Glassmorphism** effects
+- **Neon glow** animations
+- **Dark mode** by default
+- Responsive layouts
+
+### Performance Optimized
+
+Built on Next.js 15 with Turbopack for lightning-fast development and production builds.
+
+## Architecture
+
+```typescript
+// Example: Source configuration
+import { loader } from "fumadocs-core/source";
+import { createMDXSource } from "fumadocs-mdx";
+
+export const source = loader({
+  baseUrl: "/docs",
+  source: createMDXSource(docs, []),
+});
+```
+
+## Next Steps
+
+<Cards>
+  <Card title="Installation" href="/en/docs/installation">
+    Learn how to install and configure AI Space
+  </Card>
+  <Card title="Components" href="/en/docs/components">
+    Explore the available UI components
+  </Card>
+  <Card title="API Reference" href="/en/docs/api">
+    Browse the complete API documentation
+  </Card>
+</Cards>
+
+## Community
+
+Join our growing community of developers building the future of documentation:
+
+- **Discord**: Connect with other developers
+- **GitHub**: Contribute to the project
+- **Twitter**: Stay updated with the latest news
+
+---
+
+Ready to build something amazing? Let's get started!

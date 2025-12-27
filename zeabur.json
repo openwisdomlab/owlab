@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.zeabur.app/schema.json",
+  "build": {
+    "type": "nextjs"
+  },
+  "runtime": {
+    "framework": "nextjs"
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

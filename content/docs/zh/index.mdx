@@ -1,0 +1,85 @@
+---
+title: 欢迎来到 AI 空间
+description: 使用 AI 智能体构建智能、自我进化的文档系统
+locale: zh
+---
+
+# 欢迎来到 AI 空间
+
+**AI 空间** 是为智能体时代设计的下一代文档框架。采用前沿技术和未来感美学,帮助团队创建智能、自我进化的文档系统。
+
+## 快速开始
+
+只需几分钟即可开始使用 AI 空间:
+
+```bash
+# 克隆仓库
+git clone https://github.com/your-org/ai-space.git
+
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+pnpm dev
+```
+
+## 核心功能
+
+### AI 驱动的文档
+
+利用智能体自动化文档生成、维护和更新。我们的 AI 理解您的代码库,并保持文档同步。
+
+### 多语言支持
+
+内置 `next-intl` 国际化集成。通过自动内容检测,在不同语言之间无缝切换。
+
+### 未来感设计
+
+令人惊艳的「赛博空间」美学:
+- **玻璃拟态** 效果
+- **霓虹辉光** 动画
+- 默认 **暗色主题**
+- 响应式布局
+
+### 性能优化
+
+基于 Next.js 15 和 Turbopack 构建,提供极速的开发和生产构建体验。
+
+## 架构
+
+```typescript
+// 示例:源配置
+import { loader } from "fumadocs-core/source";
+import { createMDXSource } from "fumadocs-mdx";
+
+export const source = loader({
+  baseUrl: "/docs",
+  source: createMDXSource(docs, []),
+});
+```
+
+## 下一步
+
+<Cards>
+  <Card title="安装指南" href="/zh/docs/installation">
+    了解如何安装和配置 AI 空间
+  </Card>
+  <Card title="组件库" href="/zh/docs/components">
+    探索可用的 UI 组件
+  </Card>
+  <Card title="API 参考" href="/zh/docs/api">
+    浏览完整的 API 文档
+  </Card>
+</Cards>
+
+## 社区
+
+加入我们不断壮大的开发者社区,共同构建文档的未来:
+
+- **Discord**: 与其他开发者交流
+- **GitHub**: 参与项目贡献
+- **Twitter**: 获取最新动态
+
+---
+
+准备好创造令人惊叹的作品了吗?让我们开始吧!
