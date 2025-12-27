@@ -1,0 +1,27 @@
+{
+  "title": "知识库",
+  "pages": [
+    "index",
+    "ARCHITECTURE-V2",
+    "GLOBAL-DEFINITIONS",
+    "---",
+    "01-foundations",
+    "03-space",
+    "---",
+    "M00-Meta",
+    "M02-Governance-Network",
+    "M04-Program-Design",
+    "M05-Tools-Assets",
+    "M06-Safety-Compliance-Ethics",
+    "M07-People-Capability",
+    "M08-Operations-Playbook",
+    "M09-Assessment-Impact",
+    "M10-Appendix",
+    "---",
+    "_meta",
+    "_templates",
+    "REFERENCES-LIBRARY",
+    "COLLABORATION-PROTOCOL",
+    "CHANGELOG"
+  ]
+}

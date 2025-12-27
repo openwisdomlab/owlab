@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "description": "OWL Knowledge Base Tag Taxonomy",
+
+  "categories": {
+    "module": {
+      "description": "模块标识",
+      "values": ["M00", "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10"]
+    },
+
+    "doc_type": {
+      "description": "文档类型",
+      "values": {
+        "core": "核心层文档，≤2000字",
+        "extend": "扩展层文档，深度内容",
+        "case": "案例研究",
+        "sop": "标准操作程序",
+        "checklist": "检查清单",
+        "template": "可复用模板",
+        "visual": "可视化/图表",
+        "evidence": "证据与引用"
+      }
+    },
+
+    "topic": {
+      "description": "主题标签",
+      "values": [
+        "创客教育", "STEAM", "学习理论", "建构主义", "PBL",
+        "空间设计", "物理空间", "数字环境", "创新环境",
+        "治理", "网络", "节点管理",
+        "课程设计", "项目设计", "教学方法",
+        "工具", "设备", "资产管理",
+        "安全", "合规", "伦理", "隐私", "AI伦理",
+        "人才", "培训", "能力发展",
+        "运营", "流程", "服务",
+        "评价", "影响力", "数据"
+      ]
+    },
+
+    "audience": {
+      "description": "目标读者",
+      "values": [
+        "决策者", "节点负责人", "空间设计师",
+        "课程设计师", "导师", "培训师",
+        "运营人员", "安全负责人", "合规人员",
+        "志愿者", "家长", "学习者"
+      ]
+    },
+
+    "evidence_level": {
+      "description": "证据强度",
+      "values": {
+        "E0": "经验 - 个人/团队经验，未系统验证",
+        "E1": "案例 - 有记录的案例，未控制变量",
+        "E2": "准实验 - 有对照但非随机分配",
+        "E3": "实验 - RCT或系统综述/元分析"
+      }
+    },
+
+    "status": {
+      "description": "文档状态",
+      "values": {
+        "draft": "草稿 - AI生成待审核",
+        "review": "审核中 - 人工审核中",
+        "published": "已发布 - 审核通过",
+        "deprecated": "已废弃 - 不再维护"
+      }
+    },
+
+    "confidence": {
+      "description": "置信度",
+      "values": {
+        "high": "高 - 多源验证，证据充分",
+        "medium": "中 - 有证据支撑，部分验证",
+        "low": "低 - 证据有限，需谨慎引用",
+        "unverified": "未验证 - AI生成待验证"
+      }
+    }
+  },
+
+  "rules": {
+    "required_tags": ["module", "doc_type", "status"],
+    "max_topic_tags": 5,
+    "validation": "每个文档必须有module和doc_type标签"
+  }
+}

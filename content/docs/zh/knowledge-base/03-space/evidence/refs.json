@@ -1,0 +1,155 @@
+{
+  "module": "M03",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "total_count": 12,
+  "verified_count": 0,
+
+  "references": [
+    {
+      "id": "M03-001",
+      "type": "book",
+      "citation": "Doorley, S., & Witthoft, S. (2012). Make space: How to set the stage for creative collaboration. Wiley.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "空间布局影响协作模式",
+        "可移动家具增加灵活性",
+        "斯坦福d.school空间设计原则"
+      ],
+      "used_in": ["index.mdx", "extend/innovation-friendly.mdx"],
+      "notes": "斯坦福 d.school 空间设计实践总结"
+    },
+    {
+      "id": "M03-002",
+      "type": "book",
+      "citation": "Boys, J. (2010). Towards creative learning spaces: Re-thinking the architecture of post-compulsory education. Routledge.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "学习空间设计影响教学方法",
+        "空间应支持多种学习模式"
+      ],
+      "used_in": ["index.mdx", "extend/physical-design.mdx"],
+      "notes": "学习空间设计理论"
+    },
+    {
+      "id": "M03-003",
+      "type": "book",
+      "citation": "Amabile, T.M. (1996). Creativity in context: Update to the social psychology of creativity. Westview Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "创造力成分模型",
+        "环境因素对创造力的影响",
+        "内在动机的重要性"
+      ],
+      "used_in": ["extend/innovation-friendly.mdx"],
+      "notes": "创造力研究经典著作"
+    },
+    {
+      "id": "M03-004",
+      "type": "journal",
+      "citation": "Mehta, R., Zhu, R., & Cheema, A. (2012). Is noise always bad? Exploring the effects of ambient noise on creative cognition. Journal of Consumer Research, 39(4), 784-799.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": "https://doi.org/10.1086/665048",
+      "key_claims": [
+        "中等噪音水平(70dB)最有利于创造性思维",
+        "过高或过低噪音都不利于创造力"
+      ],
+      "used_in": ["extend/innovation-friendly.mdx"],
+      "notes": "环境噪音对创造力影响的实验研究"
+    },
+    {
+      "id": "M03-005",
+      "type": "report",
+      "citation": "IDEO. (2012). Design thinking for educators toolkit (2nd ed.). IDEO.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": "https://designthinkingforeducators.com/",
+      "key_claims": [
+        "设计思维在教育中的应用",
+        "空间作为设计思维的载体"
+      ],
+      "used_in": ["index.mdx"],
+      "notes": "IDEO 设计思维教育工具包"
+    },
+    {
+      "id": "M03-006",
+      "type": "book",
+      "citation": "Oblinger, D.G. (Ed.). (2006). Learning spaces. EDUCAUSE.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": "https://www.educause.edu/research-and-publications/books/learning-spaces",
+      "key_claims": [
+        "学习空间设计原则",
+        "技术与空间的整合"
+      ],
+      "used_in": ["extend/physical-design.mdx"],
+      "notes": "EDUCAUSE 学习空间设计指南"
+    },
+    {
+      "id": "M03-007",
+      "type": "book",
+      "citation": "Sheridan, K., Halverson, E.R., Litts, B., Brahms, L., Jacobs-Priebe, L., & Owens, T. (2014). Learning in the making: A comparative case study of three makerspaces. Harvard Educational Review, 84(4), 505-531.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "创客空间的学习模式",
+        "不同类型创客空间的比较"
+      ],
+      "used_in": ["extend/physical-design.mdx"],
+      "notes": "创客空间比较案例研究"
+    },
+    {
+      "id": "M03-008",
+      "type": "standard",
+      "citation": "CAST. (2018). Universal Design for Learning Guidelines version 2.2.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": "http://udlguidelines.cast.org",
+      "key_claims": [
+        "通用学习设计原则",
+        "多元表征、多元表达、多元参与"
+      ],
+      "used_in": ["extend/accessibility.mdx"],
+      "notes": "UDL 通用学习设计指南"
+    }
+  ],
+
+  "pending_verification": [
+    "M03-001", "M03-002", "M03-003", "M03-004",
+    "M03-005", "M03-006", "M03-007", "M03-008"
+  ],
+
+  "topics_covered": [
+    "空间设计",
+    "创新环境",
+    "创造力研究",
+    "学习空间",
+    "创客空间",
+    "环境心理学",
+    "通用设计"
+  ]
+}
