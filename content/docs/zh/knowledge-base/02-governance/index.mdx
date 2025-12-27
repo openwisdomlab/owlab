@@ -1,0 +1,161 @@
+---
+title: "M02 治理与网络"
+description: "OWL 网络的组织形式与协作规则"
+module_id: "M02"
+doc_type: "core"
+version: "0.1.0"
+status: "draft"
+last_updated: "2025-01-15"
+
+ai_context_size: "small"
+standalone_readable: true
+dependencies: ["M01"]
+
+evidence_level: "E1"
+sources_verified: false
+confidence: "medium"
+
+tags:
+  - M02
+  - core
+  - 治理
+  - 网络
+  - 节点管理
+---
+
+# M02 治理与网络
+
+> **一句话定位**: OWL 网络的组织形式与协作规则
+
+---
+
+## 核心原则
+
+| 原则 | 内涵 | 体现 |
+|------|------|------|
+| **分布式网络** | 去中心化，节点自主协作 | 节点独立运营 |
+| **标准与灵活** | 核心统一，本地灵活 | MVS + 本地化 |
+| **共建共享** | 资源共享，风险共担 | 网络资源池 |
+| **透明可信** | 决策透明，信息公开 | 公开治理 |
+| **持续进化** | 机制随网络发展迭代 | 定期复盘 |
+
+---
+
+## 网络架构
+
+```
+┌─────────────────────────────────────────┐
+│              OWL 总部                    │
+│         战略/标准/品牌/支持               │
+└────────────────┬────────────────────────┘
+                 │
+    ┌────────────┼────────────┐
+    ↓            ↓            ↓
+┌───────┐   ┌───────┐   ┌───────┐
+│ 区域A  │   │ 区域B  │   │ 区域C  │
+│ 协调   │   │ 协调   │   │ 协调   │
+└───┬───┘   └───┬───┘   └───┬───┘
+    │           │           │
+  节点群      节点群       节点群
+```
+
+---
+
+## 节点类型
+
+| 类型 | 代码 | 定位 | 典型场景 |
+|------|------|------|----------|
+| **标准节点** | OWL | 全标准实体空间 | 社区中心、学校 |
+| **大学节点** | OWL-U | 高校内节点 | 高校创客空间 |
+| **虚拟节点** | OWL-Virtual | 纯线上运营 | 在线社区 |
+| **实验节点** | OWL-X | 试点创新模式 | 新模式测试 |
+| **移动节点** | OWL-Mobile | 可移动空间 | 教育大篷车 |
+
+---
+
+## MVS 最小可运行标准
+
+| 项目 | 要求 | 说明 |
+|------|------|------|
+| 法人资格 | ✅ 合法运营主体 | 必须 |
+| 负责人 | ✅ 至少1人全职 | 可联系 |
+| 理念认同 | ✅ 签署价值公约 | 必须 |
+| 基础培训 | ✅ 完成入网培训 | 必须 |
+| 品牌授权 | ✅ 签署授权协议 | 必须 |
+
+---
+
+## 决策权责矩阵 (简化)
+
+| 决策事项 | 节点 | 区域 | 总部 |
+|----------|------|------|------|
+| 日常运营 | R | I | - |
+| 课程选用 | R | C | I |
+| 品牌使用 | C | C | A |
+| 新节点准入 | C | R | A |
+| 重大变更 | I | C | R/A |
+
+**R**=负责 **A**=批准 **C**=咨询 **I**=知会
+
+---
+
+## 与其他模块的关系
+
+```
+M01 理念 ──→ M02 治理 (治理体现价值观)
+                ↓
+M02 治理 ──→ M03-M09 (节点类型决定各模块配置)
+```
+
+---
+
+## 常见误区
+
+- ❌ "分布式"="无管理" → ✅ 有治理规则和底线
+- ❌ "准入标准"="淘汰机制" → ✅ 以赋能为主
+- ❌ "品牌授权"="加盟收费" → ✅ 价值导向非利润
+
+---
+
+## 扩展内容索引
+
+| 主题 | 文件 | 状态 |
+|------|------|------|
+| 节点准入详细标准 | [extend/node-admission](./extend/node-admission) | 📋 |
+| 网络协作机制 | [extend/network-collaboration](./extend/network-collaboration) | 📋 |
+| 品牌授权指南 | [extend/brand-licensing](./extend/brand-licensing) | 📋 |
+| 节点评估体系 | [extend/node-assessment](./extend/node-assessment) | 📋 |
+| 开源社区治理案例 | [cases/opensource-governance](./cases/opensource-governance) | 📋 |
+
+---
+
+## AI 迭代任务
+
+```yaml
+tasks:
+  - id: M02-T01
+    task: "编写节点准入标准详细清单"
+    output: "extend/node-admission.mdx"
+    priority: high
+
+  - id: M02-T02
+    task: "设计节点评估量规"
+    output: "extend/node-assessment.mdx"
+    priority: high
+
+  - id: M02-T03
+    task: "编写品牌授权协议框架"
+    output: "extend/brand-licensing.mdx"
+    priority: medium
+
+  - id: M02-T04
+    task: "研究开源社区治理模式案例"
+    output: "cases/opensource-governance.mdx"
+    priority: medium
+```
+
+---
+
+## 参考文献
+
+见 [evidence/refs.json](./evidence/refs.json)

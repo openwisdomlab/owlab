@@ -1,0 +1,79 @@
+{
+  "module": "M04",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "references": [
+    {
+      "id": "M04-001",
+      "type": "book",
+      "citation": "Larmer, J., Mergendoller, J., & Boss, S. (2015). Setting the Standard for Project Based Learning. ASCD.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "PBL 黄金标准七要素：挑战性问题、持续探究、真实性、学生声音与选择、反思、批评与修订、公开展示",
+        "高质量 PBL 需要精心设计的驱动问题"
+      ],
+      "used_in": ["index.mdx", "extend/pbl-design.mdx"]
+    },
+    {
+      "id": "M04-002",
+      "type": "chapter",
+      "citation": "Krajcik, J.S., & Shin, N. (2014). Project-Based Learning. In R.K. Sawyer (Ed.), The Cambridge Handbook of the Learning Sciences (2nd ed.). Cambridge University Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "PBL 促进深度理解和迁移",
+        "脚手架设计对 PBL 成功至关重要"
+      ],
+      "used_in": ["extend/pbl-design.mdx"]
+    },
+    {
+      "id": "M04-003",
+      "type": "book",
+      "citation": "Resnick, M. (2017). Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play. MIT Press.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "创造性学习螺旋：想象-创造-游戏-分享-反思-想象",
+        "4P 学习框架：项目、热情、同伴、游戏"
+      ],
+      "used_in": ["index.mdx", "extend/creative-learning.mdx"]
+    },
+    {
+      "id": "M04-004",
+      "type": "article",
+      "citation": "Kolodner, J.L. et al. (2003). Problem-Based Learning Meets Case-Based Reasoning in the Middle-School Science Classroom. Journal of the Learning Sciences, 12(4), 495-547.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "设计型学习促进科学概念理解",
+        "学生通过设计活动发展工程思维"
+      ],
+      "used_in": ["extend/design-based-learning.mdx"]
+    },
+    {
+      "id": "M04-005",
+      "type": "book",
+      "citation": "Wiggins, G., & McTighe, J. (2005). Understanding by Design (2nd ed.). ASCD.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "逆向设计：从学习目标出发设计课程",
+        "理解六面向：解释、诠释、应用、洞察、同理、自知"
+      ],
+      "used_in": ["index.mdx", "extend/curriculum-design.mdx"]
+    }
+  ],
+  "notes": "课程设计相关文献待人工验证",
+  "cross_validation_status": "pending"
+}

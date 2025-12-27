@@ -1,0 +1,79 @@
+{
+  "module": "M07",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "references": [
+    {
+      "id": "M07-001",
+      "type": "book",
+      "citation": "Schön, D.A. (1983). The Reflective Practitioner: How Professionals Think in Action. Basic Books.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "专业能力通过反思实践发展",
+        "行动中反思与行动后反思同样重要"
+      ],
+      "used_in": ["index.mdx", "extend/reflection-tools.mdx"]
+    },
+    {
+      "id": "M07-002",
+      "type": "article",
+      "citation": "Darling-Hammond, L. et al. (2017). Effective Teacher Professional Development. Learning Policy Institute.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "有效的教师发展需要持续、嵌入实践、协作式",
+        "内容聚焦和主动学习是关键要素"
+      ],
+      "used_in": ["index.mdx", "extend/training-system.mdx"]
+    },
+    {
+      "id": "M07-003",
+      "type": "book",
+      "citation": "Dweck, C.S. (2006). Mindset: The New Psychology of Success. Random House.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "成长型思维促进学习和发展",
+        "对能力的信念影响学习行为"
+      ],
+      "used_in": ["index.mdx"]
+    },
+    {
+      "id": "M07-004",
+      "type": "article",
+      "citation": "Lave, J., & Wenger, E. (1991). Situated Learning: Legitimate Peripheral Participation. Cambridge University Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "学习发生在实践共同体中",
+        "从边缘到核心的参与是学习的过程"
+      ],
+      "used_in": ["extend/competency-model.mdx"]
+    },
+    {
+      "id": "M07-005",
+      "type": "article",
+      "citation": "Shulman, L.S. (1986). Those Who Understand: Knowledge Growth in Teaching. Educational Researcher, 15(2), 4-14.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "教学内容知识 (PCK) 是教师专业知识的核心",
+        "学科知识和教学知识的整合是教学专业性的体现"
+      ],
+      "used_in": ["extend/competency-model.mdx"]
+    }
+  ],
+  "notes": "人员发展相关文献待人工验证",
+  "cross_validation_status": "pending"
+}

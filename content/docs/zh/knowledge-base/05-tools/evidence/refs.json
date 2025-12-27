@@ -1,0 +1,65 @@
+{
+  "module": "M05",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "references": [
+    {
+      "id": "M05-001",
+      "type": "book",
+      "citation": "Papert, S. (1980). Mindstorms: Children, Computers, and Powerful Ideas. Basic Books.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "工具应该具有低门槛和高天花板",
+        "好的工具让学习者成为主动的建构者"
+      ],
+      "used_in": ["index.mdx"]
+    },
+    {
+      "id": "M05-002",
+      "type": "article",
+      "citation": "Resnick, M. et al. (2009). Scratch: Programming for All. Communications of the ACM, 52(11), 60-67.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "低门槛、高天花板、宽围墙的设计原则",
+        "编程工具应支持创造和分享"
+      ],
+      "used_in": ["index.mdx", "extend/tool-selection.mdx"]
+    },
+    {
+      "id": "M05-003",
+      "type": "book",
+      "citation": "Gershenfeld, N. (2005). Fab: The Coming Revolution on Your Desktop. Basic Books.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "数字制造工具民主化生产",
+        "Fab Lab 模式使个人制造成为可能"
+      ],
+      "used_in": ["extend/digital-fabrication.mdx"]
+    },
+    {
+      "id": "M05-004",
+      "type": "article",
+      "citation": "Blikstein, P. (2013). Digital Fabrication and 'Making' in Education. In J. Walter-Herrmann & C. Büching (Eds.), FabLab: Of Machines, Makers and Inventors. Transcript Publishers.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "数字制造工具支持建构式学习",
+        "工具使用需要配合适当的教学设计"
+      ],
+      "used_in": ["extend/digital-fabrication.mdx"]
+    }
+  ],
+  "notes": "工具与资产相关文献待人工验证",
+  "cross_validation_status": "pending"
+}

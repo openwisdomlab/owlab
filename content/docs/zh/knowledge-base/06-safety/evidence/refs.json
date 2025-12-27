@@ -1,0 +1,79 @@
+{
+  "module": "M06",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "references": [
+    {
+      "id": "M06-001",
+      "type": "report",
+      "citation": "UNESCO. (2021). Recommendation on the Ethics of Artificial Intelligence. UNESCO.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "AI 应以人为本，尊重人权",
+        "AI 使用需要透明、可解释、负责任"
+      ],
+      "used_in": ["extend/ai-ethics.mdx"]
+    },
+    {
+      "id": "M06-002",
+      "type": "legal",
+      "citation": "European Union. (2024). Artificial Intelligence Act. Official Journal of the European Union.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "AI 系统需要进行风险分级",
+        "高风险 AI 需要特殊监管"
+      ],
+      "used_in": ["extend/ai-ethics.mdx"]
+    },
+    {
+      "id": "M06-003",
+      "type": "standard",
+      "citation": "ISO 45001:2018. Occupational health and safety management systems. International Organization for Standardization.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "系统化的安全管理可降低事故风险",
+        "安全管理需要全员参与和持续改进"
+      ],
+      "used_in": ["index.mdx"]
+    },
+    {
+      "id": "M06-004",
+      "type": "guideline",
+      "citation": "OSHA. (2016). Recommended Practices for Safety and Health Programs. Occupational Safety and Health Administration.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "预防优于应对",
+        "安全文化需要领导层承诺"
+      ],
+      "used_in": ["index.mdx", "checklists/safety-check.mdx"]
+    },
+    {
+      "id": "M06-005",
+      "type": "article",
+      "citation": "Beijing AI Principles. (2019). Beijing Academy of Artificial Intelligence.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "AI 发展应以人为本",
+        "AI 研发应负责任、可控"
+      ],
+      "used_in": ["extend/ai-ethics.mdx"]
+    }
+  ],
+  "notes": "安全与伦理相关文献待人工验证",
+  "cross_validation_status": "pending"
+}
