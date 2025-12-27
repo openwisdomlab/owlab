@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { Bot, Globe, BarChart3, Zap } from "lucide-react";
 import { useParams } from "next/navigation";
+import Script from "next/script";
 
 const features = [
   { icon: Bot, key: "ai" },
@@ -34,8 +35,33 @@ export default function HomePage() {
   const params = useParams();
   const locale = params.locale as string;
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: t("hero.title"),
+    description: t("hero.description"),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    featureList: [
+      t("features.ai.title"),
+      t("features.i18n.title"),
+      t("features.viz.title"),
+      t("features.fast.title"),
+    ],
+  };
+
   return (
     <div className="relative">
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 px-4">
         <div className="absolute inset-0 overflow-hidden">

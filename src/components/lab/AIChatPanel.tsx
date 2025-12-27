@@ -12,9 +12,9 @@ import {
   User,
   Copy,
   Check,
-  RefreshCw,
 } from "lucide-react";
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
+import { useToast } from "@/components/ui/Toast";
 
 interface Message {
   id: string;
@@ -35,6 +35,7 @@ export function AIChatPanel({
   onClose,
 }: AIChatPanelProps) {
   const t = useTranslations("lab.chat");
+  const toast = useToast();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -100,6 +101,7 @@ export function AIChatPanel({
       // If the AI returned a new layout, update it
       if (data.layout) {
         onLayoutUpdate(data.layout);
+        toast.success("Layout Updated", "The layout has been modified based on your request.");
       }
     } catch (error) {
       const errorMessage: Message = {
@@ -109,6 +111,7 @@ export function AIChatPanel({
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
+      toast.error("Request Failed", "Unable to process your request. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -117,6 +120,7 @@ export function AIChatPanel({
   const handleCopy = (content: string, id: string) => {
     navigator.clipboard.writeText(content);
     setCopiedId(id);
+    toast.info("Copied", "Message copied to clipboard.");
     setTimeout(() => setCopiedId(null), 2000);
   };
 
