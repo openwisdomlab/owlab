@@ -53,7 +53,44 @@
   --font-mono: var(--font-jetbrains);
 }
 
-/* Force Dark Mode */
+/* Light Theme Variables */
+html.light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #7c3aed;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: #f1f5f9;
+  --ring: #0891b2;
+
+  /* Cyber Neon Colors (Adjusted for light mode) */
+  --neon-cyan: #0891b2;
+  --neon-violet: #7c3aed;
+  --neon-pink: #db2777;
+  --neon-green: #059669;
+
+  /* Glass Effect (Light) */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  color-scheme: light;
+}
+
+/* Dark Mode (Default) */
+html.dark,
 html {
   color-scheme: dark;
 }
@@ -80,6 +117,12 @@ body::before {
   background-size: 50px 50px;
   pointer-events: none;
   z-index: -1;
+}
+
+html.light body::before {
+  background-image:
+    linear-gradient(rgba(8, 145, 178, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.05) 1px, transparent 1px);
 }
 
 /* Glassmorphism Card */
@@ -203,6 +246,10 @@ pre {
   border-bottom: 1px solid var(--glass-border);
 }
 
+html.light .header-glass {
+  background: rgba(255, 255, 255, 0.8);
+}
+
 /* Sidebar Glass */
 .sidebar-glass {
   background: rgba(2, 6, 23, 0.6);
@@ -294,4 +341,78 @@ pre {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   ACCESSIBILITY UTILITIES
+   ============================================ */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible ring for keyboard navigation */
+.focus-visible-ring:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+}
+
+/* Better focus styles for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .neon-button {
+    animation: none;
+  }
+
+  .sidebar-item-active {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-border: rgba(255, 255, 255, 0.4);
+  }
+
+  html.light {
+    --glass-border: rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-card {
+    border-width: 2px;
+  }
+
+  button,
+  a {
+    text-decoration: underline;
+  }
 }

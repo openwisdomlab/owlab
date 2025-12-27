@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 import { Bot, BookOpen, LayoutDashboard, Github } from "lucide-react";
 import type { Locale } from "@/i18n";
 
@@ -54,6 +55,7 @@ export function Header({ locale }: HeaderProps) {
 
         {/* Right Section */}
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <LanguageSwitcher locale={locale} />
           <a
             href="https://github.com"

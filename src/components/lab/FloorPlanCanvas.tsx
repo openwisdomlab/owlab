@@ -124,7 +124,11 @@ export function FloorPlanCanvas({
   return (
     <div className="relative h-full overflow-auto bg-[var(--background)]">
       {/* Toolbar */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-2 p-2 rounded-lg glass-card">
+      <div
+        className="absolute top-4 left-4 z-10 flex items-center gap-2 p-2 rounded-lg glass-card"
+        role="toolbar"
+        aria-label="Floor plan editing tools"
+      >
         <button
           onClick={() => setIsAddingZone(!isAddingZone)}
           className={`p-2 rounded-lg transition-colors ${
@@ -132,13 +136,18 @@ export function FloorPlanCanvas({
               ? "bg-[var(--neon-cyan)] text-[var(--background)]"
               : "hover:bg-[var(--glass-bg)]"
           }`}
-          title="Add Zone"
+          aria-label={isAddingZone ? "Cancel adding zone" : "Add new zone"}
+          aria-pressed={isAddingZone}
         >
-          <Plus className="w-5 h-5" />
+          <Plus className="w-5 h-5" aria-hidden="true" />
         </button>
 
         {isAddingZone && (
-          <div className="flex gap-1 pl-2 border-l border-[var(--glass-border)]">
+          <div
+            className="flex gap-1 pl-2 border-l border-[var(--glass-border)]"
+            role="radiogroup"
+            aria-label="Select zone type"
+          >
             {ZONE_TYPES.map((type) => (
               <button
                 key={type}
@@ -147,9 +156,11 @@ export function FloorPlanCanvas({
                   newZoneType === type ? "ring-2 ring-white" : ""
                 }`}
                 style={{ backgroundColor: ZONE_COLORS[type] }}
-                title={type}
+                role="radio"
+                aria-checked={newZoneType === type}
+                aria-label={`${type} zone`}
               >
-                <Square className="w-4 h-4 text-white" />
+                <Square className="w-4 h-4 text-white" aria-hidden="true" />
               </button>
             ))}
           </div>
@@ -157,13 +168,13 @@ export function FloorPlanCanvas({
 
         {selectedZone && (
           <>
-            <div className="w-px h-6 bg-[var(--glass-border)]" />
+            <div className="w-px h-6 bg-[var(--glass-border)]" aria-hidden="true" />
             <button
               onClick={() => onDeleteZone(selectedZone)}
               className="p-2 rounded-lg hover:bg-red-500/20 text-red-400 transition-colors"
-              title="Delete Zone"
+              aria-label="Delete selected zone"
             >
-              <Trash2 className="w-5 h-5" />
+              <Trash2 className="w-5 h-5" aria-hidden="true" />
             </button>
           </>
         )}
@@ -182,6 +193,9 @@ export function FloorPlanCanvas({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        role="application"
+        aria-label={`Floor plan canvas, ${layout.zones.length} zones`}
+        tabIndex={0}
       >
         {/* Grid */}
         {showGrid && (
@@ -216,7 +230,7 @@ export function FloorPlanCanvas({
         />
 
         {/* Zones */}
-        {layout.zones.map((zone) => (
+        {layout.zones.map((zone, index) => (
           <motion.div
             key={zone.id}
             className={`absolute rounded-lg cursor-move transition-shadow ${
@@ -235,6 +249,21 @@ export function FloorPlanCanvas({
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             onMouseDown={(e) => handleZoneMouseDown(e, zone.id)}
+            role="button"
+            tabIndex={0}
+            aria-label={`${zone.name}, ${zone.type} zone, position ${zone.position.x},${zone.position.y}, size ${zone.size.width}x${zone.size.height}`}
+            aria-selected={selectedZone === zone.id}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onZoneSelect(zone.id);
+              } else if (e.key === "Delete" || e.key === "Backspace") {
+                e.preventDefault();
+                if (selectedZone === zone.id) {
+                  onDeleteZone(zone.id);
+                }
+              }
+            }}
           >
             <div className="p-2 h-full flex flex-col">
               <div
@@ -287,27 +316,49 @@ interface ZonePropertiesPanelProps {
 }
 
 function ZonePropertiesPanel({ zone, onUpdate }: ZonePropertiesPanelProps) {
+  const nameId = `zone-name-${zone.id}`;
+  const typeId = `zone-type-${zone.id}`;
+  const widthId = `zone-width-${zone.id}`;
+  const heightId = `zone-height-${zone.id}`;
+
   return (
     <motion.div
       initial={{ x: 300, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       className="absolute top-4 right-4 w-64 glass-card p-4 space-y-4"
+      role="dialog"
+      aria-label="Zone properties panel"
     >
-      <h3 className="font-semibold text-sm">Zone Properties</h3>
+      <h3 className="font-semibold text-sm" id="zone-properties-title">
+        Zone Properties
+      </h3>
 
       <div>
-        <label className="text-xs text-[var(--muted-foreground)]">Name</label>
+        <label
+          htmlFor={nameId}
+          className="text-xs text-[var(--muted-foreground)]"
+        >
+          Name
+        </label>
         <input
+          id={nameId}
           type="text"
           value={zone.name}
           onChange={(e) => onUpdate({ name: e.target.value })}
-          className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none"
+          className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]/20"
+          aria-describedby={`${nameId}-desc`}
         />
       </div>
 
       <div>
-        <label className="text-xs text-[var(--muted-foreground)]">Type</label>
+        <label
+          htmlFor={typeId}
+          className="text-xs text-[var(--muted-foreground)]"
+        >
+          Type
+        </label>
         <select
+          id={typeId}
           value={zone.type}
           onChange={(e) =>
             onUpdate({
@@ -315,46 +366,65 @@ function ZonePropertiesPanel({ zone, onUpdate }: ZonePropertiesPanelProps) {
               color: ZONE_COLORS[e.target.value as ZoneData["type"]],
             })
           }
-          className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none"
+          className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]/20"
         >
           {ZONE_TYPES.map((type) => (
             <option key={type} value={type}>
-              {type}
+              {type.charAt(0).toUpperCase() + type.slice(1)}
             </option>
           ))}
         </select>
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
-        <div>
-          <label className="text-xs text-[var(--muted-foreground)]">Width</label>
-          <input
-            type="number"
-            value={zone.size.width}
-            onChange={(e) =>
-              onUpdate({
-                size: { ...zone.size, width: parseInt(e.target.value) || 1 },
-              })
-            }
-            min={1}
-            className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none"
-          />
+      <fieldset>
+        <legend className="text-xs text-[var(--muted-foreground)] mb-2">
+          Dimensions
+        </legend>
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label
+              htmlFor={widthId}
+              className="text-xs text-[var(--muted-foreground)]"
+            >
+              Width
+            </label>
+            <input
+              id={widthId}
+              type="number"
+              value={zone.size.width}
+              onChange={(e) =>
+                onUpdate({
+                  size: { ...zone.size, width: parseInt(e.target.value) || 1 },
+                })
+              }
+              min={1}
+              aria-label="Zone width in units"
+              className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]/20"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor={heightId}
+              className="text-xs text-[var(--muted-foreground)]"
+            >
+              Height
+            </label>
+            <input
+              id={heightId}
+              type="number"
+              value={zone.size.height}
+              onChange={(e) =>
+                onUpdate({
+                  size: { ...zone.size, height: parseInt(e.target.value) || 1 },
+                })
+              }
+              min={1}
+              aria-label="Zone height in units"
+              className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-cyan)]/20"
+            />
+          </div>
         </div>
-        <div>
-          <label className="text-xs text-[var(--muted-foreground)]">Height</label>
-          <input
-            type="number"
-            value={zone.size.height}
-            onChange={(e) =>
-              onUpdate({
-                size: { ...zone.size, height: parseInt(e.target.value) || 1 },
-              })
-            }
-            min={1}
-            className="w-full mt-1 px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none"
-          />
-        </div>
-      </div>
+      </fieldset>
     </motion.div>
   );
 }

@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { locales, type Locale } from "@/i18n";
 import { Header } from "@/components/layout/Header";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
+import { ToastProvider } from "@/components/ui/Toast";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 
 type Props = {
   children: React.ReactNode;
@@ -26,11 +29,17 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <div className="min-h-screen flex flex-col">
-        <Header locale={locale as Locale} />
-        <MobileNav locale={locale as Locale} />
-        <main className="flex-1">{children}</main>
-      </div>
+      <ThemeProvider defaultTheme="dark">
+        <ToastProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header locale={locale as Locale} />
+            <MobileNav locale={locale as Locale} />
+            <main id="main-content" className="flex-1" tabIndex={-1}>
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </main>
+          </div>
+        </ToastProvider>
+      </ThemeProvider>
     </NextIntlClientProvider>
   );
 }
