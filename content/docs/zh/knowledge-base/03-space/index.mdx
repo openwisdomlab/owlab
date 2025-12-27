@@ -1,0 +1,163 @@
+---
+title: "M03 空间与环境"
+description: "创造激发创意、支持创造的学习环境"
+module_id: "M03"
+doc_type: "core"
+version: "0.1.0"
+status: "draft"
+last_updated: "2025-01-15"
+
+ai_context_size: "small"
+standalone_readable: true
+dependencies: ["M01", "M06"]
+
+evidence_level: "E1"
+sources_verified: false
+cross_validated: false
+confidence: "medium"
+
+tags:
+  - M03
+  - core
+  - 空间设计
+  - 创新环境
+  - 学习空间
+---
+
+# M03 空间与环境
+
+> **一句话定位**: 创造激发创意、支持创造、包容多元的学习环境
+
+---
+
+## 核心原则
+
+| 原则 | 内涵 | 设计体现 |
+|------|------|----------|
+| **学习可见** | 让过程可见，激发好奇 | 透明工作区、作品展示墙 |
+| **灵活可变** | 支持快速重组 | 可移动家具、模块化设计 |
+| **安全包容** | 安全底线 + 多元包容 | 无障碍设计、儿童友好 |
+| **低门槛高上限** | 易入门，可深耕 | 分区设置、进阶设备 |
+| **创新友好** | 激发创意，容错试错 | 实验区、草稿区 |
+
+---
+
+## 空间设计三层模型
+
+```
+┌─────────────────────────────────────────────┐
+│  物理层 Physical                            │
+│  空间布局、功能区、设备配置                   │
+├─────────────────────────────────────────────┤
+│  数字层 Digital                             │
+│  数字工具、在线平台、混合体验                 │
+├─────────────────────────────────────────────┤
+│  文化层 Culture                             │
+│  氛围营造、行为规范、社区感                   │
+└─────────────────────────────────────────────┘
+```
+
+---
+
+## MVS 最小可运行标准
+
+| 项目 | 标准节点 | OWL-Virtual | 说明 |
+|------|----------|-------------|------|
+| 面积 | ≥50m² | N/A | 可用活动面积 |
+| 功能区 | 4个核心区 | 对应线上功能 | 创作/展示/讨论/储物 |
+| 消防 | ✅ 通过 | N/A | 必须 |
+| 无障碍 | 基础达标 | WCAG AA | 必须 |
+| 网络 | 稳定覆盖 | ✅ | 必须 |
+
+---
+
+## 核心功能区
+
+| 功能区 | 目的 | 最小面积 | 关键配置 |
+|--------|------|----------|----------|
+| **创作区** | 动手制作 | 40% | 工作台、工具、材料 |
+| **展示区** | 成果展示 | 15% | 展示架、投影、灯光 |
+| **讨论区** | 交流协作 | 20% | 可移动座椅、白板 |
+| **储物区** | 物资存放 | 15% | 储物柜、材料架 |
+| **缓冲区** | 过渡休息 | 10% | 入口、休息角 |
+
+---
+
+## 与其他模块的关系
+
+```
+M01 理念 ──→ M03 空间 (空间体现理念)
+                ↓
+M06 安全 ←── M03 空间 (满足安全要求)
+                ↓
+M05 设备 ←── M03 空间 (设备布置依据)
+```
+
+---
+
+## 常见误区
+
+- ❌ "高大上"="好空间" → ✅ 适用性比美观更重要
+- ❌ 设计完成后固定不变 → ✅ 空间应持续迭代
+- ❌ 只考虑成人视角 → ✅ 需考虑儿童体验
+- ❌ 功能区边界严格 → ✅ 需支持灵活混用
+
+---
+
+## 扩展内容索引
+
+| 主题 | 文件 | 状态 | 深度 |
+|------|------|------|------|
+| 物理空间设计深度 | [extend/physical-design](./extend/physical-design) | 📋 | 详细布局原则 |
+| 创新友好环境设计 | [extend/innovation-friendly](./extend/innovation-friendly) | 🚧 | 激发创意的设计 |
+| 数字环境标准 | [extend/digital-environment](./extend/digital-environment) | 📋 | 平台与工具 |
+| 文化氛围营造 | [extend/culture-atmosphere](./extend/culture-atmosphere) | 📋 | 社区感建设 |
+| 无障碍设计 | [extend/accessibility](./extend/accessibility) | 📋 | 包容性设计 |
+| 案例: 北京实验室 | [cases/case-beijing-lab](./cases/case-beijing-lab) | 📋 | 100m² 案例 |
+| 平面布局示例 | [visuals/floor-plans](./visuals/floor-plans) | 📋 | 可视化示例 |
+
+---
+
+## AI 迭代任务
+
+```yaml
+tasks:
+  - id: M03-T01
+    task: "编写创新友好环境设计深度指南"
+    output: "extend/innovation-friendly.mdx"
+    priority: high
+    description: "从环境心理学、设计思维角度分析如何设计激发创意的空间"
+
+  - id: M03-T02
+    task: "整理空间设计研究文献"
+    output: "evidence/refs.json"
+    priority: high
+
+  - id: M03-T03
+    task: "创建 50/100/200m² 平面布局示例"
+    output: "visuals/floor-plans.mdx"
+    priority: medium
+
+  - id: M03-T04
+    task: "编写空间选址评估清单"
+    output: "checklists/site-selection.mdx"
+    priority: medium
+
+  - id: M03-T05
+    task: "收集优秀创客空间案例"
+    output: "cases/"
+    priority: medium
+```
+
+---
+
+## 参考文献
+
+见 [evidence/refs.json](./evidence/refs.json)
+
+**关键引用**:
+- Doorley, S. & Witthoft, S. (2012). *Make Space*. Wiley. [E1]
+- Boys, J. (2010). *Towards Creative Learning Spaces*. Routledge. [E1]
+- IDEO (2012). *Design Thinking for Educators*. [E1]
+
+> ⚠️ 文献待人工验证

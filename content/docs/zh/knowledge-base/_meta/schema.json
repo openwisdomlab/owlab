@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OWL Knowledge Base Document Schema",
+  "description": "Schema for validating knowledge base documents",
+
+  "definitions": {
+    "evidence_level": {
+      "type": "string",
+      "enum": ["E0", "E1", "E2", "E3"],
+      "description": "E0=经验 E1=案例 E2=准实验 E3=实验/元分析"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unverified"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "review", "published", "deprecated"]
+    },
+    "doc_type": {
+      "type": "string",
+      "enum": ["core", "extend", "case", "sop", "checklist", "evidence", "visual"]
+    }
+  },
+
+  "type": "object",
+  "required": ["title", "module_id", "doc_type", "version"],
+
+  "properties": {
+    "title": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^M(0[0-9]|10)$"
+    },
+    "doc_type": { "$ref": "#/definitions/doc_type" },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-z]+)?$"
+    },
+    "status": { "$ref": "#/definitions/status" },
+    "last_updated": {
+      "type": "string",
+      "format": "date"
+    },
+
+    "ai_metadata": {
+      "type": "object",
+      "properties": {
+        "context_size": {
+          "type": "string",
+          "enum": ["small", "medium", "large"],
+          "description": "small≤2000字 medium≤5000字 large>5000字"
+        },
+        "standalone_readable": {
+          "type": "boolean",
+          "description": "是否可独立阅读理解"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "依赖的其他模块ID"
+        }
+      }
+    },
+
+    "verification": {
+      "type": "object",
+      "properties": {
+        "evidence_level": { "$ref": "#/definitions/evidence_level" },
+        "sources_verified": { "type": "boolean" },
+        "cross_validated": { "type": "boolean" },
+        "confidence": { "$ref": "#/definitions/confidence" },
+        "last_reviewed": { "type": "string", "format": "date" },
+        "reviewer": { "type": "string" }
+      }
+    },
+
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

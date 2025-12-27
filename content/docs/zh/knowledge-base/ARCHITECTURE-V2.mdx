@@ -1,0 +1,421 @@
+---
+title: OWL 知识库架构设计
+description: Architecture Design for AI-Friendly Modular Knowledge Base
+---
+
+# OWL 知识库架构设计 v2
+
+## 设计原则
+
+### 1. 核心精炼 + 扩展无限
+
+```
+┌─────────────────────────────────────────────────────┐
+│  CORE (核心层)                                       │
+│  ≤2000字 / 模块                                      │
+│  精炼原则、MVS、关键定义                              │
+│  AI 可一次性读取完整上下文                            │
+└─────────────────────────────────────────────────────┘
+           ↓ 引用链接
+┌─────────────────────────────────────────────────────┐
+│  EXTEND (扩展层)                                     │
+│  不限篇幅                                            │
+│  深度研究、案例库、可视化、前沿资料                    │
+│  按需检索，独立更新                                   │
+└─────────────────────────────────────────────────────┘
+           ↓ 引用链接
+┌─────────────────────────────────────────────────────┐
+│  EVIDENCE (证据层)                                   │
+│  原始文献、数据、验证记录                             │
+│  可追溯、可验证                                       │
+└─────────────────────────────────────────────────────┘
+```
+
+### 2. AI 协作友好设计
+
+| 设计点 | 实现方式 |
+|--------|----------|
+| **原子化** | 每文件单一职责，≤2000字核心 |
+| **独立可读** | 完整的 frontmatter 元数据 |
+| **避免重复** | 引用而非复制，单一事实源 |
+| **可检索** | 标签系统 + 语义描述 |
+| **可验证** | 证据等级 + 来源链接 |
+| **可迭代** | 版本号 + 更新日期 + 审核状态 |
+
+### 3. 可信性验证机制
+
+```yaml
+# 每个文件的 frontmatter 必须包含
+evidence_level: E0-E3      # 证据强度
+sources_verified: true     # 来源已验证
+cross_validated: true      # 交叉验证
+last_reviewed: 2025-01-15  # 最后审核
+reviewer: "name"           # 审核人
+confidence: high/medium/low # 置信度
+```
+
+---
+
+## 新目录结构
+
+```
+knowledge-base/
+│
+├── _meta/                          # 元数据与配置
+│   ├── schema.json                 # 文档 schema 定义
+│   ├── tags.json                   # 标签分类体系
+│   ├── evidence-levels.mdx         # 证据等级定义
+│   └── glossary.json               # 术语表（机器可读）
+│
+├── _templates/                     # 文档模板
+│   ├── core-module.mdx             # 核心模块模板
+│   ├── case-study.mdx              # 案例模板
+│   ├── research-note.mdx           # 研究笔记模板
+│   └── sop.mdx                     # SOP 模板
+│
+├── 00-index/                       # 导航与索引
+│   ├── index.mdx                   # 知识库入口
+│   ├── reading-paths.mdx           # 阅读路径
+│   └── search-guide.mdx            # 检索指南
+│
+├── 01-foundations/                 # M01 理念基础
+│   ├── index.mdx                   # 核心层 ≤2000字
+│   ├── extend/                     # 扩展层
+│   │   ├── maker-movement.mdx      # 创客运动深度
+│   │   ├── learning-theories.mdx   # 学习理论详解
+│   │   ├── steam-framework.mdx     # STEAM 框架
+│   │   └── ...
+│   ├── cases/                      # 案例库
+│   │   ├── case-001-xxx.mdx
+│   │   └── ...
+│   ├── visuals/                    # 可视化
+│   │   ├── theory-map.mdx
+│   │   └── ...
+│   └── evidence/                   # 证据与文献
+│       ├── refs.json               # 结构化引用
+│       └── notes/                  # 文献笔记
+│
+├── 02-governance/                  # M02 治理网络
+│   ├── index.mdx                   # 核心层
+│   ├── extend/
+│   ├── cases/
+│   └── evidence/
+│
+├── 03-space/                       # M03 空间环境
+│   ├── index.mdx                   # 核心层
+│   ├── extend/
+│   │   ├── physical-design.mdx     # 物理空间深度
+│   │   ├── digital-environment.mdx # 数字环境
+│   │   ├── culture-atmosphere.mdx  # 文化氛围
+│   │   └── innovation-friendly.mdx # 创新友好设计
+│   ├── cases/
+│   │   ├── case-beijing-lab.mdx
+│   │   ├── case-shenzhen-hub.mdx
+│   │   └── ...
+│   ├── visuals/
+│   │   ├── floor-plan-50sqm.mdx
+│   │   ├── floor-plan-100sqm.mdx
+│   │   └── design-principles.mdx
+│   └── evidence/
+│
+├── 04-programs/                    # M04 课程项目
+│   ├── index.mdx
+│   ├── extend/
+│   ├── cases/
+│   └── evidence/
+│
+├── 05-tools/                       # M05 工具资产
+│   ├── index.mdx
+│   ├── extend/
+│   ├── catalogs/                   # 设备目录
+│   └── evidence/
+│
+├── 06-safety/                      # M06 安全合规
+│   ├── index.mdx
+│   ├── extend/
+│   ├── policies/                   # 政策模板
+│   └── evidence/
+│
+├── 07-people/                      # M07 人员能力
+│   ├── index.mdx
+│   ├── extend/
+│   ├── training/                   # 培训材料
+│   └── evidence/
+│
+├── 08-operations/                  # M08 运营手册
+│   ├── index.mdx
+│   ├── sops/                       # SOP 库
+│   ├── checklists/                 # 清单库
+│   └── evidence/
+│
+├── 09-assessment/                  # M09 评价影响
+│   ├── index.mdx
+│   ├── extend/
+│   ├── tools/                      # 评价工具
+│   └── evidence/
+│
+└── 99-references/                  # 全局引用库
+    ├── index.mdx                   # 引用库说明
+    ├── by-topic/                   # 按主题
+    ├── by-module/                  # 按模块
+    └── verification-log.mdx        # 验证记录
+```
+
+---
+
+## 核心层模板 (index.mdx)
+
+每个模块的 `index.mdx` 严格控制在 ≤2000字：
+
+```mdx
+---
+title: "M03 空间与环境"
+description: "创造支持学习与创造的空间环境"
+module_id: "M03"
+version: "0.1.0"
+status: "draft"
+last_updated: "2025-01-15"
+
+# AI 协作元数据
+ai_context_size: "small"  # small/medium/large
+standalone_readable: true
+dependencies: ["M01", "M06"]
+
+# 可信性标记
+evidence_level: "E1"
+sources_verified: true
+confidence: "medium"
+---
+
+# M03 空间与环境
+
+## 一句话定位
+> 创造激发创意、支持创造、包容多元的学习环境
+
+## 核心原则 (5条)
+
+1. **学习可见** - 让过程可见，激发好奇
+2. **灵活可变** - 支持快速重组
+3. **安全包容** - 安全底线 + 多元包容
+4. **低门槛高上限** - 易入门，可深耕
+5. **创新友好** - 环境激发创意，容错试错
+
+## MVS 最小标准
+
+| 项目 | 标准节点 | 说明 |
+|------|----------|------|
+| 面积 | ≥50m² | 可用活动面积 |
+| 功能区 | 4个 | 创作/展示/讨论/储物 |
+| 安全 | 消防通过 | 必须 |
+
+## 关键输入/输出
+
+**依赖**: M01(理念) → M06(安全)
+**输出**: 空间规划指南、功能区配置表
+
+## 扩展内容索引
+
+| 主题 | 文件 | 状态 |
+|------|------|------|
+| 物理空间深度设计 | [extend/physical-design](./extend/physical-design) | ✅ |
+| 创新友好环境设计 | [extend/innovation-friendly](./extend/innovation-friendly) | 🚧 |
+| 案例: 北京实验室 | [cases/case-beijing-lab](./cases/case-beijing-lab) | ✅ |
+
+## AI 迭代任务
+
+<AITasks module="M03" />
+
+## 参考文献
+
+见 [evidence/refs.json](./evidence/refs.json)
+```
+
+---
+
+## 扩展层模板
+
+扩展层不限篇幅，但需要：
+
+```mdx
+---
+title: "创新友好环境设计"
+parent_module: "M03"
+type: "extend"
+version: "0.1.0"
+
+# 关键：独立可读
+standalone_readable: true
+summary: "如何设计激发创意的空间环境"
+
+# 证据与验证
+evidence_level: "E1"
+sources:
+  - id: "ref-001"
+    verified: true
+    note: "Doorley & Witthoft, Make Space, 2012"
+  - id: "ref-002"
+    verified: true
+    note: "IDEO Design Thinking"
+
+# AI 检索标签
+tags:
+  - 空间设计
+  - 创新环境
+  - 创意激发
+  - 物理环境
+---
+
+# 创新友好环境设计
+
+## 概述
+<!-- 500字概述，AI可快速理解 -->
+
+## 深度内容
+<!-- 不限篇幅 -->
+
+### 1. 理论基础
+<!-- 详细的理论梳理 -->
+
+### 2. 设计原则
+<!-- 可操作的设计原则 -->
+
+### 3. 实施方法
+<!-- 具体方法 -->
+
+### 4. 案例分析
+<!-- 多个案例 -->
+
+### 5. 可视化
+<!-- 图表、平面图等 -->
+
+## 参考文献
+<!-- 本文引用，链接到证据层 -->
+
+## 更新记录
+| 日期 | 更新内容 | 作者 |
+|------|----------|------|
+| 2025-01 | 初稿 | AI |
+| 2025-01 | 人工审核 | xxx |
+```
+
+---
+
+## 证据层设计
+
+### refs.json 结构化引用
+
+```json
+{
+  "module": "M03",
+  "references": [
+    {
+      "id": "M03-001",
+      "type": "book",
+      "citation": "Doorley, S., & Witthoft, S. (2012). Make space. Wiley.",
+      "evidence_level": "E1",
+      "verified": true,
+      "verified_by": "human",
+      "verified_date": "2025-01-15",
+      "url": "https://...",
+      "key_claims": [
+        "空间布局影响协作模式",
+        "可移动家具增加灵活性"
+      ],
+      "used_in": ["extend/physical-design.mdx"],
+      "notes": "斯坦福 d.school 实践经验总结"
+    }
+  ]
+}
+```
+
+### 验证记录
+
+```mdx
+---
+title: 文献验证记录
+---
+
+# 文献验证记录
+
+## 验证流程
+
+1. **初次录入**: AI 生成引用
+2. **人工核查**: 验证文献真实存在
+3. **内容验证**: 验证引用主张准确
+4. **交叉验证**: 与其他来源对照
+5. **定期审核**: 每季度审核时效性
+
+## 验证状态
+
+| 状态 | 含义 |
+|------|------|
+| ✅ verified | 已人工验证 |
+| ⚠️ pending | 待验证 |
+| ❌ disputed | 有争议 |
+| 🔄 outdated | 可能过时 |
+
+## 最近验证
+
+| ID | 文献 | 状态 | 日期 |
+|----|------|------|------|
+| M03-001 | Make Space | ✅ | 2025-01-15 |
+| ... | ... | ... | ... |
+```
+
+---
+
+## 标签系统
+
+### tags.json
+
+```json
+{
+  "categories": {
+    "module": ["M01", "M02", "M03", ...],
+    "type": ["core", "extend", "case", "sop", "evidence"],
+    "topic": ["空间设计", "学习理论", "安全", ...],
+    "audience": ["节点负责人", "设计师", "导师", ...],
+    "evidence_level": ["E0", "E1", "E2", "E3"],
+    "status": ["draft", "review", "published"]
+  }
+}
+```
+
+---
+
+## AI 协作规则
+
+### 避免上下文瓶颈
+
+1. **核心层 ≤2000字**: AI 可一次读完
+2. **扩展层按需加载**: 只读取相关扩展
+3. **证据层独立**: 引用 ID 即可，无需加载全文
+
+### 避免幻觉
+
+1. **明确标注未验证内容**: `⚠️ [待验证]`
+2. **提供来源链接**: 可追溯
+3. **区分事实与观点**: 明确标注
+4. **标注证据等级**: E0-E3
+5. **交叉验证要求**: 重要主张需多个来源
+
+### 迭代协作流程
+
+```
+AI 生成初稿 → 标记 [AI生成] + evidence_level: E0
+    ↓
+人工审核 → 更新 verified: true + reviewer
+    ↓
+交叉验证 → 更新 cross_validated: true
+    ↓
+定期复核 → 更新 last_reviewed
+```
+
+---
+
+## 下一步
+
+1. 按此架构重构现有模块
+2. 创建 `_meta/` 和 `_templates/`
+3. 将每个模块拆分为核心层 + 扩展层
+4. 建立证据层和验证机制

@@ -1,0 +1,188 @@
+{
+  "module": "M01",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "total_count": 15,
+  "verified_count": 0,
+
+  "references": [
+    {
+      "id": "M01-001",
+      "type": "book",
+      "citation": "Papert, S. (1980). Mindstorms: Children, computers, and powerful ideas. Basic Books.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "Constructionism: 学习在创造可分享的制品时效果最佳",
+        "计算机作为思维工具的潜力"
+      ],
+      "used_in": ["index.mdx", "extend/constructionism.mdx"],
+      "notes": "Constructionism 理论奠基作品"
+    },
+    {
+      "id": "M01-002",
+      "type": "book",
+      "citation": "Vygotsky, L.S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press.",
+      "evidence_level": "E3",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "最近发展区 (ZPD) 概念",
+        "社会互动在认知发展中的核心作用",
+        "语言作为思维工具"
+      ],
+      "used_in": ["index.mdx", "extend/learning-theories.mdx"],
+      "notes": "社会建构主义核心文献"
+    },
+    {
+      "id": "M01-003",
+      "type": "book",
+      "citation": "Lave, J., & Wenger, E. (1991). Situated learning: Legitimate peripheral participation. Cambridge University Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "学习嵌入在情境和文化中",
+        "实践社区 (Communities of Practice) 概念",
+        "合法的边缘性参与"
+      ],
+      "used_in": ["index.mdx", "extend/learning-theories.mdx"],
+      "notes": "情境学习理论核心文献"
+    },
+    {
+      "id": "M01-004",
+      "type": "book",
+      "citation": "Piaget, J. (1952). The origins of intelligence in children. International Universities Press.",
+      "evidence_level": "E3",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "知识由学习者主动建构",
+        "认知发展阶段理论",
+        "同化与顺应机制"
+      ],
+      "used_in": ["extend/learning-theories.mdx"],
+      "notes": "建构主义核心文献"
+    },
+    {
+      "id": "M01-005",
+      "type": "book_chapter",
+      "citation": "Krajcik, J.S., & Shin, N. (2014). Project-based learning. In R.K. Sawyer (Ed.), The Cambridge handbook of the learning sciences (2nd ed., pp. 275-297). Cambridge University Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "PBL 提高深度理解和知识迁移",
+        "驱动性问题的设计原则"
+      ],
+      "used_in": ["extend/learning-theories.mdx"],
+      "notes": "PBL 理论综述"
+    },
+    {
+      "id": "M01-006",
+      "type": "book",
+      "citation": "Dougherty, D. (2012). The maker movement. Innovations: Technology, Governance, Globalization, 7(3), 11-14.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "创客运动的定义和核心价值",
+        "创客文化的社会意义"
+      ],
+      "used_in": ["extend/maker-movement.mdx"],
+      "notes": "Make Magazine 创始人的创客运动概述"
+    },
+    {
+      "id": "M01-007",
+      "type": "book",
+      "citation": "Martinez, S.L., & Stager, G.S. (2013). Invent to learn: Making, tinkering, and engineering in the classroom. Constructing Modern Knowledge Press.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "创客教育的课堂实践指南",
+        "Constructionism 在教育中的应用"
+      ],
+      "used_in": ["extend/maker-movement.mdx"],
+      "notes": "创客教育实践指南"
+    },
+    {
+      "id": "M01-008",
+      "type": "book",
+      "citation": "Resnick, M. (2017). Lifelong kindergarten: Cultivating creativity through projects, passion, peers, and play. MIT Press.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "4P 学习框架: Projects, Passion, Peers, Play",
+        "创造性学习的终身发展"
+      ],
+      "used_in": ["extend/constructionism.mdx"],
+      "notes": "MIT Media Lab Scratch 团队负责人的著作"
+    },
+    {
+      "id": "M01-009",
+      "type": "book",
+      "citation": "Yakman, G. (2008). STEAM education: An overview of creating a model of integrative education. PATT-17 & PATT-19 Conference Proceedings.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": null,
+      "key_claims": [
+        "STEAM 教育框架定义",
+        "艺术整合的价值"
+      ],
+      "used_in": ["extend/steam-framework.mdx"],
+      "notes": "STEAM 概念提出者"
+    },
+    {
+      "id": "M01-010",
+      "type": "journal",
+      "citation": "Halverson, E.R., & Sheridan, K. (2014). The maker movement in education. Harvard Educational Review, 84(4), 495-504.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "url": "https://doi.org/10.17763/haer.84.4.34j1g68140382063",
+      "key_claims": [
+        "创客运动在教育中的应用综述",
+        "创客空间的教育价值"
+      ],
+      "used_in": ["extend/maker-movement.mdx"],
+      "notes": "Harvard Educational Review 综述文章"
+    }
+  ],
+
+  "pending_verification": [
+    "M01-001", "M01-002", "M01-003", "M01-004", "M01-005",
+    "M01-006", "M01-007", "M01-008", "M01-009", "M01-010"
+  ],
+
+  "topics_covered": [
+    "建构主义",
+    "社会建构主义",
+    "情境学习",
+    "Constructionism",
+    "项目制学习",
+    "创客运动",
+    "STEAM教育"
+  ]
+}
