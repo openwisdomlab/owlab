@@ -1,250 +1,118 @@
 ---
 title: OWL 建设与运营标准手册
-description: 模块化知识库架构 | Modular Knowledge Base Architecture
+description: 模块化知识库 v2 | Modular Knowledge Base
 ---
 
-# OWL《建设与运营标准手册》模块化知识库
+# OWL《建设与运营标准手册》
 
-**版本**: 0.1.0-alpha
-**状态**: 架构定稿 / 内容填充中
+**版本**: 0.2.0-alpha
+**架构**: v2 (Core + Extend + Evidence)
 **最后更新**: 2025-01
 
 ---
 
-## 一、知识库总信息架构 (IA)
+## 架构设计
 
 ```
-OWL-Knowledge-Base/
-│
-├── M00｜导读与使用说明 (Meta)
-│   ├── 知识库导航图
-│   ├── 模块阅读顺序建议
-│   ├── 术语表与分级体系
-│   └── 版本演进说明
-│
-├── M01｜理念与理论基础 (Foundations)
-│   ├── OWL 使命与愿景
-│   ├── 教育哲学与学习理论
-│   ├── 创客教育与 STEAM 理论框架
-│   └── 开放创新与社区学习理论
-│
-├── M02｜治理与网络结构 (Governance & Network)
-│   ├── 组织架构与决策机制
-│   ├── 节点类型与准入标准
-│   ├── 网络协作与资源共享机制
-│   └── 品牌授权与质量保障
-│
-├── M03｜空间与环境标准 (Space & Environment)
-│   ├── 物理空间设计标准
-│   ├── 数字环境与平台标准
-│   ├── 文化氛围营造指南
-│   └── 无障碍与包容性设计
-│
-├── M04｜课程与项目体系 (Program Design)
-│   ├── 课程设计框架
-│   ├── 项目制学习 (PBL) 设计
-│   ├── 年龄分层与能力进阶
-│   └── 跨学科整合方法
-│
-├── M05｜工具、设备与资产管理 (Tools & Assets)
-│   ├── 核心工具与设备清单
-│   ├── 采购与维护标准
-│   ├── 数字工具与软件管理
-│   └── 资产生命周期管理
-│
-├── M06｜安全、合规与伦理 (Safety, Compliance, Ethics)
-│   ├── 物理安全标准
-│   ├── 数据隐私与网络安全
-│   ├── 未成年人保护机制
-│   ├── AI 伦理与使用边界
-│   └── 知识产权与版权管理
-│
-├── M07｜角色体系与师资发展 (People & Capability)
-│   ├── 角色定义与职责矩阵
-│   ├── 能力模型与发展路径
-│   ├── 培训体系与认证机制
-│   └── 社区导师与志愿者管理
-│
-├── M08｜运营 Playbook (Operations)
-│   ├── 日常运营 SOP
-│   ├── 活动策划与执行
-│   ├── 会员管理与服务
-│   └── 危机响应与应急预案
-│
-├── M09｜评价与影响力 (Assessment & Impact)
-│   ├── 学习评价框架
-│   ├── 运营效能指标
-│   ├── 影响力评估方法
-│   └── 持续改进机制
-│
-└── M10｜模板、清单与引用库 (Appendix)
-    ├── 通用模板库
-    ├── 检查清单库
-    ├── 参考文献总库
-    └── 术语与缩略语索引
+┌─────────────────────────────────────────────────────┐
+│  CORE (核心层) ≤2000字                               │
+│  精炼原则 / MVS / 关键定义                           │
+│  → AI 可一次性读取完整上下文                         │
+├─────────────────────────────────────────────────────┤
+│  EXTEND (扩展层) 不限篇幅                            │
+│  深度研究 / 案例库 / 可视化 / 前沿资料                │
+│  → 按需检索，独立更新                                │
+├─────────────────────────────────────────────────────┤
+│  EVIDENCE (证据层)                                   │
+│  结构化引用 / 验证记录                               │
+│  → 可追溯，可验证                                    │
+└─────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 二、仓库目录树与命名规范
+## 模块总览
 
-### 2.1 完整目录结构
+| 模块 | 名称 | 定位 | 状态 |
+|------|------|------|------|
+| [M01](./01-foundations) | 理念与理论 | OWL 的意义与理论根基 | 🚧 |
+| [M02](./02-governance) | 治理与网络 | 组织形式与协作规则 | 🚧 |
+| [M03](./03-space) | 空间与环境 | 创新友好的学习环境 | 🚧 |
+| [M04](./04-programs) | 课程与项目 | 有效的学习体验设计 | 🚧 |
+| [M05](./05-tools) | 工具与资产 | 设备管理让创造可能 | 🚧 |
+| [M06](./06-safety) | 安全与伦理 | 底线守护保驾护航 | 🚧 |
+| [M07](./07-people) | 人员与能力 | 培养点燃学习者的人 | 🚧 |
+| [M08](./08-operations) | 运营手册 | 让运营自然流畅 | 🚧 |
+| [M09](./09-assessment) | 评价与影响 | 看见成长证明价值 | 🚧 |
 
+**图例**: ✅ 已完成 | 🚧 核心层完成 | 📋 计划中
+
+---
+
+## 阅读路径
+
+### 新建节点
 ```
-knowledge-base/
-│
-├── index.mdx                          # 知识库入口与导航
-├── GLOBAL-DEFINITIONS.mdx             # 全局术语与分级定义
-├── REFERENCES-LIBRARY.mdx             # 引用库总索引
-├── COLLABORATION-PROTOCOL.mdx         # 协作与版本机制
-├── CHANGELOG.mdx                      # 变更日志
-│
-├── M00-Meta/
-│   ├── README.mdx                     # 模块概览
-│   ├── Module.mdx                     # 主内容
-│   ├── References.mdx                 # 文献引用
-│   ├── Templates/
-│   │   ├── TPL-M00-001-ReadingGuide.mdx
-│   │   └── TPL-M00-002-QuickStart.mdx
-│   └── SOP/
-│       └── SOP-M00-001-HowToUse.mdx
-│
-├── M01-Foundations/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   ├── Rubrics/
-│   └── Examples/
-│
-├── M02-Governance-Network/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Data-Dictionary.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   └── Examples/
-│
-├── M03-Space-Environment/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   ├── Rubrics/
-│   └── Examples/
-│
-├── M04-Program-Design/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Data-Dictionary.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   ├── Rubrics/
-│   └── Examples/
-│
-├── M05-Tools-Assets/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Data-Dictionary.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   └── Examples/
-│
-├── M06-Safety-Compliance-Ethics/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   ├── Rubrics/
-│   └── Examples/
-│
-├── M07-People-Capability/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Data-Dictionary.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   ├── Rubrics/
-│   └── Examples/
-│
-├── M08-Operations-Playbook/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   └── Examples/
-│
-├── M09-Assessment-Impact/
-│   ├── README.mdx
-│   ├── Module.mdx
-│   ├── References.mdx
-│   ├── Data-Dictionary.mdx
-│   ├── Templates/
-│   ├── SOP/
-│   ├── Rubrics/
-│   └── Examples/
-│
-└── M10-Appendix/
-    ├── README.mdx
-    ├── Templates-Index.mdx
-    ├── Checklists-Index.mdx
-    ├── Glossary.mdx
-    └── References-Master.mdx
+M01 理念 → M06 安全 → M02 治理 → M03 空间 → M05 工具 → M07 人员 → M04 课程 → M08 运营
 ```
 
-### 2.2 文件命名规范
+### 课程开发
+```
+M01 理念 → M04 课程 → M07 师资 → M09 评价
+```
 
-| 类型 | 格式 | 示例 |
+### 合规审计
+```
+M06 安全 → M02 治理 → M05 设备 → M08 运营
+```
+
+---
+
+## 核心特性
+
+### AI 协作友好
+
+| 特性 | 实现 |
+|------|------|
+| 原子化 | 每文件单一职责，核心层≤2000字 |
+| 独立可读 | 完整 frontmatter 元数据 |
+| 可验证 | 证据等级 E0-E3 + 验证状态 |
+| 可检索 | 标签系统 + 语义描述 |
+
+### 科学可信
+
+| 机制 | 说明 |
+|------|------|
+| 证据分级 | E0(经验) → E3(实验) |
+| 来源验证 | 每条引用需验证 |
+| 交叉验证 | 重要主张多源验证 |
+| 定期审核 | 避免过时结论 |
+
+---
+
+## 全局资源
+
+- [架构设计文档](./ARCHITECTURE-V2) - v2 架构详细说明
+- [全局定义](./GLOBAL-DEFINITIONS) - 术语与分级体系
+- [文档模板](./_templates) - 核心/扩展/案例/SOP模板
+- [证据等级](./_meta/evidence-levels) - E0-E3 定义
+- [协作机制](./COLLABORATION-PROTOCOL) - 协作与版本控制
+- [参考文献库](./REFERENCES-LIBRARY) - 全局引用
+
+---
+
+## 深度内容示例
+
+| 主题 | 模块 | 类型 |
 |------|------|------|
-| 模板 | `TPL-M{XX}-{NNN}-{Name}.mdx` | `TPL-M04-001-LessonPlan.mdx` |
-| SOP | `SOP-M{XX}-{NNN}-{Name}.mdx` | `SOP-M08-003-EmergencyResponse.mdx` |
-| 清单 | `CKL-M{XX}-{NNN}-{Name}.mdx` | `CKL-M06-002-SafetyAudit.mdx` |
-| 量规 | `RBR-M{XX}-{NNN}-{Name}.mdx` | `RBR-M09-001-LearnerAssessment.mdx` |
-| 案例 | `EXP-M{XX}-{NNN}-{Name}.mdx` | `EXP-M03-001-SpaceDesign-Beijing.mdx` |
-| 数据字典 | `Data-Dictionary.mdx` | 固定命名 |
+| [学习理论详解](./01-foundations/extend/learning-theories) | M01 | 扩展层 |
+| [创新友好环境设计](./03-space/extend/innovation-friendly) | M03 | 扩展层 |
 
 ---
 
-## 三、模块阅读路径建议
+## 贡献指南
 
-### 新建节点路径
-```
-M00 → M01 → M06 → M02 → M03 → M05 → M07 → M04 → M08 → M09
-```
-
-### 课程开发路径
-```
-M01 → M04 → M07 → M09 → M06
-```
-
-### 合规审计路径
-```
-M06 → M02 → M05 → M08 → M09
-```
-
----
-
-## 四、快速链接
-
-- [全局定义 →](./GLOBAL-DEFINITIONS)
-- [M00 导读与使用说明 →](./M00-Meta)
-- [M01 理念与理论基础 →](./M01-Foundations)
-- [M02 治理与网络结构 →](./M02-Governance-Network)
-- [M03 空间与环境标准 →](./M03-Space-Environment)
-- [M04 课程与项目体系 →](./M04-Program-Design)
-- [M05 工具设备与资产管理 →](./M05-Tools-Assets)
-- [M06 安全合规与伦理 →](./M06-Safety-Compliance-Ethics)
-- [M07 角色体系与师资发展 →](./M07-People-Capability)
-- [M08 运营 Playbook →](./M08-Operations-Playbook)
-- [M09 评价与影响力 →](./M09-Assessment-Impact)
-- [M10 模板清单与引用库 →](./M10-Appendix)
-- [协作与版本机制 →](./COLLABORATION-PROTOCOL)
-- [变更日志 →](./CHANGELOG)
+1. 阅读 [架构设计](./ARCHITECTURE-V2)
+2. 使用 [文档模板](./_templates)
+3. 遵循 [证据等级](./_meta/evidence-levels) 标注
+4. 按 [协作机制](./COLLABORATION-PROTOCOL) 提交
