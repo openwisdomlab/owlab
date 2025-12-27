@@ -1,0 +1,65 @@
+{
+  "module": "M08",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "references": [
+    {
+      "id": "M08-001",
+      "type": "book",
+      "citation": "Liker, J.K. (2004). The Toyota Way: 14 Management Principles from the World's Greatest Manufacturer. McGraw-Hill.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "标准化是持续改进的基础",
+        "流程标准化不意味着僵化"
+      ],
+      "used_in": ["index.mdx"]
+    },
+    {
+      "id": "M08-002",
+      "type": "book",
+      "citation": "Deming, W.E. (1986). Out of the Crisis. MIT Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "PDSA 循环是持续改进的核心方法",
+        "质量管理需要系统思维"
+      ],
+      "used_in": ["index.mdx", "extend/continuous-improvement.mdx"]
+    },
+    {
+      "id": "M08-003",
+      "type": "book",
+      "citation": "Pine, B.J., & Gilmore, J.H. (1999). The Experience Economy. Harvard Business School Press.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "体验是新的经济产物",
+        "服务设计需要关注用户体验"
+      ],
+      "used_in": ["extend/service-design.mdx"]
+    },
+    {
+      "id": "M08-004",
+      "type": "book",
+      "citation": "Stickdorn, M. et al. (2018). This Is Service Design Doing. O'Reilly Media.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "服务设计需要关注全流程体验",
+        "服务蓝图帮助可视化服务流程"
+      ],
+      "used_in": ["extend/service-design.mdx"]
+    }
+  ],
+  "notes": "运营相关文献待人工验证",
+  "cross_validation_status": "pending"
+}

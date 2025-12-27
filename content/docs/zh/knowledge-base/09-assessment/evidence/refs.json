@@ -1,0 +1,79 @@
+{
+  "module": "M09",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "references": [
+    {
+      "id": "M09-001",
+      "type": "book",
+      "citation": "Black, P., & Wiliam, D. (1998). Inside the Black Box: Raising Standards Through Classroom Assessment. King's College London.",
+      "evidence_level": "E3",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "形成性评价显著促进学习",
+        "有效反馈是形成性评价的核心"
+      ],
+      "used_in": ["index.mdx", "extend/formative-assessment.mdx"]
+    },
+    {
+      "id": "M09-002",
+      "type": "article",
+      "citation": "Hattie, J., & Timperley, H. (2007). The Power of Feedback. Review of Educational Research, 77(1), 81-112.",
+      "evidence_level": "E3",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "反馈是影响学习最重要的因素之一",
+        "有效反馈回答三个问题：目标、现状、下一步"
+      ],
+      "used_in": ["index.mdx", "extend/feedback-design.mdx"]
+    },
+    {
+      "id": "M09-003",
+      "type": "book",
+      "citation": "Wiggins, G. (1998). Educative Assessment: Designing Assessments to Inform and Improve Student Performance. Jossey-Bass.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "真实性评价反映真实世界任务",
+        "好的评价任务本身就是学习机会"
+      ],
+      "used_in": ["index.mdx", "extend/authentic-assessment.mdx"]
+    },
+    {
+      "id": "M09-004",
+      "type": "book",
+      "citation": "Earl, L.M. (2012). Assessment as Learning: Using Classroom Assessment to Maximize Student Learning (2nd ed.). Corwin.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "学习性评价让学生成为自己学习的评估者",
+        "元认知能力是学习性评价的目标"
+      ],
+      "used_in": ["extend/assessment-for-learning.mdx"]
+    },
+    {
+      "id": "M09-005",
+      "type": "article",
+      "citation": "Brookhart, S.M. (2013). How to Create and Use Rubrics for Formative Assessment and Grading. ASCD.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "量规使评价标准透明",
+        "好的量规描述质量而非数量"
+      ],
+      "used_in": ["extend/rubric-design.mdx"]
+    }
+  ],
+  "notes": "评估相关文献待人工验证",
+  "cross_validation_status": "pending"
+}

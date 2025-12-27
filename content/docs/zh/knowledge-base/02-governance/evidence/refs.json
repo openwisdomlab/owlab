@@ -1,0 +1,51 @@
+{
+  "module": "M02",
+  "version": "0.1.0",
+  "last_updated": "2025-01-15",
+  "references": [
+    {
+      "id": "M02-001",
+      "type": "book",
+      "citation": "Ostrom, E. (1990). Governing the Commons: The Evolution of Institutions for Collective Action. Cambridge University Press.",
+      "evidence_level": "E3",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "社区可以有效自治管理共享资源",
+        "成功的公共资源治理需要清晰的边界、规则和冲突解决机制"
+      ],
+      "used_in": ["index.mdx"]
+    },
+    {
+      "id": "M02-002",
+      "type": "article",
+      "citation": "Benkler, Y. (2006). The Wealth of Networks: How Social Production Transforms Markets and Freedom. Yale University Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "网络化协作可以创造显著的社会价值",
+        "开放式协作需要新的治理模式"
+      ],
+      "used_in": ["index.mdx"]
+    },
+    {
+      "id": "M02-003",
+      "type": "article",
+      "citation": "Chesbrough, H. (2003). Open Innovation: The New Imperative for Creating and Profiting from Technology. Harvard Business School Press.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "开放式创新可以加速创新过程",
+        "组织边界的开放需要新的治理结构"
+      ],
+      "used_in": ["extend/network-governance.mdx"]
+    }
+  ],
+  "notes": "治理相关文献待人工验证",
+  "cross_validation_status": "pending"
+}
