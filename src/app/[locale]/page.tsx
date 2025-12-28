@@ -3,9 +3,10 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
-import { Bot, Globe, BarChart3, Zap } from "lucide-react";
+import { Bot, Globe, BarChart3, Zap, BookOpen } from "lucide-react";
 import { useParams } from "next/navigation";
 import Script from "next/script";
+import { ModuleCards } from "@/components/docs/ModuleCards";
 
 const features = [
   { icon: Bot, key: "ai" },
@@ -152,6 +153,46 @@ export default function HomePage() {
                 </p>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Knowledge Base Section */}
+      <section className="py-20 px-4 bg-[var(--glass-bg)]/30">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full glass-card text-[var(--neon-violet)] mb-4">
+              <BookOpen className="w-4 h-4" />
+              OWL 知识库
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
+              建设与运营标准手册
+            </h2>
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              模块化知识库，涵盖理念、治理、空间、课程、工具、安全、人员、运营和评价九大核心模块
+            </p>
+          </motion.div>
+
+          <ModuleCards locale={locale} />
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-8"
+          >
+            <Link
+              href={`/${locale}/docs/zh/knowledge-base`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--neon-violet)] text-[var(--neon-violet)] hover:bg-[var(--neon-violet)]/10 transition-colors"
+            >
+              <BookOpen className="w-4 h-4" />
+              查看完整知识库
+            </Link>
           </motion.div>
         </div>
       </section>
