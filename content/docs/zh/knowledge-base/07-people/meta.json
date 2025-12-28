@@ -1,3 +1,6 @@
 {
-  "pages": ["index", "---", "extend", "cases", "sops", "checklists", "evidence"]
+  "title": "M07 人员与能力",
+  "description": "培养点燃学习者的人",
+  "icon": "Users",
+  "pages": ["index", "---", "evidence"]
 }

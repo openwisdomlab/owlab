@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Link } from "@/components/ui/Link";
 import {
   Lightbulb,
@@ -12,90 +13,81 @@ import {
   Users,
   ClipboardList,
   BarChart3,
+  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 
 interface Module {
   id: string;
   icon: LucideIcon;
-  titleKey: string;
-  descKey: string;
   path: string;
   status: "completed" | "in_progress" | "planned";
+  color: string;
 }
 
 const modules: Module[] = [
   {
     id: "M01",
     icon: Lightbulb,
-    titleKey: "理念与理论",
-    descKey: "OWL 的意义与理论根基",
     path: "/docs/zh/knowledge-base/01-foundations",
     status: "in_progress",
+    color: "var(--neon-yellow)",
   },
   {
     id: "M02",
     icon: Network,
-    titleKey: "治理与网络",
-    descKey: "组织形式与协作规则",
     path: "/docs/zh/knowledge-base/02-governance",
     status: "in_progress",
+    color: "var(--neon-violet)",
   },
   {
     id: "M03",
     icon: Building2,
-    titleKey: "空间与环境",
-    descKey: "创新友好的学习环境",
     path: "/docs/zh/knowledge-base/03-space",
     status: "in_progress",
+    color: "var(--neon-cyan)",
   },
   {
     id: "M04",
     icon: BookOpen,
-    titleKey: "课程与项目",
-    descKey: "有效的学习体验设计",
     path: "/docs/zh/knowledge-base/04-programs",
     status: "in_progress",
+    color: "var(--neon-green)",
   },
   {
     id: "M05",
     icon: Wrench,
-    titleKey: "工具与资产",
-    descKey: "设备管理让创造可能",
     path: "/docs/zh/knowledge-base/05-tools",
     status: "in_progress",
+    color: "var(--neon-orange)",
   },
   {
     id: "M06",
     icon: ShieldCheck,
-    titleKey: "安全与伦理",
-    descKey: "底线守护保驾护航",
     path: "/docs/zh/knowledge-base/06-safety",
     status: "in_progress",
+    color: "var(--neon-red)",
   },
   {
     id: "M07",
     icon: Users,
-    titleKey: "人员与能力",
-    descKey: "培养点燃学习者的人",
     path: "/docs/zh/knowledge-base/07-people",
     status: "in_progress",
+    color: "var(--neon-pink)",
   },
   {
     id: "M08",
     icon: ClipboardList,
-    titleKey: "运营手册",
-    descKey: "让运营自然流畅",
     path: "/docs/zh/knowledge-base/08-operations",
     status: "in_progress",
+    color: "var(--neon-blue)",
   },
   {
     id: "M09",
     icon: BarChart3,
-    titleKey: "评价与影响",
-    descKey: "看见成长证明价值",
     path: "/docs/zh/knowledge-base/09-assessment",
     status: "in_progress",
+    color: "var(--neon-teal)",
   },
 ];
 
@@ -104,24 +96,36 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.06,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 300,
+      damping: 24,
+    },
+  },
 };
 
 interface ModuleCardsProps {
   locale: string;
+  compact?: boolean;
 }
 
-export function ModuleCards({ locale }: ModuleCardsProps) {
+export function ModuleCards({ locale, compact = false }: ModuleCardsProps) {
+  const t = useTranslations("docs.knowledgeBase");
+
   return (
     <motion.div
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+      className={compact ? "grid md:grid-cols-2 lg:grid-cols-3 gap-3" : "grid md:grid-cols-2 lg:grid-cols-3 gap-4"}
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -132,25 +136,75 @@ export function ModuleCards({ locale }: ModuleCardsProps) {
             href={`/${locale}${module.path}`}
             className="group block h-full"
           >
-            <div className="h-full glass-card p-5 hover:border-[var(--neon-cyan)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--neon-cyan)]/10">
+            <div
+              className={`
+                h-full glass-card transition-all duration-300
+                hover:shadow-lg hover:-translate-y-1
+                border-l-4
+                ${compact ? "p-4" : "p-5"}
+              `}
+              style={{
+                borderLeftColor: module.color,
+                // @ts-expect-error CSS custom properties
+                "--hover-glow": `${module.color}20`,
+              }}
+            >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[var(--neon-cyan)]/10 flex items-center justify-center group-hover:bg-[var(--neon-cyan)]/20 transition-colors">
-                  <module.icon className="w-6 h-6 text-[var(--neon-cyan)]" />
+                {/* 图标 */}
+                <div
+                  className={`
+                    flex-shrink-0 rounded-xl flex items-center justify-center
+                    group-hover:scale-110 transition-transform duration-300
+                    ${compact ? "w-10 h-10" : "w-12 h-12"}
+                  `}
+                  style={{
+                    backgroundColor: `color-mix(in srgb, ${module.color} 15%, transparent)`,
+                  }}
+                >
+                  <module.icon
+                    className={compact ? "w-5 h-5" : "w-6 h-6"}
+                    style={{ color: module.color }}
+                  />
                 </div>
+
+                {/* 内容 */}
                 <div className="flex-1 min-w-0">
+                  {/* 模块 ID + 状态 */}
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs font-mono text-[var(--muted-foreground)]">
+                    <span
+                      className="text-xs font-mono font-bold"
+                      style={{ color: module.color }}
+                    >
                       {module.id}
                     </span>
-                    <StatusBadge status={module.status} />
+                    <StatusBadge status={module.status} t={t} />
                   </div>
-                  <h3 className="text-base font-semibold mb-1 group-hover:text-[var(--neon-cyan)] transition-colors">
-                    {module.titleKey}
+
+                  {/* 标题 */}
+                  <h3 className={`
+                    font-semibold mb-1 group-hover:text-[var(--foreground)] transition-colors
+                    ${compact ? "text-sm" : "text-base"}
+                  `}>
+                    {t(`modules.${module.id}.title`)}
                   </h3>
-                  <p className="text-sm text-[var(--muted-foreground)] line-clamp-2">
-                    {module.descKey}
-                  </p>
+
+                  {/* 描述 */}
+                  {!compact && (
+                    <p className="text-sm text-[var(--muted-foreground)] line-clamp-2">
+                      {t(`modules.${module.id}.description`)}
+                    </p>
+                  )}
                 </div>
+
+                {/* 箭头 */}
+                <ArrowRight
+                  className={`
+                    flex-shrink-0 text-[var(--muted-foreground)]
+                    group-hover:text-[var(--foreground)] group-hover:translate-x-1
+                    transition-all duration-300
+                    ${compact ? "w-4 h-4" : "w-5 h-5"}
+                  `}
+                />
               </div>
             </div>
           </Link>
@@ -160,27 +214,29 @@ export function ModuleCards({ locale }: ModuleCardsProps) {
   );
 }
 
-function StatusBadge({ status }: { status: Module["status"] }) {
+interface StatusBadgeProps {
+  status: Module["status"];
+  t: ReturnType<typeof useTranslations>;
+}
+
+function StatusBadge({ status, t }: StatusBadgeProps) {
   const config = {
     completed: {
-      label: "已完成",
-      className: "bg-green-500/10 text-green-500",
+      className: "bg-green-500/15 text-green-400 border-green-500/30",
     },
     in_progress: {
-      label: "核心完成",
-      className: "bg-yellow-500/10 text-yellow-500",
+      className: "bg-amber-500/15 text-amber-400 border-amber-500/30",
     },
     planned: {
-      label: "计划中",
-      className: "bg-gray-500/10 text-gray-400",
+      className: "bg-gray-500/15 text-gray-400 border-gray-500/30",
     },
   };
 
-  const { label, className } = config[status];
+  const { className } = config[status];
 
   return (
-    <span className={`px-1.5 py-0.5 text-xs rounded ${className}`}>
-      {label}
+    <span className={`px-1.5 py-0.5 text-[10px] font-medium rounded border ${className}`}>
+      {t(`status.${status}`)}
     </span>
   );
 }

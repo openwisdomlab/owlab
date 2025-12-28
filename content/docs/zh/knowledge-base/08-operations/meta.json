@@ -1,3 +1,6 @@
 {
-  "pages": ["index", "---", "extend", "cases", "sops", "checklists", "evidence"]
+  "title": "M08 运营手册",
+  "description": "让运营自然流畅",
+  "icon": "ClipboardList",
+  "pages": ["index", "---", "sops", "evidence"]
 }

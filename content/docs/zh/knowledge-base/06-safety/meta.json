@@ -1,3 +1,6 @@
 {
-  "pages": ["index", "---", "extend", "cases", "sops", "checklists", "evidence"]
+  "title": "M06 安全与伦理",
+  "description": "底线守护保驾护航",
+  "icon": "ShieldCheck",
+  "pages": ["index", "---", "extend", "checklists", "evidence"]
 }

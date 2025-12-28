@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
@@ -15,7 +15,13 @@ import {
   Info,
   Maximize2,
   RotateCcw,
+  Cuboid,
 } from "lucide-react";
+
+// Lazy load Canvas3D to reduce initial bundle size
+const Canvas3D = lazy(() =>
+  import("./Canvas3D").then((mod) => ({ default: mod.Canvas3D }))
+);
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
 import {
   convertLayoutTo3D,
@@ -202,24 +208,35 @@ export function Preview3D({ layout, onClose }: Preview3DProps) {
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {/* 3D Preview Placeholder */}
+        {/* 3D Preview Canvas */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass-card p-6 aspect-video flex items-center justify-center bg-gradient-to-br from-[var(--glass-bg)] to-[var(--background)]"
+          className="glass-card overflow-hidden aspect-video relative"
         >
-          <div className="text-center">
-            <Box className="w-16 h-16 mx-auto mb-4 text-[var(--neon-violet)] opacity-50" />
-            <p className="text-sm text-[var(--muted-foreground)] mb-2">
-              3D Rendering Placeholder
-            </p>
-            <p className="text-xs text-[var(--muted-foreground)] opacity-60">
-              Integrate React Three Fiber or Three.js here
-            </p>
-            <p className="text-xs text-[var(--muted-foreground)] opacity-60 mt-2">
-              Scene data is ready below 👇
-            </p>
-          </div>
+          <Suspense
+            fallback={
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--glass-bg)] to-[var(--background)]">
+                <div className="text-center">
+                  <Loader2 className="w-12 h-12 mx-auto mb-4 text-[var(--neon-cyan)] animate-spin" />
+                  <p className="text-sm text-[var(--muted-foreground)]">
+                    Loading 3D Engine...
+                  </p>
+                </div>
+              </div>
+            }
+          >
+            <Canvas3D
+              zones={zones3D}
+              camera={camera}
+              lights={lighting}
+              layoutWidth={layout.dimensions.width}
+              layoutHeight={layout.dimensions.height}
+              gridSize={gridSize}
+              showZones={showZones}
+              showGrid={showGrid}
+            />
+          </Suspense>
         </motion.div>
 
         {/* Scene Stats */}
@@ -437,7 +454,7 @@ export function Preview3D({ layout, onClose }: Preview3DProps) {
           )}
         </AnimatePresence>
 
-        {/* Integration Guide */}
+        {/* 3D Controls Guide */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -445,19 +462,28 @@ export function Preview3D({ layout, onClose }: Preview3DProps) {
           className="glass-card p-4 border border-[var(--neon-cyan)]/20"
         >
           <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
-            <Info className="w-4 h-4 text-[var(--neon-cyan)]" />
-            Integration Ready
+            <Cuboid className="w-4 h-4 text-[var(--neon-cyan)]" />
+            3D Controls
           </h3>
-          <p className="text-xs text-[var(--muted-foreground)] mb-2">
-            This component provides all 3D scene data. To render the actual 3D
-            view, integrate:
-          </p>
-          <ul className="text-xs text-[var(--muted-foreground)] space-y-1 ml-4">
-            <li>• React Three Fiber (@react-three/fiber)</li>
-            <li>• Three.js Drei (@react-three/drei)</li>
-            <li>• Or vanilla Three.js with Canvas element</li>
-          </ul>
-          <p className="text-xs text-[var(--muted-foreground)] mt-2">
+          <div className="grid grid-cols-2 gap-2 text-xs text-[var(--muted-foreground)]">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">🖱️</span>
+              <span>Left Click + Drag: Rotate</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-lg">⚙️</span>
+              <span>Scroll: Zoom In/Out</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-lg">⇧</span>
+              <span>Right Click + Drag: Pan</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-lg">👆</span>
+              <span>Click Zone: Select</span>
+            </div>
+          </div>
+          <p className="text-xs text-[var(--muted-foreground)] mt-3 pt-3 border-t border-[var(--glass-border)]">
             Export formats: OBJ (3D models), JSON (scene data)
           </p>
         </motion.div>

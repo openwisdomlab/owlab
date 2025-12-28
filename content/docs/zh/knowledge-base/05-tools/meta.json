@@ -1,3 +1,6 @@
 {
-  "pages": ["index", "---", "extend", "cases", "sops", "checklists", "evidence"]
+  "title": "M05 工具与资产",
+  "description": "设备管理让创造可能",
+  "icon": "Wrench",
+  "pages": ["index", "---", "evidence"]
 }

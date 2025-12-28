@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
-import { Bot, BookOpen, LayoutDashboard, Github } from "lucide-react";
+import { Bot, BookOpen, LayoutDashboard, Github, FlaskConical } from "lucide-react";
 import type { Locale } from "@/i18n";
 
 type HeaderProps = {
@@ -18,6 +18,7 @@ export function Header({ locale }: HeaderProps) {
   const navItems = [
     { href: `/${locale}`, label: t("home"), icon: null },
     { href: `/${locale}/docs`, label: t("docs"), icon: BookOpen },
+    { href: `/${locale}/lab`, label: t("lab"), icon: FlaskConical },
     { href: `/${locale}/dashboard`, label: t("dashboard"), icon: LayoutDashboard },
   ];
 
