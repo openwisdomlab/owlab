@@ -66,6 +66,58 @@
     "meta": {
       "lastUpdated": "Last updated",
       "readingTime": "min read"
+    },
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "backToTop": "Back to top"
+    },
+    "knowledgeBase": {
+      "title": "OWL Knowledge Base",
+      "description": "Construction and Operations Standard Manual",
+      "modules": {
+        "M01": {
+          "title": "Philosophy & Theory",
+          "description": "OWL's purpose and theoretical foundation"
+        },
+        "M02": {
+          "title": "Governance & Network",
+          "description": "Organizational forms and collaboration rules"
+        },
+        "M03": {
+          "title": "Space & Environment",
+          "description": "Innovation-friendly learning environments"
+        },
+        "M04": {
+          "title": "Courses & Projects",
+          "description": "Effective learning experience design"
+        },
+        "M05": {
+          "title": "Tools & Assets",
+          "description": "Equipment management enabling creation"
+        },
+        "M06": {
+          "title": "Safety & Ethics",
+          "description": "Safety guidelines and ethical standards"
+        },
+        "M07": {
+          "title": "People & Capability",
+          "description": "Cultivating those who ignite learners"
+        },
+        "M08": {
+          "title": "Operations Manual",
+          "description": "Smooth and natural operations"
+        },
+        "M09": {
+          "title": "Assessment & Impact",
+          "description": "Seeing growth and proving value"
+        }
+      },
+      "status": {
+        "completed": "Completed",
+        "in_progress": "Core Complete",
+        "planned": "Planned"
+      }
     }
   },
   "dashboard": {
