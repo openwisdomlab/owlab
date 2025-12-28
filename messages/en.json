@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "AI Space",
-    "description": "Agentic Documentation Framework",
+    "title": "OWL Construction & Operations Manual",
+    "description": "Modular Knowledge Base for Open Learning Spaces",
     "loading": "Loading...",
     "error": "An error occurred",
     "back": "Back",
@@ -13,41 +13,54 @@
   },
   "nav": {
     "home": "Home",
-    "docs": "Documentation",
+    "docs": "Knowledge Base",
     "dashboard": "Dashboard",
-    "lab": "Lab Designer",
+    "lab": "AI Tools",
     "github": "GitHub",
     "toggleMenu": "Toggle menu",
     "toggleTheme": "Toggle theme"
   },
   "home": {
     "hero": {
-      "title": "AI Space",
-      "subtitle": "Agentic Documentation",
-      "description": "Build intelligent, self-evolving documentation with AI agents. A futuristic framework for the next generation of technical documentation.",
-      "cta": {
-        "primary": "Get Started",
-        "secondary": "View Demo"
+      "version": "v0.2.0-alpha · Architecture v2",
+      "title": "OWL Construction & Operations Manual",
+      "description": "A modular knowledge base for Open Wisdom Lab, covering nine core modules: Philosophy, Governance, Space, Programs, Tools, Safety, People, Operations, and Assessment.",
+      "features": {
+        "modular": "Modular Architecture",
+        "collaborative": "Collaboration Ready",
+        "verified": "Evidence Verified"
       }
     },
-    "features": {
-      "title": "Features",
-      "ai": {
-        "title": "AI-Powered",
-        "description": "Leverage intelligent agents to automate documentation generation and maintenance."
+    "paths": {
+      "title": "Reading Paths",
+      "description": "Choose a reading order based on your goals",
+      "new-node": {
+        "title": "New Node Setup",
+        "subtitle": "Build an OWL from scratch"
       },
-      "i18n": {
-        "title": "Multi-Language",
-        "description": "Built-in internationalization with seamless language switching."
+      "curriculum": {
+        "title": "Curriculum Development",
+        "subtitle": "Design effective learning experiences"
       },
-      "viz": {
-        "title": "Data Visualization",
-        "description": "Interactive charts and tables with a futuristic neon aesthetic."
-      },
-      "fast": {
-        "title": "Lightning Fast",
-        "description": "Optimized for performance with Next.js 15 and Turbopack."
+      "compliance": {
+        "title": "Compliance Audit",
+        "subtitle": "Ensure safety and regulatory compliance"
       }
+    },
+    "modules": {
+      "title": "Knowledge Base Modules",
+      "description": "Nine core modules with three-layer content architecture (Core + Extended + Evidence)",
+      "viewAll": "View Full Knowledge Base"
+    },
+    "tools": {
+      "lab": {
+        "title": "AI Space Design Tools",
+        "description": "Design and visualize lab spaces with AI assistance"
+      }
+    },
+    "footer": {
+      "architecture": "Architecture",
+      "collaboration": "Collaboration"
     }
   },
   "docs": {
@@ -145,7 +158,7 @@
   "lab": {
     "badge": "AI-Powered Design",
     "title": "Lab Space Designer",
-    "description": "Design and visualize AI research laboratories with intelligent assistance",
+    "description": "Design and visualize lab spaces with intelligent assistance",
     "explore": "Explore",
     "modules": {
       "floor-plan": {
@@ -158,7 +171,7 @@
       },
       "case-studies": {
         "title": "Case Studies",
-        "description": "Browse real-world AI lab designs and learn from industry best practices."
+        "description": "Browse real-world lab designs and learn from industry best practices."
       }
     },
     "features": {
@@ -309,14 +322,14 @@
       "title": "Concept Visualizer",
       "description": "Generate AI-powered concept diagrams and architectural visualizations",
       "promptLabel": "Describe your concept",
-      "promptPlaceholder": "Describe the AI lab concept you want to visualize...",
+      "promptPlaceholder": "Describe the lab concept you want to visualize...",
       "generate": "Generate Image",
       "generating": "Generating...",
       "generatedImages": "Generated Images"
     },
     "caseStudies": {
       "title": "Case Studies",
-      "description": "Explore real-world AI lab designs from leading organizations",
+      "description": "Explore real-world lab designs from leading organizations",
       "searchPlaceholder": "Search case studies...",
       "viewDetails": "View Details",
       "noResults": "No case studies found matching your criteria"
@@ -324,7 +337,7 @@
     "chat": {
       "title": "AI Design Assistant",
       "subtitle": "Powered by Claude",
-      "welcome": "Hello! I'm your AI design assistant. I can help you create and modify lab layouts. Try asking me to add a server room, optimize the workflow, or suggest equipment for a zone.",
+      "welcome": "Hello! I'm your AI design assistant. I can help you create and modify lab layouts.",
       "placeholder": "Ask me to modify the layout...",
       "thinking": "Thinking...",
       "error": "Sorry, I encountered an error. Please try again.",
@@ -354,7 +367,7 @@
     }
   },
   "footer": {
-    "copyright": "AI Space. All rights reserved.",
+    "copyright": "Open Wisdom Lab. All rights reserved.",
     "builtWith": "Built with",
     "and": "and"
   }

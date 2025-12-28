@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "AI 空间",
-    "description": "智能体驱动的文档框架",
+    "title": "OWL 建设与运营标准手册",
+    "description": "开放式学习空间的模块化知识库",
     "loading": "加载中...",
     "error": "发生错误",
     "back": "返回",
@@ -13,41 +13,54 @@
   },
   "nav": {
     "home": "首页",
-    "docs": "文档",
+    "docs": "知识库",
     "dashboard": "仪表盘",
-    "lab": "实验室设计",
+    "lab": "AI 工具",
     "github": "GitHub",
     "toggleMenu": "切换菜单",
     "toggleTheme": "切换主题"
   },
   "home": {
     "hero": {
-      "title": "AI 空间",
-      "subtitle": "智能体文档",
-      "description": "使用 AI 智能体构建智能、自我进化的文档系统。下一代技术文档的未来框架。",
-      "cta": {
-        "primary": "快速开始",
-        "secondary": "查看演示"
+      "version": "v0.2.0-alpha · 架构 v2",
+      "title": "OWL 建设与运营标准手册",
+      "description": "开放式学习空间（Open Wisdom Lab）的模块化知识库，涵盖理念、治理、空间、课程、工具、安全、人员、运营和评价九大核心模块。",
+      "features": {
+        "modular": "模块化架构",
+        "collaborative": "协作友好",
+        "verified": "证据可验证"
       }
     },
-    "features": {
-      "title": "核心功能",
-      "ai": {
-        "title": "AI 驱动",
-        "description": "利用智能体自动化文档生成和维护流程。"
+    "paths": {
+      "title": "阅读路径",
+      "description": "根据您的目标选择合适的阅读顺序",
+      "new-node": {
+        "title": "新建节点",
+        "subtitle": "从零开始建设一个 OWL"
       },
-      "i18n": {
-        "title": "多语言支持",
-        "description": "内置国际化功能，无缝切换语言。"
+      "curriculum": {
+        "title": "课程开发",
+        "subtitle": "设计有效的学习体验"
       },
-      "viz": {
-        "title": "数据可视化",
-        "description": "交互式图表和表格，采用未来感霓虹美学设计。"
-      },
-      "fast": {
-        "title": "极速响应",
-        "description": "基于 Next.js 15 和 Turbopack 优化性能。"
+      "compliance": {
+        "title": "合规审计",
+        "subtitle": "确保安全与规范运营"
       }
+    },
+    "modules": {
+      "title": "知识库模块",
+      "description": "九大核心模块，三层内容架构（核心层 + 扩展层 + 证据层）",
+      "viewAll": "查看完整知识库"
+    },
+    "tools": {
+      "lab": {
+        "title": "AI 空间设计工具",
+        "description": "使用 AI 辅助设计和可视化实验室空间布局"
+      }
+    },
+    "footer": {
+      "architecture": "架构设计",
+      "collaboration": "协作机制"
     }
   },
   "docs": {
@@ -145,7 +158,7 @@
   "lab": {
     "badge": "AI 智能设计",
     "title": "实验室空间设计器",
-    "description": "使用智能助手设计和可视化 AI 研究实验室",
+    "description": "使用智能助手设计和可视化实验室空间",
     "explore": "探索",
     "modules": {
       "floor-plan": {
@@ -158,7 +171,7 @@
       },
       "case-studies": {
         "title": "案例研究",
-        "description": "浏览真实的 AI 实验室设计案例，学习行业最佳实践。"
+        "description": "浏览真实的实验室设计案例，学习行业最佳实践。"
       }
     },
     "features": {
@@ -192,14 +205,14 @@
       "title": "概念可视化",
       "description": "生成 AI 驱动的概念图和建筑可视化效果",
       "promptLabel": "描述您的概念",
-      "promptPlaceholder": "描述您想要可视化的 AI 实验室概念...",
+      "promptPlaceholder": "描述您想要可视化的实验室概念...",
       "generate": "生成图像",
       "generating": "生成中...",
       "generatedImages": "已生成的图像"
     },
     "caseStudies": {
       "title": "案例研究",
-      "description": "探索来自领先组织的真实 AI 实验室设计",
+      "description": "探索来自领先组织的真实实验室设计",
       "searchPlaceholder": "搜索案例研究...",
       "viewDetails": "查看详情",
       "noResults": "未找到符合条件的案例研究"
@@ -207,7 +220,7 @@
     "chat": {
       "title": "AI 设计助手",
       "subtitle": "由 Claude 驱动",
-      "welcome": "你好！我是您的 AI 设计助手。我可以帮助您创建和修改实验室布局。试试让我添加服务器机房、优化工作流程，或为某个区域推荐设备。",
+      "welcome": "你好！我是您的 AI 设计助手。我可以帮助您创建和修改实验室布局。",
       "placeholder": "让我帮您修改布局...",
       "thinking": "思考中...",
       "error": "抱歉，遇到了错误。请重试。",
@@ -236,7 +249,7 @@
     }
   },
   "footer": {
-    "copyright": "AI 空间。保留所有权利。",
+    "copyright": "Open Wisdom Lab. 保留所有权利。",
     "builtWith": "使用",
     "and": "和"
   }
