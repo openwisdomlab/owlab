@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Layout,
   Wand2,
@@ -13,12 +13,28 @@ import {
   ZoomIn,
   ZoomOut,
   Grid,
-  MessageSquare,
+  Package,
+  DollarSign,
+  Grid3x3,
+  Copy,
+  Magnet,
+  Palette,
 } from "lucide-react";
+import { v4 as uuidv4 } from "uuid";
 import { FloorPlanCanvas } from "@/components/lab/FloorPlanCanvas";
 import { AIChatPanel } from "@/components/lab/AIChatPanel";
 import { ExportDialog } from "@/components/lab/ExportDialog";
+import { EquipmentLibrary } from "@/components/lab/EquipmentLibrary";
+import { BudgetDashboard } from "@/components/lab/BudgetDashboard";
+import { TemplateGallery } from "@/components/lab/TemplateGallery";
+import { TemplatePreviewDialog } from "@/components/lab/TemplatePreviewDialog";
+import { SaveTemplateDialog } from "@/components/lab/SaveTemplateDialog";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
+import type { EquipmentItem } from "@/lib/schemas/equipment";
+import type { Template } from "@/lib/schemas/template";
+import { useHistory } from "@/hooks/useHistory";
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
+import { COLOR_SCHEMES, ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
 
 const defaultLayout: LayoutData = {
   name: "New AI Lab",
@@ -32,7 +48,7 @@ const defaultLayout: LayoutData = {
       position: { x: 0, y: 0 },
       size: { width: 6, height: 5 },
       color: "#22d3ee",
-      equipment: ["GPU Cluster", "Cooling System"],
+      equipment: [],
     },
     {
       id: "zone-2",
@@ -41,7 +57,7 @@ const defaultLayout: LayoutData = {
       position: { x: 7, y: 0 },
       size: { width: 8, height: 7 },
       color: "#8b5cf6",
-      equipment: ["Workstations", "Monitors"],
+      equipment: [],
     },
     {
       id: "zone-3",
@@ -50,48 +66,184 @@ const defaultLayout: LayoutData = {
       position: { x: 16, y: 0 },
       size: { width: 4, height: 5 },
       color: "#10b981",
-      equipment: ["Conference Table", "Display"],
+      equipment: [],
     },
   ],
-  notes: ["Sample layout - customize as needed"],
 };
 
-export default function FloorPlanPage() {
+export default function FloorPlanPageEnhanced() {
   const t = useTranslations("lab.floorPlan");
-  const [layout, setLayout] = useState<LayoutData>(defaultLayout);
+
+  // Layout state with undo/redo
+  const {
+    state: layout,
+    setState: setLayout,
+    undo,
+    redo,
+    canUndo,
+    canRedo,
+  } = useHistory<LayoutData>(defaultLayout);
+
+  // UI state
   const [showChat, setShowChat] = useState(false);
   const [showExport, setShowExport] = useState(false);
+  const [showEquipment, setShowEquipment] = useState(false);
+  const [showBudget, setShowBudget] = useState(false);
+  const [showTemplates, setShowTemplates] = useState(false);
+  const [showSaveTemplate, setShowSaveTemplate] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
+
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
   const [showGrid, setShowGrid] = useState(true);
+  const [gridSnap, setGridSnap] = useState(true);
+  const [colorScheme, setColorScheme] = useState<ColorScheme>("neon");
+  const [clipboard, setClipboard] = useState<ZoneData | null>(null);
 
-  const handleZoneUpdate = useCallback((zoneId: string, updates: Partial<ZoneData>) => {
-    setLayout((prev) => ({
-      ...prev,
-      zones: prev.zones.map((zone) =>
-        zone.id === zoneId ? { ...zone, ...updates } : zone
-      ),
-    }));
+  // Zone operations
+  const handleZoneUpdate = useCallback(
+    (zoneId: string, updates: Partial<ZoneData>) => {
+      setLayout((prev) => ({
+        ...prev,
+        zones: prev.zones.map((zone) =>
+          zone.id === zoneId ? { ...zone, ...updates } : zone
+        ),
+      }));
+    },
+    [setLayout]
+  );
+
+  const handleAddZone = useCallback(
+    (zone: ZoneData) => {
+      setLayout((prev) => ({
+        ...prev,
+        zones: [...prev.zones, zone],
+      }));
+    },
+    [setLayout]
+  );
+
+  const handleDeleteZone = useCallback(
+    (zoneId: string) => {
+      setLayout((prev) => ({
+        ...prev,
+        zones: prev.zones.filter((z) => z.id !== zoneId),
+      }));
+      setSelectedZone(null);
+    },
+    [setLayout]
+  );
+
+  const handleLayoutFromAI = useCallback(
+    (newLayout: LayoutData) => {
+      setLayout(newLayout);
+    },
+    [setLayout]
+  );
+
+  // Copy/Paste operations
+  const handleCopyZone = useCallback(() => {
+    if (!selectedZone) return;
+    const zone = layout.zones.find((z) => z.id === selectedZone);
+    if (zone) {
+      setClipboard(zone);
+    }
+  }, [selectedZone, layout.zones]);
+
+  const handlePasteZone = useCallback(() => {
+    if (!clipboard) return;
+    const newZone: ZoneData = {
+      ...clipboard,
+      id: uuidv4(),
+      name: `${clipboard.name} (Copy)`,
+      position: {
+        x: clipboard.position.x + 2,
+        y: clipboard.position.y + 2,
+      },
+    };
+    handleAddZone(newZone);
+    setSelectedZone(newZone.id);
+  }, [clipboard, handleAddZone]);
+
+  // Equipment operations
+  const handleAddEquipment = useCallback(
+    (equipment: EquipmentItem) => {
+      if (!selectedZone) return;
+
+      const zone = layout.zones.find((z) => z.id === selectedZone);
+      const existingEquipment = zone?.equipment || [];
+
+      // Filter to only include object-type equipment (new format)
+      const equipmentObjects = existingEquipment.filter(
+        (e: any) => typeof e === "object"
+      );
+
+      handleZoneUpdate(selectedZone, {
+        equipment: [
+          ...equipmentObjects,
+          {
+            equipmentId: equipment.id,
+            name: equipment.name,
+            quantity: 1,
+            price: equipment.price,
+            category: equipment.category,
+          },
+        ] as any,
+      });
+    },
+    [selectedZone, layout.zones, handleZoneUpdate]
+  );
+
+  // Template operations
+  const handleSelectTemplate = useCallback((template: Template) => {
+    setSelectedTemplate(template);
   }, []);
 
-  const handleAddZone = useCallback((zone: ZoneData) => {
-    setLayout((prev) => ({
-      ...prev,
-      zones: [...prev.zones, zone],
-    }));
+  const handleUseTemplate = useCallback(
+    (template: Template) => {
+      setLayout(template.layout);
+      setShowTemplates(false);
+      setSelectedTemplate(null);
+    },
+    [setLayout]
+  );
+
+  const handleSaveTemplate = useCallback((template: Template) => {
+    // In a real app, this would save to backend or localStorage
+    console.log("Template saved:", template);
+    const blob = new Blob([JSON.stringify(template, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${template.name.replace(/\s+/g, "-").toLowerCase()}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   }, []);
 
-  const handleDeleteZone = useCallback((zoneId: string) => {
-    setLayout((prev) => ({
-      ...prev,
-      zones: prev.zones.filter((z) => z.id !== zoneId),
-    }));
-    setSelectedZone(null);
-  }, []);
+  // Color scheme operations
+  const handleChangeColorScheme = useCallback(
+    (scheme: ColorScheme) => {
+      setColorScheme(scheme);
+      setLayout((prev) => ({
+        ...prev,
+        zones: applyColorScheme(prev.zones, scheme),
+      }));
+    },
+    [setLayout]
+  );
 
-  const handleLayoutFromAI = useCallback((newLayout: LayoutData) => {
-    setLayout(newLayout);
-  }, []);
+  // Keyboard shortcuts
+  useKeyboardShortcuts({
+    onUndo: canUndo ? undo : undefined,
+    onRedo: canRedo ? redo : undefined,
+    onCopy: selectedZone ? handleCopyZone : undefined,
+    onPaste: clipboard ? handlePasteZone : undefined,
+    onDelete: selectedZone ? () => handleDeleteZone(selectedZone) : undefined,
+  });
 
   return (
     <div className="h-[calc(100vh-4rem)] flex flex-col">
@@ -109,12 +261,34 @@ export default function FloorPlanPage() {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Undo/Redo */}
+          <div className="flex items-center gap-1">
+            <button
+              onClick={undo}
+              disabled={!canUndo}
+              className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Undo (Ctrl+Z)"
+            >
+              <Undo className="w-4 h-4" />
+            </button>
+            <button
+              onClick={redo}
+              disabled={!canRedo}
+              className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Redo (Ctrl+Shift+Z)"
+            >
+              <Redo className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="h-6 w-px bg-[var(--glass-border)]" />
+
           {/* View Controls */}
           <div className="flex items-center gap-1 p-1 rounded-lg bg-[var(--glass-bg)]">
             <button
               onClick={() => setZoom((z) => Math.max(0.5, z - 0.1))}
               className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors"
-              title={t("zoomOut")}
+              title="Zoom Out"
             >
               <ZoomOut className="w-4 h-4" />
             </button>
@@ -122,7 +296,7 @@ export default function FloorPlanPage() {
             <button
               onClick={() => setZoom((z) => Math.min(2, z + 0.1))}
               className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors"
-              title={t("zoomIn")}
+              title="Zoom In"
             >
               <ZoomIn className="w-4 h-4" />
             </button>
@@ -135,14 +309,78 @@ export default function FloorPlanPage() {
                 ? "bg-[var(--neon-cyan)] text-[var(--background)]"
                 : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
             }`}
-            title={t("toggleGrid")}
+            title="Toggle Grid"
           >
             <Grid className="w-4 h-4" />
           </button>
 
+          <button
+            onClick={() => setGridSnap(!gridSnap)}
+            className={`p-2 rounded-lg transition-colors ${
+              gridSnap
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Toggle Grid Snapping"
+          >
+            <Magnet className="w-4 h-4" />
+          </button>
+
+          {/* Color Scheme Selector */}
+          <select
+            value={colorScheme}
+            onChange={(e) =>
+              handleChangeColorScheme(e.target.value as ColorScheme)
+            }
+            className="px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none"
+            title="Color Scheme"
+          >
+            {Object.keys(COLOR_SCHEMES).map((scheme) => (
+              <option key={scheme} value={scheme}>
+                {scheme.charAt(0).toUpperCase() + scheme.slice(1)}
+              </option>
+            ))}
+          </select>
+
           <div className="h-6 w-px bg-[var(--glass-border)]" />
 
-          {/* Action Buttons */}
+          {/* Tools */}
+          <button
+            onClick={() => setShowTemplates(!showTemplates)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              showTemplates
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Templates"
+          >
+            <Grid3x3 className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => setShowEquipment(!showEquipment)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              showEquipment
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Equipment"
+          >
+            <Package className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => setShowBudget(!showBudget)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              showBudget
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Budget"
+          >
+            <DollarSign className="w-4 h-4" />
+          </button>
+
           <button
             onClick={() => setShowChat(!showChat)}
             className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
@@ -150,17 +388,29 @@ export default function FloorPlanPage() {
                 ? "bg-[var(--neon-cyan)] text-[var(--background)]"
                 : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
             }`}
+            title="AI Assistant"
           >
             <Wand2 className="w-4 h-4" />
-            <span className="text-sm">{t("aiAssist")}</span>
+          </button>
+
+          <div className="h-6 w-px bg-[var(--glass-border)]" />
+
+          <button
+            onClick={() => setShowSaveTemplate(true)}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="Save as Template"
+          >
+            <Save className="w-4 h-4" />
+            <span className="text-sm">Save</span>
           </button>
 
           <button
             onClick={() => setShowExport(true)}
             className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="Export"
           >
             <Download className="w-4 h-4" />
-            <span className="text-sm">{t("export")}</span>
+            <span className="text-sm">Export</span>
           </button>
         </div>
       </div>
@@ -179,32 +429,105 @@ export default function FloorPlanPage() {
             onAddZone={handleAddZone}
             onDeleteZone={handleDeleteZone}
           />
+
+          {/* Copy/Paste Indicator */}
+          {clipboard && (
+            <div className="absolute bottom-4 left-4 glass-card p-2 flex items-center gap-2 text-sm">
+              <Copy className="w-4 h-4 text-[var(--neon-cyan)]" />
+              <span>
+                Copied: {clipboard.name} (Press Ctrl+V to paste)
+              </span>
+            </div>
+          )}
         </div>
 
-        {/* AI Chat Panel */}
-        {showChat && (
-          <motion.div
-            initial={{ x: 400, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 400, opacity: 0 }}
-            className="w-96 border-l border-[var(--glass-border)] bg-[var(--background)]"
-          >
-            <AIChatPanel
-              layout={layout}
-              onLayoutUpdate={handleLayoutFromAI}
-              onClose={() => setShowChat(false)}
-            />
-          </motion.div>
-        )}
+        {/* Side Panels */}
+        <AnimatePresence mode="wait">
+          {showTemplates && (
+            <motion.div
+              key="templates"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-96 border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <TemplateGallery
+                onSelectTemplate={handleSelectTemplate}
+                onClose={() => setShowTemplates(false)}
+              />
+            </motion.div>
+          )}
+
+          {showEquipment && (
+            <motion.div
+              key="equipment"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-96 border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <EquipmentLibrary
+                onAddEquipment={handleAddEquipment}
+                onClose={() => setShowEquipment(false)}
+              />
+            </motion.div>
+          )}
+
+          {showBudget && (
+            <motion.div
+              key="budget"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-96 border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <BudgetDashboard
+                layout={layout}
+                onClose={() => setShowBudget(false)}
+              />
+            </motion.div>
+          )}
+
+          {showChat && (
+            <motion.div
+              key="chat"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-96 border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <AIChatPanel
+                layout={layout}
+                onLayoutUpdate={handleLayoutFromAI}
+                onClose={() => setShowChat(false)}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Export Dialog */}
-      {showExport && (
-        <ExportDialog
-          layout={layout}
-          onClose={() => setShowExport(false)}
-        />
-      )}
+      {/* Modals/Dialogs */}
+      <AnimatePresence>
+        {showExport && (
+          <ExportDialog layout={layout} onClose={() => setShowExport(false)} />
+        )}
+
+        {showSaveTemplate && (
+          <SaveTemplateDialog
+            layout={layout}
+            onSave={handleSaveTemplate}
+            onClose={() => setShowSaveTemplate(false)}
+          />
+        )}
+
+        {selectedTemplate && (
+          <TemplatePreviewDialog
+            template={selectedTemplate}
+            onClose={() => setSelectedTemplate(null)}
+            onUseTemplate={() => handleUseTemplate(selectedTemplate)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

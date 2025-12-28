@@ -1,0 +1,429 @@
+{
+  "equipment": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "name": "NVIDIA A100 GPU Server",
+      "category": "compute",
+      "description": "High-performance GPU server for AI/ML workloads with 8x A100 GPUs",
+      "price": 75000,
+      "currency": "USD",
+      "vendor": "NVIDIA",
+      "tags": ["gpu", "ai", "ml", "high-performance"],
+      "featured": true,
+      "specs": {
+        "GPU": "8x NVIDIA A100 80GB",
+        "CPU": "AMD EPYC 7763",
+        "RAM": "512GB DDR4",
+        "Storage": "4TB NVMe SSD"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "name": "Workstation PC",
+      "category": "compute",
+      "description": "Standard workstation for programming and development",
+      "price": 2500,
+      "currency": "USD",
+      "vendor": "Dell",
+      "tags": ["workstation", "development", "programming"],
+      "featured": false,
+      "specs": {
+        "CPU": "Intel i9-13900K",
+        "GPU": "NVIDIA RTX 4070",
+        "RAM": "64GB DDR5",
+        "Storage": "2TB NVMe SSD"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "name": "4K Monitor 32\"",
+      "category": "electronics",
+      "description": "High-resolution display for detailed work",
+      "price": 800,
+      "currency": "USD",
+      "vendor": "LG",
+      "tags": ["monitor", "display", "4k"],
+      "featured": false,
+      "specs": {
+        "Resolution": "3840x2160",
+        "Size": "32 inches",
+        "Panel Type": "IPS",
+        "Refresh Rate": "60Hz"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "name": "Adjustable Standing Desk",
+      "category": "furniture",
+      "description": "Ergonomic electric height-adjustable desk",
+      "price": 600,
+      "currency": "USD",
+      "vendor": "Autonomous",
+      "tags": ["desk", "ergonomic", "furniture"],
+      "featured": false,
+      "specs": {
+        "Width": "60 inches",
+        "Depth": "30 inches",
+        "Height Range": "29-48 inches",
+        "Weight Capacity": "300 lbs"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "name": "Ergonomic Office Chair",
+      "category": "furniture",
+      "description": "Professional office chair with lumbar support",
+      "price": 500,
+      "currency": "USD",
+      "vendor": "Herman Miller",
+      "tags": ["chair", "ergonomic", "furniture"],
+      "featured": false,
+      "specs": {
+        "Type": "Mesh back",
+        "Adjustability": "Full",
+        "Weight Capacity": "300 lbs",
+        "Warranty": "12 years"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "name": "3D Printer (FDM)",
+      "category": "tools",
+      "description": "Professional-grade FDM 3D printer for rapid prototyping",
+      "price": 3500,
+      "currency": "USD",
+      "vendor": "Ultimaker",
+      "tags": ["3d-printer", "prototyping", "manufacturing"],
+      "featured": true,
+      "specs": {
+        "Build Volume": "330 x 240 x 300 mm",
+        "Layer Resolution": "0.25 mm",
+        "Materials": "PLA, ABS, Nylon, TPU",
+        "Connectivity": "WiFi, Ethernet, USB"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "name": "Laser Cutter",
+      "category": "tools",
+      "description": "CO2 laser cutter for precision cutting and engraving",
+      "price": 8000,
+      "currency": "USD",
+      "vendor": "Epilog",
+      "tags": ["laser", "cutting", "engraving"],
+      "featured": true,
+      "specs": {
+        "Work Area": "24\" x 18\"",
+        "Laser Power": "60W",
+        "Materials": "Wood, Acrylic, Fabric, Leather",
+        "Max Thickness": "0.5 inches"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440008",
+      "name": "Oscilloscope",
+      "category": "electronics",
+      "description": "Digital oscilloscope for circuit analysis",
+      "price": 1200,
+      "currency": "USD",
+      "vendor": "Tektronix",
+      "tags": ["oscilloscope", "testing", "electronics"],
+      "featured": false,
+      "specs": {
+        "Channels": "4",
+        "Bandwidth": "100 MHz",
+        "Sample Rate": "1 GS/s",
+        "Display": "10.1\" touchscreen"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440009",
+      "name": "Soldering Station",
+      "category": "tools",
+      "description": "Professional temperature-controlled soldering station",
+      "price": 350,
+      "currency": "USD",
+      "vendor": "Weller",
+      "tags": ["soldering", "electronics", "tools"],
+      "featured": false,
+      "specs": {
+        "Temperature Range": "200-450°C",
+        "Power": "80W",
+        "Display": "Digital LCD",
+        "Features": "Auto-sleep, ESD safe"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440010",
+      "name": "Conference Table (8-person)",
+      "category": "furniture",
+      "description": "Large conference table for meetings and collaboration",
+      "price": 1200,
+      "currency": "USD",
+      "vendor": "HON",
+      "tags": ["table", "meeting", "furniture"],
+      "featured": false,
+      "specs": {
+        "Dimensions": "96\" x 42\" x 29\"",
+        "Capacity": "8 people",
+        "Material": "Laminate top, steel base",
+        "Color": "Espresso"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440011",
+      "name": "Interactive Whiteboard",
+      "category": "electronics",
+      "description": "Smart interactive display for presentations and collaboration",
+      "price": 3000,
+      "currency": "USD",
+      "vendor": "SMART Board",
+      "tags": ["whiteboard", "interactive", "presentation"],
+      "featured": true,
+      "specs": {
+        "Size": "75 inches",
+        "Resolution": "4K UHD",
+        "Touch Points": "20",
+        "Connectivity": "HDMI, USB, WiFi"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440012",
+      "name": "Server Rack (42U)",
+      "category": "utilities",
+      "description": "Standard server rack for equipment housing",
+      "price": 800,
+      "currency": "USD",
+      "vendor": "APC",
+      "tags": ["rack", "server", "infrastructure"],
+      "featured": false,
+      "specs": {
+        "Height": "42U",
+        "Width": "19 inches",
+        "Depth": "36 inches",
+        "Weight Capacity": "3000 lbs"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440013",
+      "name": "Network Switch (48-port)",
+      "category": "compute",
+      "description": "Managed Gigabit Ethernet switch",
+      "price": 1500,
+      "currency": "USD",
+      "vendor": "Cisco",
+      "tags": ["network", "switch", "infrastructure"],
+      "featured": false,
+      "specs": {
+        "Ports": "48x 1GbE + 4x 10GbE SFP+",
+        "Throughput": "176 Gbps",
+        "Management": "Web, CLI, SNMP",
+        "PoE": "PoE+ support"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440014",
+      "name": "UPS Battery Backup (3000VA)",
+      "category": "utilities",
+      "description": "Uninterruptible power supply for critical equipment",
+      "price": 900,
+      "currency": "USD",
+      "vendor": "APC",
+      "tags": ["ups", "power", "backup"],
+      "featured": false,
+      "specs": {
+        "Capacity": "3000VA / 2700W",
+        "Runtime": "10 min at full load",
+        "Outlets": "8x NEMA 5-15R",
+        "Management": "Network card optional"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440015",
+      "name": "HVAC Cooling Unit",
+      "category": "utilities",
+      "description": "Precision air conditioning for server rooms",
+      "price": 5000,
+      "currency": "USD",
+      "vendor": "Liebert",
+      "tags": ["hvac", "cooling", "climate"],
+      "featured": false,
+      "specs": {
+        "Cooling Capacity": "10 kW",
+        "Airflow": "2000 CFM",
+        "Control": "Digital microprocessor",
+        "Efficiency": "Energy Star rated"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440016",
+      "name": "Fire Extinguisher (ABC)",
+      "category": "safety",
+      "description": "Multi-purpose fire extinguisher for electronics",
+      "price": 80,
+      "currency": "USD",
+      "vendor": "Amerex",
+      "tags": ["safety", "fire", "compliance"],
+      "featured": false,
+      "specs": {
+        "Type": "ABC Dry Chemical",
+        "Capacity": "10 lbs",
+        "Rating": "4A:60B:C",
+        "Certification": "UL listed"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440017",
+      "name": "First Aid Kit",
+      "category": "safety",
+      "description": "Comprehensive workplace first aid kit",
+      "price": 150,
+      "currency": "USD",
+      "vendor": "3M",
+      "tags": ["safety", "first-aid", "compliance"],
+      "featured": false,
+      "specs": {
+        "Capacity": "50 people",
+        "Items": "175 pieces",
+        "Cabinet": "Wall-mountable metal",
+        "Compliance": "OSHA/ANSI"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440018",
+      "name": "Storage Cabinet (Metal)",
+      "category": "furniture",
+      "description": "Lockable metal storage cabinet for tools and supplies",
+      "price": 400,
+      "currency": "USD",
+      "vendor": "Sandusky",
+      "tags": ["storage", "cabinet", "organization"],
+      "featured": false,
+      "specs": {
+        "Dimensions": "36\" x 18\" x 72\"",
+        "Shelves": "4 adjustable",
+        "Material": "Steel",
+        "Lock": "Key lock included"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440019",
+      "name": "Robotics Kit (Educational)",
+      "category": "tools",
+      "description": "Complete robotics kit for education and prototyping",
+      "price": 1500,
+      "currency": "USD",
+      "vendor": "VEX Robotics",
+      "tags": ["robotics", "education", "stem"],
+      "featured": true,
+      "specs": {
+        "Platform": "VEX V5",
+        "Includes": "Brain, motors, sensors, structure",
+        "Programming": "C++, Python, Blocks",
+        "Curriculum": "Included"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440020",
+      "name": "Arduino Starter Kit",
+      "category": "electronics",
+      "description": "Complete Arduino kit for beginners",
+      "price": 95,
+      "currency": "USD",
+      "vendor": "Arduino",
+      "tags": ["arduino", "microcontroller", "education"],
+      "featured": false,
+      "specs": {
+        "Board": "Arduino Uno R3",
+        "Components": "170+ pieces",
+        "Projects": "15 guided projects",
+        "Book": "Included guidebook"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440021",
+      "name": "CAD Software License (Annual)",
+      "category": "software",
+      "description": "Professional CAD software subscription",
+      "price": 2000,
+      "currency": "USD",
+      "vendor": "Autodesk",
+      "tags": ["software", "cad", "design"],
+      "featured": true,
+      "specs": {
+        "Product": "Fusion 360",
+        "License": "Commercial annual",
+        "Users": "1 seat",
+        "Support": "Cloud storage, updates"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440022",
+      "name": "AI Development Platform License",
+      "category": "software",
+      "description": "Enterprise AI development platform subscription",
+      "price": 5000,
+      "currency": "USD",
+      "vendor": "NVIDIA",
+      "tags": ["software", "ai", "ml"],
+      "featured": true,
+      "specs": {
+        "Product": "NVIDIA AI Enterprise",
+        "License": "1-year subscription",
+        "Includes": "Frameworks, tools, support",
+        "GPUs": "Unlimited"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440023",
+      "name": "Raspberry Pi 4 (8GB)",
+      "category": "compute",
+      "description": "Single-board computer for IoT and education",
+      "price": 75,
+      "currency": "USD",
+      "vendor": "Raspberry Pi Foundation",
+      "tags": ["raspberry-pi", "iot", "education"],
+      "featured": false,
+      "specs": {
+        "RAM": "8GB LPDDR4",
+        "CPU": "Quad-core ARM Cortex-A72",
+        "Connectivity": "WiFi, Bluetooth, Gigabit Ethernet",
+        "Ports": "2x USB 3.0, 2x USB 2.0, HDMI"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440024",
+      "name": "VR Headset (Meta Quest 3)",
+      "category": "electronics",
+      "description": "Standalone VR headset for immersive experiences",
+      "price": 500,
+      "currency": "USD",
+      "vendor": "Meta",
+      "tags": ["vr", "virtual-reality", "immersive"],
+      "featured": true,
+      "specs": {
+        "Resolution": "2064 x 2208 per eye",
+        "Refresh Rate": "120Hz",
+        "Storage": "128GB",
+        "Features": "Mixed reality, hand tracking"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440025",
+      "name": "Document Camera",
+      "category": "electronics",
+      "description": "HD document camera for demonstrations",
+      "price": 450,
+      "currency": "USD",
+      "vendor": "IPEVO",
+      "tags": ["camera", "document", "presentation"],
+      "featured": false,
+      "specs": {
+        "Resolution": "1080p Full HD",
+        "Zoom": "8x digital",
+        "Connection": "USB, HDMI",
+        "Lighting": "Built-in LED"
+      }
+    }
+  ]
+}

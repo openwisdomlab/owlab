@@ -15,13 +15,14 @@ import {
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
+import { exportLayoutToDXF, downloadDXF } from "@/lib/utils/dxf-export";
 
 interface ExportDialogProps {
   layout: LayoutData;
   onClose: () => void;
 }
 
-type ExportFormat = "png" | "pdf" | "json" | "md";
+type ExportFormat = "png" | "pdf" | "json" | "md" | "dxf";
 
 export function ExportDialog({ layout, onClose }: ExportDialogProps) {
   const t = useTranslations("lab.export");
@@ -32,6 +33,7 @@ export function ExportDialog({ layout, onClose }: ExportDialogProps) {
   const formats: { id: ExportFormat; icon: typeof FileImage; label: string }[] = [
     { id: "png", icon: FileImage, label: "PNG Image" },
     { id: "pdf", icon: FileText, label: "PDF Document" },
+    { id: "dxf", icon: FileText, label: "DXF (CAD)" },
     { id: "json", icon: FileJson, label: "JSON Data" },
     { id: "md", icon: FileText, label: "Markdown Doc" },
   ];
@@ -47,6 +49,9 @@ export function ExportDialog({ layout, onClose }: ExportDialogProps) {
           break;
         case "pdf":
           await exportAsPDF();
+          break;
+        case "dxf":
+          await exportAsDXF();
           break;
         case "json":
           exportAsJSON();
@@ -202,6 +207,12 @@ export function ExportDialog({ layout, onClose }: ExportDialogProps) {
     link.href = url;
     link.click();
     URL.revokeObjectURL(url);
+  };
+
+  const exportAsDXF = async () => {
+    const dxfContent = await exportLayoutToDXF(layout);
+    const filename = `${layout.name.replace(/\s+/g, "-")}-layout.dxf`;
+    downloadDXF(dxfContent, filename);
   };
 
   return (

@@ -2,9 +2,10 @@
 
 import { useRef, useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Plus, Trash2, Move, Square } from "lucide-react";
+import { Plus, Trash2, Move, Square, Package, X as XIcon } from "lucide-react";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import { v4 as uuidv4 } from "uuid";
+import { formatCurrency } from "@/lib/utils/budget";
 
 interface FloorPlanCanvasProps {
   layout: LayoutData;
@@ -181,22 +182,61 @@ export function FloorPlanCanvas({
       </div>
 
       {/* Canvas */}
-      <div
-        ref={canvasRef}
-        className="relative m-8"
-        style={{
-          width: canvasWidth,
-          height: canvasHeight,
-          cursor: isAddingZone ? "crosshair" : "default",
-        }}
-        onClick={handleCanvasClick}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        role="application"
-        aria-label={`Floor plan canvas, ${layout.zones.length} zones`}
-        tabIndex={0}
-      >
+      <div className="relative m-8">
+        {/* Horizontal Ruler */}
+        <div
+          className="absolute -top-6 left-0 flex text-xs text-[var(--muted-foreground)]"
+          style={{ width: canvasWidth }}
+        >
+          {Array.from({ length: layout.dimensions.width + 1 }).map((_, i) => (
+            <div
+              key={`h-ruler-${i}`}
+              className="relative"
+              style={{ width: GRID_SIZE * zoom }}
+            >
+              <span className="absolute -left-1">{i}</span>
+              {i < layout.dimensions.width && (
+                <div className="absolute top-4 left-0 w-px h-2 bg-[var(--glass-border)]" />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Vertical Ruler */}
+        <div
+          className="absolute -left-8 top-0 flex flex-col text-xs text-[var(--muted-foreground)]"
+          style={{ height: canvasHeight }}
+        >
+          {Array.from({ length: layout.dimensions.height + 1 }).map((_, i) => (
+            <div
+              key={`v-ruler-${i}`}
+              className="relative"
+              style={{ height: GRID_SIZE * zoom }}
+            >
+              <span className="absolute -top-2 right-2">{i}</span>
+              {i < layout.dimensions.height && (
+                <div className="absolute top-0 right-0 h-px w-2 bg-[var(--glass-border)]" />
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div
+          ref={canvasRef}
+          className="relative"
+          style={{
+            width: canvasWidth,
+            height: canvasHeight,
+            cursor: isAddingZone ? "crosshair" : "default",
+          }}
+          onClick={handleCanvasClick}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          role="application"
+          aria-label={`Floor plan canvas, ${layout.zones.length} zones`}
+          tabIndex={0}
+        >
         {/* Grid */}
         {showGrid && (
           <svg
@@ -292,10 +332,11 @@ export function FloorPlanCanvas({
           </motion.div>
         ))}
 
-        {/* Dimensions Label */}
-        <div className="absolute -bottom-8 left-0 right-0 text-center text-sm text-[var(--muted-foreground)]">
-          {layout.dimensions.width} × {layout.dimensions.height}{" "}
-          {layout.dimensions.unit}
+          {/* Dimensions Label */}
+          <div className="absolute -bottom-8 left-0 right-0 text-center text-sm text-[var(--muted-foreground)]">
+            {layout.dimensions.width} × {layout.dimensions.height}{" "}
+            {layout.dimensions.unit}
+          </div>
         </div>
       </div>
 
@@ -425,6 +466,69 @@ function ZonePropertiesPanel({ zone, onUpdate }: ZonePropertiesPanelProps) {
           </div>
         </div>
       </fieldset>
+
+      {/* Equipment Section */}
+      {zone.equipment && Array.isArray(zone.equipment) && zone.equipment.length > 0 && (
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <Package className="w-4 h-4 text-[var(--neon-cyan)]" />
+            <h4 className="text-xs font-semibold">Equipment</h4>
+          </div>
+          <div className="space-y-2 max-h-48 overflow-y-auto">
+            {zone.equipment.map((equip: any, index: number) => {
+              // Handle both old string format and new object format
+              if (typeof equip === "string") {
+                return (
+                  <div
+                    key={`equip-${index}`}
+                    className="text-xs p-2 rounded bg-[var(--glass-bg)]"
+                  >
+                    {equip}
+                  </div>
+                );
+              }
+
+              return (
+                <div
+                  key={`equip-${index}`}
+                  className="flex items-start justify-between gap-2 p-2 rounded bg-[var(--glass-bg)]"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs font-medium truncate">{equip.name}</div>
+                    {equip.price && (
+                      <div className="text-xs text-[var(--muted-foreground)]">
+                        {formatCurrency(equip.price)} × {equip.quantity || 1}
+                        {equip.price && equip.quantity && equip.quantity > 1 && (
+                          <span className="ml-1">
+                            = {formatCurrency(equip.price * equip.quantity)}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    {equip.category && (
+                      <div className="text-xs text-[var(--muted-foreground)] capitalize">
+                        {equip.category}
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => {
+                      const newEquipment = zone.equipment?.filter(
+                        (_: any, i: number) => i !== index
+                      );
+                      onUpdate({ equipment: newEquipment as any });
+                    }}
+                    className="p-1 rounded hover:bg-red-500/20 text-red-400 transition-colors"
+                    aria-label="Remove equipment"
+                  >
+                    <XIcon className="w-3 h-3" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 }

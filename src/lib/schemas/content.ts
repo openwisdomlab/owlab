@@ -4,6 +4,7 @@
  */
 
 import { z } from "zod";
+import { ZoneEquipmentSchema } from "./equipment";
 
 // ============================================
 // Base Document Metadata Schema
@@ -99,7 +100,7 @@ export const ZoneSchema = z.object({
   position: PositionSchema,
   size: SizeSchema,
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/),
-  equipment: z.array(z.string()).default([]),
+  equipment: z.array(ZoneEquipmentSchema).default([]),
   requirements: z.string().optional(),
 });
 
