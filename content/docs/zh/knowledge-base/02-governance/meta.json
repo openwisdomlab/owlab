@@ -2,5 +2,5 @@
   "title": "M02 治理与网络",
   "description": "组织形式与协作规则",
   "icon": "Network",
-  "pages": ["index", "---", "evidence"]
+  "pages": ["index", "---", "extend", "---", "evidence"]
 }

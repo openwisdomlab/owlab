@@ -1,13 +1,13 @@
 {
   "module": "M02",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "last_updated": "2025-01-15",
   "references": [
     {
       "id": "M02-001",
       "type": "book",
       "citation": "Ostrom, E. (1990). Governing the Commons: The Evolution of Institutions for Collective Action. Cambridge University Press.",
-      "evidence_level": "E3",
+      "evidence_level": "E1",
       "verified": false,
       "verified_by": null,
       "verified_date": null,
@@ -15,11 +15,11 @@
         "社区可以有效自治管理共享资源",
         "成功的公共资源治理需要清晰的边界、规则和冲突解决机制"
       ],
-      "used_in": ["index.mdx"]
+      "used_in": ["index.mdx", "extend/distributed-innovation.mdx"]
     },
     {
       "id": "M02-002",
-      "type": "article",
+      "type": "book",
       "citation": "Benkler, Y. (2006). The Wealth of Networks: How Social Production Transforms Markets and Freedom. Yale University Press.",
       "evidence_level": "E2",
       "verified": false,
@@ -29,11 +29,11 @@
         "网络化协作可以创造显著的社会价值",
         "开放式协作需要新的治理模式"
       ],
-      "used_in": ["index.mdx"]
+      "used_in": ["index.mdx", "extend/distributed-innovation.mdx"]
     },
     {
       "id": "M02-003",
-      "type": "article",
+      "type": "book",
       "citation": "Chesbrough, H. (2003). Open Innovation: The New Imperative for Creating and Profiting from Technology. Harvard Business School Press.",
       "evidence_level": "E2",
       "verified": false,
@@ -44,8 +44,106 @@
         "组织边界的开放需要新的治理结构"
       ],
       "used_in": ["extend/network-governance.mdx"]
+    },
+    {
+      "id": "M02-004",
+      "type": "book",
+      "citation": "Gershenfeld, N. (2005). Fab: The Coming Revolution on Your Desktop--from Personal Computers to Personal Fabrication. Basic Books.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "数字制造工具民主化将改变创新模式",
+        "Fab Lab 网络可实现全球知识共享与协作"
+      ],
+      "used_in": ["extend/distributed-innovation.mdx"]
+    },
+    {
+      "id": "M02-005",
+      "type": "web",
+      "citation": "MIT Center for Bits and Atoms. The Fab Charter. http://fab.cba.mit.edu/about/charter/",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "Fab Lab 的使命是为个人提供技术发明工具",
+        "发明归个人所有，但设计过程应开放共享供学习"
+      ],
+      "used_in": ["extend/distributed-innovation.mdx"]
+    },
+    {
+      "id": "M02-006",
+      "type": "web",
+      "citation": "Fab Foundation. Fab Lab Network. https://fabfoundation.org/global-community/",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "全球 Fab Lab 网络超过 1750 个实验室，覆盖 100+ 国家",
+        "Fab Lab 网络形成分布式研究室和分布式技术教育校园"
+      ],
+      "used_in": ["extend/distributed-innovation.mdx"]
+    },
+    {
+      "id": "M02-007",
+      "type": "web",
+      "citation": "European Network of Living Labs (ENoLL). Living Labs Methodology. https://enoll.org/living-labs/",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "Living Lab 是以用户为中心的开放式创新生态系统",
+        "四螺旋模型强调公民、学术界、产业界和政府的深度协作"
+      ],
+      "used_in": ["extend/distributed-innovation.mdx"]
+    },
+    {
+      "id": "M02-008",
+      "type": "article",
+      "citation": "Troxler, P. (2013). Making the Third Industrial Revolution: The Struggle for Polycentric Structures and a New Peer-Production Commons in the Fab Lab Community. In J. Walter-Herrmann & C. Büching (Eds.), FabLab: Of Machines, Makers and Inventors. transcript Verlag.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "Fab Lab 社区展示了多中心治理结构的可能性",
+        "同行生产模式需要新的公共资源治理机制"
+      ],
+      "used_in": ["extend/distributed-innovation.mdx"]
+    },
+    {
+      "id": "M02-009",
+      "type": "article",
+      "citation": "Almirall, E., Lee, M., & Wareham, J. (2012). Mapping Living Labs in the Landscape of Innovation Methodologies. Technology Innovation Management Review, 2(9), 12-18.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "Living Lab 将真实世界作为实验场",
+        "用户协同创造是 Living Lab 的核心方法论"
+      ],
+      "used_in": ["extend/distributed-innovation.mdx"]
+    },
+    {
+      "id": "M02-010",
+      "type": "web",
+      "citation": "Hackerspace Wiki. Hackerspace Definition. https://wiki.hackerspaces.org/",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "黑客空间强调点对点学习、知识共享和信息自由",
+        "Doocracy（谁做事谁负责）是黑客空间的核心治理哲学"
+      ],
+      "used_in": ["extend/distributed-innovation.mdx"]
     }
   ],
-  "notes": "治理相关文献待人工验证",
+  "notes": "治理与分布式创新相关文献待人工验证",
   "cross_validation_status": "pending"
 }

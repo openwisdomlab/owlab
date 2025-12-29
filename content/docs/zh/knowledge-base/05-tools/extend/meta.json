@@ -1,0 +1,10 @@
+{
+  "title": "扩展内容",
+  "description": "工具资产模块的深度专题文档",
+  "pages": [
+    "equipment-catalog",
+    "digital-fabrication",
+    "opensource-hardware",
+    "maintenance-guide"
+  ]
+}

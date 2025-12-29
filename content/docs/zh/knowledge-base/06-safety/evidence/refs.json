@@ -1,7 +1,7 @@
 {
   "module": "M06",
-  "version": "0.1.0",
-  "last_updated": "2025-01-15",
+  "version": "0.2.0",
+  "last_updated": "2025-12-29",
   "references": [
     {
       "id": "M06-001",
@@ -43,7 +43,7 @@
         "系统化的安全管理可降低事故风险",
         "安全管理需要全员参与和持续改进"
       ],
-      "used_in": ["index.mdx"]
+      "used_in": ["index.mdx", "extend/safety-training.mdx"]
     },
     {
       "id": "M06-004",
@@ -57,7 +57,7 @@
         "预防优于应对",
         "安全文化需要领导层承诺"
       ],
-      "used_in": ["index.mdx", "checklists/safety-check.mdx"]
+      "used_in": ["index.mdx", "checklists/safety-check.mdx", "extend/safety-training.mdx"]
     },
     {
       "id": "M06-005",
@@ -72,8 +72,135 @@
         "AI 研发应负责任、可控"
       ],
       "used_in": ["extend/ai-ethics.mdx"]
+    },
+    {
+      "id": "M06-006",
+      "type": "guideline",
+      "citation": "MIT Fab Lab. The Fab Charter. fab.cba.mit.edu/about/charter/",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "用户需负责安全（不伤害他人或损坏机器）",
+        "用户需负责运营（协助清洁、维护和改善实验室）",
+        "用户需负责知识共享（为知识库和教学文档做贡献）"
+      ],
+      "used_in": ["extend/equipment-access.mdx"]
+    },
+    {
+      "id": "M06-007",
+      "type": "guideline",
+      "citation": "Fab Foundation. (2024). Global Fab Lab Network Standards.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "Fab Lab 共享核心能力清单",
+        "标准化工具配置确保全球协作"
+      ],
+      "used_in": ["extend/equipment-access.mdx", "extend/safety-training.mdx"]
+    },
+    {
+      "id": "M06-008",
+      "type": "policy",
+      "citation": "教育部等七部门. (2025). 关于加强中小学科技教育的意见.",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "强化科技教育与安全管理融合",
+        "建立适龄的科技教育体系"
+      ],
+      "used_in": ["extend/equipment-access.mdx", "extend/safety-training.mdx", "extend/age-guidelines.mdx"]
+    },
+    {
+      "id": "M06-009",
+      "type": "standard",
+      "citation": "ISO 31000:2018. Risk management - Guidelines. International Organization for Standardization.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "风险评估应系统化、结构化",
+        "风险管理是持续改进过程"
+      ],
+      "used_in": ["extend/risk-assessment.mdx"]
+    },
+    {
+      "id": "M06-010",
+      "type": "legal",
+      "citation": "《中华人民共和国消防法》",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "单位应当制定灭火和应急疏散预案",
+        "定期组织消防演练"
+      ],
+      "used_in": ["extend/emergency-response.mdx"]
+    },
+    {
+      "id": "M06-011",
+      "type": "legal",
+      "citation": "《中华人民共和国个人信息保护法》(2021)",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "处理个人信息应当遵循最小必要原则",
+        "处理不满十四周岁未成年人个人信息应取得监护人同意"
+      ],
+      "used_in": ["extend/digital-security.mdx"]
+    },
+    {
+      "id": "M06-012",
+      "type": "legal",
+      "citation": "《中华人民共和国未成年人保护法》(2020修订)",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "网络产品和服务提供者不得侵害未成年人身心健康",
+        "处理未成年人个人信息应当遵循合法、正当、必要原则"
+      ],
+      "used_in": ["extend/digital-security.mdx", "extend/age-guidelines.mdx"]
+    },
+    {
+      "id": "M06-013",
+      "type": "legal",
+      "citation": "《儿童个人信息网络保护规定》(2019)",
+      "evidence_level": "E1",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "网络运营者应当设置专门的儿童个人信息保护规则",
+        "收集使用儿童个人信息应当征得监护人同意"
+      ],
+      "used_in": ["extend/digital-security.mdx"]
+    },
+    {
+      "id": "M06-014",
+      "type": "standard",
+      "citation": "GB/T 35273-2020. 信息安全技术 个人信息安全规范.",
+      "evidence_level": "E2",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "key_claims": [
+        "个人信息收集应遵循最小化原则",
+        "应制定个人信息安全事件应急预案"
+      ],
+      "used_in": ["extend/digital-security.mdx"]
     }
   ],
-  "notes": "安全与伦理相关文献待人工验证",
+  "notes": "安全与伦理相关文献待人工验证。2025-12-29更新：新增分级准入、培训体系、风险评估、应急响应、数字安全相关参考文献。",
   "cross_validation_status": "pending"
 }
