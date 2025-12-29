@@ -27,6 +27,9 @@
 .DS_Store
 *.pem
 
+# research files
+/space/
+
 # development iteration files
 /.dev/
 
