@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
@@ -11,7 +12,9 @@ import {
   Lightbulb,
   Sparkles,
   ArrowRight,
+  Wand2,
 } from "lucide-react";
+import { RecommendationWizard } from "@/components/lab/RecommendationWizard";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,6 +33,7 @@ export default function LabPage() {
   const t = useTranslations("lab");
   const params = useParams();
   const locale = params.locale as string;
+  const [showWizard, setShowWizard] = useState(false);
 
   const modules = [
     {
@@ -72,6 +76,34 @@ export default function LabPage() {
           <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto">
             {t("description")}
           </p>
+        </motion.div>
+
+        {/* Smart Planning Wizard CTA */}
+        <motion.div variants={itemVariants}>
+          <motion.button
+            onClick={() => setShowWizard(true)}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full p-6 rounded-xl bg-gradient-to-r from-[var(--neon-purple)]/20 to-[var(--neon-cyan)]/20 border-2 border-[var(--neon-purple)]/50 hover:border-[var(--neon-purple)] transition-all group"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-xl bg-[var(--neon-purple)]/20 flex items-center justify-center">
+                  <Wand2 className="w-7 h-7 text-[var(--neon-purple)]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-semibold mb-1">智能规划向导</h3>
+                  <p className="text-[var(--muted-foreground)]">
+                    输入面积、预算、目标定位，AI 自动生成个性化建设方案
+                  </p>
+                </div>
+              </div>
+              <div className="hidden md:flex items-center gap-2 text-[var(--neon-purple)] font-medium group-hover:gap-3 transition-all">
+                <span>开始规划</span>
+                <ArrowRight className="w-5 h-5" />
+              </div>
+            </div>
+          </motion.button>
         </motion.div>
 
         {/* Module Cards */}
@@ -131,6 +163,12 @@ export default function LabPage() {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Smart Planning Wizard Modal */}
+      <RecommendationWizard
+        isOpen={showWizard}
+        onClose={() => setShowWizard(false)}
+      />
     </div>
   );
 }

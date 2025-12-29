@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Plus, Trash2, Move, Square, Package, X as XIcon } from "lucide-react";
+import { Plus, Trash2, Move, Square, Package, X as XIcon, AlertTriangle } from "lucide-react";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import { v4 as uuidv4 } from "uuid";
 import { formatCurrency } from "@/lib/utils/budget";
@@ -19,6 +19,75 @@ interface FloorPlanCanvasProps {
 }
 
 const GRID_SIZE = 40; // pixels per unit
+const MIN_PATHWAY_WIDTH = 1.2; // meters - minimum for safe passage
+const MIN_ZONE_DISTANCE = 0.5; // meters - minimum between equipment zones
+
+interface SafetyWarning {
+  id: string;
+  type: "pathway" | "distance";
+  message: string;
+  zones: string[];
+  position: { x: number; y: number };
+}
+
+// Check safety distances between zones
+function checkSafetyDistances(zones: ZoneData[]): SafetyWarning[] {
+  const warnings: SafetyWarning[] = [];
+
+  for (let i = 0; i < zones.length; i++) {
+    for (let j = i + 1; j < zones.length; j++) {
+      const z1 = zones[i];
+      const z2 = zones[j];
+
+      // Calculate gap between zones
+      const gapX = Math.max(0,
+        Math.max(z1.position.x, z2.position.x) -
+        Math.min(z1.position.x + z1.size.width, z2.position.x + z2.size.width)
+      );
+      const gapY = Math.max(0,
+        Math.max(z1.position.y, z2.position.y) -
+        Math.min(z1.position.y + z1.size.height, z2.position.y + z2.size.height)
+      );
+
+      // Check if zones are adjacent (one gap is 0, other is small)
+      const minGap = Math.min(gapX, gapY);
+      const isAdjacent = minGap === 0 && Math.max(gapX, gapY) < MIN_PATHWAY_WIDTH;
+
+      if (isAdjacent && Math.max(gapX, gapY) > 0 && Math.max(gapX, gapY) < MIN_PATHWAY_WIDTH) {
+        const midX = (z1.position.x + z1.size.width / 2 + z2.position.x + z2.size.width / 2) / 2;
+        const midY = (z1.position.y + z1.size.height / 2 + z2.position.y + z2.size.height / 2) / 2;
+
+        warnings.push({
+          id: `pathway-${z1.id}-${z2.id}`,
+          type: "pathway",
+          message: `通道宽度不足 ${MIN_PATHWAY_WIDTH}m`,
+          zones: [z1.id, z2.id],
+          position: { x: midX, y: midY },
+        });
+      }
+
+      // Check for overlapping zones
+      const overlapX = !(z1.position.x + z1.size.width <= z2.position.x || z2.position.x + z2.size.width <= z1.position.x);
+      const overlapY = !(z1.position.y + z1.size.height <= z2.position.y || z2.position.y + z2.size.height <= z1.position.y);
+
+      if (overlapX && overlapY) {
+        const midX = (z1.position.x + z1.size.width / 2 + z2.position.x + z2.size.width / 2) / 2;
+        const midY = (z1.position.y + z1.size.height / 2 + z2.position.y + z2.size.height / 2) / 2;
+
+        warnings.push({
+          id: `overlap-${z1.id}-${z2.id}`,
+          type: "distance",
+          message: `区域重叠`,
+          zones: [z1.id, z2.id],
+          position: { x: midX, y: midY },
+        });
+      }
+    }
+  }
+
+  return warnings;
+}
+
 const ZONE_TYPES: ZoneData["type"][] = [
   "compute",
   "workspace",
@@ -55,6 +124,12 @@ export function FloorPlanCanvas({
 
   const canvasWidth = layout.dimensions.width * GRID_SIZE * zoom;
   const canvasHeight = layout.dimensions.height * GRID_SIZE * zoom;
+
+  // Check for safety warnings
+  const safetyWarnings = useMemo(
+    () => checkSafetyDistances(layout.zones),
+    [layout.zones]
+  );
 
   const handleCanvasClick = useCallback(
     (e: React.MouseEvent) => {
@@ -332,6 +407,31 @@ export function FloorPlanCanvas({
           </motion.div>
         ))}
 
+          {/* Safety Warnings */}
+        {safetyWarnings.map((warning) => (
+          <motion.div
+            key={warning.id}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="absolute z-20 pointer-events-none"
+            style={{
+              left: warning.position.x * GRID_SIZE * zoom - 12,
+              top: warning.position.y * GRID_SIZE * zoom - 12,
+            }}
+          >
+            <div className="relative group pointer-events-auto">
+              <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center animate-pulse">
+                <AlertTriangle className="w-4 h-4 text-white" />
+              </div>
+              <div className="absolute left-8 top-0 hidden group-hover:block z-30">
+                <div className="bg-red-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                  {warning.message}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+
           {/* Dimensions Label */}
           <div className="absolute -bottom-8 left-0 right-0 text-center text-sm text-[var(--muted-foreground)]">
             {layout.dimensions.width} × {layout.dimensions.height}{" "}
@@ -339,6 +439,34 @@ export function FloorPlanCanvas({
           </div>
         </div>
       </div>
+
+      {/* Safety Warnings Summary */}
+      {safetyWarnings.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute bottom-4 left-4 z-10 glass-card p-3 border border-red-500/50"
+        >
+          <div className="flex items-center gap-2 text-red-400">
+            <AlertTriangle className="w-4 h-4" />
+            <span className="text-sm font-medium">
+              {safetyWarnings.length} 安全警告
+            </span>
+          </div>
+          <div className="mt-2 space-y-1">
+            {safetyWarnings.slice(0, 3).map((w) => (
+              <div key={w.id} className="text-xs text-[var(--muted-foreground)]">
+                • {w.message}
+              </div>
+            ))}
+            {safetyWarnings.length > 3 && (
+              <div className="text-xs text-[var(--muted-foreground)]">
+                还有 {safetyWarnings.length - 3} 个警告...
+              </div>
+            )}
+          </div>
+        </motion.div>
+      )}
 
       {/* Zone Properties Panel */}
       {selectedZone && (

@@ -17,6 +17,10 @@ import {
   Loader2,
   ChevronDown,
   ChevronUp,
+  LayoutTemplate,
+  Users,
+  Building2,
+  Warehouse,
 } from "lucide-react";
 import { PieChart as RechartsPieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
@@ -43,11 +47,176 @@ const CATEGORY_COLORS: Record<string, string> = {
   software: "#ec4899",
 };
 
+// Budget Templates for different space sizes
+interface BudgetTemplate {
+  id: string;
+  name: string;
+  nameZh: string;
+  description: string;
+  descriptionZh: string;
+  capacity: string;
+  area: string;
+  icon: typeof Users;
+  budget: {
+    min: number;
+    max: number;
+    recommended: number;
+  };
+  allocation: {
+    category: string;
+    percentage: number;
+    examples: string[];
+  }[];
+  zones: string[];
+}
+
+const BUDGET_TEMPLATES: BudgetTemplate[] = [
+  {
+    id: "small",
+    name: "Small Makerspace",
+    nameZh: "小型创客空间",
+    description: "Ideal for clubs, after-school programs, or small classrooms",
+    descriptionZh: "适合社团、课后项目或小型教室",
+    capacity: "10-20 students",
+    area: "50-100 m²",
+    icon: Users,
+    budget: {
+      min: 30000,
+      max: 80000,
+      recommended: 50000,
+    },
+    allocation: [
+      {
+        category: "furniture",
+        percentage: 25,
+        examples: ["Workbenches (3-4)", "Storage cabinets", "Chairs"],
+      },
+      {
+        category: "tools",
+        percentage: 30,
+        examples: ["Basic hand tools", "3D printer (1)", "Laser cutter (optional)"],
+      },
+      {
+        category: "electronics",
+        percentage: 20,
+        examples: ["Arduino kits (10)", "Sensors", "Basic components"],
+      },
+      {
+        category: "compute",
+        percentage: 15,
+        examples: ["Laptops (5-8)", "Display monitor"],
+      },
+      {
+        category: "safety",
+        percentage: 10,
+        examples: ["Safety glasses", "First aid kit", "Fire extinguisher"],
+      },
+    ],
+    zones: ["Workbench Area", "Electronics Station", "Storage"],
+  },
+  {
+    id: "medium",
+    name: "Medium Lab",
+    nameZh: "中型实验室",
+    description: "Standard school makerspace for regular classes",
+    descriptionZh: "标准学校创客空间，适合常规课程",
+    capacity: "20-40 students",
+    area: "100-200 m²",
+    icon: Building2,
+    budget: {
+      min: 80000,
+      max: 200000,
+      recommended: 120000,
+    },
+    allocation: [
+      {
+        category: "furniture",
+        percentage: 20,
+        examples: ["Workbenches (6-8)", "Adjustable tables", "Tool walls"],
+      },
+      {
+        category: "tools",
+        percentage: 35,
+        examples: ["3D printers (2-3)", "Laser cutter", "CNC router (small)"],
+      },
+      {
+        category: "electronics",
+        percentage: 20,
+        examples: ["Arduino/Raspberry Pi sets (20+)", "Oscilloscope", "Soldering stations"],
+      },
+      {
+        category: "compute",
+        percentage: 15,
+        examples: ["Workstations (10-15)", "Design software licenses"],
+      },
+      {
+        category: "safety",
+        percentage: 10,
+        examples: ["Ventilation system", "PPE sets", "Emergency equipment"],
+      },
+    ],
+    zones: ["Fabrication Zone", "Electronics Lab", "Computer Area", "Assembly Space", "Storage Room"],
+  },
+  {
+    id: "large",
+    name: "Large Innovation Hub",
+    nameZh: "大型创新中心",
+    description: "Full-featured facility for multiple programs",
+    descriptionZh: "多功能设施，支持多个项目同时进行",
+    capacity: "40+ students",
+    area: "200+ m²",
+    icon: Warehouse,
+    budget: {
+      min: 200000,
+      max: 500000,
+      recommended: 300000,
+    },
+    allocation: [
+      {
+        category: "furniture",
+        percentage: 15,
+        examples: ["Modular workstations", "Collaborative tables", "Standing desks"],
+      },
+      {
+        category: "tools",
+        percentage: 40,
+        examples: ["Industrial 3D printers", "Large-format laser", "CNC machines", "Woodworking tools"],
+      },
+      {
+        category: "electronics",
+        percentage: 15,
+        examples: ["Advanced robotics kits", "IoT sensors", "Testing equipment"],
+      },
+      {
+        category: "compute",
+        percentage: 20,
+        examples: ["High-performance workstations", "VR/AR equipment", "Enterprise software"],
+      },
+      {
+        category: "safety",
+        percentage: 10,
+        examples: ["Dust collection", "Fume extraction", "Safety monitoring system"],
+      },
+    ],
+    zones: [
+      "Digital Fabrication",
+      "Traditional Workshop",
+      "Electronics Lab",
+      "Computer Lab",
+      "Presentation Area",
+      "Material Storage",
+      "Tool Library",
+    ],
+  },
+];
+
 export function BudgetDashboard({ layout, onClose }: BudgetDashboardProps) {
   const summary = useMemo(() => calculateBudgetSummary(layout), [layout]);
   const [aiInsights, setAiInsights] = useState<BudgetAnalysis | null>(null);
   const [isLoadingInsights, setIsLoadingInsights] = useState(false);
   const [showForecast, setShowForecast] = useState(false);
+  const [showTemplates, setShowTemplates] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState<BudgetTemplate | null>(null);
 
   const categoryData = useMemo(() => {
     return Object.entries(summary.costByCategory).map(([category, cost]) => ({
@@ -192,6 +361,240 @@ export function BudgetDashboard({ layout, onClose }: BudgetDashboardProps) {
             <div className="text-xl font-semibold">{categoryData.length}</div>
           </motion.div>
         </div>
+
+        {/* Budget Templates Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18 }}
+          className="glass-card overflow-hidden"
+        >
+          <button
+            onClick={() => setShowTemplates(!showTemplates)}
+            className="w-full flex items-center justify-between p-4 hover:bg-[var(--glass-bg)] transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <LayoutTemplate className="w-5 h-5 text-[var(--neon-purple)]" />
+              <span className="font-semibold">Budget Templates</span>
+            </div>
+            {showTemplates ? (
+              <ChevronUp className="w-4 h-4" />
+            ) : (
+              <ChevronDown className="w-4 h-4" />
+            )}
+          </button>
+
+          <AnimatePresence>
+            {showTemplates && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="p-4 pt-0 space-y-3">
+                  <p className="text-xs text-[var(--muted-foreground)]">
+                    Compare your budget with recommended allocations for different space sizes
+                  </p>
+
+                  {/* Template Cards */}
+                  <div className="space-y-2">
+                    {BUDGET_TEMPLATES.map((template) => {
+                      const IconComponent = template.icon;
+                      const isSelected = selectedTemplate?.id === template.id;
+
+                      return (
+                        <button
+                          key={template.id}
+                          onClick={() => setSelectedTemplate(isSelected ? null : template)}
+                          className={`w-full text-left p-3 rounded-lg border transition-all ${
+                            isSelected
+                              ? "border-[var(--neon-purple)] bg-[var(--neon-purple)]/10"
+                              : "border-[var(--glass-border)] hover:border-[var(--neon-purple)]/50"
+                          }`}
+                        >
+                          <div className="flex items-start gap-3">
+                            <div
+                              className={`p-2 rounded-lg ${
+                                isSelected
+                                  ? "bg-[var(--neon-purple)]/20"
+                                  : "bg-[var(--glass-bg)]"
+                              }`}
+                            >
+                              <IconComponent
+                                className={`w-5 h-5 ${
+                                  isSelected
+                                    ? "text-[var(--neon-purple)]"
+                                    : "text-[var(--muted-foreground)]"
+                                }`}
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between">
+                                <div className="font-medium text-sm">
+                                  {template.nameZh}
+                                </div>
+                                <div className="text-xs text-[var(--neon-purple)]">
+                                  {formatCurrency(template.budget.recommended, summary.currency)}
+                                </div>
+                              </div>
+                              <div className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                                {template.capacity} · {template.area}
+                              </div>
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Selected Template Details */}
+                  <AnimatePresence>
+                    {selectedTemplate && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-4 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] space-y-4">
+                          {/* Budget Range */}
+                          <div>
+                            <div className="text-xs text-[var(--muted-foreground)] mb-2">
+                              Recommended Budget Range
+                            </div>
+                            <div className="flex items-center justify-between text-sm">
+                              <span>{formatCurrency(selectedTemplate.budget.min, summary.currency)}</span>
+                              <div className="flex-1 mx-3 h-2 bg-[var(--glass-bg)] rounded-full overflow-hidden">
+                                <div
+                                  className="h-full bg-gradient-to-r from-[var(--neon-purple)]/50 to-[var(--neon-purple)]"
+                                  style={{
+                                    width: `${Math.min(
+                                      100,
+                                      ((summary.totalCost - selectedTemplate.budget.min) /
+                                        (selectedTemplate.budget.max - selectedTemplate.budget.min)) *
+                                        100
+                                    )}%`,
+                                  }}
+                                />
+                              </div>
+                              <span>{formatCurrency(selectedTemplate.budget.max, summary.currency)}</span>
+                            </div>
+                            <div className="text-center mt-2">
+                              <span className="text-xs text-[var(--muted-foreground)]">
+                                Your budget:{" "}
+                              </span>
+                              <span
+                                className={`text-sm font-semibold ${
+                                  summary.totalCost < selectedTemplate.budget.min
+                                    ? "text-yellow-400"
+                                    : summary.totalCost > selectedTemplate.budget.max
+                                    ? "text-red-400"
+                                    : "text-[var(--neon-green)]"
+                                }`}
+                              >
+                                {formatCurrency(summary.totalCost, summary.currency)}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Allocation Comparison */}
+                          <div>
+                            <div className="text-xs text-[var(--muted-foreground)] mb-2">
+                              Recommended Allocation
+                            </div>
+                            <div className="space-y-2">
+                              {selectedTemplate.allocation.map((alloc) => {
+                                const actualPercentage =
+                                  summary.totalCost > 0
+                                    ? ((summary.costByCategory[alloc.category] || 0) /
+                                        summary.totalCost) *
+                                      100
+                                    : 0;
+                                const diff = actualPercentage - alloc.percentage;
+
+                                return (
+                                  <div key={alloc.category} className="space-y-1">
+                                    <div className="flex items-center justify-between text-xs">
+                                      <div className="flex items-center gap-2">
+                                        <div
+                                          className="w-2 h-2 rounded"
+                                          style={{
+                                            backgroundColor:
+                                              CATEGORY_COLORS[alloc.category] || "#6b7280",
+                                          }}
+                                        />
+                                        <span className="capitalize">{alloc.category}</span>
+                                      </div>
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-[var(--muted-foreground)]">
+                                          Target: {alloc.percentage}%
+                                        </span>
+                                        <span
+                                          className={`font-medium ${
+                                            Math.abs(diff) < 5
+                                              ? "text-[var(--neon-green)]"
+                                              : Math.abs(diff) < 10
+                                              ? "text-yellow-400"
+                                              : "text-red-400"
+                                          }`}
+                                        >
+                                          Actual: {actualPercentage.toFixed(0)}%
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div className="relative h-1.5 bg-[var(--glass-border)] rounded-full overflow-hidden">
+                                      <div
+                                        className="absolute inset-y-0 left-0 rounded-full opacity-30"
+                                        style={{
+                                          width: `${alloc.percentage}%`,
+                                          backgroundColor:
+                                            CATEGORY_COLORS[alloc.category] || "#6b7280",
+                                        }}
+                                      />
+                                      <div
+                                        className="absolute inset-y-0 left-0 rounded-full"
+                                        style={{
+                                          width: `${Math.min(100, actualPercentage)}%`,
+                                          backgroundColor:
+                                            CATEGORY_COLORS[alloc.category] || "#6b7280",
+                                        }}
+                                      />
+                                    </div>
+                                    <div className="text-xs text-[var(--muted-foreground)]">
+                                      {alloc.examples.join(", ")}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Recommended Zones */}
+                          <div>
+                            <div className="text-xs text-[var(--muted-foreground)] mb-2">
+                              Typical Zones
+                            </div>
+                            <div className="flex flex-wrap gap-1">
+                              {selectedTemplate.zones.map((zone) => (
+                                <span
+                                  key={zone}
+                                  className="px-2 py-1 text-xs rounded bg-[var(--glass-bg)] border border-[var(--glass-border)]"
+                                >
+                                  {zone}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
 
         {/* AI Insights Button */}
         {summary.items.length > 0 && !aiInsights && (
