@@ -6,7 +6,7 @@
  */
 
 import { z } from "zod";
-import { LayoutSchema, type LayoutData } from "@/lib/ai/agents/layout-agent";
+import { LayoutSchema, type LayoutData, type ZoneData } from "@/lib/ai/agents/layout-agent";
 
 // ============================================
 // Layout Metrics Schema
@@ -77,11 +77,11 @@ export function calculateLayoutMetrics(layout: LayoutData): LayoutMetrics {
   }, 0);
 
   // Calculate efficiency (capped at 1.0 for overlapping zones)
-  const efficiency = Math.min(usedArea / totalArea, 1);
+  const efficiency = totalArea > 0 ? Math.min(usedArea / totalArea, 1) : 0;
 
   // Estimate cost based on zone types (simplified estimation)
   // In a real implementation, this would use actual equipment costs
-  const zoneCostMultipliers: Record<string, number> = {
+  const zoneCostMultipliers: Record<ZoneData["type"], number> = {
     compute: 5000,
     workspace: 2000,
     meeting: 1500,
