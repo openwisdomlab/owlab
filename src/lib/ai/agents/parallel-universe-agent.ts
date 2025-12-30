@@ -96,7 +96,12 @@ ${constraints ? `约束条件：${constraints}` : ""}
     throw new Error("Failed to extract parallel universes from response");
   }
 
-  const parsed = JSON.parse(jsonMatch[0]);
+  let parsed;
+  try {
+    parsed = JSON.parse(jsonMatch[0]);
+  } catch (e) {
+    throw new Error(`Invalid JSON in AI response: ${e instanceof Error ? e.message : e}`);
+  }
   return z.array(UniverseVariantSchema).parse(parsed);
 }
 
@@ -110,6 +115,10 @@ export async function fuseUniversesWithAI(
   options: FuseUniversesOptions
 ): Promise<LayoutData> {
   const { universes, fusionStrategy, modelKey = "claude-sonnet" } = options;
+
+  if (universes.length === 0) {
+    throw new Error("At least one universe is required for fusion");
+  }
 
   const model = getTextModel(modelKey);
 
@@ -140,5 +149,11 @@ ${universes.map((u, i) => `\n方案${i + 1}：\n${JSON.stringify(u, null, 2)}`).
     throw new Error("Failed to extract fused layout from response");
   }
 
-  return JSON.parse(jsonMatch[0]);
+  let parsed;
+  try {
+    parsed = JSON.parse(jsonMatch[0]);
+  } catch (e) {
+    throw new Error(`Invalid JSON in fusion response: ${e instanceof Error ? e.message : e}`);
+  }
+  return parsed as LayoutData;
 }
