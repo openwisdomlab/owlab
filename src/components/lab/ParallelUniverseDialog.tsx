@@ -149,7 +149,7 @@ export function ParallelUniverseDialog({ onClose }: ParallelUniverseDialogProps)
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {variants.map((variant, index) => (
                   <motion.div
-                    key={index}
+                    key={variant.name}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
@@ -159,10 +159,10 @@ export function ParallelUniverseDialog({ onClose }: ParallelUniverseDialogProps)
                       <div
                         className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
                         style={{
-                          backgroundColor: `hsl(${index * 120}, 70%, 50%)`,
+                          backgroundColor: `hsl(${(index % 12) * 30}, 70%, 50%)`,
                         }}
                       >
-                        {String.fromCharCode(945 + index)}
+                        {index < 24 ? String.fromCharCode(945 + index) : (index + 1)}
                       </div>
                       <div>
                         <div className="font-medium text-sm">{variant.name}</div>
@@ -182,8 +182,8 @@ export function ParallelUniverseDialog({ onClose }: ParallelUniverseDialogProps)
                         <span className="text-[var(--muted-foreground)]">优势:</span>
                       </div>
                       <ul className="text-xs space-y-1 pl-5">
-                        {variant.pros.slice(0, 2).map((pro, i) => (
-                          <li key={i} className="text-green-400">• {pro}</li>
+                        {variant.pros.slice(0, 2).map((pro) => (
+                          <li key={pro} className="text-green-400">• {pro}</li>
                         ))}
                       </ul>
 
@@ -192,8 +192,8 @@ export function ParallelUniverseDialog({ onClose }: ParallelUniverseDialogProps)
                         <span className="text-[var(--muted-foreground)]">劣势:</span>
                       </div>
                       <ul className="text-xs space-y-1 pl-5">
-                        {variant.cons.slice(0, 2).map((con, i) => (
-                          <li key={i} className="text-red-400">• {con}</li>
+                        {variant.cons.slice(0, 2).map((con) => (
+                          <li key={con} className="text-red-400">• {con}</li>
                         ))}
                       </ul>
                     </div>
