@@ -10,6 +10,8 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { TOCItemType } from "fumadocs-core/toc";
 import type { Locale } from "@/i18n";
 import { ModuleCards } from "@/components/docs/ModuleCards";
+import { ExtendCards } from "@/components/docs/ExtendCards";
+import { BackToSection } from "@/components/docs/BackToSection";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -64,6 +66,12 @@ export default async function Page({ params }: Props) {
         <MDX components={{
           ...defaultMdxComponents,
           ModuleCards: () => <ModuleCards locale={locale} />,
+          ExtendCards: (props: { cards: Array<{ title: string; description: string; href: string; type: "extend" | "evidence" | "checklist" | "sop"; status?: "completed" | "in_progress" | "planned" }> }) => (
+            <ExtendCards {...props} locale={locale} />
+          ),
+          BackToSection: (props: { href: string; label?: string; moduleId?: string; moduleName?: string }) => (
+            <BackToSection {...props} locale={locale} />
+          ),
         }} />
       </DocsBody>
     </DocsPage>
