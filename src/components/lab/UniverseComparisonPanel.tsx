@@ -13,6 +13,7 @@ import {
 import { useMultiverseStore } from "@/stores/multiverse-store";
 import { useParallelUniverses } from "@/hooks/useParallelUniverses";
 import { formatCurrency } from "@/lib/utils/budget";
+import type { Universe } from "@/lib/schemas/multiverse";
 
 interface UniverseComparisonPanelProps {
   onClose: () => void;
@@ -25,7 +26,7 @@ export function UniverseComparisonPanel({ onClose }: UniverseComparisonPanelProp
 
   const comparedUniverses = comparisonIds
     .map((id) => getUniverse(id))
-    .filter(Boolean);
+    .filter((u): u is Universe => u !== undefined);
 
   return (
     <motion.div
@@ -53,24 +54,27 @@ export function UniverseComparisonPanel({ onClose }: UniverseComparisonPanelProp
       <div className="p-4 border-b border-[var(--glass-border)]">
         <h3 className="text-sm font-medium mb-2">选择要对比的宇宙（最多3个）</h3>
         <div className="flex flex-wrap gap-2" role="group" aria-label="宇宙选择">
-          {universes.map((universe) => (
-            <button
-              key={universe.id}
-              onClick={() =>
-                comparisonIds.includes(universe.id)
-                  ? removeFromComparison(universe.id)
-                  : addToComparison(universe.id)
-              }
-              aria-pressed={comparisonIds.includes(universe.id)}
-              className={`px-3 py-1 text-sm rounded-full transition-colors ${
-                comparisonIds.includes(universe.id)
-                  ? "bg-[var(--neon-purple)] text-white"
-                  : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-              }`}
-            >
-              {universe.name}
-            </button>
-          ))}
+          {universes.map((universe) => {
+            const isSelected = comparisonIds.includes(universe.id);
+            return (
+              <button
+                key={universe.id}
+                onClick={() =>
+                  isSelected
+                    ? removeFromComparison(universe.id)
+                    : addToComparison(universe.id)
+                }
+                aria-pressed={isSelected}
+                className={`px-3 py-1 text-sm rounded-full transition-colors ${
+                  isSelected
+                    ? "bg-[var(--neon-purple)] text-white"
+                    : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+                }`}
+              >
+                {universe.name}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -151,21 +155,21 @@ export function UniverseComparisonPanel({ onClose }: UniverseComparisonPanelProp
               disabled={isFusing}
               className="px-3 py-2 text-xs rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors disabled:opacity-50"
             >
-              取长补短
+              {isFusing ? "融合中..." : "取长补短"}
             </button>
             <button
               onClick={() => fuseSelected("compromise")}
               disabled={isFusing}
               className="px-3 py-2 text-xs rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors disabled:opacity-50"
             >
-              折中平衡
+              {isFusing ? "融合中..." : "折中平衡"}
             </button>
             <button
               onClick={() => fuseSelected("innovative")}
               disabled={isFusing}
               className="px-3 py-2 text-xs rounded-lg bg-[var(--neon-cyan)] text-[var(--background)] hover:opacity-90 transition-colors disabled:opacity-50"
             >
-              创新融合
+              {isFusing ? "融合中..." : "创新融合"}
             </button>
           </div>
         </div>
