@@ -4,12 +4,17 @@ import {
   generateParallelUniverses,
   fuseUniversesWithAI,
 } from "@/lib/ai/agents/parallel-universe-agent";
-import type { LayoutData } from "@/lib/ai/agents/layout-agent";
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { action, ...params } = body;
+
+    if (typeof action !== "string") {
+      return NextResponse.json(
+        { error: "action must be a string" },
+        { status: 400 }
+      );
+    }
 
     if (action === "generate") {
       const { currentLayout, decisionPoint, constraints, modelKey } = params;
@@ -34,9 +39,9 @@ export async function POST(request: NextRequest) {
     if (action === "fuse") {
       const { universes, fusionStrategy, modelKey } = params;
 
-      if (!universes || universes.length < 2) {
+      if (!Array.isArray(universes) || universes.length < 2) {
         return NextResponse.json(
-          { error: "Need at least 2 universes to fuse" },
+          { error: "universes must be an array with at least 2 items" },
           { status: 400 }
         );
       }
@@ -57,7 +62,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Parallel universe API error:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { error: "An unexpected error occurred" },
       { status: 500 }
     );
   }
