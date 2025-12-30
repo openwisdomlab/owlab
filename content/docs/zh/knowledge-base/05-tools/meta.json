@@ -2,5 +2,5 @@
   "title": "M05 工具与资产",
   "description": "设备管理让创造可能",
   "icon": "Wrench",
-  "pages": ["index", "---", "extend", "---", "evidence"]
+  "pages": ["index"]
 }
