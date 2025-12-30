@@ -42,6 +42,8 @@ export function useParallelUniverses(): UseParallelUniversesReturn {
       setIsGenerating(true);
       setError(null);
 
+      const controller = new AbortController();
+
       try {
         const response = await fetch("/api/ai/parallel-universes", {
           method: "POST",
@@ -52,6 +54,7 @@ export function useParallelUniverses(): UseParallelUniversesReturn {
             decisionPoint,
             constraints,
           }),
+          signal: controller.signal,
         });
 
         if (!response.ok) {
@@ -61,6 +64,9 @@ export function useParallelUniverses(): UseParallelUniversesReturn {
         const data = await response.json();
         setVariants(data.universes);
       } catch (err) {
+        if (err instanceof Error && err.name === "AbortError") {
+          return; // Request was cancelled, don't update state
+        }
         setError(err instanceof Error ? err.message : "Failed to generate");
       } finally {
         setIsGenerating(false);
@@ -79,6 +85,8 @@ export function useParallelUniverses(): UseParallelUniversesReturn {
       setIsFusing(true);
       setError(null);
 
+      const controller = new AbortController();
+
       try {
         const layouts = comparisonIds
           .map((id) => getUniverse(id)?.layout)
@@ -92,6 +100,7 @@ export function useParallelUniverses(): UseParallelUniversesReturn {
             universes: layouts,
             fusionStrategy: strategy,
           }),
+          signal: controller.signal,
         });
 
         if (!response.ok) {
@@ -101,6 +110,9 @@ export function useParallelUniverses(): UseParallelUniversesReturn {
         const data = await response.json();
         createUniverse(data.layout, `融合宇宙 (${strategy})`);
       } catch (err) {
+        if (err instanceof Error && err.name === "AbortError") {
+          return; // Request was cancelled, don't update state
+        }
         setError(err instanceof Error ? err.message : "Failed to fuse");
       } finally {
         setIsFusing(false);
