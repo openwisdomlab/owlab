@@ -8,6 +8,8 @@ import {
   calculateLayoutMetrics,
 } from "@/lib/schemas/multiverse";
 
+const MAX_COMPARISON_COUNT = 3;
+
 interface MultiverseState extends Omit<Multiverse, 'universes' | 'comparisonIds'> {
   // State - override schema constraints for store (allow empty arrays)
   universes: Universe[];
@@ -66,7 +68,7 @@ export const useMultiverseStore = create<MultiverseState>((set, get) => ({
       id,
       name,
       description: `从「${source.name}」分支`,
-      layout: JSON.parse(JSON.stringify(source.layout)), // 深拷贝
+      layout: structuredClone(source.layout),
       createdAt: new Date().toISOString(),
       parentId: sourceId,
       branchPoint,
@@ -98,7 +100,10 @@ export const useMultiverseStore = create<MultiverseState>((set, get) => ({
   },
 
   setActiveUniverse: (id) => {
-    set({ activeUniverseId: id });
+    const exists = get().universes.some((u) => u.id === id);
+    if (exists) {
+      set({ activeUniverseId: id });
+    }
   },
 
   updateUniverseLayout: (id, layout) => {
@@ -113,7 +118,7 @@ export const useMultiverseStore = create<MultiverseState>((set, get) => ({
 
   addToComparison: (id) => {
     set((state) => {
-      if (state.comparisonIds.length >= 3) return state;
+      if (state.comparisonIds.length >= MAX_COMPARISON_COUNT) return state;
       if (state.comparisonIds.includes(id)) return state;
       return { comparisonIds: [...state.comparisonIds, id] };
     });
