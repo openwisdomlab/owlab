@@ -24,43 +24,105 @@
     "hero": {
       "version": "v0.2.0-alpha · Architecture v2",
       "title": "OWL Construction & Operations Manual",
-      "description": "A modular knowledge base for Open Wisdom Lab, covering nine core modules: Philosophy, Governance, Space, Programs, Tools, Safety, People, Operations, and Assessment.",
+      "subtitle": "Open Wisdom Lab",
+      "description": "A complete guide from philosophy to practice — nine core modules, three-layer content architecture, helping you build creative open learning spaces.",
       "features": {
         "modular": "Modular Architecture",
+        "modularDesc": "9 modules, independent yet interconnected",
         "collaborative": "Collaboration Ready",
-        "verified": "Evidence Verified"
+        "collaborativeDesc": "Open source, continuous iteration",
+        "verified": "Evidence Verified",
+        "verifiedDesc": "E0-E3 four-level evidence grading"
+      },
+      "cta": {
+        "start": "Start Exploring",
+        "architecture": "View Architecture"
+      }
+    },
+    "stats": {
+      "modules": "Core Modules",
+      "subModules": "Extended Topics",
+      "references": "References",
+      "contributors": "Contributors"
+    },
+    "quickStart": {
+      "title": "Quick Start",
+      "description": "Three steps to begin your OWL journey",
+      "step1": {
+        "title": "Choose a Reading Path",
+        "description": "Select the right module combination based on your goals"
+      },
+      "step2": {
+        "title": "Read Core Content",
+        "description": "Each module's core layer provides essential knowledge"
+      },
+      "step3": {
+        "title": "Deep Dive Extended",
+        "description": "Extended layer offers advanced topics and best practices"
       }
     },
     "paths": {
       "title": "Reading Paths",
-      "description": "Choose a reading order based on your goals",
+      "description": "Choose a reading order based on your goals, each path is carefully designed",
       "new-node": {
         "title": "New Node Setup",
-        "subtitle": "Build an OWL from scratch"
+        "subtitle": "Build an OWL from scratch",
+        "description": "For teams wanting to create a new lab, covering the complete process from philosophy to operations"
       },
       "curriculum": {
         "title": "Curriculum Development",
-        "subtitle": "Design effective learning experiences"
+        "subtitle": "Design effective learning experiences",
+        "description": "Focus on instructional design, including curriculum planning, project design, and assessment methods"
       },
       "compliance": {
         "title": "Compliance Audit",
-        "subtitle": "Ensure safety and regulatory compliance"
+        "subtitle": "Ensure safety and regulatory compliance",
+        "description": "Emphasizes safety compliance, suitable for annual audits or risk assessments"
       }
     },
     "modules": {
       "title": "Knowledge Base Modules",
-      "description": "Nine core modules with three-layer content architecture (Core + Extended + Evidence)",
-      "viewAll": "View Full Knowledge Base"
+      "description": "Nine core modules covering the full lifecycle of maker spaces, each with three layers: Core (quick start), Extended (deep learning), and Evidence (academic support)",
+      "viewAll": "Enter Full Knowledge Base",
+      "expandAll": "Expand All",
+      "collapseAll": "Collapse All"
+    },
+    "architecture": {
+      "title": "Three-Layer Content Architecture",
+      "description": "Each module adopts the same three-layer structure to meet different learning depth needs",
+      "core": {
+        "title": "Core Layer",
+        "description": "Essential knowledge and key principles, quickly grasp module essentials"
+      },
+      "extend": {
+        "title": "Extended Layer",
+        "description": "Deep topics and best practices for advanced learning"
+      },
+      "evidence": {
+        "title": "Evidence Layer",
+        "description": "Research support and references, academic verification and citation sources"
+      }
     },
     "tools": {
+      "title": "Supporting Tools",
+      "description": "AI-powered design and planning tools for easier creation",
       "lab": {
         "title": "AI Space Design Tools",
-        "description": "Design and visualize lab spaces with AI assistance"
+        "description": "Design and visualize your lab space with AI assistance, intelligent configuration recommendations"
       }
+    },
+    "community": {
+      "title": "Join the Community",
+      "description": "OWL is an open source project, welcome to contribute your experience and wisdom",
+      "contribute": "Contribute",
+      "discuss": "Join Discussion",
+      "feedback": "Give Feedback"
     },
     "footer": {
       "architecture": "Architecture",
-      "collaboration": "Collaboration"
+      "collaboration": "Collaboration",
+      "changelog": "Changelog",
+      "license": "License"
     }
   },
   "docs": {
@@ -91,45 +153,90 @@
       "modules": {
         "M01": {
           "title": "Philosophy & Theory",
-          "description": "OWL's purpose and theoretical foundation"
+          "description": "OWL's purpose and theoretical foundation — constructivism, 4P theory of creative learning, design thinking, answering the 'why'"
         },
         "M02": {
           "title": "Governance & Network",
-          "description": "Organizational forms and collaboration rules"
+          "description": "Organizational forms and collaboration rules — distributed network architecture, node classification, partnership models"
         },
         "M03": {
           "title": "Space & Environment",
-          "description": "Innovation-friendly learning environments"
+          "description": "Innovation-friendly learning environments — physical space design, digital environment setup, cultural atmosphere, trinity of space"
         },
         "M04": {
           "title": "Courses & Projects",
-          "description": "Effective learning experience design"
+          "description": "Effective learning experience design — Understanding by Design (UbD), Project-Based Learning (PBL), AI integration"
         },
         "M05": {
           "title": "Tools & Assets",
-          "description": "Equipment management enabling creation"
+          "description": "Equipment management enabling creation — equipment classification, digital fabrication, open source hardware ecosystem"
         },
         "M06": {
           "title": "Safety & Ethics",
-          "description": "Safety guidelines and ethical standards"
+          "description": "Safety guidelines and ethical standards — three-layer safety architecture, risk assessment, AI ethics norms"
         },
         "M07": {
           "title": "People & Capability",
-          "description": "Cultivating those who ignite learners"
+          "description": "Cultivating those who ignite learners — role-capability matrix, E0-E3 capability levels, instructor certification"
         },
         "M08": {
           "title": "Operations Manual",
-          "description": "Smooth and natural operations"
+          "description": "Smooth and natural operations — Standard Operating Procedures (SOP), membership system, community culture"
         },
         "M09": {
           "title": "Assessment & Impact",
-          "description": "Seeing growth and proving value"
+          "description": "Seeing growth and proving value — multi-dimensional assessment, portfolio, digital literacy profile"
         }
       },
       "status": {
         "completed": "Completed",
         "in_progress": "Core Complete",
         "planned": "Planned"
+      },
+      "subModules": {
+        "count": "{count} extended topics",
+        "coreOnly": "Core content only",
+        "M01": {
+          "learning-theories": "Learning Theories Deep Dive"
+        },
+        "M02": {
+          "distributed-innovation": "Distributed Innovation Networks"
+        },
+        "M03": {
+          "physical-design": "Physical Space Design",
+          "digital-environment": "Digital Environment Setup",
+          "culture-atmosphere": "Culture & Atmosphere Building",
+          "accessibility": "Accessibility Design",
+          "innovation-friendly": "Innovation-Friendly Spaces",
+          "environmental-psychology": "Environmental Psychology Application"
+        },
+        "M04": {
+          "pbl-design": "PBL Project Design Guide"
+        },
+        "M05": {
+          "equipment-catalog": "Equipment Catalog & Selection",
+          "digital-fabrication": "Digital Fabrication Technologies",
+          "ai-tools-guide": "AI Tools Usage Guide",
+          "opensource-hardware": "Open Source Hardware Ecosystem",
+          "maintenance-guide": "Equipment Maintenance Manual"
+        },
+        "M06": {
+          "risk-assessment": "Risk Assessment Methods",
+          "safety-training": "Safety Training System",
+          "emergency-response": "Emergency Response Plan",
+          "equipment-access": "Equipment Access Management",
+          "digital-security": "Digital Security Protection",
+          "ai-ethics": "AI Ethics Guidelines",
+          "age-guidelines": "Age-Appropriate Guidelines"
+        },
+        "M08": {
+          "openday-workshop": "Open Days & Workshops",
+          "mentor-network": "Mentor Network Building",
+          "community-culture": "Community Culture Cultivation",
+          "knowledge-sharing": "Knowledge Sharing Mechanisms",
+          "cross-generational": "Cross-Generational Learning",
+          "incentive-certification": "Incentive & Certification Systems"
+        }
       }
     }
   },
