@@ -2,5 +2,5 @@
   "title": "M03 空间与环境",
   "description": "创新友好的学习环境",
   "icon": "Building2",
-  "pages": ["index", "---", "extend", "evidence"]
+  "pages": ["index"]
 }
