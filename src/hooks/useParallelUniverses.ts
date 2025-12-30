@@ -118,6 +118,7 @@ export function useParallelUniverses(): UseParallelUniversesReturn {
         zones: variant.layout.zones.map((z) => ({
           ...z,
           equipment: [],
+          requirements: [],
         })),
       };
       createUniverse(layout, variant.name);
