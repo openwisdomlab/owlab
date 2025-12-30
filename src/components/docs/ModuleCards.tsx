@@ -19,6 +19,9 @@ import {
   ChevronUp,
   Layers,
   FileText,
+  Sparkles,
+  CheckCircle2,
+  Tag,
   type LucideIcon,
 } from "lucide-react";
 
@@ -33,7 +36,6 @@ interface Module {
   path: string;
   status: "completed" | "in_progress" | "planned";
   color: string;
-  keywords: string[];
   subModules: SubModule[];
 }
 
@@ -44,7 +46,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/01-foundations",
     status: "in_progress",
     color: "var(--neon-yellow)",
-    keywords: ["建构主义", "4P理论", "使命愿景"],
     subModules: [
       { id: "learning-theories", path: "/docs/zh/knowledge-base/01-foundations/extend/learning-theories" },
     ],
@@ -55,7 +56,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/02-governance",
     status: "in_progress",
     color: "var(--neon-violet)",
-    keywords: ["分布式网络", "合作模式", "节点分类"],
     subModules: [
       { id: "distributed-innovation", path: "/docs/zh/knowledge-base/02-governance/extend/distributed-innovation" },
     ],
@@ -66,7 +66,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/03-space",
     status: "in_progress",
     color: "var(--neon-cyan)",
-    keywords: ["物理空间", "数字环境", "文化氛围"],
     subModules: [
       { id: "physical-design", path: "/docs/zh/knowledge-base/03-space/extend/physical-design" },
       { id: "digital-environment", path: "/docs/zh/knowledge-base/03-space/extend/digital-environment" },
@@ -82,7 +81,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/04-programs",
     status: "in_progress",
     color: "var(--neon-green)",
-    keywords: ["逆向设计", "PBL", "AI融入"],
     subModules: [
       { id: "pbl-design", path: "/docs/zh/knowledge-base/04-programs/extend/pbl-design" },
     ],
@@ -93,7 +91,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/05-tools",
     status: "in_progress",
     color: "var(--neon-orange)",
-    keywords: ["设备分级", "数字制造", "开源硬件"],
     subModules: [
       { id: "equipment-catalog", path: "/docs/zh/knowledge-base/05-tools/extend/equipment-catalog" },
       { id: "digital-fabrication", path: "/docs/zh/knowledge-base/05-tools/extend/digital-fabrication" },
@@ -108,7 +105,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/06-safety",
     status: "in_progress",
     color: "var(--neon-red)",
-    keywords: ["风险分级", "应急响应", "AI伦理"],
     subModules: [
       { id: "risk-assessment", path: "/docs/zh/knowledge-base/06-safety/extend/risk-assessment" },
       { id: "safety-training", path: "/docs/zh/knowledge-base/06-safety/extend/safety-training" },
@@ -125,7 +121,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/07-people",
     status: "in_progress",
     color: "var(--neon-pink)",
-    keywords: ["角色体系", "能力分级", "师资认证"],
     subModules: [],
   },
   {
@@ -134,7 +129,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/08-operations",
     status: "in_progress",
     color: "var(--neon-blue)",
-    keywords: ["SOP标准", "会员制度", "社区文化"],
     subModules: [
       { id: "openday-workshop", path: "/docs/zh/knowledge-base/08-operations/extend/openday-workshop" },
       { id: "mentor-network", path: "/docs/zh/knowledge-base/08-operations/extend/mentor-network" },
@@ -150,7 +144,6 @@ const modules: Module[] = [
     path: "/docs/zh/knowledge-base/09-assessment",
     status: "in_progress",
     color: "var(--neon-teal)",
-    keywords: ["多元评价", "档案袋", "数字画像"],
     subModules: [],
   },
 ];
@@ -203,9 +196,29 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
     });
   };
 
+  // 获取模块的 highlights 数组
+  const getHighlights = (moduleId: string): string[] => {
+    try {
+      const raw = t.raw(`modules.${moduleId}.highlights`);
+      return Array.isArray(raw) ? raw : [];
+    } catch {
+      return [];
+    }
+  };
+
+  // 获取模块的 tags 数组
+  const getTags = (moduleId: string): string[] => {
+    try {
+      const raw = t.raw(`modules.${moduleId}.tags`);
+      return Array.isArray(raw) ? raw : [];
+    } catch {
+      return [];
+    }
+  };
+
   return (
     <motion.div
-      className={compact ? "grid md:grid-cols-2 lg:grid-cols-3 gap-3" : "grid md:grid-cols-2 lg:grid-cols-3 gap-5"}
+      className={compact ? "grid md:grid-cols-2 lg:grid-cols-3 gap-3" : "grid md:grid-cols-2 lg:grid-cols-3 gap-6"}
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -213,6 +226,16 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
       {modules.map((module) => {
         const isExpanded = expandedModules.has(module.id);
         const hasSubModules = module.subModules.length > 0;
+        const highlights = getHighlights(module.id);
+        const tags = getTags(module.id);
+
+        // 检查是否有 subtitle
+        let subtitle = "";
+        try {
+          subtitle = t(`modules.${module.id}.subtitle`);
+        } catch {
+          subtitle = "";
+        }
 
         return (
           <motion.div key={module.id} variants={itemVariants}>
@@ -240,14 +263,14 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
                     className={`
                       flex-shrink-0 rounded-xl flex items-center justify-center
                       group-hover:scale-110 transition-transform duration-300
-                      ${compact ? "w-10 h-10" : "w-12 h-12"}
+                      ${compact ? "w-10 h-10" : "w-14 h-14"}
                     `}
                     style={{
                       backgroundColor: `color-mix(in srgb, ${module.color} 15%, transparent)`,
                     }}
                   >
                     <module.icon
-                      className={compact ? "w-5 h-5" : "w-6 h-6"}
+                      className={compact ? "w-5 h-5" : "w-7 h-7"}
                       style={{ color: module.color }}
                     />
                   </div>
@@ -267,36 +290,18 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
 
                     {/* 标题 */}
                     <h3 className={`
-                      font-semibold mb-1 group-hover:text-[var(--foreground)] transition-colors
-                      ${compact ? "text-sm" : "text-base"}
+                      font-bold mb-0.5 group-hover:text-[var(--foreground)] transition-colors
+                      ${compact ? "text-sm" : "text-lg"}
                     `}>
                       {t(`modules.${module.id}.title`)}
                     </h3>
 
-                    {/* 描述 */}
-                    {!compact && (
-                      <p className="text-sm text-[var(--muted-foreground)] line-clamp-2 mb-2">
-                        {t(`modules.${module.id}.description`)}
+                    {/* 副标题 - 比喻性描述 */}
+                    {!compact && subtitle && (
+                      <p className="text-sm text-[var(--muted-foreground)] flex items-center gap-1.5 mb-2">
+                        <Sparkles className="w-3.5 h-3.5" style={{ color: module.color }} />
+                        <span className="italic">{subtitle}</span>
                       </p>
-                    )}
-
-                    {/* 关键词标签 */}
-                    {!compact && (
-                      <div className="flex flex-wrap gap-1.5 mt-2">
-                        {module.keywords.map((keyword) => (
-                          <span
-                            key={keyword}
-                            className="px-2 py-0.5 text-[10px] rounded-full"
-                            style={{
-                              backgroundColor: `color-mix(in srgb, ${module.color} 10%, transparent)`,
-                              color: module.color,
-                              border: `1px solid color-mix(in srgb, ${module.color} 20%, transparent)`,
-                            }}
-                          >
-                            {keyword}
-                          </span>
-                        ))}
-                      </div>
                     )}
                   </div>
 
@@ -310,7 +315,72 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
                     `}
                   />
                 </div>
+
+                {/* 描述 */}
+                {!compact && (
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3 mb-4">
+                    {t(`modules.${module.id}.description`)}
+                  </p>
+                )}
               </Link>
+
+              {/* 亮点列表 - 2-3个要点 */}
+              {!compact && highlights.length > 0 && (
+                <div className="mt-3 pt-3 border-t border-[var(--glass-border)]">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <CheckCircle2 className="w-3.5 h-3.5" style={{ color: module.color }} />
+                    <span className="text-[10px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider">
+                      核心要点
+                    </span>
+                  </div>
+                  <ul className="space-y-2">
+                    {highlights.map((highlight, idx) => (
+                      <li
+                        key={idx}
+                        className="text-xs text-[var(--muted-foreground)] leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.5em] before:w-1.5 before:h-1.5 before:rounded-full"
+                        style={{
+                          // @ts-expect-error CSS custom property for before pseudo-element
+                          '--tw-before-bg': `color-mix(in srgb, ${module.color} 60%, transparent)`,
+                        }}
+                      >
+                        <span
+                          className="absolute left-0 top-[0.5em] w-1.5 h-1.5 rounded-full"
+                          style={{ backgroundColor: `color-mix(in srgb, ${module.color} 60%, transparent)` }}
+                        />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* 可点击标签 */}
+              {!compact && tags.length > 0 && (
+                <div className="mt-4 pt-3 border-t border-[var(--glass-border)]">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <Tag className="w-3.5 h-3.5" style={{ color: module.color }} />
+                    <span className="text-[10px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider">
+                      相关主题
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {tags.map((tag) => (
+                      <Link
+                        key={tag}
+                        href={`/${locale}${module.path}`}
+                        className="px-2.5 py-1 text-[11px] rounded-full transition-all hover:scale-105"
+                        style={{
+                          backgroundColor: `color-mix(in srgb, ${module.color} 12%, transparent)`,
+                          color: module.color,
+                          border: `1px solid color-mix(in srgb, ${module.color} 25%, transparent)`,
+                        }}
+                      >
+                        {tag}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* 子模块展开区域 */}
               {showSubModules && hasSubModules && !compact && (
@@ -318,7 +388,7 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
                   {/* 展开按钮 */}
                   <button
                     onClick={(e) => toggleExpand(module.id, e)}
-                    className="w-full mt-3 pt-3 border-t border-[var(--glass-border)] flex items-center justify-between text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                    className="w-full mt-4 pt-3 border-t border-[var(--glass-border)] flex items-center justify-between text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
                   >
                     <span className="flex items-center gap-1.5">
                       <Layers className="w-3.5 h-3.5" />
@@ -364,7 +434,7 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
 
               {/* 无子模块时的占位提示 */}
               {showSubModules && !hasSubModules && !compact && (
-                <div className="mt-3 pt-3 border-t border-[var(--glass-border)]">
+                <div className="mt-4 pt-3 border-t border-[var(--glass-border)]">
                   <span className="text-xs text-[var(--muted-foreground)] opacity-60 flex items-center gap-1.5">
                     <FileText className="w-3.5 h-3.5" />
                     {t("subModules.coreOnly")}
