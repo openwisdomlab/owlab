@@ -407,6 +407,159 @@ textarea:focus-visible,
   }
 }
 
+/* ============================================
+   LIGHT MODE ENHANCEMENTS
+   Fix visibility issues for document blocks
+   ============================================ */
+
+/* Fumadocs Callouts & Cards in Light Mode */
+html.light {
+  /* Increase contrast for card backgrounds */
+  --fd-card: #ffffff;
+  --fd-card-foreground: #0f172a;
+
+  /* Callout/Admonition backgrounds - more visible */
+  --fd-callout-note-bg: rgba(37, 99, 235, 0.08);
+  --fd-callout-warning-bg: rgba(234, 88, 12, 0.08);
+  --fd-callout-tip-bg: rgba(5, 150, 105, 0.08);
+  --fd-callout-important-bg: rgba(124, 58, 237, 0.08);
+  --fd-callout-caution-bg: rgba(220, 38, 38, 0.08);
+}
+
+/* Light mode: Enhanced glass card visibility */
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode: Fumadocs prose blocks */
+html.light [data-rehype-pretty-code-figure],
+html.light .prose pre,
+html.light pre {
+  background: #f8fafc !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode: Blockquotes with better contrast */
+html.light blockquote,
+html.light .prose blockquote {
+  background: rgba(248, 250, 252, 0.9);
+  border-left-color: var(--primary);
+  border-left-width: 3px;
+  color: #334155;
+}
+
+/* Light mode: Tables with better visibility */
+html.light table,
+html.light .prose table {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+html.light th,
+html.light .prose th {
+  background: rgba(241, 245, 249, 0.9);
+  color: #0f172a;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+html.light td,
+html.light .prose td {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode: Fumadocs callouts/admonitions */
+html.light [data-callout],
+html.light .callout,
+html.light .admonition {
+  background: rgba(248, 250, 252, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light [data-callout="note"],
+html.light .callout-note {
+  background: rgba(37, 99, 235, 0.06) !important;
+  border-left: 4px solid #2563eb !important;
+}
+
+html.light [data-callout="warning"],
+html.light .callout-warning {
+  background: rgba(234, 88, 12, 0.06) !important;
+  border-left: 4px solid #ea580c !important;
+}
+
+html.light [data-callout="tip"],
+html.light .callout-tip {
+  background: rgba(5, 150, 105, 0.06) !important;
+  border-left: 4px solid #059669 !important;
+}
+
+html.light [data-callout="important"],
+html.light .callout-important {
+  background: rgba(124, 58, 237, 0.06) !important;
+  border-left: 4px solid #7c3aed !important;
+}
+
+html.light [data-callout="caution"],
+html.light [data-callout="danger"],
+html.light .callout-caution {
+  background: rgba(220, 38, 38, 0.06) !important;
+  border-left: 4px solid #dc2626 !important;
+}
+
+/* Light mode: Inline code */
+html.light code:not(pre code),
+html.light .prose code:not(pre code) {
+  background: rgba(241, 245, 249, 0.9);
+  color: #0f172a;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode: Cards and aside blocks */
+html.light .fd-card,
+html.light aside,
+html.light .prose aside {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Light mode: Details/Summary (collapsible sections) */
+html.light details,
+html.light .prose details {
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html.light details summary {
+  background: rgba(241, 245, 249, 0.9);
+  color: #0f172a;
+}
+
+/* Light mode: Links with better contrast */
+html.light a:not(.neon-button),
+html.light .prose a {
+  color: #0891b2;
+}
+
+html.light a:hover:not(.neon-button),
+html.light .prose a:hover {
+  color: #0e7490;
+}
+
+/* Light mode: Fumadocs sidebar */
+html.light .fd-sidebar,
+html.light [data-fd-sidebar] {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode: Fumadocs TOC */
+html.light .fd-toc,
+html.light [data-fd-toc] {
+  background: rgba(255, 255, 255, 0.9);
+}
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
