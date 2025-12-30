@@ -1,7 +1,7 @@
 // src/components/lab/UniverseSelector.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe,
@@ -30,6 +30,16 @@ export function UniverseSelector({ onBranchRequest }: UniverseSelectorProps) {
 
   const activeUniverse = getActiveUniverse();
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isOpen]);
+
   if (universes.length === 0) {
     return null;
   }
@@ -38,6 +48,8 @@ export function UniverseSelector({ onBranchRequest }: UniverseSelectorProps) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
         className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
       >
         <Globe className="w-4 h-4 text-[var(--neon-purple)]" />
@@ -61,6 +73,8 @@ export function UniverseSelector({ onBranchRequest }: UniverseSelectorProps) {
               {universes.map((universe) => (
                 <div
                   key={universe.id}
+                  role="option"
+                  aria-selected={universe.id === activeUniverseId}
                   className={`flex items-center justify-between p-2 rounded-lg cursor-pointer transition-colors ${
                     universe.id === activeUniverseId
                       ? "bg-[var(--neon-purple)]/20 border border-[var(--neon-purple)]"
@@ -92,6 +106,7 @@ export function UniverseSelector({ onBranchRequest }: UniverseSelectorProps) {
                         e.stopPropagation();
                         deleteUniverse(universe.id);
                       }}
+                      aria-label={`删除宇宙: ${universe.name}`}
                       className="p-1 rounded hover:bg-red-500/20 text-red-400 transition-colors"
                     >
                       <Trash2 className="w-3 h-3" />
