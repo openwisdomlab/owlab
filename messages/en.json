@@ -153,39 +153,102 @@
       "modules": {
         "M01": {
           "title": "Philosophy & Theory",
-          "description": "OWL's purpose and theoretical foundation — constructivism, 4P theory of creative learning, design thinking, answering the 'why'"
+          "subtitle": "Planting the Seeds of Ideas",
+          "description": "Why build a maker space? Learning science provides the answer. From Dewey's 'learning by doing' to Seymour Papert's constructivism, from MIT Media Lab's 4P theory to IDEO's design thinking — these foundational theories converge on one insight: meaningful learning happens through authentic creation.",
+          "highlights": [
+            "Constructivist Learning: Knowledge is actively constructed through hands-on practice, not passively received",
+            "4P Framework: Projects, Passion, Peers, Play — the four pillars of creative learning",
+            "Design Thinking Cycle: Empathize → Define → Ideate → Prototype → Test — cultivating real-world problem solvers"
+          ],
+          "tags": ["Constructivism", "4P Theory", "Design Thinking", "Learning by Doing", "Creative Learning"]
         },
         "M02": {
           "title": "Governance & Network",
-          "description": "Organizational forms and collaboration rules — distributed network architecture, node classification, partnership models"
+          "subtitle": "Weaving the Innovation Ecosystem",
+          "description": "A maker space is not an island but a node in an innovation ecosystem. Distributed governance breaks traditional hierarchies, enabling agile decisions and efficient collaboration. The Hub-Spoke-Satellite architecture creates network effects through resource sharing and knowledge flow.",
+          "highlights": [
+            "Three-tier Node Architecture: Hub outputs standards, Spoke enables regional reach, Satellite extends flexibility",
+            "Agile Governance: Flat decision-making, transparent operations, community participation — everyone is a co-builder",
+            "Alliance Collaboration: Cross-institutional, cross-regional, cross-industry resource integration amplifying innovation impact"
+          ],
+          "tags": ["Distributed Network", "Node Classification", "Agile Governance", "Resource Sharing", "Alliance Collaboration"]
         },
         "M03": {
           "title": "Space & Environment",
-          "description": "Innovation-friendly learning environments — physical space design, digital environment setup, cultural atmosphere, trinity of space"
+          "subtitle": "Space as the Third Teacher",
+          "description": "Reggio Emilia says 'space is the third teacher.' Physical space, digital environment, and cultural atmosphere form a trinity that shapes learning experiences. A great maker space isn't just about equipment — it sparks curiosity, lowers barriers to experimentation, and enables serendipitous connections.",
+          "highlights": [
+            "Zoning Principles: Quiet thinking → Collaborative discussion → Hands-on making → Showcase sharing — a progressive spatial sequence",
+            "Digital Infrastructure: Network topology, cloud collaboration, version control, knowledge management — bridging online and offline",
+            "Visible Culture: Work walls, failure museums, progress boards — making learning visible and growth traceable"
+          ],
+          "tags": ["Space Design", "Zone Layout", "Digital Environment", "Cultural Atmosphere", "Accessibility"]
         },
         "M04": {
           "title": "Courses & Projects",
-          "description": "Effective learning experience design — Understanding by Design (UbD), Project-Based Learning (PBL), AI integration"
+          "subtitle": "Where Learning Truly Happens",
+          "description": "Curriculum is not a knowledge checklist but a carefully designed learning journey. Use Understanding by Design (UbD) to work backward from outcomes; apply Project-Based Learning (PBL) with real problems driving deep inquiry; integrate AI tools as learning accelerators rather than replacements.",
+          "highlights": [
+            "Backward Design: Identify outcomes → Determine evidence → Design experiences — goal-driven curriculum development",
+            "PBL Elements: Driving question → Sustained inquiry → Authentic product → Public showcase — learning through doing",
+            "AI-Enhanced Teaching: Generative AI for idea expansion, intelligent tutoring for personalization, data-driven learning analytics"
+          ],
+          "tags": ["Backward Design", "Project-Based Learning", "AI Teaching", "Driving Questions", "Authentic Products"]
         },
         "M05": {
           "title": "Tools & Assets",
-          "description": "Equipment management enabling creation — equipment classification, digital fabrication, open source hardware ecosystem"
+          "subtitle": "Bridging Ideas to Reality",
+          "description": "Tools are the soul of a maker space — from entry-level hand tools to professional CNC equipment, from open-source hardware to digital fabrication. A tiered management system ensures safety and control, lifecycle management maximizes asset value, and open ecosystems expand possibilities.",
+          "highlights": [
+            "Equipment Tiers: L0 Free access → L1 Basic training → L2 Certified operation → L3 Expert supervision — progressive access control",
+            "Digital Fabrication Pipeline: 3D modeling → Slicing → Material selection → Manufacturing → Post-processing — design to reality",
+            "Open Hardware Ecosystem: Arduino, Raspberry Pi, ESP32 platforms with sensors, actuators, and communication modules"
+          ],
+          "tags": ["Equipment Tiers", "Digital Fabrication", "Open Hardware", "Asset Management", "Maintenance"]
         },
         "M06": {
           "title": "Safety & Ethics",
-          "description": "Safety guidelines and ethical standards — three-layer safety architecture, risk assessment, AI ethics norms"
+          "subtitle": "Guardrails That Set You Free",
+          "description": "Safety isn't restriction — it's the foundation for creative freedom. A three-layer architecture covers physical, digital, and ethical dimensions; risk-graded assessment enables targeted management; AI ethics guidelines set boundaries for emerging technologies. With guardrails, true exploration becomes possible.",
+          "highlights": [
+            "Three-Layer Safety: Physical (equipment, materials, environment) → Digital (data, privacy, network) → Ethical (AI usage norms)",
+            "Risk Matrix: Likelihood × Severity assessment, Red/Orange/Yellow/Green alerts, precision resource allocation",
+            "AI Ethics Framework: Transparency, explainability, fairness, privacy protection — responsible technology guidelines"
+          ],
+          "tags": ["Risk Assessment", "Safety Training", "Emergency Response", "AI Ethics", "Age Guidelines"]
         },
         "M07": {
           "title": "People & Capability",
-          "description": "Cultivating those who ignite learners — role-capability matrix, E0-E3 capability levels, instructor certification"
+          "subtitle": "Nurturing Those Who Ignite Others",
+          "description": "Maker mentors are not knowledge transporters but learning facilitators and creativity catalysts. E0-E3 capability levels map the journey from novice to expert, role matrices define responsibilities for mentors, technicians, and volunteers, and certification ensures professionalism and sustainability.",
+          "highlights": [
+            "Capability Tiers: E0 Observe → E1 Assist → E2 Independent → E3 Mentor — a clear growth ladder",
+            "Role-Capability Matrix: Technical × Pedagogical × Community skills — multi-dimensional competency model",
+            "Certification Pathway: Beginner → Intermediate → Advanced → Expert — continuous learning and professional growth"
+          ],
+          "tags": ["Capability Tiers", "Role Matrix", "Mentor Certification", "Technical Training", "Community Facilitation"]
         },
         "M08": {
           "title": "Operations Manual",
-          "description": "Smooth and natural operations — Standard Operating Procedures (SOP), membership system, community culture"
+          "subtitle": "Making Excellence Replicable",
+          "description": "Great operations don't rely on inspiration but on replicable systems. Standard Operating Procedures (SOPs) ensure service consistency; membership systems drive sustained engagement; community culture cultivates belonging and creativity. From open days to workshops, mentor networks to knowledge sharing — every process is documented.",
+          "highlights": [
+            "SOP Standards: Open day reception → Equipment usage → Project mentoring → Safety checks — operational guides for every scenario",
+            "Member Growth System: Newcomer → Learner → Member → Core → Mentor — progression with matched privileges and responsibilities",
+            "Culture Pillars: Openness, sharing, embracing failure, respectful collaboration — culture outlasts rules"
+          ],
+          "tags": ["Standard Procedures", "Membership System", "Community Culture", "Open Days", "Mentor Network"]
         },
         "M09": {
           "title": "Assessment & Impact",
-          "description": "Seeing growth and proving value — multi-dimensional assessment, portfolio, digital literacy profile"
+          "subtitle": "Making Growth Visible",
+          "description": "Traditional assessment focuses on outcomes; maker education values process. Multi-dimensional assessment captures creativity, collaboration, and resilience — qualities hard to quantify. Growth portfolios document learning journeys; digital literacy profiles make development visible, traceable, and shareable.",
+          "highlights": [
+            "Multi-Dimensional Assessment: Technical skills × Creative thinking × Collaboration × Reflection — holistic profiling beyond scores",
+            "Growth Portfolios: Project artifacts, process documentation, reflection journals, peer reviews — complete learning trails",
+            "Digital Literacy Profiles: Knowledge graphs, capability radars, growth curves, milestone badges — data-driven visualization"
+          ],
+          "tags": ["Multi-Dimensional Assessment", "Growth Portfolio", "Digital Profile", "Process Evaluation", "Capability Certification"]
         }
       },
       "status": {
