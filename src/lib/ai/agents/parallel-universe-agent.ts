@@ -4,7 +4,7 @@ import { getTextModel } from "../providers";
 import { z } from "zod";
 import type { LayoutData } from "./layout-agent";
 
-const PARALLEL_UNIVERSE_SYSTEM_PROMPT = `你是一个空间设计专家，擅长探索设计的多种可能性。
+export const PARALLEL_UNIVERSE_SYSTEM_PROMPT = `你是一个空间设计专家，擅长探索设计的多种可能性。
 
 当用户提供一个设计决策点时，你需要生成2-3个完全不同的设计方向，每个方向都有其独特的优势和权衡。
 
@@ -16,7 +16,7 @@ const PARALLEL_UNIVERSE_SYSTEM_PROMPT = `你是一个空间设计专家，擅长
 
 输出格式为 JSON 数组。`;
 
-const UniverseVariantSchema = z.object({
+export const UniverseVariantSchema = z.object({
   name: z.string(),
   theme: z.string(),
   description: z.string(),
