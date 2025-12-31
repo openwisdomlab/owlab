@@ -31,12 +31,13 @@ export function Header({ locale }: HeaderProps) {
         {/* Logo */}
         <Link
           href={`/${locale}`}
-          className="flex items-center gap-2 font-bold text-lg"
+          className="flex items-center gap-2"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-violet)] flex items-center justify-center">
-            <span className="text-sm font-bold text-[var(--background)]">O</span>
-          </div>
-          <span className="hidden sm:inline gradient-text">OWL</span>
+          <img
+            src="/owl-logo.svg"
+            alt="Open Wisdom Lab"
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
