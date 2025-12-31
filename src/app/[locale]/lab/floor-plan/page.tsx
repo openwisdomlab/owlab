@@ -22,6 +22,7 @@ import { MeasurementToolbar } from "@/components/lab/MeasurementToolbar";
 import { MeasurementOverlay } from "@/components/lab/MeasurementOverlay";
 import { ParallelUniverseDialog } from "@/components/lab/ParallelUniverseDialog";
 import { EmotionDesignDialog } from "@/components/lab/EmotionDesignDialog";
+import { QuickStatsPanel } from "@/components/lab/QuickStatsPanel";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
@@ -94,6 +95,7 @@ export default function FloorPlanPageEnhanced() {
   const [showMeasurement, setShowMeasurement] = useState(false);
   const [showParallelUniverse, setShowParallelUniverse] = useState(false);
   const [showEmotionDesign, setShowEmotionDesign] = useState(false);
+  const [showQuickStats, setShowQuickStats] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
 
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
@@ -327,6 +329,11 @@ export default function FloorPlanPageEnhanced() {
           e.preventDefault();
           setShowEmotionDesign(true);
           break;
+        case "q":
+        case "Q":
+          e.preventDefault();
+          setShowQuickStats((prev) => !prev);
+          break;
         case "Delete":
         case "Backspace":
           if (selectedZone) {
@@ -469,6 +476,16 @@ export default function FloorPlanPageEnhanced() {
               </span>
             </div>
           )}
+
+          {/* Quick Stats Panel */}
+          <AnimatePresence>
+            {showQuickStats && (
+              <QuickStatsPanel
+                layout={layout}
+                onClose={() => setShowQuickStats(false)}
+              />
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Side Panels */}
