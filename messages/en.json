@@ -187,13 +187,13 @@
         "M04": {
           "title": "Courses & Projects",
           "subtitle": "Where Learning Truly Happens",
-          "description": "Curriculum is not a knowledge checklist but a carefully designed learning journey. Use Understanding by Design (UbD) to work backward from outcomes; apply Project-Based Learning (PBL) with real problems driving deep inquiry; integrate AI tools as learning accelerators rather than replacements.",
+          "description": "Curriculum is not a knowledge checklist but a carefully designed learning journey. Use Understanding by Design (UbD) to work backward from outcomes; apply Inquiry-Based Learning with real problems driving deep inquiry; integrate AI tools as learning accelerators rather than replacements.",
           "highlights": [
             "Backward Design: Identify outcomes → Determine evidence → Design experiences — goal-driven curriculum development",
-            "PBL Elements: Driving question → Sustained inquiry → Authentic product → Public showcase — learning through doing",
+            "Inquiry-Based Learning: Driving question → Sustained inquiry → Authentic product → Public showcase — learning through doing",
             "AI-Enhanced Teaching: Generative AI for idea expansion, intelligent tutoring for personalization, data-driven learning analytics"
           ],
-          "tags": ["Backward Design", "Project-Based Learning", "AI Teaching", "Driving Questions", "Authentic Products"]
+          "tags": ["Backward Design", "Inquiry-Based Learning", "AI Teaching", "Driving Questions", "Authentic Products"]
         },
         "M05": {
           "title": "Tools & Assets",
@@ -274,7 +274,7 @@
           "environmental-psychology": "Environmental Psychology Application"
         },
         "M04": {
-          "pbl-design": "PBL Project Design Guide"
+          "pbl-design": "Inquiry-Based Learning Guide"
         },
         "M05": {
           "equipment-catalog": "Equipment Catalog & Selection",
