@@ -172,7 +172,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href={`/${locale}/docs/zh/knowledge-base`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] text-white font-medium hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] text-white font-medium hover:opacity-90 transition-opacity shadow-lg"
               >
                 <BookOpen className="w-4 h-4" />
                 {t("hero.cta.start")}
@@ -473,7 +473,7 @@ export default function HomePage() {
               <img
                 src="/logo.png"
                 alt="Open Wisdom Lab"
-                className="h-8 w-auto opacity-80"
+                className="h-10 w-auto opacity-80"
               />
               <p className="text-sm text-[var(--muted-foreground)]">
                 © 2025 Open Wisdom Lab
