@@ -103,6 +103,31 @@
         "description": "研究支撑和参考文献，学术验证和引用来源"
       }
     },
+    "threeLayerNav": {
+      "title": "知识体系导航",
+      "subtitle": "三层架构，相互连接",
+      "description": "理念层提供思想基础，行动层提供实践工具，主文档提供协作规范",
+      "layers": {
+        "philosophy": {
+          "title": "理念层",
+          "badge": "Philosophy",
+          "description": "4个前沿理念模块，追踪研究进展",
+          "link": "探索理念"
+        },
+        "action": {
+          "title": "行动层",
+          "badge": "Action",
+          "description": "9大核心模块 + AI 工具链",
+          "link": "进入知识库"
+        },
+        "docs": {
+          "title": "主文档",
+          "badge": "Docs",
+          "description": "架构设计、协作机制、更新日志",
+          "link": "查看文档"
+        }
+      }
+    },
     "livingModules": {
       "title": "前沿理念模块",
       "subtitle": "AI 持续追踪的活文档系统",
@@ -142,6 +167,38 @@
         }
       },
       "viewAll": "探索完整活模块系统"
+    },
+    "actionTools": {
+      "title": "行动层工具",
+      "subtitle": "AI 赋能的实践工具",
+      "description": "从理念到落地的智能桥梁，让创建和管理创客空间更加高效",
+      "viewAll": "查看所有工具",
+      "tools": {
+        "floorPlan": {
+          "title": "AI 实验室布局生成器",
+          "description": "智能平面图设计、3D 可视化、Allen 曲线分析，一键生成专业布局方案"
+        },
+        "wizard": {
+          "title": "智能规划向导",
+          "description": "输入面积、预算、目标定位，AI 自动生成个性化建设方案"
+        },
+        "equipmentGuide": {
+          "title": "设备选型向导",
+          "description": "基于 Lite/Pro/Ultra 分级体系，智能推荐适合你的设备配置清单"
+        },
+        "aiToolsGuide": {
+          "title": "AI 工具链指南",
+          "description": "生成式 AI、代码助手、创意工具全覆盖，教育场景应用最佳实践"
+        },
+        "costCalculator": {
+          "title": "成本计算器",
+          "description": "设备、场地、人员全周期预算，30-500m² 不同规模一键测算"
+        },
+        "hardwareSelector": {
+          "title": "开源硬件选型",
+          "description": "Arduino、树莓派、ESP32 平台对比，国产品牌推荐，找到最适合的硬件"
+        }
+      }
     },
     "tools": {
       "title": "智能创造力工坊",
