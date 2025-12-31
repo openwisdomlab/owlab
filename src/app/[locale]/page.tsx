@@ -188,70 +188,7 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* 核心特性 - 更生动的展示 */}
-          <motion.div
-            variants={itemVariants}
-            className="grid md:grid-cols-3 gap-4 mb-8"
-          >
-            {[
-              {
-                icon: FileText,
-                label: t("hero.features.modular"),
-                desc: t("hero.features.modularDesc"),
-                color: "var(--neon-cyan)",
-              },
-              {
-                icon: Users,
-                label: t("hero.features.collaborative"),
-                desc: t("hero.features.collaborativeDesc"),
-                color: "var(--neon-violet)",
-              },
-              {
-                icon: Sparkles,
-                label: t("hero.features.verified"),
-                desc: t("hero.features.verifiedDesc"),
-                color: "var(--neon-green)",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="group flex flex-col items-center gap-3 p-5 rounded-xl glass-card hover:border-[var(--glass-border)] transition-all"
-                whileHover={{ y: -5, scale: 1.02 }}
-                variants={floatVariants}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
-                  style={{ backgroundColor: `color-mix(in srgb, ${item.color} 15%, transparent)` }}
-                >
-                  <item.icon className="w-6 h-6" style={{ color: item.color }} />
-                </div>
-                <span className="font-medium text-center">{item.label}</span>
-                <span className="text-xs text-[var(--muted-foreground)] text-center">{item.desc}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* 统计数据 */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-8 pt-8 border-t border-[var(--glass-border)]"
-          >
-            {[
-              { value: "9", label: t("stats.modules"), color: "var(--neon-cyan)" },
-              { value: "25+", label: t("stats.subModules"), color: "var(--neon-violet)" },
-              { value: "100+", label: t("stats.references"), color: "var(--neon-green)" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div
-                  className="text-3xl font-bold font-mono"
-                  style={{ color: stat.color }}
-                >
-                  {stat.value}
-                </div>
-                <div className="text-xs text-[var(--muted-foreground)]">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
+          {/* 核心特性和统计数据已隐藏，直接切入正题 */}
         </motion.div>
       </section>
 
