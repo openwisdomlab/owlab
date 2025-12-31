@@ -23,6 +23,7 @@ import {
   Box,
   Keyboard,
   X,
+  Ruler,
 } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { FloorPlanCanvas } from "@/components/lab/FloorPlanCanvas";
@@ -40,7 +41,10 @@ import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
 import { useHistory } from "@/hooks/useHistory";
 import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
+import { useMeasurementTools } from "@/hooks/useMeasurementTools";
 import { COLOR_SCHEMES, ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
+import { MeasurementToolbar } from "@/components/lab/MeasurementToolbar";
+import { MeasurementOverlay } from "@/components/lab/MeasurementOverlay";
 
 const defaultLayout: LayoutData = {
   name: "New AI Lab",
@@ -100,6 +104,7 @@ export default function FloorPlanPageEnhanced() {
   const [showSafety, setShowSafety] = useState(false);
   const [show3DPreview, setShow3DPreview] = useState(false);
   const [showShortcuts, setShowShortcuts] = useState(false);
+  const [showMeasurement, setShowMeasurement] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
 
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
@@ -108,6 +113,13 @@ export default function FloorPlanPageEnhanced() {
   const [gridSnap, setGridSnap] = useState(true);
   const [colorScheme, setColorScheme] = useState<ColorScheme>("neon");
   const [clipboard, setClipboard] = useState<ZoneData | null>(null);
+
+  // Measurement tools - for measuring distances, areas, and angles on the canvas
+  const GRID_SIZE = 40; // matches FloorPlanCanvas GRID_SIZE
+  const measurement = useMeasurementTools(
+    GRID_SIZE,
+    layout.dimensions.unit === "ft" ? "ft" : "m"
+  );
 
   // Zone operations
   const handleZoneUpdate = useCallback(
@@ -269,11 +281,20 @@ export default function FloorPlanPageEnhanced() {
       } else if (e.key === "g" || e.key === "G") {
         e.preventDefault();
         setShowGrid((prev) => !prev);
+      } else if (e.key === "m" || e.key === "M") {
+        e.preventDefault();
+        setShowMeasurement((prev) => !prev);
+        if (showMeasurement) {
+          measurement.cancelMeasurement();
+        }
       } else if (e.key === "Escape") {
         setShowShortcuts(false);
+        if (measurement.isActive) {
+          measurement.cancelMeasurement();
+        }
       }
     },
-    []
+    [showMeasurement, measurement]
   );
 
   // Register the global keyboard handler
@@ -457,6 +478,23 @@ export default function FloorPlanPageEnhanced() {
           <div className="h-6 w-px bg-[var(--glass-border)]" />
 
           <button
+            onClick={() => {
+              setShowMeasurement(!showMeasurement);
+              if (showMeasurement) {
+                measurement.cancelMeasurement();
+              }
+            }}
+            className={`p-2 rounded-lg transition-colors ${
+              showMeasurement
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Measurement Tools (M)"
+          >
+            <Ruler className="w-4 h-4" />
+          </button>
+
+          <button
             onClick={() => setShowShortcuts(true)}
             className="p-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
             title="Keyboard Shortcuts (?)"
@@ -500,6 +538,44 @@ export default function FloorPlanPageEnhanced() {
             onAddZone={handleAddZone}
             onDeleteZone={handleDeleteZone}
           />
+
+          {/* Measurement Toolbar - shown when measurement mode is active */}
+          {showMeasurement && (
+            <MeasurementToolbar
+              mode={measurement.mode}
+              onModeChange={measurement.startMeasurement}
+              helpText={measurement.getHelpText()}
+              history={measurement.history}
+              onClearHistory={measurement.clearHistory}
+              onRemoveMeasurement={measurement.removeMeasurement}
+            />
+          )}
+
+          {/* Measurement Click Overlay - captures clicks when in measurement mode */}
+          {showMeasurement && measurement.mode && (
+            <div
+              className="absolute inset-0 z-20"
+              style={{ cursor: "crosshair", margin: "32px" }}
+              onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / (GRID_SIZE * zoom);
+                const y = (e.clientY - rect.top) / (GRID_SIZE * zoom);
+                measurement.addPoint({ x, y });
+              }}
+            />
+          )}
+
+          {/* Measurement Overlay - renders measurement visualizations */}
+          {showMeasurement && (measurement.points.length > 0 || measurement.history.length > 0) && (
+            <div className="absolute inset-0 pointer-events-none" style={{ margin: "32px" }}>
+              <MeasurementOverlay
+                currentPoints={measurement.points}
+                measurements={measurement.history}
+                gridSize={GRID_SIZE}
+                zoom={zoom}
+              />
+            </div>
+          )}
 
           {/* Copy/Paste Indicator */}
           {clipboard && (
@@ -657,6 +733,7 @@ function KeyboardShortcutsDialog({ onClose }: { onClose: () => void }) {
     { category: "View Controls", items: [
       { keys: ["+", "/-"], action: "Zoom in/out" },
       { keys: ["G"], action: "Toggle grid" },
+      { keys: ["M"], action: "Toggle measurement tools" },
       { keys: ["?"], action: "Show shortcuts" },
     ]},
   ];
