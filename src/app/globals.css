@@ -3,64 +3,71 @@
 
 /* ============================================
    OWLAB - Open Wisdom Lab
-   Anthropic Brand Guidelines Theme
+   Brand Visual Identity System
+   「夜视者」Night Vision Theme
    ============================================ */
 
-/* CSS Variables - Anthropic Brand Color Palette */
+/* CSS Variables - OWL Brand Color Palette */
 :root {
-  /* Core Brand Colors */
-  --brand-dark: #141413;
-  --brand-light: #faf9f5;
-  --brand-mid-gray: #b0aea5;
-  --brand-light-gray: #e8e6dc;
+  /* OWL Primary Brand Colors */
+  --owl-magenta: #E91E8C;
+  --owl-blue: #2B5BA8;
+  --owl-gradient: linear-gradient(135deg, #E91E8C 0%, #2B5BA8 100%);
 
-  /* Accent Colors */
-  --accent-orange: #d97757;
-  --accent-blue: #6a9bcc;
-  --accent-green: #788c5d;
+  /* OWL Neutral Colors */
+  --owl-dark: #0D0D12;
+  --owl-surface: #1A1A24;
+  --owl-light: #FAF8F5;
+  --owl-muted: #B8B5AD;
+
+  /* OWL Glow Effects */
+  --owl-glow-magenta: 0 0 20px rgba(233, 30, 140, 0.4);
+  --owl-glow-blue: 0 0 20px rgba(43, 91, 168, 0.4);
 
   /* Semantic Colors (Dark Mode - default) */
-  --background: #141413;
-  --foreground: #faf9f5;
-  --card: #1f1f1e;
-  --card-foreground: #faf9f5;
-  --popover: #1f1f1e;
-  --popover-foreground: #faf9f5;
-  --primary: #d97757;
-  --primary-foreground: #141413;
-  --secondary: #2a2a28;
-  --secondary-foreground: #faf9f5;
-  --muted: #2a2a28;
-  --muted-foreground: #b0aea5;
-  --accent: #6a9bcc;
-  --accent-foreground: #141413;
-  --destructive: #c94a4a;
-  --destructive-foreground: #faf9f5;
-  --border: rgba(250, 249, 245, 0.12);
-  --input: #2a2a28;
-  --ring: #d97757;
+  --background: #0D0D12;
+  --foreground: #FAF8F5;
+  --card: #1A1A24;
+  --card-foreground: #FAF8F5;
+  --popover: #1A1A24;
+  --popover-foreground: #FAF8F5;
+  --primary: #E91E8C;
+  --primary-foreground: #FAF8F5;
+  --secondary: #1A1A24;
+  --secondary-foreground: #FAF8F5;
+  --muted: #1A1A24;
+  --muted-foreground: #B8B5AD;
+  --accent: #2B5BA8;
+  --accent-foreground: #FAF8F5;
+  --destructive: #F87171;
+  --destructive-foreground: #FAF8F5;
+  --border: rgba(250, 248, 245, 0.1);
+  --input: #1A1A24;
+  --ring: #E91E8C;
   --radius: 0.5rem;
 
-  /* Brand Accent Colors */
-  --brand-orange: #d97757;
-  --brand-blue: #6a9bcc;
-  --brand-green: #788c5d;
+  /* Brand Value Colors (Gradient from Magenta to Blue) */
+  --brand-open: #E91E8C;
+  --brand-cross: #9B4D96;
+  --brand-connect: #6A5BA0;
+  --brand-sustainable: #4B5DA4;
+  --brand-tech: #2B5BA8;
 
   /* Legacy neon aliases (for compatibility) */
-  --neon-cyan: #6a9bcc;
-  --neon-violet: #9b8bb8;
-  --neon-pink: #c98b9b;
-  --neon-green: #788c5d;
-  --neon-yellow: #c9b857;
-  --neon-orange: #d97757;
-  --neon-red: #c94a4a;
-  --neon-blue: #6a9bcc;
-  --neon-teal: #5d8c7a;
+  --neon-cyan: #2B5BA8;
+  --neon-violet: #6A5BA0;
+  --neon-pink: #E91E8C;
+  --neon-green: #4ADE80;
+  --neon-yellow: #FBBF24;
+  --neon-orange: #F97316;
+  --neon-red: #F87171;
+  --neon-blue: #2B5BA8;
+  --neon-teal: #14B8A6;
 
   /* Glass Effect */
-  --glass-bg: rgba(250, 249, 245, 0.03);
-  --glass-border: rgba(250, 249, 245, 0.08);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glass-bg: rgba(250, 248, 245, 0.03);
+  --glass-border: rgba(250, 248, 245, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 @theme inline {
@@ -76,43 +83,43 @@
   --font-mono: var(--font-jetbrains);
 }
 
-/* Light Theme Variables - Anthropic Brand */
+/* Light Theme Variables - OWL Brand */
 html.light {
-  --background: #faf9f5;
-  --foreground: #141413;
-  --card: #ffffff;
-  --card-foreground: #141413;
-  --popover: #ffffff;
-  --popover-foreground: #141413;
-  --primary: #c96747;
-  --primary-foreground: #faf9f5;
-  --secondary: #e8e6dc;
-  --secondary-foreground: #141413;
-  --muted: #e8e6dc;
-  --muted-foreground: #6b6a65;
-  --accent: #5a8bbc;
-  --accent-foreground: #faf9f5;
-  --destructive: #b94040;
-  --destructive-foreground: #faf9f5;
-  --border: rgba(20, 20, 19, 0.1);
-  --input: #e8e6dc;
-  --ring: #c96747;
+  --background: #FAF8F5;
+  --foreground: #0D0D12;
+  --card: #FFFFFF;
+  --card-foreground: #0D0D12;
+  --popover: #FFFFFF;
+  --popover-foreground: #0D0D12;
+  --primary: #D01A7A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F0EEE9;
+  --secondary-foreground: #0D0D12;
+  --muted: #F0EEE9;
+  --muted-foreground: #6B6B6B;
+  --accent: #234A8A;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(13, 13, 18, 0.1);
+  --input: #F0EEE9;
+  --ring: #D01A7A;
 
-  /* Brand Accent Colors (Light mode - slightly darker for contrast) */
-  --neon-cyan: #5a8bbc;
-  --neon-violet: #8b7ba8;
-  --neon-pink: #b97b8b;
-  --neon-green: #687c4d;
-  --neon-yellow: #b9a847;
-  --neon-orange: #c96747;
-  --neon-red: #b94040;
-  --neon-blue: #5a8bbc;
-  --neon-teal: #4d7c6a;
+  /* OWL Brand Colors (Light mode - darker for contrast) */
+  --neon-cyan: #234A8A;
+  --neon-violet: #5A4B90;
+  --neon-pink: #D01A7A;
+  --neon-green: #059669;
+  --neon-yellow: #D97706;
+  --neon-orange: #EA580C;
+  --neon-red: #DC2626;
+  --neon-blue: #234A8A;
+  --neon-teal: #0D9488;
 
   /* Glass Effect (Light) */
   --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(20, 20, 19, 0.08);
-  --glass-shadow: 0 8px 32px rgba(20, 20, 19, 0.08);
+  --glass-border: rgba(13, 13, 18, 0.08);
+  --glass-shadow: 0 8px 32px rgba(13, 13, 18, 0.08);
 
   color-scheme: light;
 }

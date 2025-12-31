@@ -713,6 +713,135 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Brand Visual System Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              whileHover={{ scale: 1.02 }}
+            >
+              <Sparkles className="w-4 h-4 text-[#E91E8C]" />
+              Brand Identity
+            </motion.div>
+            <h2 className="text-3xl font-bold mb-3">
+              <span className="bg-gradient-to-r from-[#E91E8C] to-[#2B5BA8] bg-clip-text text-transparent">
+                品牌视觉系统
+              </span>
+            </h2>
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              「夜视者」—— 在黑暗中洞察光明，在未知中发现可能
+            </p>
+          </motion.div>
+
+          {/* Color Palette Display */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.div variants={itemVariants} className="group">
+              <div
+                className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
+                style={{ background: '#E91E8C' }}
+              >
+                <div className="text-white">
+                  <div className="font-semibold text-sm">洞察粉</div>
+                  <div className="text-xs opacity-80">#E91E8C</div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div variants={itemVariants} className="group">
+              <div
+                className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
+                style={{ background: '#2B5BA8' }}
+              >
+                <div className="text-white">
+                  <div className="font-semibold text-sm">智慧蓝</div>
+                  <div className="text-xs opacity-80">#2B5BA8</div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div variants={itemVariants} className="group">
+              <div
+                className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
+                style={{ background: 'linear-gradient(135deg, #E91E8C, #2B5BA8)' }}
+              >
+                <div className="text-white">
+                  <div className="font-semibold text-sm">极光渐变</div>
+                  <div className="text-xs opacity-80">Aurora</div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div variants={itemVariants} className="group">
+              <div
+                className="h-24 rounded-xl flex items-end p-4 border border-[var(--glass-border)] transition-transform group-hover:scale-105"
+                style={{ background: '#0D0D12' }}
+              >
+                <div className="text-white">
+                  <div className="font-semibold text-sm">深夜黑</div>
+                  <div className="text-xs opacity-80">#0D0D12</div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Brand Values */}
+          <motion.div
+            className="grid md:grid-cols-5 gap-4 mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {[
+              { label: '开放', en: 'Open', color: '#E91E8C' },
+              { label: '交叉', en: 'Cross', color: '#9B4D96' },
+              { label: '连接', en: 'Connect', color: '#6A5BA0' },
+              { label: '可持续', en: 'Sustainable', color: '#4B5DA4' },
+              { label: '黑科技', en: 'Tech', color: '#2B5BA8' },
+            ].map((value, i) => (
+              <motion.div
+                key={value.label}
+                variants={itemVariants}
+                className="glass-card p-4 text-center hover:border-[var(--glass-border)] transition-all"
+                style={{ borderColor: `${value.color}30` }}
+                whileHover={{ y: -3, borderColor: value.color }}
+              >
+                <div className="font-bold text-lg" style={{ color: value.color }}>
+                  {value.label}
+                </div>
+                <div className="text-xs text-[var(--muted-foreground)]">{value.en}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <Link
+              href={`/${locale}/docs/zh/knowledge-base/10-brand`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#E91E8C] transition-colors group"
+              style={{ background: 'linear-gradient(135deg, rgba(233,30,140,0.1), rgba(43,91,168,0.1))' }}
+            >
+              <Sparkles className="w-5 h-5 text-[#E91E8C]" />
+              <span className="font-medium">查看完整品牌规范</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-10 px-4 border-t border-[var(--glass-border)]">
         <div className="max-w-4xl mx-auto">

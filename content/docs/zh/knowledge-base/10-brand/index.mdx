@@ -1,0 +1,467 @@
+---
+title: 品牌视觉系统
+description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Identity System
+---
+
+# OWL 品牌视觉系统
+
+**Open Wisdom Lab Brand Visual Identity System**
+
+---
+
+## 设计理念
+
+### 核心概念：「夜视者」Night Vision
+
+猫头鹰能在黑暗中洞察光明，Open Wisdom Lab 帮助学习者在未知中发现可能性。
+
+我们的视觉系统融合三重特质：
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│    未来主义          人文温度          网络拓扑              │
+│    Futurism      +   Warmth      +   Network                │
+│                                                             │
+│    几何精确           曲线有机          节点连接              │
+│    光晕渐变           温暖中性          涌现智慧              │
+│    科技感             可触及性          去中心化              │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 品牌价值映射
+
+| 核心价值 | 视觉表达 | 设计元素 |
+|---------|---------|---------|
+| **开放 Open** | 透明、流动 | 玻璃态、渐变、开放构图 |
+| **交叉 Cross** | 交汇、融合 | 重叠层、交叉线、混色 |
+| **连接 Connect** | 网络、节点 | 连接线、星座图、拓扑结构 |
+| **可持续 Sustainable** | 循环、生长 | 有机曲线、环形、自然纹理 |
+| **黑科技 Tech** | 未来、精确 | 几何形状、光效、渐变 |
+
+---
+
+## 色彩系统
+
+### 主色板 Primary Palette
+
+<div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
+  <div className="p-4 rounded-lg" style={{background: '#E91E8C', color: 'white'}}>
+    <div className="font-bold">洞察粉 Insight Magenta</div>
+    <div className="text-sm opacity-80">#E91E8C</div>
+    <div className="text-xs mt-2">RGB: 233, 30, 140</div>
+  </div>
+  <div className="p-4 rounded-lg" style={{background: '#2B5BA8', color: 'white'}}>
+    <div className="font-bold">智慧蓝 Wisdom Blue</div>
+    <div className="text-sm opacity-80">#2B5BA8</div>
+    <div className="text-xs mt-2">RGB: 43, 91, 168</div>
+  </div>
+  <div className="p-4 rounded-lg" style={{background: 'linear-gradient(135deg, #E91E8C, #2B5BA8)', color: 'white'}}>
+    <div className="font-bold">极光渐变 Aurora</div>
+    <div className="text-sm opacity-80">Gradient</div>
+    <div className="text-xs mt-2">135° / Magenta → Blue</div>
+  </div>
+</div>
+
+### 中性色板 Neutral Palette
+
+<div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+  <div className="p-4 rounded-lg border" style={{background: '#0D0D12', color: 'white'}}>
+    <div className="font-bold">深夜黑</div>
+    <div className="text-sm opacity-80">#0D0D12</div>
+    <div className="text-xs mt-2">Dark Background</div>
+  </div>
+  <div className="p-4 rounded-lg border" style={{background: '#1A1A24', color: 'white'}}>
+    <div className="font-bold">星空灰</div>
+    <div className="text-sm opacity-80">#1A1A24</div>
+    <div className="text-xs mt-2">Dark Surface</div>
+  </div>
+  <div className="p-4 rounded-lg border" style={{background: '#FAF8F5', color: '#0D0D12'}}>
+    <div className="font-bold">晨曦白</div>
+    <div className="text-sm opacity-80">#FAF8F5</div>
+    <div className="text-xs mt-2">Light Background</div>
+  </div>
+  <div className="p-4 rounded-lg border" style={{background: '#B8B5AD', color: '#0D0D12'}}>
+    <div className="font-bold">羽灰</div>
+    <div className="text-sm opacity-80">#B8B5AD</div>
+    <div className="text-xs mt-2">Muted Text</div>
+  </div>
+</div>
+
+### 功能色 Functional Colors
+
+| 用途 | 色值 | 场景 |
+|-----|------|-----|
+| 成功 Success | `#4ADE80` | 完成、通过、正确 |
+| 警告 Warning | `#FBBF24` | 注意、待处理 |
+| 错误 Error | `#F87171` | 错误、失败、危险 |
+| 信息 Info | `#60A5FA` | 提示、帮助、链接 |
+
+### CSS 变量定义
+
+```css
+:root {
+  /* Primary */
+  --owl-magenta: #E91E8C;
+  --owl-blue: #2B5BA8;
+  --owl-gradient: linear-gradient(135deg, #E91E8C 0%, #2B5BA8 100%);
+
+  /* Neutral - Dark Mode */
+  --owl-bg-dark: #0D0D12;
+  --owl-surface-dark: #1A1A24;
+  --owl-text-dark: #FAF8F5;
+  --owl-muted-dark: #B8B5AD;
+
+  /* Neutral - Light Mode */
+  --owl-bg-light: #FAF8F5;
+  --owl-surface-light: #FFFFFF;
+  --owl-text-light: #0D0D12;
+  --owl-muted-light: #6B6B6B;
+
+  /* Glow Effects */
+  --owl-glow-magenta: 0 0 20px rgba(233, 30, 140, 0.4);
+  --owl-glow-blue: 0 0 20px rgba(43, 91, 168, 0.4);
+}
+```
+
+---
+
+## 字体系统
+
+### 字体家族
+
+| 用途 | 字体 | 备选 | 特点 |
+|-----|------|-----|-----|
+| **标题 Display** | Poppins | Arial, sans-serif | 几何、现代、未来感 |
+| **正文 Body** | Lora | Georgia, serif | 人文、温暖、可读性 |
+| **代码 Code** | JetBrains Mono | Consolas, monospace | 技术、精确、等宽 |
+| **中文 Chinese** | Noto Sans SC | PingFang SC | 清晰、现代、跨平台 |
+
+### 字体层级
+
+```
+Display XL    48px / 56px    Poppins Bold      品牌大标题
+Display       36px / 44px    Poppins SemiBold  页面标题
+Heading 1     30px / 38px    Poppins SemiBold  一级标题
+Heading 2     24px / 32px    Poppins SemiBold  二级标题
+Heading 3     20px / 28px    Poppins Medium    三级标题
+Body Large    18px / 28px    Lora Regular      重要正文
+Body          16px / 24px    Lora Regular      正文内容
+Body Small    14px / 20px    Lora Regular      辅助文字
+Caption       12px / 16px    Lora Regular      标签、注释
+```
+
+### 字体配对示例
+
+<div className="my-6 p-6 rounded-lg border" style={{background: 'var(--card)'}}>
+  <h3 style={{fontFamily: 'Poppins, sans-serif', fontSize: '24px', fontWeight: 600, marginBottom: '8px'}}>
+    探索未知，点亮智慧
+  </h3>
+  <p style={{fontFamily: 'Lora, Georgia, serif', fontSize: '16px', lineHeight: 1.6, opacity: 0.8}}>
+    Open Wisdom Lab 是一个面向未来的创新教育实验室，我们相信每个人都有探索未知的潜能。通过跨学科的项目制学习，连接创客、教育者和研究者，共同构建涌现智慧的社群。
+  </p>
+</div>
+
+---
+
+## Logo 规范
+
+### 主 Logo
+
+Logo 由两部分组成：
+- **图形标识**：抽象猫头鹰眼睛，品红色羽毛 + 蓝色瞳孔
+- **文字标识**：OPEN WISDOM LAB，几何无衬线字体
+
+### 使用规范
+
+**最小尺寸**
+- 数字媒体：图形标识最小 32px，完整 Logo 最小 120px
+- 印刷媒体：图形标识最小 10mm，完整 Logo 最小 35mm
+
+**安全区域**
+- Logo 周围保持至少 1/4 Logo 高度的空白区域
+
+**背景使用**
+
+| 背景类型 | 推荐版本 |
+|---------|---------|
+| 深色背景 | 彩色 Logo（默认）|
+| 浅色背景 | 彩色 Logo |
+| 复杂背景 | 单色白/黑版本 |
+| 品牌色背景 | 单色反白版本 |
+
+### 禁止用法
+
+- 不要改变 Logo 颜色比例
+- 不要拉伸或压缩 Logo
+- 不要在 Logo 上添加效果（阴影、描边等）
+- 不要将 Logo 放置在低对比度背景上
+- 不要旋转 Logo
+
+---
+
+## 图形元素
+
+### 网络拓扑图案
+
+代表「连接」与「涌现」的核心视觉语言：
+
+```
+     ●───────●
+    /│\     /│
+   / │ \   / │
+  ●──●──●──●  │
+   \ │ / \ │ /
+    \│/   \│/
+     ●─────●
+```
+
+**应用场景**：
+- 背景装饰纹理
+- 章节分隔线
+- 数据可视化基础
+- 加载动画
+
+### 光晕效果 Glow
+
+品牌特有的「夜视」光晕效果：
+
+```css
+/* Magenta Glow */
+.owl-glow-magenta {
+  box-shadow:
+    0 0 20px rgba(233, 30, 140, 0.3),
+    0 0 40px rgba(233, 30, 140, 0.2),
+    0 0 60px rgba(233, 30, 140, 0.1);
+}
+
+/* Blue Glow */
+.owl-glow-blue {
+  box-shadow:
+    0 0 20px rgba(43, 91, 168, 0.3),
+    0 0 40px rgba(43, 91, 168, 0.2),
+    0 0 60px rgba(43, 91, 168, 0.1);
+}
+
+/* Aurora Gradient Glow */
+.owl-glow-aurora {
+  background: linear-gradient(135deg, #E91E8C, #2B5BA8);
+  filter: blur(40px);
+  opacity: 0.3;
+}
+```
+
+### 曲线与有机形态
+
+体现「人文温度」与「生物亲和性」：
+
+- 使用贝塞尔曲线而非直角
+- 圆角半径：8px (small), 12px (medium), 16px (large), 24px (xl)
+- 按钮和卡片采用柔和圆角
+
+---
+
+## 组件样式
+
+### 按钮 Buttons
+
+<div className="flex flex-wrap gap-4 my-6">
+  <button style={{
+    background: 'linear-gradient(135deg, #E91E8C, #2B5BA8)',
+    color: 'white',
+    padding: '12px 24px',
+    borderRadius: '8px',
+    fontFamily: 'Poppins, sans-serif',
+    fontWeight: 600,
+    border: 'none',
+    cursor: 'pointer'
+  }}>
+    Primary Button
+  </button>
+  <button style={{
+    background: 'transparent',
+    color: '#E91E8C',
+    padding: '12px 24px',
+    borderRadius: '8px',
+    fontFamily: 'Poppins, sans-serif',
+    fontWeight: 600,
+    border: '2px solid #E91E8C',
+    cursor: 'pointer'
+  }}>
+    Secondary Button
+  </button>
+  <button style={{
+    background: 'rgba(233, 30, 140, 0.1)',
+    color: '#E91E8C',
+    padding: '12px 24px',
+    borderRadius: '8px',
+    fontFamily: 'Poppins, sans-serif',
+    fontWeight: 600,
+    border: 'none',
+    cursor: 'pointer'
+  }}>
+    Ghost Button
+  </button>
+</div>
+
+### 卡片 Cards
+
+```css
+.owl-card {
+  background: var(--owl-surface-dark);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.owl-card:hover {
+  border-color: rgba(233, 30, 140, 0.3);
+  box-shadow: var(--owl-glow-magenta);
+  transform: translateY(-2px);
+}
+
+/* Glass variant */
+.owl-card-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+```
+
+### 输入框 Inputs
+
+```css
+.owl-input {
+  background: var(--owl-surface-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--owl-text-dark);
+  font-family: 'Lora', Georgia, serif;
+  transition: all 0.2s ease;
+}
+
+.owl-input:focus {
+  outline: none;
+  border-color: var(--owl-magenta);
+  box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.2);
+}
+```
+
+---
+
+## 动效规范
+
+### 时间曲线
+
+| 类型 | 曲线 | 时长 | 用途 |
+|-----|------|-----|-----|
+| 快速响应 | ease-out | 150ms | 按钮点击、状态切换 |
+| 标准过渡 | ease-in-out | 300ms | 卡片悬停、展开收起 |
+| 平滑进入 | ease-out | 400ms | 页面元素入场 |
+| 弹性效果 | cubic-bezier(0.34, 1.56, 0.64, 1) | 500ms | 强调性动画 |
+
+### 入场动画
+
+```css
+@keyframes owl-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes owl-glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+```
+
+### 悬停效果
+
+- **卡片**：轻微上移 + 边框高亮 + 光晕
+- **按钮**：亮度提升 + 阴影扩展
+- **链接**：下划线动画 + 颜色渐变
+- **图标**：轻微放大 + 颜色变化
+
+---
+
+## 应用示例
+
+### Dark Mode 界面
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  ●───●───●                                    [☰] [🌙]   │ Header
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│     ╭─────────────────────────────────────────────╮      │
+│     │                                             │      │
+│     │   探索未知，点亮智慧                          │      │
+│     │   ═══════════════════                       │      │
+│     │   Open Wisdom Lab 是面向未来的...            │      │
+│     │                                             │      │
+│     │   [开始探索]  [了解更多]                      │      │
+│     │                                             │      │
+│     ╰─────────────────────────────────────────────╯      │
+│                                                          │
+│     ╭─────────╮  ╭─────────╮  ╭─────────╮               │
+│     │ 空间    │  │ 思维    │  │ 社群    │               │
+│     │ ●──●    │  │ 🧠      │  │ ●─●─●   │               │
+│     ╰─────────╯  ╰─────────╯  ╰─────────╯               │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+```
+
+### 品牌一致性检查清单
+
+- [ ] 使用品牌色板中的颜色
+- [ ] 标题使用 Poppins 字体
+- [ ] 正文使用 Lora 字体
+- [ ] 圆角符合规范 (8/12/16/24px)
+- [ ] 动效时长和曲线正确
+- [ ] Logo 使用符合规范
+- [ ] 保持足够的对比度 (WCAG AA)
+- [ ] Dark/Light 模式都已适配
+
+---
+
+## 下载资源
+
+### Logo 文件
+
+| 文件 | 格式 | 用途 |
+|-----|------|-----|
+| logo.png | PNG | 网页、社交媒体 |
+| logo.svg | SVG | 矢量、可缩放场景 |
+| logo-white.svg | SVG | 深色背景 |
+| logo-black.svg | SVG | 浅色背景 |
+
+### 设计模板
+
+- Figma 组件库 (即将推出)
+- 品牌资源包 (即将推出)
+
+---
+
+## 版本历史
+
+| 版本 | 日期 | 变更 |
+|-----|------|-----|
+| 1.0 | 2025-01-01 | 初始版本，建立完整视觉系统 |
+
+---
+
+*品牌视觉系统由 Open Wisdom Lab 团队维护，如有问题请联系设计团队。*
