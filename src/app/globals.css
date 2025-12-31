@@ -15,10 +15,11 @@
 /* CSS Variables - OWL Brand Color Palette */
 :root {
   /* OWL Primary Brand Colors - 沉稳版 */
-  --owl-amber: #C4A35A;      /* 猫头鹰之眼 - 温暖琥珀金 */
-  --owl-indigo: #6B7AA1;     /* 羽翼 - 沉稳靛蓝 */
+  --owl-magenta: #D91A7A;    /* Logo紫 - 粉紫洋红 */
+  --owl-amber: #D91A7A;      /* 猫头鹰之眼 - Logo紫色 */
+  --owl-indigo: #D91A7A;     /* 羽翼 - Logo紫色 */
   --owl-violet: #5C5470;     /* 神秘 - 深紫灰 */
-  --owl-gradient: linear-gradient(135deg, #C4A35A 0%, #6B7AA1 50%, #5C5470 100%);
+  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #D91A7A 50%, #5C5470 100%);
 
   /* OWL Neutral Colors */
   --owl-dark: #0E0E14;       /* 深夜星空 */
@@ -27,8 +28,9 @@
   --owl-muted: #8A8A94;      /* 羽灰 */
 
   /* OWL Glow Effects - 柔和版 */
-  --owl-glow-amber: 0 0 24px rgba(196, 163, 90, 0.25);
-  --owl-glow-indigo: 0 0 24px rgba(107, 122, 161, 0.25);
+  --owl-glow-magenta: 0 0 24px rgba(217, 26, 122, 0.25);
+  --owl-glow-amber: 0 0 24px rgba(217, 26, 122, 0.25);
+  --owl-glow-indigo: 0 0 24px rgba(217, 26, 122, 0.25);
 
   /* Semantic Colors (Dark Mode - default) */
   --background: #0E0E14;
@@ -37,37 +39,37 @@
   --card-foreground: #F5F4F0;
   --popover: #1C1C26;
   --popover-foreground: #F5F4F0;
-  --primary: #C4A35A;
-  --primary-foreground: #0E0E14;
+  --primary: #D91A7A;
+  --primary-foreground: #FFFFFF;
   --secondary: #1C1C26;
   --secondary-foreground: #F5F4F0;
   --muted: #1C1C26;
   --muted-foreground: #8A8A94;
-  --accent: #6B7AA1;
+  --accent: #D91A7A;
   --accent-foreground: #F5F4F0;
   --destructive: #B85450;
   --destructive-foreground: #F5F4F0;
   --border: rgba(245, 244, 240, 0.08);
   --input: #1C1C26;
-  --ring: #C4A35A;
+  --ring: #D91A7A;
   --radius: 0.5rem;
 
   /* Brand Value Colors - 沉稳渐变 */
-  --brand-open: #C4A35A;       /* 琥珀金 - 开放 */
+  --brand-open: #D91A7A;       /* Logo紫 - 开放 */
   --brand-cross: #A49464;      /* 暗金 - 交叉 */
   --brand-connect: #8A8A7A;    /* 银灰 - 连接 */
   --brand-sustainable: #7A8490; /* 蓝灰 - 可持续 */
-  --brand-tech: #6B7AA1;       /* 靛蓝 - 黑科技 */
+  --brand-tech: #D91A7A;       /* Logo紫 - 黑科技 */
 
   /* Legacy neon aliases - 调整为沉稳色调 */
-  --neon-cyan: #6B7AA1;
+  --neon-cyan: #D91A7A;
   --neon-violet: #5C5470;
-  --neon-pink: #A67C7C;
+  --neon-pink: #D91A7A;
   --neon-green: #7A9A6B;
-  --neon-yellow: #C4A35A;
+  --neon-yellow: #D91A7A;
   --neon-orange: #B8956B;
   --neon-red: #B85450;
-  --neon-blue: #6B7AA1;
+  --neon-blue: #D91A7A;
   --neon-teal: #5A8A8A;
 
   /* Glass Effect - 更柔和 */
@@ -97,29 +99,29 @@ html.light {
   --card-foreground: #1C1C26;
   --popover: #FFFFFF;
   --popover-foreground: #1C1C26;
-  --primary: #9A7B3A;
+  --primary: #C01562;
   --primary-foreground: #FFFFFF;
   --secondary: #ECEAE4;
   --secondary-foreground: #1C1C26;
   --muted: #ECEAE4;
   --muted-foreground: #6A6A70;
-  --accent: #5A6A8A;
+  --accent: #C01562;
   --accent-foreground: #FFFFFF;
   --destructive: #A04440;
   --destructive-foreground: #FFFFFF;
   --border: rgba(28, 28, 38, 0.08);
   --input: #ECEAE4;
-  --ring: #9A7B3A;
+  --ring: #C01562;
 
   /* OWL Brand Colors (Light mode - 沉稳对比) */
-  --neon-cyan: #5A6A8A;
+  --neon-cyan: #C01562;
   --neon-violet: #4A4460;
-  --neon-pink: #8A6A6A;
+  --neon-pink: #C01562;
   --neon-green: #5A7A5A;
-  --neon-yellow: #9A7B3A;
+  --neon-yellow: #C01562;
   --neon-orange: #9A7050;
   --neon-red: #A04440;
-  --neon-blue: #5A6A8A;
+  --neon-blue: #C01562;
   --neon-teal: #4A7A7A;
 
   /* Glass Effect (Light) */
