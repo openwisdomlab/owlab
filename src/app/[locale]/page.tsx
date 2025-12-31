@@ -19,6 +19,12 @@ import {
   Target,
   Rocket,
   GitBranch,
+  Layout,
+  Lightbulb,
+  Wand2,
+  Calculator,
+  Cpu,
+  ChevronRight,
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import Script from "next/script";
@@ -190,6 +196,116 @@ export default function HomePage() {
 
           {/* 核心特性和统计数据已隐藏，直接切入正题 */}
         </motion.div>
+      </section>
+
+      {/* 三层架构导航 Section */}
+      <section className="py-16 px-4 border-y border-[var(--glass-border)]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              whileHover={{ scale: 1.02 }}
+            >
+              <Layers className="w-4 h-4 text-[var(--neon-cyan)]" />
+              {t("threeLayerNav.subtitle")}
+            </motion.div>
+            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("threeLayerNav.title")}</h2>
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              {t("threeLayerNav.description")}
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {/* 理念层 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/living-modules`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/20 to-[var(--neon-cyan)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Sparkles className="w-6 h-6 text-[var(--neon-cyan)]" />
+                    </div>
+                    <span className="text-xs px-2 py-1 rounded bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)] font-mono">
+                      {t("threeLayerNav.layers.philosophy.badge")}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {t("threeLayerNav.layers.philosophy.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("threeLayerNav.layers.philosophy.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-cyan)] font-medium group-hover:gap-3 transition-all">
+                    <span>{t("threeLayerNav.layers.philosophy.link")}</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 行动层 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/knowledge-base`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-violet)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Rocket className="w-6 h-6 text-[var(--neon-violet)]" />
+                    </div>
+                    <span className="text-xs px-2 py-1 rounded bg-[var(--neon-violet)]/10 text-[var(--neon-violet)] font-mono">
+                      {t("threeLayerNav.layers.action.badge")}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {t("threeLayerNav.layers.action.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("threeLayerNav.layers.action.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-violet)] font-medium group-hover:gap-3 transition-all">
+                    <span>{t("threeLayerNav.layers.action.link")}</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 主文档 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/knowledge-base/ARCHITECTURE-V2`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <FileText className="w-6 h-6 text-[var(--neon-green)]" />
+                    </div>
+                    <span className="text-xs px-2 py-1 rounded bg-[var(--neon-green)]/10 text-[var(--neon-green)] font-mono">
+                      {t("threeLayerNav.layers.docs.badge")}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {t("threeLayerNav.layers.docs.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("threeLayerNav.layers.docs.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-green)] font-medium group-hover:gap-3 transition-all">
+                    <span>{t("threeLayerNav.layers.docs.link")}</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* 前沿理念模块 Section - 独立展示 */}
@@ -388,6 +504,180 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 行动层工具 Section */}
+      <section className="py-20 px-4 bg-[var(--glass-bg)]/20">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              whileHover={{ scale: 1.02 }}
+            >
+              <Wand2 className="w-4 h-4 text-[var(--neon-violet)]" />
+              {t("actionTools.subtitle")}
+            </motion.div>
+            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("actionTools.title")}</h2>
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              {t("actionTools.description")}
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {/* AI 实验室布局生成器 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/lab/floor-plan`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/20 to-[var(--neon-cyan)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Layout className="w-6 h-6 text-[var(--neon-cyan)]" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t("actionTools.tools.floorPlan.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("actionTools.tools.floorPlan.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-cyan)] font-medium group-hover:gap-3 transition-all">
+                    <span>立即使用</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 智能规划向导 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/lab`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-violet)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Wand2 className="w-6 h-6 text-[var(--neon-violet)]" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t("actionTools.tools.wizard.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("actionTools.tools.wizard.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-violet)] font-medium group-hover:gap-3 transition-all">
+                    <span>开始规划</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 设备选型向导 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <FlaskConical className="w-6 h-6 text-[var(--neon-green)]" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t("actionTools.tools.equipmentGuide.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("actionTools.tools.equipmentGuide.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-green)] font-medium group-hover:gap-3 transition-all">
+                    <span>查看指南</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* AI 工具链指南 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools/extend/ai-tools-guide`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-pink)]/50 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/20 to-[var(--neon-pink)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Sparkles className="w-6 h-6 text-[var(--neon-pink)]" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t("actionTools.tools.aiToolsGuide.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("actionTools.tools.aiToolsGuide.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-pink)] font-medium group-hover:gap-3 transition-all">
+                    <span>探索工具</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 成本计算器 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools#预算模板`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-yellow)]/50 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-yellow)]/20 to-[var(--neon-yellow)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Calculator className="w-6 h-6 text-[var(--neon-yellow)]" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t("actionTools.tools.costCalculator.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("actionTools.tools.costCalculator.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-yellow)] font-medium group-hover:gap-3 transition-all">
+                    <span>计算预算</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 开源硬件选型 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools/extend/opensource-hardware`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-orange)]/50 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-orange)]/20 to-[var(--neon-orange)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Cpu className="w-6 h-6 text-[var(--neon-orange)]" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {t("actionTools.tools.hardwareSelector.title")}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("actionTools.tools.hardwareSelector.description")}
+                  </p>
+                  <div className="flex items-center gap-2 text-[var(--neon-orange)] font-medium group-hover:gap-3 transition-all">
+                    <span>选择硬件</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <Link
+              href={`/${locale}/lab`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-violet)]/10 to-[var(--neon-pink)]/10 border border-[var(--glass-border)] hover:border-[var(--neon-violet)] transition-colors group"
+            >
+              <FlaskConical className="w-5 h-5 text-[var(--neon-violet)]" />
+              <span className="font-medium">{t("actionTools.viewAll")}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 知识库模块 Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -418,47 +708,6 @@ export default function HomePage() {
               <BookOpen className="w-5 h-5 text-[var(--neon-cyan)]" />
               <span className="font-medium">{t("modules.viewAll")}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* AI 工具入口 */}
-      <section className="py-12 px-4 border-t border-[var(--glass-border)]">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
-            <h2 className="text-xl font-bold mb-2">{t("tools.title")}</h2>
-            <p className="text-sm text-[var(--muted-foreground)]">
-              {t("tools.description")}
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Link
-              href={`/${locale}/lab`}
-              className="group flex items-center justify-between p-6 glass-card hover:border-[var(--neon-violet)]/50 transition-all"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-pink)]/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <FlaskConical className="w-7 h-7 text-[var(--neon-violet)]" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-1">{t("tools.lab.title")}</h3>
-                  <p className="text-sm text-[var(--muted-foreground)]">
-                    {t("tools.lab.description")}
-                  </p>
-                </div>
-              </div>
-              <ArrowRight className="w-6 h-6 text-[var(--muted-foreground)] group-hover:text-[var(--neon-violet)] group-hover:translate-x-2 transition-all" />
             </Link>
           </motion.div>
         </div>
