@@ -1,34 +1,13 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Layout,
-  Wand2,
-  Download,
-  Save,
-  Undo,
-  Redo,
-  ZoomIn,
-  ZoomOut,
-  Grid,
-  Package,
-  DollarSign,
-  Grid3x3,
-  Copy,
-  Magnet,
-  Palette,
-  Shield,
-  Box,
-  Keyboard,
-  X,
-  Ruler,
-  Brain,
-  Link2,
-} from "lucide-react";
+import { Copy } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { FloorPlanCanvas } from "@/components/lab/FloorPlanCanvas";
+import { FloorPlanToolbar } from "@/components/lab/FloorPlanToolbar";
+import { KeyboardShortcutsDialog } from "@/components/lab/KeyboardShortcutsDialog";
 import { AIChatPanel } from "@/components/lab/AIChatPanel";
 import { ExportDialog } from "@/components/lab/ExportDialog";
 import { EquipmentLibrary } from "@/components/lab/EquipmentLibrary";
@@ -42,15 +21,20 @@ import { Preview3D } from "@/components/lab/Preview3D";
 import { AllenCurvePanel } from "@/components/lab/AllenCurvePanel";
 import { AllenCurveOverlay } from "@/components/lab/AllenCurveOverlay";
 import { assessLayout as assessAllenCurve } from "@/lib/utils/allen-curve-calculator";
+import { MeasurementToolbar } from "@/components/lab/MeasurementToolbar";
+import { MeasurementOverlay } from "@/components/lab/MeasurementOverlay";
+import { ParallelUniverseDialog } from "@/components/lab/ParallelUniverseDialog";
+import { EmotionDesignDialog } from "@/components/lab/EmotionDesignDialog";
+import { QuickStatsPanel } from "@/components/lab/QuickStatsPanel";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
 import { useHistory } from "@/hooks/useHistory";
-import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import { useMeasurementTools } from "@/hooks/useMeasurementTools";
-import { COLOR_SCHEMES, ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
-import { MeasurementToolbar } from "@/components/lab/MeasurementToolbar";
-import { MeasurementOverlay } from "@/components/lab/MeasurementOverlay";
+import { ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
+import { EMOTION_COLORS } from "@/lib/schemas/emotion-design";
+
+const GRID_SIZE = 40; // matches FloorPlanCanvas GRID_SIZE
 
 const defaultLayout: LayoutData = {
   name: "New AI Lab",
@@ -114,6 +98,9 @@ export default function FloorPlanPageEnhanced() {
   const [showMeasurement, setShowMeasurement] = useState(false);
   const [showAllenCurve, setShowAllenCurve] = useState(false);
   const [hoveredLinkId, setHoveredLinkId] = useState<string | null>(null);
+  const [showParallelUniverse, setShowParallelUniverse] = useState(false);
+  const [showEmotionDesign, setShowEmotionDesign] = useState(false);
+  const [showQuickStats, setShowQuickStats] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
 
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
@@ -123,8 +110,10 @@ export default function FloorPlanPageEnhanced() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("neon");
   const [clipboard, setClipboard] = useState<ZoneData | null>(null);
 
-  // Measurement tools - for measuring distances, areas, and angles on the canvas
-  const GRID_SIZE = 40; // matches FloorPlanCanvas GRID_SIZE
+  // Canvas ref for measurement positioning
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
+
+  // Measurement tools
   const measurement = useMeasurementTools(
     GRID_SIZE,
     layout.dimensions.unit === "ft" ? "ft" : "m"
@@ -205,7 +194,7 @@ export default function FloorPlanPageEnhanced() {
 
       // Filter to only include object-type equipment (new format)
       const equipmentObjects = existingEquipment.filter(
-        (e: any) => typeof e === "object"
+        (e: unknown) => typeof e === "object"
       );
 
       handleZoneUpdate(selectedZone, {
@@ -218,7 +207,7 @@ export default function FloorPlanPageEnhanced() {
             price: equipment.price,
             category: equipment.category,
           },
-        ] as any,
+        ] as ZoneData["equipment"],
       });
     },
     [selectedZone, layout.zones, handleZoneUpdate]
@@ -239,7 +228,6 @@ export default function FloorPlanPageEnhanced() {
   );
 
   const handleSaveTemplate = useCallback((template: Template) => {
-    // In a real app, this would save to backend or localStorage
     console.log("Template saved:", template);
     const blob = new Blob([JSON.stringify(template, null, 2)], {
       type: "application/json",
@@ -266,301 +254,182 @@ export default function FloorPlanPageEnhanced() {
     [setLayout]
   );
 
-  // Keyboard shortcuts
-  useKeyboardShortcuts({
-    onUndo: canUndo ? undo : undefined,
-    onRedo: canRedo ? redo : undefined,
-    onCopy: selectedZone ? handleCopyZone : undefined,
-    onPaste: clipboard ? handlePasteZone : undefined,
-    onDelete: selectedZone ? () => handleDeleteZone(selectedZone) : undefined,
-    onSave: () => setShowSaveTemplate(true),
-  });
+  // Toggle measurement mode
+  const toggleMeasurement = useCallback(() => {
+    setShowMeasurement((prev) => {
+      if (prev) {
+        measurement.cancelMeasurement();
+      }
+      return !prev;
+    });
+  }, [measurement]);
 
-  // Additional keyboard shortcuts for "?" to show shortcuts dialog
-  const handleGlobalKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+  // Consolidated keyboard shortcuts handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       const isInputFocused =
         document.activeElement?.tagName === "INPUT" ||
         document.activeElement?.tagName === "TEXTAREA";
+
       if (isInputFocused) return;
 
-      if (e.key === "?" || (e.shiftKey && e.key === "/")) {
-        e.preventDefault();
-        setShowShortcuts(true);
-      } else if (e.key === "g" || e.key === "G") {
-        e.preventDefault();
-        setShowGrid((prev) => !prev);
-      } else if (e.key === "m" || e.key === "M") {
-        e.preventDefault();
-        setShowMeasurement((prev) => !prev);
-        if (showMeasurement) {
-          measurement.cancelMeasurement();
-        }
-      } else if (e.key === "Escape") {
-        setShowShortcuts(false);
-        if (measurement.isActive) {
-          measurement.cancelMeasurement();
+      const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+      const cmdKey = isMac ? e.metaKey : e.ctrlKey;
+
+      // Cmd/Ctrl shortcuts
+      if (cmdKey) {
+        switch (e.key.toLowerCase()) {
+          case "z":
+            e.preventDefault();
+            if (e.shiftKey) {
+              if (canRedo) redo();
+            } else {
+              if (canUndo) undo();
+            }
+            return;
+          case "c":
+            if (selectedZone) {
+              e.preventDefault();
+              handleCopyZone();
+            }
+            return;
+          case "v":
+            if (clipboard) {
+              e.preventDefault();
+              handlePasteZone();
+            }
+            return;
+          case "s":
+            e.preventDefault();
+            setShowSaveTemplate(true);
+            return;
         }
       }
-    },
-    [showMeasurement, measurement]
-  );
 
-  // Register the global keyboard handler
-  useEffect(() => {
-    window.addEventListener("keydown", handleGlobalKeyDown);
-    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
-  }, [handleGlobalKeyDown]);
+      // Single key shortcuts
+      switch (e.key) {
+        case "?":
+        case "/":
+          if (e.key === "/" && !e.shiftKey) return;
+          e.preventDefault();
+          setShowShortcuts(true);
+          break;
+        case "g":
+        case "G":
+          e.preventDefault();
+          setShowGrid((prev) => !prev);
+          break;
+        case "m":
+        case "M":
+          e.preventDefault();
+          toggleMeasurement();
+          break;
+        case "p":
+        case "P":
+          e.preventDefault();
+          setShowParallelUniverse(true);
+          break;
+        case "e":
+        case "E":
+          e.preventDefault();
+          setShowEmotionDesign(true);
+          break;
+        case "q":
+        case "Q":
+          e.preventDefault();
+          setShowQuickStats((prev) => !prev);
+          break;
+        case "Delete":
+        case "Backspace":
+          if (selectedZone) {
+            e.preventDefault();
+            handleDeleteZone(selectedZone);
+          }
+          break;
+        case "Escape":
+          setShowShortcuts(false);
+          if (measurement.isActive) {
+            measurement.cancelMeasurement();
+          }
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [
+    canUndo,
+    canRedo,
+    undo,
+    redo,
+    selectedZone,
+    clipboard,
+    handleCopyZone,
+    handlePasteZone,
+    handleDeleteZone,
+    toggleMeasurement,
+    measurement,
+  ]);
+
+  // Handle measurement click
+  const handleMeasurementClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / (GRID_SIZE * zoom);
+      const y = (e.clientY - rect.top) / (GRID_SIZE * zoom);
+      measurement.addPoint({ x, y });
+    },
+    [zoom, measurement]
+  );
 
   return (
     <div className="h-[calc(100vh-4rem)] flex flex-col">
       {/* Toolbar */}
-      <div className="flex items-center justify-between p-4 border-b border-[var(--glass-border)]">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Layout className="w-5 h-5 text-[var(--neon-cyan)]" />
-            <h1 className="text-lg font-semibold">{t("title")}</h1>
-          </div>
-          <div className="h-6 w-px bg-[var(--glass-border)]" />
-          <span className="text-sm text-[var(--muted-foreground)]">
-            {layout.name}
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          {/* Undo/Redo */}
-          <div className="flex items-center gap-1">
-            <button
-              onClick={undo}
-              disabled={!canUndo}
-              className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              title="Undo (Ctrl+Z)"
-            >
-              <Undo className="w-4 h-4" />
-            </button>
-            <button
-              onClick={redo}
-              disabled={!canRedo}
-              className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              title="Redo (Ctrl+Shift+Z)"
-            >
-              <Redo className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="h-6 w-px bg-[var(--glass-border)]" />
-
-          {/* View Controls */}
-          <div className="flex items-center gap-1 p-1 rounded-lg bg-[var(--glass-bg)]">
-            <button
-              onClick={() => setZoom((z) => Math.max(0.5, z - 0.1))}
-              className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors"
-              title="Zoom Out"
-            >
-              <ZoomOut className="w-4 h-4" />
-            </button>
-            <span className="px-2 text-sm">{Math.round(zoom * 100)}%</span>
-            <button
-              onClick={() => setZoom((z) => Math.min(2, z + 0.1))}
-              className="p-2 rounded hover:bg-[var(--glass-border)] transition-colors"
-              title="Zoom In"
-            >
-              <ZoomIn className="w-4 h-4" />
-            </button>
-          </div>
-
-          <button
-            onClick={() => setShowGrid(!showGrid)}
-            className={`p-2 rounded-lg transition-colors ${
-              showGrid
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Toggle Grid"
-          >
-            <Grid className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setGridSnap(!gridSnap)}
-            className={`p-2 rounded-lg transition-colors ${
-              gridSnap
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Toggle Grid Snapping"
-          >
-            <Magnet className="w-4 h-4" />
-          </button>
-
-          {/* Color Scheme Selector */}
-          <select
-            value={colorScheme}
-            onChange={(e) =>
-              handleChangeColorScheme(e.target.value as ColorScheme)
-            }
-            className="px-3 py-2 text-sm rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none"
-            title="Color Scheme"
-          >
-            {Object.keys(COLOR_SCHEMES).map((scheme) => (
-              <option key={scheme} value={scheme}>
-                {scheme.charAt(0).toUpperCase() + scheme.slice(1)}
-              </option>
-            ))}
-          </select>
-
-          <div className="h-6 w-px bg-[var(--glass-border)]" />
-
-          {/* Tools */}
-          <button
-            onClick={() => setShowTemplates(!showTemplates)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              showTemplates
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Templates"
-          >
-            <Grid3x3 className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowEquipment(!showEquipment)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              showEquipment
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Equipment"
-          >
-            <Package className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowBudget(!showBudget)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              showBudget
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Budget"
-          >
-            <DollarSign className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowChat(!showChat)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              showChat
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="AI Assistant"
-          >
-            <Wand2 className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowSafety(!showSafety)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              showSafety
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Safety Analysis"
-          >
-            <Shield className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowPsychologicalSafety(!showPsychologicalSafety)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              showPsychologicalSafety
-                ? "bg-[var(--neon-violet)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Psychological Safety Assessment"
-          >
-            <Brain className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowAllenCurve(!showAllenCurve)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              showAllenCurve
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Allen Curve 通信分析"
-          >
-            <Link2 className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShow3DPreview(!show3DPreview)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-              show3DPreview
-                ? "bg-[var(--neon-violet)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="3D Preview"
-          >
-            <Box className="w-4 h-4" />
-          </button>
-
-          <div className="h-6 w-px bg-[var(--glass-border)]" />
-
-          <button
-            onClick={() => {
-              setShowMeasurement(!showMeasurement);
-              if (showMeasurement) {
-                measurement.cancelMeasurement();
-              }
-            }}
-            className={`p-2 rounded-lg transition-colors ${
-              showMeasurement
-                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
-            title="Measurement Tools (M)"
-          >
-            <Ruler className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => setShowShortcuts(true)}
-            className="p-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
-            title="Keyboard Shortcuts (?)"
-          >
-            <Keyboard className="w-4 h-4" />
-          </button>
-
-          <div className="h-6 w-px bg-[var(--glass-border)]" />
-
-          <button
-            onClick={() => setShowSaveTemplate(true)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
-            title="Save as Template"
-          >
-            <Save className="w-4 h-4" />
-            <span className="text-sm">Save</span>
-          </button>
-
-          <button
-            onClick={() => setShowExport(true)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
-            title="Export"
-          >
-            <Download className="w-4 h-4" />
-            <span className="text-sm">Export</span>
-          </button>
-        </div>
-      </div>
+      <FloorPlanToolbar
+        layoutName={layout.name}
+        canUndo={canUndo}
+        canRedo={canRedo}
+        onUndo={undo}
+        onRedo={redo}
+        zoom={zoom}
+        onZoomIn={() => setZoom((z) => Math.min(2, z + 0.1))}
+        onZoomOut={() => setZoom((z) => Math.max(0.5, z - 0.1))}
+        showGrid={showGrid}
+        onToggleGrid={() => setShowGrid(!showGrid)}
+        gridSnap={gridSnap}
+        onToggleGridSnap={() => setGridSnap(!gridSnap)}
+        colorScheme={colorScheme}
+        onColorSchemeChange={handleChangeColorScheme}
+        showTemplates={showTemplates}
+        onToggleTemplates={() => setShowTemplates(!showTemplates)}
+        showEquipment={showEquipment}
+        onToggleEquipment={() => setShowEquipment(!showEquipment)}
+        showBudget={showBudget}
+        onToggleBudget={() => setShowBudget(!showBudget)}
+        showChat={showChat}
+        onToggleChat={() => setShowChat(!showChat)}
+        showSafety={showSafety}
+        onToggleSafety={() => setShowSafety(!showSafety)}
+        showPsychologicalSafety={showPsychologicalSafety}
+        onTogglePsychologicalSafety={() => setShowPsychologicalSafety(!showPsychologicalSafety)}
+        showAllenCurve={showAllenCurve}
+        onToggleAllenCurve={() => setShowAllenCurve(!showAllenCurve)}
+        show3DPreview={show3DPreview}
+        onToggle3DPreview={() => setShow3DPreview(!show3DPreview)}
+        onShowParallelUniverse={() => setShowParallelUniverse(true)}
+        onShowEmotionDesign={() => setShowEmotionDesign(true)}
+        showMeasurement={showMeasurement}
+        onToggleMeasurement={toggleMeasurement}
+        onShowShortcuts={() => setShowShortcuts(true)}
+        onSave={() => setShowSaveTemplate(true)}
+        onExport={() => setShowExport(true)}
+        title={t("title")}
+      />
 
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Canvas */}
-        <div className="flex-1 relative">
+        <div className="flex-1 relative" ref={canvasContainerRef}>
           <FloorPlanCanvas
             layout={layout}
             zoom={zoom}
@@ -572,6 +441,7 @@ export default function FloorPlanPageEnhanced() {
             onDeleteZone={handleDeleteZone}
           />
 
+          {/* Allen Curve Overlay */}
           {showAllenCurve && (
             <AllenCurveOverlay
               layout={layout}
@@ -584,7 +454,7 @@ export default function FloorPlanPageEnhanced() {
             />
           )}
 
-          {/* Measurement Toolbar - shown when measurement mode is active */}
+          {/* Measurement Toolbar */}
           {showMeasurement && (
             <MeasurementToolbar
               mode={measurement.mode}
@@ -596,23 +466,18 @@ export default function FloorPlanPageEnhanced() {
             />
           )}
 
-          {/* Measurement Click Overlay - captures clicks when in measurement mode */}
+          {/* Measurement Click Overlay */}
           {showMeasurement && measurement.mode && (
             <div
               className="absolute inset-0 z-20"
-              style={{ cursor: "crosshair", margin: "32px" }}
-              onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / (GRID_SIZE * zoom);
-                const y = (e.clientY - rect.top) / (GRID_SIZE * zoom);
-                measurement.addPoint({ x, y });
-              }}
+              style={{ cursor: "crosshair" }}
+              onClick={handleMeasurementClick}
             />
           )}
 
-          {/* Measurement Overlay - renders measurement visualizations */}
+          {/* Measurement Overlay */}
           {showMeasurement && (measurement.points.length > 0 || measurement.history.length > 0) && (
-            <div className="absolute inset-0 pointer-events-none" style={{ margin: "32px" }}>
+            <div className="absolute inset-0 pointer-events-none">
               <MeasurementOverlay
                 currentPoints={measurement.points}
                 measurements={measurement.history}
@@ -631,6 +496,16 @@ export default function FloorPlanPageEnhanced() {
               </span>
             </div>
           )}
+
+          {/* Quick Stats Panel */}
+          <AnimatePresence>
+            {showQuickStats && (
+              <QuickStatsPanel
+                layout={layout}
+                onClose={() => setShowQuickStats(false)}
+              />
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Side Panels */}
@@ -786,103 +661,37 @@ export default function FloorPlanPageEnhanced() {
         {showShortcuts && (
           <KeyboardShortcutsDialog onClose={() => setShowShortcuts(false)} />
         )}
+
+        {showParallelUniverse && (
+          <ParallelUniverseDialog onClose={() => setShowParallelUniverse(false)} />
+        )}
+
+        {showEmotionDesign && (
+          <EmotionDesignDialog
+            onClose={() => setShowEmotionDesign(false)}
+            onApplyResult={(result) => {
+              // Apply the recommended zones from emotion design
+              if (result.suggestedZones && result.suggestedZones.length > 0) {
+                setLayout((prev) => ({
+                  ...prev,
+                  zones: [
+                    ...prev.zones,
+                    ...result.suggestedZones.map((zone, index) => ({
+                      id: uuidv4(),
+                      name: zone.name,
+                      type: "workspace" as ZoneData["type"],
+                      position: { x: index * 6, y: prev.zones.length * 4 },
+                      size: { width: zone.suggestedSize.width, height: zone.suggestedSize.height },
+                      color: EMOTION_COLORS[zone.targetEmotions[0]] || "#8b5cf6",
+                      equipment: [],
+                    })),
+                  ],
+                }));
+              }
+            }}
+          />
+        )}
       </AnimatePresence>
     </div>
-  );
-}
-
-// Keyboard Shortcuts Dialog Component
-function KeyboardShortcutsDialog({ onClose }: { onClose: () => void }) {
-  const isMac = typeof navigator !== "undefined" && navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-  const cmdKey = isMac ? "⌘" : "Ctrl";
-
-  const shortcuts = [
-    { category: "General", items: [
-      { keys: [`${cmdKey}`, "Z"], action: "Undo" },
-      { keys: [`${cmdKey}`, "Shift", "Z"], action: "Redo" },
-      { keys: [`${cmdKey}`, "S"], action: "Save template" },
-    ]},
-    { category: "Zone Operations", items: [
-      { keys: [`${cmdKey}`, "C"], action: "Copy selected zone" },
-      { keys: [`${cmdKey}`, "V"], action: "Paste zone" },
-      { keys: ["Delete"], action: "Delete selected zone" },
-      { keys: ["Backspace"], action: "Delete selected zone" },
-    ]},
-    { category: "View Controls", items: [
-      { keys: ["+", "/-"], action: "Zoom in/out" },
-      { keys: ["G"], action: "Toggle grid" },
-      { keys: ["M"], action: "Toggle measurement tools" },
-      { keys: ["?"], action: "Show shortcuts" },
-    ]},
-  ];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.95, opacity: 0 }}
-        className="glass-card w-full max-w-md mx-4 p-6"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <Keyboard className="w-5 h-5 text-[var(--neon-cyan)]" />
-            <h2 className="text-lg font-semibold">Keyboard Shortcuts</h2>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-lg hover:bg-[var(--glass-bg)] transition-colors"
-            aria-label="Close shortcuts dialog"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <div className="space-y-6">
-          {shortcuts.map((section) => (
-            <div key={section.category}>
-              <h3 className="text-sm font-medium text-[var(--muted-foreground)] mb-3">
-                {section.category}
-              </h3>
-              <div className="space-y-2">
-                {section.items.map((shortcut, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between py-2 px-3 rounded-lg bg-[var(--glass-bg)]"
-                  >
-                    <span className="text-sm">{shortcut.action}</span>
-                    <div className="flex items-center gap-1">
-                      {shortcut.keys.map((key, keyIndex) => (
-                        <span key={keyIndex} className="flex items-center">
-                          <kbd className="px-2 py-1 text-xs font-mono rounded bg-[var(--background)] border border-[var(--glass-border)]">
-                            {key}
-                          </kbd>
-                          {keyIndex < shortcut.keys.length - 1 && (
-                            <span className="mx-1 text-[var(--muted-foreground)]">+</span>
-                          )}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-6 pt-4 border-t border-[var(--glass-border)]">
-          <p className="text-xs text-[var(--muted-foreground)] text-center">
-            Press <kbd className="px-1.5 py-0.5 text-xs font-mono rounded bg-[var(--background)] border border-[var(--glass-border)]">?</kbd> anytime to show this dialog
-          </p>
-        </div>
-      </motion.div>
-    </motion.div>
   );
 }
