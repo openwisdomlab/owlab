@@ -22,11 +22,11 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│    猫头鹰之眼         羽翼              深夜星空            │
-│    Owl Eye       +   Feather       +   Night Sky           │
+│    Logo紫色          羽翼              深夜星空            │
+│    Magenta       +   Feather       +   Night Sky           │
 │                                                             │
-│    温暖琥珀金         沉稳靛蓝          神秘紫黑            │
-│    #C4A35A           #6B7AA1          #0E0E14              │
+│    粉紫洋红          粉紫洋红          神秘紫黑            │
+│    #D91A7A           #D91A7A          #0E0E14              │
 │    智慧、洞察         神秘、未来         沉浸、深邃          │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
@@ -36,11 +36,11 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 
 | 核心价值 | 色彩 | 视觉表达 |
 |---------|------|---------|
-| **开放 Open** | 琥珀金 #C4A35A | 温暖、智慧光芒 |
+| **开放 Open** | Logo紫 #D91A7A | 温暖、智慧光芒 |
 | **交叉 Cross** | 暗金 #A49464 | 过渡、融合 |
 | **连接 Connect** | 银灰 #8A8A7A | 中性、桥梁 |
 | **可持续 Sustainable** | 蓝灰 #7A8490 | 冷静、持久 |
-| **黑科技 Tech** | 靛蓝 #6B7AA1 | 神秘、未来 |
+| **黑科技 Tech** | Logo紫 #D91A7A | 神秘、未来 |
 
 ---
 
@@ -49,20 +49,20 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 ### 主色板 Primary Palette
 
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
-  <div className="p-4 rounded-lg" style={{background: '#C4A35A', color: '#0E0E14'}}>
-    <div className="font-bold">琥珀金 Owl Eye</div>
-    <div className="text-sm opacity-70">#C4A35A</div>
-    <div className="text-xs mt-2">RGB: 196, 163, 90</div>
+  <div className="p-4 rounded-lg" style={{background: '#D91A7A', color: 'white'}}>
+    <div className="font-bold">Logo紫 Magenta</div>
+    <div className="text-sm opacity-70">#D91A7A</div>
+    <div className="text-xs mt-2">RGB: 217, 26, 122</div>
   </div>
-  <div className="p-4 rounded-lg" style={{background: '#6B7AA1', color: 'white'}}>
-    <div className="font-bold">靛蓝 Feather</div>
-    <div className="text-sm opacity-80">#6B7AA1</div>
-    <div className="text-xs mt-2">RGB: 107, 122, 161</div>
+  <div className="p-4 rounded-lg" style={{background: '#D91A7A', color: 'white'}}>
+    <div className="font-bold">粉紫洋红 OWL Magenta</div>
+    <div className="text-sm opacity-80">#D91A7A</div>
+    <div className="text-xs mt-2">RGB: 217, 26, 122</div>
   </div>
-  <div className="p-4 rounded-lg" style={{background: 'linear-gradient(135deg, #C4A35A, #6B7AA1, #5C5470)', color: 'white'}}>
+  <div className="p-4 rounded-lg" style={{background: 'linear-gradient(135deg, #D91A7A, #D91A7A, #5C5470)', color: 'white'}}>
     <div className="font-bold">夜视渐变 Night Vision</div>
     <div className="text-sm opacity-80">Gradient</div>
-    <div className="text-xs mt-2">135° / Amber → Indigo → Violet</div>
+    <div className="text-xs mt-2">135° / Magenta → Magenta → Violet</div>
   </div>
 </div>
 
@@ -113,19 +113,20 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 | 用途 | 色值 | 场景 |
 |-----|------|-----|
 | 成功 Success | `#7A9A6B` | 完成、通过、正确 |
-| 警告 Warning | `#C4A35A` | 注意、待处理 |
+| 警告 Warning | `#D91A7A` | 注意、待处理 |
 | 错误 Error | `#B85450` | 错误、失败、危险 |
-| 信息 Info | `#6B7AA1` | 提示、帮助、链接 |
+| 信息 Info | `#D91A7A` | 提示、帮助、链接 |
 
 ### CSS 变量定义
 
 ```css
 :root {
   /* OWL Primary Brand Colors */
-  --owl-amber: #C4A35A;      /* 猫头鹰之眼 */
-  --owl-indigo: #6B7AA1;     /* 羽翼 */
+  --owl-magenta: #D91A7A;    /* Logo紫 */
+  --owl-amber: #D91A7A;      /* 猫头鹰之眼 */
+  --owl-indigo: #D91A7A;     /* 羽翼 */
   --owl-violet: #5C5470;     /* 神秘 */
-  --owl-gradient: linear-gradient(135deg, #C4A35A 0%, #6B7AA1 50%, #5C5470 100%);
+  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #D91A7A 50%, #5C5470 100%);
 
   /* OWL Neutral Colors */
   --owl-dark: #0E0E14;       /* 深夜星空 */
@@ -134,8 +135,9 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
   --owl-muted: #8A8A94;      /* 羽灰 */
 
   /* OWL Glow Effects */
-  --owl-glow-amber: 0 0 24px rgba(196, 163, 90, 0.25);
-  --owl-glow-indigo: 0 0 24px rgba(107, 122, 161, 0.25);
+  --owl-glow-magenta: 0 0 24px rgba(217, 26, 122, 0.25);
+  --owl-glow-amber: 0 0 24px rgba(217, 26, 122, 0.25);
+  --owl-glow-indigo: 0 0 24px rgba(217, 26, 122, 0.25);
 }
 ```
 
@@ -210,18 +212,18 @@ Logo 由两部分组成：
 品牌特有的「夜视」光晕效果 —— 柔和、不刺眼：
 
 ```css
-/* Amber Glow - 温暖智慧 */
-.owl-glow-amber {
+/* Magenta Glow - 温暖智慧 */
+.owl-glow-magenta {
   box-shadow:
-    0 0 16px rgba(196, 163, 90, 0.2),
-    0 0 32px rgba(196, 163, 90, 0.1);
+    0 0 16px rgba(217, 26, 122, 0.2),
+    0 0 32px rgba(217, 26, 122, 0.1);
 }
 
-/* Indigo Glow - 神秘未来 */
+/* Magenta Glow - 神秘未来 */
 .owl-glow-indigo {
   box-shadow:
-    0 0 16px rgba(107, 122, 161, 0.2),
-    0 0 32px rgba(107, 122, 161, 0.1);
+    0 0 16px rgba(217, 26, 122, 0.2),
+    0 0 32px rgba(217, 26, 122, 0.1);
 }
 ```
 
@@ -242,8 +244,8 @@ Logo 由两部分组成：
 
 <div className="flex flex-wrap gap-4 my-6">
   <button style={{
-    background: '#C4A35A',
-    color: '#0E0E14',
+    background: '#D91A7A',
+    color: 'white',
     padding: '12px 24px',
     borderRadius: '8px',
     fontFamily: 'Poppins, sans-serif',
@@ -255,19 +257,19 @@ Logo 由两部分组成：
   </button>
   <button style={{
     background: 'transparent',
-    color: '#C4A35A',
+    color: '#D91A7A',
     padding: '12px 24px',
     borderRadius: '8px',
     fontFamily: 'Poppins, sans-serif',
     fontWeight: 600,
-    border: '1.5px solid #C4A35A',
+    border: '1.5px solid #D91A7A',
     cursor: 'pointer'
   }}>
     Secondary Button
   </button>
   <button style={{
-    background: 'rgba(196, 163, 90, 0.1)',
-    color: '#C4A35A',
+    background: 'rgba(217, 26, 122, 0.1)',
+    color: '#D91A7A',
     padding: '12px 24px',
     borderRadius: '8px',
     fontFamily: 'Poppins, sans-serif',
@@ -291,8 +293,8 @@ Logo 由两部分组成：
 }
 
 .owl-card:hover {
-  border-color: rgba(196, 163, 90, 0.2);
-  box-shadow: var(--owl-glow-amber);
+  border-color: rgba(217, 26, 122, 0.2);
+  box-shadow: var(--owl-glow-magenta);
   transform: translateY(-2px);
 }
 ```

@@ -616,11 +616,11 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
               whileHover={{ scale: 1.02 }}
             >
-              <Sparkles className="w-4 h-4 text-[#6B7AA1]" />
+              <Sparkles className="w-4 h-4 text-[#D91A7A]" />
               Brand Identity
             </motion.div>
             <h2 className="text-3xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-[#6B7AA1] via-[#5C5470] to-[#C4A35A] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#D91A7A] via-[#5C5470] to-[#D91A7A] bg-clip-text text-transparent">
                 品牌视觉系统
               </span>
             </h2>
@@ -640,29 +640,29 @@ export default function HomePage() {
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#6B7AA1' }}
+                style={{ background: '#D91A7A' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">靛蓝紫</div>
-                  <div className="text-xs opacity-70">Owl Feather</div>
+                  <div className="font-semibold text-sm">Logo紫</div>
+                  <div className="text-xs opacity-70">Magenta Pink</div>
                 </div>
               </div>
             </motion.div>
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#6B7AA1' }}
+                style={{ background: '#D91A7A' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">靛蓝</div>
-                  <div className="text-xs opacity-70">Feather</div>
+                  <div className="font-semibold text-sm">粉紫洋红</div>
+                  <div className="text-xs opacity-70">OWL Magenta</div>
                 </div>
               </div>
             </motion.div>
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #C4A35A, #6B7AA1, #5C5470)' }}
+                style={{ background: 'linear-gradient(135deg, #D91A7A, #D91A7A, #5C5470)' }}
               >
                 <div className="text-white">
                   <div className="font-semibold text-sm">夜视渐变</div>
@@ -692,7 +692,7 @@ export default function HomePage() {
             variants={containerVariants}
           >
             {[
-              { label: '开放', en: 'Open', color: '#6B7AA1' },
+              { label: '开放', en: 'Open', color: '#D91A7A' },
               { label: '交叉', en: 'Cross', color: '#6A809A' },
               { label: '连接', en: 'Connect', color: '#7A8490' },
               { label: '可持续', en: 'Sustainable', color: '#8A8A7A' },
@@ -721,10 +721,10 @@ export default function HomePage() {
           >
             <Link
               href={`/${locale}/docs/zh/knowledge-base/10-brand`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#6B7AA1] transition-colors group"
-              style={{ background: 'linear-gradient(135deg, rgba(107,122,161,0.08), rgba(92,84,112,0.08))' }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#D91A7A] transition-colors group"
+              style={{ background: 'linear-gradient(135deg, rgba(217,26,122,0.08), rgba(92,84,112,0.08))' }}
             >
-              <Sparkles className="w-5 h-5 text-[#6B7AA1]" />
+              <Sparkles className="w-5 h-5 text-[#D91A7A]" />
               <span className="font-medium">查看完整品牌规范</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
