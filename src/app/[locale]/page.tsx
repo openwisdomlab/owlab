@@ -178,7 +178,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href={`/${locale}/docs/zh/knowledge-base`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] text-white font-medium hover:opacity-90 transition-opacity shadow-lg"
+                className="cta-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] text-white font-medium hover:opacity-90 transition-opacity shadow-lg"
               >
                 <BookOpen className="w-4 h-4" />
                 {t("hero.cta.start")}
@@ -519,7 +519,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <ModuleCards locale={locale} />
+          <ModuleCards locale={locale} showHighlights={false} />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
