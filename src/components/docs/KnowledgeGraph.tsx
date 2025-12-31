@@ -33,7 +33,7 @@ const MODULES: ModuleNode[] = [
     color: "#22d3ee",
     x: 200,
     y: 80,
-    concepts: ["STEAM教育", "创客精神", "项目式学习", "设计思维"],
+    concepts: ["STEAM教育", "创客精神", "研究性学习", "设计思维"],
     docPath: "/docs/zh/knowledge-base/01-foundations",
   },
   {
