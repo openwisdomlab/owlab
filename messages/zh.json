@@ -103,9 +103,49 @@
         "description": "研究支撑和参考文献，学术验证和引用来源"
       }
     },
+    "livingModules": {
+      "title": "前沿理念模块",
+      "subtitle": "AI 持续追踪的活文档系统",
+      "description": "四个核心理念模块，追踪前沿研究进展，为创新实验室建设提供思想支撑",
+      "modules": {
+        "spaceAsEducator": {
+          "title": "空间的塑造",
+          "subtitle": "神经建筑学与创新环境设计",
+          "description": "空间塑造人，人塑造空间——双向的塑造过程。从神经建筑学到第三空间 2.0，理解物理环境如何影响认知、行为和创造力。",
+          "meta": "Space as Educator",
+          "principles": "6条循证设计原则",
+          "checklist": "循证空间设计清单"
+        },
+        "extendedMind": {
+          "title": "思维的延伸",
+          "subtitle": "AI增强认知与学习科学",
+          "description": "AI 是认知的外骨骼——延伸人类能力，而非替代人类思考。探索人机协作的最佳平衡点，培养AI时代的核心素养。",
+          "meta": "Extended Mind",
+          "principles": "6条循证设计原则",
+          "checklist": "AI整合设计清单"
+        },
+        "emergentWisdom": {
+          "title": "涌现的智慧",
+          "subtitle": "社群动力学与协作认知",
+          "description": "社群是智慧的孵化器——个体智慧在社群中被放大、重组、进化。从心理安全到认知多样性，理解集体智慧的涌现机制。",
+          "meta": "Emergent Wisdom",
+          "principles": "6条循证设计原则",
+          "checklist": "集体智慧建设清单"
+        },
+        "poeticsOfTechnology": {
+          "title": "技术的诗意",
+          "subtitle": "具身工具与后屏幕时代",
+          "description": "技术应该"消失"——最好的技术让人忘记技术的存在。从具身学习到可修补性，重新思考工具与人的关系。",
+          "meta": "Poetics of Technology",
+          "principles": "6条循证设计原则",
+          "checklist": "年龄段适配工具矩阵"
+        }
+      },
+      "viewAll": "探索完整活模块系统"
+    },
     "tools": {
-      "title": "配套工具",
-      "description": "AI 驱动的设计与规划工具，让创建更轻松",
+      "title": "智能创造力工坊",
+      "description": "AI 驱动的设计与规划工具，从理念到实践的智能桥梁",
       "lab": {
         "title": "AI 空间设计工具",
         "description": "使用 AI 辅助设计和可视化你的实验室空间布局，智能推荐最佳配置"
