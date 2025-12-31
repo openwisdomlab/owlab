@@ -327,14 +327,65 @@ OWL 平台
   └───────────────────────────────────────────── 刚进入空间
 ```
 
+#### 运营功能模块 [新增]
+
+**运营仪表板**：
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  🎯 探索任务引擎 - 运营控制台                                      │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐               │
+│  │活跃探索者│ │任务完成率│ │ 今日新增 │ │ 参与深度 │               │
+│  │   128   │ │  73.2%  │ │   +12   │ │  3.4h   │               │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘               │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**核心运营指标**：
+
+| 类别 | 指标 | 健康阈值 |
+|------|------|----------|
+| 参与度 | DAU/MAU 比率 | > 0.3 |
+| 质量度 | 任务满意度 | > 4.0/5.0 |
+| 成长性 | 身份晋级率 | > 20%/月 |
+| 社交性 | 协作任务比例 | > 25% |
+
+**任务运营工具**：
+- 任务创建向导：模板库 + AI 建议优化
+- 批量管理：导入/编辑/发布/归档
+- 季节任务日历：年度活动规划
+- 协作匹配引擎：技能互补、导师-学员配对
+
+**AI 推荐系统**：
+- 个性化任务推荐（画像+行为+成长路径）
+- 难度自动调节（基于完成率动态校准）
+- 参与度预测（预判最佳推荐时机）
+- A/B 测试框架（任务描述/奖励/难度测试）
+
+**运营助手 Luna**：
+- 每日运营简报
+- 异常预警响应
+- 任务健康检查
+- 决策支持建议
+
 #### 技术实现
 
 ```typescript
-// 新增 AI 代理
+// 新增 AI 代理（原有）
 - quest-generator-agent.ts     // 动态任务生成
 - legacy-manager-agent.ts      // 世代传承管理
 - dark-quest-detector.ts       // 暗任务触发检测
 - social-matcher-agent.ts      // 协作匹配
+
+// 新增 AI 代理（运营扩展）
+- ops-dashboard-agent.ts       // 运营仪表板
+- ops-alert-agent.ts           // 智能预警
+- quest-optimizer-agent.ts     // 任务优化
+- recommendation-agent.ts      // 个性化推荐
+- difficulty-calibrator-agent.ts // 难度校准
+- engagement-predictor-agent.ts  // 参与度预测
+- collaboration-matcher-agent.ts // 协作匹配
+- mentor-matching-agent.ts     // 导师匹配
 
 // 数据模型
 interface Quest {
@@ -357,20 +408,24 @@ interface Quest {
 
 ---
 
-### 3.4 工具4：项目记忆馆
+### 3.4 工具4：记忆与传承
 
 #### 工具定位
 
 一个**活的档案馆**，让空间拥有集体记忆，让过去的项目成为可对话的"灵魂"。
 
-#### 记忆馆架构
+#### 记忆馆架构（扩展版）
 
 ```
-项目记忆馆
+记忆与传承
 ├── 🏛️ 时间长廊 —— 成功记忆的时间线展示
 ├── 🕯️ 失败神殿 —— 失败圣物的供奉与朝圣
 ├── 👻 幽灵唤醒 —— 与过去项目对话
-└── 🧬 记忆熔炉 —— 记忆杂交生成新概念
+├── 🧬 记忆熔炉 —— 记忆杂交生成新概念
+├── 📖 故事工坊 —— 项目叙事化与传播 [新增]
+├── 🌊 涟漪追踪 —— 影响力图谱与灵感链条 [新增]
+├── 🖼️ 星际画廊 —— 跨空间作品展示 [新增]
+└── 📊 运营中心 —— 自动化报告与仪表盘 [新增]
 ```
 
 #### 时间长廊
@@ -465,18 +520,174 @@ interface ProjectMemory {
 - failure-wisdom-agent.ts     // 失败智慧提取
 - memory-fusion-agent.ts      // 记忆杂交生成
 
-// 新增组件
+// 新增组件（原有）
 - TimeCorridor.tsx            // 时间长廊
 - FailureTemple.tsx           // 失败神殿
 - GhostChat.tsx               // 幽灵对话
 - MemoryFusion.tsx            // 记忆熔炉
 - SpatialMemoryMap.tsx        // 空间记忆地图
 - OfferingRitual.tsx          // 失败供奉仪式
+
+// 新增组件（展示传播扩展）
+- StoryWorkshop.tsx           // 故事工坊
+- NarrativeEditor.tsx         // 叙事编辑器
+- VisualFactory.tsx           // 视觉生成工厂
+- RippleGraph.tsx             // 涟漪图谱
+- InspirationChain.tsx        // 灵感链条
+- StellarGallery.tsx          // 星际画廊
+- ImpactDashboard.tsx         // 影响力仪表盘
+- OperatorDashboard.tsx       // 运营仪表盘
+
+// 新增 AI 代理（展示传播扩展）
+- story-weaver-agent.ts       // 故事编织
+- visual-generator-agent.ts   // 视觉生成
+- ripple-tracker-agent.ts     // 涟漪追踪
+- gallery-curator-agent.ts    // 画廊策展
+- report-generator-agent.ts   // 报告生成
+```
+
+#### 新增模块详解
+
+**故事工坊**：将项目记忆转化为引人入胜的叙事
+
+| 叙事类型 | 结构 | 适用场景 |
+|----------|------|----------|
+| 英雄之旅 | 召唤→试炼→归来 | 突破性项目 |
+| 侦探解谜 | 疑问→线索→揭示 | 探究型项目 |
+| 意外发现 | 偶然→探索→惊喜 | 失败转化 |
+| 接力传承 | 前人→当下→未来 | 世代任务 |
+| 凤凰涅槃 | 失败→反思→重生 | 失败神殿项目 |
+
+**涟漪追踪器**：可视化项目影响力扩散
+
+- 涟漪图谱：项目如何启发其他项目
+- 灵感链条：追踪"谁被这个项目启发了"
+- 影响力评级：从潜在影响到传奇影响的5级评估
+
+**星际画廊**：跨空间的作品展示平台
+
+- 全域画廊：所有空间作品汇聚
+- 荣誉殿堂：社群之星、导师精选、年度典范
+- 交换计划：项目漂流瓶、姊妹空间
+- 联邦展览：季度主题展、年度盛典
+
+---
+
+### 3.5 工具5：想法花园
+
+#### 工具定位
+
+一个管理想法演化的工具，让零散的灵感能够生根、发芽、开花、结果。
+
+**核心理念**：想法不是用来"管理"的，而是用来"培育"的。花园的逻辑不是效率，而是生命力。
+
+#### 花园架构
+
+```
+想法花园
+├── 🌰 种子库 —— 极速捕捉，零压力归档
+├── 🌱 培育圃 —— 想法画布，深度发展
+├── 🔗 嫁接站 —— 发现意外连接
+├── 🌿 温室 —— 成熟度评估，行动分解
+└── 🏛️ 记忆园 —— 成果归档，传承链
+```
+
+#### 想法生命周期
+
+```
+                    ┌─────────────┐
+                    │   果实      │ ← 实现：成为项目/作品/行动
+                    │  (Fruit)    │
+                    └──────┬──────┘
+                           │ 孵化
+                    ┌──────┴──────┐
+                    │   花朵      │ ← 成型：完整清晰、可执行
+                    │  (Flower)   │
+                    └──────┬──────┘
+                           │ 深化
+                    ┌──────┴──────┐
+                    │   芽苗      │ ← 发展：开始具体化
+                    │ (Sprout)    │
+                    └──────┬──────┘
+                           │ 萌发
+                    ┌──────┴──────┐
+                    │   种子      │ ← 捕捉：原始的闪念
+                    │  (Seed)     │
+                    └─────────────┘
+```
+
+#### 核心功能模块
+
+| 模块 | 功能 | 界面隐喻 |
+|------|------|----------|
+| **种子库** | 极速捕捉（语音/文字/图片/涂鸦），零压力归档 | 永远敞开的口袋 |
+| **培育圃** | 想法画布、问题链、素材关联、思考轨迹 | 可翻土的苗圃 |
+| **嫁接站** | 随机邂逅、主题星图、跨人嫁接、逆向嫁接 | 嫁接工作台 |
+| **温室** | 成熟度评估、资源地图、MVP设计、风险预警 | 玻璃温室 |
+| **记忆园** | 成果归档、失败博物馆、休眠区、传承链 | 花园遗迹 |
+
+#### AI 代理团队
+
+| 代理 | 角色 | 职责 |
+|------|------|------|
+| 🌱 播种精灵 | 捕捉助手 | 多模态输入处理，类型识别 |
+| 🌿 园艺顾问 | 发展导师 | 苏格拉底提问，结构建议 |
+| 🐝 授粉蜜蜂 | 连接者 | 模式识别，随机配对，跨人连接 |
+| 🍂 季节守望 | 节奏守护 | 休眠提醒，季节回顾，趋势分析 |
+| 🍎 收获向导 | 落地顾问 | 成熟度评估，MVP设计，任务分解 |
+
+#### 游戏化元素
+
+**花园生态系统可视化**：
+- 🌱 生物多样性 — 想法类型的丰富度
+- 💧 活水循环 — 想法的更新频率
+- 🌳 根系深度 — 深入发展的想法数量
+- 🦋 授粉活跃度 — 想法之间的连接密度
+- 🍎 结果率 — 想法转化为行动的比例
+
+**季节系统**：
+
+| 季节 | 主题活动 | 奖励 |
+|------|----------|------|
+| 播种季 | 鼓励大量捕捉新想法 | "丰收种子"徽章 |
+| 生长季 | 鼓励深入发展想法 | "深耕者"徽章 |
+| 收获季 | 鼓励将想法付诸实践 | "果实累累"徽章 |
+| 休眠季 | 回顾和整理花园 | "花园守护者"徽章 |
+
+#### 与其他工具的协同
+
+```
+想法花园 ←──灵感来源──→ 记忆与传承
+    │                        │
+    │ 想法成熟后              │
+    ↓                        ↓
+探索任务引擎 ←──执行反馈──→ AI智慧顾问
+```
+
+#### 技术实现
+
+```typescript
+// AI 代理
+- sowing-spirit-agent.ts      // 播种精灵
+- gardening-advisor-agent.ts  // 园艺顾问
+- pollinator-bee-agent.ts     // 授粉蜜蜂
+- season-watcher-agent.ts     // 季节守望
+- harvest-guide-agent.ts      // 收获向导
+
+// 核心组件
+- SeedVault.tsx               // 种子库
+- NurturingBed.tsx            // 培育圃
+- GraftingStation.tsx         // 嫁接站
+- Greenhouse.tsx              // 温室
+- MemoryGarden.tsx            // 记忆园
+- IdeaCanvas.tsx              // 想法画布
+- ConnectionGraph.tsx         // 连接图谱
+- SeasonalView.tsx            // 季节视图
 ```
 
 ---
 
-### 3.5 工具5：AI智慧顾问
+### 3.6 工具6：AI智慧顾问
 
 #### 工具定位
 
@@ -658,11 +869,11 @@ M09 世代影响评估   ───────→ 工具3: 世代传承任务
 ### 新增 AI 代理清单
 
 ```
-工具1：AI空间设计器
+工具1：AI空间设计器 (2个代理)
 ├── parallel-universe-agent.ts
 └── emotion-design-agent.ts
 
-工具2：创意游戏工坊
+工具2：创意游戏工坊 (6个代理)
 ├── scriptgame-agent.ts
 ├── escaperoom-agent.ts
 ├── boardgame-agent.ts
@@ -670,23 +881,45 @@ M09 世代影响评估   ───────→ 工具3: 世代传承任务
 ├── difficulty-calibrator.ts
 └── narrative-weaver-agent.ts
 
-工具3：探索任务引擎
+工具3：探索任务引擎 (12个代理)
 ├── quest-generator-agent.ts
 ├── legacy-manager-agent.ts
 ├── dark-quest-detector.ts
-└── social-matcher-agent.ts
+├── social-matcher-agent.ts
+├── ops-dashboard-agent.ts       [运营扩展]
+├── ops-alert-agent.ts           [运营扩展]
+├── quest-optimizer-agent.ts     [运营扩展]
+├── recommendation-agent.ts      [运营扩展]
+├── difficulty-calibrator-agent.ts [运营扩展]
+├── engagement-predictor-agent.ts  [运营扩展]
+├── collaboration-matcher-agent.ts [运营扩展]
+└── mentor-matching-agent.ts     [运营扩展]
 
-工具4：项目记忆馆
+工具4：记忆与传承 (9个代理)
 ├── memory-curator-agent.ts
 ├── ghost-personality-agent.ts
 ├── failure-wisdom-agent.ts
-└── memory-fusion-agent.ts
+├── memory-fusion-agent.ts
+├── story-weaver-agent.ts        [展示传播]
+├── visual-generator-agent.ts    [展示传播]
+├── ripple-tracker-agent.ts      [展示传播]
+├── gallery-curator-agent.ts     [展示传播]
+└── report-generator-agent.ts    [展示传播]
 
-工具5：AI智慧顾问
+工具5：想法花园 (5个代理) [新增]
+├── sowing-spirit-agent.ts       // 播种精灵
+├── gardening-advisor-agent.ts   // 园艺顾问
+├── pollinator-bee-agent.ts      // 授粉蜜蜂
+├── season-watcher-agent.ts      // 季节守望
+└── harvest-guide-agent.ts       // 收获向导
+
+工具6：AI智慧顾问 (4个代理)
 ├── soul-persona-agent.ts
 ├── archaeologist-agent.ts
 ├── debate-moderator-agent.ts
 └── insight-synthesizer-agent.ts
+
+共计：38个 AI 代理
 ```
 
 ---
