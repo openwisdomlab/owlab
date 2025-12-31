@@ -24,6 +24,7 @@ import {
   Keyboard,
   X,
   Ruler,
+  Brain,
 } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { FloorPlanCanvas } from "@/components/lab/FloorPlanCanvas";
@@ -35,6 +36,7 @@ import { TemplateGallery } from "@/components/lab/TemplateGallery";
 import { TemplatePreviewDialog } from "@/components/lab/TemplatePreviewDialog";
 import { SaveTemplateDialog } from "@/components/lab/SaveTemplateDialog";
 import { SafetyPanel } from "@/components/lab/SafetyPanel";
+import { PsychologicalSafetyPanel } from "@/components/lab/PsychologicalSafetyPanel";
 import { Preview3D } from "@/components/lab/Preview3D";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
@@ -102,6 +104,7 @@ export default function FloorPlanPageEnhanced() {
   const [showTemplates, setShowTemplates] = useState(false);
   const [showSaveTemplate, setShowSaveTemplate] = useState(false);
   const [showSafety, setShowSafety] = useState(false);
+  const [showPsychologicalSafety, setShowPsychologicalSafety] = useState(false);
   const [show3DPreview, setShow3DPreview] = useState(false);
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [showMeasurement, setShowMeasurement] = useState(false);
@@ -464,6 +467,18 @@ export default function FloorPlanPageEnhanced() {
           </button>
 
           <button
+            onClick={() => setShowPsychologicalSafety(!showPsychologicalSafety)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              showPsychologicalSafety
+                ? "bg-[var(--neon-violet)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Psychological Safety Assessment"
+          >
+            <Brain className="w-4 h-4" />
+          </button>
+
+          <button
             onClick={() => setShow3DPreview(!show3DPreview)}
             className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
               show3DPreview
@@ -662,6 +677,22 @@ export default function FloorPlanPageEnhanced() {
               <SafetyPanel
                 layout={layout}
                 onClose={() => setShowSafety(false)}
+              />
+            </motion.div>
+          )}
+
+          {showPsychologicalSafety && (
+            <motion.div
+              key="psychological-safety"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-[420px] border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <PsychologicalSafetyPanel
+                layout={layout}
+                onClose={() => setShowPsychologicalSafety(false)}
+                onZoneSelect={(zoneId) => setSelectedZone(zoneId)}
               />
             </motion.div>
           )}

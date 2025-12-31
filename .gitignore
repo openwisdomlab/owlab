@@ -33,6 +33,9 @@
 # development iteration files
 /.dev/
 
+# MCP servers (local installations)
+/.mcp/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
