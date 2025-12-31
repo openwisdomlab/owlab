@@ -22,12 +22,12 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│    Logo紫色          羽翼              深夜星空            │
-│    Magenta       +   Feather       +   Night Sky           │
+│    Logo紫色          Logo蓝色          蓝紫渐变            │
+│    Magenta       +   Blue          +   Gradient            │
 │                                                             │
-│    粉紫洋红          粉紫洋红          神秘紫黑            │
-│    #D91A7A           #D91A7A          #0E0E14              │
-│    智慧、洞察         神秘、未来         沉浸、深邃          │
+│    洋红色            蓝色               融合渐变            │
+│    #D91A7A           #2563EB           #D91A7A→#2563EB     │
+│    智慧、洞察         未来、科技         创新、融合          │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -50,19 +50,19 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
   <div className="p-4 rounded-lg" style={{background: '#D91A7A', color: 'white'}}>
-    <div className="font-bold">Logo紫 Magenta</div>
+    <div className="font-bold">Logo紫色 Magenta</div>
     <div className="text-sm opacity-70">#D91A7A</div>
     <div className="text-xs mt-2">RGB: 217, 26, 122</div>
   </div>
-  <div className="p-4 rounded-lg" style={{background: '#D91A7A', color: 'white'}}>
-    <div className="font-bold">粉紫洋红 OWL Magenta</div>
-    <div className="text-sm opacity-80">#D91A7A</div>
-    <div className="text-xs mt-2">RGB: 217, 26, 122</div>
+  <div className="p-4 rounded-lg" style={{background: '#2563EB', color: 'white'}}>
+    <div className="font-bold">Logo蓝色 OWL Blue</div>
+    <div className="text-sm opacity-80">#2563EB</div>
+    <div className="text-xs mt-2">RGB: 37, 99, 235</div>
   </div>
-  <div className="p-4 rounded-lg" style={{background: 'linear-gradient(135deg, #D91A7A, #D91A7A, #5C5470)', color: 'white'}}>
-    <div className="font-bold">夜视渐变 Night Vision</div>
+  <div className="p-4 rounded-lg" style={{background: 'linear-gradient(135deg, #D91A7A 0%, #2563EB 100%)', color: 'white'}}>
+    <div className="font-bold">蓝紫渐变 Magenta-Blue Gradient</div>
     <div className="text-sm opacity-80">Gradient</div>
-    <div className="text-xs mt-2">135° / Magenta → Magenta → Violet</div>
+    <div className="text-xs mt-2">135° / Magenta → Blue</div>
   </div>
 </div>
 
@@ -122,11 +122,10 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 ```css
 :root {
   /* OWL Primary Brand Colors */
-  --owl-magenta: #D91A7A;    /* Logo紫 */
-  --owl-amber: #D91A7A;      /* 猫头鹰之眼 */
-  --owl-indigo: #D91A7A;     /* 羽翼 */
-  --owl-violet: #5C5470;     /* 神秘 */
-  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #D91A7A 50%, #5C5470 100%);
+  --owl-magenta: #D91A7A;    /* Logo紫色 */
+  --owl-blue: #2563EB;       /* Logo蓝色 */
+  --owl-violet: #5C5470;     /* 神秘紫灰 */
+  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #2563EB 100%);
 
   /* OWL Neutral Colors */
   --owl-dark: #0E0E14;       /* 深夜星空 */
@@ -136,8 +135,7 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 
   /* OWL Glow Effects */
   --owl-glow-magenta: 0 0 24px rgba(217, 26, 122, 0.25);
-  --owl-glow-amber: 0 0 24px rgba(217, 26, 122, 0.25);
-  --owl-glow-indigo: 0 0 24px rgba(217, 26, 122, 0.25);
+  --owl-glow-blue: 0 0 24px rgba(37, 99, 235, 0.25);
 }
 ```
 
@@ -219,11 +217,11 @@ Logo 由两部分组成：
     0 0 32px rgba(217, 26, 122, 0.1);
 }
 
-/* Magenta Glow - 神秘未来 */
-.owl-glow-indigo {
+/* Blue Glow - 未来科技 */
+.owl-glow-blue {
   box-shadow:
-    0 0 16px rgba(217, 26, 122, 0.2),
-    0 0 32px rgba(217, 26, 122, 0.1);
+    0 0 16px rgba(37, 99, 235, 0.2),
+    0 0 32px rgba(37, 99, 235, 0.1);
 }
 ```
 
