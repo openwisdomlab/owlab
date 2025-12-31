@@ -20,12 +20,15 @@ import { PsychologicalSafetyPanel } from "@/components/lab/PsychologicalSafetyPa
 import { Preview3D } from "@/components/lab/Preview3D";
 import { MeasurementToolbar } from "@/components/lab/MeasurementToolbar";
 import { MeasurementOverlay } from "@/components/lab/MeasurementOverlay";
+import { ParallelUniverseDialog } from "@/components/lab/ParallelUniverseDialog";
+import { EmotionDesignDialog } from "@/components/lab/EmotionDesignDialog";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
 import { useHistory } from "@/hooks/useHistory";
 import { useMeasurementTools } from "@/hooks/useMeasurementTools";
 import { ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
+import { EMOTION_COLORS } from "@/lib/schemas/emotion-design";
 
 const GRID_SIZE = 40; // matches FloorPlanCanvas GRID_SIZE
 
@@ -89,6 +92,8 @@ export default function FloorPlanPageEnhanced() {
   const [show3DPreview, setShow3DPreview] = useState(false);
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [showMeasurement, setShowMeasurement] = useState(false);
+  const [showParallelUniverse, setShowParallelUniverse] = useState(false);
+  const [showEmotionDesign, setShowEmotionDesign] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
 
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
@@ -312,6 +317,16 @@ export default function FloorPlanPageEnhanced() {
           e.preventDefault();
           toggleMeasurement();
           break;
+        case "p":
+        case "P":
+          e.preventDefault();
+          setShowParallelUniverse(true);
+          break;
+        case "e":
+        case "E":
+          e.preventDefault();
+          setShowEmotionDesign(true);
+          break;
         case "Delete":
         case "Backspace":
           if (selectedZone) {
@@ -387,6 +402,8 @@ export default function FloorPlanPageEnhanced() {
         onTogglePsychologicalSafety={() => setShowPsychologicalSafety(!showPsychologicalSafety)}
         show3DPreview={show3DPreview}
         onToggle3DPreview={() => setShow3DPreview(!show3DPreview)}
+        onShowParallelUniverse={() => setShowParallelUniverse(true)}
+        onShowEmotionDesign={() => setShowEmotionDesign(true)}
         showMeasurement={showMeasurement}
         onToggleMeasurement={toggleMeasurement}
         onShowShortcuts={() => setShowShortcuts(true)}
@@ -589,6 +606,36 @@ export default function FloorPlanPageEnhanced() {
 
         {showShortcuts && (
           <KeyboardShortcutsDialog onClose={() => setShowShortcuts(false)} />
+        )}
+
+        {showParallelUniverse && (
+          <ParallelUniverseDialog onClose={() => setShowParallelUniverse(false)} />
+        )}
+
+        {showEmotionDesign && (
+          <EmotionDesignDialog
+            onClose={() => setShowEmotionDesign(false)}
+            onApplyResult={(result) => {
+              // Apply the recommended zones from emotion design
+              if (result.suggestedZones && result.suggestedZones.length > 0) {
+                setLayout((prev) => ({
+                  ...prev,
+                  zones: [
+                    ...prev.zones,
+                    ...result.suggestedZones.map((zone, index) => ({
+                      id: uuidv4(),
+                      name: zone.name,
+                      type: "workspace" as ZoneData["type"],
+                      position: { x: index * 6, y: prev.zones.length * 4 },
+                      size: { width: zone.suggestedSize.width, height: zone.suggestedSize.height },
+                      color: EMOTION_COLORS[zone.targetEmotions[0]] || "#8b5cf6",
+                      equipment: [],
+                    })),
+                  ],
+                }));
+              }
+            }}
+          />
         )}
       </AnimatePresence>
     </div>

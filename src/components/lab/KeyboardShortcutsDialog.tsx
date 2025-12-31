@@ -29,6 +29,10 @@ export function KeyboardShortcutsDialog({ onClose }: KeyboardShortcutsDialogProp
       { keys: ["M"], action: "Toggle measurement tools" },
       { keys: ["?"], action: "Show shortcuts" },
     ]},
+    { category: "AI Design", items: [
+      { keys: ["P"], action: "Parallel Universe Designer" },
+      { keys: ["E"], action: "Emotion Design" },
+    ]},
   ];
 
   return (
