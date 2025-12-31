@@ -643,7 +643,7 @@ export default function HomePage() {
                 style={{ background: '#D91A7A' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">Logo紫</div>
+                  <div className="font-semibold text-sm">Logo紫色</div>
                   <div className="text-xs opacity-70">Magenta Pink</div>
                 </div>
               </div>
@@ -651,22 +651,22 @@ export default function HomePage() {
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#D91A7A' }}
+                style={{ background: '#2563EB' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">粉紫洋红</div>
-                  <div className="text-xs opacity-70">OWL Magenta</div>
+                  <div className="font-semibold text-sm">Logo蓝色</div>
+                  <div className="text-xs opacity-70">OWL Blue</div>
                 </div>
               </div>
             </motion.div>
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #D91A7A, #D91A7A, #5C5470)' }}
+                style={{ background: 'linear-gradient(135deg, #D91A7A 0%, #2563EB 100%)' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">夜视渐变</div>
-                  <div className="text-xs opacity-70">Night Vision</div>
+                  <div className="font-semibold text-sm">蓝紫渐变</div>
+                  <div className="text-xs opacity-70">Magenta-Blue Gradient</div>
                 </div>
               </div>
             </motion.div>

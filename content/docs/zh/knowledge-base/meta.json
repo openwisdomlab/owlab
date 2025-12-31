@@ -2,6 +2,7 @@
   "title": "知识库",
   "pages": [
     "index",
+    "---",
     "ARCHITECTURE-V2",
     "GLOBAL-DEFINITIONS",
     "---",
@@ -14,7 +15,6 @@
     "07-people/index",
     "08-operations/index",
     "09-assessment/index",
-    "10-brand/index",
     "---",
     "REFERENCES-LIBRARY",
     "COLLABORATION-PROTOCOL",

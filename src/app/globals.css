@@ -14,12 +14,11 @@
 
 /* CSS Variables - OWL Brand Color Palette */
 :root {
-  /* OWL Primary Brand Colors - 沉稳版 */
-  --owl-magenta: #D91A7A;    /* Logo紫 - 粉紫洋红 */
-  --owl-amber: #D91A7A;      /* 猫头鹰之眼 - Logo紫色 */
-  --owl-indigo: #D91A7A;     /* 羽翼 - Logo紫色 */
-  --owl-violet: #5C5470;     /* 神秘 - 深紫灰 */
-  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #D91A7A 50%, #5C5470 100%);
+  /* OWL Primary Brand Colors - Logo颜色 */
+  --owl-magenta: #D91A7A;    /* Logo紫色 - 洋红 */
+  --owl-blue: #2563EB;       /* Logo蓝色 - 蓝色 */
+  --owl-violet: #5C5470;     /* 神秘紫灰 */
+  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #2563EB 100%);
 
   /* OWL Neutral Colors */
   --owl-dark: #0E0E14;       /* 深夜星空 */
@@ -29,8 +28,7 @@
 
   /* OWL Glow Effects - 柔和版 */
   --owl-glow-magenta: 0 0 24px rgba(217, 26, 122, 0.25);
-  --owl-glow-amber: 0 0 24px rgba(217, 26, 122, 0.25);
-  --owl-glow-indigo: 0 0 24px rgba(217, 26, 122, 0.25);
+  --owl-glow-blue: 0 0 24px rgba(37, 99, 235, 0.25);
 
   /* Semantic Colors (Dark Mode - default) */
   --background: #0E0E14;
@@ -62,14 +60,14 @@
   --brand-tech: #D91A7A;       /* Logo紫 - 黑科技 */
 
   /* Legacy neon aliases - 调整为沉稳色调 */
-  --neon-cyan: #D91A7A;
+  --neon-cyan: #2563EB;
   --neon-violet: #5C5470;
   --neon-pink: #D91A7A;
   --neon-green: #7A9A6B;
   --neon-yellow: #D91A7A;
   --neon-orange: #B8956B;
   --neon-red: #B85450;
-  --neon-blue: #D91A7A;
+  --neon-blue: #2563EB;
   --neon-teal: #5A8A8A;
 
   /* Glass Effect - 更柔和 */
