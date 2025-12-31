@@ -19,6 +19,8 @@ import {
   Keyboard,
   Ruler,
   Brain,
+  Globe,
+  Heart,
 } from "lucide-react";
 import { COLOR_SCHEMES, ColorScheme } from "@/lib/utils/canvas";
 
@@ -63,6 +65,10 @@ interface FloorPlanToolbarProps {
   show3DPreview: boolean;
   onToggle3DPreview: () => void;
 
+  // AI Design Features
+  onShowParallelUniverse: () => void;
+  onShowEmotionDesign: () => void;
+
   // Measurement
   showMeasurement: boolean;
   onToggleMeasurement: () => void;
@@ -105,6 +111,8 @@ export function FloorPlanToolbar({
   onTogglePsychologicalSafety,
   show3DPreview,
   onToggle3DPreview,
+  onShowParallelUniverse,
+  onShowEmotionDesign,
   showMeasurement,
   onToggleMeasurement,
   onShowShortcuts,
@@ -290,6 +298,25 @@ export function FloorPlanToolbar({
           title="3D Preview"
         >
           <Box className="w-4 h-4" />
+        </button>
+
+        <div className="h-6 w-px bg-[var(--glass-border)]" />
+
+        {/* AI Design Features */}
+        <button
+          onClick={onShowParallelUniverse}
+          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--neon-purple)]/20 hover:border-[var(--neon-purple)] border border-transparent transition-colors"
+          title="Parallel Universe Designer (P)"
+        >
+          <Globe className="w-4 h-4 text-[var(--neon-purple)]" />
+        </button>
+
+        <button
+          onClick={onShowEmotionDesign}
+          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--neon-purple)]/20 hover:border-[var(--neon-purple)] border border-transparent transition-colors"
+          title="Emotion Design (E)"
+        >
+          <Heart className="w-4 h-4 text-[var(--neon-purple)]" />
         </button>
 
         <div className="h-6 w-px bg-[var(--glass-border)]" />
