@@ -162,8 +162,8 @@ export default function HomePage() {
               {t("hero.version")}
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
-              <span className="gradient-text">{t("hero.title")}</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 text-[var(--foreground)]">
+              {t("hero.title")}
             </h1>
 
             <p className="text-sm text-[var(--neon-cyan)] font-mono tracking-widest mb-4">
@@ -198,116 +198,6 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 三层架构导航 Section */}
-      <section className="py-16 px-4 border-y border-[var(--glass-border)]">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
-              whileHover={{ scale: 1.02 }}
-            >
-              <Layers className="w-4 h-4 text-[var(--neon-cyan)]" />
-              {t("threeLayerNav.subtitle")}
-            </motion.div>
-            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("threeLayerNav.title")}</h2>
-            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              {t("threeLayerNav.description")}
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {/* 理念层 */}
-            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/living-modules`}>
-                <div className="h-full glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/20 to-[var(--neon-cyan)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Sparkles className="w-6 h-6 text-[var(--neon-cyan)]" />
-                    </div>
-                    <span className="text-xs px-2 py-1 rounded bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)] font-mono">
-                      {t("threeLayerNav.layers.philosophy.badge")}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {t("threeLayerNav.layers.philosophy.title")}
-                  </h3>
-                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
-                    {t("threeLayerNav.layers.philosophy.description")}
-                  </p>
-                  <div className="flex items-center gap-2 text-[var(--neon-cyan)] font-medium group-hover:gap-3 transition-all">
-                    <span>{t("threeLayerNav.layers.philosophy.link")}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* 行动层 */}
-            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/knowledge-base`}>
-                <div className="h-full glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-violet)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Rocket className="w-6 h-6 text-[var(--neon-violet)]" />
-                    </div>
-                    <span className="text-xs px-2 py-1 rounded bg-[var(--neon-violet)]/10 text-[var(--neon-violet)] font-mono">
-                      {t("threeLayerNav.layers.action.badge")}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {t("threeLayerNav.layers.action.title")}
-                  </h3>
-                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
-                    {t("threeLayerNav.layers.action.description")}
-                  </p>
-                  <div className="flex items-center gap-2 text-[var(--neon-violet)] font-medium group-hover:gap-3 transition-all">
-                    <span>{t("threeLayerNav.layers.action.link")}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* 主文档 */}
-            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/knowledge-base/ARCHITECTURE-V2`}>
-                <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <FileText className="w-6 h-6 text-[var(--neon-green)]" />
-                    </div>
-                    <span className="text-xs px-2 py-1 rounded bg-[var(--neon-green)]/10 text-[var(--neon-green)] font-mono">
-                      {t("threeLayerNav.layers.docs.badge")}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {t("threeLayerNav.layers.docs.title")}
-                  </h3>
-                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
-                    {t("threeLayerNav.layers.docs.description")}
-                  </p>
-                  <div className="flex items-center gap-2 text-[var(--neon-green)] font-medium group-hover:gap-3 transition-all">
-                    <span>{t("threeLayerNav.layers.docs.link")}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* 前沿理念模块 Section - 独立展示 */}
       <section className="py-20 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
         <div className="max-w-6xl mx-auto">
@@ -324,7 +214,7 @@ export default function HomePage() {
               <Sparkles className="w-4 h-4 text-[var(--neon-yellow)]" />
               {t("livingModules.subtitle")}
             </motion.div>
-            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("livingModules.title")}</h2>
+            <h2 className="text-3xl font-bold mb-3 text-[var(--foreground)]">{t("livingModules.title")}</h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               {t("livingModules.description")}
             </p>
@@ -513,7 +403,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("modules.title")}</h2>
+            <h2 className="text-3xl font-bold mb-3 text-[var(--foreground)]">{t("modules.title")}</h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               {t("modules.description")}
             </p>
@@ -555,7 +445,7 @@ export default function HomePage() {
               <Wand2 className="w-4 h-4 text-[var(--neon-violet)]" />
               {t("actionTools.subtitle")}
             </motion.div>
-            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("actionTools.title")}</h2>
+            <h2 className="text-3xl font-bold mb-3 text-[var(--foreground)]">{t("actionTools.title")}</h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               {t("actionTools.description")}
             </p>
@@ -726,11 +616,11 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
               whileHover={{ scale: 1.02 }}
             >
-              <Sparkles className="w-4 h-4 text-[#C4A35A]" />
+              <Sparkles className="w-4 h-4 text-[#6B7AA1]" />
               Brand Identity
             </motion.div>
             <h2 className="text-3xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-[#C4A35A] via-[#6B7AA1] to-[#5C5470] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#6B7AA1] via-[#5C5470] to-[#C4A35A] bg-clip-text text-transparent">
                 品牌视觉系统
               </span>
             </h2>
@@ -750,11 +640,11 @@ export default function HomePage() {
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#C4A35A' }}
+                style={{ background: '#6B7AA1' }}
               >
-                <div className="text-[#0E0E14]">
-                  <div className="font-semibold text-sm">琥珀金</div>
-                  <div className="text-xs opacity-70">Owl Eye</div>
+                <div className="text-white">
+                  <div className="font-semibold text-sm">靛蓝紫</div>
+                  <div className="text-xs opacity-70">Owl Feather</div>
                 </div>
               </div>
             </motion.div>
@@ -802,11 +692,11 @@ export default function HomePage() {
             variants={containerVariants}
           >
             {[
-              { label: '开放', en: 'Open', color: '#C4A35A' },
-              { label: '交叉', en: 'Cross', color: '#A49464' },
-              { label: '连接', en: 'Connect', color: '#8A8A7A' },
-              { label: '可持续', en: 'Sustainable', color: '#7A8490' },
-              { label: '黑科技', en: 'Tech', color: '#6B7AA1' },
+              { label: '开放', en: 'Open', color: '#6B7AA1' },
+              { label: '交叉', en: 'Cross', color: '#6A809A' },
+              { label: '连接', en: 'Connect', color: '#7A8490' },
+              { label: '可持续', en: 'Sustainable', color: '#8A8A7A' },
+              { label: '黑科技', en: 'Tech', color: '#A49464' },
             ].map((value, i) => (
               <motion.div
                 key={value.label}
@@ -831,13 +721,89 @@ export default function HomePage() {
           >
             <Link
               href={`/${locale}/docs/zh/knowledge-base/10-brand`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#C4A35A] transition-colors group"
-              style={{ background: 'linear-gradient(135deg, rgba(196,163,90,0.08), rgba(107,122,161,0.08))' }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#6B7AA1] transition-colors group"
+              style={{ background: 'linear-gradient(135deg, rgba(107,122,161,0.08), rgba(92,84,112,0.08))' }}
             >
-              <Sparkles className="w-5 h-5 text-[#C4A35A]" />
+              <Sparkles className="w-5 h-5 text-[#6B7AA1]" />
               <span className="font-medium">查看完整品牌规范</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 知识体系导航 Section - 紧凑版 */}
+      <section className="py-12 px-4 bg-[var(--glass-bg)]/10">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-xl font-semibold mb-2 text-[var(--foreground)]">{t("threeLayerNav.title")}</h3>
+            <p className="text-sm text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              {t("threeLayerNav.description")}
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-3 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {/* 前沿理念 */}
+            <motion.div variants={itemVariants}>
+              <Link href={`/${locale}/docs/zh/living-modules`}>
+                <div className="glass-card p-4 hover:border-[var(--neon-cyan)]/50 transition-all group">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Sparkles className="w-5 h-5 text-[var(--neon-cyan)]" />
+                    <h4 className="font-semibold text-[var(--foreground)]">
+                      {t("threeLayerNav.layers.philosophy.title")}
+                    </h4>
+                  </div>
+                  <p className="text-xs text-[var(--muted-foreground)]">
+                    {t("threeLayerNav.layers.philosophy.description")}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 核心知识库 */}
+            <motion.div variants={itemVariants}>
+              <Link href={`/${locale}/docs/zh/knowledge-base`}>
+                <div className="glass-card p-4 hover:border-[var(--neon-violet)]/50 transition-all group">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Rocket className="w-5 h-5 text-[var(--neon-violet)]" />
+                    <h4 className="font-semibold text-[var(--foreground)]">
+                      {t("threeLayerNav.layers.action.title")}
+                    </h4>
+                  </div>
+                  <p className="text-xs text-[var(--muted-foreground)]">
+                    {t("threeLayerNav.layers.action.description")}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 协作文档 */}
+            <motion.div variants={itemVariants}>
+              <Link href={`/${locale}/docs/zh/knowledge-base/ARCHITECTURE-V2`}>
+                <div className="glass-card p-4 hover:border-[var(--neon-green)]/50 transition-all group">
+                  <div className="flex items-center gap-3 mb-2">
+                    <FileText className="w-5 h-5 text-[var(--neon-green)]" />
+                    <h4 className="font-semibold text-[var(--foreground)]">
+                      {t("threeLayerNav.layers.docs.title")}
+                    </h4>
+                  </div>
+                  <p className="text-xs text-[var(--muted-foreground)]">
+                    {t("threeLayerNav.layers.docs.description")}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
