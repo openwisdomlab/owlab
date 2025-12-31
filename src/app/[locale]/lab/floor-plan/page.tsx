@@ -25,6 +25,7 @@ import {
   X,
   Ruler,
   Brain,
+  Link2,
 } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { FloorPlanCanvas } from "@/components/lab/FloorPlanCanvas";
@@ -38,6 +39,9 @@ import { SaveTemplateDialog } from "@/components/lab/SaveTemplateDialog";
 import { SafetyPanel } from "@/components/lab/SafetyPanel";
 import { PsychologicalSafetyPanel } from "@/components/lab/PsychologicalSafetyPanel";
 import { Preview3D } from "@/components/lab/Preview3D";
+import { AllenCurvePanel } from "@/components/lab/AllenCurvePanel";
+import { AllenCurveOverlay } from "@/components/lab/AllenCurveOverlay";
+import { assessLayout as assessAllenCurve } from "@/lib/utils/allen-curve-calculator";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
@@ -108,6 +112,8 @@ export default function FloorPlanPageEnhanced() {
   const [show3DPreview, setShow3DPreview] = useState(false);
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [showMeasurement, setShowMeasurement] = useState(false);
+  const [showAllenCurve, setShowAllenCurve] = useState(false);
+  const [hoveredLinkId, setHoveredLinkId] = useState<string | null>(null);
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
 
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
@@ -479,6 +485,18 @@ export default function FloorPlanPageEnhanced() {
           </button>
 
           <button
+            onClick={() => setShowAllenCurve(!showAllenCurve)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              showAllenCurve
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Allen Curve 通信分析"
+          >
+            <Link2 className="w-4 h-4" />
+          </button>
+
+          <button
             onClick={() => setShow3DPreview(!show3DPreview)}
             className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
               show3DPreview
@@ -553,6 +571,18 @@ export default function FloorPlanPageEnhanced() {
             onAddZone={handleAddZone}
             onDeleteZone={handleDeleteZone}
           />
+
+          {showAllenCurve && (
+            <AllenCurveOverlay
+              layout={layout}
+              assessments={assessAllenCurve(layout).links}
+              selectedZoneId={selectedZone}
+              zoom={zoom}
+              gridSize={GRID_SIZE}
+              hoveredLinkId={hoveredLinkId}
+              onLinkHover={setHoveredLinkId}
+            />
+          )}
 
           {/* Measurement Toolbar - shown when measurement mode is active */}
           {showMeasurement && (
@@ -693,6 +723,23 @@ export default function FloorPlanPageEnhanced() {
                 layout={layout}
                 onClose={() => setShowPsychologicalSafety(false)}
                 onZoneSelect={(zoneId) => setSelectedZone(zoneId)}
+              />
+            </motion.div>
+          )}
+
+          {showAllenCurve && (
+            <motion.div
+              key="allen-curve"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-[420px] border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <AllenCurvePanel
+                layout={layout}
+                onClose={() => setShowAllenCurve(false)}
+                onZoneSelect={(zoneId) => setSelectedZone(zoneId)}
+                onLinkHover={setHoveredLinkId}
               />
             </motion.div>
           )}
