@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -19,6 +19,10 @@ import {
   Copy,
   Magnet,
   Palette,
+  Shield,
+  Box,
+  Keyboard,
+  X,
 } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { FloorPlanCanvas } from "@/components/lab/FloorPlanCanvas";
@@ -29,6 +33,8 @@ import { BudgetDashboard } from "@/components/lab/BudgetDashboard";
 import { TemplateGallery } from "@/components/lab/TemplateGallery";
 import { TemplatePreviewDialog } from "@/components/lab/TemplatePreviewDialog";
 import { SaveTemplateDialog } from "@/components/lab/SaveTemplateDialog";
+import { SafetyPanel } from "@/components/lab/SafetyPanel";
+import { Preview3D } from "@/components/lab/Preview3D";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
@@ -91,6 +97,9 @@ export default function FloorPlanPageEnhanced() {
   const [showBudget, setShowBudget] = useState(false);
   const [showTemplates, setShowTemplates] = useState(false);
   const [showSaveTemplate, setShowSaveTemplate] = useState(false);
+  const [showSafety, setShowSafety] = useState(false);
+  const [show3DPreview, setShow3DPreview] = useState(false);
+  const [showShortcuts, setShowShortcuts] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
 
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
@@ -243,7 +252,35 @@ export default function FloorPlanPageEnhanced() {
     onCopy: selectedZone ? handleCopyZone : undefined,
     onPaste: clipboard ? handlePasteZone : undefined,
     onDelete: selectedZone ? () => handleDeleteZone(selectedZone) : undefined,
+    onSave: () => setShowSaveTemplate(true),
   });
+
+  // Additional keyboard shortcuts for "?" to show shortcuts dialog
+  const handleGlobalKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      const isInputFocused =
+        document.activeElement?.tagName === "INPUT" ||
+        document.activeElement?.tagName === "TEXTAREA";
+      if (isInputFocused) return;
+
+      if (e.key === "?" || (e.shiftKey && e.key === "/")) {
+        e.preventDefault();
+        setShowShortcuts(true);
+      } else if (e.key === "g" || e.key === "G") {
+        e.preventDefault();
+        setShowGrid((prev) => !prev);
+      } else if (e.key === "Escape") {
+        setShowShortcuts(false);
+      }
+    },
+    []
+  );
+
+  // Register the global keyboard handler
+  useEffect(() => {
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, [handleGlobalKeyDown]);
 
   return (
     <div className="h-[calc(100vh-4rem)] flex flex-col">
@@ -393,6 +430,40 @@ export default function FloorPlanPageEnhanced() {
             <Wand2 className="w-4 h-4" />
           </button>
 
+          <button
+            onClick={() => setShowSafety(!showSafety)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              showSafety
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Safety Analysis"
+          >
+            <Shield className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => setShow3DPreview(!show3DPreview)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              show3DPreview
+                ? "bg-[var(--neon-violet)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="3D Preview"
+          >
+            <Box className="w-4 h-4" />
+          </button>
+
+          <div className="h-6 w-px bg-[var(--glass-border)]" />
+
+          <button
+            onClick={() => setShowShortcuts(true)}
+            className="p-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="Keyboard Shortcuts (?)"
+          >
+            <Keyboard className="w-4 h-4" />
+          </button>
+
           <div className="h-6 w-px bg-[var(--glass-border)]" />
 
           <button
@@ -503,6 +574,36 @@ export default function FloorPlanPageEnhanced() {
               />
             </motion.div>
           )}
+
+          {showSafety && (
+            <motion.div
+              key="safety"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-96 border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <SafetyPanel
+                layout={layout}
+                onClose={() => setShowSafety(false)}
+              />
+            </motion.div>
+          )}
+
+          {show3DPreview && (
+            <motion.div
+              key="3d-preview"
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="w-[500px] border-l border-[var(--glass-border)] bg-[var(--background)]"
+            >
+              <Preview3D
+                layout={layout}
+                onClose={() => setShow3DPreview(false)}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 
@@ -527,7 +628,106 @@ export default function FloorPlanPageEnhanced() {
             onUseTemplate={() => handleUseTemplate(selectedTemplate)}
           />
         )}
+
+        {showShortcuts && (
+          <KeyboardShortcutsDialog onClose={() => setShowShortcuts(false)} />
+        )}
       </AnimatePresence>
     </div>
+  );
+}
+
+// Keyboard Shortcuts Dialog Component
+function KeyboardShortcutsDialog({ onClose }: { onClose: () => void }) {
+  const isMac = typeof navigator !== "undefined" && navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+  const cmdKey = isMac ? "⌘" : "Ctrl";
+
+  const shortcuts = [
+    { category: "General", items: [
+      { keys: [`${cmdKey}`, "Z"], action: "Undo" },
+      { keys: [`${cmdKey}`, "Shift", "Z"], action: "Redo" },
+      { keys: [`${cmdKey}`, "S"], action: "Save template" },
+    ]},
+    { category: "Zone Operations", items: [
+      { keys: [`${cmdKey}`, "C"], action: "Copy selected zone" },
+      { keys: [`${cmdKey}`, "V"], action: "Paste zone" },
+      { keys: ["Delete"], action: "Delete selected zone" },
+      { keys: ["Backspace"], action: "Delete selected zone" },
+    ]},
+    { category: "View Controls", items: [
+      { keys: ["+", "/-"], action: "Zoom in/out" },
+      { keys: ["G"], action: "Toggle grid" },
+      { keys: ["?"], action: "Show shortcuts" },
+    ]},
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.95, opacity: 0 }}
+        className="glass-card w-full max-w-md mx-4 p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-2">
+            <Keyboard className="w-5 h-5 text-[var(--neon-cyan)]" />
+            <h2 className="text-lg font-semibold">Keyboard Shortcuts</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg hover:bg-[var(--glass-bg)] transition-colors"
+            aria-label="Close shortcuts dialog"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="space-y-6">
+          {shortcuts.map((section) => (
+            <div key={section.category}>
+              <h3 className="text-sm font-medium text-[var(--muted-foreground)] mb-3">
+                {section.category}
+              </h3>
+              <div className="space-y-2">
+                {section.items.map((shortcut, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between py-2 px-3 rounded-lg bg-[var(--glass-bg)]"
+                  >
+                    <span className="text-sm">{shortcut.action}</span>
+                    <div className="flex items-center gap-1">
+                      {shortcut.keys.map((key, keyIndex) => (
+                        <span key={keyIndex} className="flex items-center">
+                          <kbd className="px-2 py-1 text-xs font-mono rounded bg-[var(--background)] border border-[var(--glass-border)]">
+                            {key}
+                          </kbd>
+                          {keyIndex < shortcut.keys.length - 1 && (
+                            <span className="mx-1 text-[var(--muted-foreground)]">+</span>
+                          )}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 pt-4 border-t border-[var(--glass-border)]">
+          <p className="text-xs text-[var(--muted-foreground)] text-center">
+            Press <kbd className="px-1.5 py-0.5 text-xs font-mono rounded bg-[var(--background)] border border-[var(--glass-border)]">?</kbd> anytime to show this dialog
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
