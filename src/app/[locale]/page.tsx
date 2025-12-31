@@ -534,7 +534,7 @@ export default function HomePage() {
             {/* Logo & Copyright */}
             <div className="flex items-center gap-3">
               <img
-                src="/owl-logo.svg"
+                src="/logo.png"
                 alt="Open Wisdom Lab"
                 className="h-8 w-auto opacity-80"
               />

@@ -34,7 +34,7 @@ export function Header({ locale }: HeaderProps) {
           className="flex items-center gap-2"
         >
           <img
-            src="/owl-logo.svg"
+            src="/logo.png"
             alt="Open Wisdom Lab"
             className="h-10 w-auto"
           />
