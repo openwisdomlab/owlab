@@ -25,6 +25,12 @@ import {
   Calculator,
   Cpu,
   ChevronRight,
+  Bird,
+  Gamepad2,
+  Swords,
+  ScrollText,
+  Flower2,
+  Brain,
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import Script from "next/script";
@@ -449,6 +455,104 @@ export default function HomePage() {
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               {t("actionTools.description")}
             </p>
+          </motion.div>
+
+          {/* OWL 生境 - 突出入口卡片 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <Link href={`/${locale}/lab/habitat`}>
+              <motion.div
+                whileHover={{ scale: 1.01, y: -4 }}
+                whileTap={{ scale: 0.99 }}
+                className="relative overflow-hidden rounded-2xl p-8 group cursor-pointer"
+                style={{
+                  background: "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.12) 50%, rgba(139, 92, 246, 0.15) 100%)",
+                  border: "2px solid rgba(16, 185, 129, 0.3)",
+                }}
+              >
+                {/* 背景动画光效 */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <motion.div
+                    className="absolute -top-20 -right-20 w-60 h-60 bg-[var(--neon-green)] opacity-10 blur-[80px] rounded-full"
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
+                    transition={{ duration: 6, repeat: Infinity }}
+                  />
+                  <motion.div
+                    className="absolute -bottom-20 -left-20 w-60 h-60 bg-[var(--neon-cyan)] opacity-10 blur-[80px] rounded-full"
+                    animate={{ scale: [1.2, 1, 1.2], opacity: [0.15, 0.1, 0.15] }}
+                    transition={{ duration: 6, repeat: Infinity }}
+                  />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                    {/* 左侧：标题和描述 */}
+                    <div className="flex items-start gap-5">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+                        <Bird className="w-8 h-8 text-emerald-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-emerald-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                          {t("actionTools.habitat.title")}
+                        </h3>
+                        <p className="text-[var(--muted-foreground)] mb-3">
+                          {t("actionTools.habitat.subtitle")}
+                        </p>
+                        <p className="text-sm text-[var(--muted-foreground)] max-w-xl">
+                          {t("actionTools.habitat.description")}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* 右侧：工具标签和CTA */}
+                    <div className="flex flex-col items-start lg:items-end gap-4">
+                      {/* 6个工具标签 */}
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          { icon: Layout, label: t("actionTools.habitat.tools.spaceDesigner"), color: "cyan" },
+                          { icon: Gamepad2, label: t("actionTools.habitat.tools.gameWorkshop"), color: "pink" },
+                          { icon: Swords, label: t("actionTools.habitat.tools.questEngine"), color: "orange" },
+                          { icon: ScrollText, label: t("actionTools.habitat.tools.memoryHeritage"), color: "amber" },
+                          { icon: Flower2, label: t("actionTools.habitat.tools.ideaGarden"), color: "green" },
+                          { icon: Brain, label: t("actionTools.habitat.tools.wisdomAdvisor"), color: "violet" },
+                        ].map((tool, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
+                            style={{
+                              backgroundColor: `var(--neon-${tool.color})15`,
+                              color: `var(--neon-${tool.color})`,
+                              border: `1px solid var(--neon-${tool.color})30`,
+                            }}
+                          >
+                            <tool.icon className="w-3.5 h-3.5" />
+                            {tool.label}
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* 统计和CTA */}
+                      <div className="flex items-center gap-4">
+                        <span className="text-sm text-[var(--muted-foreground)]">
+                          {t("actionTools.habitat.stats")}
+                        </span>
+                        <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 text-emerald-400 font-medium group-hover:bg-emerald-500/30 transition-colors">
+                          <span>{t("actionTools.habitat.enter")}</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hover 边框效果 */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-emerald-500/50 transition-colors pointer-events-none" />
+              </motion.div>
+            </Link>
           </motion.div>
 
           <motion.div

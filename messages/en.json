@@ -111,6 +111,53 @@
         "description": "Design and visualize your lab space with AI assistance, intelligent configuration recommendations"
       }
     },
+    "actionTools": {
+      "title": "Action Layer Tools",
+      "subtitle": "AI-Powered Practice Tools",
+      "description": "Intelligent bridges from philosophy to practice, making it easier to create and manage maker spaces",
+      "viewAll": "View All Tools",
+      "habitat": {
+        "title": "OWL Habitat",
+        "subtitle": "A sanctuary for creators, an ecosystem for creativity",
+        "description": "A living entity with soul, memory, and dreams. 6 AI tools, 38 intelligent agents, building an organic creative ecosystem.",
+        "stats": "6 Tools · 38 AI Agents",
+        "enter": "Enter Habitat",
+        "tools": {
+          "spaceDesigner": "Space Design",
+          "gameWorkshop": "Game Workshop",
+          "questEngine": "Quest Engine",
+          "memoryHeritage": "Memory & Heritage",
+          "ideaGarden": "Idea Garden",
+          "wisdomAdvisor": "Wisdom Advisor"
+        }
+      },
+      "tools": {
+        "floorPlan": {
+          "title": "AI Lab Layout Generator",
+          "description": "Smart floor plan design, 3D visualization, Allen curve analysis, one-click professional layouts"
+        },
+        "wizard": {
+          "title": "Smart Planning Wizard",
+          "description": "Input area, budget, positioning, and AI generates personalized construction plans"
+        },
+        "equipmentGuide": {
+          "title": "Equipment Selection Guide",
+          "description": "Smart recommendations based on Lite/Pro/Ultra tier system for your equipment list"
+        },
+        "aiToolsGuide": {
+          "title": "AI Tools Guide",
+          "description": "Generative AI, code assistants, creative tools coverage with education best practices"
+        },
+        "costCalculator": {
+          "title": "Cost Calculator",
+          "description": "Full lifecycle budgeting for equipment, space, personnel across 30-500m² scales"
+        },
+        "hardwareSelector": {
+          "title": "Open Hardware Selection",
+          "description": "Arduino, Raspberry Pi, ESP32 platform comparison with local brand recommendations"
+        }
+      }
+    },
     "community": {
       "title": "Join the Community",
       "description": "OWL is an open source project, welcome to contribute your experience and wisdom",
