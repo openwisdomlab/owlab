@@ -176,9 +176,10 @@ interface ModuleCardsProps {
   locale: string;
   compact?: boolean;
   showSubModules?: boolean;
+  showHighlights?: boolean;
 }
 
-export function ModuleCards({ locale, compact = false, showSubModules = true }: ModuleCardsProps) {
+export function ModuleCards({ locale, compact = false, showSubModules = true, showHighlights = true }: ModuleCardsProps) {
   const t = useTranslations("docs.knowledgeBase");
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
 
@@ -325,7 +326,7 @@ export function ModuleCards({ locale, compact = false, showSubModules = true }: 
               </Link>
 
               {/* 亮点列表 - 2-3个要点 */}
-              {!compact && highlights.length > 0 && (
+              {!compact && showHighlights && highlights.length > 0 && (
                 <div className="mt-3 pt-3 border-t border-[var(--glass-border)]">
                   <div className="flex items-center gap-1.5 mb-2">
                     <CheckCircle2 className="w-3.5 h-3.5" style={{ color: module.color }} />

@@ -693,7 +693,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <ModuleCards locale={locale} />
+          <ModuleCards locale={locale} showHighlights={false} />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
