@@ -27,6 +27,7 @@ export function KeyboardShortcutsDialog({ onClose }: KeyboardShortcutsDialogProp
       { keys: ["+", "/-"], action: "Zoom in/out" },
       { keys: ["G"], action: "Toggle grid" },
       { keys: ["M"], action: "Toggle measurement tools" },
+      { keys: ["Q"], action: "Toggle quick stats" },
       { keys: ["?"], action: "Show shortcuts" },
     ]},
     { category: "AI Design", items: [
