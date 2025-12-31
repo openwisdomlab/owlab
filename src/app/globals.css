@@ -588,6 +588,16 @@ html.light [data-fd-toc] {
   background: rgba(255, 255, 255, 0.9);
 }
 
+/* CTA Primary Button - Ensure text visibility in light mode */
+.cta-primary {
+  background: linear-gradient(to right, var(--neon-cyan), var(--neon-violet));
+}
+
+html.light .cta-primary {
+  background: linear-gradient(to right, #3b6a8c, #6b5b88) !important;
+  color: white !important;
+}
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
