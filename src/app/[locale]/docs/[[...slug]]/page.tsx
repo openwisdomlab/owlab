@@ -66,7 +66,7 @@ export default async function Page({ params }: Props) {
         <MDX components={{
           ...defaultMdxComponents,
           ModuleCards: () => <ModuleCards locale={locale} />,
-          ExtendCards: (props: { cards: Array<{ title: string; description: string; href: string; type: "extend" | "evidence" | "checklist" | "sop"; status?: "completed" | "in_progress" | "planned" }> }) => (
+          ExtendCards: (props: { cards: Array<{ title: string; description: string; href: string; type: "extend" | "evidence" | "checklist" | "sop"; status?: "completed" | "in_progress" | "planned" | "draft" }> }) => (
             <ExtendCards {...props} locale={locale} />
           ),
           BackToSection: (props: { href: string; label?: string; moduleId?: string; moduleName?: string }) => (
