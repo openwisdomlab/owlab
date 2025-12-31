@@ -726,16 +726,16 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
               whileHover={{ scale: 1.02 }}
             >
-              <Sparkles className="w-4 h-4 text-[#E91E8C]" />
+              <Sparkles className="w-4 h-4 text-[#C4A35A]" />
               Brand Identity
             </motion.div>
             <h2 className="text-3xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-[#E91E8C] to-[#2B5BA8] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#C4A35A] via-[#6B7AA1] to-[#5C5470] bg-clip-text text-transparent">
                 品牌视觉系统
               </span>
             </h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              「夜视者」—— 在黑暗中洞察光明，在未知中发现可能
+              「夜视者」—— 在深夜星空中洞察光明，于未知领域激发创意
             </p>
           </motion.div>
 
@@ -750,44 +750,44 @@ export default function HomePage() {
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#E91E8C' }}
+                style={{ background: '#C4A35A' }}
               >
-                <div className="text-white">
-                  <div className="font-semibold text-sm">洞察粉</div>
-                  <div className="text-xs opacity-80">#E91E8C</div>
+                <div className="text-[#0E0E14]">
+                  <div className="font-semibold text-sm">琥珀金</div>
+                  <div className="text-xs opacity-70">Owl Eye</div>
                 </div>
               </div>
             </motion.div>
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#2B5BA8' }}
+                style={{ background: '#6B7AA1' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">智慧蓝</div>
-                  <div className="text-xs opacity-80">#2B5BA8</div>
+                  <div className="font-semibold text-sm">靛蓝</div>
+                  <div className="text-xs opacity-70">Feather</div>
                 </div>
               </div>
             </motion.div>
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #E91E8C, #2B5BA8)' }}
+                style={{ background: 'linear-gradient(135deg, #C4A35A, #6B7AA1, #5C5470)' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">极光渐变</div>
-                  <div className="text-xs opacity-80">Aurora</div>
+                  <div className="font-semibold text-sm">夜视渐变</div>
+                  <div className="text-xs opacity-70">Night Vision</div>
                 </div>
               </div>
             </motion.div>
             <motion.div variants={itemVariants} className="group">
               <div
                 className="h-24 rounded-xl flex items-end p-4 border border-[var(--glass-border)] transition-transform group-hover:scale-105"
-                style={{ background: '#0D0D12' }}
+                style={{ background: '#0E0E14' }}
               >
                 <div className="text-white">
-                  <div className="font-semibold text-sm">深夜黑</div>
-                  <div className="text-xs opacity-80">#0D0D12</div>
+                  <div className="font-semibold text-sm">深夜星空</div>
+                  <div className="text-xs opacity-70">Night Sky</div>
                 </div>
               </div>
             </motion.div>
@@ -802,11 +802,11 @@ export default function HomePage() {
             variants={containerVariants}
           >
             {[
-              { label: '开放', en: 'Open', color: '#E91E8C' },
-              { label: '交叉', en: 'Cross', color: '#9B4D96' },
-              { label: '连接', en: 'Connect', color: '#6A5BA0' },
-              { label: '可持续', en: 'Sustainable', color: '#4B5DA4' },
-              { label: '黑科技', en: 'Tech', color: '#2B5BA8' },
+              { label: '开放', en: 'Open', color: '#C4A35A' },
+              { label: '交叉', en: 'Cross', color: '#A49464' },
+              { label: '连接', en: 'Connect', color: '#8A8A7A' },
+              { label: '可持续', en: 'Sustainable', color: '#7A8490' },
+              { label: '黑科技', en: 'Tech', color: '#6B7AA1' },
             ].map((value, i) => (
               <motion.div
                 key={value.label}
@@ -831,10 +831,10 @@ export default function HomePage() {
           >
             <Link
               href={`/${locale}/docs/zh/knowledge-base/10-brand`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#E91E8C] transition-colors group"
-              style={{ background: 'linear-gradient(135deg, rgba(233,30,140,0.1), rgba(43,91,168,0.1))' }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#C4A35A] transition-colors group"
+              style={{ background: 'linear-gradient(135deg, rgba(196,163,90,0.08), rgba(107,122,161,0.08))' }}
             >
-              <Sparkles className="w-5 h-5 text-[#E91E8C]" />
+              <Sparkles className="w-5 h-5 text-[#C4A35A]" />
               <span className="font-medium">查看完整品牌规范</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
