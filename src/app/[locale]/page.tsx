@@ -504,6 +504,41 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 知识库模块 Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("modules.title")}</h2>
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              {t("modules.description")}
+            </p>
+          </motion.div>
+
+          <ModuleCards locale={locale} />
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-10 flex justify-center"
+          >
+            <Link
+              href={`/${locale}/docs/zh/knowledge-base`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)]/10 to-[var(--neon-violet)]/10 border border-[var(--glass-border)] hover:border-[var(--neon-cyan)] transition-colors group"
+            >
+              <BookOpen className="w-5 h-5 text-[var(--neon-cyan)]" />
+              <span className="font-medium">{t("modules.viewAll")}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 行动层工具 Section */}
       <section className="py-20 px-4 bg-[var(--glass-bg)]/20">
         <div className="max-w-6xl mx-auto">
@@ -672,41 +707,6 @@ export default function HomePage() {
             >
               <FlaskConical className="w-5 h-5 text-[var(--neon-violet)]" />
               <span className="font-medium">{t("actionTools.viewAll")}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 知识库模块 Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-2xl font-bold mb-3">{t("modules.title")}</h2>
-            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              {t("modules.description")}
-            </p>
-          </motion.div>
-
-          <ModuleCards locale={locale} />
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-10 flex justify-center"
-          >
-            <Link
-              href={`/${locale}/docs/zh/knowledge-base`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)]/10 to-[var(--neon-violet)]/10 border border-[var(--glass-border)] hover:border-[var(--neon-cyan)] transition-colors group"
-            >
-              <BookOpen className="w-5 h-5 text-[var(--neon-cyan)]" />
-              <span className="font-medium">{t("modules.viewAll")}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
