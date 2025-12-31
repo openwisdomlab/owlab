@@ -255,223 +255,198 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 快速开始 Section */}
-      <section className="py-12 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
-        <div className="max-w-4xl mx-auto">
+      {/* 前沿理念模块 Section - 独立展示 */}
+      <section className="py-20 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
-            <h2 className="text-2xl font-bold mb-2">{t("quickStart.title")}</h2>
-            <p className="text-sm text-[var(--muted-foreground)]">
-              {t("quickStart.description")}
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              whileHover={{ scale: 1.02 }}
+            >
+              <Sparkles className="w-4 h-4 text-[var(--neon-yellow)]" />
+              {t("livingModules.subtitle")}
+            </motion.div>
+            <h2 className="text-3xl font-bold mb-3 gradient-text">{t("livingModules.title")}</h2>
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              {t("livingModules.description")}
             </p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 gap-6 mb-10"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            {quickStartSteps.map((step, index) => (
-              <motion.div
-                key={step.id}
-                variants={itemVariants}
-                className="relative"
-              >
-                <div className="flex flex-col items-center text-center">
-                  {/* 步骤编号 */}
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 relative"
-                    style={{ backgroundColor: `color-mix(in srgb, ${step.color} 15%, transparent)` }}
-                  >
-                    <step.icon className="w-7 h-7" style={{ color: step.color }} />
-                    <span
-                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                      style={{ backgroundColor: step.color }}
-                    >
-                      {index + 1}
-                    </span>
+            {/* 空间的塑造 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/living-modules/01-space-as-educator`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/20 to-[var(--neon-cyan)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Target className="w-6 h-6 text-[var(--neon-cyan)]" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-1">
+                          {t("livingModules.modules.spaceAsEducator.title")}
+                        </h3>
+                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
+                          {t("livingModules.modules.spaceAsEducator.meta")}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="font-semibold mb-2">{t(`quickStart.${step.id}.title`)}</h3>
-                  <p className="text-sm text-[var(--muted-foreground)]">
-                    {t(`quickStart.${step.id}.description`)}
+                  <p className="text-sm text-[var(--muted-foreground)] mb-3 leading-relaxed">
+                    {t("livingModules.modules.spaceAsEducator.subtitle")}
                   </p>
-                </div>
-                {/* 连接线 */}
-                {index < quickStartSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-7 left-[60%] w-[80%] h-[2px] bg-gradient-to-r from-[var(--glass-border)] to-transparent" />
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 阅读路径 Section - 更丰富的卡片 */}
-      <section className="py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <h2 className="text-2xl font-bold mb-2">{t("paths.title")}</h2>
-            <p className="text-[var(--muted-foreground)] max-w-xl mx-auto">
-              {t("paths.description")}
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {readingPaths.map((path) => (
-              <motion.div
-                key={path.id}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="relative"
-              >
-                {path.recommended && (
-                  <div
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-medium text-white z-10"
-                    style={{ backgroundColor: path.color }}
-                  >
-                    推荐
-                  </div>
-                )}
-                <div
-                  className={`
-                    h-full glass-card p-6 transition-all
-                    hover:border-[var(--neon-cyan)]/50
-                    ${path.recommended ? "border-2" : ""}
-                  `}
-                  style={{
-                    borderColor: path.recommended ? `color-mix(in srgb, ${path.color} 50%, transparent)` : undefined,
-                  }}
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                      style={{ backgroundColor: `color-mix(in srgb, ${path.color} 15%, transparent)` }}
-                    >
-                      <path.icon className="w-7 h-7" style={{ color: path.color }} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">{t(`paths.${path.id}.title`)}</h3>
-                      <p className="text-xs text-[var(--muted-foreground)]">
-                        {t(`paths.${path.id}.subtitle`)}
-                      </p>
-                    </div>
-                  </div>
-
                   <p className="text-sm text-[var(--muted-foreground)] mb-4">
-                    {t(`paths.${path.id}.description`)}
+                    {t("livingModules.modules.spaceAsEducator.description")}
                   </p>
-
-                  {/* 模块流程 */}
-                  <div className="pt-4 border-t border-[var(--glass-border)]">
-                    <p className="text-[10px] text-[var(--muted-foreground)] mb-2 flex items-center gap-1">
-                      <Zap className="w-3 h-3" />
-                      学习路径
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {path.modules.map((mod, idx) => (
-                        <span key={mod} className="flex items-center text-xs text-[var(--muted-foreground)]">
-                          <span
-                            className="px-2 py-1 rounded text-[10px] font-mono font-medium"
-                            style={{
-                              backgroundColor: `color-mix(in srgb, ${path.color} 10%, transparent)`,
-                              color: path.color,
-                            }}
-                          >
-                            {mod}
-                          </span>
-                          {idx < path.modules.length - 1 && (
-                            <ArrowRight className="w-3 h-3 mx-1 opacity-40" />
-                          )}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="px-2 py-1 rounded bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)]">
+                      {t("livingModules.modules.spaceAsEducator.principles")}
+                    </span>
+                    <span className="px-2 py-1 rounded bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)]">
+                      {t("livingModules.modules.spaceAsEducator.checklist")}
+                    </span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+              </Link>
+            </motion.div>
 
-      {/* 三层架构 Section */}
-      <section className="py-16 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
-        <div className="max-w-4xl mx-auto">
+            {/* 思维的延伸 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/living-modules/02-extended-mind`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-violet)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Sparkles className="w-6 h-6 text-[var(--neon-violet)]" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-1">
+                          {t("livingModules.modules.extendedMind.title")}
+                        </h3>
+                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
+                          {t("livingModules.modules.extendedMind.meta")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-3 leading-relaxed">
+                    {t("livingModules.modules.extendedMind.subtitle")}
+                  </p>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("livingModules.modules.extendedMind.description")}
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="px-2 py-1 rounded bg-[var(--neon-violet)]/10 text-[var(--neon-violet)]">
+                      {t("livingModules.modules.extendedMind.principles")}
+                    </span>
+                    <span className="px-2 py-1 rounded bg-[var(--neon-violet)]/10 text-[var(--neon-violet)]">
+                      {t("livingModules.modules.extendedMind.checklist")}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 涌现的智慧 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/living-modules/03-emergent-wisdom`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Users className="w-6 h-6 text-[var(--neon-green)]" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-1">
+                          {t("livingModules.modules.emergentWisdom.title")}
+                        </h3>
+                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
+                          {t("livingModules.modules.emergentWisdom.meta")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-3 leading-relaxed">
+                    {t("livingModules.modules.emergentWisdom.subtitle")}
+                  </p>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("livingModules.modules.emergentWisdom.description")}
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="px-2 py-1 rounded bg-[var(--neon-green)]/10 text-[var(--neon-green)]">
+                      {t("livingModules.modules.emergentWisdom.principles")}
+                    </span>
+                    <span className="px-2 py-1 rounded bg-[var(--neon-green)]/10 text-[var(--neon-green)]">
+                      {t("livingModules.modules.emergentWisdom.checklist")}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* 技术的诗意 */}
+            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+              <Link href={`/${locale}/docs/zh/living-modules/04-poetics-of-technology`}>
+                <div className="h-full glass-card p-6 hover:border-[var(--neon-pink)]/50 transition-all group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/20 to-[var(--neon-pink)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Zap className="w-6 h-6 text-[var(--neon-pink)]" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-1">
+                          {t("livingModules.modules.poeticsOfTechnology.title")}
+                        </h3>
+                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
+                          {t("livingModules.modules.poeticsOfTechnology.meta")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-3 leading-relaxed">
+                    {t("livingModules.modules.poeticsOfTechnology.subtitle")}
+                  </p>
+                  <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                    {t("livingModules.modules.poeticsOfTechnology.description")}
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="px-2 py-1 rounded bg-[var(--neon-pink)]/10 text-[var(--neon-pink)]">
+                      {t("livingModules.modules.poeticsOfTechnology.principles")}
+                    </span>
+                    <span className="px-2 py-1 rounded bg-[var(--neon-pink)]/10 text-[var(--neon-pink)]">
+                      {t("livingModules.modules.poeticsOfTechnology.checklist")}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="flex justify-center"
           >
-            <h2 className="text-2xl font-bold mb-2">{t("architecture.title")}</h2>
-            <p className="text-[var(--muted-foreground)]">
-              {t("architecture.description")}
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {architectureLayers.map((layer, index) => (
-              <motion.div
-                key={layer.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                className="relative"
-              >
-                <div
-                  className="h-full p-6 rounded-xl border-2 transition-all"
-                  style={{
-                    borderColor: `color-mix(in srgb, ${layer.color} 30%, transparent)`,
-                    backgroundColor: `color-mix(in srgb, ${layer.color} 5%, transparent)`,
-                  }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: `color-mix(in srgb, ${layer.color} 20%, transparent)` }}
-                    >
-                      <layer.icon className="w-5 h-5" style={{ color: layer.color }} />
-                    </div>
-                    <span
-                      className="px-2 py-0.5 rounded text-xs font-mono font-bold"
-                      style={{ backgroundColor: layer.color, color: "white" }}
-                    >
-                      {layer.badge}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold mb-2">{t(`architecture.${layer.id}.title`)}</h3>
-                  <p className="text-sm text-[var(--muted-foreground)]">
-                    {t(`architecture.${layer.id}.description`)}
-                  </p>
-                </div>
-                {/* 层级指示 */}
-                <div
-                  className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-16 rounded-full"
-                  style={{ backgroundColor: layer.color }}
-                />
-              </motion.div>
-            ))}
+            <Link
+              href={`/${locale}/docs/zh/living-modules`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)]/10 to-[var(--neon-violet)]/10 border border-[var(--glass-border)] hover:border-[var(--neon-cyan)] transition-colors group"
+            >
+              <BookMarked className="w-5 h-5 text-[var(--neon-cyan)]" />
+              <span className="font-medium">{t("livingModules.viewAll")}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
         </div>
       </section>
