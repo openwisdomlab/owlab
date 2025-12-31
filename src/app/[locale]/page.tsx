@@ -15,7 +15,6 @@ import {
   Sparkles,
   Layers,
   BookMarked,
-  Quote,
   Zap,
   Target,
   Rocket,
@@ -559,9 +558,11 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Logo & Copyright */}
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-violet)] flex items-center justify-center">
-                <Quote className="w-4 h-4 text-white" />
-              </div>
+              <img
+                src="/owl-logo.svg"
+                alt="Open Wisdom Lab"
+                className="h-8 w-auto opacity-80"
+              />
               <p className="text-sm text-[var(--muted-foreground)]">
                 © 2025 Open Wisdom Lab
               </p>
