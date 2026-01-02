@@ -483,6 +483,43 @@
       "aiAssist": "AI 助手",
       "export": "导出"
     },
+    "launcher": {
+      "title": "你好！我来帮你设计实验室空间",
+      "subtitle": "告诉我你的需求，或者选择快速开始",
+      "placeholder": "例如：80平米的合成生物实验室，预算50万...",
+      "startDesign": "开始设计",
+      "quickStart": "或者选择学科方向快速开始",
+      "selectSub": "选择 1-2 个专业方向",
+      "generate": "生成设计方案",
+      "fromTemplate": "从模板开始",
+      "blankCanvas": "空白画布",
+      "disciplines": {
+        "life-health": "生命健康",
+        "deep-space-ocean": "深空海地",
+        "social-innovation": "社会创新",
+        "micro-nano": "微纳界面",
+        "digital-info": "数字信息"
+      }
+    },
+    "aiSidebar": {
+      "title": "AI 助手",
+      "suggestions": "实时建议",
+      "placeholder": "有问题随时问我...",
+      "welcome": "你好！我是你的设计助手。有任何问题随时问我，我也会在你设计时给出建议。"
+    },
+    "toolbar": {
+      "addZone": "添加区域",
+      "undo": "撤销",
+      "redo": "重做",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "grid": "网格",
+      "preview3D": "3D 预览",
+      "save": "保存模板",
+      "export": "导出",
+      "aiAssistant": "AI 助手",
+      "more": "更多工具"
+    },
     "concepts": {
       "title": "概念可视化",
       "description": "生成 AI 驱动的概念图和建筑可视化效果",

@@ -428,6 +428,43 @@
       "copied": "Copied",
       "pressCtrlV": "Press Ctrl+V to paste"
     },
+    "launcher": {
+      "title": "Hello! Let me help you design your lab space",
+      "subtitle": "Tell me your requirements, or choose a quick start option",
+      "placeholder": "e.g., 80 sqm synthetic biology lab, budget 500k...",
+      "startDesign": "Start Design",
+      "quickStart": "Or select a discipline to quick start",
+      "selectSub": "Select 1-2 sub-disciplines",
+      "generate": "Generate Design",
+      "fromTemplate": "Start from Template",
+      "blankCanvas": "Blank Canvas",
+      "disciplines": {
+        "life-health": "Life & Health",
+        "deep-space-ocean": "Space & Ocean",
+        "social-innovation": "Social Innovation",
+        "micro-nano": "Micro & Nano",
+        "digital-info": "Digital & Info"
+      }
+    },
+    "aiSidebar": {
+      "title": "AI Assistant",
+      "suggestions": "Real-time Suggestions",
+      "placeholder": "Ask me anything...",
+      "welcome": "Hello! I'm your design assistant. Feel free to ask any questions, and I'll provide suggestions as you design."
+    },
+    "toolbar": {
+      "addZone": "Add Zone",
+      "undo": "Undo",
+      "redo": "Redo",
+      "zoomIn": "Zoom In",
+      "zoomOut": "Zoom Out",
+      "grid": "Grid",
+      "preview3D": "3D Preview",
+      "save": "Save Template",
+      "export": "Export",
+      "aiAssistant": "AI Assistant",
+      "more": "More Tools"
+    },
     "equipment": {
       "title": "Equipment Library",
       "search": "Search equipment...",
