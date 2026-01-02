@@ -2,5 +2,5 @@
   "title": "M01 理念与理论",
   "description": "OWL 的意义与理论根基",
   "icon": "Lightbulb",
-  "pages": ["index"]
+  "pages": ["index", "...extend", "...cases", "...evidence"]
 }

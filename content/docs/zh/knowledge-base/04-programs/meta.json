@@ -2,5 +2,5 @@
   "title": "M04 课程与项目",
   "description": "有效的学习体验设计",
   "icon": "BookOpen",
-  "pages": ["index"]
+  "pages": ["index", "...extend", "...cases", "...evidence"]
 }

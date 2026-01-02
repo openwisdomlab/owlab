@@ -2,5 +2,5 @@
   "title": "M09 评价与影响",
   "description": "看见成长证明价值",
   "icon": "BarChart3",
-  "pages": ["index"]
+  "pages": ["index", "...extend", "...evidence"]
 }
