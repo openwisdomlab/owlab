@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
+import { SearchButton } from "@/components/search";
 import { BookOpen, Github, FlaskConical } from "lucide-react";
 import type { Locale } from "@/i18n";
 
@@ -56,6 +57,8 @@ export function Header({ locale }: HeaderProps) {
 
         {/* Right Section */}
         <div className="flex items-center gap-2">
+          <SearchButton className="hidden md:flex" />
+          <SearchButton variant="icon" className="md:hidden" />
           <ThemeToggle />
           <LanguageSwitcher locale={locale} />
           <a

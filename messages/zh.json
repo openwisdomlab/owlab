@@ -652,5 +652,25 @@
     "copyright": "Open Wisdom Lab. 保留所有权利。",
     "builtWith": "使用",
     "and": "和"
+  },
+  "search": {
+    "placeholder": "搜索文档...",
+    "inputPlaceholder": "搜索文档、工具、案例...",
+    "openSearch": "打开搜索",
+    "close": "关闭",
+    "clear": "清除",
+    "navigate": "导航",
+    "select": "选择",
+    "searching": "搜索中...",
+    "noResults": "未找到结果",
+    "tryDifferent": "试试其他关键词",
+    "results": "条结果",
+    "resultsFor": "条结果",
+    "aiEnhanced": "AI 增强",
+    "aiAnswer": "AI 回答",
+    "relatedQuestions": "相关问题",
+    "recentSearches": "最近搜索",
+    "clearHistory": "清除历史",
+    "tips": "输入关键词开始搜索，支持自然语言提问"
   }
 }

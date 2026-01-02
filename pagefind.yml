@@ -1,0 +1,30 @@
+# Pagefind Configuration
+# https://pagefind.app/docs/config-options/
+
+# Source directory (Next.js build output)
+site: out
+
+# Output directory for search index
+output_subdirectory: _pagefind
+
+# Root selector for content
+root_selector: "main"
+
+# Exclude elements from indexing
+exclude_selectors:
+  - "nav"
+  - "header"
+  - "footer"
+  - "[data-pagefind-ignore]"
+  - ".not-prose"
+  - ".code-block"
+  - "pre"
+
+# Force language detection
+force_language: false
+
+# Keep index files small
+keep_index_url: true
+
+# Bundle all files
+bundle_size: 100000

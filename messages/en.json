@@ -682,5 +682,25 @@
     "copyright": "Open Wisdom Lab. All rights reserved.",
     "builtWith": "Built with",
     "and": "and"
+  },
+  "search": {
+    "placeholder": "Search docs...",
+    "inputPlaceholder": "Search docs, tools, cases...",
+    "openSearch": "Open search",
+    "close": "Close",
+    "clear": "Clear",
+    "navigate": "Navigate",
+    "select": "Select",
+    "searching": "Searching...",
+    "noResults": "No results for",
+    "tryDifferent": "Try different keywords",
+    "results": "results",
+    "resultsFor": "results for",
+    "aiEnhanced": "AI Enhanced",
+    "aiAnswer": "AI Answer",
+    "relatedQuestions": "Related Questions",
+    "recentSearches": "Recent Searches",
+    "clearHistory": "Clear History",
+    "tips": "Type keywords to search, supports natural language queries"
   }
 }

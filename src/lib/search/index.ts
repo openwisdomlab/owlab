@@ -41,3 +41,22 @@ export {
   getAgenticPipeline,
   searchWithAgent,
 } from "./agentic";
+
+// Suggestions
+export {
+  getPopularSearches,
+  getModuleQuickLinks,
+  getAutocompleteSuggestions,
+  analyzeQueryIntent,
+  type SearchSuggestion,
+} from "./suggestions";
+
+// Analytics
+export {
+  trackSearch,
+  trackClick,
+  trackEscalation,
+  getSearchMetrics,
+  type SearchEvent,
+  type SearchMetrics,
+} from "./analytics";
