@@ -1,8 +1,7 @@
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { ReactNode } from "react";
-import { source } from "@/lib/source";
-import type { Locale } from "@/i18n";
+import { getLocalePageTree } from "@/lib/source";
 
 type Props = {
   children: ReactNode;
@@ -11,7 +10,7 @@ type Props = {
 
 export default async function Layout({ children, params }: Props) {
   const { locale } = await params;
-  const tree = source.pageTree[locale as Locale];
+  const tree = getLocalePageTree(locale);
 
   return (
     <RootProvider>
