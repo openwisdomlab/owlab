@@ -1,4 +1,4 @@
-import { source } from "@/lib/source";
+import { source, getLocalePage, getLocalePageTree } from "@/lib/source";
 import {
   DocsPage,
   DocsBody,
@@ -8,7 +8,6 @@ import {
 import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { TOCItemType } from "fumadocs-core/toc";
-import type { Locale } from "@/i18n";
 import { ModuleCards } from "@/components/docs/ModuleCards";
 import { ExtendCards } from "@/components/docs/ExtendCards";
 import { BackToSection } from "@/components/docs/BackToSection";
@@ -27,17 +26,17 @@ interface DocPageData {
 
 export default async function Page({ params }: Props) {
   const { slug, locale } = await params;
-  const page = source.getPage(slug, locale);
+  const page = getLocalePage(slug, locale);
   if (!page) notFound();
 
   const data = page.data as unknown as DocPageData;
   const MDX = data.body;
 
   // 获取页面树以计算上一页/下一页
-  const tree = source.pageTree[locale as Locale] as unknown as TreeNode;
+  const tree = getLocalePageTree(locale) as unknown as TreeNode | undefined;
 
-  // 计算导航链接
-  const neighbours = findNeighbours(tree, page.url);
+  // 计算导航链接 (only if tree is available)
+  const neighbours = tree ? findNeighbours(tree, page.url) : { previous: undefined, next: undefined };
 
   return (
     <DocsPage
@@ -119,12 +118,34 @@ function findNeighbours(
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  const params = source.generateParams();
+  const locales = ["en", "zh"];
+
+  // Transform params: extract locale from slug and create proper locale/slug pairs
+  const result: { locale: string; slug?: string[] }[] = [];
+
+  for (const param of params) {
+    const slug = param.slug;
+    if (!slug || slug.length === 0) continue;
+
+    // Check if first segment is a locale
+    const firstSegment = slug[0];
+    if (locales.includes(firstSegment)) {
+      const locale = firstSegment;
+      const remainingSlug = slug.slice(1);
+      result.push({
+        locale,
+        slug: remainingSlug.length > 0 ? remainingSlug : undefined,
+      });
+    }
+  }
+
+  return result;
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug, locale } = await params;
-  const page = source.getPage(slug, locale);
+  const page = getLocalePage(slug, locale);
   if (!page) notFound();
 
   const data = page.data as unknown as DocPageData;
