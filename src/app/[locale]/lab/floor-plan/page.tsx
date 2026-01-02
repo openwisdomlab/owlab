@@ -33,6 +33,7 @@ import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
 import type { LauncherState } from "@/lib/schemas/launcher";
+import { getLayoutFromDiscipline } from "@/lib/data/discipline-templates";
 import { useHistory } from "@/hooks/useHistory";
 import { useMeasurementTools } from "@/hooks/useMeasurementTools";
 import { ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
@@ -184,8 +185,9 @@ export default function FloorPlanPageEnhanced() {
 
     // If it's quick select, generate basic layout based on discipline
     if (state.mode === "quick" && state.discipline) {
-      // TODO: Generate layout based on discipline
-      console.log("Generate layout for discipline:", state.discipline, state.subDisciplines);
+      const newLayout = getLayoutFromDiscipline(state.discipline);
+      setLayout(newLayout);
+      setShowAISidebar(true);
     }
 
     // If it's template mode, open template library
@@ -194,7 +196,7 @@ export default function FloorPlanPageEnhanced() {
     }
 
     // Blank mode - just start with empty canvas (already default)
-  }, []);
+  }, [setLayout]);
 
   const handleLauncherSkip = useCallback(() => {
     setShowLauncher(false);
