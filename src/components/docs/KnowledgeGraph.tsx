@@ -34,7 +34,7 @@ const MODULES: ModuleNode[] = [
     x: 200,
     y: 80,
     concepts: ["STEAM教育", "创客精神", "研究性学习", "设计思维"],
-    docPath: "/docs/zh/knowledge-base/01-foundations",
+    docPath: "/docs/knowledge-base/01-foundations",
   },
   {
     id: "M02",
@@ -45,7 +45,7 @@ const MODULES: ModuleNode[] = [
     x: 80,
     y: 160,
     concepts: ["决策机制", "资源分配", "绩效评估", "持续改进"],
-    docPath: "/docs/zh/knowledge-base/02-governance",
+    docPath: "/docs/knowledge-base/02-governance",
   },
   {
     id: "M03",
@@ -56,7 +56,7 @@ const MODULES: ModuleNode[] = [
     x: 80,
     y: 280,
     concepts: ["功能分区", "人流动线", "灵活布局", "环境设计"],
-    docPath: "/docs/zh/knowledge-base/03-space",
+    docPath: "/docs/knowledge-base/03-space",
   },
   {
     id: "M04",
@@ -67,7 +67,7 @@ const MODULES: ModuleNode[] = [
     x: 320,
     y: 80,
     concepts: ["课程框架", "项目设计", "跨学科整合", "评估方法"],
-    docPath: "/docs/zh/knowledge-base/04-curriculum",
+    docPath: "/docs/knowledge-base/04-curriculum",
   },
   {
     id: "M05",
@@ -78,7 +78,7 @@ const MODULES: ModuleNode[] = [
     x: 320,
     y: 280,
     concepts: ["数字制造", "编程平台", "测量仪器", "协作工具"],
-    docPath: "/docs/zh/knowledge-base/05-tools",
+    docPath: "/docs/knowledge-base/05-tools",
   },
   {
     id: "M06",
@@ -89,7 +89,7 @@ const MODULES: ModuleNode[] = [
     x: 200,
     y: 360,
     concepts: ["安全培训", "设备分级", "应急预案", "防护措施"],
-    docPath: "/docs/zh/knowledge-base/06-safety",
+    docPath: "/docs/knowledge-base/06-safety",
   },
   {
     id: "M07",
@@ -100,7 +100,7 @@ const MODULES: ModuleNode[] = [
     x: 400,
     y: 160,
     concepts: ["师资培养", "学生发展", "志愿者管理", "家校协作"],
-    docPath: "/docs/zh/knowledge-base/07-people",
+    docPath: "/docs/knowledge-base/07-people",
   },
   {
     id: "M08",
@@ -111,7 +111,7 @@ const MODULES: ModuleNode[] = [
     x: 400,
     y: 280,
     concepts: ["开放管理", "设备维护", "活动策划", "资源调度"],
-    docPath: "/docs/zh/knowledge-base/08-operations",
+    docPath: "/docs/knowledge-base/08-operations",
   },
   {
     id: "M09",
@@ -122,7 +122,7 @@ const MODULES: ModuleNode[] = [
     x: 200,
     y: 220,
     concepts: ["学习评估", "项目评审", "空间评估", "影响力评估"],
-    docPath: "/docs/zh/knowledge-base/09-assessment",
+    docPath: "/docs/knowledge-base/09-assessment",
   },
 ];
 
