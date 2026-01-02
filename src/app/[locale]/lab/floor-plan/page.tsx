@@ -26,9 +26,13 @@ import { MeasurementOverlay } from "@/components/lab/MeasurementOverlay";
 import { ParallelUniverseDialog } from "@/components/lab/ParallelUniverseDialog";
 import { EmotionDesignDialog } from "@/components/lab/EmotionDesignDialog";
 import { QuickStatsPanel } from "@/components/lab/QuickStatsPanel";
+import { SmartLauncher } from "@/components/lab/SmartLauncher";
+import { AISidebar } from "@/components/lab/AISidebar";
+import { SimplifiedToolbar } from "@/components/lab/SimplifiedToolbar";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
 import type { Template } from "@/lib/schemas/template";
+import type { LauncherState } from "@/lib/schemas/launcher";
 import { useHistory } from "@/hooks/useHistory";
 import { useMeasurementTools } from "@/hooks/useMeasurementTools";
 import { ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
@@ -83,6 +87,11 @@ export default function FloorPlanPageEnhanced() {
     canUndo,
     canRedo,
   } = useHistory<LayoutData>(defaultLayout);
+
+  // Launcher state
+  const [showLauncher, setShowLauncher] = useState(true);
+  const [showAISidebar, setShowAISidebar] = useState(false);
+  const [launcherState, setLauncherState] = useState<LauncherState | null>(null);
 
   // UI state
   const [showChat, setShowChat] = useState(false);
@@ -159,6 +168,37 @@ export default function FloorPlanPageEnhanced() {
     },
     [setLayout]
   );
+
+  // Launcher handlers
+  const handleLauncherStart = useCallback((state: LauncherState) => {
+    setLauncherState(state);
+    setShowLauncher(false);
+
+    // If it's a natural language input, call AI to generate layout
+    if (state.mode === "chat" && state.prompt) {
+      // TODO: Call AI to generate layout
+      console.log("Generate layout from prompt:", state.prompt);
+      // Open AI sidebar for further interaction
+      setShowAISidebar(true);
+    }
+
+    // If it's quick select, generate basic layout based on discipline
+    if (state.mode === "quick" && state.discipline) {
+      // TODO: Generate layout based on discipline
+      console.log("Generate layout for discipline:", state.discipline, state.subDisciplines);
+    }
+
+    // If it's template mode, open template library
+    if (state.mode === "template") {
+      setShowTemplates(true);
+    }
+
+    // Blank mode - just start with empty canvas (already default)
+  }, []);
+
+  const handleLauncherSkip = useCallback(() => {
+    setShowLauncher(false);
+  }, []);
 
   // Copy/Paste operations
   const handleCopyZone = useCallback(() => {
@@ -382,9 +422,50 @@ export default function FloorPlanPageEnhanced() {
     [zoom, measurement]
   );
 
+  // Show launcher if not dismissed
+  if (showLauncher) {
+    return (
+      <SmartLauncher
+        onStart={handleLauncherStart}
+        onSkip={handleLauncherSkip}
+      />
+    );
+  }
+
   return (
     <div className="h-[calc(100vh-4rem)] flex flex-col">
-      {/* Toolbar */}
+      {/* Simplified Toolbar - New minimalist design */}
+      <SimplifiedToolbar
+        zoom={zoom}
+        showGrid={showGrid}
+        canUndo={canUndo}
+        canRedo={canRedo}
+        onZoomIn={() => setZoom((z) => Math.min(2, z + 0.1))}
+        onZoomOut={() => setZoom((z) => Math.max(0.5, z - 0.1))}
+        onToggleGrid={() => setShowGrid(!showGrid)}
+        onUndo={undo}
+        onRedo={redo}
+        onAddZone={() => {
+          // Add a new zone at center
+          const newZone: ZoneData = {
+            id: uuidv4(),
+            name: "New Zone",
+            type: "workspace",
+            position: { x: 5, y: 5 },
+            size: { width: 4, height: 4 },
+            color: "#8b5cf6",
+            equipment: [],
+          };
+          handleAddZone(newZone);
+        }}
+        onSave={() => setShowSaveTemplate(true)}
+        onExport={() => setShowExport(true)}
+        onPreview3D={() => setShow3DPreview(!show3DPreview)}
+        onToggleAI={() => setShowAISidebar(!showAISidebar)}
+        onMoreOptions={() => setShowShortcuts(true)}
+      />
+
+      {/* Original Toolbar - Keep as backup/advanced mode */}
       <FloorPlanToolbar
         layoutName={layout.name}
         canUndo={canUndo}
@@ -571,6 +652,8 @@ export default function FloorPlanPageEnhanced() {
             </motion.div>
           )}
 
+          {/* Note: AISidebar is rendered outside AnimatePresence as it manages its own animations */}
+
           {showSafety && (
             <motion.div
               key="safety"
@@ -635,6 +718,14 @@ export default function FloorPlanPageEnhanced() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* AI Sidebar - Fixed positioning, manages its own animation */}
+      <AISidebar
+        layout={layout}
+        onLayoutUpdate={handleLayoutFromAI}
+        isOpen={showAISidebar}
+        onToggle={() => setShowAISidebar(!showAISidebar)}
+      />
 
       {/* Modals/Dialogs */}
       <AnimatePresence>
