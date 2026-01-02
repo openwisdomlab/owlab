@@ -146,6 +146,28 @@ export {
 } from "./search";
 
 // ============================================
+// Launcher Schemas (AI Lab Designer)
+// ============================================
+export {
+  // Launch mode schemas
+  LaunchModeSchema,
+  DisciplineSchema,
+  SubDisciplineMapSchema,
+  LauncherStateSchema,
+  LauncherInputSchema,
+  // Constants
+  DEFAULT_SUB_DISCIPLINES,
+  DISCIPLINE_METADATA,
+  // Types
+  type LaunchMode,
+  type Discipline,
+  type SubDisciplineMap,
+  type LauncherState,
+  type LauncherInput,
+  type DisciplineMetadata,
+} from "./launcher";
+
+// ============================================
 // Schema Utilities
 // ============================================
 
