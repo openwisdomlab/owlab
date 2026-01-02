@@ -183,7 +183,7 @@ export default function HomePage() {
             {/* CTA 按钮 */}
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
-                href={`/${locale}/docs/zh/knowledge-base`}
+                href={`/${locale}/docs/knowledge-base`}
                 className="cta-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] text-white font-medium hover:opacity-90 transition-opacity shadow-lg"
               >
                 <BookOpen className="w-4 h-4" />
@@ -191,7 +191,7 @@ export default function HomePage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href={`/${locale}/docs/zh/knowledge-base/ARCHITECTURE-V2`}
+                href={`/${locale}/docs/knowledge-base/ARCHITECTURE-V2`}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glass-card hover:border-[var(--neon-cyan)] transition-colors"
               >
                 <GitBranch className="w-4 h-4" />
@@ -233,9 +233,9 @@ export default function HomePage() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            {/* 空间的塑造 */}
+            {/* L01 空间的塑造 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/living-modules/01-space-as-educator`}>
+              <Link href={`/${locale}/docs/living-modules/01-space-as-educator`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
@@ -270,9 +270,9 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* 思维的延伸 */}
+            {/* L02 思维的延伸 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/living-modules/02-extended-mind`}>
+              <Link href={`/${locale}/docs/living-modules/02-extended-mind`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
@@ -307,9 +307,9 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* 涌现的智慧 */}
+            {/* L03 涌现的智慧 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/living-modules/03-emergent-wisdom`}>
+              <Link href={`/${locale}/docs/living-modules/03-emergent-wisdom`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
@@ -344,9 +344,9 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* 技术的诗意 */}
+            {/* L04 技术的诗意 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/living-modules/04-poetics-of-technology`}>
+              <Link href={`/${locale}/docs/living-modules/04-poetics-of-technology`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-pink)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
@@ -389,7 +389,7 @@ export default function HomePage() {
             className="flex justify-center"
           >
             <Link
-              href={`/${locale}/docs/zh/living-modules`}
+              href={`/${locale}/docs/living-modules`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)]/10 to-[var(--neon-violet)]/10 border border-[var(--glass-border)] hover:border-[var(--neon-cyan)] transition-colors group"
             >
               <BookMarked className="w-5 h-5 text-[var(--neon-cyan)]" />
@@ -424,7 +424,7 @@ export default function HomePage() {
             className="mt-10 flex justify-center"
           >
             <Link
-              href={`/${locale}/docs/zh/knowledge-base`}
+              href={`/${locale}/docs/knowledge-base`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)]/10 to-[var(--neon-violet)]/10 border border-[var(--glass-border)] hover:border-[var(--neon-cyan)] transition-colors group"
             >
               <BookOpen className="w-5 h-5 text-[var(--neon-cyan)]" />
@@ -606,7 +606,7 @@ export default function HomePage() {
 
             {/* 设备选型向导 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools`}>
+              <Link href={`/${locale}/docs/knowledge-base/05-tools`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <FlaskConical className="w-6 h-6 text-[var(--neon-green)]" />
@@ -627,7 +627,7 @@ export default function HomePage() {
 
             {/* AI 工具链指南 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools/extend/ai-tools-guide`}>
+              <Link href={`/${locale}/docs/knowledge-base/05-tools/extend/ai-tools-guide`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-pink)]/50 transition-all group">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/20 to-[var(--neon-pink)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Sparkles className="w-6 h-6 text-[var(--neon-pink)]" />
@@ -648,7 +648,7 @@ export default function HomePage() {
 
             {/* 成本计算器 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools#预算模板`}>
+              <Link href={`/${locale}/docs/knowledge-base/05-tools#预算模板`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-yellow)]/50 transition-all group">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-yellow)]/20 to-[var(--neon-yellow)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Calculator className="w-6 h-6 text-[var(--neon-yellow)]" />
@@ -669,7 +669,7 @@ export default function HomePage() {
 
             {/* 开源硬件选型 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
-              <Link href={`/${locale}/docs/zh/knowledge-base/05-tools/extend/opensource-hardware`}>
+              <Link href={`/${locale}/docs/knowledge-base/05-tools/extend/opensource-hardware`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-orange)]/50 transition-all group">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-orange)]/20 to-[var(--neon-orange)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Cpu className="w-6 h-6 text-[var(--neon-orange)]" />
@@ -824,7 +824,7 @@ export default function HomePage() {
             className="flex justify-center"
           >
             <Link
-              href={`/${locale}/docs/zh/knowledge-base/10-brand`}
+              href={`/${locale}/docs/knowledge-base/10-brand`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-[#D91A7A] transition-colors group"
               style={{ background: 'linear-gradient(135deg, rgba(217,26,122,0.08), rgba(92,84,112,0.08))' }}
             >
@@ -860,7 +860,7 @@ export default function HomePage() {
           >
             {/* 前沿理念 */}
             <motion.div variants={itemVariants}>
-              <Link href={`/${locale}/docs/zh/living-modules`}>
+              <Link href={`/${locale}/docs/living-modules`}>
                 <div className="glass-card p-4 hover:border-[var(--neon-cyan)]/50 transition-all group">
                   <div className="flex items-center gap-3 mb-2">
                     <Sparkles className="w-5 h-5 text-[var(--neon-cyan)]" />
@@ -877,7 +877,7 @@ export default function HomePage() {
 
             {/* 核心知识库 */}
             <motion.div variants={itemVariants}>
-              <Link href={`/${locale}/docs/zh/knowledge-base`}>
+              <Link href={`/${locale}/docs/knowledge-base`}>
                 <div className="glass-card p-4 hover:border-[var(--neon-violet)]/50 transition-all group">
                   <div className="flex items-center gap-3 mb-2">
                     <Rocket className="w-5 h-5 text-[var(--neon-violet)]" />
@@ -894,7 +894,7 @@ export default function HomePage() {
 
             {/* 协作文档 */}
             <motion.div variants={itemVariants}>
-              <Link href={`/${locale}/docs/zh/knowledge-base/ARCHITECTURE-V2`}>
+              <Link href={`/${locale}/docs/knowledge-base/ARCHITECTURE-V2`}>
                 <div className="glass-card p-4 hover:border-[var(--neon-green)]/50 transition-all group">
                   <div className="flex items-center gap-3 mb-2">
                     <FileText className="w-5 h-5 text-[var(--neon-green)]" />
@@ -931,19 +931,19 @@ export default function HomePage() {
             {/* Links */}
             <div className="flex items-center gap-6 text-sm">
               <Link
-                href={`/${locale}/docs/zh/knowledge-base/ARCHITECTURE-V2`}
+                href={`/${locale}/docs/knowledge-base/ARCHITECTURE-V2`}
                 className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
               >
                 {t("footer.architecture")}
               </Link>
               <Link
-                href={`/${locale}/docs/zh/knowledge-base/COLLABORATION-PROTOCOL`}
+                href={`/${locale}/docs/knowledge-base/COLLABORATION-PROTOCOL`}
                 className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
               >
                 {t("footer.collaboration")}
               </Link>
               <Link
-                href={`/${locale}/docs/zh/knowledge-base/CHANGELOG`}
+                href={`/${locale}/docs/knowledge-base/CHANGELOG`}
                 className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
               >
                 {t("footer.changelog")}
