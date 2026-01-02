@@ -69,27 +69,31 @@ OWL 知识库采用 **Core + Extend + Evidence** 三层架构设计，为创新�
 ### 安装依赖
 
 ```bash
-npm install
-# or
 pnpm install
 ```
 
-### 启动开发服务器
+### 开发命令
 
 ```bash
-npm run dev
-# or
-pnpm dev
+pnpm dev      # 启动开发服务器 (localhost:3000)
+pnpm build    # 构建生产版本
+pnpm start    # 启动生产服务器
+pnpm lint     # 运行 ESLint 检查
 ```
-
-打开 [http://localhost:3000](http://localhost:3000) 查看结果。
 
 ## 技术栈
 
-- [Next.js](https://nextjs.org) - React 框架
-- [Fumadocs](https://fumadocs.vercel.app) - 文档框架
-- MDX - Markdown + JSX 文档格式
-- [Framer Motion](https://www.framer.com/motion/) - 动画库
+| 类别 | 技术 |
+|------|------|
+| 框架 | [Next.js 16](https://nextjs.org) (App Router) |
+| 文档 | [Fumadocs](https://fumadocs.vercel.app) + MDX |
+| UI | [Radix UI](https://www.radix-ui.com/) + [Tailwind CSS 4](https://tailwindcss.com/) |
+| 动画 | [Framer Motion](https://www.framer.com/motion/) |
+| 状态管理 | [Zustand](https://zustand-demo.pmnd.rs/) |
+| AI | [Vercel AI SDK](https://sdk.vercel.ai/) (Anthropic/OpenAI/Google) |
+| 3D/Canvas | [React Three Fiber](https://r3f.docs.pmnd.rs/) + [Konva](https://konvajs.org/) |
+| 国际化 | [next-intl](https://next-intl-docs.vercel.app/) (中文/English) |
+| 验证 | [Zod](https://zod.dev/) |
 
 ## AI Lab 模块
 
@@ -131,7 +135,7 @@ OWL 提供了一套可视化的 AI 辅助设计工具，帮助您规划和设计
 
 ```
 owlab/
-├── content/docs/zh/knowledge-base/   # 知识库内容
+├── content/docs/zh/knowledge-base/   # 知识库内容 (MDX)
 │   ├── 01-foundations/               # M01 理念与理论
 │   ├── 02-governance/                # M02 治理与网络
 │   ├── 03-space/                     # M03 空间与环境
@@ -144,24 +148,25 @@ owlab/
 │   ├── _meta/                        # 元数据定义
 │   └── _templates/                   # 文档模板
 ├── src/
-│   ├── app/                          # Next.js 应用路由
-│   │   └── [locale]/lab/             # AI Lab 模块
-│   │       ├── floor-plan/           # 平面图设计器
-│   │       ├── concepts/             # 概念探索
-│   │       └── case-studies/         # 案例研究
-│   ├── components/lab/               # Lab 组件
-│   │   ├── FloorPlanCanvas.tsx       # 画布组件
-│   │   ├── EquipmentLibrary.tsx      # 设备库
-│   │   ├── BudgetDashboard.tsx       # 预算仪表板
-│   │   ├── SafetyPanel.tsx           # 安全面板
-│   │   ├── PsychologicalSafetyPanel.tsx  # 心理安全面板
-│   │   ├── Preview3D.tsx             # 3D 预览
-│   │   ├── ParallelUniverseDialog.tsx    # 平行宇宙
-│   │   └── EmotionDesignDialog.tsx   # 情感设计
-│   ├── lib/                          # 工具库
-│   │   ├── ai/                       # AI 代理
-│   │   └── schemas/                  # 数据模式
-│   └── hooks/                        # React Hooks
+│   ├── app/                          # Next.js App Router
+│   │   ├── api/ai/                   # AI API 端点
+│   │   │   ├── chat/                 # 对话接口
+│   │   │   ├── generate-layout/      # 布局生成
+│   │   │   ├── safety-analysis/      # 安全分析
+│   │   │   └── ...                   # 更多 AI 功能
+│   │   └── [locale]/                 # i18n 路由 (zh/en)
+│   │       ├── lab/                  # AI Lab 模块
+│   │       └── docs/                 # 文档页面
+│   ├── components/
+│   │   ├── lab/                      # Lab 专用组件
+│   │   ├── layout/                   # 布局组件
+│   │   └── ui/                       # 通用 UI 组件
+│   ├── hooks/                        # React Hooks
+│   ├── stores/                       # Zustand 状态存储
+│   └── lib/
+│       ├── ai/                       # AI 配置与代理
+│       ├── schemas/                  # Zod 验证模式
+│       └── utils/                    # 工具函数
 └── public/                           # 静态资源
 ```
 
