@@ -15,7 +15,7 @@ interface ExtendCard {
   description: string;
   href: string;
   type: "extend" | "evidence" | "checklist" | "sop";
-  status?: "completed" | "in_progress" | "planned" | "draft";
+  status?: "completed" | "published" | "in_progress" | "planned" | "draft";
 }
 
 interface ExtendCardsProps {
@@ -52,6 +52,10 @@ const typeConfig: Record<
 const statusConfig = {
   completed: {
     label: "已完成",
+    className: "bg-green-500/15 text-green-400 border-green-500/30",
+  },
+  published: {
+    label: "已发布",
     className: "bg-green-500/15 text-green-400 border-green-500/30",
   },
   in_progress: {
