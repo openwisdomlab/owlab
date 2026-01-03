@@ -19,37 +19,46 @@ export function getLocalePage(slug: string[] | undefined, locale: string) {
 }
 
 // Helper to transform URL to proper format for next-intl
-// e.g., "/docs/zh/living-modules" -> "/docs/living-modules" (for use with locale prefix)
-// e.g., "zh/living-modules" -> "/docs/living-modules"
+// Strips the locale from the content path and adds locale prefix for routing
+// e.g., "/docs/zh/living-modules" -> "/{locale}/docs/living-modules"
+// e.g., "zh/living-modules" -> "/{locale}/docs/living-modules"
 function transformUrlForLocale(url: string, locale: string): string {
+  let strippedUrl = url;
+
   // Remove locale from URL path and ensure proper format
   for (const loc of SUPPORTED_LOCALES) {
     // Handle absolute paths with locale: /docs/zh/... -> /docs/...
     const absPattern = `/docs/${loc}/`;
     const absPatternEnd = `/docs/${loc}`;
     if (url.startsWith(absPattern)) {
-      return `/docs/${url.slice(absPattern.length)}`;
+      strippedUrl = `/docs/${url.slice(absPattern.length)}`;
+      break;
     }
     if (url === absPatternEnd) {
-      return "/docs";
+      strippedUrl = "/docs";
+      break;
     }
 
     // Handle relative paths that start with locale: zh/... -> /docs/...
     const relPattern = `${loc}/`;
     if (url.startsWith(relPattern)) {
-      return `/docs/${url.slice(relPattern.length)}`;
+      strippedUrl = `/docs/${url.slice(relPattern.length)}`;
+      break;
     }
     if (url === loc) {
-      return "/docs";
+      strippedUrl = "/docs";
+      break;
     }
   }
 
   // Ensure URL starts with /docs if it doesn't already
-  if (!url.startsWith("/docs") && !url.startsWith("/")) {
-    return `/docs/${url}`;
+  if (!strippedUrl.startsWith("/docs") && !strippedUrl.startsWith("/")) {
+    strippedUrl = `/docs/${strippedUrl}`;
   }
 
-  return url;
+  // Add locale prefix for proper routing
+  // e.g., "/docs/knowledge-base" -> "/zh/docs/knowledge-base"
+  return `/${locale}${strippedUrl}`;
 }
 
 // Helper to recursively transform URLs in a tree node for a specific locale
@@ -81,6 +90,61 @@ function transformTreeNodeUrls(node: any, locale: string): any {
   return result;
 }
 
+// Helper to check if a tree node belongs to a specific locale by checking its URLs
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isLocaleFolder(node: any, locale: string): boolean {
+  if (!node || typeof node !== "object") return false;
+
+  // Check if this node has an index with a URL containing the locale
+  if (
+    "index" in node &&
+    node.index &&
+    typeof node.index === "object" &&
+    "url" in node.index &&
+    typeof node.index.url === "string"
+  ) {
+    const url = node.index.url;
+    // Check if URL matches /docs/{locale} or /docs/{locale}/...
+    if (url === `/docs/${locale}` || url.startsWith(`/docs/${locale}/`)) {
+      return true;
+    }
+  }
+
+  // Check children URLs to determine if this is the locale folder
+  if ("children" in node && Array.isArray(node.children)) {
+    for (const child of node.children) {
+      if (child && typeof child === "object" && "url" in child) {
+        const url = child.url;
+        if (
+          typeof url === "string" &&
+          (url === `/docs/${locale}` || url.startsWith(`/docs/${locale}/`))
+        ) {
+          return true;
+        }
+      }
+      // Check nested index
+      if (
+        child &&
+        typeof child === "object" &&
+        "index" in child &&
+        child.index &&
+        typeof child.index === "object" &&
+        "url" in child.index
+      ) {
+        const url = child.index.url;
+        if (
+          typeof url === "string" &&
+          (url === `/docs/${locale}` || url.startsWith(`/docs/${locale}/`))
+        ) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
 // Helper to get page tree for a specific locale
 export function getLocalePageTree(locale: string) {
   // Find the subtree for this locale in the page tree
@@ -89,14 +153,12 @@ export function getLocalePageTree(locale: string) {
   // The tree structure has children array, find the locale folder
   if (tree && "children" in tree && Array.isArray(tree.children)) {
     for (const child of tree.children) {
-      // Check if this is the locale folder (type: "folder" with matching name)
+      // Check if this is the locale folder by examining URLs (not name, as name might be localized)
       if (
         child &&
         typeof child === "object" &&
-        "name" in child &&
-        typeof child.name === "string" &&
-        child.name.toLowerCase() === locale &&
-        "children" in child
+        "children" in child &&
+        isLocaleFolder(child, locale)
       ) {
         // Return a new root tree with the locale folder's children
         // Transform URLs to proper format (without locale in path)
@@ -123,12 +185,14 @@ export interface FlatDocItem {
 }
 
 // Helper to flatten page tree into searchable doc items
+// Note: tree URLs already include locale prefix from transformUrlForLocale
 export function flattenPageTree(
   tree: ReturnType<typeof getLocalePageTree>,
   locale: string,
   breadcrumb: string[] = []
 ): FlatDocItem[] {
   const items: FlatDocItem[] = [];
+  // locale parameter kept for API compatibility
 
   if (!tree || !("children" in tree) || !Array.isArray(tree.children)) {
     return items;
@@ -145,7 +209,7 @@ export function flattenPageTree(
       if (name && url) {
         items.push({
           title: name,
-          href: `/${locale}${url}`,
+          href: url, // URL already includes locale prefix
           type: "page",
           breadcrumb: breadcrumb.length > 0 ? breadcrumb.join(" / ") : undefined,
         });
@@ -161,7 +225,7 @@ export function flattenPageTree(
       if (index && typeof index === "object" && "url" in index && typeof index.url === "string") {
         items.push({
           title: name,
-          href: `/${locale}${index.url}`,
+          href: index.url, // URL already includes locale prefix
           type: "folder",
           breadcrumb: breadcrumb.length > 0 ? breadcrumb.join(" / ") : undefined,
         });
