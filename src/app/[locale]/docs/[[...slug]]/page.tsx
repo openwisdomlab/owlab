@@ -90,6 +90,23 @@ interface TreeNode {
   children?: TreeNode[];
 }
 
+// Helper to strip locale from URL for comparison
+// e.g., "/docs/zh/living-modules" -> "/docs/living-modules"
+function stripLocaleFromUrl(url: string): string {
+  const locales = ["en", "zh"];
+  for (const loc of locales) {
+    const pattern = `/docs/${loc}/`;
+    const patternEnd = `/docs/${loc}`;
+    if (url.startsWith(pattern)) {
+      return `/docs/${url.slice(pattern.length)}`;
+    }
+    if (url === patternEnd) {
+      return "/docs";
+    }
+  }
+  return url;
+}
+
 function findNeighbours(
   tree: TreeNode,
   currentUrl: string
@@ -109,7 +126,9 @@ function findNeighbours(
 
   collect(tree);
 
-  const currentIndex = pages.findIndex(p => p.url === currentUrl);
+  // Strip locale from currentUrl for comparison since tree URLs don't have locale
+  const normalizedCurrentUrl = stripLocaleFromUrl(currentUrl);
+  const currentIndex = pages.findIndex(p => p.url === normalizedCurrentUrl);
 
   return {
     previous: currentIndex > 0 ? pages[currentIndex - 1] : undefined,

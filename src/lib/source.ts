@@ -1,6 +1,9 @@
 import { docs } from "@/.source/server";
 import { loader } from "fumadocs-core/source";
 
+// Supported locales for URL stripping
+const SUPPORTED_LOCALES = ["en", "zh"];
+
 // Create loader without i18n since our content structure has locale folders (zh/, en/)
 // The locale is handled by prepending it to the slug path
 export const source = loader({
@@ -13,6 +16,49 @@ export function getLocalePage(slug: string[] | undefined, locale: string) {
   // Prepend locale to slug since content is at content/docs/{locale}/...
   const localizedSlug = slug ? [locale, ...slug] : [locale];
   return source.getPage(localizedSlug);
+}
+
+// Helper to strip locale prefix from URL
+// e.g., "/docs/zh/living-modules" -> "/docs/living-modules"
+function stripLocaleFromUrl(url: string): string {
+  for (const loc of SUPPORTED_LOCALES) {
+    const pattern = `/docs/${loc}/`;
+    const patternEnd = `/docs/${loc}`;
+    if (url.startsWith(pattern)) {
+      return `/docs/${url.slice(pattern.length)}`;
+    }
+    if (url === patternEnd) {
+      return "/docs";
+    }
+  }
+  return url;
+}
+
+// Helper to recursively strip locale from all URLs in a tree node
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function stripLocaleFromTreeNode(node: any): any {
+  if (!node || typeof node !== "object") {
+    return node;
+  }
+
+  const result = { ...node };
+
+  // Strip locale from url if present
+  if ("url" in result && typeof result.url === "string") {
+    result.url = stripLocaleFromUrl(result.url);
+  }
+
+  // Process index page if present
+  if ("index" in result && result.index && typeof result.index === "object") {
+    result.index = stripLocaleFromTreeNode(result.index);
+  }
+
+  // Recursively process children
+  if ("children" in result && Array.isArray(result.children)) {
+    result.children = result.children.map(stripLocaleFromTreeNode);
+  }
+
+  return result;
 }
 
 // Helper to get page tree for a specific locale
@@ -33,9 +79,13 @@ export function getLocalePageTree(locale: string) {
         "children" in child
       ) {
         // Return a new root tree with the locale folder's children
+        // Strip locale prefixes from all URLs to avoid /zh/docs/zh/... URLs
+        const children = Array.isArray(child.children)
+          ? child.children.map(stripLocaleFromTreeNode)
+          : child.children;
         return {
           ...tree,
-          children: child.children,
+          children,
         };
       }
     }
