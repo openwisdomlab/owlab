@@ -300,7 +300,7 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
 
                   {/* 内容 */}
                   <div className="flex-1 min-w-0">
-                    {/* 模块 ID + 状态 */}
+                    {/* 模块 ID */}
                     <div className="flex items-center gap-2 mb-1">
                       <span
                         className="text-xs font-mono font-bold"
@@ -308,7 +308,6 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
                       >
                         {module.id}
                       </span>
-                      <StatusBadge status={module.status} t={t} />
                     </div>
 
                     {/* 标题 */}
