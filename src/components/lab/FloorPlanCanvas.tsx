@@ -131,10 +131,33 @@ export function FloorPlanCanvas({
     [layout.zones]
   );
 
-  onAddZone(newZone);
-  setIsAddingZone(false);
-},
-[isAddingZone, newZoneType, zoom, onAddZone, onZoneSelect]
+  const handleCanvasClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (!isAddingZone) {
+        onZoneSelect(null);
+        return;
+      }
+
+      const rect = canvasRef.current?.getBoundingClientRect();
+      if (!rect) return;
+
+      const x = Math.floor((e.clientX - rect.left) / (GRID_SIZE * zoom));
+      const y = Math.floor((e.clientY - rect.top) / (GRID_SIZE * zoom));
+
+      const newZone: ZoneData = {
+        id: uuidv4(),
+        name: `New ${newZoneType}`,
+        type: newZoneType,
+        position: { x, y },
+        size: { width: 4, height: 3 },
+        color: ZONE_COLORS[newZoneType],
+        equipment: [],
+      };
+
+      onAddZone(newZone);
+      setIsAddingZone(false);
+    },
+    [isAddingZone, newZoneType, zoom, onAddZone, onZoneSelect]
   );
 
 const handleDragOver = useCallback((e: React.DragEvent) => {

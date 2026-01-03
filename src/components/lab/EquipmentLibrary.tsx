@@ -303,18 +303,23 @@ interface EquipmentCardProps {
 }
 
 function EquipmentCard({ item, onSelect, onAdd }: EquipmentCardProps) {
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    e.dataTransfer.setData("application/json", JSON.stringify(item));
+    e.dataTransfer.effectAllowed = "copy";
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="glass-card p-3 cursor-grab active:cursor-grabbing hover:border-[var(--neon-cyan)] transition-colors"
-      onClick={onSelect}
+    <div
       draggable
-      onDragStart={(e) => {
-        e.dataTransfer.setData("application/json", JSON.stringify(item));
-        e.dataTransfer.effectAllowed = "copy";
-      }}
+      onDragStart={handleDragStart}
+      onClick={onSelect}
+      className="cursor-grab active:cursor-grabbing"
     >
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="glass-card p-3 hover:border-[var(--neon-cyan)] transition-colors"
+      >
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-start gap-2 mb-1">
@@ -364,7 +369,8 @@ function EquipmentCard({ item, onSelect, onAdd }: EquipmentCardProps) {
           <Plus className="w-4 h-4" />
         </button>
       </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
