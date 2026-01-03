@@ -212,14 +212,14 @@ export default function HomePage() {
               {t("hero.version")}
             </motion.div>
 
-            {/* Bilingual Subtitle - Open Wisdom Lab / 开放智慧实验室 - V4 Two Lines Above */}
+            {/* Subtitle - Open Wisdom Lab - English Only */}
             <motion.div
-              className="relative mb-6 flex flex-col items-center gap-2"
+              className="relative mb-4 flex flex-col items-center"
               variants={itemVariants}
             >
-              {/* English Title - First Line */}
+              {/* English Title */}
               <motion.h2
-                className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-center"
+                className="text-lg md:text-xl lg:text-2xl font-semibold tracking-tight text-center"
                 style={{
                   background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 100%)",
                   WebkitBackgroundClip: "text",
@@ -232,39 +232,6 @@ export default function HomePage() {
               >
                 Open Wisdom Lab
               </motion.h2>
-
-              {/* Chinese Title - Second Line */}
-              <motion.h3
-                className="text-xl md:text-2xl lg:text-3xl font-light tracking-[0.25em] text-center"
-                style={{
-                  fontFamily: "'Noto Serif SC', 'STKaiti', serif",
-                  color: "var(--muted-foreground)",
-                }}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-              >
-                开放智慧实验室
-              </motion.h3>
-
-              {/* Decorative dots underneath */}
-              <div className="flex items-center justify-center gap-1.5 mt-1">
-                <motion.div
-                  className="w-1.5 h-1.5 rounded-full bg-[var(--neon-cyan)]"
-                  animate={{ opacity: [0.3, 1, 0.3] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <motion.div
-                  className="w-1.5 h-1.5 rounded-full bg-[var(--neon-violet)]"
-                  animate={{ opacity: [0.3, 1, 0.3] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
-                />
-                <motion.div
-                  className="w-1.5 h-1.5 rounded-full bg-[var(--neon-pink)]"
-                  animate={{ opacity: [0.3, 1, 0.3] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.8 }}
-                />
-              </div>
             </motion.div>
 
             {/* Main Title - OWL 建设与运营标准手册 */}
@@ -405,7 +372,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          {/* Principle Cards - 2x2 Grid */}
+          {/* Principle Cards - 2x2 Grid - Horizontal Layout */}
           <motion.div
             className="grid md:grid-cols-2 gap-3 lg:gap-4"
             initial="hidden"
@@ -419,89 +386,82 @@ export default function HomePage() {
               whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
                 {/* Card Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Number Badge */}
-                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
-                  <span className="text-lg font-black text-[var(--neon-cyan)]">01</span>
+                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
+                  <span className="text-base font-black text-[var(--neon-cyan)]">01</span>
                 </div>
 
-                {/* Icon with SVG Visualization - Student-Centered (Radial Pattern) */}
-                <div className="relative mb-3 w-24 h-24">
-                  {/* SVG Background Pattern */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <radialGradient id="radial-student" cx="50%" cy="50%">
-                        <stop offset="0%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.6 }} />
-                        <stop offset="100%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.1 }} />
-                      </radialGradient>
-                    </defs>
-                    {/* Center circle */}
-                    <circle cx="50" cy="50" r="8" fill="var(--neon-cyan)" opacity="0.8" />
-                    {/* Radial lines */}
-                    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
-                      const rad = (angle * Math.PI) / 180;
-                      const x1 = 50 + Math.cos(rad) * 12;
-                      const y1 = 50 + Math.sin(rad) * 12;
-                      const x2 = 50 + Math.cos(rad) * 35;
-                      const y2 = 50 + Math.sin(rad) * 35;
-                      return (
-                        <line
-                          key={i}
-                          x1={x1}
-                          y1={y1}
-                          x2={x2}
-                          y2={y2}
-                          stroke="var(--neon-cyan)"
-                          strokeWidth="1.5"
-                          opacity="0.4"
-                        />
-                      );
-                    })}
-                    {/* Outer circles */}
-                    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
-                      const rad = (angle * Math.PI) / 180;
-                      const cx = 50 + Math.cos(rad) * 35;
-                      const cy = 50 + Math.sin(rad) * 35;
-                      return (
-                        <circle
-                          key={i}
-                          cx={cx}
-                          cy={cy}
-                          r="4"
-                          fill="var(--neon-cyan)"
-                          opacity="0.5"
-                        />
-                      );
-                    })}
-                  </svg>
-                  {/* Icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Users className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
+                {/* Horizontal Layout: SVG + Content */}
+                <div className="flex items-center gap-3">
+                  {/* Icon with SVG Visualization - Student-Centered (Radial Pattern) */}
+                  <div className="relative flex-shrink-0 w-16 h-16">
+                    {/* SVG Background Pattern */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <radialGradient id="radial-student" cx="50%" cy="50%">
+                          <stop offset="0%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.6 }} />
+                          <stop offset="100%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.1 }} />
+                        </radialGradient>
+                      </defs>
+                      {/* Center circle */}
+                      <circle cx="50" cy="50" r="8" fill="var(--neon-cyan)" opacity="0.8" />
+                      {/* Radial lines */}
+                      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                        const rad = (angle * Math.PI) / 180;
+                        const x1 = 50 + Math.cos(rad) * 12;
+                        const y1 = 50 + Math.sin(rad) * 12;
+                        const x2 = 50 + Math.cos(rad) * 35;
+                        const y2 = 50 + Math.sin(rad) * 35;
+                        return (
+                          <line
+                            key={i}
+                            x1={x1}
+                            y1={y1}
+                            x2={x2}
+                            y2={y2}
+                            stroke="var(--neon-cyan)"
+                            strokeWidth="1.5"
+                            opacity="0.4"
+                          />
+                        );
+                      })}
+                      {/* Outer circles */}
+                      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                        const rad = (angle * Math.PI) / 180;
+                        const cx = 50 + Math.cos(rad) * 35;
+                        const cy = 50 + Math.sin(rad) * 35;
+                        return (
+                          <circle
+                            key={i}
+                            cx={cx}
+                            cy={cy}
+                            r="4"
+                            fill="var(--neon-cyan)"
+                            opacity="0.5"
+                          />
+                        );
+                      })}
+                    </svg>
+                    {/* Icon overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Users className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-cyan)]">
+                      以学生为中心
+                    </h3>
+                    <p className="text-sm text-[var(--foreground)] font-medium">
+                      开放自由的氛围，没有标准答案
+                    </p>
                   </div>
                 </div>
-
-                {/* Content */}
-                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-cyan)]">
-                  以学生为中心
-                </h3>
-                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
-                  开放自由的氛围，没有标准答案
-                </p>
-                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  我们相信每个学生都有独特的学习路径。空间应支持学习者的自主探索和个性化成长。
-                </p>
-
-                {/* Decorative Line */}
-                <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-cyan)] to-transparent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                />
               </div>
             </motion.div>
 
@@ -511,81 +471,76 @@ export default function HomePage() {
               whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
-                  <span className="text-lg font-black text-[var(--neon-green)]">02</span>
+                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
+                  <span className="text-base font-black text-[var(--neon-green)]">02</span>
                 </div>
 
-                {/* Icon with SVG Visualization - Exploration (Ascending Path) */}
-                <div className="relative mb-3 w-24 h-24">
-                  {/* SVG Background Pattern */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="path-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.2 }} />
-                        <stop offset="100%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.8 }} />
-                      </linearGradient>
-                    </defs>
-                    {/* Ascending spiral path */}
-                    <path
-                      d="M 20 80 Q 30 60, 40 55 T 60 45 T 75 25"
-                      stroke="var(--neon-green)"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.4"
-                      strokeDasharray="4,4"
-                    />
-                    {/* Checkpoint circles along path */}
-                    {[
-                      { cx: 20, cy: 80, r: 3 },
-                      { cx: 35, cy: 62, r: 3.5 },
-                      { cx: 50, cy: 50, r: 4 },
-                      { cx: 65, cy: 38, r: 4.5 },
-                      { cx: 75, cy: 25, r: 5 }
-                    ].map((circle, i) => (
-                      <circle
-                        key={i}
-                        cx={circle.cx}
-                        cy={circle.cy}
-                        r={circle.r}
-                        fill="var(--neon-green)"
-                        opacity={0.3 + i * 0.15}
+                {/* Horizontal Layout: SVG + Content */}
+                <div className="flex items-center gap-3">
+                  {/* Icon with SVG Visualization - Exploration (Ascending Path) */}
+                  <div className="relative flex-shrink-0 w-16 h-16">
+                    {/* SVG Background Pattern */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="path-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.2 }} />
+                          <stop offset="100%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.8 }} />
+                        </linearGradient>
+                      </defs>
+                      {/* Ascending spiral path */}
+                      <path
+                        d="M 20 80 Q 30 60, 40 55 T 60 45 T 75 25"
+                        stroke="var(--neon-green)"
+                        strokeWidth="2"
+                        fill="none"
+                        opacity="0.4"
+                        strokeDasharray="4,4"
                       />
-                    ))}
-                    {/* Arrow at end */}
-                    <path
-                      d="M 75 25 L 70 30 M 75 25 L 80 30"
-                      stroke="var(--neon-green)"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.6"
-                    />
-                  </svg>
-                  {/* Icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Rocket className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
+                      {/* Checkpoint circles along path */}
+                      {[
+                        { cx: 20, cy: 80, r: 3 },
+                        { cx: 35, cy: 62, r: 3.5 },
+                        { cx: 50, cy: 50, r: 4 },
+                        { cx: 65, cy: 38, r: 4.5 },
+                        { cx: 75, cy: 25, r: 5 }
+                      ].map((circle, i) => (
+                        <circle
+                          key={i}
+                          cx={circle.cx}
+                          cy={circle.cy}
+                          r={circle.r}
+                          fill="var(--neon-green)"
+                          opacity={0.3 + i * 0.15}
+                        />
+                      ))}
+                      {/* Arrow at end */}
+                      <path
+                        d="M 75 25 L 70 30 M 75 25 L 80 30"
+                        stroke="var(--neon-green)"
+                        strokeWidth="2"
+                        fill="none"
+                        opacity="0.6"
+                      />
+                    </svg>
+                    {/* Icon overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Rocket className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-green)]">
+                      鼓励大胆探索
+                    </h3>
+                    <p className="text-sm text-[var(--foreground)] font-medium">
+                      允许犯错，包容失败
+                    </p>
                   </div>
                 </div>
-
-                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-green)]">
-                  鼓励大胆探索
-                </h3>
-                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
-                  允许犯错，包容失败
-                </p>
-                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  在探索未知的过程中，错误是最宝贵的学习机会。我们营造心理安全的环境，让创新自由生长。
-                </p>
-
-                <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-green)] to-transparent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                />
               </div>
             </motion.div>
 
@@ -595,78 +550,73 @@ export default function HomePage() {
               whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
-                  <span className="text-lg font-black text-[var(--neon-violet)]">03</span>
+                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
+                  <span className="text-base font-black text-[var(--neon-violet)]">03</span>
                 </div>
 
-                {/* Icon with SVG Visualization - Tech & Future (Circuit Grid) */}
-                <div className="relative mb-3 w-24 h-24">
-                  {/* SVG Background Pattern */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.6 }} />
-                        <stop offset="100%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.2 }} />
-                      </linearGradient>
-                    </defs>
-                    {/* Tech grid pattern */}
-                    <g opacity="0.4">
-                      {/* Horizontal lines */}
-                      <line x1="20" y1="30" x2="80" y2="30" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                      <line x1="20" y1="50" x2="80" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                      <line x1="20" y1="70" x2="80" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                      {/* Vertical lines */}
-                      <line x1="30" y1="20" x2="30" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                      <line x1="50" y1="20" x2="50" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                      <line x1="70" y1="20" x2="70" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                    </g>
-                    {/* Circuit nodes */}
-                    {[
-                      { cx: 30, cy: 30 }, { cx: 50, cy: 30 }, { cx: 70, cy: 30 },
-                      { cx: 30, cy: 50 }, { cx: 50, cy: 50 }, { cx: 70, cy: 50 },
-                      { cx: 30, cy: 70 }, { cx: 50, cy: 70 }, { cx: 70, cy: 70 }
-                    ].map((node, i) => (
-                      <circle
-                        key={i}
-                        cx={node.cx}
-                        cy={node.cy}
-                        r="3"
-                        fill="var(--neon-violet)"
-                        opacity={0.5 + (i % 3) * 0.15}
-                      />
-                    ))}
-                    {/* Corner squares */}
-                    <rect x="18" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                    <rect x="76" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                    <rect x="18" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                    <rect x="76" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                  </svg>
-                  {/* Icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Sparkles className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
+                {/* Horizontal Layout: SVG + Content */}
+                <div className="flex items-center gap-3">
+                  {/* Icon with SVG Visualization - Tech & Future (Circuit Grid) */}
+                  <div className="relative flex-shrink-0 w-16 h-16">
+                    {/* SVG Background Pattern */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.6 }} />
+                          <stop offset="100%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.2 }} />
+                        </linearGradient>
+                      </defs>
+                      {/* Tech grid pattern */}
+                      <g opacity="0.4">
+                        {/* Horizontal lines */}
+                        <line x1="20" y1="30" x2="80" y2="30" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                        <line x1="20" y1="50" x2="80" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                        <line x1="20" y1="70" x2="80" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                        {/* Vertical lines */}
+                        <line x1="30" y1="20" x2="30" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                        <line x1="50" y1="20" x2="50" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                        <line x1="70" y1="20" x2="70" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                      </g>
+                      {/* Circuit nodes */}
+                      {[
+                        { cx: 30, cy: 30 }, { cx: 50, cy: 30 }, { cx: 70, cy: 30 },
+                        { cx: 30, cy: 50 }, { cx: 50, cy: 50 }, { cx: 70, cy: 50 },
+                        { cx: 30, cy: 70 }, { cx: 50, cy: 70 }, { cx: 70, cy: 70 }
+                      ].map((node, i) => (
+                        <circle
+                          key={i}
+                          cx={node.cx}
+                          cy={node.cy}
+                          r="3"
+                          fill="var(--neon-violet)"
+                          opacity={0.5 + (i % 3) * 0.15}
+                        />
+                      ))}
+                      {/* Corner squares */}
+                      <rect x="18" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                      <rect x="76" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                      <rect x="18" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                      <rect x="76" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                    </svg>
+                    {/* Icon overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Sparkles className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-violet)]">
+                      科技感与未来感
+                    </h3>
+                    <p className="text-sm text-[var(--foreground)] font-medium">
+                      激发创新想法诞生
+                    </p>
                   </div>
                 </div>
-
-                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-violet)]">
-                  科技感与未来感
-                </h3>
-                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
-                  激发创新想法诞生
-                </p>
-                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  具有科技感和未来感的设计，让学习空间成为灵感的孵化器，点燃对未来技术的好奇心。
-                </p>
-
-                <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-violet)] to-transparent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                />
               </div>
             </motion.div>
 
@@ -676,87 +626,82 @@ export default function HomePage() {
               whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
-                  <span className="text-lg font-black text-[var(--neon-pink)]">04</span>
+                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
+                  <span className="text-base font-black text-[var(--neon-pink)]">04</span>
                 </div>
 
-                {/* Icon with SVG Visualization - Flexible Space (Flowing Curves) */}
-                <div className="relative mb-3 w-24 h-24">
-                  {/* SVG Background Pattern */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.6 }} />
-                        <stop offset="100%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.2 }} />
-                      </linearGradient>
-                    </defs>
-                    {/* Flowing wave curves */}
-                    <path
-                      d="M 10 30 Q 30 20, 50 30 T 90 30"
-                      stroke="var(--neon-pink)"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.5"
-                    />
-                    <path
-                      d="M 10 50 Q 30 40, 50 50 T 90 50"
-                      stroke="var(--neon-pink)"
-                      strokeWidth="2.5"
-                      fill="none"
-                      opacity="0.6"
-                    />
-                    <path
-                      d="M 10 70 Q 30 60, 50 70 T 90 70"
-                      stroke="var(--neon-pink)"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.5"
-                    />
-                    {/* Modular grid elements */}
-                    <g opacity="0.3">
-                      <rect x="15" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                      <rect x="46" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                      <rect x="77" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                {/* Horizontal Layout: SVG + Content */}
+                <div className="flex items-center gap-3">
+                  {/* Icon with SVG Visualization - Flexible Space (Flowing Curves) */}
+                  <div className="relative flex-shrink-0 w-16 h-16">
+                    {/* SVG Background Pattern */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.6 }} />
+                          <stop offset="100%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.2 }} />
+                        </linearGradient>
+                      </defs>
+                      {/* Flowing wave curves */}
+                      <path
+                        d="M 10 30 Q 30 20, 50 30 T 90 30"
+                        stroke="var(--neon-pink)"
+                        strokeWidth="2"
+                        fill="none"
+                        opacity="0.5"
+                      />
+                      <path
+                        d="M 10 50 Q 30 40, 50 50 T 90 50"
+                        stroke="var(--neon-pink)"
+                        strokeWidth="2.5"
+                        fill="none"
+                        opacity="0.6"
+                      />
+                      <path
+                        d="M 10 70 Q 30 60, 50 70 T 90 70"
+                        stroke="var(--neon-pink)"
+                        strokeWidth="2"
+                        fill="none"
+                        opacity="0.5"
+                      />
+                      {/* Modular grid elements */}
+                      <g opacity="0.3">
+                        <rect x="15" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                        <rect x="46" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                        <rect x="77" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
 
-                      <rect x="15" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                      <rect x="46" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                      <rect x="77" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                        <rect x="15" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                        <rect x="46" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                        <rect x="77" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
 
-                      <rect x="15" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                      <rect x="46" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                      <rect x="77" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                    </g>
-                    {/* Connection points */}
-                    <circle cx="19" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
-                    <circle cx="50" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
-                    <circle cx="81" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
-                  </svg>
-                  {/* Icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <GitBranch className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
+                        <rect x="15" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                        <rect x="46" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                        <rect x="77" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                      </g>
+                      {/* Connection points */}
+                      <circle cx="19" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
+                      <circle cx="50" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
+                      <circle cx="81" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
+                    </svg>
+                    {/* Icon overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <GitBranch className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-pink)]">
+                      灵活流动的空间
+                    </h3>
+                    <p className="text-sm text-[var(--foreground)] font-medium">
+                      灵活、流动和多样化
+                    </p>
                   </div>
                 </div>
-
-                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-pink)]">
-                  灵活流动的空间
-                </h3>
-                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
-                  灵活、流动和多样化
-                </p>
-                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  灵活流动的学习空间代替隔离、固定的空间。空间可以随需求快速重构，支持多种学习模式。
-                </p>
-
-                <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-pink)] to-transparent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                />
               </div>
             </motion.div>
           </motion.div>
