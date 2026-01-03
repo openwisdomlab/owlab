@@ -1,10 +1,10 @@
 {
   "title": "文档",
   "pages": [
-    "index",
     "---",
     "living-modules",
     "knowledge-base",
+    "tools",
     "---"
   ]
 }

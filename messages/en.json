@@ -195,26 +195,32 @@
       },
       "tools": {
         "floorPlan": {
+          "id": "T01",
           "title": "AI Lab Layout Generator",
           "description": "Smart floor plan design, 3D visualization, Allen curve analysis, one-click professional layouts"
         },
         "wizard": {
+          "id": "T02",
           "title": "Smart Planning Wizard",
           "description": "Input area, budget, positioning, and AI generates personalized construction plans"
         },
         "equipmentGuide": {
+          "id": "T03",
           "title": "Equipment Selection Guide",
           "description": "Smart recommendations based on Lite/Pro/Ultra tier system for your equipment list"
         },
         "aiToolsGuide": {
+          "id": "T04",
           "title": "AI Tools Guide",
           "description": "Generative AI, code assistants, creative tools coverage with education best practices"
         },
         "costCalculator": {
+          "id": "T05",
           "title": "Cost Calculator",
           "description": "Full lifecycle budgeting for equipment, space, personnel across 30-500m² scales"
         },
         "hardwareSelector": {
+          "id": "T06",
           "title": "Open Hardware Selection",
           "description": "Arduino, Raspberry Pi, ESP32 platform comparison with local brand recommendations"
         }
@@ -231,11 +237,13 @@
       "architecture": "Architecture",
       "collaboration": "Collaboration",
       "changelog": "Changelog",
-      "license": "License"
+      "license": "License",
+      "aiSpace": "AI Space",
+      "aiSpaceDesc": "Intelligent documentation system built with Next.js and Fumadocs"
     }
   },
   "docs": {
-    "layoutTitle": "AI Space Docs",
+    "layoutTitle": "OWL Docs",
     "sidebar": {
       "gettingStarted": "Getting Started",
       "introduction": "Introduction",

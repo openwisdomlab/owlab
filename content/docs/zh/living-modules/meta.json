@@ -1,13 +1,12 @@
 {
   "title": "前沿理念",
+  "defaultOpen": true,
   "pages": [
     "index",
     "---",
     "01-space-as-educator/index",
     "02-extended-mind/index",
     "03-emergent-wisdom/index",
-    "04-poetics-of-technology/index",
-    "---",
-    "tools/index"
+    "04-poetics-of-technology/index"
   ]
 }

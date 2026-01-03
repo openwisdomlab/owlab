@@ -28,7 +28,7 @@ export default async function Layout({ children, params }: Props) {
           title: t("layoutTitle"),
         }}
         sidebar={{
-          defaultOpenLevel: 1,
+          defaultOpenLevel: 2,
           banner: (
             <SidebarSearchWrapper locale={locale} docs={flatDocs} />
           ),

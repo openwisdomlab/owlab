@@ -18,44 +18,64 @@ export function getLocalePage(slug: string[] | undefined, locale: string) {
   return source.getPage(localizedSlug);
 }
 
-// Helper to strip locale prefix from URL
-// e.g., "/docs/zh/living-modules" -> "/docs/living-modules"
-function stripLocaleFromUrl(url: string): string {
+// Helper to transform URL to proper format for next-intl
+// e.g., "/docs/zh/living-modules" -> "/docs/living-modules" (for use with locale prefix)
+// e.g., "zh/living-modules" -> "/docs/living-modules"
+function transformUrlForLocale(url: string, locale: string): string {
+  // Remove locale from URL path and ensure proper format
   for (const loc of SUPPORTED_LOCALES) {
-    const pattern = `/docs/${loc}/`;
-    const patternEnd = `/docs/${loc}`;
-    if (url.startsWith(pattern)) {
-      return `/docs/${url.slice(pattern.length)}`;
+    // Handle absolute paths with locale: /docs/zh/... -> /docs/...
+    const absPattern = `/docs/${loc}/`;
+    const absPatternEnd = `/docs/${loc}`;
+    if (url.startsWith(absPattern)) {
+      return `/docs/${url.slice(absPattern.length)}`;
     }
-    if (url === patternEnd) {
+    if (url === absPatternEnd) {
+      return "/docs";
+    }
+
+    // Handle relative paths that start with locale: zh/... -> /docs/...
+    const relPattern = `${loc}/`;
+    if (url.startsWith(relPattern)) {
+      return `/docs/${url.slice(relPattern.length)}`;
+    }
+    if (url === loc) {
       return "/docs";
     }
   }
+
+  // Ensure URL starts with /docs if it doesn't already
+  if (!url.startsWith("/docs") && !url.startsWith("/")) {
+    return `/docs/${url}`;
+  }
+
   return url;
 }
 
-// Helper to recursively strip locale from all URLs in a tree node
+// Helper to recursively transform URLs in a tree node for a specific locale
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function stripLocaleFromTreeNode(node: any): any {
+function transformTreeNodeUrls(node: any, locale: string): any {
   if (!node || typeof node !== "object") {
     return node;
   }
 
   const result = { ...node };
 
-  // Strip locale from url if present
+  // Transform URL to proper format (strip locale from path)
   if ("url" in result && typeof result.url === "string") {
-    result.url = stripLocaleFromUrl(result.url);
+    result.url = transformUrlForLocale(result.url, locale);
   }
 
   // Process index page if present
   if ("index" in result && result.index && typeof result.index === "object") {
-    result.index = stripLocaleFromTreeNode(result.index);
+    result.index = transformTreeNodeUrls(result.index, locale);
   }
 
   // Recursively process children
   if ("children" in result && Array.isArray(result.children)) {
-    result.children = result.children.map(stripLocaleFromTreeNode);
+    result.children = result.children.map((child: unknown) =>
+      transformTreeNodeUrls(child, locale)
+    );
   }
 
   return result;
@@ -79,9 +99,9 @@ export function getLocalePageTree(locale: string) {
         "children" in child
       ) {
         // Return a new root tree with the locale folder's children
-        // Strip locale prefixes from all URLs to avoid /zh/docs/zh/... URLs
+        // Transform URLs to proper format (without locale in path)
         const children = Array.isArray(child.children)
-          ? child.children.map(stripLocaleFromTreeNode)
+          ? child.children.map((c: unknown) => transformTreeNodeUrls(c, locale))
           : child.children;
         return {
           ...tree,
