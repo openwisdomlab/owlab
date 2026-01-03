@@ -212,6 +212,61 @@ export default function HomePage() {
               {t("hero.version")}
             </motion.div>
 
+            {/* Bilingual Subtitle - Open Wisdom Lab / 开放智慧实验室 - V4 Two Lines Above */}
+            <motion.div
+              className="relative mb-6 flex flex-col items-center gap-2"
+              variants={itemVariants}
+            >
+              {/* English Title - First Line */}
+              <motion.h2
+                className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-center"
+                style={{
+                  background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                Open Wisdom Lab
+              </motion.h2>
+
+              {/* Chinese Title - Second Line */}
+              <motion.h3
+                className="text-xl md:text-2xl lg:text-3xl font-light tracking-[0.25em] text-center"
+                style={{
+                  fontFamily: "'Noto Serif SC', 'STKaiti', serif",
+                  color: "var(--muted-foreground)",
+                }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                开放智慧实验室
+              </motion.h3>
+
+              {/* Decorative dots underneath */}
+              <div className="flex items-center justify-center gap-1.5 mt-1">
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full bg-[var(--neon-cyan)]"
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full bg-[var(--neon-violet)]"
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+                />
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full bg-[var(--neon-pink)]"
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
             {/* Main Title - OWL 建设与运营标准手册 */}
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1] tracking-tight"
@@ -229,209 +284,9 @@ export default function HomePage() {
               OWL 建设与运营<br/>标准手册
             </motion.h1>
 
-            {/* Bilingual Subtitle - Open Wisdom Lab / 开放智慧实验室 - Enhanced Design */}
-            <motion.div
-              className="relative mb-8 inline-block px-12 py-6"
-              variants={itemVariants}
-            >
-              {/* SVG Geometric Background Pattern */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="grid-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.3 }} />
-                      <stop offset="50%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.3 }} />
-                      <stop offset="100%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.3 }} />
-                    </linearGradient>
-                  </defs>
-                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <circle cx="20" cy="20" r="1" fill="url(#grid-gradient)" />
-                    <line x1="0" y1="20" x2="40" y2="20" stroke="url(#grid-gradient)" strokeWidth="0.5" />
-                    <line x1="20" y1="0" x2="20" y2="40" stroke="url(#grid-gradient)" strokeWidth="0.5" />
-                  </pattern>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-                </svg>
-              </div>
-
-              {/* Decorative background glow with animation */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[var(--neon-cyan)]/10 via-[var(--neon-violet)]/10 to-[var(--neon-pink)]/10 blur-3xl -z-10"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.5, 0.8, 0.5]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-
-              {/* Outer geometric frame */}
-              <div className="absolute inset-0 border-2 border-[var(--neon-cyan)]/20 rounded-lg">
-                {/* Animated corner pieces */}
-                <motion.div
-                  className="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-[var(--neon-cyan)]"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <motion.div
-                  className="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-[var(--neon-violet)]"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                />
-                <motion.div
-                  className="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-[var(--neon-pink)]"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                />
-                <motion.div
-                  className="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-[var(--neon-cyan)]"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1.5
-                  }}
-                />
-              </div>
-
-              {/* Content Container */}
-              <div className="relative flex flex-col items-center gap-3">
-                {/* English Title with enhanced styling */}
-                <motion.div className="relative">
-                  <motion.p
-                    className="text-2xl md:text-3xl lg:text-4xl font-black tracking-wider uppercase"
-                    style={{
-                      background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 50%, var(--neon-pink) 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                      textShadow: "0 0 40px rgba(6, 182, 212, 0.5)",
-                    }}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                  >
-                    Open Wisdom Lab
-                  </motion.p>
-
-                  {/* Animated particles around English title */}
-                  <motion.div
-                    className="absolute -left-6 top-1/2 w-2 h-2 rounded-full bg-[var(--neon-cyan)]"
-                    animate={{
-                      x: [-5, 5, -5],
-                      opacity: [0.3, 1, 0.3],
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  />
-                  <motion.div
-                    className="absolute -right-6 top-1/2 w-2 h-2 rounded-full bg-[var(--neon-pink)]"
-                    animate={{
-                      x: [5, -5, 5],
-                      opacity: [0.3, 1, 0.3],
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  />
-                </motion.div>
-
-                {/* Connecting Line with pulse animation */}
-                <motion.div
-                  className="w-24 h-px bg-gradient-to-r from-transparent via-[var(--neon-violet)] to-transparent"
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 96, opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 0.8 }}
-                />
-
-                {/* Chinese Title with traditional styling */}
-                <motion.div className="relative">
-                  <p
-                    className="text-xl md:text-2xl lg:text-3xl font-light tracking-[0.2em] text-[var(--foreground)]"
-                    style={{
-                      fontFamily: "'Noto Serif SC', 'STKaiti', 'KaiTi', serif",
-                      fontWeight: 300,
-                    }}
-                  >
-                    开放智慧实验室
-                  </p>
-
-                  {/* Decorative brackets */}
-                  <motion.div
-                    className="absolute -left-8 top-0 text-3xl text-[var(--neon-cyan)]/40 font-serif"
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9, duration: 0.5 }}
-                  >
-                    「
-                  </motion.div>
-                  <motion.div
-                    className="absolute -right-8 top-0 text-3xl text-[var(--neon-pink)]/40 font-serif"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9, duration: 0.5 }}
-                  >
-                    」
-                  </motion.div>
-                </motion.div>
-              </div>
-
-              {/* Orbital dots animation */}
-              <motion.div
-                className="absolute left-0 top-1/2 w-3 h-3 rounded-full bg-[var(--neon-cyan)] opacity-60"
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                style={{
-                  transformOrigin: "150px center",
-                }}
-              />
-              <motion.div
-                className="absolute right-0 top-1/2 w-3 h-3 rounded-full bg-[var(--neon-pink)] opacity-60"
-                animate={{
-                  rotate: -360,
-                }}
-                transition={{
-                  duration: 10,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                style={{
-                  transformOrigin: "-150px center",
-                }}
-              />
-            </motion.div>
-
             {/* Core Philosophy Tagline */}
             <motion.p
-              className="text-2xl md:text-3xl lg:text-4xl text-[var(--foreground)] font-medium max-w-5xl mx-auto leading-relaxed mb-4"
+              className="text-xl md:text-2xl lg:text-3xl text-[var(--foreground)] font-medium max-w-5xl mx-auto leading-relaxed mb-10"
               variants={itemVariants}
               style={{
                 fontFamily: "'Georgia', serif",
@@ -439,19 +294,6 @@ export default function HomePage() {
               }}
             >
               让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发
-            </motion.p>
-
-            <motion.p
-              className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-10 font-medium"
-              variants={itemVariants}
-              style={{
-                background: "linear-gradient(90deg, var(--neon-cyan), var(--neon-violet))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              培养面向未来的创新人才
             </motion.p>
 
             {/* Einstein Quote */}
@@ -526,176 +368,9 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* 教育理念 Section - Three Learning Principles */}
-      <section className="relative py-16 px-4 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-0 left-1/3 w-80 h-80 bg-[var(--neon-cyan)] opacity-[0.04] blur-[120px] rounded-full"
-            animate={{ scale: [1, 1.15, 1] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute bottom-0 right-1/4 w-80 h-80 bg-[var(--neon-violet)] opacity-[0.04] blur-[120px] rounded-full"
-            animate={{ scale: [1.15, 1, 1.15] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-
-        <div className="relative max-w-6xl mx-auto">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Lightbulb className="w-4 h-4 text-[var(--neon-cyan)]" />
-              教育理念
-            </motion.div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--foreground)]">
-              我们如何培养创新人才
-            </h2>
-            <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              从真实问题出发，跨越学科边界，在实践中成长
-            </p>
-          </motion.div>
-
-          {/* Three Principle Cards */}
-          <motion.div
-            className="grid md:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {/* Principle 1: 问题驱动学习 */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative"
-            >
-              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-cyan)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-cyan)]/20 hover:border-[var(--neon-cyan)]/50 transition-all duration-300 overflow-hidden">
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Number Badge */}
-                <div className="absolute top-6 right-6">
-                  <span className="text-5xl font-black text-[var(--neon-cyan)]/20 group-hover:text-[var(--neon-cyan)]/30 transition-colors">?</span>
-                </div>
-
-                {/* Content */}
-                <div className="relative">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)] text-xs font-mono font-bold mb-4">
-                    001
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
-                    问题驱动学习
-                  </h3>
-                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
-                    从真实问题出发，在探索中学习，在解决问题中成长。
-                  </p>
-                  <p className="text-sm font-medium text-[var(--neon-cyan)] italic">
-                    Learning by questioning.
-                  </p>
-                </div>
-
-                {/* Bottom Accent */}
-                <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-cyan)] to-transparent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "60%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                />
-              </div>
-            </motion.div>
-
-            {/* Principle 2: 跨学科融合 */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative"
-            >
-              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-violet)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-violet)]/20 hover:border-[var(--neon-violet)]/50 transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="absolute top-6 right-6">
-                  <span className="text-5xl font-black text-[var(--neon-violet)]/20 group-hover:text-[var(--neon-violet)]/30 transition-colors">+</span>
-                </div>
-
-                <div className="relative">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-violet)]/10 text-[var(--neon-violet)] text-xs font-mono font-bold mb-4">
-                    002
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
-                    跨学科融合
-                  </h3>
-                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
-                    打破学科边界，培养综合思维和创新能力。
-                  </p>
-                  <p className="text-sm font-medium text-[var(--neon-violet)] italic">
-                    Cross-disciplinary thinking.
-                  </p>
-                </div>
-
-                <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-violet)] to-transparent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "60%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                />
-              </div>
-            </motion.div>
-
-            {/* Principle 3: 实践导向 */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative"
-            >
-              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-green)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-green)]/20 hover:border-[var(--neon-green)]/50 transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="absolute top-6 right-6">
-                  <span className="text-5xl font-black text-[var(--neon-green)]/20 group-hover:text-[var(--neon-green)]/30 transition-colors">*</span>
-                </div>
-
-                <div className="relative">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-green)]/10 text-[var(--neon-green)] text-xs font-mono font-bold mb-4">
-                    003
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
-                    实践导向
-                  </h3>
-                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
-                    动手实践，在做中学，培养解决实际问题的能力。
-                  </p>
-                  <p className="text-sm font-medium text-[var(--neon-green)] italic">
-                    Hands-on learning.
-                  </p>
-                </div>
-
-                <motion.div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-green)] to-transparent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "60%" }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* 空间核心理念 Section - Four Core Principles */}
-      <section className="relative py-10 px-4 overflow-hidden">
+      <section className="relative py-8 px-4 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -716,7 +391,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-6"
+            className="text-center mb-4"
           >
             <motion.div
               className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-2"
@@ -1853,6 +1528,277 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
+      {/* 教育理念 Section - Three Learning Principles */}
+      <section className="relative py-16 px-4 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute top-0 left-1/3 w-80 h-80 bg-[var(--neon-cyan)] opacity-[0.04] blur-[120px] rounded-full"
+            animate={{ scale: [1, 1.15, 1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-1/4 w-80 h-80 bg-[var(--neon-violet)] opacity-[0.04] blur-[120px] rounded-full"
+            animate={{ scale: [1.15, 1, 1.15] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Lightbulb className="w-4 h-4 text-[var(--neon-cyan)]" />
+              教育理念
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--foreground)]">
+              我们如何培养创新人才
+            </h2>
+            <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              从真实问题出发，跨越学科边界，在实践中成长
+            </p>
+          </motion.div>
+
+          {/* Three Principle Cards */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {/* Principle 1: 问题驱动学习 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-cyan)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-cyan)]/20 hover:border-[var(--neon-cyan)]/50 transition-all duration-300 overflow-hidden">
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* SVG Visualization - Question Mark with Lightbulb */}
+                <div className="absolute top-6 right-6 w-16 h-16 opacity-20 group-hover:opacity-40 transition-opacity">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                    {/* Question mark path */}
+                    <path
+                      d="M 50 20 Q 65 20, 65 35 Q 65 45, 50 50 L 50 60"
+                      stroke="var(--neon-cyan)"
+                      strokeWidth="6"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="50" cy="70" r="4" fill="var(--neon-cyan)" />
+                    {/* Radiating thought lines */}
+                    {[0, 60, 120, 180, 240, 300].map((angle, i) => {
+                      const rad = (angle * Math.PI) / 180;
+                      const x2 = 50 + Math.cos(rad) * 35;
+                      const y2 = 50 + Math.sin(rad) * 35;
+                      return (
+                        <line
+                          key={i}
+                          x1="50"
+                          y1="50"
+                          x2={x2}
+                          y2={y2}
+                          stroke="var(--neon-cyan)"
+                          strokeWidth="2"
+                          opacity="0.3"
+                          strokeDasharray="2,3"
+                        />
+                      );
+                    })}
+                  </svg>
+                </div>
+
+                {/* Content */}
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)] text-xs font-mono font-bold mb-4">
+                    001
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
+                    问题驱动学习
+                  </h3>
+                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                    从真实问题出发，在探索中学习，在解决问题中成长。
+                  </p>
+                  <p className="text-sm font-medium text-[var(--neon-cyan)] italic">
+                    Learning by questioning.
+                  </p>
+                </div>
+
+                {/* Bottom Accent */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-cyan)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "60%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Principle 2: 跨学科融合 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-violet)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-violet)]/20 hover:border-[var(--neon-violet)]/50 transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* SVG Visualization - Intersecting Circles (Venn Diagram) */}
+                <div className="absolute top-6 right-6 w-16 h-16 opacity-20 group-hover:opacity-40 transition-opacity">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                    {/* Left circle - Science */}
+                    <circle
+                      cx="40"
+                      cy="50"
+                      r="25"
+                      fill="none"
+                      stroke="var(--neon-violet)"
+                      strokeWidth="3"
+                      opacity="0.6"
+                    />
+                    {/* Right circle - Art */}
+                    <circle
+                      cx="60"
+                      cy="50"
+                      r="25"
+                      fill="none"
+                      stroke="var(--neon-violet)"
+                      strokeWidth="3"
+                      opacity="0.6"
+                    />
+                    {/* Center intersection highlight */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="8"
+                      fill="var(--neon-violet)"
+                      opacity="0.5"
+                    />
+                    {/* Connection lines */}
+                    <line x1="30" y1="35" x2="50" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                    <line x1="70" y1="35" x2="50" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                    <line x1="30" y1="65" x2="50" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                    <line x1="70" y1="65" x2="50" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                  </svg>
+                </div>
+
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-violet)]/10 text-[var(--neon-violet)] text-xs font-mono font-bold mb-4">
+                    002
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
+                    跨学科融合
+                  </h3>
+                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                    打破学科边界，培养综合思维和创新能力。
+                  </p>
+                  <p className="text-sm font-medium text-[var(--neon-violet)] italic">
+                    Cross-disciplinary thinking.
+                  </p>
+                </div>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-violet)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "60%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Principle 3: 实践导向 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-green)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-green)]/20 hover:border-[var(--neon-green)]/50 transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* SVG Visualization - Hands and Tools (Gear) */}
+                <div className="absolute top-6 right-6 w-16 h-16 opacity-20 group-hover:opacity-40 transition-opacity">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                    {/* Gear/Cog wheel */}
+                    <g transform="translate(50, 50)">
+                      {/* Center circle */}
+                      <circle cx="0" cy="0" r="12" fill="none" stroke="var(--neon-green)" strokeWidth="3" />
+                      {/* Gear teeth */}
+                      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                        const rad = (angle * Math.PI) / 180;
+                        const x1 = Math.cos(rad) * 12;
+                        const y1 = Math.sin(rad) * 12;
+                        const x2 = Math.cos(rad) * 22;
+                        const y2 = Math.sin(rad) * 22;
+                        return (
+                          <line
+                            key={i}
+                            x1={x1}
+                            y1={y1}
+                            x2={x2}
+                            y2={y2}
+                            stroke="var(--neon-green)"
+                            strokeWidth="4"
+                            strokeLinecap="round"
+                          />
+                        );
+                      })}
+                      {/* Outer circle */}
+                      <circle cx="0" cy="0" r="28" fill="none" stroke="var(--neon-green)" strokeWidth="2" opacity="0.5" strokeDasharray="4,4" />
+                    </g>
+                    {/* Hand/Tool representation - wrench shape */}
+                    <path
+                      d="M 25 70 L 30 65 L 35 70 L 30 75 Z"
+                      fill="var(--neon-green)"
+                      opacity="0.4"
+                    />
+                    <path
+                      d="M 65 70 L 70 65 L 75 70 L 70 75 Z"
+                      fill="var(--neon-green)"
+                      opacity="0.4"
+                    />
+                  </svg>
+                </div>
+
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-green)]/10 text-[var(--neon-green)] text-xs font-mono font-bold mb-4">
+                    003
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
+                    实践导向
+                  </h3>
+                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                    动手实践，在做中学，培养解决实际问题的能力。
+                  </p>
+                  <p className="text-sm font-medium text-[var(--neon-green)] italic">
+                    Hands-on learning.
+                  </p>
+                </div>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-green)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "60%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
       <footer className="py-10 px-4 border-t border-[var(--glass-border)]">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col gap-6">
