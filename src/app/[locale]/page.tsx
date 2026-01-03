@@ -243,12 +243,14 @@ export default function HomePage() {
                         <Target className="w-6 h-6 text-[var(--neon-cyan)]" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-mono font-bold text-[var(--neon-cyan)]">
+                            {t("livingModules.modules.spaceAsEducator.id")}
+                          </span>
+                        </div>
+                        <h3 className="font-semibold text-lg">
                           {t("livingModules.modules.spaceAsEducator.title")}
                         </h3>
-                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
-                          {t("livingModules.modules.spaceAsEducator.meta")}
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -280,12 +282,14 @@ export default function HomePage() {
                         <Sparkles className="w-6 h-6 text-[var(--neon-violet)]" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-mono font-bold text-[var(--neon-violet)]">
+                            {t("livingModules.modules.extendedMind.id")}
+                          </span>
+                        </div>
+                        <h3 className="font-semibold text-lg">
                           {t("livingModules.modules.extendedMind.title")}
                         </h3>
-                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
-                          {t("livingModules.modules.extendedMind.meta")}
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -317,12 +321,14 @@ export default function HomePage() {
                         <Users className="w-6 h-6 text-[var(--neon-green)]" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-mono font-bold text-[var(--neon-green)]">
+                            {t("livingModules.modules.emergentWisdom.id")}
+                          </span>
+                        </div>
+                        <h3 className="font-semibold text-lg">
                           {t("livingModules.modules.emergentWisdom.title")}
                         </h3>
-                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
-                          {t("livingModules.modules.emergentWisdom.meta")}
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -354,12 +360,14 @@ export default function HomePage() {
                         <Zap className="w-6 h-6 text-[var(--neon-pink)]" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-mono font-bold text-[var(--neon-pink)]">
+                            {t("livingModules.modules.poeticsOfTechnology.id")}
+                          </span>
+                        </div>
+                        <h3 className="font-semibold text-lg">
                           {t("livingModules.modules.poeticsOfTechnology.title")}
                         </h3>
-                        <p className="text-xs text-[var(--muted-foreground)] font-mono">
-                          {t("livingModules.modules.poeticsOfTechnology.meta")}
-                        </p>
                       </div>
                     </div>
                   </div>

@@ -117,7 +117,8 @@
       "description": "Four core philosophy modules tracking cutting-edge research to provide intellectual foundation for innovation labs",
       "modules": {
         "spaceAsEducator": {
-          "title": "L01 Space Shaping",
+          "id": "L01",
+          "title": "Space Shaping",
           "subtitle": "Neuroarchitecture and Innovation Environment Design",
           "description": "Space shapes people, people shape space—a bidirectional process. From neuroarchitecture to Third Space 2.0, understanding how physical environments affect cognition, behavior, and creativity.",
           "meta": "Space as Educator",
@@ -125,7 +126,8 @@
           "checklist": "Evidence-Based Space Design Checklist"
         },
         "extendedMind": {
-          "title": "L02 Extended Mind",
+          "id": "L02",
+          "title": "Extended Mind",
           "subtitle": "AI-Enhanced Cognition and Learning Science",
           "description": "AI as cognitive exoskeleton—extending human capabilities rather than replacing human thinking. Exploring the optimal balance of human-AI collaboration and developing core competencies for the AI era.",
           "meta": "Extended Mind",
@@ -133,7 +135,8 @@
           "checklist": "AI Integration Design Checklist"
         },
         "emergentWisdom": {
-          "title": "L03 Emergent Wisdom",
+          "id": "L03",
+          "title": "Emergent Wisdom",
           "subtitle": "Community Dynamics and Collaborative Cognition",
           "description": "Communities are incubators of wisdom—individual intelligence is amplified, recombined, and evolved within communities. From psychological safety to cognitive diversity, understanding the emergence mechanisms of collective intelligence.",
           "meta": "Emergent Wisdom",
@@ -141,7 +144,8 @@
           "checklist": "Collective Intelligence Building Checklist"
         },
         "poeticsOfTechnology": {
-          "title": "L04 Poetics of Technology",
+          "id": "L04",
+          "title": "Poetics of Technology",
           "subtitle": "Embodied Tools and Post-Screen Era",
           "description": "Technology should 'disappear'—the best technology makes you forget technology exists. From embodied learning to repairability, rethinking the relationship between tools and humans.",
           "meta": "Poetics of Technology",
