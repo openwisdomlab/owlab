@@ -16,6 +16,7 @@ import { FourPFramework } from "@/components/docs/FourPFramework";
 import { FlowChart, EQUIPMENT_ACCESS_FLOW, SPACE_PLANNING_FLOW } from "@/components/docs/FlowChart";
 import { KnowledgeGraph } from "@/components/docs/KnowledgeGraph";
 import { ModuleSummary } from "@/components/docs/ModuleSummary";
+import { ConceptExplorer } from "@/components/docs/ConceptExplorer";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -88,6 +89,9 @@ export default async function Page({ params }: Props) {
           ),
           ModuleSummary: (props: { moduleId: string; tagline: string; philosophy: string; insights: string[]; className?: string }) => (
             <ModuleSummary {...props} />
+          ),
+          ConceptExplorer: (props: { className?: string }) => (
+            <ConceptExplorer {...props} />
           ),
           EQUIPMENT_ACCESS_FLOW,
           SPACE_PLANNING_FLOW,

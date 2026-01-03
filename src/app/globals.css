@@ -15,16 +15,26 @@
 /* CSS Variables - OWL Brand Color Palette */
 :root {
   /* OWL Primary Brand Colors - Logo颜色 */
-  --owl-magenta: #D91A7A;    /* Logo紫色 - 洋红 */
-  --owl-blue: #2563EB;       /* Logo蓝色 - 蓝色 */
-  --owl-violet: #5C5470;     /* 神秘紫灰 */
+  --font-sans: "Lora", Georgia, serif;
+  --font-heading: "Poppins", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --owl-magenta: #D91A7A;
+  /* Logo紫色 - 洋红 */
+  --owl-blue: #2563EB;
+  /* Logo蓝色 - 蓝色 */
+  --owl-violet: #5C5470;
+  /* 神秘紫灰 */
   --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #2563EB 100%);
 
   /* OWL Neutral Colors */
-  --owl-dark: #0E0E14;       /* 深夜星空 */
-  --owl-surface: #1C1C26;    /* 浮层表面 */
-  --owl-light: #F5F4F0;      /* 晨曦微光 */
-  --owl-muted: #8A8A94;      /* 羽灰 */
+  --owl-dark: #0E0E14;
+  /* 深夜星空 */
+  --owl-surface: #1C1C26;
+  /* 浮层表面 */
+  --owl-light: #F5F4F0;
+  /* 晨曦微光 */
+  --owl-muted: #8A8A94;
+  /* 羽灰 */
 
   /* OWL Glow Effects - 柔和版 */
   --owl-glow-magenta: 0 0 24px rgba(217, 26, 122, 0.25);
@@ -53,11 +63,16 @@
   --radius: 0.5rem;
 
   /* Brand Value Colors - 沉稳渐变 */
-  --brand-open: #D91A7A;       /* Logo紫 - 开放 */
-  --brand-cross: #A49464;      /* 暗金 - 交叉 */
-  --brand-connect: #8A8A7A;    /* 银灰 - 连接 */
-  --brand-sustainable: #7A8490; /* 蓝灰 - 可持续 */
-  --brand-tech: #D91A7A;       /* Logo紫 - 黑科技 */
+  --brand-open: #D91A7A;
+  /* Logo紫 - 开放 */
+  --brand-cross: #A49464;
+  /* 暗金 - 交叉 */
+  --brand-connect: #8A8A7A;
+  /* 银灰 - 连接 */
+  --brand-sustainable: #7A8490;
+  /* 蓝灰 - 可持续 */
+  --brand-tech: #D91A7A;
+  /* Logo紫 - 黑科技 */
 
   /* Legacy neon aliases - 调整为沉稳色调 */
   --neon-cyan: #2563EB;
@@ -139,15 +154,21 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Lora", Georgia, serif;
+  font-family: var(--font-sans);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 /* Anthropic Typography - Poppins for headings */
-h1, h2, h3, h4, h5, h6,
-.heading, .font-heading {
-  font-family: "Poppins", Arial, sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading,
+.font-heading {
+  font-family: var(--font-heading);
   font-weight: 600;
 }
 
@@ -185,11 +206,14 @@ html.light body::before {
 
 /* Subtle Accent Animation */
 @keyframes accent-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow:
       0 0 4px var(--brand-orange),
       0 0 8px rgba(217, 119, 87, 0.3);
   }
+
   50% {
     box-shadow:
       0 0 8px var(--brand-orange),
@@ -198,9 +222,12 @@ html.light body::before {
 }
 
 @keyframes accent-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     text-shadow: 0 0 4px rgba(217, 119, 87, 0.3);
   }
+
   50% {
     text-shadow: 0 0 8px rgba(217, 119, 87, 0.5);
   }
@@ -208,13 +235,27 @@ html.light body::before {
 
 /* Legacy neon animation aliases */
 @keyframes neon-pulse {
-  0%, 100% { box-shadow: 0 2px 8px rgba(217, 119, 87, 0.2); }
-  50% { box-shadow: 0 4px 16px rgba(217, 119, 87, 0.3); }
+
+  0%,
+  100% {
+    box-shadow: 0 2px 8px rgba(217, 119, 87, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 4px 16px rgba(217, 119, 87, 0.3);
+  }
 }
 
 @keyframes neon-glow {
-  0%, 100% { text-shadow: none; }
-  50% { text-shadow: 0 0 4px rgba(217, 119, 87, 0.3); }
+
+  0%,
+  100% {
+    text-shadow: none;
+  }
+
+  50% {
+    text-shadow: 0 0 4px rgba(217, 119, 87, 0.3);
+  }
 }
 
 /* Brand Button */
@@ -222,7 +263,7 @@ html.light body::before {
   position: relative;
   background: var(--brand-orange);
   color: var(--brand-light);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius);
@@ -244,8 +285,9 @@ html.light body::before {
 }
 
 /* Code Blocks */
-pre, code {
-  font-family: "JetBrains Mono", monospace;
+pre,
+code {
+  font-family: var(--font-mono);
 }
 
 pre {
@@ -389,9 +431,17 @@ html.light .header-glass {
 }
 
 @keyframes gradient-rotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ============================================
@@ -430,6 +480,7 @@ textarea:focus-visible,
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -642,15 +693,22 @@ html[data-emotion="calm"] {
   --primary-foreground: #FFFFFF;
   --accent: #059669;
   --ring: #059669;
-  
+
   --neon-cyan: #10B981;
   --neon-violet: #364F6B;
   --neon-pink: #34D399;
-  
+
   --brand-open: #059669;
   --brand-tech: #10B981;
-  
+
+  /* Design System Overrides */
+  --radius: 1rem;
+  --font-heading: "Lora", Georgia, serif;
+
   --owl-gradient: linear-gradient(135deg, #059669 0%, #3B82F6 100%);
+
+  /* Subtle Texture */
+  background-image: radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.03) 0%, transparent 50%);
 }
 
 /* ENERGETIC (Solar/Orange) - Activity, Warning, Excitement */
@@ -659,15 +717,26 @@ html[data-emotion="energetic"] {
   --primary-foreground: #FFFFFF;
   --accent: #EA580C;
   --ring: #EA580C;
-  
+
   --neon-cyan: #F97316;
   --neon-violet: #BE185D;
   --neon-pink: #F59E0B;
-  
+
   --brand-open: #EA580C;
   --brand-tech: #F97316;
-  
+
+  /* Design System Overrides */
+  --radius: 0px;
+  --font-sans: "Poppins", Arial, sans-serif;
+  --font-heading: "Poppins", Arial, sans-serif;
+
   --owl-gradient: linear-gradient(135deg, #EA580C 0%, #DB2777 100%);
+
+  /* High Contrast Grid */
+  background-image:
+    linear-gradient(rgba(234, 88, 12, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234, 88, 12, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* CREATIVE (Nebula/Purple) - Imagination, Magic, Mystery */
@@ -676,13 +745,22 @@ html[data-emotion="creative"] {
   --primary-foreground: #FFFFFF;
   --accent: #9333EA;
   --ring: #9333EA;
-  
+
   --neon-cyan: #A855F7;
   --neon-violet: #4C1D95;
   --neon-pink: #E879F9;
-  
+
   --brand-open: #9333EA;
   --brand-tech: #A855F7;
-  
+
+  /* Design System Overrides */
+  --radius: 0.5rem;
+  --font-heading: "JetBrains Mono", monospace;
+
   --owl-gradient: linear-gradient(135deg, #9333EA 0%, #2563EB 100%);
+
+  /* Digital Noise/Glow */
+  background-image:
+    radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 40%);
 }
