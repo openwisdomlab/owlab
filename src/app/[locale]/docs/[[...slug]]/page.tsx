@@ -11,6 +11,10 @@ import type { TOCItemType } from "fumadocs-core/toc";
 import { ModuleCards } from "@/components/docs/ModuleCards";
 import { ExtendCards } from "@/components/docs/ExtendCards";
 import { BackToSection } from "@/components/docs/BackToSection";
+import { TheoryLineage } from "@/components/docs/TheoryLineage";
+import { FourPFramework } from "@/components/docs/FourPFramework";
+import { FlowChart, EQUIPMENT_ACCESS_FLOW, SPACE_PLANNING_FLOW } from "@/components/docs/FlowChart";
+import { KnowledgeGraph } from "@/components/docs/KnowledgeGraph";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -71,6 +75,18 @@ export default async function Page({ params }: Props) {
           BackToSection: (props: { href: string; label?: string; moduleId?: string; moduleName?: string }) => (
             <BackToSection {...props} locale={locale} />
           ),
+          TheoryLineage: (props: { className?: string; interactive?: boolean }) => (
+            <TheoryLineage {...props} />
+          ),
+          FourPFramework: (props: { className?: string; interactive?: boolean; compact?: boolean }) => (
+            <FourPFramework {...props} />
+          ),
+          FlowChart: FlowChart,
+          KnowledgeGraph: (props: { module?: string; depth?: number; interactive?: boolean; className?: string }) => (
+            <KnowledgeGraph {...props} />
+          ),
+          EQUIPMENT_ACCESS_FLOW,
+          SPACE_PLANNING_FLOW,
         }} />
       </DocsBody>
     </DocsPage>
