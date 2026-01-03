@@ -170,11 +170,10 @@ export function EquipmentLibrary({
         <div className="flex items-center justify-between">
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg transition-colors ${
-              showFilters
+            className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg transition-colors ${showFilters
                 ? "bg-[var(--neon-cyan)] text-[var(--background)]"
                 : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-            }`}
+              }`}
           >
             <Filter className="w-4 h-4" />
             Filters
@@ -214,11 +213,10 @@ export function EquipmentLibrary({
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => setFilter({ ...filter, category: undefined })}
-                    className={`px-3 py-1 text-xs rounded-lg transition-colors ${
-                      !filter.category
+                    className={`px-3 py-1 text-xs rounded-lg transition-colors ${!filter.category
                         ? "bg-[var(--neon-cyan)] text-[var(--background)]"
                         : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-                    }`}
+                      }`}
                   >
                     All
                   </button>
@@ -226,11 +224,10 @@ export function EquipmentLibrary({
                     <button
                       key={cat}
                       onClick={() => setFilter({ ...filter, category: cat })}
-                      className={`px-3 py-1 text-xs rounded-lg transition-colors ${
-                        filter.category === cat
+                      className={`px-3 py-1 text-xs rounded-lg transition-colors ${filter.category === cat
                           ? "bg-[var(--neon-cyan)] text-[var(--background)]"
                           : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
-                      }`}
+                        }`}
                     >
                       {CATEGORY_LABELS[cat]}
                     </button>
@@ -310,8 +307,13 @@ function EquipmentCard({ item, onSelect, onAdd }: EquipmentCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-card p-3 cursor-pointer hover:border-[var(--neon-cyan)] transition-colors"
+      className="glass-card p-3 cursor-grab active:cursor-grabbing hover:border-[var(--neon-cyan)] transition-colors"
       onClick={onSelect}
+      draggable
+      onDragStart={(e) => {
+        e.dataTransfer.setData("application/json", JSON.stringify(item));
+        e.dataTransfer.effectAllowed = "copy";
+      }}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">

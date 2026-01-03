@@ -1,0 +1,21 @@
+{
+    "name": "Open Wisdom Lab",
+    "short_name": "OWLab",
+    "description": "An open source laboratory framework for the future.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0E0E14",
+    "theme_color": "#D91A7A",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

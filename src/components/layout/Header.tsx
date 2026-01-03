@@ -6,7 +6,9 @@ import { Link } from "@/components/ui/Link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchButton } from "@/components/search";
-import { BookOpen, Github, FlaskConical } from "lucide-react";
+import { BookOpen, Github, FlaskConical, Maximize2, Minimize2 } from "lucide-react";
+import { useFocusStore } from "@/stores/focus-store";
+import { EmotionSelector } from "@/components/ui/EmotionSelector";
 import type { Locale } from "@/i18n";
 
 type HeaderProps = {
@@ -21,6 +23,22 @@ export function Header({ locale }: HeaderProps) {
     { href: `/${locale}/docs/knowledge-base`, label: t("docs"), icon: BookOpen },
     { href: `/${locale}/lab`, label: t("lab"), icon: FlaskConical },
   ];
+
+  const { isFocusMode, toggleFocusMode } = useFocusStore();
+
+  if (isFocusMode) {
+    return (
+      <motion.button
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        onClick={toggleFocusMode}
+        className="fixed top-4 right-4 z-50 p-2 rounded-full bg-[var(--background)] border border-[var(--glass-border)] shadow-lg hover:border-[var(--neon-cyan)] group"
+        title="Exit Focus Mode"
+      >
+        <Minimize2 className="w-5 h-5 text-[var(--muted-foreground)] group-hover:text-[var(--neon-cyan)] transition-colors" />
+      </motion.button>
+    );
+  }
 
   return (
     <motion.header
@@ -58,6 +76,14 @@ export function Header({ locale }: HeaderProps) {
         {/* Right Section */}
         <div className="flex items-center gap-2">
           <SearchButton variant="icon" />
+          <button
+            onClick={toggleFocusMode}
+            className="p-2 rounded-lg hover:bg-[var(--glass-bg)] transition-colors"
+            title="Focus Mode"
+          >
+            <Maximize2 className="w-5 h-5" />
+          </button>
+          <EmotionSelector />
           <ThemeToggle />
           <LanguageSwitcher locale={locale} />
           <a

@@ -630,3 +630,59 @@ html.light .cta-primary {
     text-decoration: underline;
   }
 }
+
+/* ============================================
+   EMOTION UI THEMES
+   Adapts the visual mood based on user state
+   ============================================ */
+
+/* CALM (Forest/Teal) - Focus, Peace, Nature */
+html[data-emotion="calm"] {
+  --primary: #059669;
+  --primary-foreground: #FFFFFF;
+  --accent: #059669;
+  --ring: #059669;
+  
+  --neon-cyan: #10B981;
+  --neon-violet: #364F6B;
+  --neon-pink: #34D399;
+  
+  --brand-open: #059669;
+  --brand-tech: #10B981;
+  
+  --owl-gradient: linear-gradient(135deg, #059669 0%, #3B82F6 100%);
+}
+
+/* ENERGETIC (Solar/Orange) - Activity, Warning, Excitement */
+html[data-emotion="energetic"] {
+  --primary: #EA580C;
+  --primary-foreground: #FFFFFF;
+  --accent: #EA580C;
+  --ring: #EA580C;
+  
+  --neon-cyan: #F97316;
+  --neon-violet: #BE185D;
+  --neon-pink: #F59E0B;
+  
+  --brand-open: #EA580C;
+  --brand-tech: #F97316;
+  
+  --owl-gradient: linear-gradient(135deg, #EA580C 0%, #DB2777 100%);
+}
+
+/* CREATIVE (Nebula/Purple) - Imagination, Magic, Mystery */
+html[data-emotion="creative"] {
+  --primary: #9333EA;
+  --primary-foreground: #FFFFFF;
+  --accent: #9333EA;
+  --ring: #9333EA;
+  
+  --neon-cyan: #A855F7;
+  --neon-violet: #4C1D95;
+  --neon-pink: #E879F9;
+  
+  --brand-open: #9333EA;
+  --brand-tech: #A855F7;
+  
+  --owl-gradient: linear-gradient(135deg, #9333EA 0%, #2563EB 100%);
+}

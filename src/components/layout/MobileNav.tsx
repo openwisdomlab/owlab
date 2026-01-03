@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { Menu, X, BookOpen, LayoutDashboard, Home } from "lucide-react";
+import { useFocusStore } from "@/stores/focus-store";
 import type { Locale } from "@/i18n";
 
 type MobileNavProps = {
@@ -20,6 +21,10 @@ export function MobileNav({ locale }: MobileNavProps) {
     { href: `/${locale}/docs`, label: t("docs"), icon: BookOpen },
     { href: `/${locale}/dashboard`, label: t("dashboard"), icon: LayoutDashboard },
   ];
+
+  const { isFocusMode } = useFocusStore();
+
+  if (isFocusMode) return null;
 
   return (
     <>

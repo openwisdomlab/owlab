@@ -131,187 +131,220 @@ export function FloorPlanCanvas({
     [layout.zones]
   );
 
-  const handleCanvasClick = useCallback(
-    (e: React.MouseEvent) => {
-      if (!isAddingZone) {
-        onZoneSelect(null);
-        return;
-      }
+  onAddZone(newZone);
+  setIsAddingZone(false);
+},
+[isAddingZone, newZoneType, zoom, onAddZone, onZoneSelect]
+  );
 
+const handleDragOver = useCallback((e: React.DragEvent) => {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = "copy";
+}, []);
+
+const handleDrop = useCallback(
+  (e: React.DragEvent) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData("application/json");
+    if (!data) return;
+
+    try {
+      const item = JSON.parse(data);
       const rect = canvasRef.current?.getBoundingClientRect();
       if (!rect) return;
 
       const x = Math.floor((e.clientX - rect.left) / (GRID_SIZE * zoom));
       const y = Math.floor((e.clientY - rect.top) / (GRID_SIZE * zoom));
 
-      const newZone: ZoneData = {
-        id: uuidv4(),
-        name: `New ${newZoneType}`,
-        type: newZoneType,
-        position: { x, y },
-        size: { width: 4, height: 3 },
-        color: ZONE_COLORS[newZoneType],
-        equipment: [],
-      };
+      // Check if dropped on an existing zone
+      const targetZone = layout.zones.find(
+        (z) =>
+          x >= z.position.x &&
+          x < z.position.x + z.size.width &&
+          y >= z.position.y &&
+          y < z.position.y + z.size.height
+      );
 
-      onAddZone(newZone);
-      setIsAddingZone(false);
-    },
-    [isAddingZone, newZoneType, zoom, onAddZone, onZoneSelect]
-  );
-
-  const handleZoneMouseDown = useCallback(
-    (e: React.MouseEvent, zoneId: string) => {
-      e.stopPropagation();
-      onZoneSelect(zoneId);
-      setIsDragging(true);
-      setDragStart({ x: e.clientX, y: e.clientY });
-    },
-    [onZoneSelect]
-  );
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!isDragging || !selectedZone) return;
-
-      const zone = layout.zones.find((z) => z.id === selectedZone);
-      if (!zone) return;
-
-      const dx = Math.round((e.clientX - dragStart.x) / (GRID_SIZE * zoom));
-      const dy = Math.round((e.clientY - dragStart.y) / (GRID_SIZE * zoom));
-
-      if (dx !== 0 || dy !== 0) {
-        onZoneUpdate(selectedZone, {
-          position: {
-            x: Math.max(0, zone.position.x + dx),
-            y: Math.max(0, zone.position.y + dy),
-          },
+      if (targetZone) {
+        // Add to existing zone
+        const currentEquipment = targetZone.equipment || [];
+        onZoneUpdate(targetZone.id, {
+          equipment: [...currentEquipment, item],
         });
-        setDragStart({ x: e.clientX, y: e.clientY });
+        onZoneSelect(targetZone.id);
+      } else {
+        // Create new zone for this equipment
+        const newZone: ZoneData = {
+          id: uuidv4(),
+          name: item.name || "New Equipment",
+          type: "workspace", // Default type
+          position: { x, y },
+          size: { width: 3, height: 3 },
+          color: ZONE_COLORS["workspace"],
+          equipment: [item],
+        };
+        onAddZone(newZone);
+        onZoneSelect(newZone.id);
       }
-    },
-    [isDragging, selectedZone, layout.zones, dragStart, zoom, onZoneUpdate]
-  );
+    } catch (err) {
+      console.error("Failed to parse dropped item:", err);
+    }
+  },
+  [layout.zones, GRID_SIZE, zoom, onZoneUpdate, onAddZone, onZoneSelect]
+);
 
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
+const handleZoneMouseDown = useCallback(
+  (e: React.MouseEvent, zoneId: string) => {
+    e.stopPropagation();
+    onZoneSelect(zoneId);
+    setIsDragging(true);
+    setDragStart({ x: e.clientX, y: e.clientY });
+  },
+  [onZoneSelect]
+);
 
-  return (
-    <div className="relative h-full overflow-auto bg-[var(--background)]">
-      {/* Toolbar */}
-      <div
-        className="absolute top-4 left-4 z-10 flex items-center gap-2 p-2 rounded-lg glass-card"
-        role="toolbar"
-        aria-label="Floor plan editing tools"
-      >
-        <button
-          onClick={() => setIsAddingZone(!isAddingZone)}
-          className={`p-2 rounded-lg transition-colors ${
-            isAddingZone
-              ? "bg-[var(--neon-cyan)] text-[var(--background)]"
-              : "hover:bg-[var(--glass-bg)]"
+const handleMouseMove = useCallback(
+  (e: React.MouseEvent) => {
+    if (!isDragging || !selectedZone) return;
+
+    const zone = layout.zones.find((z) => z.id === selectedZone);
+    if (!zone) return;
+
+    const dx = Math.round((e.clientX - dragStart.x) / (GRID_SIZE * zoom));
+    const dy = Math.round((e.clientY - dragStart.y) / (GRID_SIZE * zoom));
+
+    if (dx !== 0 || dy !== 0) {
+      onZoneUpdate(selectedZone, {
+        position: {
+          x: Math.max(0, zone.position.x + dx),
+          y: Math.max(0, zone.position.y + dy),
+        },
+      });
+      setDragStart({ x: e.clientX, y: e.clientY });
+    }
+  },
+  [isDragging, selectedZone, layout.zones, dragStart, zoom, onZoneUpdate]
+);
+
+const handleMouseUp = useCallback(() => {
+  setIsDragging(false);
+}, []);
+
+return (
+  <div className="relative h-full overflow-auto bg-[var(--background)]">
+    {/* Toolbar */}
+    <div
+      className="absolute top-4 left-4 z-10 flex items-center gap-2 p-2 rounded-lg glass-card"
+      role="toolbar"
+      aria-label="Floor plan editing tools"
+    >
+      <button
+        onClick={() => setIsAddingZone(!isAddingZone)}
+        className={`p-2 rounded-lg transition-colors ${isAddingZone
+          ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+          : "hover:bg-[var(--glass-bg)]"
           }`}
-          aria-label={isAddingZone ? "Cancel adding zone" : "Add new zone"}
-          aria-pressed={isAddingZone}
+        aria-label={isAddingZone ? "Cancel adding zone" : "Add new zone"}
+        aria-pressed={isAddingZone}
+      >
+        <Plus className="w-5 h-5" aria-hidden="true" />
+      </button>
+
+      {isAddingZone && (
+        <div
+          className="flex gap-1 pl-2 border-l border-[var(--glass-border)]"
+          role="radiogroup"
+          aria-label="Select zone type"
         >
-          <Plus className="w-5 h-5" aria-hidden="true" />
-        </button>
-
-        {isAddingZone && (
-          <div
-            className="flex gap-1 pl-2 border-l border-[var(--glass-border)]"
-            role="radiogroup"
-            aria-label="Select zone type"
-          >
-            {ZONE_TYPES.map((type) => (
-              <button
-                key={type}
-                onClick={() => setNewZoneType(type)}
-                className={`p-2 rounded-lg transition-colors ${
-                  newZoneType === type ? "ring-2 ring-white" : ""
-                }`}
-                style={{ backgroundColor: ZONE_COLORS[type] }}
-                role="radio"
-                aria-checked={newZoneType === type}
-                aria-label={`${type} zone`}
-              >
-                <Square className="w-4 h-4 text-white" aria-hidden="true" />
-              </button>
-            ))}
-          </div>
-        )}
-
-        {selectedZone && (
-          <>
-            <div className="w-px h-6 bg-[var(--glass-border)]" aria-hidden="true" />
+          {ZONE_TYPES.map((type) => (
             <button
-              onClick={() => onDeleteZone(selectedZone)}
-              className="p-2 rounded-lg hover:bg-red-500/20 text-red-400 transition-colors"
-              aria-label="Delete selected zone"
+              key={type}
+              onClick={() => setNewZoneType(type)}
+              className={`p-2 rounded-lg transition-colors ${newZoneType === type ? "ring-2 ring-white" : ""
+                }`}
+              style={{ backgroundColor: ZONE_COLORS[type] }}
+              role="radio"
+              aria-checked={newZoneType === type}
+              aria-label={`${type} zone`}
             >
-              <Trash2 className="w-5 h-5" aria-hidden="true" />
+              <Square className="w-4 h-4 text-white" aria-hidden="true" />
             </button>
-          </>
-        )}
+          ))}
+        </div>
+      )}
+
+      {selectedZone && (
+        <>
+          <div className="w-px h-6 bg-[var(--glass-border)]" aria-hidden="true" />
+          <button
+            onClick={() => onDeleteZone(selectedZone)}
+            className="p-2 rounded-lg hover:bg-red-500/20 text-red-400 transition-colors"
+            aria-label="Delete selected zone"
+          >
+            <Trash2 className="w-5 h-5" aria-hidden="true" />
+          </button>
+        </>
+      )}
+    </div>
+
+    {/* Canvas */}
+    <div className="relative m-8">
+      {/* Horizontal Ruler */}
+      <div
+        className="absolute -top-6 left-0 flex text-xs text-[var(--muted-foreground)]"
+        style={{ width: canvasWidth }}
+      >
+        {Array.from({ length: layout.dimensions.width + 1 }).map((_, i) => (
+          <div
+            key={`h-ruler-${i}`}
+            className="relative"
+            style={{ width: GRID_SIZE * zoom }}
+          >
+            <span className="absolute -left-1">{i}</span>
+            {i < layout.dimensions.width && (
+              <div className="absolute top-4 left-0 w-px h-2 bg-[var(--glass-border)]" />
+            )}
+          </div>
+        ))}
       </div>
 
-      {/* Canvas */}
-      <div className="relative m-8">
-        {/* Horizontal Ruler */}
-        <div
-          className="absolute -top-6 left-0 flex text-xs text-[var(--muted-foreground)]"
-          style={{ width: canvasWidth }}
-        >
-          {Array.from({ length: layout.dimensions.width + 1 }).map((_, i) => (
-            <div
-              key={`h-ruler-${i}`}
-              className="relative"
-              style={{ width: GRID_SIZE * zoom }}
-            >
-              <span className="absolute -left-1">{i}</span>
-              {i < layout.dimensions.width && (
-                <div className="absolute top-4 left-0 w-px h-2 bg-[var(--glass-border)]" />
-              )}
-            </div>
-          ))}
-        </div>
+      {/* Vertical Ruler */}
+      <div
+        className="absolute -left-8 top-0 flex flex-col text-xs text-[var(--muted-foreground)]"
+        style={{ height: canvasHeight }}
+      >
+        {Array.from({ length: layout.dimensions.height + 1 }).map((_, i) => (
+          <div
+            key={`v-ruler-${i}`}
+            className="relative"
+            style={{ height: GRID_SIZE * zoom }}
+          >
+            <span className="absolute -top-2 right-2">{i}</span>
+            {i < layout.dimensions.height && (
+              <div className="absolute top-0 right-0 h-px w-2 bg-[var(--glass-border)]" />
+            )}
+          </div>
+        ))}
+      </div>
 
-        {/* Vertical Ruler */}
-        <div
-          className="absolute -left-8 top-0 flex flex-col text-xs text-[var(--muted-foreground)]"
-          style={{ height: canvasHeight }}
-        >
-          {Array.from({ length: layout.dimensions.height + 1 }).map((_, i) => (
-            <div
-              key={`v-ruler-${i}`}
-              className="relative"
-              style={{ height: GRID_SIZE * zoom }}
-            >
-              <span className="absolute -top-2 right-2">{i}</span>
-              {i < layout.dimensions.height && (
-                <div className="absolute top-0 right-0 h-px w-2 bg-[var(--glass-border)]" />
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div
-          ref={canvasRef}
-          className="relative"
-          style={{
-            width: canvasWidth,
-            height: canvasHeight,
-            cursor: isAddingZone ? "crosshair" : "default",
-          }}
-          onClick={handleCanvasClick}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          role="application"
-          aria-label={`Floor plan canvas, ${layout.zones.length} zones`}
-          tabIndex={0}
-        >
+      <div
+        ref={canvasRef}
+        className="relative"
+        style={{
+          width: canvasWidth,
+          height: canvasHeight,
+          cursor: isAddingZone ? "crosshair" : "default",
+        }}
+        onClick={handleCanvasClick}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        role="application"
+        aria-label={`Floor plan canvas, ${layout.zones.length} zones`}
+        tabIndex={0}
+      >
         {/* Grid */}
         {showGrid && (
           <svg
@@ -348,11 +381,10 @@ export function FloorPlanCanvas({
         {layout.zones.map((zone, index) => (
           <motion.div
             key={zone.id}
-            className={`absolute rounded-lg cursor-move transition-shadow ${
-              selectedZone === zone.id
-                ? "ring-2 ring-white shadow-lg"
-                : "hover:ring-1 hover:ring-white/50"
-            }`}
+            className={`absolute rounded-lg cursor-move transition-shadow ${selectedZone === zone.id
+              ? "ring-2 ring-white shadow-lg"
+              : "hover:ring-1 hover:ring-white/50"
+              }`}
             style={{
               left: zone.position.x * GRID_SIZE * zoom,
               top: zone.position.y * GRID_SIZE * zoom,
@@ -407,7 +439,7 @@ export function FloorPlanCanvas({
           </motion.div>
         ))}
 
-          {/* Safety Warnings */}
+        {/* Safety Warnings */}
         {safetyWarnings.map((warning) => (
           <motion.div
             key={warning.id}
@@ -432,51 +464,51 @@ export function FloorPlanCanvas({
           </motion.div>
         ))}
 
-          {/* Dimensions Label */}
-          <div className="absolute -bottom-8 left-0 right-0 text-center text-sm text-[var(--muted-foreground)]">
-            {layout.dimensions.width} × {layout.dimensions.height}{" "}
-            {layout.dimensions.unit}
-          </div>
+        {/* Dimensions Label */}
+        <div className="absolute -bottom-8 left-0 right-0 text-center text-sm text-[var(--muted-foreground)]">
+          {layout.dimensions.width} × {layout.dimensions.height}{" "}
+          {layout.dimensions.unit}
         </div>
       </div>
-
-      {/* Safety Warnings Summary */}
-      {safetyWarnings.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute bottom-4 left-4 z-10 glass-card p-3 border border-red-500/50"
-        >
-          <div className="flex items-center gap-2 text-red-400">
-            <AlertTriangle className="w-4 h-4" />
-            <span className="text-sm font-medium">
-              {safetyWarnings.length} 安全警告
-            </span>
-          </div>
-          <div className="mt-2 space-y-1">
-            {safetyWarnings.slice(0, 3).map((w) => (
-              <div key={w.id} className="text-xs text-[var(--muted-foreground)]">
-                • {w.message}
-              </div>
-            ))}
-            {safetyWarnings.length > 3 && (
-              <div className="text-xs text-[var(--muted-foreground)]">
-                还有 {safetyWarnings.length - 3} 个警告...
-              </div>
-            )}
-          </div>
-        </motion.div>
-      )}
-
-      {/* Zone Properties Panel */}
-      {selectedZone && (
-        <ZonePropertiesPanel
-          zone={layout.zones.find((z) => z.id === selectedZone)!}
-          onUpdate={(updates) => onZoneUpdate(selectedZone, updates)}
-        />
-      )}
     </div>
-  );
+
+    {/* Safety Warnings Summary */}
+    {safetyWarnings.length > 0 && (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="absolute bottom-4 left-4 z-10 glass-card p-3 border border-red-500/50"
+      >
+        <div className="flex items-center gap-2 text-red-400">
+          <AlertTriangle className="w-4 h-4" />
+          <span className="text-sm font-medium">
+            {safetyWarnings.length} 安全警告
+          </span>
+        </div>
+        <div className="mt-2 space-y-1">
+          {safetyWarnings.slice(0, 3).map((w) => (
+            <div key={w.id} className="text-xs text-[var(--muted-foreground)]">
+              • {w.message}
+            </div>
+          ))}
+          {safetyWarnings.length > 3 && (
+            <div className="text-xs text-[var(--muted-foreground)]">
+              还有 {safetyWarnings.length - 3} 个警告...
+            </div>
+          )}
+        </div>
+      </motion.div>
+    )}
+
+    {/* Zone Properties Panel */}
+    {selectedZone && (
+      <ZonePropertiesPanel
+        zone={layout.zones.find((z) => z.id === selectedZone)!}
+        onUpdate={(updates) => onZoneUpdate(selectedZone, updates)}
+      />
+    )}
+  </div>
+);
 }
 
 interface ZonePropertiesPanelProps {
