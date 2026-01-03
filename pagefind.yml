@@ -20,8 +20,8 @@ exclude_selectors:
   - ".code-block"
   - "pre"
 
-# Force language detection
-force_language: false
+# Force language detection (removed to use auto-detection)
+# force_language: zh
 
 # Keep index files small
 keep_index_url: true

@@ -173,10 +173,10 @@
       "viewAll": "探索完整活模块系统"
     },
     "actionTools": {
-      "title": "行动层工具",
-      "subtitle": "AI 赋能的实践工具",
+      "title": "方法和工具库",
+      "subtitle": "实践工具模块",
       "description": "从理念到落地的智能桥梁，让创建和管理创客空间更加高效",
-      "viewAll": "查看所有工具",
+      "viewAll": "查看完整工具库",
       "habitat": {
         "title": "OWL 生境",
         "subtitle": "创造者的栖息地，创意的生态系统",
@@ -194,26 +194,32 @@
       },
       "tools": {
         "floorPlan": {
+          "id": "T01",
           "title": "AI 实验室布局生成器",
           "description": "智能平面图设计、3D 可视化、Allen 曲线分析，一键生成专业布局方案"
         },
         "wizard": {
+          "id": "T02",
           "title": "智能规划向导",
           "description": "输入面积、预算、目标定位，AI 自动生成个性化建设方案"
         },
         "equipmentGuide": {
+          "id": "T03",
           "title": "设备选型向导",
           "description": "基于 Lite/Pro/Ultra 分级体系，智能推荐适合你的设备配置清单"
         },
         "aiToolsGuide": {
+          "id": "T04",
           "title": "AI 工具链指南",
           "description": "生成式 AI、代码助手、创意工具全覆盖，教育场景应用最佳实践"
         },
         "costCalculator": {
+          "id": "T05",
           "title": "成本计算器",
           "description": "设备、场地、人员全周期预算，30-500m² 不同规模一键测算"
         },
         "hardwareSelector": {
+          "id": "T06",
           "title": "开源硬件选型",
           "description": "Arduino、树莓派、ESP32 平台对比，国产品牌推荐，找到最适合的硬件"
         }
@@ -238,11 +244,13 @@
       "architecture": "架构设计",
       "collaboration": "协作机制",
       "changelog": "更新日志",
-      "license": "授权协议"
+      "license": "授权协议",
+      "aiSpace": "AI 空间",
+      "aiSpaceDesc": "基于 Next.js 和 Fumadocs 的智能文档系统"
     }
   },
   "docs": {
-    "layoutTitle": "AI 空间文档",
+    "layoutTitle": "OWL 文档",
     "sidebar": {
       "gettingStarted": "快速开始",
       "introduction": "简介",

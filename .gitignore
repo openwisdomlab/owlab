@@ -20,6 +20,9 @@
 # fumadocs
 /.source/
 
+# pagefind search index (build artifact)
+public/_pagefind/
+
 # production
 /build
 

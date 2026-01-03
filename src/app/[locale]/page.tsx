@@ -570,12 +570,17 @@ export default function HomePage() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            {/* AI 实验室布局生成器 */}
+            {/* T01 AI 实验室布局生成器 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
               <Link href={`/${locale}/lab/floor-plan`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/20 to-[var(--neon-cyan)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Layout className="w-6 h-6 text-[var(--neon-cyan)]" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/20 to-[var(--neon-cyan)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Layout className="w-6 h-6 text-[var(--neon-cyan)]" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-[var(--neon-cyan)]">
+                      {t("actionTools.tools.floorPlan.id")}
+                    </span>
                   </div>
                   <h3 className="text-lg font-semibold mb-2">
                     {t("actionTools.tools.floorPlan.title")}
@@ -591,12 +596,17 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* 智能规划向导 */}
+            {/* T02 智能规划向导 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
               <Link href={`/${locale}/lab`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-violet)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Wand2 className="w-6 h-6 text-[var(--neon-violet)]" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-violet)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Wand2 className="w-6 h-6 text-[var(--neon-violet)]" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-[var(--neon-violet)]">
+                      {t("actionTools.tools.wizard.id")}
+                    </span>
                   </div>
                   <h3 className="text-lg font-semibold mb-2">
                     {t("actionTools.tools.wizard.title")}
@@ -612,12 +622,17 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* 设备选型向导 */}
+            {/* T03 设备选型向导 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
               <Link href={`/${locale}/docs/knowledge-base/05-tools`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <FlaskConical className="w-6 h-6 text-[var(--neon-green)]" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <FlaskConical className="w-6 h-6 text-[var(--neon-green)]" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-[var(--neon-green)]">
+                      {t("actionTools.tools.equipmentGuide.id")}
+                    </span>
                   </div>
                   <h3 className="text-lg font-semibold mb-2">
                     {t("actionTools.tools.equipmentGuide.title")}
@@ -633,12 +648,17 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* AI 工具链指南 */}
+            {/* T04 AI 工具链指南 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
               <Link href={`/${locale}/docs/knowledge-base/05-tools/extend/ai-tools-guide`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-pink)]/50 transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/20 to-[var(--neon-pink)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Sparkles className="w-6 h-6 text-[var(--neon-pink)]" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/20 to-[var(--neon-pink)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Sparkles className="w-6 h-6 text-[var(--neon-pink)]" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-[var(--neon-pink)]">
+                      {t("actionTools.tools.aiToolsGuide.id")}
+                    </span>
                   </div>
                   <h3 className="text-lg font-semibold mb-2">
                     {t("actionTools.tools.aiToolsGuide.title")}
@@ -654,12 +674,17 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* 成本计算器 */}
+            {/* T05 成本计算器 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
               <Link href={`/${locale}/docs/knowledge-base/05-tools#预算模板`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-yellow)]/50 transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-yellow)]/20 to-[var(--neon-yellow)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Calculator className="w-6 h-6 text-[var(--neon-yellow)]" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-yellow)]/20 to-[var(--neon-yellow)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Calculator className="w-6 h-6 text-[var(--neon-yellow)]" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-[var(--neon-yellow)]">
+                      {t("actionTools.tools.costCalculator.id")}
+                    </span>
                   </div>
                   <h3 className="text-lg font-semibold mb-2">
                     {t("actionTools.tools.costCalculator.title")}
@@ -675,12 +700,17 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* 开源硬件选型 */}
+            {/* T06 开源硬件选型 */}
             <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
               <Link href={`/${locale}/docs/knowledge-base/05-tools/extend/opensource-hardware`}>
                 <div className="h-full glass-card p-6 hover:border-[var(--neon-orange)]/50 transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-orange)]/20 to-[var(--neon-orange)]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Cpu className="w-6 h-6 text-[var(--neon-orange)]" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-orange)]/20 to-[var(--neon-orange)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Cpu className="w-6 h-6 text-[var(--neon-orange)]" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-[var(--neon-orange)]">
+                      {t("actionTools.tools.hardwareSelector.id")}
+                    </span>
                   </div>
                   <h3 className="text-lg font-semibold mb-2">
                     {t("actionTools.tools.hardwareSelector.title")}
@@ -923,47 +953,63 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="py-10 px-4 border-t border-[var(--glass-border)]">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Logo & Copyright */}
-            <div className="flex items-center gap-3">
-              <img
-                src="/logo.png"
-                alt="Open Wisdom Lab"
-                className="h-10 w-auto opacity-80"
-              />
-              <p className="text-sm text-[var(--muted-foreground)]">
-                © 2025 Open Wisdom Lab
-              </p>
+          <div className="flex flex-col gap-6">
+            {/* Main footer row */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              {/* Logo & Copyright */}
+              <div className="flex items-center gap-3">
+                <img
+                  src="/logo.png"
+                  alt="Open Wisdom Lab"
+                  className="h-10 w-auto opacity-80"
+                />
+                <p className="text-sm text-[var(--muted-foreground)]">
+                  © 2025 Open Wisdom Lab
+                </p>
+              </div>
+
+              {/* Links */}
+              <div className="flex items-center gap-6 text-sm">
+                <Link
+                  href={`/${locale}/docs/knowledge-base/ARCHITECTURE-V2`}
+                  className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                >
+                  {t("footer.architecture")}
+                </Link>
+                <Link
+                  href={`/${locale}/docs/knowledge-base/COLLABORATION-PROTOCOL`}
+                  className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                >
+                  {t("footer.collaboration")}
+                </Link>
+                <Link
+                  href={`/${locale}/docs/knowledge-base/CHANGELOG`}
+                  className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                >
+                  {t("footer.changelog")}
+                </Link>
+                <a
+                  href="https://github.com/openwisdomlab/owlab"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
 
-            {/* Links */}
-            <div className="flex items-center gap-6 text-sm">
+            {/* AI Space description */}
+            <div className="pt-4 border-t border-[var(--glass-border)]/50 text-center">
               <Link
-                href={`/${locale}/docs/knowledge-base/ARCHITECTURE-V2`}
-                className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                href={`/${locale}/docs`}
+                className="inline-flex items-center gap-2 text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
               >
-                {t("footer.architecture")}
+                <Sparkles className="w-3 h-3" />
+                <span>{t("footer.aiSpace")}</span>
+                <span className="opacity-60">·</span>
+                <span className="opacity-60">{t("footer.aiSpaceDesc")}</span>
               </Link>
-              <Link
-                href={`/${locale}/docs/knowledge-base/COLLABORATION-PROTOCOL`}
-                className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-              >
-                {t("footer.collaboration")}
-              </Link>
-              <Link
-                href={`/${locale}/docs/knowledge-base/CHANGELOG`}
-                className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-              >
-                {t("footer.changelog")}
-              </Link>
-              <a
-                href="https://github.com/openwisdomlab/owlab"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-              >
-                GitHub
-              </a>
             </div>
           </div>
         </div>
