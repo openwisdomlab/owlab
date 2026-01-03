@@ -17,6 +17,16 @@ import { FlowChart, EQUIPMENT_ACCESS_FLOW, SPACE_PLANNING_FLOW } from "@/compone
 import { KnowledgeGraph } from "@/components/docs/KnowledgeGraph";
 import { ModuleSummary } from "@/components/docs/ModuleSummary";
 import { ConceptExplorer } from "@/components/docs/ConceptExplorer";
+import {
+  GovernanceExplorer,
+  SpaceExplorer,
+  CurriculumExplorer,
+  ToolsExplorer,
+  SafetyExplorer,
+  PeopleExplorer,
+  OperationsExplorer,
+  AssessmentExplorer,
+} from "@/components/docs/ModuleExplorers";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -92,6 +102,30 @@ export default async function Page({ params }: Props) {
           ),
           ConceptExplorer: (props: { className?: string }) => (
             <ConceptExplorer {...props} />
+          ),
+          GovernanceExplorer: (props: { className?: string }) => (
+            <GovernanceExplorer {...props} />
+          ),
+          SpaceExplorer: (props: { className?: string }) => (
+            <SpaceExplorer {...props} />
+          ),
+          CurriculumExplorer: (props: { className?: string }) => (
+            <CurriculumExplorer {...props} />
+          ),
+          ToolsExplorer: (props: { className?: string }) => (
+            <ToolsExplorer {...props} />
+          ),
+          SafetyExplorer: (props: { className?: string }) => (
+            <SafetyExplorer {...props} />
+          ),
+          PeopleExplorer: (props: { className?: string }) => (
+            <PeopleExplorer {...props} />
+          ),
+          OperationsExplorer: (props: { className?: string }) => (
+            <OperationsExplorer {...props} />
+          ),
+          AssessmentExplorer: (props: { className?: string }) => (
+            <AssessmentExplorer {...props} />
           ),
           EQUIPMENT_ACCESS_FLOW,
           SPACE_PLANNING_FLOW,

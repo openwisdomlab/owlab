@@ -20,6 +20,7 @@ interface ModuleSummaryProps {
   moduleId: string;
   tagline: string;
   philosophy: string;
+  summary?: string;
   insights: string[];
   className?: string;
 }
@@ -76,6 +77,7 @@ export function ModuleSummary({
   moduleId,
   tagline,
   philosophy,
+  summary,
   insights,
   className = "",
 }: ModuleSummaryProps) {
@@ -166,38 +168,60 @@ export function ModuleSummary({
           </p>
         </motion.div>
 
+        {/* 总结段落 */}
+        {summary && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.35 }}
+            className="text-sm md:text-base text-[var(--foreground)] leading-relaxed mb-6"
+          >
+            {summary}
+          </motion.p>
+        )}
+
         {/* 核心洞见 */}
         <div className="space-y-3">
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-3">
             <Sparkles className="w-4 h-4" style={{ color: config.color }} />
             <span className="text-sm font-semibold" style={{ color: config.color }}>
               核心洞见
             </span>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-2">
-            {insights.map((insight, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + index * 0.1 }}
-                className="flex items-start gap-3 p-3 rounded-xl bg-[var(--background)]/50 border border-[var(--glass-border)] hover:border-[var(--glass-border-hover)] transition-colors"
-              >
-                <span
-                  className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
-                  style={{
-                    background: `${config.color}20`,
-                    color: config.color,
-                  }}
+          <div className="grid gap-2 md:grid-cols-2">
+            {insights.map((insight, index) => {
+              // 提取标签（冒号前的部分）
+              const colonIndex = insight.indexOf("：");
+              const hasTag = colonIndex > 0 && colonIndex < 20;
+              const tag = hasTag ? insight.substring(0, colonIndex) : null;
+              const content = hasTag ? insight.substring(colonIndex + 1) : insight;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + index * 0.05 }}
+                  className="p-3 rounded-lg bg-[var(--background)]/50 border border-[var(--glass-border)] hover:border-[var(--glass-border-hover)] transition-colors"
                 >
-                  {index + 1}
-                </span>
-                <p className="text-sm leading-relaxed text-[var(--foreground)]">
-                  {insight}
-                </p>
-              </motion.div>
-            ))}
+                  {tag && (
+                    <span
+                      className="inline-block text-[10px] font-bold px-1.5 py-0.5 rounded mb-1.5"
+                      style={{
+                        background: `${config.color}15`,
+                        color: config.color,
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  )}
+                  <p className="text-sm leading-relaxed text-[var(--foreground)]">
+                    {content}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
