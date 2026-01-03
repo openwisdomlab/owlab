@@ -231,6 +231,7 @@
     }
   },
   "docs": {
+    "layoutTitle": "AI Space Docs",
     "sidebar": {
       "gettingStarted": "Getting Started",
       "introduction": "Introduction",
