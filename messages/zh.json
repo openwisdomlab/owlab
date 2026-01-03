@@ -238,6 +238,7 @@
     }
   },
   "docs": {
+    "layoutTitle": "AI 空间文档",
     "sidebar": {
       "gettingStarted": "快速开始",
       "introduction": "简介",

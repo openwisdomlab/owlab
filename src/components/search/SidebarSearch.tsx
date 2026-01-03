@@ -3,10 +3,9 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Search, FileText, FolderOpen, X, ArrowRight, Command } from "lucide-react";
+import { Search, FileText, FolderOpen, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { useSearchStore } from "@/stores/search-store";
 
 interface DocItem {
   title: string;
@@ -24,7 +23,6 @@ interface SidebarSearchProps {
 export function SidebarSearch({ locale, docs, className }: SidebarSearchProps) {
   const t = useTranslations("search");
   const router = useRouter();
-  const { openDialog } = useSearchStore();
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -199,22 +197,12 @@ export function SidebarSearch({ locale, docs, className }: SidebarSearchProps) {
         )}
       </AnimatePresence>
 
-      {/* Hint Text with Global Search Link */}
+      {/* Hint Text */}
       {!isFocused && !query && (
-        <div className="mt-2 flex items-center justify-between px-1">
+        <div className="mt-2 px-1">
           <span className="text-[10px] text-[var(--muted-foreground)] opacity-70">
             {t("sidebar.hint")}
           </span>
-          <button
-            onClick={openDialog}
-            className="flex items-center gap-1 text-[10px] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-          >
-            <Command className="w-2.5 h-2.5" />
-            <span>K</span>
-            <span className="ml-0.5 opacity-70">
-              {locale === "zh" ? "深度搜索" : "deep search"}
-            </span>
-          </button>
         </div>
       )}
     </div>
