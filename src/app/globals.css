@@ -705,6 +705,10 @@ html[data-emotion="calm"] {
   --radius: 1rem;
   --font-heading: "Lora", Georgia, serif;
 
+  /* Text Color: Softer, organic contrast */
+  --foreground: #F0FDF4;
+  --muted-foreground: #6EE7B7;
+
   --owl-gradient: linear-gradient(135deg, #059669 0%, #3B82F6 100%);
 
   /* Subtle Texture */
@@ -729,6 +733,10 @@ html[data-emotion="energetic"] {
   --radius: 0px;
   --font-sans: "Poppins", Arial, sans-serif;
   --font-heading: "Poppins", Arial, sans-serif;
+
+  /* Text Color: High contrast, stark */
+  --foreground: #FFFFFF;
+  --muted-foreground: #FDBA74;
 
   --owl-gradient: linear-gradient(135deg, #EA580C 0%, #DB2777 100%);
 
@@ -756,6 +764,10 @@ html[data-emotion="creative"] {
   /* Design System Overrides */
   --radius: 0.5rem;
   --font-heading: "JetBrains Mono", monospace;
+
+  /* Text Color: Cool, digital tint */
+  --foreground: #F5F3FF;
+  --muted-foreground: #A78BFA;
 
   --owl-gradient: linear-gradient(135deg, #9333EA 0%, #2563EB 100%);
 
