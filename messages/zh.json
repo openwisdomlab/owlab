@@ -671,6 +671,12 @@
     "relatedQuestions": "相关问题",
     "recentSearches": "最近搜索",
     "clearHistory": "清除历史",
-    "tips": "输入关键词开始搜索，支持自然语言提问"
+    "tips": "输入关键词开始搜索，支持自然语言提问",
+    "sidebar": {
+      "quickFind": "快速定位...",
+      "noMatching": "未找到匹配文档",
+      "hint": "定位标题和摘要",
+      "globalHint": "⌘K 深度搜索"
+    }
   }
 }

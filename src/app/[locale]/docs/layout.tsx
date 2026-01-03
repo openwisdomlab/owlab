@@ -1,7 +1,8 @@
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { ReactNode } from "react";
-import { getLocalePageTree } from "@/lib/source";
+import { getLocalePageTree, flattenPageTree } from "@/lib/source";
+import { SidebarSearchWrapper } from "@/components/search/SidebarSearchWrapper";
 
 type Props = {
   children: ReactNode;
@@ -11,6 +12,7 @@ type Props = {
 export default async function Layout({ children, params }: Props) {
   const { locale } = await params;
   const tree = getLocalePageTree(locale);
+  const flatDocs = flattenPageTree(tree, locale);
 
   return (
     <RootProvider>
@@ -21,6 +23,9 @@ export default async function Layout({ children, params }: Props) {
         }}
         sidebar={{
           defaultOpenLevel: 1,
+          banner: (
+            <SidebarSearchWrapper locale={locale} docs={flatDocs} />
+          ),
         }}
       >
         {children}

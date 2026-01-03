@@ -701,6 +701,12 @@
     "relatedQuestions": "Related Questions",
     "recentSearches": "Recent Searches",
     "clearHistory": "Clear History",
-    "tips": "Type keywords to search, supports natural language queries"
+    "tips": "Type keywords to search, supports natural language queries",
+    "sidebar": {
+      "quickFind": "Quick find...",
+      "noMatching": "No matching docs",
+      "hint": "Locate by title & summary",
+      "globalHint": "⌘K for deep search"
+    }
   }
 }
