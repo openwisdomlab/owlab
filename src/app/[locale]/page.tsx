@@ -131,77 +131,438 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Hero Section - 更活泼的设计 */}
-      <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
-        {/* 背景装饰 */}
-        <div className="absolute inset-0 overflow-hidden">
+      {/* Hero Section - Cosmic Curiosity Design */}
+      <section className="relative py-16 lg:py-24 px-4 overflow-hidden min-h-[85vh] flex items-center">
+        {/* Starfield Background */}
+        <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-transparent via-[var(--background)] to-[var(--background)]">
+          {/* Animated nebula clouds */}
           <motion.div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--neon-cyan)] opacity-5 blur-[100px] rounded-full"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.05, 0.08, 0.05] }}
-            transition={{ duration: 8, repeat: Infinity }}
+            className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[var(--neon-cyan)] opacity-[0.08] blur-[150px] rounded-full"
+            animate={{
+              scale: [1, 1.3, 1],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+              opacity: [0.08, 0.12, 0.08]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--neon-violet)] opacity-5 blur-[100px] rounded-full"
-            animate={{ scale: [1.2, 1, 1.2], opacity: [0.08, 0.05, 0.08] }}
-            transition={{ duration: 8, repeat: Infinity }}
+            className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-[var(--neon-violet)] opacity-[0.06] blur-[140px] rounded-full"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              x: [0, -40, 0],
+              y: [0, 50, 0],
+              opacity: [0.06, 0.1, 0.06]
+            }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--neon-pink)] opacity-[0.02] blur-[120px] rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[var(--neon-pink)] opacity-[0.04] blur-[160px] rounded-full"
+            animate={{
+              rotate: 360,
+              scale: [1, 1.1, 1]
+            }}
+            transition={{
+              rotate: { duration: 80, repeat: Infinity, ease: "linear" },
+              scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
+            }}
           />
+
+          {/* Floating particles - stars */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5 + 0.2,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.3, 0.8, 0.3],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 5,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
         </div>
 
         <motion.div
-          className="relative max-w-5xl mx-auto"
+          className="relative max-w-7xl mx-auto w-full"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
-          {/* 标题区域 */}
-          <motion.div variants={itemVariants} className="text-center mb-10">
+          <motion.div variants={itemVariants} className="text-center">
+            {/* Version Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-6"
-              whileHover={{ scale: 1.02 }}
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-8"
+              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
             >
               <Sparkles className="w-4 h-4 text-[var(--neon-yellow)]" />
               {t("hero.version")}
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 text-[var(--foreground)]">
-              {t("hero.title")}
-            </h1>
+            {/* Main Title - OWL 建设与运营标准手册 */}
+            <motion.h1
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight"
+              variants={itemVariants}
+              style={{
+                fontFamily: "'Inter', -apple-system, sans-serif",
+                fontWeight: 900,
+                background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 50%, var(--neon-pink) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textShadow: "0 0 80px rgba(6, 182, 212, 0.3)",
+              }}
+            >
+              OWL 建设与运营<br/>标准手册
+            </motion.h1>
 
-            <p className="text-sm text-[var(--neon-cyan)] font-mono tracking-widest mb-4">
-              {t("hero.subtitle")}
-            </p>
+            {/* Bilingual Subtitle - Open Wisdom Lab / 开放智慧实验室 */}
+            <motion.div
+              className="mb-8"
+              variants={itemVariants}
+            >
+              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--foreground)] mb-2">
+                Open Wisdom Lab
+              </p>
+              <p className="text-xl md:text-2xl lg:text-3xl text-[var(--muted-foreground)] font-light">
+                开放智慧实验室
+              </p>
+            </motion.div>
 
-            <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-8">
-              {t("hero.description")}
-            </p>
+            {/* Philosophy Tagline */}
+            <motion.p
+              className="text-xl md:text-2xl lg:text-3xl text-[var(--foreground)] font-light max-w-4xl mx-auto leading-relaxed mb-4"
+              variants={itemVariants}
+              style={{
+                fontFamily: "'Georgia', serif",
+                letterSpacing: "0.02em",
+              }}
+            >
+              一个开放、包容、创新的学习空间
+            </motion.p>
 
-            {/* CTA 按钮 */}
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            <motion.p
+              className="text-base md:text-lg lg:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed mb-10 font-light"
+              variants={itemVariants}
+              style={{
+                fontFamily: "'Georgia', serif",
+              }}
+            >
+              让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发
+            </motion.p>
+
+            {/* Einstein Quote */}
+            <motion.div
+              className="relative max-w-4xl mx-auto mb-12"
+              variants={itemVariants}
+            >
+              <div className="relative p-6 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl">
+                {/* Quote Mark */}
+                <div className="absolute -top-4 left-8 text-6xl text-[var(--neon-cyan)] opacity-20 font-serif">"</div>
+
+                {/* Quote Text */}
+                <blockquote className="relative text-base md:text-lg text-[var(--foreground)] leading-relaxed italic text-center mb-4">
+                  想象力比知识更重要，因为知识是有限的，而想象力概括着世界上的一切，推动着进步，并且是知识进化的源泉。
+                </blockquote>
+
+                {/* Author */}
+                <div className="flex items-center justify-center gap-3">
+                  <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--neon-cyan)]"></div>
+                  <cite className="not-italic text-sm md:text-base text-[var(--muted-foreground)] font-medium">
+                    阿尔伯特·爱因斯坦
+                  </cite>
+                  <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--neon-cyan)]"></div>
+                </div>
+
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[var(--neon-cyan)]/30 rounded-tr-2xl"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[var(--neon-cyan)]/30 rounded-bl-2xl"></div>
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-wrap items-center justify-center gap-4 mb-12"
+              variants={itemVariants}
+            >
               <Link
                 href={`/${locale}/docs/knowledge-base`}
-                className="cta-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] text-white font-medium hover:opacity-90 transition-opacity shadow-lg"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-violet)] to-[var(--neon-pink)] text-white font-semibold text-lg hover:shadow-2xl hover:shadow-[var(--neon-cyan)]/50 transition-all duration-300 overflow-hidden"
               >
-                <BookOpen className="w-4 h-4" />
-                {t("hero.cta.start")}
-                <ArrowRight className="w-4 h-4" />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-[var(--neon-pink)] via-[var(--neon-violet)] to-[var(--neon-cyan)]"
+                  initial={{ x: "100%" }}
+                  whileHover={{ x: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <BookOpen className="w-5 h-5 relative z-10" />
+                <span className="relative z-10">{t("hero.cta.start")}</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
               </Link>
+
               <Link
                 href={`/${locale}/docs/knowledge-base/ARCHITECTURE-V2`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glass-card hover:border-[var(--neon-cyan)] transition-colors"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl glass-card hover:border-[var(--neon-cyan)] transition-all duration-300 text-lg font-medium backdrop-blur-xl"
               >
-                <GitBranch className="w-4 h-4" />
+                <GitBranch className="w-5 h-5" />
                 {t("hero.cta.architecture")}
               </Link>
-            </div>
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              className="inline-flex flex-col items-center gap-2 text-xs text-[var(--muted-foreground)]"
+              variants={itemVariants}
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="font-mono tracking-wider">向下探索</span>
+              <ChevronRight className="w-4 h-4 rotate-90" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* 空间核心理念 Section - Four Core Principles */}
+      <section className="relative py-14 px-4 overflow-hidden bg-gradient-to-b from-transparent via-[var(--background)] to-[var(--glass-bg)]/20">
+        {/* Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute top-20 left-10 w-64 h-64 bg-[var(--neon-cyan)] opacity-[0.03] blur-[100px] rounded-full"
+            animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-10 w-64 h-64 bg-[var(--neon-violet)] opacity-[0.03] blur-[100px] rounded-full"
+            animate={{ scale: [1.2, 1, 1.2], x: [0, -30, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-3"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Lightbulb className="w-4 h-4 text-[var(--neon-yellow)]" />
+              空间哲学
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent">
+              四大核心理念
+            </h2>
+            <p className="text-base text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              空间不仅是容器，更是第三位教育者
+            </p>
           </motion.div>
 
-          {/* 核心特性和统计数据已隐藏，直接切入正题 */}
-        </motion.div>
+          {/* Principle Cards - 2x2 Grid */}
+          <motion.div
+            className="grid md:grid-cols-2 gap-4 lg:gap-5"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {/* Principle 1: 以学生为中心 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
+                {/* Card Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Number Badge */}
+                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
+                  <span className="text-xl font-black text-[var(--neon-cyan)]">01</span>
+                </div>
+
+                {/* Icon */}
+                <div className="relative mb-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/30 to-[var(--neon-cyan)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Users className="w-7 h-7 text-[var(--neon-cyan)]" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-cyan)]">
+                  以学生为中心
+                </h3>
+                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
+                  开放自由的氛围，没有标准答案
+                </p>
+                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  我们相信每个学生都有独特的学习路径。空间应支持学习者的自主探索和个性化成长。
+                </p>
+
+                {/* Decorative Line */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-cyan)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Principle 2: 鼓励大胆探索 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
+                  <span className="text-xl font-black text-[var(--neon-green)]">02</span>
+                </div>
+
+                <div className="relative mb-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/30 to-[var(--neon-green)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Rocket className="w-7 h-7 text-[var(--neon-green)]" />
+                  </div>
+                </div>
+
+                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-green)]">
+                  鼓励大胆探索
+                </h3>
+                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
+                  允许犯错，包容失败
+                </p>
+                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  在探索未知的过程中，错误是最宝贵的学习机会。我们营造心理安全的环境，让创新自由生长。
+                </p>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-green)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Principle 3: 科技感与未来感 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
+                  <span className="text-xl font-black text-[var(--neon-violet)]">03</span>
+                </div>
+
+                <div className="relative mb-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/30 to-[var(--neon-violet)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Sparkles className="w-7 h-7 text-[var(--neon-violet)]" />
+                  </div>
+                </div>
+
+                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-violet)]">
+                  科技感与未来感
+                </h3>
+                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
+                  激发创新想法诞生
+                </p>
+                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  具有科技感和未来感的设计，让学习空间成为灵感的孵化器，点燃对未来技术的好奇心。
+                </p>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-violet)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Principle 4: 灵活流动的空间 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
+                  <span className="text-xl font-black text-[var(--neon-pink)]">04</span>
+                </div>
+
+                <div className="relative mb-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/30 to-[var(--neon-pink)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <GitBranch className="w-7 h-7 text-[var(--neon-pink)]" />
+                  </div>
+                </div>
+
+                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-pink)]">
+                  灵活流动的空间
+                </h3>
+                <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
+                  灵活、流动和多样化
+                </p>
+                <p className="relative text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  灵活流动的学习空间代替隔离、固定的空间。空间可以随需求快速重构，支持多种学习模式。
+                </p>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-pink)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* CTA to Detail Page */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mt-8 flex justify-center"
+          >
+            <Link
+              href={`/${locale}/docs/knowledge-base/03-space/extend/core-space-philosophy`}
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-card hover:border-[var(--neon-cyan)] transition-all duration-300 backdrop-blur-xl text-sm"
+            >
+              <BookOpen className="w-4 h-4 text-[var(--neon-cyan)]" />
+              <span className="font-medium">深入了解空间理念</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       {/* 前沿理念模块 Section - 独立展示 */}
@@ -500,7 +861,7 @@ export default function HomePage() {
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                     {/* 左侧：标题和描述 */}
                     <div className="flex items-start gap-5">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
                         <Bird className="w-8 h-8 text-emerald-400" />
                       </div>
                       <div>
