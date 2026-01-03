@@ -11,9 +11,6 @@ export interface Concept {
   insight: string;
   practices: string[];
   connections: string[];
-  position: { x: number; y: number };
-  // 用于问题触发的映射
-  triggerQuestion?: string;
 }
 
 export const CONCEPTS: Concept[] = [
@@ -32,8 +29,6 @@ export const CONCEPTS: Concept[] = [
       '研究者连接：与真正的科学家对话',
     ],
     connections: ['inquiry-based', 'intrinsic-motivation', 'low-floor'],
-    position: { x: 150, y: 60 },
-    triggerQuestion: '追问到底为什么',
   },
   {
     id: 'inquiry-based',
@@ -41,7 +36,7 @@ export const CONCEPTS: Concept[] = [
     nameEn: 'Inquiry-Based Learning',
     color: '#8b5cf6',
     layer: 'engine',
-    insight: '不是学习科学知识，而是学习像科学家一样思考。提出问题 → 形成假设 → 设计实验 → 收集数据 → 分析验证 → 迭代改进',
+    insight: '不是学习科学知识，而是学习像科学家一样思考。提出问题 → 形成假设 → 设计实验 → 收集数据 → 分析验证 → 迭代改进。',
     practices: [
       '科学家101：体验完整科研流程',
       '研究日志：记录思考与发现过程',
@@ -49,7 +44,6 @@ export const CONCEPTS: Concept[] = [
       '公开发表：成果向真实世界展示',
     ],
     connections: ['frontier-question', 'gamified', 'low-floor'],
-    position: { x: 300, y: 60 },
   },
   {
     id: 'gamified',
@@ -65,8 +59,6 @@ export const CONCEPTS: Concept[] = [
       '自主节奏：没有统一进度表',
     ],
     connections: ['inquiry-based', 'hard-fun', 'low-floor'],
-    position: { x: 450, y: 60 },
-    triggerQuestion: '玩着玩着就懂了',
   },
 
   // 设计原则层
@@ -83,7 +75,6 @@ export const CONCEPTS: Concept[] = [
       '支持不同兴趣方向的探索路径',
     ],
     connections: ['frontier-question', 'inquiry-based', 'gamified', 'constructionism', 'embodied', 'hard-fun'],
-    position: { x: 300, y: 160 },
   },
 
   // 方法论层
@@ -100,8 +91,6 @@ export const CONCEPTS: Concept[] = [
       '迭代改进，不追求一次完美',
     ],
     connections: ['low-floor', 'embodied', 'zpd'],
-    position: { x: 150, y: 260 },
-    triggerQuestion: '做出来才算学会',
   },
   {
     id: 'embodied',
@@ -116,7 +105,6 @@ export const CONCEPTS: Concept[] = [
       '空间设计支持多种学习姿态',
     ],
     connections: ['low-floor', 'constructionism', 'hard-fun'],
-    position: { x: 300, y: 260 },
   },
   {
     id: 'hard-fun',
@@ -131,7 +119,6 @@ export const CONCEPTS: Concept[] = [
       '设计有适度挑战的任务',
     ],
     connections: ['low-floor', 'gamified', 'embodied'],
-    position: { x: 450, y: 260 },
   },
 
   // 支撑层
@@ -148,7 +135,6 @@ export const CONCEPTS: Concept[] = [
       '根据学习者状态动态调整难度',
     ],
     connections: ['constructionism', 'intrinsic-motivation', 'community'],
-    position: { x: 200, y: 360 },
   },
   {
     id: 'intrinsic-motivation',
@@ -163,7 +149,6 @@ export const CONCEPTS: Concept[] = [
       '减少外在评判，增加内在反馈',
     ],
     connections: ['frontier-question', 'zpd', 'community'],
-    position: { x: 400, y: 360 },
   },
   {
     id: 'community',
@@ -179,90 +164,6 @@ export const CONCEPTS: Concept[] = [
       '支持性的社区氛围',
     ],
     connections: ['zpd', 'intrinsic-motivation'],
-    position: { x: 300, y: 440 },
-    triggerQuestion: '和别人讨论中领悟',
-  },
-];
-
-// 问题选项配置
-export interface QuestionOption {
-  id: string;
-  icon: string;
-  text: string;
-  triggersConceptId: string;
-}
-
-export const QUESTION_OPTIONS: QuestionOption[] = [
-  {
-    id: 'making',
-    icon: '🔬',
-    text: '做出来才算学会',
-    triggersConceptId: 'constructionism',
-  },
-  {
-    id: 'questioning',
-    icon: '❓',
-    text: '追问到底为什么',
-    triggersConceptId: 'frontier-question',
-  },
-  {
-    id: 'playing',
-    icon: '🎮',
-    text: '玩着玩着就懂了',
-    triggersConceptId: 'gamified',
-  },
-  {
-    id: 'discussing',
-    icon: '👥',
-    text: '和别人讨论中领悟',
-    triggersConceptId: 'community',
-  },
-];
-
-// 理论脉络数据
-export interface Theorist {
-  id: string;
-  name: string;
-  nameZh: string;
-  years: string;
-  contribution: string;
-}
-
-export const THEORISTS: Theorist[] = [
-  {
-    id: 'dewey',
-    name: 'John Dewey',
-    nameZh: '杜威',
-    years: '1859-1952',
-    contribution: '做中学，经验主义教育',
-  },
-  {
-    id: 'piaget',
-    name: 'Jean Piaget',
-    nameZh: '皮亚杰',
-    years: '1896-1980',
-    contribution: '建构主义，认知发展阶段',
-  },
-  {
-    id: 'vygotsky',
-    name: 'Lev Vygotsky',
-    nameZh: '维果茨基',
-    years: '1896-1934',
-    contribution: '最近发展区，社会建构',
-  },
-  {
-    id: 'papert',
-    name: 'Seymour Papert',
-    nameZh: '帕普特',
-    years: '1928-2016',
-    contribution: '建构论，Logo 语言',
-  },
-  {
-    id: 'resnick',
-    name: 'Mitchel Resnick',
-    nameZh: '雷斯尼克',
-    years: '1956-',
-    contribution: '创造性学习，终身幼儿园',
   },
 ];
 
@@ -272,6 +173,3 @@ export function getConnectedConcepts(conceptId: string): Concept[] {
   if (!concept) return [];
   return CONCEPTS.filter(c => concept.connections.includes(c.id));
 }
-
-// 计算需要点亮多少个才算完成
-export const REVEAL_THRESHOLD = 6;
