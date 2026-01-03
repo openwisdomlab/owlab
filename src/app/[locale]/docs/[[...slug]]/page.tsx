@@ -15,6 +15,7 @@ import { TheoryLineage } from "@/components/docs/TheoryLineage";
 import { FourPFramework } from "@/components/docs/FourPFramework";
 import { FlowChart, EQUIPMENT_ACCESS_FLOW, SPACE_PLANNING_FLOW } from "@/components/docs/FlowChart";
 import { KnowledgeGraph } from "@/components/docs/KnowledgeGraph";
+import { ModuleSummary } from "@/components/docs/ModuleSummary";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -84,6 +85,9 @@ export default async function Page({ params }: Props) {
           FlowChart: FlowChart,
           KnowledgeGraph: (props: { module?: string; depth?: number; interactive?: boolean; className?: string }) => (
             <KnowledgeGraph {...props} />
+          ),
+          ModuleSummary: (props: { moduleId: string; tagline: string; philosophy: string; insights: string[]; className?: string }) => (
+            <ModuleSummary {...props} />
           ),
           EQUIPMENT_ACCESS_FLOW,
           SPACE_PLANNING_FLOW,
