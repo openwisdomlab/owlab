@@ -57,8 +57,7 @@ export function Header({ locale }: HeaderProps) {
 
         {/* Right Section */}
         <div className="flex items-center gap-2">
-          <SearchButton className="hidden md:flex" />
-          <SearchButton variant="icon" className="md:hidden" />
+          <SearchButton variant="icon" />
           <ThemeToggle />
           <LanguageSwitcher locale={locale} />
           <a
