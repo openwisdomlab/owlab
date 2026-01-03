@@ -90,17 +90,31 @@ interface TreeNode {
   children?: TreeNode[];
 }
 
-// Helper to strip locale from URL for comparison
-// e.g., "/docs/zh/living-modules" -> "/docs/living-modules"
-function stripLocaleFromUrl(url: string): string {
+// Helper to normalize URL for comparison
+// Converts both formats to a common format: /docs/path (without locale)
+// Input formats:
+// - "/docs/zh/living-modules" (from fumadocs source) -> "/docs/living-modules"
+// - "/zh/docs/living-modules" (from transformed tree) -> "/docs/living-modules"
+function normalizeUrlForComparison(url: string): string {
   const locales = ["en", "zh"];
   for (const loc of locales) {
-    const pattern = `/docs/${loc}/`;
-    const patternEnd = `/docs/${loc}`;
-    if (url.startsWith(pattern)) {
-      return `/docs/${url.slice(pattern.length)}`;
+    // Handle fumadocs source format: /docs/{locale}/...
+    const sourcePattern = `/docs/${loc}/`;
+    const sourcePatternEnd = `/docs/${loc}`;
+    if (url.startsWith(sourcePattern)) {
+      return `/docs/${url.slice(sourcePattern.length)}`;
     }
-    if (url === patternEnd) {
+    if (url === sourcePatternEnd) {
+      return "/docs";
+    }
+
+    // Handle transformed tree format: /{locale}/docs/...
+    const treePattern = `/${loc}/docs/`;
+    const treePatternEnd = `/${loc}/docs`;
+    if (url.startsWith(treePattern)) {
+      return `/docs/${url.slice(treePattern.length)}`;
+    }
+    if (url === treePatternEnd) {
       return "/docs";
     }
   }
@@ -126,9 +140,11 @@ function findNeighbours(
 
   collect(tree);
 
-  // Strip locale from currentUrl for comparison since tree URLs don't have locale
-  const normalizedCurrentUrl = stripLocaleFromUrl(currentUrl);
-  const currentIndex = pages.findIndex(p => p.url === normalizedCurrentUrl);
+  // Normalize currentUrl for comparison
+  // currentUrl format: /docs/zh/... (from fumadocs source)
+  // tree URLs format: /zh/docs/... (transformed)
+  const normalizedCurrentUrl = normalizeUrlForComparison(currentUrl);
+  const currentIndex = pages.findIndex(p => normalizeUrlForComparison(p.url) === normalizedCurrentUrl);
 
   return {
     previous: currentIndex > 0 ? pages[currentIndex - 1] : undefined,
