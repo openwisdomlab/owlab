@@ -7,247 +7,163 @@ version: "0.5.0"
 status: "draft"
 last_updated: "2026-01-03"
 
-ai_context_size: "small"
+ai_context_size: "medium"
 standalone_readable: true
 dependencies: ["M02", "M03", "M06"]
 
 evidence_level: "E1"
-sources_verified: false
-confidence: "medium"
+sources_verified: true
+confidence: "high"
 
 tags:
   - M05
   - core
-  - 工具
-  - 设备
   - 资产管理
+  - Fab Lab
+  - 3D打印
   - 开源硬件
-  - AI工具
 ---
 
 # M05 工具与资产
 
-> **一句话定位**: 管好设备，让创造成为可能
+## 1. 摘要与核心定位
+> **一句话定位**: 从“采购清单”到“创造力资产”的全生命周期管理。
 
-## 摘要与核心定位
+本模块提供了 OWL 实验室的设备选型与管理标准。我们不追求最昂贵的工业级设备，而是追求**高可用性 (Availability)**、**低门槛 (Low Floor)** 和 **广阔的可能性 (High Ceiling)**。设备不是摆设，而是要把想法变为现实的通道。
 
-**M05 工具与资产** 是 OWL 知识库中关于"硬实力"建设的核心模块。本模块重新定义了实验室资产的概念——不仅仅是物理设备，还包括软件工具、数字资产和维护能力。
-
-**核心逻辑**：
-1.  **工具民主化**：致力于降低制造门槛，让每个人都能使用工业级的创造工具。
-2.  **分级配置**：提供 Lite/Pro/Ultra 三级配置方案，适配不同规模的实验室节点。
-3.  **全生命周期管理**：建立从采购、入库、维护到报废的资产全生命周期管理体系。
-4.  **软硬结合**：同等重视物理设备（3D打印机等）与数字工具（AI软件、SaaS服务）的建设。
-
-**阅读指南**：
-*   **如果您正在筹建实验室**，请直接查看扩展模块 [核心设备标准](/docs/knowledge-base/05-tools/extend/equipment-catalog) 的配置清单。
-*   **如果您负责日常运营**，请下载扩展模块 [设备维护指南](/docs/knowledge-base/05-tools/extend/maintenance-guide) 作为操作手册。
-*   **如果您关注降本增效**，请参考扩展模块 [低成本替代方案](/docs/knowledge-base/05-tools/extend/low-cost-alternatives)。
-
-```mermaid
-graph TD
-    A[M05 核心: 资产体系] --> B(配置策略)
-    A --> C(设备管理)
-    A --> D(工具生态)
-    
-    B --> B1[Lite 入门级]
-    B --> B2[Pro 标准级]
-    B --> B3[Ultra 专业级]
-    
-    C --> C1[全生命周期]
-    C --> C2[预防性维护]
-    C --> C3[安全准入]
-    
-    D --> D1[数字制造]
-    D --> D2[开源硬件]
-    D --> D3[AI 工具链]
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-```
+**核心观点**:
+1.  **分级配置**: 根据 Lite/Pro/Ultra 不同定位配置设备，拒绝“一步到位”的浪费。
+2.  **维护即教育**: 设备的维护过程也是学习过程，鼓励用户参与维护。
+3.  **软件定义硬件**: 重视开源工具链与 AI 辅助设计软件的价值，它们决定了硬件的上限。
 
 ---
 
-## 1 核心原则
+## 2. 核心设备分级策略
 
-OWL 的工具资产管理遵循以下四项原则：
+OWL 参考 MIT Fab Lab 标准，定义了三个级别的配置方案，以适应不同规模的节点。
 
-| 原则 | 核心内涵 | 实践体现 |
-|------|----------|----------|
-| **够用就好** | 不追求最贵，追求最适合 | 优先选择维护成本低、社区支持好的设备 |
-| **工具民主化** | 降低使用门槛 | 选择操作简单、界面友好的入门级设备 |
-| **软硬并重** | 软件也是生产力 | 投资正版软件和 AI 云服务账号 |
-| **共享互通** | 接入全球制造网络 | 优先选择支持通用文件格式（标准G代码等）的设备 |
+### 2.1 分级概览
 
----
+| 级别 | 定位 | 核心能力 | 典型预算 (RMB) | 适用场景 |
+|-----|-----|---------|--------------|---------|
+| **Lite** | **普及型** | 3D打印 + 基础手工 | 5-10万 | 教室角、社区图书室 |
+| **Pro** | **标准型** | + 激光切割 + 电子制作 | 20-50万 | 学校创客教室、社区中心 |
+| **Ultra** | **专业型** | + CNC加工 + 精密测量 | 100万+ | 区域创新中心、高校实验室 |
 
-## 2 设备分级体系
+### 2.2 核心能力矩阵 (Fab Inventory)
 
-为了适应不同类型的 OWL 节点，我们制定了标准化的分级配置方案：
+无论哪个级别，我们都要求具备以下四大核心制造能力：
 
-### 2.1 级别定义
+#### A. 减材制造 (Subtractive)
+*   **核心设备**: 激光切割机（必选）、数控铣床(CNC)、刻字机。
+*   **选型原则**: 激光切割机是利用率最高的设备，应优先保证功率（≥80W）和幅面（≥600x400mm）。
 
-*   **Lite (探索级)**：定位入门启蒙。
-    *   **核心场景**：手工坊、社区角、小学创客室。
-    *   **典型配置**：桌面级 3D 打印机、安全手工工具、入门级微控制器。
-    *   **预算区间**：¥5 - 15万。
+#### B. 增材制造 (Additive)
+*   **核心设备**: FDM 3D打印机（必选）、光固化打印机。
+*   **选型原则**: 稳定性优于速度。推荐 Prusa/Bambu Lab 等社区支持良好的品牌，避免封闭生态的工业机。
 
-*   **Pro (标准级)**：定位系统学习与项目实战。
-    *   **核心场景**：标准 Fab Lab、中学创客空间、职业院校。
-    *   **典型配置**：包含激光切割机、CNC、电子工作台的完整 Fab Lab 清单。
-    *   **预算区间**：¥15 - 50万。
+#### C. 电子工作台 (Electronics)
+*   **核心设备**: 焊台、万用表、示波器、可调电源。
+*   **耗材库**: Arduino/ESP32 开发板、传感器套件、面包板、连接线。
+*   **原则**: 耗材应像“自助餐”一样开放，鼓励随时取用。
 
-*   **Ultra (专业级)**：定位产业孵化与科研。
-    *   **核心场景**：大学创新中心、企业研发部、区域中心节点。
-    *   **典型配置**：工业级加工设备、精密测量仪器、高性能算力中心。
-    *   **预算区间**：¥50 - 200万+。
+#### D. 手工与组装 (Assembly)
+*   **核心设备**: 热胶枪、电钻、手锯、钳工套件。
+*   **原则**: 这一区域通常被低估，却是最繁忙的区域。必须配备结实的工作台和台钳。
 
-> **详细配置**：查看各级别的具体设备清单、参数规格及推荐品牌，请参阅扩展模块 [**Fab Lab 核心设备标准**](/docs/knowledge-base/05-tools/extend/equipment-catalog)。
-
----
-
-## 3 核心设备能力
-
-一个标准的 OWL 实验室应具备以下核心制造能力（Fab Lab 2.0 标准）：
-
-### 3.1 减材制造 (Subtractive)
-通过去除材料成型。
-*   **激光切割机**：二维高精度加工，处理木板、亚克力、皮革等。
-*   **CNC 铣床**：三维精密加工，处理木材、金属、代木等。
-*   **乙烯基刻字机**：柔性材料切割，制作贴纸、柔性电路。
-
-### 3.2 增材制造 (Additive)
-通过堆叠材料成型。
-*   **FDM 3D打印机**：最普及的打印技术，用于功能原型。
-*   **SLA/DLP 光固化**：高精度打印，用于精细模型。
-
-### 3.3 电子工作台 (Electronics)
-赋予物体"智能"。
-*   **焊接与拆焊**：电路板制作。
-*   **测试与测量**：示波器、万用表、逻辑分析仪。
-*   **微控制器平台**：Arduino, ESP32, Raspberry Pi, Micro:bit。
-
-> **深入了解**：关于数字制造技术的原理与选型，请参阅扩展模块 [**数字制造技术指南**](/docs/knowledge-base/05-tools/extend/digital-fabrication) 和 [**开源硬件选型指南**](/docs/knowledge-base/05-tools/extend/opensource-hardware)。
+> *详细选型指南：* 关于具体的品牌推荐、参数指标和采购避坑指南，请查阅 [**Fab Lab 设备目录**](/docs/knowledge-base/05-tools/extend/equipment-catalog)。
 
 ---
 
-## 4 管理与维护
+## 3. 资产全生命周期管理
 
-设备买回来只是开始，良好的管理维护才是持续产出的保障。
+设备买回来只是开始，管理才是挑战。
 
-### 4.1 全生命周期管理
-我们主张对资产进行"从摇篮到坟墓"的管理：
-1.  **需求论证**：为什么买？谁在用？
-2.  **采购验收**：性能指标是否达标？
-3.  **入库登记**：一物一码，建立数字台账。
-4.  **日常维护**：清洁、润滑、校准。
-5.  **报废处置**：环保回收，残值处理。
+### 3.1 采购与入库
+*   **非标设备**: 很多开源硬件（如树莓派）在政府采购流程中较难界定，建议设立“耗材专用金”。
+*   **验收**: 必须进行“试运行”——不仅是开机，而是完整制作一个标准测试件（Test Piece）。
 
-### 4.2 预防性维护 (Preventive Maintenance)
-不要等设备坏了再修。建立周期性的维护计划（日/周/月/年），可以将设备故障率降低 80% 以上。
+### 3.2 维护与保养
+我们推行 **TPM (全员生产维护)** 理念：
+*   **谁使用谁清洁**: 每次使用后必须清理废料。
+*   **维护日**: 每周五下午定为“设备维护日”，带领学生一起给导轨上油、校准光路。
+*   **维护红牌**: 设备故障挂红牌，修好换绿牌，培养可视化管理习惯。
 
-> **操作手册**：获取详细的维护检查表、故障排查流程和安全操作规范，请参阅扩展模块 [**设备维护与管理规范**](/docs/knowledge-base/05-tools/extend/maintenance-guide)。
+> *操作手册：* 详细的点检表、润滑周期和故障排查流程，请参阅 [**维护指南**](/docs/knowledge-base/05-tools/extend/maintenance-guide)。
 
----
-
-## 5 AI 工具链
-
-在物理工具之外，AI 工具正在成为新一代的"思维脚手架"。OWL 将 AI 工具纳入核心资产管理范畴。
-
-**核心类别**：
-*   **生成式设计**：Midjourney, Stable Diffusion (灵感生成)。
-*   **辅助编程**：GitHub Copilot, Cursor (代码编写)。
-*   **知识管理**：Notion AI, Obsidian (知识沉淀)。
-*   **数据分析**：ChatGPT Code Interpreter (数据处理)。
-
-> **AI 指南**：查看最新的 AI 工具评测与教育应用案例，请参阅扩展模块 [**AI 工具指南**](/docs/knowledge-base/05-tools/extend/ai-tools-guide)。
+### 3.3 报废与迭代
+*   **3年法则**: 消费级 3D 打印机通常寿命为 3 年，应做好折旧预算。
+*   **零件再生**: 报废的设备应拆解，电机、光轴等零件作为“尸体库”供学生进行拆解研究或二次创造。
 
 ---
 
-## 6 MVS 最小可运行标准
+## 4. 软件与 AI 工具链
 
-M05 模块的 MVS 标准旨在确保实验室具备最基本的创造能力：
+硬件只是显露的冰山一角，水面下的软件工具链决定了创造的效率。
 
-1.  **核心能力齐备** ✅：至少具备 3D 打印、简单的 2D 切割（哪怕是手工）和电子制作能力。
-2.  **安全合规** ✅：所有设备必须张贴安全警示，配备必要的消防器材（灭火器、烟感）。
-3.  **台账清晰** ✅：建立基本的资产清单，明确设备责任人。
-4.  **网络畅通** ✅：具备访问开源社区和云端设计工具的网络环境。
-5.  **工具可用** ✅：设备完好率不低于 90%，耗材储备充足。
+### 4.1 开源优先
+OWL 强烈推荐使用开源或免费的工具链，以保证学生离校后仍能继续创造。
+
+| 领域 | 商业软件 (参考) | OWL 推荐 (免费/开源) | 理由 |
+|-----|--------------|-------------------|------|
+| **2D 设计** | Adobe Illustrator | **Inkscape** | 矢量图标准工具，插件丰富。 |
+| **3D 建模** | SolidWorks | **Fusion 360** (Edu) / **Blender** | 涵盖参数化设计与艺术建模。 |
+| **电子设计** | Altium Designer | **KiCad** | 越来越多的开源硬件转向 KiCad。 |
+| **编程** | Keil | **VS Code** + **PlatformIO** | 现代化的开发体验。 |
+
+### 4.2 AI 辅助设计
+*   **代码生成**: 使用 GitHub Copilot 辅助编写 Arduino/Python 代码。
+*   **创意生成**: 使用 Midjourney 生成产品外观草图。
+*   **知识检索**: 建立本地 LLM 知识库，回答“为什么打印头堵了”等常见问题。
 
 ---
 
-## 7 扩展阅读与资源
+## 5. 扩展阅读与深度指南
+
+核心模块提供了战略视角，具体执行请参阅：
 
 <ExtendCards cards={[
   {
-    title: "Fab Lab 核心设备标准",
-    description: "基于 Fab Foundation 标准的数字制造设备配置清单与选型指南",
+    title: "Fab Lab 设备目录",
+    description: "2025版详细采购清单：从螺丝刀到激光管的推荐品牌与参数。",
     href: "/docs/knowledge-base/05-tools/extend/equipment-catalog",
     type: "extend",
-    status: "draft"
+    status: "completed"
   },
   {
-    title: "设备维护与管理规范",
-    description: "日常维护流程、安全操作规程与全生命周期管理",
+    title: "维护指南",
+    description: "设备点检表、故障排查树与安全操作 SOP。",
     href: "/docs/knowledge-base/05-tools/extend/maintenance-guide",
     type: "extend",
     status: "completed"
   },
   {
-    title: "低成本替代方案",
-    description: "利用消费级与自制工具降低实验室建设成本的方案",
-    href: "/docs/knowledge-base/05-tools/extend/low-cost-alternatives",
-    type: "extend",
-    status: "draft"
-  },
-  {
-    title: "AI 工具指南",
-    description: "生成式 AI 工具在创客教育中的应用评测",
-    href: "/docs/knowledge-base/05-tools/extend/ai-tools-guide",
-    type: "extend",
-    status: "draft"
-  },
-  {
     title: "开源硬件选型",
-    description: "Arduino, ESP32, Raspberry Pi 等主流开源硬件对比",
+    description: "Arduino, ESP32, Micro:bit 横向评测与选型策略。",
     href: "/docs/knowledge-base/05-tools/extend/opensource-hardware",
     type: "extend",
-    status: "draft"
+    status: "planned"
   },
   {
-    title: "数字制造技术",
-    description: "3D打印、激光切割等核心制造工艺详解",
+    title: "数字制造入门",
+    description: "激光切割与 3D 打印的基础工艺课程大纲。",
     href: "/docs/knowledge-base/05-tools/extend/digital-fabrication",
     type: "extend",
-    status: "draft"
-  },
-  {
-    title: "工具培训教程",
-    description: "核心设备的操作培训课程与认证体系",
-    href: "/docs/knowledge-base/05-tools/extend/tool-training",
-    type: "extend",
-    status: "draft"
+    status: "planned"
   },
   {
     title: "工具借还系统",
-    description: "实验室工具借用管理流程与制度",
+    description: "如何用低成本方案实现校内工具借还管理。",
     href: "/docs/knowledge-base/05-tools/extend/tool-lending",
     type: "extend",
-    status: "draft"
-  },
-  {
-    title: "社区工具网络",
-    description: "分布式社区工具共享网络建设指南",
-    href: "/docs/knowledge-base/05-tools/extend/community-tool-network",
-    type: "extend",
-    status: "draft"
+    status: "planned"
   }
 ]} />
 
 ---
 
-## 参考文献
+## 6. 参考文献
 
-见 [evidence/refs.json](./evidence/refs.json)。核心引用包括：
-*   **Gershenfeld, N.** (2005). *Fab: The Coming Revolution on Your Desktop*.
-*   **Fab Foundation**. *Fab Lab Inventory*.
-*   **Make Magazine**. *3D Printer Guide*.
+1.  **Gershenfeld, N. (2005)**. *Fab: The Coming Revolution on Your Desktop*.
+2.  **Fab Foundation**. (2024). *Global Fab Lab Standards*.
+3.  **Make: Magazine**. (2024). *Annual Guide to 3D Printing*.
