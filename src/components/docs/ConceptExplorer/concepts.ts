@@ -64,15 +64,16 @@ export const CONCEPTS: Concept[] = [
   // 设计原则层
   {
     id: 'low-floor',
-    name: '低地板高天花板宽围墙',
-    nameEn: 'Low Floor, High Ceiling, Wide Walls',
+    name: '渐进式全谱系设计',
+    nameEn: 'Progressive Full-Spectrum Design',
     color: '#10b981',
     layer: 'principle',
-    insight: '好的学习工具应该让新手能够开始（低地板），让专家能够深入（高天花板），让所有人能够找到自己的路径（宽围墙）。',
+    insight: '优秀的学习环境应该同时满足三个条件：入门门槛足够低让新手能开始，能力天花板足够高让专家能深入，探索路径足够宽让每个人能找到自己的方向。',
     practices: [
       '工具选择兼顾易用性与专业性',
       '提供多种难度等级的入口',
       '支持不同兴趣方向的探索路径',
+      '从 Scratch 到 Python，从乐高到 CNC',
     ],
     connections: ['frontier-question', 'inquiry-based', 'gamified', 'constructionism', 'embodied', 'hard-fun'],
   },
