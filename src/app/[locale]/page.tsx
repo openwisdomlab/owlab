@@ -429,26 +429,29 @@ export default function HomePage() {
               />
             </motion.div>
 
-            {/* Philosophy Tagline */}
+            {/* Core Philosophy Tagline */}
             <motion.p
-              className="text-xl md:text-2xl lg:text-3xl text-[var(--foreground)] font-light max-w-4xl mx-auto leading-relaxed mb-4"
+              className="text-2xl md:text-3xl lg:text-4xl text-[var(--foreground)] font-medium max-w-5xl mx-auto leading-relaxed mb-4"
               variants={itemVariants}
               style={{
                 fontFamily: "'Georgia', serif",
                 letterSpacing: "0.02em",
               }}
             >
-              一个开放、包容、创新的学习空间
+              让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发
             </motion.p>
 
             <motion.p
-              className="text-base md:text-lg lg:text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed mb-10 font-light"
+              className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-10 font-medium"
               variants={itemVariants}
               style={{
-                fontFamily: "'Georgia', serif",
+                background: "linear-gradient(90deg, var(--neon-cyan), var(--neon-violet))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
-              让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发
+              培养面向未来的创新人才
             </motion.p>
 
             {/* Einstein Quote */}
@@ -521,6 +524,174 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* 教育理念 Section - Three Learning Principles */}
+      <section className="relative py-16 px-4 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute top-0 left-1/3 w-80 h-80 bg-[var(--neon-cyan)] opacity-[0.04] blur-[120px] rounded-full"
+            animate={{ scale: [1, 1.15, 1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-1/4 w-80 h-80 bg-[var(--neon-violet)] opacity-[0.04] blur-[120px] rounded-full"
+            animate={{ scale: [1.15, 1, 1.15] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Lightbulb className="w-4 h-4 text-[var(--neon-cyan)]" />
+              教育理念
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--foreground)]">
+              我们如何培养创新人才
+            </h2>
+            <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              从真实问题出发，跨越学科边界，在实践中成长
+            </p>
+          </motion.div>
+
+          {/* Three Principle Cards */}
+          <motion.div
+            className="grid md:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {/* Principle 1: 问题驱动学习 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-cyan)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-cyan)]/20 hover:border-[var(--neon-cyan)]/50 transition-all duration-300 overflow-hidden">
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Number Badge */}
+                <div className="absolute top-6 right-6">
+                  <span className="text-5xl font-black text-[var(--neon-cyan)]/20 group-hover:text-[var(--neon-cyan)]/30 transition-colors">?</span>
+                </div>
+
+                {/* Content */}
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)] text-xs font-mono font-bold mb-4">
+                    001
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
+                    问题驱动学习
+                  </h3>
+                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                    从真实问题出发，在探索中学习，在解决问题中成长。
+                  </p>
+                  <p className="text-sm font-medium text-[var(--neon-cyan)] italic">
+                    Learning by questioning.
+                  </p>
+                </div>
+
+                {/* Bottom Accent */}
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-cyan)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "60%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Principle 2: 跨学科融合 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-violet)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-violet)]/20 hover:border-[var(--neon-violet)]/50 transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="absolute top-6 right-6">
+                  <span className="text-5xl font-black text-[var(--neon-violet)]/20 group-hover:text-[var(--neon-violet)]/30 transition-colors">+</span>
+                </div>
+
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-violet)]/10 text-[var(--neon-violet)] text-xs font-mono font-bold mb-4">
+                    002
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
+                    跨学科融合
+                  </h3>
+                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                    打破学科边界，培养综合思维和创新能力。
+                  </p>
+                  <p className="text-sm font-medium text-[var(--neon-violet)] italic">
+                    Cross-disciplinary thinking.
+                  </p>
+                </div>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-violet)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "60%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Principle 3: 实践导向 */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-[var(--neon-green)]/8 via-[var(--background)] to-[var(--background)] border border-[var(--neon-green)]/20 hover:border-[var(--neon-green)]/50 transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="absolute top-6 right-6">
+                  <span className="text-5xl font-black text-[var(--neon-green)]/20 group-hover:text-[var(--neon-green)]/30 transition-colors">*</span>
+                </div>
+
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--neon-green)]/10 text-[var(--neon-green)] text-xs font-mono font-bold mb-4">
+                    003
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[var(--foreground)]">
+                    实践导向
+                  </h3>
+                  <p className="text-base text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                    动手实践，在做中学，培养解决实际问题的能力。
+                  </p>
+                  <p className="text-sm font-medium text-[var(--neon-green)] italic">
+                    Hands-on learning.
+                  </p>
+                </div>
+
+                <motion.div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--neon-green)] to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "60%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* 空间核心理念 Section - Four Core Principles */}
