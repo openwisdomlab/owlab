@@ -43,3 +43,76 @@ export function getLocalePageTree(locale: string) {
   // Fallback to full tree if locale not found
   return tree;
 }
+
+// Type for flattened doc item for sidebar search
+export interface FlatDocItem {
+  title: string;
+  href: string;
+  type: "page" | "folder";
+  breadcrumb?: string;
+}
+
+// Helper to flatten page tree into searchable doc items
+export function flattenPageTree(
+  tree: ReturnType<typeof getLocalePageTree>,
+  locale: string,
+  breadcrumb: string[] = []
+): FlatDocItem[] {
+  const items: FlatDocItem[] = [];
+
+  if (!tree || !("children" in tree) || !Array.isArray(tree.children)) {
+    return items;
+  }
+
+  for (const child of tree.children) {
+    if (!child || typeof child !== "object") continue;
+
+    // Handle page type
+    if ("type" in child && child.type === "page") {
+      const name = "name" in child && typeof child.name === "string" ? child.name : "";
+      const url = "url" in child && typeof child.url === "string" ? child.url : "";
+
+      if (name && url) {
+        items.push({
+          title: name,
+          href: `/${locale}${url}`,
+          type: "page",
+          breadcrumb: breadcrumb.length > 0 ? breadcrumb.join(" / ") : undefined,
+        });
+      }
+    }
+
+    // Handle folder type
+    if ("type" in child && child.type === "folder") {
+      const name = "name" in child && typeof child.name === "string" ? child.name : "";
+      const index = "index" in child ? child.index : null;
+
+      // Add folder itself if it has an index page
+      if (index && typeof index === "object" && "url" in index && typeof index.url === "string") {
+        items.push({
+          title: name,
+          href: `/${locale}${index.url}`,
+          type: "folder",
+          breadcrumb: breadcrumb.length > 0 ? breadcrumb.join(" / ") : undefined,
+        });
+      }
+
+      // Recursively flatten children
+      if ("children" in child && Array.isArray(child.children)) {
+        const nestedItems = flattenPageTree(
+          { children: child.children } as ReturnType<typeof getLocalePageTree>,
+          locale,
+          [...breadcrumb, name]
+        );
+        items.push(...nestedItems);
+      }
+    }
+
+    // Handle separator - skip
+    if ("type" in child && child.type === "separator") {
+      continue;
+    }
+  }
+
+  return items;
+}

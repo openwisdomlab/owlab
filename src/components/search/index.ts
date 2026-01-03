@@ -7,3 +7,4 @@ export { SearchButton } from "./SearchButton";
 export { SearchInput } from "./SearchInput";
 export { SearchResults } from "./SearchResults";
 export { SearchResultItem } from "./SearchResultItem";
+export { SidebarSearch } from "./SidebarSearch";

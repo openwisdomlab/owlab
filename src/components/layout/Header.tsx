@@ -37,7 +37,7 @@ export function Header({ locale }: HeaderProps) {
           <img
             src="/logo.png"
             alt="Open Wisdom Lab"
-            className="h-14 w-auto"
+            className="h-16 w-auto"
           />
         </Link>
 
