@@ -110,6 +110,21 @@ const quickStartSteps = [
   { id: "step3", icon: Rocket, color: "var(--neon-green)" },
 ];
 
+// Seeded random function for deterministic particle positions (avoids hydration mismatch)
+const seededRandom = (seed: number) => {
+  const x = Math.sin(seed * 9999) * 10000;
+  return x - Math.floor(x);
+};
+
+// Pre-computed particle data for consistent SSR/client rendering
+const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
+  left: seededRandom(i * 3) * 100,
+  top: seededRandom(i * 3 + 1) * 100,
+  opacity: seededRandom(i * 3 + 2) * 0.5 + 0.2,
+  duration: seededRandom(i * 3 + 3) * 5 + 5,
+  delay: seededRandom(i * 3 + 4) * 5,
+}));
+
 export default function HomePage() {
   const t = useTranslations("home");
   const params = useParams();
@@ -169,14 +184,14 @@ export default function HomePage() {
           />
 
           {/* Floating particles - stars */}
-          {[...Array(20)].map((_, i) => (
+          {PARTICLES.map((particle, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-white rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.2,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                opacity: particle.opacity,
               }}
               animate={{
                 y: [0, -20, 0],
@@ -184,9 +199,9 @@ export default function HomePage() {
                 scale: [1, 1.5, 1],
               }}
               transition={{
-                duration: Math.random() * 5 + 5,
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: particle.delay,
                 ease: "easeInOut",
               }}
             />
