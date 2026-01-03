@@ -214,7 +214,7 @@ export default function HomePage() {
 
             {/* Main Title - OWL 建设与运营标准手册 */}
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1] tracking-tight"
               variants={itemVariants}
               style={{
                 fontFamily: "'Inter', -apple-system, sans-serif",
@@ -229,17 +229,204 @@ export default function HomePage() {
               OWL 建设与运营<br/>标准手册
             </motion.h1>
 
-            {/* Bilingual Subtitle - Open Wisdom Lab / 开放智慧实验室 */}
+            {/* Bilingual Subtitle - Open Wisdom Lab / 开放智慧实验室 - Enhanced Design */}
             <motion.div
-              className="mb-8"
+              className="relative mb-8 inline-block px-12 py-6"
               variants={itemVariants}
             >
-              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--foreground)] mb-2">
-                Open Wisdom Lab
-              </p>
-              <p className="text-xl md:text-2xl lg:text-3xl text-[var(--muted-foreground)] font-light">
-                开放智慧实验室
-              </p>
+              {/* SVG Geometric Background Pattern */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="grid-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.3 }} />
+                      <stop offset="50%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.3 }} />
+                      <stop offset="100%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.3 }} />
+                    </linearGradient>
+                  </defs>
+                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <circle cx="20" cy="20" r="1" fill="url(#grid-gradient)" />
+                    <line x1="0" y1="20" x2="40" y2="20" stroke="url(#grid-gradient)" strokeWidth="0.5" />
+                    <line x1="20" y1="0" x2="20" y2="40" stroke="url(#grid-gradient)" strokeWidth="0.5" />
+                  </pattern>
+                  <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+              </div>
+
+              {/* Decorative background glow with animation */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-[var(--neon-cyan)]/10 via-[var(--neon-violet)]/10 to-[var(--neon-pink)]/10 blur-3xl -z-10"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.5, 0.8, 0.5]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Outer geometric frame */}
+              <div className="absolute inset-0 border-2 border-[var(--neon-cyan)]/20 rounded-lg">
+                {/* Animated corner pieces */}
+                <motion.div
+                  className="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-[var(--neon-cyan)]"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div
+                  className="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-[var(--neon-violet)]"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                />
+                <motion.div
+                  className="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-[var(--neon-pink)]"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                />
+                <motion.div
+                  className="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-[var(--neon-cyan)]"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.5
+                  }}
+                />
+              </div>
+
+              {/* Content Container */}
+              <div className="relative flex flex-col items-center gap-3">
+                {/* English Title with enhanced styling */}
+                <motion.div className="relative">
+                  <motion.p
+                    className="text-2xl md:text-3xl lg:text-4xl font-black tracking-wider uppercase"
+                    style={{
+                      background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 50%, var(--neon-pink) 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      textShadow: "0 0 40px rgba(6, 182, 212, 0.5)",
+                    }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                  >
+                    Open Wisdom Lab
+                  </motion.p>
+
+                  {/* Animated particles around English title */}
+                  <motion.div
+                    className="absolute -left-6 top-1/2 w-2 h-2 rounded-full bg-[var(--neon-cyan)]"
+                    animate={{
+                      x: [-5, 5, -5],
+                      opacity: [0.3, 1, 0.3],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                  <motion.div
+                    className="absolute -right-6 top-1/2 w-2 h-2 rounded-full bg-[var(--neon-pink)]"
+                    animate={{
+                      x: [5, -5, 5],
+                      opacity: [0.3, 1, 0.3],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                </motion.div>
+
+                {/* Connecting Line with pulse animation */}
+                <motion.div
+                  className="w-24 h-px bg-gradient-to-r from-transparent via-[var(--neon-violet)] to-transparent"
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: 96, opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.8 }}
+                />
+
+                {/* Chinese Title with traditional styling */}
+                <motion.div className="relative">
+                  <p
+                    className="text-xl md:text-2xl lg:text-3xl font-light tracking-[0.2em] text-[var(--foreground)]"
+                    style={{
+                      fontFamily: "'Noto Serif SC', 'STKaiti', 'KaiTi', serif",
+                      fontWeight: 300,
+                    }}
+                  >
+                    开放智慧实验室
+                  </p>
+
+                  {/* Decorative brackets */}
+                  <motion.div
+                    className="absolute -left-8 top-0 text-3xl text-[var(--neon-cyan)]/40 font-serif"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.9, duration: 0.5 }}
+                  >
+                    「
+                  </motion.div>
+                  <motion.div
+                    className="absolute -right-8 top-0 text-3xl text-[var(--neon-pink)]/40 font-serif"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.9, duration: 0.5 }}
+                  >
+                    」
+                  </motion.div>
+                </motion.div>
+              </div>
+
+              {/* Orbital dots animation */}
+              <motion.div
+                className="absolute left-0 top-1/2 w-3 h-3 rounded-full bg-[var(--neon-cyan)] opacity-60"
+                animate={{
+                  rotate: 360,
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                style={{
+                  transformOrigin: "150px center",
+                }}
+              />
+              <motion.div
+                className="absolute right-0 top-1/2 w-3 h-3 rounded-full bg-[var(--neon-pink)] opacity-60"
+                animate={{
+                  rotate: -360,
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                style={{
+                  transformOrigin: "-150px center",
+                }}
+              />
             </motion.div>
 
             {/* Philosophy Tagline */}
@@ -269,7 +456,7 @@ export default function HomePage() {
               className="relative max-w-4xl mx-auto mb-12"
               variants={itemVariants}
             >
-              <div className="relative p-6 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl">
+              <div className="relative p-4 rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl">
                 {/* Quote Mark */}
                 <div className="absolute -top-4 left-8 text-6xl text-[var(--neon-cyan)] opacity-20 font-serif">"</div>
 
@@ -337,47 +524,44 @@ export default function HomePage() {
       </section>
 
       {/* 空间核心理念 Section - Four Core Principles */}
-      <section className="relative py-14 px-4 overflow-hidden bg-gradient-to-b from-transparent via-[var(--background)] to-[var(--glass-bg)]/20">
+      <section className="relative py-10 px-4 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-20 left-10 w-64 h-64 bg-[var(--neon-cyan)] opacity-[0.03] blur-[100px] rounded-full"
+            className="absolute top-20 left-10 w-64 h-64 bg-[var(--neon-cyan)] opacity-[0.02] blur-[100px] rounded-full"
             animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-64 h-64 bg-[var(--neon-violet)] opacity-[0.03] blur-[100px] rounded-full"
+            className="absolute bottom-20 right-10 w-64 h-64 bg-[var(--neon-violet)] opacity-[0.02] blur-[100px] rounded-full"
             animate={{ scale: [1.2, 1, 1.2], x: [0, -30, 0] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
 
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-6xl mx-auto">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-6"
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-3"
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-2"
               whileHover={{ scale: 1.05 }}
             >
-              <Lightbulb className="w-4 h-4 text-[var(--neon-yellow)]" />
+              <Lightbulb className="w-3.5 h-3.5 text-[var(--neon-yellow)]" />
               空间哲学
             </motion.div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent">
               四大核心理念
             </h2>
-            <p className="text-base text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              空间不仅是容器，更是第三位教育者
-            </p>
           </motion.div>
 
           {/* Principle Cards - 2x2 Grid */}
           <motion.div
-            className="grid md:grid-cols-2 gap-4 lg:gap-5"
+            className="grid md:grid-cols-2 gap-3 lg:gap-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -386,27 +570,75 @@ export default function HomePage() {
             {/* Principle 1: 以学生为中心 */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ y: -6, scale: 1.01 }}
+              whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
                 {/* Card Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Number Badge */}
-                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
-                  <span className="text-xl font-black text-[var(--neon-cyan)]">01</span>
+                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
+                  <span className="text-lg font-black text-[var(--neon-cyan)]">01</span>
                 </div>
 
-                {/* Icon */}
-                <div className="relative mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/30 to-[var(--neon-cyan)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Users className="w-7 h-7 text-[var(--neon-cyan)]" />
+                {/* Icon with SVG Visualization - Student-Centered (Radial Pattern) */}
+                <div className="relative mb-3 w-24 h-24">
+                  {/* SVG Background Pattern */}
+                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <radialGradient id="radial-student" cx="50%" cy="50%">
+                        <stop offset="0%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.6 }} />
+                        <stop offset="100%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.1 }} />
+                      </radialGradient>
+                    </defs>
+                    {/* Center circle */}
+                    <circle cx="50" cy="50" r="8" fill="var(--neon-cyan)" opacity="0.8" />
+                    {/* Radial lines */}
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                      const rad = (angle * Math.PI) / 180;
+                      const x1 = 50 + Math.cos(rad) * 12;
+                      const y1 = 50 + Math.sin(rad) * 12;
+                      const x2 = 50 + Math.cos(rad) * 35;
+                      const y2 = 50 + Math.sin(rad) * 35;
+                      return (
+                        <line
+                          key={i}
+                          x1={x1}
+                          y1={y1}
+                          x2={x2}
+                          y2={y2}
+                          stroke="var(--neon-cyan)"
+                          strokeWidth="1.5"
+                          opacity="0.4"
+                        />
+                      );
+                    })}
+                    {/* Outer circles */}
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                      const rad = (angle * Math.PI) / 180;
+                      const cx = 50 + Math.cos(rad) * 35;
+                      const cy = 50 + Math.sin(rad) * 35;
+                      return (
+                        <circle
+                          key={i}
+                          cx={cx}
+                          cy={cy}
+                          r="4"
+                          fill="var(--neon-cyan)"
+                          opacity="0.5"
+                        />
+                      );
+                    })}
+                  </svg>
+                  {/* Icon overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Users className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-cyan)]">
+                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-cyan)]">
                   以学生为中心
                 </h3>
                 <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
@@ -430,23 +662,68 @@ export default function HomePage() {
             {/* Principle 2: 鼓励大胆探索 */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ y: -6, scale: 1.01 }}
+              whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
-                  <span className="text-xl font-black text-[var(--neon-green)]">02</span>
+                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
+                  <span className="text-lg font-black text-[var(--neon-green)]">02</span>
                 </div>
 
-                <div className="relative mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/30 to-[var(--neon-green)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Rocket className="w-7 h-7 text-[var(--neon-green)]" />
+                {/* Icon with SVG Visualization - Exploration (Ascending Path) */}
+                <div className="relative mb-3 w-24 h-24">
+                  {/* SVG Background Pattern */}
+                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="path-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.2 }} />
+                        <stop offset="100%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.8 }} />
+                      </linearGradient>
+                    </defs>
+                    {/* Ascending spiral path */}
+                    <path
+                      d="M 20 80 Q 30 60, 40 55 T 60 45 T 75 25"
+                      stroke="var(--neon-green)"
+                      strokeWidth="2"
+                      fill="none"
+                      opacity="0.4"
+                      strokeDasharray="4,4"
+                    />
+                    {/* Checkpoint circles along path */}
+                    {[
+                      { cx: 20, cy: 80, r: 3 },
+                      { cx: 35, cy: 62, r: 3.5 },
+                      { cx: 50, cy: 50, r: 4 },
+                      { cx: 65, cy: 38, r: 4.5 },
+                      { cx: 75, cy: 25, r: 5 }
+                    ].map((circle, i) => (
+                      <circle
+                        key={i}
+                        cx={circle.cx}
+                        cy={circle.cy}
+                        r={circle.r}
+                        fill="var(--neon-green)"
+                        opacity={0.3 + i * 0.15}
+                      />
+                    ))}
+                    {/* Arrow at end */}
+                    <path
+                      d="M 75 25 L 70 30 M 75 25 L 80 30"
+                      stroke="var(--neon-green)"
+                      strokeWidth="2"
+                      fill="none"
+                      opacity="0.6"
+                    />
+                  </svg>
+                  {/* Icon overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Rocket className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
                   </div>
                 </div>
 
-                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-green)]">
+                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-green)]">
                   鼓励大胆探索
                 </h3>
                 <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
@@ -469,23 +746,65 @@ export default function HomePage() {
             {/* Principle 3: 科技感与未来感 */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ y: -6, scale: 1.01 }}
+              whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
-                  <span className="text-xl font-black text-[var(--neon-violet)]">03</span>
+                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
+                  <span className="text-lg font-black text-[var(--neon-violet)]">03</span>
                 </div>
 
-                <div className="relative mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/30 to-[var(--neon-violet)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Sparkles className="w-7 h-7 text-[var(--neon-violet)]" />
+                {/* Icon with SVG Visualization - Tech & Future (Circuit Grid) */}
+                <div className="relative mb-3 w-24 h-24">
+                  {/* SVG Background Pattern */}
+                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.6 }} />
+                        <stop offset="100%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.2 }} />
+                      </linearGradient>
+                    </defs>
+                    {/* Tech grid pattern */}
+                    <g opacity="0.4">
+                      {/* Horizontal lines */}
+                      <line x1="20" y1="30" x2="80" y2="30" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                      <line x1="20" y1="50" x2="80" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                      <line x1="20" y1="70" x2="80" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                      {/* Vertical lines */}
+                      <line x1="30" y1="20" x2="30" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                      <line x1="50" y1="20" x2="50" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                      <line x1="70" y1="20" x2="70" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                    </g>
+                    {/* Circuit nodes */}
+                    {[
+                      { cx: 30, cy: 30 }, { cx: 50, cy: 30 }, { cx: 70, cy: 30 },
+                      { cx: 30, cy: 50 }, { cx: 50, cy: 50 }, { cx: 70, cy: 50 },
+                      { cx: 30, cy: 70 }, { cx: 50, cy: 70 }, { cx: 70, cy: 70 }
+                    ].map((node, i) => (
+                      <circle
+                        key={i}
+                        cx={node.cx}
+                        cy={node.cy}
+                        r="3"
+                        fill="var(--neon-violet)"
+                        opacity={0.5 + (i % 3) * 0.15}
+                      />
+                    ))}
+                    {/* Corner squares */}
+                    <rect x="18" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                    <rect x="76" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                    <rect x="18" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                    <rect x="76" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
+                  </svg>
+                  {/* Icon overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Sparkles className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
                   </div>
                 </div>
 
-                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-violet)]">
+                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-violet)]">
                   科技感与未来感
                 </h3>
                 <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
@@ -508,23 +827,74 @@ export default function HomePage() {
             {/* Principle 4: 灵活流动的空间 */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ y: -6, scale: 1.01 }}
+              whileHover={{ y: -4, scale: 1.005 }}
               className="group relative"
             >
-              <div className="relative h-full p-6 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
+              <div className="relative h-full p-4 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
-                  <span className="text-xl font-black text-[var(--neon-pink)]">04</span>
+                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
+                  <span className="text-lg font-black text-[var(--neon-pink)]">04</span>
                 </div>
 
-                <div className="relative mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/30 to-[var(--neon-pink)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <GitBranch className="w-7 h-7 text-[var(--neon-pink)]" />
+                {/* Icon with SVG Visualization - Flexible Space (Flowing Curves) */}
+                <div className="relative mb-3 w-24 h-24">
+                  {/* SVG Background Pattern */}
+                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.6 }} />
+                        <stop offset="100%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.2 }} />
+                      </linearGradient>
+                    </defs>
+                    {/* Flowing wave curves */}
+                    <path
+                      d="M 10 30 Q 30 20, 50 30 T 90 30"
+                      stroke="var(--neon-pink)"
+                      strokeWidth="2"
+                      fill="none"
+                      opacity="0.5"
+                    />
+                    <path
+                      d="M 10 50 Q 30 40, 50 50 T 90 50"
+                      stroke="var(--neon-pink)"
+                      strokeWidth="2.5"
+                      fill="none"
+                      opacity="0.6"
+                    />
+                    <path
+                      d="M 10 70 Q 30 60, 50 70 T 90 70"
+                      stroke="var(--neon-pink)"
+                      strokeWidth="2"
+                      fill="none"
+                      opacity="0.5"
+                    />
+                    {/* Modular grid elements */}
+                    <g opacity="0.3">
+                      <rect x="15" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                      <rect x="46" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                      <rect x="77" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+
+                      <rect x="15" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                      <rect x="46" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                      <rect x="77" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+
+                      <rect x="15" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                      <rect x="46" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                      <rect x="77" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
+                    </g>
+                    {/* Connection points */}
+                    <circle cx="19" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
+                    <circle cx="50" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
+                    <circle cx="81" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
+                  </svg>
+                  {/* Icon overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <GitBranch className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
                   </div>
                 </div>
 
-                <h3 className="relative text-xl font-bold mb-2 text-[var(--neon-pink)]">
+                <h3 className="relative text-lg font-bold mb-1.5 text-[var(--neon-pink)]">
                   灵活流动的空间
                 </h3>
                 <p className="relative text-base text-[var(--foreground)] font-medium mb-2">
@@ -551,15 +921,15 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
-            className="mt-8 flex justify-center"
+            className="mt-5 flex justify-center"
           >
             <Link
               href={`/${locale}/docs/knowledge-base/03-space/extend/core-space-philosophy`}
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-card hover:border-[var(--neon-cyan)] transition-all duration-300 backdrop-blur-xl text-sm"
+              className="group inline-flex items-center gap-2 px-5 py-2 rounded-lg glass-card hover:border-[var(--neon-cyan)] transition-all duration-300 backdrop-blur-xl text-xs"
             >
-              <BookOpen className="w-4 h-4 text-[var(--neon-cyan)]" />
+              <BookOpen className="w-3.5 h-3.5 text-[var(--neon-cyan)]" />
               <span className="font-medium">深入了解空间理念</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
@@ -861,7 +1231,7 @@ export default function HomePage() {
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                     {/* 左侧：标题和描述 */}
                     <div className="flex items-start gap-5">
-                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
                         <Bird className="w-8 h-8 text-emerald-400" />
                       </div>
                       <div>
