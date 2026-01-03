@@ -4,7 +4,29 @@ This file provides guidance for Claude Code when working with this repository.
 
 ## Project Overview
 
-OWL (Open Wisdom Lab) is a modular knowledge base for building and operating AI Spaces / Maker Spaces. It's a Next.js documentation site with interactive AI-powered design tools built with Fumadocs.
+**OWL (Open Wisdom Lab)** is a modular knowledge base for building and operating innovation learning spaces. Our mission: **Spark curiosity, nurture future scientific innovators with the potential to change the world.**
+
+OWL is not just a space—it's a journey from curiosity to creation. We believe curiosity is the starting point of all innovation. People who stay curious, dare to take risks, and keep creating are the ones who will generate real value in the AI era.
+
+### Core Philosophy: 3E Framework
+
+Every module in OWL embodies three dimensions:
+
+| Dimension | Focus | Example |
+|-----------|-------|---------|
+| **Enlighten** | Spark curiosity, open horizons | "This problem hasn't been solved yet!" |
+| **Empower** | Give methods, tools, and space | Scientific thinking, AI tools, failure-friendly environment |
+| **Engage** | Enter the real world, create real impact | Mentor networks, publications, open source contributions |
+
+### Target Learner Profile
+
+We nurture students with:
+- **Curiosity & wild ideas** — Ask questions about everything
+- **Broad interests** — Cross disciplinary boundaries
+- **Risk-taking spirit** — Not afraid of failure
+- **Creativity & ideals** — Turn ideas into reality
+- **Long-term thinking** — Sustained commitment
+- **Research potential** — Capacity for genuine innovation
 
 ## Tech Stack
 
@@ -33,28 +55,54 @@ src/
 │   ├── api/ai/            # AI API routes (chat, layout, safety analysis)
 │   └── [locale]/          # i18n routes (zh/en)
 │       ├── lab/           # AI Lab interactive tools
-│       │   ├── floor-plan/    # Floor plan designer
-│       │   ├── concepts/      # Concept explorer
-│       │   └── case-studies/  # Case studies
 │       └── docs/          # Documentation pages
 ├── components/
-│   ├── lab/               # Lab-specific components (FloorPlanCanvas, etc.)
-│   ├── layout/            # Layout components (Header, MobileNav)
+│   ├── lab/               # Lab-specific components
+│   ├── layout/            # Layout components
 │   └── ui/                # Shared UI components
-├── hooks/                 # React hooks (useHistory, useLayers, etc.)
+├── hooks/                 # React hooks
 ├── lib/
 │   ├── ai/               # AI configuration, agents, prompts
 │   ├── schemas/          # Zod validation schemas
 │   └── utils/            # Utility functions
-└── stores/               # Zustand stores (multiverse-store)
+└── stores/               # Zustand stores
 
 content/docs/zh/knowledge-base/   # Knowledge base MDX content
 ├── 01-foundations/               # M01 Philosophy & Theory
 ├── 02-governance/                # M02 Governance & Network
-├── ...                           # M03-M09 modules
+├── 03-space/                     # M03 Space & Environment
+├── 04-programs/                  # M04 Programs & Projects
+├── 05-tools/                     # M05 Tools & Assets
+├── 06-safety/                    # M06 Safety & Ethics
+├── 07-people/                    # M07 People & Capability
+├── 08-operations/                # M08 Operations
+├── 09-assessment/                # M09 Assessment & Impact
 ├── _meta/                        # Metadata definitions
 └── _templates/                   # Document templates
 ```
+
+## Knowledge Base Modules
+
+Each module addresses a key aspect of building and operating innovation learning spaces, with all three 3E dimensions represented:
+
+| Module | Tagline | Key 3E Contributions |
+|--------|---------|---------------------|
+| M01 | Why curiosity is the most precious ability | **E**: First principles of education; **E**: 4P learning theory; **E**: Global educator consensus |
+| M02 | Connect global resources | **E**: See global innovations; **E**: Replicable governance; **E**: Mentor networks |
+| M03 | Space speaks—let curiosity grow | **E**: "Want to tinker" atmosphere; **E**: 3-layer design framework; **E**: Showcase stage |
+| M04 | From curiosity to creation | **E**: QFocus challenges; **E**: 101 foundation courses; **E**: Real-world output |
+| M05 | AI-era creator's toolbox | **E**: Accessible technology; **E**: AI + open hardware; **E**: Open source community |
+| M06 | Prerequisites for risk-taking | **E**: Risk as literacy; **E**: Safety systems; **E**: Community safety culture |
+| M07 | Not teaching, but igniting | **E**: Facilitators as learners; **E**: Scaffolding methods; **E**: Expert mentors |
+| M08 | Keep inquiry happening | **E**: Fresh discoveries; **E**: SOPs free creativity; **E**: Community relationships |
+| M09 | See the traces of growth | **E**: Visible progress; **E**: Multi-modal evidence; **E**: Impact storytelling |
+
+## Content Architecture
+
+The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
+- **Core**: Essential principles (≤2000 chars per module)
+- **Extend**: Deep research, case studies, visualizations
+- **Evidence**: Structured citations and verification records
 
 ## Key Patterns
 
@@ -80,13 +128,6 @@ content/docs/zh/knowledge-base/   # Knowledge base MDX content
 - AI config and prompts in `src/lib/ai/`
 - Uses Vercel AI SDK streaming responses
 
-## Content Architecture
-
-The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
-- **Core**: Essential principles (≤2000 chars per module)
-- **Extend**: Deep research, case studies, visualizations
-- **Evidence**: Structured citations and verification records
-
 ## Development Guidelines
 
 1. **MDX Content**: Follow existing templates in `_templates/`
@@ -94,3 +135,4 @@ The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
 3. **API Routes**: Use streaming for AI responses
 4. **Types**: Maintain strict TypeScript, use Zod for runtime validation
 5. **i18n**: Support both Chinese and English content
+6. **3E Alignment**: Every feature should consider how it contributes to Enlighten, Empower, and Engage
