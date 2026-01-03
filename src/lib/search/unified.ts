@@ -11,6 +11,7 @@ import type { UnifiedSearchQuery, UnifiedSearchResponse } from "@/lib/schemas";
 import { searchWithPagefind, type PagefindSearchResponse } from "./pagefind";
 import { getRAGPipeline } from "./rag";
 import { searchWithAgent } from "./agentic";
+import { searchWithLocalContent } from "./local";
 
 // ============================================
 // Query Complexity Analysis
@@ -109,6 +110,11 @@ export async function unifiedSearch(
 
   // Start with the determined mode
   try {
+    // Development Mode Override: Use Local Search
+    if (process.env.NODE_ENV === "development") {
+      return searchWithLocalContent(query);
+    }
+
     // Layer 1: Basic (Pagefind)
     if (mode === "basic") {
       const pagefindResults = await searchWithPagefind({
