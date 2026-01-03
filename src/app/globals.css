@@ -705,7 +705,7 @@ html[data-emotion="calm"] {
   --radius: 1rem;
   --font-heading: "Lora", Georgia, serif;
 
-  /* Text Color: Softer, organic contrast */
+  /* Text Color: Softer, organic contrast (Dark Mode Default) */
   --foreground: #F0FDF4;
   --muted-foreground: #6EE7B7;
 
@@ -713,6 +713,12 @@ html[data-emotion="calm"] {
 
   /* Subtle Texture */
   background-image: radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.03) 0%, transparent 50%);
+}
+
+html.light[data-emotion="calm"] {
+  /* Text Color: Dark Emerald for Light Mode */
+  --foreground: #064E3B;
+  --muted-foreground: #059669;
 }
 
 /* ENERGETIC (Solar/Orange) - Activity, Warning, Excitement */
@@ -734,7 +740,7 @@ html[data-emotion="energetic"] {
   --font-sans: "Poppins", Arial, sans-serif;
   --font-heading: "Poppins", Arial, sans-serif;
 
-  /* Text Color: High contrast, stark */
+  /* Text Color: High contrast, stark (Dark Mode Default) */
   --foreground: #FFFFFF;
   --muted-foreground: #FDBA74;
 
@@ -745,6 +751,12 @@ html[data-emotion="energetic"] {
     linear-gradient(rgba(234, 88, 12, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(234, 88, 12, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+html.light[data-emotion="energetic"] {
+  /* Text Color: Dark Brown for Light Mode */
+  --foreground: #431407;
+  --muted-foreground: #EA580C;
 }
 
 /* CREATIVE (Nebula/Purple) - Imagination, Magic, Mystery */
@@ -765,7 +777,7 @@ html[data-emotion="creative"] {
   --radius: 0.5rem;
   --font-heading: "JetBrains Mono", monospace;
 
-  /* Text Color: Cool, digital tint */
+  /* Text Color: Cool, digital tint (Dark Mode Default) */
   --foreground: #F5F3FF;
   --muted-foreground: #A78BFA;
 
@@ -775,4 +787,10 @@ html[data-emotion="creative"] {
   background-image:
     radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.08) 0%, transparent 40%),
     radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 40%);
+}
+
+html.light[data-emotion="creative"] {
+  /* Text Color: Dark Violet for Light Mode */
+  --foreground: #2E1065;
+  --muted-foreground: #9333EA;
 }
