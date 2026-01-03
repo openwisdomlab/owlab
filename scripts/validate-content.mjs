@@ -11,6 +11,54 @@ const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 
 let errors = 0;
 let checkedFiles = 0;
+let mdxSyntaxErrors = 0;
+
+/**
+ * Check for MDX syntax issues that would cause build errors.
+ * Specifically: unescaped `<` followed by numbers, which MDX interprets as JSX.
+ *
+ * Valid patterns (already escaped): \<50, \<100
+ * Invalid patterns: <50, <100 (not preceded by \)
+ */
+function checkMdxSyntax(content, filePath) {
+    const lines = content.split('\n');
+    const issues = [];
+
+    lines.forEach((line, index) => {
+        // Skip lines inside code blocks (``` or `inline`)
+        // Simple heuristic: skip if line starts with ```
+        if (line.trim().startsWith('```')) return;
+
+        // Find `<` followed by a digit that is NOT preceded by `\`
+        // Pattern: (?<!\\)< followed by \d
+        // Use a different approach since JS doesn't support lookbehind in all versions
+        const matches = [];
+        const regex = /<(\d)/g;
+        let match;
+        while ((match = regex.exec(line)) !== null) {
+            const pos = match.index;
+            // Check if preceded by backslash
+            if (pos === 0 || line[pos - 1] !== '\\') {
+                matches.push({
+                    lineNum: index + 1,
+                    column: pos + 1,
+                    char: match[1],
+                    context: line.substring(Math.max(0, pos - 10), Math.min(line.length, pos + 15))
+                });
+            }
+        }
+
+        issues.push(...matches);
+    });
+
+    if (issues.length > 0) {
+        const relPath = path.relative(ROOT_DIR, filePath);
+        issues.forEach(issue => {
+            console.error(`[MDX ERROR] ${relPath}:${issue.lineNum}:${issue.column}: Unescaped '<' before number '${issue.char}'. Use '\\<' instead. Context: "...${issue.context}..."`);
+            mdxSyntaxErrors++;
+        });
+    }
+}
 
 function walkDir(dir, callback) {
     const files = fs.readdirSync(dir);
@@ -102,6 +150,11 @@ if (fs.existsSync(CONTENT_DIR)) {
             checkedFiles++;
             const content = fs.readFileSync(filePath, 'utf-8');
 
+            // Check for MDX syntax issues (unescaped < before numbers)
+            if (filePath.endsWith('.mdx')) {
+                checkMdxSyntax(content, filePath);
+            }
+
             // Match [text](url)
             const linkRegex = /\[.*?\]\((.*?)\)/g;
             let match;
@@ -123,10 +176,18 @@ if (fs.existsSync(CONTENT_DIR)) {
 
 console.log(`Validation Complete. Checked ${checkedFiles} files.`);
 
-if (errors > 0) {
-    console.error(`Found ${errors} errors.`);
+const totalErrors = errors + mdxSyntaxErrors;
+
+if (totalErrors > 0) {
+    if (errors > 0) {
+        console.error(`Found ${errors} link errors.`);
+    }
+    if (mdxSyntaxErrors > 0) {
+        console.error(`Found ${mdxSyntaxErrors} MDX syntax errors.`);
+        console.error(`\nTo fix MDX syntax errors: Replace '<' with '\\<' before numbers (e.g., '<50' → '\\<50')`);
+    }
     process.exit(1);
 } else {
-    console.log('All links valid! ✨');
+    console.log('All content valid! ✨');
     process.exit(0);
 }
