@@ -56,3 +56,6 @@ yarn-error.log*
 next-env.d.ts
 .mcp.json
 .trae/
+
+# Auto Claude data directory
+.auto-claude/
