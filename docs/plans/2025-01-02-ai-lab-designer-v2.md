@@ -342,7 +342,7 @@ src/lib/ai/agents/
 
 ### 8.2 相关文档
 
-- [OWL 生境工具体系设计](./2025-12-31-living-lab-tools-design.md)
+- [OWL 创意工具箱设计](./2025-12-31-living-lab-tools-design.md)
 - [现有平面图设计器文档](../README.md)
 
 ---

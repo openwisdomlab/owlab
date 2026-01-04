@@ -178,11 +178,11 @@
       "description": "从理念到落地的智能桥梁，让创建和管理创客空间更加高效",
       "viewAll": "查看完整工具库",
       "habitat": {
-        "title": "OWL 生境",
-        "subtitle": "创造者的栖息地，创意的生态系统",
+        "title": "OWL 创意工具箱",
+        "subtitle": "创造者的百宝箱，创意的孵化器",
         "description": "一个有灵魂、有记忆、会做梦的生命体。6个AI工具，38个智能代理，打造有机生长的创意生态。",
         "stats": "6个工具 · 38个AI代理",
-        "enter": "进入生境",
+        "enter": "打开工具箱",
         "tools": {
           "spaceDesigner": "空间设计",
           "gameWorkshop": "游戏工坊",

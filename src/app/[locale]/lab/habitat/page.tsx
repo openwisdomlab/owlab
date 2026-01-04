@@ -203,7 +203,7 @@ export default function HabitatPage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold mb-2">核心理念</h2>
             <p className="text-[var(--muted-foreground)]">
-              OWL 生境不是一个工具集合，而是一个<span className="text-emerald-400 font-medium">有灵魂、有记忆、会做梦的生命体</span>
+              OWL 创意工具箱不是一个简单的工具集合，而是一个<span className="text-emerald-400 font-medium">有灵魂、有记忆、会做梦的生命体</span>
             </p>
           </div>
 
@@ -352,7 +352,7 @@ export default function HabitatPage() {
             <div className="relative">
               <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-emerald-500" />
               <p className="text-[var(--muted-foreground)]">
-                学生第一次走进 OWL 生境，空间"认出"她是新人，播放一段创始故事。她走近木工区，三个"幽灵项目"浮现——过去学生的作品在等待对话。她选择接受一个"世代传承任务"：完成五年前一个学长未竟的飞行器原型。
+                学生第一次打开 OWL 创意工具箱，空间"认出"她是新人，播放一段创始故事。她走近木工区，三个"幽灵项目"浮现——过去学生的作品在等待对话。她选择接受一个"世代传承任务"：完成五年前一个学长未竟的飞行器原型。
               </p>
             </div>
             <div className="relative">

@@ -1757,7 +1757,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          {/* OWL 生境 - 突出入口卡片 */}
+          {/* OWL 创意工具箱 - 突出入口卡片 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
