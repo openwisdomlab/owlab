@@ -142,7 +142,7 @@ export default function HomePage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "OWL 建设与运营标准手册",
+    name: "OWL 开放智慧实验室建设与运营标准手册",
     description: "开放式学习空间的模块化知识库，涵盖理念、治理、空间、课程、工具、安全、人员、运营和评价九大核心模块",
     url: "https://owl.openwisdomlab.org",
   };
@@ -258,22 +258,38 @@ export default function HomePage() {
               </motion.h2>
             </motion.div>
 
-            {/* Main Title - OWL 建设与运营标准手册 */}
-            <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1] tracking-tight"
+            {/* Main Title - OWL 开放智慧实验室 建设与运营标准手册 */}
+            <motion.div
+              className="mb-8"
               variants={itemVariants}
-              style={{
-                fontFamily: "'Inter', -apple-system, sans-serif",
-                fontWeight: 900,
-                background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 50%, var(--neon-pink) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                textShadow: "0 0 80px rgba(6, 182, 212, 0.3)",
-              }}
             >
-              OWL 建设与运营<br/>标准手册
-            </motion.h1>
+              <h1
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight"
+                style={{
+                  fontFamily: "'Inter', -apple-system, sans-serif",
+                  fontWeight: 900,
+                  background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 50%, var(--neon-pink) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textShadow: "0 0 80px rgba(6, 182, 212, 0.3)",
+                }}
+              >
+                OWL 开放智慧实验室
+              </h1>
+              <div
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2 leading-[1.2] tracking-tight"
+                style={{
+                  fontFamily: "'Inter', -apple-system, sans-serif",
+                  background: "linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 50%, var(--neon-pink) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                建设与运营标准手册
+              </div>
+            </motion.div>
 
             {/* Core Philosophy Tagline */}
             <motion.p
@@ -298,7 +314,7 @@ export default function HomePage() {
 
                 {/* Quote Text */}
                 <blockquote className="relative text-base md:text-lg text-[var(--foreground)] leading-relaxed italic text-center mb-4">
-                  想象力比知识更重要，因为知识是有限的，而想象力概括着世界上的一切，推动着进步，并且是知识进化的源泉。
+                  提出一个问题往往比解决一个问题更重要。因为解决问题也许仅是一个数学上或实验上的技能而已，而提出新的问题，却需要有创造性的想象力，标志着科学的真正进步。
                 </blockquote>
 
                 {/* Author */}
@@ -343,6 +359,166 @@ export default function HomePage() {
                 <GitBranch className="w-5 h-5" />
                 {t("hero.cta.architecture")}
               </Link>
+            </motion.div>
+
+            {/* Core Values - 五大核心价值 */}
+            <motion.div
+              className="flex flex-wrap justify-center gap-3 mb-10 mt-4"
+              variants={itemVariants}
+            >
+              {[
+                {
+                  label: '开放',
+                  en: 'Open',
+                  color: '#D91A7A',
+                  svg: (
+                    <svg viewBox="0 0 80 80" className="w-full h-full">
+                      <circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 4" />
+                      <circle cx="40" cy="40" r="18" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <circle cx="40" cy="40" r="6" fill="currentColor" />
+                      <line x1="40" y1="10" x2="40" y2="22" stroke="currentColor" strokeWidth="2" />
+                      <line x1="40" y1="58" x2="40" y2="70" stroke="currentColor" strokeWidth="2" />
+                      <line x1="10" y1="40" x2="22" y2="40" stroke="currentColor" strokeWidth="2" />
+                      <line x1="58" y1="40" x2="70" y2="40" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                  ),
+                  desc: '开放式创新，拥抱多元视角'
+                },
+                {
+                  label: '交叉',
+                  en: 'Cross',
+                  color: '#6A809A',
+                  svg: (
+                    <svg viewBox="0 0 80 80" className="w-full h-full">
+                      <circle cx="25" cy="25" r="15" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.7" />
+                      <circle cx="55" cy="25" r="15" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.7" />
+                      <circle cx="40" cy="50" r="15" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.7" />
+                      <circle cx="40" cy="35" r="5" fill="currentColor" opacity="0.8" />
+                    </svg>
+                  ),
+                  desc: '跨学科融合，突破边界思考'
+                },
+                {
+                  label: '连接',
+                  en: 'Connect',
+                  color: '#7A8490',
+                  svg: (
+                    <svg viewBox="0 0 80 80" className="w-full h-full">
+                      <circle cx="20" cy="40" r="8" fill="currentColor" opacity="0.8" />
+                      <circle cx="60" cy="40" r="8" fill="currentColor" opacity="0.8" />
+                      <circle cx="40" cy="20" r="8" fill="currentColor" opacity="0.8" />
+                      <circle cx="40" cy="60" r="8" fill="currentColor" opacity="0.8" />
+                      <line x1="28" y1="40" x2="52" y2="40" stroke="currentColor" strokeWidth="2" />
+                      <line x1="40" y1="28" x2="40" y2="52" stroke="currentColor" strokeWidth="2" />
+                      <line x1="26" y1="34" x2="34" y2="26" stroke="currentColor" strokeWidth="2" />
+                      <line x1="46" y1="26" x2="54" y2="34" stroke="currentColor" strokeWidth="2" />
+                      <line x1="26" y1="46" x2="34" y2="54" stroke="currentColor" strokeWidth="2" />
+                      <line x1="46" y1="54" x2="54" y2="46" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                  ),
+                  desc: '连接全球资源，构建协作网络'
+                },
+                {
+                  label: '可持续',
+                  en: 'Sustainable',
+                  color: '#8A8A7A',
+                  svg: (
+                    <svg viewBox="0 0 80 80" className="w-full h-full">
+                      <path d="M40 15 C55 25, 65 40, 40 65 C15 40, 25 25, 40 15" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <path d="M40 25 C50 32, 55 42, 40 55 C25 42, 30 32, 40 25" fill="currentColor" opacity="0.3" />
+                      <circle cx="40" cy="40" r="3" fill="currentColor" />
+                      <path d="M40 43 L40 55" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                  ),
+                  desc: '持续发展，生生不息的创新生态'
+                },
+                {
+                  label: '黑科技',
+                  en: 'Tech',
+                  color: '#A49464',
+                  svg: (
+                    <svg viewBox="0 0 80 80" className="w-full h-full">
+                      <polygon points="40,12 52,28 68,32 56,46 58,64 40,56 22,64 24,46 12,32 28,28" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <polygon points="40,22 48,32 58,34 50,42 52,54 40,48 28,54 30,42 22,34 32,32" fill="currentColor" opacity="0.3" />
+                      <circle cx="40" cy="38" r="6" fill="currentColor" />
+                    </svg>
+                  ),
+                  desc: 'AI时代的前沿工具与创新思维'
+                },
+              ].map((value) => (
+                <motion.div
+                  key={value.label}
+                  className="group relative"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div
+                    className="px-4 py-2 rounded-full glass-card cursor-pointer transition-all duration-300 hover:shadow-lg"
+                    style={{
+                      borderColor: `${value.color}40`,
+                      boxShadow: `0 0 0 1px ${value.color}20`,
+                    }}
+                  >
+                    <span className="font-semibold text-sm" style={{ color: value.color }}>
+                      {value.label}
+                    </span>
+                  </div>
+
+                  {/* Hover Card with SVG Visualization */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 pointer-events-none">
+                    <div
+                      className="relative p-4 rounded-xl glass-card border min-w-[180px] shadow-xl"
+                      style={{ borderColor: `${value.color}40`, background: 'var(--glass-bg)' }}
+                    >
+                      {/* Arrow */}
+                      <div
+                        className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-l border-t glass-card"
+                        style={{ borderColor: `${value.color}40` }}
+                      />
+
+                      {/* SVG Visualization */}
+                      <div
+                        className="w-16 h-16 mx-auto mb-3"
+                        style={{ color: value.color }}
+                      >
+                        {value.svg}
+                      </div>
+
+                      {/* Title */}
+                      <div className="text-center mb-2">
+                        <span className="font-bold" style={{ color: value.color }}>
+                          {value.label}
+                        </span>
+                        <span className="text-xs text-[var(--muted-foreground)] ml-1">
+                          {value.en}
+                        </span>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-xs text-[var(--muted-foreground)] text-center leading-relaxed">
+                        {value.desc}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Slogan */}
+            <motion.div
+              className="mb-10"
+              variants={itemVariants}
+            >
+              <p
+                className="text-lg md:text-xl font-medium text-center"
+                style={{
+                  background: "linear-gradient(135deg, var(--neon-yellow) 0%, var(--neon-cyan) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                没有问题是太愚蠢的，没有想法是太疯狂的
+              </p>
             </motion.div>
 
             {/* Scroll Indicator */}
@@ -1834,90 +2010,6 @@ export default function HomePage() {
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               「夜视者」—— 在深夜星空中洞察光明，于未知领域激发创意
             </p>
-          </motion.div>
-
-          {/* Color Palette Display */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.div variants={itemVariants} className="group">
-              <div
-                className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#D91A7A' }}
-              >
-                <div className="text-white">
-                  <div className="font-semibold text-sm">Logo紫色</div>
-                  <div className="text-xs opacity-70">Magenta Pink</div>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div variants={itemVariants} className="group">
-              <div
-                className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: '#2563EB' }}
-              >
-                <div className="text-white">
-                  <div className="font-semibold text-sm">Logo蓝色</div>
-                  <div className="text-xs opacity-70">OWL Blue</div>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div variants={itemVariants} className="group">
-              <div
-                className="h-24 rounded-xl flex items-end p-4 transition-transform group-hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #D91A7A 0%, #2563EB 100%)' }}
-              >
-                <div className="text-white">
-                  <div className="font-semibold text-sm">蓝紫渐变</div>
-                  <div className="text-xs opacity-70">Magenta-Blue Gradient</div>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div variants={itemVariants} className="group">
-              <div
-                className="h-24 rounded-xl flex items-end p-4 border border-[var(--glass-border)] transition-transform group-hover:scale-105"
-                style={{ background: '#0E0E14' }}
-              >
-                <div className="text-white">
-                  <div className="font-semibold text-sm">深夜星空</div>
-                  <div className="text-xs opacity-70">Night Sky</div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Brand Values */}
-          <motion.div
-            className="grid md:grid-cols-5 gap-4 mb-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {[
-              { label: '开放', en: 'Open', color: '#D91A7A' },
-              { label: '交叉', en: 'Cross', color: '#6A809A' },
-              { label: '连接', en: 'Connect', color: '#7A8490' },
-              { label: '可持续', en: 'Sustainable', color: '#8A8A7A' },
-              { label: '黑科技', en: 'Tech', color: '#A49464' },
-            ].map((value, i) => (
-              <motion.div
-                key={value.label}
-                variants={itemVariants}
-                className="glass-card p-4 text-center hover:border-[var(--glass-border)] transition-all"
-                style={{ borderColor: `${value.color}30` }}
-                whileHover={{ y: -3, borderColor: value.color }}
-              >
-                <div className="font-bold text-lg" style={{ color: value.color }}>
-                  {value.label}
-                </div>
-                <div className="text-xs text-[var(--muted-foreground)]">{value.en}</div>
-              </motion.div>
-            ))}
           </motion.div>
 
           <motion.div
