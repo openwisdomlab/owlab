@@ -59,3 +59,47 @@ next-env.d.ts
 
 # Auto Claude data directory
 .auto-claude/
+
+# ==============================================
+# Gemini Image Generation (Private/Local Only)
+# ==============================================
+
+# Skills directory (private documentation)
+/.skills/
+
+# Services directory (all microservices)
+/services/
+
+# Generated images (AI-generated assets)
+/public/images/brand/*gemini*.jpg
+/public/images/brand/*gemini*.png
+/public/images/diagrams/*gemini*.jpg
+/public/images/diagrams/*gemini*.png
+/public/images/diagrams/3e-framework*.jpg
+/public/images/modules/*-header.jpg
+/public/images/modules/*-header.png
+
+# Gemini-related scripts
+/scripts/generate-module-visuals.ts
+/scripts/regenerate-with-gemini3.ts
+
+# Gemini UI and API routes
+/src/app/\[locale\]/lab/image-gen/
+/src/app/api/ai/gemini-image/
+/src/lib/ai/providers/gemini-image.ts
+
+# Temporary test files and logs
+**/test_gemini*.py
+**/test_api.py
+**/test_image_extract.py
+**/test_new_models.py
+**/list_models.py
+gemini-service.log
+test-gemini.json
+GEMINI_INTEGRATION_COMPLETE.md
+GEMINI_SETUP.md
+space0/1.png
+space0/2.png
+space0/3.png
+space0/4.png
+space0/5.png
