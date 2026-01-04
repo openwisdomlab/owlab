@@ -22,12 +22,12 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│    Logo紫色          Logo蓝色          蓝紫渐变            │
-│    Magenta       +   Blue          +   Gradient            │
+│    Neon Pink         Blue            Pink-Blue Gradient    │
+│    霓虹粉        +   蓝色          +   粉蓝渐变            │
 │                                                             │
-│    洋红色            蓝色               融合渐变            │
+│    创意行动          理性知识           融合创新            │
 │    #D91A7A           #2563EB           #D91A7A→#2563EB     │
-│    智慧、洞察         未来、科技         创新、融合          │
+│    热情、玩耍         洞察、思考         过渡、和谐          │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -36,33 +36,85 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
 
 | 核心价值 | 色彩 | 视觉表达 |
 |---------|------|---------|
-| **开放 Open** | Logo紫 #D91A7A | 温暖、智慧光芒 |
-| **交叉 Cross** | 暗金 #A49464 | 过渡、融合 |
-| **连接 Connect** | 银灰 #8A8A7A | 中性、桥梁 |
-| **可持续 Sustainable** | 蓝灰 #7A8490 | 冷静、持久 |
-| **黑科技 Tech** | Logo紫 #D91A7A | 神秘、未来 |
+| **开放 Open** | Neon Pink #D91A7A | 温暖、创意光芒、行动力 |
+| **智慧 Wisdom** | Blue #2563EB | 洞察、理性思考、知识深度 |
+| **交叉 Cross** | Violet #8B5CF6 | 融合、跨界、思维碰撞 |
+| **连接 Connect** | Neon Cyan #00D9FF | 创新、网络、协作 |
+| **实验 Lab** | Emerald #10B981 | 探索、生长、可持续创新 |
 
 ---
 
 ## 色彩系统
 
-### 主色板 Primary Palette
+### 核心双色 Primary Colors
+
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+  <div className="p-6 rounded-lg" style={{background: '#D91A7A', color: 'white'}}>
+    <div className="font-bold text-lg">Neon Pink</div>
+    <div className="text-sm opacity-90 mt-1">#D91A7A</div>
+    <div className="text-xs mt-3 opacity-80">RGB: 217, 26, 122</div>
+    <div className="text-sm mt-3 opacity-90">
+      <strong>情感</strong>: 热情、创造、行动、玩耍精神<br/>
+      <strong>象征</strong>: 创意火花、勇敢探索、动手实践<br/>
+      <strong>应用</strong>: 行动按钮、高亮元素、创意工具
+    </div>
+  </div>
+  <div className="p-6 rounded-lg" style={{background: '#2563EB', color: 'white'}}>
+    <div className="font-bold text-lg">Blue</div>
+    <div className="text-sm opacity-90 mt-1">#2563EB</div>
+    <div className="text-xs mt-3 opacity-80">RGB: 37, 99, 235</div>
+    <div className="text-sm mt-3 opacity-90">
+      <strong>情感</strong>: 洞察、理性、深度、知识<br/>
+      <strong>象征</strong>: 好奇的眼睛、思考、理论框架<br/>
+      <strong>应用</strong>: 文本、结构线框、知识内容
+    </div>
+  </div>
+  <div className="p-6 rounded-lg" style={{background: '#0E0E14', color: 'white'}}>
+    <div className="font-bold text-lg">Dark</div>
+    <div className="text-sm opacity-90 mt-1">#0E0E14</div>
+    <div className="text-xs mt-3 opacity-80">RGB: 14, 14, 20</div>
+    <div className="text-sm mt-3 opacity-90">
+      <strong>情感</strong>: 深邃、专注、未知、探索空间<br/>
+      <strong>象征</strong>: 创新的土壤、未知的领域<br/>
+      <strong>应用</strong>: 背景、深色模式、沉浸式场景
+    </div>
+  </div>
+</div>
+
+### 辅助色系 Secondary Palette
+
+**克制使用原则**：辅助色仅在需要明确功能区分时使用，80% 的场景只使用核心双色。
 
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
-  <div className="p-4 rounded-lg" style={{background: '#D91A7A', color: 'white'}}>
-    <div className="font-bold">Logo紫色 Magenta</div>
-    <div className="text-sm opacity-70">#D91A7A</div>
-    <div className="text-xs mt-2">RGB: 217, 26, 122</div>
+  <div className="p-4 rounded-lg" style={{background: '#00D9FF', color: '#0E0E14'}}>
+    <div className="font-bold">Neon Cyan</div>
+    <div className="text-sm opacity-80 mt-1">#00D9FF</div>
+    <div className="text-xs mt-2 opacity-70">创新、活力、连接<br/>M02治理、M05工具</div>
   </div>
-  <div className="p-4 rounded-lg" style={{background: '#2563EB', color: 'white'}}>
-    <div className="font-bold">Logo蓝色 OWL Blue</div>
-    <div className="text-sm opacity-80">#2563EB</div>
-    <div className="text-xs mt-2">RGB: 37, 99, 235</div>
+  <div className="p-4 rounded-lg" style={{background: '#8B5CF6', color: 'white'}}>
+    <div className="font-bold">Violet</div>
+    <div className="text-sm opacity-80 mt-1">#8B5CF6</div>
+    <div className="text-xs mt-2 opacity-70">融合、思考、深度<br/>M01理念、跨界场景</div>
   </div>
-  <div className="p-4 rounded-lg" style={{background: 'linear-gradient(135deg, #D91A7A 0%, #2563EB 100%)', color: 'white'}}>
-    <div className="font-bold">蓝紫渐变 Magenta-Blue Gradient</div>
-    <div className="text-sm opacity-80">Gradient</div>
-    <div className="text-xs mt-2">135° / Magenta → Blue</div>
+  <div className="p-4 rounded-lg" style={{background: '#10B981', color: 'white'}}>
+    <div className="font-bold">Emerald</div>
+    <div className="text-sm opacity-80 mt-1">#10B981</div>
+    <div className="text-xs mt-2 opacity-70">安全、生长、可持续<br/>M03空间、M06安全</div>
+  </div>
+  <div className="p-4 rounded-lg" style={{background: '#F97316', color: 'white'}}>
+    <div className="font-bold">Orange</div>
+    <div className="text-sm opacity-80 mt-1">#F97316</div>
+    <div className="text-xs mt-2 opacity-70">活力、创造、热情<br/>M04项目、Living Modules</div>
+  </div>
+  <div className="p-4 rounded-lg" style={{background: '#F59E0B', color: 'white'}}>
+    <div className="font-bold">Amber</div>
+    <div className="text-sm opacity-80 mt-1">#F59E0B</div>
+    <div className="text-xs mt-2 opacity-70">温暖、传递、点燃<br/>M07人员、导师相关</div>
+  </div>
+  <div className="p-4 rounded-lg" style={{background: '#A855F7', color: 'white'}}>
+    <div className="font-bold">Purple</div>
+    <div className="text-sm opacity-80 mt-1">#A855F7</div>
+    <div className="text-xs mt-2 opacity-70">成长、评价、反思<br/>M09评价</div>
   </div>
 </div>
 
@@ -91,51 +143,64 @@ description: Open Wisdom Lab 品牌识别与视觉设计规范 | Brand Visual Id
   </div>
 </div>
 
-### 辅助色板 Secondary Palette
+### 色彩使用原则
 
-<div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
-  <div className="p-4 rounded-lg" style={{background: '#5C5470', color: 'white'}}>
-    <div className="font-bold">神秘紫灰</div>
-    <div className="text-sm opacity-80">#5C5470</div>
-  </div>
-  <div className="p-4 rounded-lg" style={{background: '#B8956B', color: 'white'}}>
-    <div className="font-bold">暖铜</div>
-    <div className="text-sm opacity-80">#B8956B</div>
-  </div>
-  <div className="p-4 rounded-lg" style={{background: '#7A9A6B', color: 'white'}}>
-    <div className="font-bold">苔藓绿</div>
-    <div className="text-sm opacity-80">#7A9A6B</div>
-  </div>
-</div>
+**原则 1: 核心双色优先**
+- 80% 的场景只使用 Pink + Blue + Dark
+- 辅助色仅在需要明确功能区分时使用
+
+**原则 2: 渐变光谱**
+- Pink → Violet → Blue → Cyan 形成连续光谱
+- 渐变表达"融合"和"过渡"的概念
+
+**原则 3: 对比与和谐**
+- 高对比：Pink on Dark、Blue on Dark（可读性）
+- 低对比：渐变、氛围、背景（沉浸感）
+
+**原则 4: 动态变化**
+- 粒子可以是 Pink、Blue 或两者混合
+- 交互时产生颜色变化（Blue → Pink = 从观察到行动）
 
 ### 功能色 Functional Colors
 
-| 用途 | 色值 | 场景 |
-|-----|------|-----|
-| 成功 Success | `#7A9A6B` | 完成、通过、正确 |
-| 警告 Warning | `#D91A7A` | 注意、待处理 |
-| 错误 Error | `#B85450` | 错误、失败、危险 |
-| 信息 Info | `#D91A7A` | 提示、帮助、链接 |
+| 用途 | 色值 | 使用场景 |
+|-----|------|---------|
+| 成功 Success | `#10B981` (Emerald) | 完成、通过、正确 |
+| 警告 Warning | `#F59E0B` (Amber) | 注意、待处理 |
+| 错误 Error | `#F97316` (Orange) | 错误、失败、危险 |
+| 信息 Info | `#2563EB` (Blue) | 提示、帮助、链接 |
+| 强调 Highlight | `#D91A7A` (Neon Pink) | 高亮、行动号召 |
 
 ### CSS 变量定义
 
 ```css
 :root {
-  /* OWL Primary Brand Colors */
-  --owl-magenta: #D91A7A;    /* Logo紫色 */
-  --owl-blue: #2563EB;       /* Logo蓝色 */
-  --owl-violet: #5C5470;     /* 神秘紫灰 */
-  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #2563EB 100%);
+  /* OWL Core Colors */
+  --owl-pink: #D91A7A;       /* Neon Pink - 创意、行动 */
+  --owl-blue: #2563EB;       /* Blue - 理性、知识 */
+  --owl-dark: #0E0E14;       /* Dark - 背景、深邃 */
+
+  /* OWL Secondary Colors */
+  --owl-cyan: #00D9FF;       /* Neon Cyan - 创新、连接 */
+  --owl-violet: #8B5CF6;     /* Violet - 融合、思考 */
+  --owl-emerald: #10B981;    /* Emerald - 安全、生长 */
+  --owl-orange: #F97316;     /* Orange - 活力、创造 */
+  --owl-amber: #F59E0B;      /* Amber - 温暖、传递 */
+  --owl-purple: #A855F7;     /* Purple - 成长、评价 */
 
   /* OWL Neutral Colors */
-  --owl-dark: #0E0E14;       /* 深夜星空 */
   --owl-surface: #1C1C26;    /* 浮层表面 */
   --owl-light: #F5F4F0;      /* 晨曦微光 */
   --owl-muted: #8A8A94;      /* 羽灰 */
 
+  /* OWL Gradients */
+  --owl-gradient: linear-gradient(135deg, #D91A7A 0%, #2563EB 100%);
+  --owl-gradient-spectrum: linear-gradient(135deg, #D91A7A 0%, #8B5CF6 33%, #2563EB 66%, #00D9FF 100%);
+
   /* OWL Glow Effects */
-  --owl-glow-magenta: 0 0 24px rgba(217, 26, 122, 0.25);
+  --owl-glow-pink: 0 0 24px rgba(217, 26, 122, 0.25);
   --owl-glow-blue: 0 0 24px rgba(37, 99, 235, 0.25);
+  --owl-glow-cyan: 0 0 24px rgba(0, 217, 255, 0.25);
 }
 ```
 
