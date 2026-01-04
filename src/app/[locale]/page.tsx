@@ -37,6 +37,7 @@ import { useParams } from "next/navigation";
 import Script from "next/script";
 import { ModuleCards } from "@/components/docs/ModuleCards";
 import { LearningSpaceTagline } from "@/components/ui/LearningSpaceTagline";
+import { CuriosityTagline } from "@/components/ui/CuriosityTagline";
 import { useState } from "react";
 
 const containerVariants = {
@@ -1653,24 +1654,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 空间定位描述 Section */}
+      {/* 好奇心核心元素展示 Section */}
       <section className="py-8 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <p
-            className="text-xl md:text-2xl text-[var(--foreground)] font-medium leading-relaxed"
-            style={{
-              fontFamily: "'Georgia', serif",
-              letterSpacing: "0.02em",
-            }}
-          >
-            一个开放、包容、创新的研究性学习空间
-          </p>
-        </motion.div>
+        <div className="max-w-6xl mx-auto">
+          <CuriosityTagline />
+        </div>
       </section>
 
       {/* 知识库模块 Section */}
