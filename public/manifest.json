@@ -1,21 +1,53 @@
 {
-    "name": "Open Wisdom Lab",
-    "short_name": "OWLab",
-    "description": "An open source laboratory framework for the future.",
-    "start_url": "/",
+    "name": "Open Wisdom Lab - 创新学习空间知识库",
+    "short_name": "OWL",
+    "description": "开源的创新学习空间知识库与设计工具，支持离线访问",
+    "start_url": "/zh",
+    "scope": "/",
     "display": "standalone",
+    "orientation": "any",
     "background_color": "#0E0E14",
     "theme_color": "#D91A7A",
+    "categories": ["education", "productivity", "reference"],
+    "lang": "zh-CN",
+    "dir": "ltr",
     "icons": [
         {
             "src": "/logo.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "/logo.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
-    ]
+    ],
+    "shortcuts": [
+        {
+            "name": "知识库",
+            "short_name": "知识库",
+            "description": "浏览 OWL 知识库模块",
+            "url": "/zh/docs",
+            "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "Living Modules",
+            "short_name": "理念模块",
+            "description": "探索前沿研究与理念",
+            "url": "/zh/docs/living-modules",
+            "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "AI Lab",
+            "short_name": "设计工具",
+            "description": "使用 AI 辅助设计工具",
+            "url": "/zh/lab",
+            "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+        }
+    ],
+    "screenshots": [],
+    "prefer_related_applications": false
 }

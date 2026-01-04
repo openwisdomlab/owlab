@@ -9,6 +9,8 @@ import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { ToastProvider } from "@/components/ui/Toast";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { EmotionProvider } from "@/components/providers/EmotionProvider";
+import { PWAUpdatePrompt } from "@/components/pwa/PWAUpdatePrompt";
+import { OfflineIndicator } from "@/components/pwa/OfflineIndicator";
 
 type Props = {
   children: React.ReactNode;
@@ -38,6 +40,8 @@ export default async function LocaleLayout({ children, params }: Props) {
               <Header locale={locale as Locale} />
               <MobileNav locale={locale as Locale} />
               <SearchDialog locale={locale as Locale} />
+              <OfflineIndicator />
+              <PWAUpdatePrompt />
               <main id="main-content" className="flex-1" tabIndex={-1}>
                 <ErrorBoundary>{children}</ErrorBoundary>
               </main>
