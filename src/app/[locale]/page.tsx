@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import {
   BookOpen,
@@ -31,10 +31,12 @@ import {
   ScrollText,
   Flower2,
   Brain,
+  ChevronDown,
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import Script from "next/script";
 import { ModuleCards } from "@/components/docs/ModuleCards";
+import { useState } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -129,6 +131,13 @@ export default function HomePage() {
   const t = useTranslations("home");
   const params = useParams();
   const locale = params.locale as string;
+
+  // State for expandable core principles
+  const [expandedModule, setExpandedModule] = useState<string | null>(null);
+
+  const togglePrinciples = (moduleId: string) => {
+    setExpandedModule(expandedModule === moduleId ? null : moduleId);
+  };
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -351,395 +360,6 @@ export default function HomePage() {
       </section>
 
 
-      {/* 空间核心理念 Section - Four Core Principles */}
-      <section className="relative py-8 px-4 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-20 left-10 w-64 h-64 bg-[var(--neon-cyan)] opacity-[0.02] blur-[100px] rounded-full"
-            animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute bottom-20 right-10 w-64 h-64 bg-[var(--neon-violet)] opacity-[0.02] blur-[100px] rounded-full"
-            animate={{ scale: [1.2, 1, 1.2], x: [0, -30, 0] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-
-        <div className="relative max-w-6xl mx-auto">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-4"
-          >
-            <motion.div
-              className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-2"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Lightbulb className="w-3.5 h-3.5 text-[var(--neon-yellow)]" />
-              空间哲学
-            </motion.div>
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent">
-              四大核心理念
-            </h2>
-          </motion.div>
-
-          {/* Principle Cards - 2x2 Grid - Horizontal Layout */}
-          <motion.div
-            className="grid md:grid-cols-2 gap-3 lg:gap-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {/* Principle 1: 以学生为中心 */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -4, scale: 1.005 }}
-              className="group relative"
-            >
-              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
-                {/* Card Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                {/* Number Badge */}
-                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
-                  <span className="text-base font-black text-[var(--neon-cyan)]">01</span>
-                </div>
-
-                {/* Horizontal Layout: SVG + Content */}
-                <div className="flex items-center gap-3">
-                  {/* Icon with SVG Visualization - Student-Centered (Radial Pattern) */}
-                  <div className="relative flex-shrink-0 w-16 h-16">
-                    {/* SVG Background Pattern */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <radialGradient id="radial-student" cx="50%" cy="50%">
-                          <stop offset="0%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.6 }} />
-                          <stop offset="100%" style={{ stopColor: 'var(--neon-cyan)', stopOpacity: 0.1 }} />
-                        </radialGradient>
-                      </defs>
-                      {/* Center circle */}
-                      <circle cx="50" cy="50" r="8" fill="var(--neon-cyan)" opacity="0.8" />
-                      {/* Radial lines */}
-                      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
-                        const rad = (angle * Math.PI) / 180;
-                        const x1 = 50 + Math.cos(rad) * 12;
-                        const y1 = 50 + Math.sin(rad) * 12;
-                        const x2 = 50 + Math.cos(rad) * 35;
-                        const y2 = 50 + Math.sin(rad) * 35;
-                        return (
-                          <line
-                            key={i}
-                            x1={x1}
-                            y1={y1}
-                            x2={x2}
-                            y2={y2}
-                            stroke="var(--neon-cyan)"
-                            strokeWidth="1.5"
-                            opacity="0.4"
-                          />
-                        );
-                      })}
-                      {/* Outer circles */}
-                      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
-                        const rad = (angle * Math.PI) / 180;
-                        const cx = 50 + Math.cos(rad) * 35;
-                        const cy = 50 + Math.sin(rad) * 35;
-                        return (
-                          <circle
-                            key={i}
-                            cx={cx}
-                            cy={cy}
-                            r="4"
-                            fill="var(--neon-cyan)"
-                            opacity="0.5"
-                          />
-                        );
-                      })}
-                    </svg>
-                    {/* Icon overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Users className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-cyan)]">
-                      以学生为中心
-                    </h3>
-                    <p className="text-sm text-[var(--foreground)] font-medium">
-                      开放自由的氛围，没有标准答案
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Principle 2: 鼓励大胆探索 */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -4, scale: 1.005 }}
-              className="group relative"
-            >
-              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
-                  <span className="text-base font-black text-[var(--neon-green)]">02</span>
-                </div>
-
-                {/* Horizontal Layout: SVG + Content */}
-                <div className="flex items-center gap-3">
-                  {/* Icon with SVG Visualization - Exploration (Ascending Path) */}
-                  <div className="relative flex-shrink-0 w-16 h-16">
-                    {/* SVG Background Pattern */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="path-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                          <stop offset="0%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.2 }} />
-                          <stop offset="100%" style={{ stopColor: 'var(--neon-green)', stopOpacity: 0.8 }} />
-                        </linearGradient>
-                      </defs>
-                      {/* Ascending spiral path */}
-                      <path
-                        d="M 20 80 Q 30 60, 40 55 T 60 45 T 75 25"
-                        stroke="var(--neon-green)"
-                        strokeWidth="2"
-                        fill="none"
-                        opacity="0.4"
-                        strokeDasharray="4,4"
-                      />
-                      {/* Checkpoint circles along path */}
-                      {[
-                        { cx: 20, cy: 80, r: 3 },
-                        { cx: 35, cy: 62, r: 3.5 },
-                        { cx: 50, cy: 50, r: 4 },
-                        { cx: 65, cy: 38, r: 4.5 },
-                        { cx: 75, cy: 25, r: 5 }
-                      ].map((circle, i) => (
-                        <circle
-                          key={i}
-                          cx={circle.cx}
-                          cy={circle.cy}
-                          r={circle.r}
-                          fill="var(--neon-green)"
-                          opacity={0.3 + i * 0.15}
-                        />
-                      ))}
-                      {/* Arrow at end */}
-                      <path
-                        d="M 75 25 L 70 30 M 75 25 L 80 30"
-                        stroke="var(--neon-green)"
-                        strokeWidth="2"
-                        fill="none"
-                        opacity="0.6"
-                      />
-                    </svg>
-                    {/* Icon overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Rocket className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-green)]">
-                      鼓励大胆探索
-                    </h3>
-                    <p className="text-sm text-[var(--foreground)] font-medium">
-                      允许犯错，包容失败
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Principle 3: 科技感与未来感 */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -4, scale: 1.005 }}
-              className="group relative"
-            >
-              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
-                  <span className="text-base font-black text-[var(--neon-violet)]">03</span>
-                </div>
-
-                {/* Horizontal Layout: SVG + Content */}
-                <div className="flex items-center gap-3">
-                  {/* Icon with SVG Visualization - Tech & Future (Circuit Grid) */}
-                  <div className="relative flex-shrink-0 w-16 h-16">
-                    {/* SVG Background Pattern */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.6 }} />
-                          <stop offset="100%" style={{ stopColor: 'var(--neon-violet)', stopOpacity: 0.2 }} />
-                        </linearGradient>
-                      </defs>
-                      {/* Tech grid pattern */}
-                      <g opacity="0.4">
-                        {/* Horizontal lines */}
-                        <line x1="20" y1="30" x2="80" y2="30" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                        <line x1="20" y1="50" x2="80" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                        <line x1="20" y1="70" x2="80" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                        {/* Vertical lines */}
-                        <line x1="30" y1="20" x2="30" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                        <line x1="50" y1="20" x2="50" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                        <line x1="70" y1="20" x2="70" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
-                      </g>
-                      {/* Circuit nodes */}
-                      {[
-                        { cx: 30, cy: 30 }, { cx: 50, cy: 30 }, { cx: 70, cy: 30 },
-                        { cx: 30, cy: 50 }, { cx: 50, cy: 50 }, { cx: 70, cy: 50 },
-                        { cx: 30, cy: 70 }, { cx: 50, cy: 70 }, { cx: 70, cy: 70 }
-                      ].map((node, i) => (
-                        <circle
-                          key={i}
-                          cx={node.cx}
-                          cy={node.cy}
-                          r="3"
-                          fill="var(--neon-violet)"
-                          opacity={0.5 + (i % 3) * 0.15}
-                        />
-                      ))}
-                      {/* Corner squares */}
-                      <rect x="18" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                      <rect x="76" y="18" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                      <rect x="18" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                      <rect x="76" y="76" width="6" height="6" fill="var(--neon-violet)" opacity="0.6" />
-                    </svg>
-                    {/* Icon overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Sparkles className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-violet)]">
-                      科技感与未来感
-                    </h3>
-                    <p className="text-sm text-[var(--foreground)] font-medium">
-                      激发创新想法诞生
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Principle 4: 灵活流动的空间 */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -4, scale: 1.005 }}
-              className="group relative"
-            >
-              <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
-                  <span className="text-base font-black text-[var(--neon-pink)]">04</span>
-                </div>
-
-                {/* Horizontal Layout: SVG + Content */}
-                <div className="flex items-center gap-3">
-                  {/* Icon with SVG Visualization - Flexible Space (Flowing Curves) */}
-                  <div className="relative flex-shrink-0 w-16 h-16">
-                    {/* SVG Background Pattern */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.6 }} />
-                          <stop offset="100%" style={{ stopColor: 'var(--neon-pink)', stopOpacity: 0.2 }} />
-                        </linearGradient>
-                      </defs>
-                      {/* Flowing wave curves */}
-                      <path
-                        d="M 10 30 Q 30 20, 50 30 T 90 30"
-                        stroke="var(--neon-pink)"
-                        strokeWidth="2"
-                        fill="none"
-                        opacity="0.5"
-                      />
-                      <path
-                        d="M 10 50 Q 30 40, 50 50 T 90 50"
-                        stroke="var(--neon-pink)"
-                        strokeWidth="2.5"
-                        fill="none"
-                        opacity="0.6"
-                      />
-                      <path
-                        d="M 10 70 Q 30 60, 50 70 T 90 70"
-                        stroke="var(--neon-pink)"
-                        strokeWidth="2"
-                        fill="none"
-                        opacity="0.5"
-                      />
-                      {/* Modular grid elements */}
-                      <g opacity="0.3">
-                        <rect x="15" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                        <rect x="46" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                        <rect x="77" y="22" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-
-                        <rect x="15" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                        <rect x="46" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                        <rect x="77" y="42" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-
-                        <rect x="15" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                        <rect x="46" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                        <rect x="77" y="62" width="8" height="8" fill="var(--neon-pink)" rx="1" />
-                      </g>
-                      {/* Connection points */}
-                      <circle cx="19" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
-                      <circle cx="50" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
-                      <circle cx="81" cy="26" r="2" fill="var(--neon-pink)" opacity="0.7" />
-                    </svg>
-                    {/* Icon overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <GitBranch className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="text-base font-bold mb-0.5 text-[var(--neon-pink)]">
-                      灵活流动的空间
-                    </h3>
-                    <p className="text-sm text-[var(--foreground)] font-medium">
-                      灵活、流动和多样化
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* CTA to Detail Page */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            className="mt-5 flex justify-center"
-          >
-            <Link
-              href={`/${locale}/docs/knowledge-base/03-space/extend/core-space-philosophy`}
-              className="group inline-flex items-center gap-2 px-5 py-2 rounded-lg glass-card hover:border-[var(--neon-cyan)] transition-all duration-300 backdrop-blur-xl text-xs"
-            >
-              <BookOpen className="w-3.5 h-3.5 text-[var(--neon-cyan)]" />
-              <span className="font-medium">深入了解空间理念</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
 
       {/* 前沿理念模块 Section - 独立展示 */}
       <section className="py-20 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
@@ -771,9 +391,9 @@ export default function HomePage() {
             variants={containerVariants}
           >
             {/* L01 空间的塑造 */}
-            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div variants={itemVariants} className="flex flex-col">
               <Link href={`/${locale}/docs/living-modules/01-space-as-educator`}>
-                <div className="h-full glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
+                <div className="glass-card p-6 hover:border-[var(--neon-cyan)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)]/20 to-[var(--neon-cyan)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -807,16 +427,283 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+
+              {/* Expandable Button */}
+              <motion.button
+                onClick={() => togglePrinciples("L01")}
+                className="mt-2 w-full px-4 py-2 rounded-lg glass-card hover:border-[var(--neon-cyan)]/50 transition-all flex items-center justify-center gap-2 text-sm font-medium text-[var(--neon-cyan)]"
+                whileHover={{ y: -2 }}
+              >
+                <span>{expandedModule === "L01" ? "收起核心理念" : "查看核心理念"}</span>
+                <motion.div
+                  animate={{ rotate: expandedModule === "L01" ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-4 h-4" />
+                </motion.div>
+              </motion.button>
+
+              {/* Expandable Core Principles - L01 */}
+              <AnimatePresence>
+                {expandedModule === "L01" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-4 space-y-3">
+                      {/* Principle 1: 以学生为中心 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.1 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-cyan)]">01</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="8" fill="var(--neon-cyan)" opacity="0.8" />
+                                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                                  const rad = (angle * Math.PI) / 180;
+                                  const x1 = 50 + Math.cos(rad) * 12;
+                                  const y1 = 50 + Math.sin(rad) * 12;
+                                  const x2 = 50 + Math.cos(rad) * 35;
+                                  const y2 = 50 + Math.sin(rad) * 35;
+                                  return (
+                                    <line
+                                      key={i}
+                                      x1={x1}
+                                      y1={y1}
+                                      x2={x2}
+                                      y2={y2}
+                                      stroke="var(--neon-cyan)"
+                                      strokeWidth="1.5"
+                                      opacity="0.4"
+                                    />
+                                  );
+                                })}
+                                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                                  const rad = (angle * Math.PI) / 180;
+                                  const cx = 50 + Math.cos(rad) * 35;
+                                  const cy = 50 + Math.sin(rad) * 35;
+                                  return (
+                                    <circle
+                                      key={i}
+                                      cx={cx}
+                                      cy={cy}
+                                      r="4"
+                                      fill="var(--neon-cyan)"
+                                      opacity="0.5"
+                                    />
+                                  );
+                                })}
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Users className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-cyan)]">
+                                以学生为中心
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                开放自由的氛围，没有标准答案
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 2: 鼓励大胆探索 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-green)]">02</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M 20 80 Q 30 60, 40 55 T 60 45 T 75 25"
+                                  stroke="var(--neon-green)"
+                                  strokeWidth="2"
+                                  fill="none"
+                                  opacity="0.4"
+                                  strokeDasharray="4,4"
+                                />
+                                {[
+                                  { cx: 20, cy: 80, r: 3 },
+                                  { cx: 35, cy: 62, r: 3.5 },
+                                  { cx: 50, cy: 50, r: 4 },
+                                  { cx: 65, cy: 38, r: 4.5 },
+                                  { cx: 75, cy: 25, r: 5 }
+                                ].map((circle, i) => (
+                                  <circle
+                                    key={i}
+                                    cx={circle.cx}
+                                    cy={circle.cy}
+                                    r={circle.r}
+                                    fill="var(--neon-green)"
+                                    opacity={0.3 + i * 0.15}
+                                  />
+                                ))}
+                                <path
+                                  d="M 75 25 L 70 30 M 75 25 L 80 30"
+                                  stroke="var(--neon-green)"
+                                  strokeWidth="2"
+                                  fill="none"
+                                  opacity="0.6"
+                                />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Rocket className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-green)]">
+                                鼓励大胆探索
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                允许犯错，包容失败
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 3: 科技感与未来感 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-violet)]">03</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <g opacity="0.4">
+                                  <line x1="20" y1="30" x2="80" y2="30" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                                  <line x1="20" y1="50" x2="80" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                                  <line x1="20" y1="70" x2="80" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                                  <line x1="30" y1="20" x2="30" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                                  <line x1="50" y1="20" x2="50" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                                  <line x1="70" y1="20" x2="70" y2="80" stroke="var(--neon-violet)" strokeWidth="1.5" />
+                                </g>
+                                {[
+                                  { cx: 30, cy: 30 }, { cx: 50, cy: 30 }, { cx: 70, cy: 30 },
+                                  { cx: 30, cy: 50 }, { cx: 50, cy: 50 }, { cx: 70, cy: 50 },
+                                  { cx: 30, cy: 70 }, { cx: 50, cy: 70 }, { cx: 70, cy: 70 }
+                                ].map((node, i) => (
+                                  <circle
+                                    key={i}
+                                    cx={node.cx}
+                                    cy={node.cy}
+                                    r="3"
+                                    fill="var(--neon-violet)"
+                                    opacity={0.5 + (i % 3) * 0.15}
+                                  />
+                                ))}
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Sparkles className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-violet)]">
+                                科技感与未来感
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                点燃技术好奇心
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 4: 灵活流动的空间 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-pink)]">04</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M 10 30 Q 30 20, 50 30 T 90 30"
+                                  stroke="var(--neon-pink)"
+                                  strokeWidth="2"
+                                  fill="none"
+                                  opacity="0.5"
+                                />
+                                <path
+                                  d="M 10 50 Q 30 40, 50 50 T 90 50"
+                                  stroke="var(--neon-pink)"
+                                  strokeWidth="2.5"
+                                  fill="none"
+                                  opacity="0.6"
+                                />
+                                <path
+                                  d="M 10 70 Q 30 60, 50 70 T 90 70"
+                                  stroke="var(--neon-pink)"
+                                  strokeWidth="2"
+                                  fill="none"
+                                  opacity="0.5"
+                                />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <GitBranch className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-pink)]">
+                                灵活流动的空间
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                灵活、流动和多样化
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
             {/* L02 思维的延伸 */}
-            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div variants={itemVariants} className="flex flex-col">
               <Link href={`/${locale}/docs/living-modules/02-extended-mind`}>
-                <div className="h-full glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
+                <div className="glass-card p-6 hover:border-[var(--neon-violet)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-violet)]/20 to-[var(--neon-violet)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Sparkles className="w-6 h-6 text-[var(--neon-violet)]" />
+                        <Brain className="w-6 h-6 text-[var(--neon-violet)]" />
                       </div>
                       <div>
                         <div className="flex items-center gap-2 mb-1">
@@ -846,12 +733,218 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+
+              {/* Expandable Button */}
+              <motion.button
+                onClick={() => togglePrinciples("L02")}
+                className="mt-2 w-full px-4 py-2 rounded-lg glass-card hover:border-[var(--neon-violet)]/50 transition-all flex items-center justify-center gap-2 text-sm font-medium text-[var(--neon-violet)]"
+                whileHover={{ y: -2 }}
+              >
+                <span>{expandedModule === "L02" ? "收起核心理念" : "查看核心理念"}</span>
+                <motion.div
+                  animate={{ rotate: expandedModule === "L02" ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-4 h-4" />
+                </motion.div>
+              </motion.button>
+
+              {/* Expandable Core Principles - L02 */}
+              <AnimatePresence>
+                {expandedModule === "L02" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-4 space-y-3">
+                      {/* Principle 1: 工具即思维 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.1 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-violet)]">01</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Brain circle */}
+                                <circle cx="35" cy="50" r="15" fill="none" stroke="var(--neon-violet)" strokeWidth="2" opacity="0.5" />
+                                {/* Tool/Wrench */}
+                                <rect x="55" y="35" width="25" height="8" rx="2" fill="var(--neon-violet)" opacity="0.4" />
+                                <rect x="60" y="43" width="5" height="20" rx="1" fill="var(--neon-violet)" opacity="0.4" />
+                                {/* Connection lines */}
+                                <line x1="50" y1="50" x2="60" y2="45" stroke="var(--neon-violet)" strokeWidth="2" opacity="0.6" strokeDasharray="2,2" />
+                                <line x1="45" y1="45" x2="62" y2="40" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Brain className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-violet)]">
+                                工具即思维
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                AI 和设备是认知系统的延伸部分
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 2: 预测-验证循环 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-cyan)]">02</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Circular arrow */}
+                                <path
+                                  d="M 70 30 A 25 25 0 1 1 30 30"
+                                  stroke="var(--neon-cyan)"
+                                  strokeWidth="3"
+                                  fill="none"
+                                  opacity="0.6"
+                                />
+                                {/* Arrow head */}
+                                <path d="M 28 30 L 32 25 L 36 30" fill="var(--neon-cyan)" opacity="0.6" />
+                                {/* Bottom arc */}
+                                <path
+                                  d="M 30 70 A 25 25 0 1 1 70 70"
+                                  stroke="var(--neon-cyan)"
+                                  strokeWidth="3"
+                                  fill="none"
+                                  opacity="0.6"
+                                />
+                                {/* Arrow head bottom */}
+                                <path d="M 72 70 L 68 75 L 64 70" fill="var(--neon-cyan)" opacity="0.6" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Target className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-cyan)]">
+                                预测-验证循环
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                用原型测试假设，失败即学习
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 3: 身体锚定思维 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-pink)]">03</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Hand silhouette */}
+                                <path
+                                  d="M 35 65 L 35 45 L 40 40 L 45 45 L 45 35 L 50 30 L 55 35 L 55 40 L 60 35 L 65 40 L 65 60 Q 65 70, 50 70 Q 35 70, 35 65"
+                                  fill="var(--neon-pink)"
+                                  opacity="0.3"
+                                />
+                                {/* Brain connection */}
+                                <circle cx="50" cy="25" r="8" fill="var(--neon-pink)" opacity="0.5" />
+                                <line x1="50" y1="33" x2="50" y2="42" stroke="var(--neon-pink)" strokeWidth="2" opacity="0.6" strokeDasharray="2,2" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Wand2 className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-pink)]">
+                                身体锚定思维
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                抽象概念需要触觉和动作支撑
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 4: 人机协作智能 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-green)]">04</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Human node */}
+                                <circle cx="35" cy="50" r="12" fill="none" stroke="var(--neon-green)" strokeWidth="2" opacity="0.5" />
+                                {/* AI node */}
+                                <rect x="53" y="38" width="24" height="24" rx="3" fill="none" stroke="var(--neon-green)" strokeWidth="2" opacity="0.5" />
+                                {/* Connection */}
+                                <line x1="47" y1="50" x2="53" y2="50" stroke="var(--neon-green)" strokeWidth="3" opacity="0.7" />
+                                {/* Network nodes */}
+                                <circle cx="35" cy="30" r="3" fill="var(--neon-green)" opacity="0.4" />
+                                <circle cx="65" cy="30" r="3" fill="var(--neon-green)" opacity="0.4" />
+                                <circle cx="35" cy="70" r="3" fill="var(--neon-green)" opacity="0.4" />
+                                <circle cx="65" cy="70" r="3" fill="var(--neon-green)" opacity="0.4" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Users className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-green)]">
+                                人机协作智能
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                与 AI 共同思考，而非被替代
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
             {/* L03 涌现的智慧 */}
-            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div variants={itemVariants} className="flex flex-col">
               <Link href={`/${locale}/docs/living-modules/03-emergent-wisdom`}>
-                <div className="h-full glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
+                <div className="glass-card p-6 hover:border-[var(--neon-green)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-green)]/20 to-[var(--neon-green)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -885,12 +978,237 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+
+              {/* Expandable Button */}
+              <motion.button
+                onClick={() => togglePrinciples("L03")}
+                className="mt-2 w-full px-4 py-2 rounded-lg glass-card hover:border-[var(--neon-green)]/50 transition-all flex items-center justify-center gap-2 text-sm font-medium text-[var(--neon-green)]"
+                whileHover={{ y: -2 }}
+              >
+                <span>{expandedModule === "L03" ? "收起核心理念" : "查看核心理念"}</span>
+                <motion.div
+                  animate={{ rotate: expandedModule === "L03" ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-4 h-4" />
+                </motion.div>
+              </motion.button>
+
+              {/* Expandable Core Principles - L03 */}
+              <AnimatePresence>
+                {expandedModule === "L03" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-4 space-y-3">
+                      {/* Principle 1: 对话即智能 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.1 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-green)]">01</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Speech bubbles */}
+                                <path
+                                  d="M 25 35 Q 25 25, 35 25 L 50 25 Q 60 25, 60 35 L 60 45 Q 60 55, 50 55 L 40 55 L 35 60 L 35 55 L 35 55 Q 25 55, 25 45 Z"
+                                  fill="none"
+                                  stroke="var(--neon-green)"
+                                  strokeWidth="2"
+                                  opacity="0.5"
+                                />
+                                <path
+                                  d="M 40 45 Q 40 35, 50 35 L 65 35 Q 75 35, 75 45 L 75 55 Q 75 65, 65 65 L 55 65 L 50 70 L 50 65 L 50 65 Q 40 65, 40 55 Z"
+                                  fill="none"
+                                  stroke="var(--neon-green)"
+                                  strokeWidth="2"
+                                  opacity="0.5"
+                                />
+                                {/* Intersection highlight */}
+                                <circle cx="50" cy="45" r="6" fill="var(--neon-green)" opacity="0.3" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Users className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-green)]">
+                                对话即智能
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                思想在交流中变得更强大
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 2: 边缘参与路径 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-cyan)]">02</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Concentric circles representing periphery to core */}
+                                <circle cx="50" cy="50" r="35" fill="none" stroke="var(--neon-cyan)" strokeWidth="1.5" opacity="0.2" />
+                                <circle cx="50" cy="50" r="25" fill="none" stroke="var(--neon-cyan)" strokeWidth="2" opacity="0.4" />
+                                <circle cx="50" cy="50" r="15" fill="none" stroke="var(--neon-cyan)" strokeWidth="2.5" opacity="0.6" />
+                                <circle cx="50" cy="50" r="6" fill="var(--neon-cyan)" opacity="0.8" />
+                                {/* Arrow path from edge to center */}
+                                <path d="M 85 50 L 60 50" stroke="var(--neon-cyan)" strokeWidth="2" opacity="0.6" markerEnd="url(#arrowhead)" />
+                                <defs>
+                                  <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+                                    <polygon points="0 0, 10 3, 0 6" fill="var(--neon-cyan)" opacity="0.6" />
+                                  </marker>
+                                </defs>
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Compass className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-cyan)]">
+                                边缘参与路径
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                从观察者到贡献者的成长阶梯
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 3: 知识自组织 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-violet)]">03</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Network nodes */}
+                                {[
+                                  { cx: 50, cy: 30 },
+                                  { cx: 30, cy: 50 },
+                                  { cx: 70, cy: 50 },
+                                  { cx: 40, cy: 70 },
+                                  { cx: 60, cy: 70 }
+                                ].map((node, i) => (
+                                  <circle
+                                    key={i}
+                                    cx={node.cx}
+                                    cy={node.cy}
+                                    r="5"
+                                    fill="var(--neon-violet)"
+                                    opacity={0.6}
+                                  />
+                                ))}
+                                {/* Connections */}
+                                <line x1="50" y1="30" x2="30" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                                <line x1="50" y1="30" x2="70" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                                <line x1="30" y1="50" x2="40" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                                <line x1="70" y1="50" x2="60" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                                <line x1="40" y1="70" x2="60" y2="70" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                                <line x1="30" y1="50" x2="70" y2="50" stroke="var(--neon-violet)" strokeWidth="1.5" opacity="0.4" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <GitBranch className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-violet)]">
+                                知识自组织
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                分享-迭代-精炼的循环产生集体智慧
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 4: AI 辅助协作 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-pink)]">04</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* AI center node */}
+                                <rect x="40" y="40" width="20" height="20" rx="3" fill="var(--neon-pink)" opacity="0.5" />
+                                {/* Human nodes around */}
+                                {[0, 90, 180, 270].map((angle, i) => {
+                                  const rad = (angle * Math.PI) / 180;
+                                  const cx = 50 + Math.cos(rad) * 30;
+                                  const cy = 50 + Math.sin(rad) * 30;
+                                  return (
+                                    <g key={i}>
+                                      <circle cx={cx} cy={cy} r="6" fill="var(--neon-pink)" opacity="0.4" />
+                                      <line x1="50" y1="50" x2={cx} y2={cy} stroke="var(--neon-pink)" strokeWidth="1.5" opacity="0.5" />
+                                    </g>
+                                  );
+                                })}
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Sparkles className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-pink)]">
+                                AI 辅助协作
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                技术降低协作门槛，放大集体智能
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
-            {/* L04 技术的诗意 */}
-            <motion.div variants={itemVariants} whileHover={{ y: -5 }}>
+            {/* L04 持续的进化 */}
+            <motion.div variants={itemVariants} className="flex flex-col">
               <Link href={`/${locale}/docs/living-modules/04-poetics-of-technology`}>
-                <div className="h-full glass-card p-6 hover:border-[var(--neon-pink)]/50 transition-all group">
+                <div className="glass-card p-6 hover:border-[var(--neon-pink)]/50 transition-all group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--neon-pink)]/20 to-[var(--neon-pink)]/5 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -924,6 +1242,216 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+
+              {/* Expandable Button */}
+              <motion.button
+                onClick={() => togglePrinciples("L04")}
+                className="mt-2 w-full px-4 py-2 rounded-lg glass-card hover:border-[var(--neon-pink)]/50 transition-all flex items-center justify-center gap-2 text-sm font-medium text-[var(--neon-pink)]"
+                whileHover={{ y: -2 }}
+              >
+                <span>{expandedModule === "L04" ? "收起核心理念" : "查看核心理念"}</span>
+                <motion.div
+                  animate={{ rotate: expandedModule === "L04" ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-4 h-4" />
+                </motion.div>
+              </motion.button>
+
+              {/* Expandable Core Principles - L04 */}
+              <AnimatePresence>
+                {expandedModule === "L04" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-4 space-y-3">
+                      {/* Principle 1: 挑战即成长 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.1 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-pink)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-pink)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-pink)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-pink)]">01</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Mountain/stairs ascending */}
+                                <path d="M 20 80 L 20 70 L 35 70 L 35 55 L 50 55 L 50 40 L 65 40 L 65 25 L 80 25" stroke="var(--neon-pink)" strokeWidth="3" fill="none" opacity="0.6" />
+                                {/* Steps */}
+                                <rect x="20" y="70" width="15" height="10" fill="var(--neon-pink)" opacity="0.2" />
+                                <rect x="35" y="55" width="15" height="15" fill="var(--neon-pink)" opacity="0.3" />
+                                <rect x="50" y="40" width="15" height="15" fill="var(--neon-pink)" opacity="0.4" />
+                                <rect x="65" y="25" width="15" height="15" fill="var(--neon-pink)" opacity="0.5" />
+                                {/* Summit flag */}
+                                <path d="M 80 25 L 80 15 L 90 20 L 80 25" fill="var(--neon-pink)" opacity="0.6" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Target className="w-8 h-8 text-[var(--neon-pink)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-pink)]">
+                                挑战即成长
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                困难是能力扩展的信号
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 2: 失败即反馈 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-green)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-green)]/30 hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-green)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-green)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-green)]">02</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* X transforming to checkmark */}
+                                <g opacity="0.3">
+                                  <line x1="30" y1="30" x2="45" y2="45" stroke="var(--neon-green)" strokeWidth="3" />
+                                  <line x1="45" y1="30" x2="30" y2="45" stroke="var(--neon-green)" strokeWidth="3" />
+                                </g>
+                                {/* Arrow */}
+                                <path d="M 48 37 L 58 37" stroke="var(--neon-green)" strokeWidth="2" opacity="0.5" markerEnd="url(#arrow-green)" />
+                                <defs>
+                                  <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="4" refY="2" orient="auto">
+                                    <polygon points="0 0, 8 2, 0 4" fill="var(--neon-green)" opacity="0.5" />
+                                  </marker>
+                                </defs>
+                                {/* Checkmark */}
+                                <path d="M 60 32 L 66 40 L 78 25" stroke="var(--neon-green)" strokeWidth="3" fill="none" opacity="0.7" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Lightbulb className="w-8 h-8 text-[var(--neon-green)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-green)]">
+                                失败即反馈
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                错误提供更新认知模型的数据
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 3: 战略性生成 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-cyan)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-cyan)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-cyan)]">03</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Central point */}
+                                <circle cx="50" cy="50" r="6" fill="var(--neon-cyan)" opacity="0.7" />
+                                {/* Diverging paths */}
+                                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                                  const rad = (angle * Math.PI) / 180;
+                                  const x = 50 + Math.cos(rad) * 35;
+                                  const y = 50 + Math.sin(rad) * 35;
+                                  return (
+                                    <g key={i}>
+                                      <line x1="50" y1="50" x2={x} y2={y} stroke="var(--neon-cyan)" strokeWidth="2" opacity="0.4" />
+                                      <circle cx={x} cy={y} r="4" fill="var(--neon-cyan)" opacity="0.5" />
+                                    </g>
+                                  );
+                                })}
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <GitBranch className="w-8 h-8 text-[var(--neon-cyan)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-cyan)]">
+                                战略性生成
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                主动创造解决方法而非套用公式
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Principle 4: 元认知循环 */}
+                      <motion.div
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="group relative"
+                      >
+                        <div className="relative h-full p-3 rounded-lg bg-gradient-to-br from-[var(--neon-violet)]/10 via-[var(--background)] to-[var(--background)] border-2 border-[var(--neon-violet)]/30 hover:border-[var(--neon-violet)] transition-all duration-300 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[var(--neon-violet)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-[var(--neon-violet)]/20 flex items-center justify-center">
+                            <span className="text-base font-black text-[var(--neon-violet)]">04</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="relative flex-shrink-0 w-16 h-16">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                {/* Spiral loop */}
+                                <path
+                                  d="M 50 20 Q 70 25, 75 45 Q 80 65, 60 75 Q 40 85, 25 65 Q 10 45, 30 30 Q 45 20, 55 30"
+                                  stroke="var(--neon-violet)"
+                                  strokeWidth="2.5"
+                                  fill="none"
+                                  opacity="0.6"
+                                />
+                                {/* Arrow at end */}
+                                <path d="M 55 30 L 52 25 M 55 30 L 60 28" stroke="var(--neon-violet)" strokeWidth="2" opacity="0.6" />
+                                {/* Nodes along spiral */}
+                                <circle cx="50" cy="20" r="3" fill="var(--neon-violet)" opacity="0.5" />
+                                <circle cx="75" cy="45" r="3" fill="var(--neon-violet)" opacity="0.5" />
+                                <circle cx="60" cy="75" r="3" fill="var(--neon-violet)" opacity="0.5" />
+                                <circle cx="25" cy="65" r="3" fill="var(--neon-violet)" opacity="0.5" />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Brain className="w-8 h-8 text-[var(--neon-violet)] relative z-10" />
+                              </div>
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-bold mb-0.5 text-[var(--neon-violet)]">
+                                元认知循环
+                              </h3>
+                              <p className="text-sm text-[var(--foreground)] font-medium mb-1">
+                                觉察-规划-监控-调整的持续迭代
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </motion.div>
 
