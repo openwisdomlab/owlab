@@ -297,46 +297,15 @@ export default function HomePage() {
 
             {/* Core Philosophy Tagline */}
             <motion.p
-              className="text-xl md:text-2xl lg:text-3xl text-[var(--foreground)] font-medium max-w-5xl mx-auto leading-relaxed mb-10"
+              className="text-xl md:text-2xl lg:text-3xl text-[var(--foreground)] font-medium max-w-4xl mx-auto leading-relaxed mb-10"
               variants={itemVariants}
               style={{
                 fontFamily: "'Georgia', serif",
                 letterSpacing: "0.02em",
               }}
             >
-              一个开放、包容、创新的研究性学习空间
-              <br />
-              让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发
+              有好奇心的人、天马行空的想法和有趣的问题
             </motion.p>
-
-            {/* Einstein Quote */}
-            <motion.div
-              className="relative max-w-4xl mx-auto mb-12"
-              variants={itemVariants}
-            >
-              <div className="relative p-4 rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl">
-                {/* Quote Mark */}
-                <div className="absolute -top-4 left-8 text-6xl text-[var(--neon-cyan)] opacity-20 font-serif">"</div>
-
-                {/* Quote Text */}
-                <blockquote className="relative text-base md:text-lg text-[var(--foreground)] leading-relaxed italic text-center mb-4">
-                  提出一个问题往往比解决一个问题更重要。因为解决问题也许仅是一个数学上或实验上的技能而已，而提出新的问题，却需要有创造性的想象力，标志着科学的真正进步。
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex items-center justify-center gap-3">
-                  <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--neon-cyan)]"></div>
-                  <cite className="not-italic text-sm md:text-base text-[var(--muted-foreground)] font-medium">
-                    阿尔伯特·爱因斯坦
-                  </cite>
-                  <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--neon-cyan)]"></div>
-                </div>
-
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[var(--neon-cyan)]/30 rounded-tr-2xl"></div>
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[var(--neon-cyan)]/30 rounded-bl-2xl"></div>
-              </div>
-            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
@@ -1655,6 +1624,26 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 空间定位描述 Section */}
+      <section className="py-12 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <p
+            className="text-xl md:text-2xl text-[var(--foreground)] font-medium leading-relaxed"
+            style={{
+              fontFamily: "'Georgia', serif",
+              letterSpacing: "0.02em",
+            }}
+          >
+            一个开放、包容、创新的研究性学习空间
+          </p>
+        </motion.div>
+      </section>
+
       {/* 知识库模块 Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -1688,6 +1677,39 @@ export default function HomePage() {
             </Link>
           </motion.div>
         </div>
+      </section>
+
+      {/* Einstein Quote Section */}
+      <section className="py-16 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="relative p-6 md:p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl">
+            {/* Quote Mark */}
+            <div className="absolute -top-4 left-8 text-6xl text-[var(--neon-cyan)] opacity-20 font-serif">"</div>
+
+            {/* Quote Text */}
+            <blockquote className="relative text-lg md:text-xl text-[var(--foreground)] leading-relaxed italic text-center mb-6">
+              提出一个问题往往比解决一个问题更重要。因为解决问题也许仅是一个数学上或实验上的技能而已，而提出新的问题，却需要有创造性的想象力，标志着科学的真正进步。
+            </blockquote>
+
+            {/* Author */}
+            <div className="flex items-center justify-center gap-3">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--neon-cyan)]"></div>
+              <cite className="not-italic text-sm md:text-base text-[var(--muted-foreground)] font-medium">
+                阿尔伯特·爱因斯坦
+              </cite>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--neon-cyan)]"></div>
+            </div>
+
+            {/* Decorative corners */}
+            <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[var(--neon-cyan)]/30 rounded-tr-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[var(--neon-cyan)]/30 rounded-bl-2xl"></div>
+          </div>
+        </motion.div>
       </section>
 
       {/* 行动层工具 Section */}
