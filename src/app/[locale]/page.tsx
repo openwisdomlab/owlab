@@ -118,13 +118,17 @@ const seededRandom = (seed: number) => {
   return x - Math.floor(x);
 };
 
+// Round to fixed precision to avoid hydration mismatch from floating-point differences
+const round2 = (n: number) => Math.round(n * 100) / 100;
+
 // Pre-computed particle data for consistent SSR/client rendering
+// Round to 2 decimal places to avoid hydration mismatch from floating-point precision differences
 const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
-  left: seededRandom(i * 3) * 100,
-  top: seededRandom(i * 3 + 1) * 100,
-  opacity: seededRandom(i * 3 + 2) * 0.5 + 0.2,
-  duration: seededRandom(i * 3 + 3) * 5 + 5,
-  delay: seededRandom(i * 3 + 4) * 5,
+  left: Math.round(seededRandom(i * 3) * 10000) / 100,
+  top: Math.round(seededRandom(i * 3 + 1) * 10000) / 100,
+  opacity: Math.round((seededRandom(i * 3 + 2) * 0.5 + 0.2) * 100) / 100,
+  duration: Math.round((seededRandom(i * 3 + 3) * 5 + 5) * 100) / 100,
+  delay: Math.round(seededRandom(i * 3 + 4) * 500) / 100,
 }));
 
 export default function HomePage() {
@@ -650,10 +654,10 @@ export default function HomePage() {
                                 <circle cx="50" cy="50" r="8" fill="var(--neon-cyan)" opacity="0.8" />
                                 {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
                                   const rad = (angle * Math.PI) / 180;
-                                  const x1 = 50 + Math.cos(rad) * 12;
-                                  const y1 = 50 + Math.sin(rad) * 12;
-                                  const x2 = 50 + Math.cos(rad) * 35;
-                                  const y2 = 50 + Math.sin(rad) * 35;
+                                  const x1 = round2(50 + Math.cos(rad) * 12);
+                                  const y1 = round2(50 + Math.sin(rad) * 12);
+                                  const x2 = round2(50 + Math.cos(rad) * 35);
+                                  const y2 = round2(50 + Math.sin(rad) * 35);
                                   return (
                                     <line
                                       key={i}
@@ -669,8 +673,8 @@ export default function HomePage() {
                                 })}
                                 {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
                                   const rad = (angle * Math.PI) / 180;
-                                  const cx = 50 + Math.cos(rad) * 35;
-                                  const cy = 50 + Math.sin(rad) * 35;
+                                  const cx = round2(50 + Math.cos(rad) * 35);
+                                  const cy = round2(50 + Math.sin(rad) * 35);
                                   return (
                                     <circle
                                       key={i}
@@ -1352,8 +1356,8 @@ export default function HomePage() {
                                 {/* Human nodes around */}
                                 {[0, 90, 180, 270].map((angle, i) => {
                                   const rad = (angle * Math.PI) / 180;
-                                  const cx = 50 + Math.cos(rad) * 30;
-                                  const cy = 50 + Math.sin(rad) * 30;
+                                  const cx = round2(50 + Math.cos(rad) * 30);
+                                  const cy = round2(50 + Math.sin(rad) * 30);
                                   return (
                                     <g key={i}>
                                       <circle cx={cx} cy={cy} r="6" fill="var(--neon-pink)" opacity="0.4" />
@@ -1554,8 +1558,8 @@ export default function HomePage() {
                                 {/* Diverging paths */}
                                 {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
                                   const rad = (angle * Math.PI) / 180;
-                                  const x = 50 + Math.cos(rad) * 35;
-                                  const y = 50 + Math.sin(rad) * 35;
+                                  const x = round2(50 + Math.cos(rad) * 35);
+                                  const y = round2(50 + Math.sin(rad) * 35);
                                   return (
                                     <g key={i}>
                                       <line x1="50" y1="50" x2={x} y2={y} stroke="var(--neon-cyan)" strokeWidth="2" opacity="0.4" />
@@ -2182,8 +2186,8 @@ export default function HomePage() {
                     {/* Radiating thought lines */}
                     {[0, 60, 120, 180, 240, 300].map((angle, i) => {
                       const rad = (angle * Math.PI) / 180;
-                      const x2 = 50 + Math.cos(rad) * 35;
-                      const y2 = 50 + Math.sin(rad) * 35;
+                      const x2 = round2(50 + Math.cos(rad) * 35);
+                      const y2 = round2(50 + Math.sin(rad) * 35);
                       return (
                         <line
                           key={i}
@@ -2320,10 +2324,10 @@ export default function HomePage() {
                       {/* Gear teeth */}
                       {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
                         const rad = (angle * Math.PI) / 180;
-                        const x1 = Math.cos(rad) * 12;
-                        const y1 = Math.sin(rad) * 12;
-                        const x2 = Math.cos(rad) * 22;
-                        const y2 = Math.sin(rad) * 22;
+                        const x1 = round2(Math.cos(rad) * 12);
+                        const y1 = round2(Math.sin(rad) * 12);
+                        const x2 = round2(Math.cos(rad) * 22);
+                        const y2 = round2(Math.sin(rad) * 22);
                         return (
                           <line
                             key={i}
