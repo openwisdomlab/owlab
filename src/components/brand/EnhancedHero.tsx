@@ -21,12 +21,175 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
       {/* Particle Field Background */}
       <div className="absolute inset-0" style={{ background: isDark ? '#0E0E14' : '#F8FAFC' }}>
         <ParticleField
-          count={100}
-          connectionThreshold={180}
-          maxConnections={25}
-          speed={0.4}
+          count={150}
+          connectionThreshold={200}
+          maxConnections={30}
+          speed={0.5}
           mouseInfluence={true}
         />
+      </div>
+
+      {/* Map/Blueprint Grid Overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <svg width="100%" height="100%" className="absolute inset-0">
+          <defs>
+            <pattern id="blueprint-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke={isDark ? brandColors.neonCyan : brandColors.blue}
+                strokeWidth="0.5"
+                opacity="0.3"
+              />
+            </pattern>
+            <pattern id="blueprint-grid-major" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+              <path
+                d="M 200 0 L 0 0 0 200"
+                fill="none"
+                stroke={isDark ? brandColors.neonCyan : brandColors.blue}
+                strokeWidth="1"
+                opacity="0.5"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
+          <rect width="100%" height="100%" fill="url(#blueprint-grid-major)" />
+        </svg>
+      </div>
+
+      {/* Waypoint Markers - Map Navigation Style */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Top-left waypoint */}
+        <motion.div
+          className="absolute top-[15%] left-[10%]"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.4 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="8" fill="none" stroke={brandColors.neonCyan} strokeWidth="2" />
+            <circle cx="30" cy="30" r="3" fill={brandColors.neonCyan} />
+            <motion.circle
+              cx="30" cy="30" r="15"
+              fill="none"
+              stroke={brandColors.neonCyan}
+              strokeWidth="1"
+              strokeDasharray="2 3"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
+          </svg>
+        </motion.div>
+
+        {/* Top-right waypoint */}
+        <motion.div
+          className="absolute top-[20%] right-[15%]"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.4 }}
+          transition={{ duration: 1, delay: 0.7 }}
+        >
+          <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="8" fill="none" stroke={brandColors.violet} strokeWidth="2" />
+            <circle cx="30" cy="30" r="3" fill={brandColors.violet} />
+            <motion.circle
+              cx="30" cy="30" r="15"
+              fill="none"
+              stroke={brandColors.violet}
+              strokeWidth="1"
+              strokeDasharray="2 3"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
+          </svg>
+        </motion.div>
+
+        {/* Bottom-left waypoint */}
+        <motion.div
+          className="absolute bottom-[25%] left-[12%]"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.4 }}
+          transition={{ duration: 1, delay: 0.9 }}
+        >
+          <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="8" fill="none" stroke={brandColors.neonPink} strokeWidth="2" />
+            <circle cx="30" cy="30" r="3" fill={brandColors.neonPink} />
+            <motion.circle
+              cx="30" cy="30" r="15"
+              fill="none"
+              stroke={brandColors.neonPink}
+              strokeWidth="1"
+              strokeDasharray="2 3"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
+          </svg>
+        </motion.div>
+
+        {/* Bottom-right waypoint */}
+        <motion.div
+          className="absolute bottom-[20%] right-[10%]"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.4 }}
+          transition={{ duration: 1, delay: 1.1 }}
+        >
+          <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="8" fill="none" stroke={brandColors.emerald} strokeWidth="2" />
+            <circle cx="30" cy="30" r="3" fill={brandColors.emerald} />
+            <motion.circle
+              cx="30" cy="30" r="15"
+              fill="none"
+              stroke={brandColors.emerald}
+              strokeWidth="1"
+              strokeDasharray="2 3"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
+          </svg>
+        </motion.div>
+
+        {/* Connecting paths between waypoints */}
+        <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.2 }}>
+          <motion.path
+            d="M 10% 15%, Q 50% 10%, 85% 20%"
+            fill="none"
+            stroke={brandColors.neonCyan}
+            strokeWidth="2"
+            strokeDasharray="5 5"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 2, delay: 1 }}
+          />
+          <motion.path
+            d="M 10% 15%, L 12% 75%"
+            fill="none"
+            stroke={brandColors.violet}
+            strokeWidth="2"
+            strokeDasharray="5 5"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 2, delay: 1.2 }}
+          />
+          <motion.path
+            d="M 85% 20%, L 90% 80%"
+            fill="none"
+            stroke={brandColors.neonPink}
+            strokeWidth="2"
+            strokeDasharray="5 5"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 2, delay: 1.4 }}
+          />
+          <motion.path
+            d="M 12% 75%, Q 50% 90%, 90% 80%"
+            fill="none"
+            stroke={brandColors.emerald}
+            strokeWidth="2"
+            strokeDasharray="5 5"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 2, delay: 1.6 }}
+          />
+        </svg>
       </div>
 
       {/* Geometric Framework Overlays */}
@@ -213,31 +376,116 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             >
               开放智慧实验室
             </h2>
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm"
-              style={{
-                background: isDark
-                  ? `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.neonPink}15)`
-                  : `linear-gradient(135deg, ${brandColors.violet}15, ${brandColors.neonPink}10)`,
-                border: `1px solid ${isDark ? brandColors.violet : brandColors.violet}40`,
-                boxShadow: isDark ? `0 0 20px ${brandColors.violet}20` : 'none'
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <BookOpen className="w-4 h-4" style={{ color: isDark ? brandColors.neonPink : brandColors.violet }} />
-              <span
-                className="text-sm sm:text-base md:text-lg font-semibold"
-                style={{
-                  backgroundImage: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  letterSpacing: '0.08em'
-                }}
+            <div className="relative inline-block">
+              {/* Map decoration markers around the badge */}
+              <motion.div
+                className="absolute -left-12 top-1/2 -translate-y-1/2"
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 0.5, x: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
               >
-                建设和运营指南
-              </span>
-            </motion.div>
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                  <path d="M0 20 L35 20 M30 15 L35 20 L30 25" stroke={brandColors.violet} strokeWidth="2" fill="none" />
+                  <circle cx="5" cy="20" r="2" fill={brandColors.violet} />
+                </svg>
+              </motion.div>
+
+              <motion.div
+                className="absolute -right-12 top-1/2 -translate-y-1/2"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 0.5, x: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+              >
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                  <path d="M40 20 L5 20 M10 15 L5 20 L10 25" stroke={brandColors.neonPink} strokeWidth="2" fill="none" />
+                  <circle cx="35" cy="20" r="2" fill={brandColors.neonPink} />
+                </svg>
+              </motion.div>
+
+              {/* Coordinate/dimension lines */}
+              <motion.div
+                className="absolute -top-8 left-0 right-0 flex items-center justify-center gap-1"
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 0.4, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
+              >
+                <div className="h-px flex-1" style={{ background: `linear-gradient(to right, transparent, ${brandColors.neonCyan}, transparent)` }} />
+                <span className="text-xs px-2" style={{ color: brandColors.neonCyan, fontFamily: 'monospace' }}>GUIDE</span>
+                <div className="h-px flex-1" style={{ background: `linear-gradient(to right, transparent, ${brandColors.neonCyan}, transparent)` }} />
+              </motion.div>
+
+              {/* Waypoint indicator markers */}
+              <motion.div
+                className="absolute -top-3 -left-3"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                  <circle cx="6" cy="6" r="2" fill="none" stroke={brandColors.neonCyan} strokeWidth="1.5" />
+                  <circle cx="6" cy="6" r="0.5" fill={brandColors.neonCyan} />
+                </svg>
+              </motion.div>
+
+              <motion.div
+                className="absolute -top-3 -right-3"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                  <circle cx="6" cy="6" r="2" fill="none" stroke={brandColors.violet} strokeWidth="1.5" />
+                  <circle cx="6" cy="6" r="0.5" fill={brandColors.violet} />
+                </svg>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-3 -left-3"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                  <circle cx="6" cy="6" r="2" fill="none" stroke={brandColors.neonPink} strokeWidth="1.5" />
+                  <circle cx="6" cy="6" r="0.5" fill={brandColors.neonPink} />
+                </svg>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-3 -right-3"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                  <circle cx="6" cy="6" r="2" fill="none" stroke={brandColors.emerald} strokeWidth="1.5" />
+                  <circle cx="6" cy="6" r="0.5" fill={brandColors.emerald} />
+                </svg>
+              </motion.div>
+
+              {/* The main badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm"
+                style={{
+                  background: isDark
+                    ? `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.neonPink}15)`
+                    : `linear-gradient(135deg, ${brandColors.violet}15, ${brandColors.neonPink}10)`,
+                  border: `1px solid ${isDark ? brandColors.violet : brandColors.violet}40`,
+                  boxShadow: isDark ? `0 0 20px ${brandColors.violet}20` : 'none'
+                }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <BookOpen className="w-4 h-4" style={{ color: isDark ? brandColors.neonPink : brandColors.violet }} />
+                <span
+                  className="text-sm sm:text-base md:text-lg font-semibold"
+                  style={{
+                    backgroundImage: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    letterSpacing: '0.08em'
+                  }}
+                >
+                  建设和运营指南
+                </span>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Philosophy Text - Refined */}

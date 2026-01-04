@@ -71,9 +71,9 @@ export function ParticleField({
       y: Math.random() * dimensions.height,
       vx: (Math.random() - 0.5) * speed,
       vy: (Math.random() - 0.5) * speed,
-      radius: Math.random() * 2 + 1,
+      radius: Math.random() * 2 + 2,
       color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: Math.random() * 0.5 + 0.3,
+      alpha: Math.random() * 0.4 + 0.5,
     }));
   }, [dimensions, count, speed]);
 
@@ -143,11 +143,19 @@ export function ParticleField({
         if (particle.y < 0) particle.y = dimensions.height;
         if (particle.y > dimensions.height) particle.y = 0;
 
-        // Draw particle
+        // Draw particle with glow
+        ctx.save();
+
+        // Outer glow
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = particle.color;
+
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fillStyle = withAlpha(particle.color, particle.alpha);
         ctx.fill();
+
+        ctx.restore();
       });
 
       // Find connections
@@ -161,20 +169,28 @@ export function ParticleField({
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < connectionThreshold) {
-            const alpha = (1 - distance / connectionThreshold) * 0.3;
+            const alpha = (1 - distance / connectionThreshold) * 0.5;
             connections.push({ p1, p2, alpha });
           }
         }
       }
 
-      // Draw connections
+      // Draw connections with glow
       connections.forEach(({ p1, p2, alpha }) => {
+        ctx.save();
+
+        // Add glow to connection lines
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = brandColors.violet;
+
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
         ctx.strokeStyle = withAlpha(brandColors.violet, alpha);
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 1.5;
         ctx.stroke();
+
+        ctx.restore();
       });
 
       animationFrameRef.current = requestAnimationFrame(animate);
