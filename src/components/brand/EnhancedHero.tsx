@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ParticleField } from "./ParticleField";
 import { BookOpen, ArrowRight, Sparkles, Eye } from "lucide-react";
 import { Link } from "@/components/ui/Link";
 import { brandColors } from "@/lib/brand/colors";
@@ -18,16 +17,8 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Particle Field Background */}
-      <div className="absolute inset-0" style={{ background: isDark ? '#0E0E14' : '#F8FAFC' }}>
-        <ParticleField
-          count={150}
-          connectionThreshold={200}
-          maxConnections={30}
-          speed={0.5}
-          mouseInfluence={true}
-        />
-      </div>
+      {/* Background */}
+      <div className="absolute inset-0" style={{ background: isDark ? '#0E0E14' : '#F8FAFC' }} />
 
       {/* Map/Blueprint Grid Overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
