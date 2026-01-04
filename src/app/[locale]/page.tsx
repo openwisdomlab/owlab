@@ -304,7 +304,7 @@ export default function HomePage() {
                 letterSpacing: "0.02em",
               }}
             >
-              让好奇心汇聚，让创新发生
+              有好奇心的人、天马行空的想法和有趣的问题
             </motion.p>
 
             {/* CTA Buttons */}
@@ -1622,6 +1622,26 @@ export default function HomePage() {
             </Link>
           </motion.div>
         </div>
+      </section>
+
+      {/* 空间定位描述 Section */}
+      <section className="py-12 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <p
+            className="text-xl md:text-2xl text-[var(--foreground)] font-medium leading-relaxed"
+            style={{
+              fontFamily: "'Georgia', serif",
+              letterSpacing: "0.02em",
+            }}
+          >
+            一个开放、包容、创新的研究性学习空间
+          </p>
+        </motion.div>
       </section>
 
       {/* 知识库模块 Section */}
