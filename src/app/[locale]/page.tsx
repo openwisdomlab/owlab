@@ -300,6 +300,8 @@ export default function HomePage() {
                 letterSpacing: "0.02em",
               }}
             >
+              一个开放、包容、创新的研究性学习空间
+              <br />
               让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发
             </motion.p>
 
