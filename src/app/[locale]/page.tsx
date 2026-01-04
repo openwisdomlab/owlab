@@ -1278,6 +1278,213 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 五大核心价值 Section */}
+      <section className="py-14 px-4">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl font-bold mb-2 text-[var(--foreground)]">OWL 核心价值</h2>
+            <p className="text-[var(--muted-foreground)] max-w-xl mx-auto text-sm">
+              构建创新学习空间的五大支柱
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {[
+              {
+                label: '开放',
+                en: 'Open',
+                color: '#D91A7A',
+                svg: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    <circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 4" />
+                    <circle cx="40" cy="40" r="18" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <circle cx="40" cy="40" r="6" fill="currentColor" />
+                    <line x1="40" y1="10" x2="40" y2="22" stroke="currentColor" strokeWidth="2" />
+                    <line x1="40" y1="58" x2="40" y2="70" stroke="currentColor" strokeWidth="2" />
+                    <line x1="10" y1="40" x2="22" y2="40" stroke="currentColor" strokeWidth="2" />
+                    <line x1="58" y1="40" x2="70" y2="40" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                ),
+                desc: '开放式创新，拥抱多元视角'
+              },
+              {
+                label: '交叉',
+                en: 'Cross',
+                color: '#6A809A',
+                svg: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    <circle cx="25" cy="25" r="15" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.7" />
+                    <circle cx="55" cy="25" r="15" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.7" />
+                    <circle cx="40" cy="50" r="15" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.7" />
+                    <circle cx="40" cy="35" r="5" fill="currentColor" opacity="0.8" />
+                  </svg>
+                ),
+                desc: '跨学科融合，突破边界思考'
+              },
+              {
+                label: '连接',
+                en: 'Connect',
+                color: '#7A8490',
+                svg: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    <circle cx="20" cy="40" r="8" fill="currentColor" opacity="0.8" />
+                    <circle cx="60" cy="40" r="8" fill="currentColor" opacity="0.8" />
+                    <circle cx="40" cy="20" r="8" fill="currentColor" opacity="0.8" />
+                    <circle cx="40" cy="60" r="8" fill="currentColor" opacity="0.8" />
+                    <line x1="28" y1="40" x2="52" y2="40" stroke="currentColor" strokeWidth="2" />
+                    <line x1="40" y1="28" x2="40" y2="52" stroke="currentColor" strokeWidth="2" />
+                    <line x1="26" y1="34" x2="34" y2="26" stroke="currentColor" strokeWidth="2" />
+                    <line x1="46" y1="26" x2="54" y2="34" stroke="currentColor" strokeWidth="2" />
+                    <line x1="26" y1="46" x2="34" y2="54" stroke="currentColor" strokeWidth="2" />
+                    <line x1="46" y1="54" x2="54" y2="46" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                ),
+                desc: '连接全球资源，构建协作网络'
+              },
+              {
+                label: '可持续',
+                en: 'Sustainable',
+                color: '#4A9A6A',
+                svg: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    <path d="M40 18 L48 30 L42 30 L42 38 C42 48 52 52 58 46" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M58 46 L62 56 L52 54" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M58 50 C54 60 44 64 34 60 L30 68 L26 58 L36 56" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M30 58 C20 50 18 38 26 28 L18 26 L24 18 L30 28" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M40 32 C48 36 50 44 46 52 C42 52 38 48 40 40 C36 48 32 52 28 52 C24 44 28 36 40 32" fill="currentColor" opacity="0.5" />
+                    <path d="M40 38 L40 50" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                ),
+                desc: '持续发展，生生不息的创新生态'
+              },
+              {
+                label: '黑科技',
+                en: 'Tech',
+                color: '#A49464',
+                svg: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    <rect x="22" y="22" width="36" height="36" rx="4" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="2.5" />
+                    <rect x="30" y="30" width="20" height="20" rx="2" fill="currentColor" opacity="0.4" stroke="currentColor" strokeWidth="2" />
+                    <line x1="32" y1="22" x2="32" y2="14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="40" y1="22" x2="40" y2="14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="48" y1="22" x2="48" y2="14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="32" y1="58" x2="32" y2="66" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="40" y1="58" x2="40" y2="66" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="48" y1="58" x2="48" y2="66" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="22" y1="32" x2="14" y2="32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="22" y1="40" x2="14" y2="40" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="22" y1="48" x2="14" y2="48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="58" y1="32" x2="66" y2="32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="58" y1="40" x2="66" y2="40" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <line x1="58" y1="48" x2="66" y2="48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                    <circle cx="40" cy="40" r="5" fill="currentColor" />
+                  </svg>
+                ),
+                desc: 'AI时代的前沿工具与创新思维'
+              },
+            ].map((value) => (
+              <motion.div
+                key={value.label}
+                className="group relative"
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <div
+                  className="px-5 py-3 rounded-xl glass-card cursor-pointer transition-all duration-300 hover:shadow-lg flex items-center gap-3"
+                  style={{
+                    borderColor: `${value.color}40`,
+                    boxShadow: `0 0 0 1px ${value.color}20`,
+                  }}
+                >
+                  <div
+                    className="w-8 h-8 flex-shrink-0"
+                    style={{ color: value.color }}
+                  >
+                    {value.svg}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-sm" style={{ color: value.color }}>
+                      {value.label}
+                    </span>
+                    <span className="text-xs text-[var(--muted-foreground)] ml-1">
+                      {value.en}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Hover Card with Description */}
+                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 pointer-events-none">
+                  <div
+                    className="relative p-4 rounded-xl glass-card border min-w-[200px] shadow-xl"
+                    style={{ borderColor: `${value.color}40`, background: 'var(--glass-bg)' }}
+                  >
+                    {/* Arrow */}
+                    <div
+                      className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 border-l border-t glass-card"
+                      style={{ borderColor: `${value.color}40` }}
+                    />
+
+                    {/* SVG Visualization */}
+                    <div
+                      className="w-16 h-16 mx-auto mb-3"
+                      style={{ color: value.color }}
+                    >
+                      {value.svg}
+                    </div>
+
+                    {/* Title */}
+                    <div className="text-center mb-2">
+                      <span className="font-bold" style={{ color: value.color }}>
+                        {value.label}
+                      </span>
+                      <span className="text-xs text-[var(--muted-foreground)] ml-1">
+                        {value.en}
+                      </span>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-xs text-[var(--muted-foreground)] text-center leading-relaxed">
+                      {value.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Slogan */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-10 text-center"
+          >
+            <p
+              className="text-lg md:text-xl font-medium"
+              style={{
+                background: "linear-gradient(135deg, var(--neon-yellow) 0%, var(--neon-cyan) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              没有问题是太愚蠢的，没有想法是太疯狂的
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 知识库模块 Section */}
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
