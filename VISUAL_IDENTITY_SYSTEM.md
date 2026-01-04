@@ -964,16 +964,148 @@ export const particleBurst = {
 
 ---
 
+## 生成的视觉资产
+
+### 🦉 猫头鹰五种状态（已生成）
+
+使用 Gemini 3.0 Pro Image 生成的核心品牌符号：
+
+| 状态 | 文件 | 特征 | 应用场景 |
+|------|------|------|---------|
+| **🦉 凝视 Gaze** | `owl-gaze-state.jpg` | 六边形框架，探测波纹，蓝色主导 | 知识库入口、M01理念、M06安全 |
+| **✨ 灵光 Spark** | `owl-spark-state.jpg` | 几何碎片爆发，粉蓝碰撞，紫色火花 | 创意工具、AI Lab、灵感时刻 |
+| **🔗 连接 Connect** | `owl-connect-state.jpg` | 网络节点，光束连接，渐变光谱 | 社区网络、M02治理、M08运营 |
+| **🪶 飞翔 Flight** | `owl-flight-state.jpg` | 翅膀展开，羽毛轨迹，粉色行动 | 项目启动、M03空间、M05工具 |
+| **🌟 分享 Share** | `owl-share-state.jpg` | 波纹扩散，全光谱，开放构图 | 作品展示、M07人员、M09评价 |
+
+**位置**: `public/images/brand/owl-states/`
+
+### 🧬 三大视觉基因（已生成）
+
+| 概念 | 文件 | 描述 |
+|------|------|------|
+| **三基因组合** | `visual-dna-three-genes.jpg` | 完美展示三大视觉基因：几何晶格（蓝）+ 能量粒子（粉）+ 混合符号（粉蓝框） |
+| **粒子场** | `particle-field-hero.jpg` | 16:9英雄背景，布朗运动粒子，偶然连接网络 |
+| **几何框架** | `geometric-lattice-framework.jpg` | 等轴测网格，蓝色线框，知识体系结构 |
+
+**位置**: `public/images/brand/concepts/`
+
+### 📦 模块图标（已生成）
+
+| 文件 | 内容 |
+|------|------|
+| `module-icons-m01-m03.jpg` | M01理念（紫）、M02治理（青）、M03空间（绿）三个模块图标预览 |
+
+**位置**: `public/images/brand/modules/`
+
+### 使用示例
+
+```tsx
+// 在React组件中使用
+import Image from 'next/image';
+
+// 猫头鹰状态图标
+<Image
+  src="/images/brand/owl-states/owl-gaze-state.jpg"
+  alt="OWL Gaze State"
+  width={200}
+  height={200}
+/>
+
+// 三基因说明图
+<Image
+  src="/images/brand/concepts/visual-dna-three-genes.jpg"
+  alt="OWL Visual DNA"
+  width={800}
+  height={533}
+  className="rounded-lg"
+/>
+```
+
+## Gemini生成指南
+
+### 使用Gemini 3.0 Pro生成品牌资产
+
+**前提条件**:
+1. 启动Gemini Python微服务（见`.skills/gemini-image-generation.md`）
+2. 配置`GEMINI_API_KEY`环境变量
+
+**批量生成脚本**:
+```bash
+npx tsx scripts/generate-brand-assets-gemini3.ts
+```
+
+### 提示词模板规范
+
+所有OWL品牌图像生成必须包含：
+
+**核心视觉要素**:
+- ✅ 色彩：Neon Pink (#D91A7A) + Blue (#2563EB) + Dark (#0E0E14)
+- ✅ 风格：几何框架 + 有机粒子流
+- ✅ 情感：好奇、探索、玩耍精神（不是冷科技）
+- ✅ 元素：猫头鹰眼睛、几何图形、粒子效果
+
+**提示词结构**:
+```
+[主题描述]
+
+Visual Description:
+- [具体视觉元素]
+- [构图和形态]
+- [动态特征]
+
+Style & Colors:
+- Neon pink (#D91A7A), blue (#2563EB)
+- Dark background (#0E0E14)
+- [辅助色说明]
+- Geometric + organic, playful not cold
+
+Mood: [情感关键词]
+
+Technical:
+- [长宽比]
+- [特殊要求]
+```
+
+**示例**（猫头鹰凝视状态）:
+```
+Create a minimalist icon representing an owl in "Gaze" state.
+
+Visual Description:
+- Large wide-open owl eyes with dilated pupils
+- Geometric hexagon outline framing the eyes
+- Sonar-like ripple waves emanating outward
+- Curious light beams radiating from eyes
+
+Style & Colors:
+- Neon pink (#D91A7A) and blue (#2563EB) geometric framework
+- Dark background (#0E0E14)
+- Glowing effect on eyes
+- Futuristic tech aesthetic, playful not cold
+
+Mood: Curious, observant, questioning, wonder
+
+Technical:
+- 1:1 square aspect ratio
+- High contrast for icon clarity
+```
+
+完整提示词模板见：`scripts/generate-brand-assets-gemini3.ts`
+
+---
+
 ## 下一步
 
 1. ✅ 设计文档已完成
-2. 🔄 使用 Gemini API 生成视觉示例
-3. 🔄 实施前端组件和动画
-4. ⏳ 测试和优化性能
-5. ⏳ 用户测试和迭代
+2. ✅ 使用 Gemini 3.0 Pro 生成核心视觉资产（9/10完成）
+3. ✅ 品牌资产已集成到文档
+4. 🔄 实施前端组件和动画
+5. ⏳ 测试和优化性能
+6. ⏳ 用户测试和迭代
 
 ---
 
 **设计**: Claude Sonnet 4.5 + OWL Team
-**版本**: 1.0.0
+**生成工具**: Google Gemini 3.0 Pro Image
+**版本**: 1.1.0
 **日期**: 2026-01-04
