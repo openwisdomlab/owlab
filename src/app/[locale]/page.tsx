@@ -37,6 +37,7 @@ import { useParams } from "next/navigation";
 import Script from "next/script";
 import { ModuleCards } from "@/components/docs/ModuleCards";
 import { LearningSpaceTagline } from "@/components/ui/LearningSpaceTagline";
+import { CuriosityTagline } from "@/components/ui/CuriosityTagline";
 import { useState } from "react";
 
 const containerVariants = {
@@ -161,7 +162,7 @@ export default function HomePage() {
       />
 
       {/* Hero Section - Cosmic Curiosity Design */}
-      <section className="relative py-16 lg:py-24 px-4 overflow-hidden min-h-[85vh] flex items-center">
+      <section className="relative py-12 lg:py-16 px-4 overflow-hidden min-h-[75vh] flex items-center">
         {/* Starfield Background */}
         <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-transparent via-[var(--background)] to-[var(--background)]">
           {/* Animated nebula clouds */}
@@ -265,7 +266,7 @@ export default function HomePage() {
 
             {/* Main Title - OWL 开放智慧实验室 建设与运营标准手册 */}
             <motion.div
-              className="mb-8"
+              className="mb-6"
               variants={itemVariants}
             >
               <h1
@@ -509,7 +510,7 @@ export default function HomePage() {
 
             {/* Slogan */}
             <motion.div
-              className="mb-10"
+              className="mb-6"
               variants={itemVariants}
             >
               <p
@@ -542,29 +543,29 @@ export default function HomePage() {
 
 
       {/* 前沿理念模块 Section - 独立展示 */}
-      <section className="py-20 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
+      <section className="py-14 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-3"
               whileHover={{ scale: 1.02 }}
             >
               <Sparkles className="w-4 h-4 text-[var(--neon-yellow)]" />
               {t("livingModules.subtitle")}
             </motion.div>
-            <h2 className="text-3xl font-bold mb-3 text-[var(--foreground)]">{t("livingModules.title")}</h2>
+            <h2 className="text-3xl font-bold mb-2 text-[var(--foreground)]">{t("livingModules.title")}</h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               {t("livingModules.description")}
             </p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-6 mb-10"
+            className="grid md:grid-cols-2 gap-5 mb-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -1653,36 +1654,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 空间定位描述 Section */}
-      <section className="py-12 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <p
-            className="text-xl md:text-2xl text-[var(--foreground)] font-medium leading-relaxed"
-            style={{
-              fontFamily: "'Georgia', serif",
-              letterSpacing: "0.02em",
-            }}
-          >
-            一个开放、包容、创新的研究性学习空间
-          </p>
-        </motion.div>
+      {/* 好奇心核心元素展示 Section */}
+      <section className="py-8 px-4">
+        <div className="max-w-6xl mx-auto">
+          <CuriosityTagline />
+        </div>
       </section>
 
       {/* 知识库模块 Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
-            <h2 className="text-3xl font-bold mb-3 text-[var(--foreground)]">{t("modules.title")}</h2>
+            <h2 className="text-3xl font-bold mb-2 text-[var(--foreground)]">{t("modules.title")}</h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               {t("modules.description")}
             </p>
@@ -1694,7 +1682,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-10 flex justify-center"
+            className="mt-6 flex justify-center"
           >
             <Link
               href={`/${locale}/docs/knowledge-base`}
@@ -1709,7 +1697,7 @@ export default function HomePage() {
       </section>
 
       {/* Einstein Quote Section */}
-      <section className="py-16 px-4">
+      <section className="py-10 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1742,22 +1730,22 @@ export default function HomePage() {
       </section>
 
       {/* 行动层工具 Section */}
-      <section className="py-20 px-4 bg-[var(--glass-bg)]/20">
+      <section className="py-14 px-4 bg-[var(--glass-bg)]/20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-3"
               whileHover={{ scale: 1.02 }}
             >
               <Wand2 className="w-4 h-4 text-[var(--neon-violet)]" />
               {t("actionTools.subtitle")}
             </motion.div>
-            <h2 className="text-3xl font-bold mb-3 text-[var(--foreground)]">{t("actionTools.title")}</h2>
+            <h2 className="text-3xl font-bold mb-2 text-[var(--foreground)]">{t("actionTools.title")}</h2>
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               {t("actionTools.description")}
             </p>
@@ -1768,7 +1756,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-8"
+            className="mb-6"
           >
             <Link href={`/${locale}/lab/habitat`}>
               <motion.div
@@ -1862,7 +1850,7 @@ export default function HomePage() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -2044,22 +2032,22 @@ export default function HomePage() {
       </section>
 
       {/* Brand Visual System Section */}
-      <section className="py-20 px-4">
+      <section className="py-14 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-6"
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-3"
               whileHover={{ scale: 1.02 }}
             >
               <Sparkles className="w-4 h-4 text-[#D91A7A]" />
               Brand Identity
             </motion.div>
-            <h2 className="text-3xl font-bold mb-3">
+            <h2 className="text-3xl font-bold mb-2">
               <span className="bg-gradient-to-r from-[#D91A7A] via-[#5C5470] to-[#D91A7A] bg-clip-text text-transparent">
                 品牌视觉系统
               </span>
@@ -2089,7 +2077,7 @@ export default function HomePage() {
       </section>
 
       {/* 知识体系导航 Section - 紧凑版 */}
-      <section className="py-12 px-4 bg-[var(--glass-bg)]/10">
+      <section className="py-8 px-4 bg-[var(--glass-bg)]/10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -2166,7 +2154,7 @@ export default function HomePage() {
 
       {/* Footer */}
       {/* 教育理念 Section - Three Learning Principles */}
-      <section className="relative py-16 px-4 overflow-hidden">
+      <section className="relative py-12 px-4 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -2187,16 +2175,16 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-4"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-full glass-card text-[var(--muted-foreground)] mb-3"
               whileHover={{ scale: 1.05 }}
             >
               <Lightbulb className="w-4 h-4 text-[var(--neon-cyan)]" />
               教育理念
             </motion.div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--foreground)]">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--foreground)]">
               我们如何培养创新人才
             </h2>
             <p className="text-base md:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto">
@@ -2206,7 +2194,7 @@ export default function HomePage() {
 
           {/* Three Principle Cards */}
           <motion.div
-            className="grid md:grid-cols-3 gap-6"
+            className="grid md:grid-cols-3 gap-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
