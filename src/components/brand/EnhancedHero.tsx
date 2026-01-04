@@ -185,7 +185,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                background: isDark
+                backgroundImage: isDark
                   ? `linear-gradient(135deg, ${brandColors.neonCyan} 0%, ${brandColors.violet} 30%, ${brandColors.neonPink} 60%, ${brandColors.blue} 100%)`
                   : `linear-gradient(135deg, ${brandColors.blue} 0%, ${brandColors.violet} 50%, ${brandColors.neonPink} 100%)`,
                 WebkitBackgroundClip: 'text',
@@ -201,7 +201,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter -mt-2"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                background: isDark
+                backgroundImage: isDark
                   ? `linear-gradient(135deg, ${brandColors.violet} 0%, ${brandColors.neonPink} 50%, ${brandColors.neonCyan} 100%)`
                   : `linear-gradient(135deg, ${brandColors.violet} 0%, ${brandColors.neonPink} 100%)`,
                 WebkitBackgroundClip: 'text',
@@ -216,7 +216,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter -mt-2"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                background: isDark
+                backgroundImage: isDark
                   ? `linear-gradient(135deg, ${brandColors.neonPink} 0%, ${brandColors.blue} 50%, ${brandColors.violet} 100%)`
                   : `linear-gradient(135deg, ${brandColors.neonPink} 0%, ${brandColors.blue} 100%)`,
                 WebkitBackgroundClip: 'text',
@@ -261,7 +261,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               <span
                 className="text-sm sm:text-base md:text-lg font-semibold"
                 style={{
-                  background: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
+                  backgroundImage: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -297,7 +297,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                 className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-medium text-center"
                 style={{
                   fontFamily: "'Source Han Sans CN', 'Noto Sans SC', sans-serif",
-                  background: isDark
+                  backgroundImage: isDark
                     ? `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.neonPink})`
                     : `linear-gradient(135deg, ${brandColors.blue}, ${brandColors.neonPink})`,
                   WebkitBackgroundClip: 'text',
@@ -384,11 +384,8 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                       strokeWidth="2"
                       fill="none"
                       animate={{
-                        d: [
-                          "M20 30 Q16 20, 24 14 Q32 20, 28 30",
-                          "M20 30 Q14 18, 24 10 Q34 18, 28 30",
-                          "M20 30 Q16 20, 24 14 Q32 20, 28 30"
-                        ]
+                        scale: [1, 1.1, 1],
+                        y: [0, -2, 0]
                       }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     />
