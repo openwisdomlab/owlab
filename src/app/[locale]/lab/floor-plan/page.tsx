@@ -171,16 +171,32 @@ export default function FloorPlanPageEnhanced() {
   );
 
   // Launcher handlers
-  const handleLauncherStart = useCallback((state: LauncherState) => {
+  const handleLauncherStart = useCallback(async (state: LauncherState) => {
     setLauncherState(state);
     setShowLauncher(false);
 
     // If it's a natural language input, call AI to generate layout
     if (state.mode === "chat" && state.prompt) {
-      // TODO: Call AI to generate layout
-      console.log("Generate layout from prompt:", state.prompt);
       // Open AI sidebar for further interaction
       setShowAISidebar(true);
+
+      // Call AI to generate layout from prompt
+      try {
+        const response = await fetch("/api/ai/generate-layout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ requirements: state.prompt }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.layout) {
+            setLayout(data.layout);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to generate layout from prompt:", error);
+      }
     }
 
     // If it's quick select, generate basic layout based on discipline
