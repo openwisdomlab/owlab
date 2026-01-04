@@ -246,15 +246,31 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             >
               开放智慧实验室
             </h2>
-            <p
-              className="text-base sm:text-lg md:text-xl font-medium"
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm"
               style={{
-                color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
-                letterSpacing: '0.1em'
+                background: isDark
+                  ? `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.neonPink}15)`
+                  : `linear-gradient(135deg, ${brandColors.violet}15, ${brandColors.neonPink}10)`,
+                border: `1px solid ${isDark ? brandColors.violet : brandColors.violet}40`,
+                boxShadow: isDark ? `0 0 20px ${brandColors.violet}20` : 'none'
               }}
+              whileHover={{ scale: 1.05 }}
             >
-              建设和运营指南
-            </p>
+              <BookOpen className="w-4 h-4" style={{ color: isDark ? brandColors.neonPink : brandColors.violet }} />
+              <span
+                className="text-sm sm:text-base md:text-lg font-semibold"
+                style={{
+                  background: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  letterSpacing: '0.08em'
+                }}
+              >
+                建设和运营指南
+              </span>
+            </motion.div>
           </motion.div>
 
           {/* Philosophy Text - Refined */}

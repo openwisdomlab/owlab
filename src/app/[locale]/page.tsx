@@ -37,7 +37,6 @@ import { useParams } from "next/navigation";
 import Script from "next/script";
 import { ModuleCards } from "@/components/docs/ModuleCards";
 import { LearningSpaceTagline } from "@/components/ui/LearningSpaceTagline";
-import { CuriosityTagline } from "@/components/ui/CuriosityTagline";
 import { EnhancedHero } from "@/components/brand/EnhancedHero";
 import { useState } from "react";
 
@@ -1276,13 +1275,6 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
-        </div>
-      </section>
-
-      {/* 好奇心核心元素展示 Section */}
-      <section className="py-8 px-4">
-        <div className="max-w-6xl mx-auto">
-          <CuriosityTagline />
         </div>
       </section>
 
