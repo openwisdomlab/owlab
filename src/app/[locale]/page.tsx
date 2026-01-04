@@ -36,6 +36,7 @@ import {
 import { useParams } from "next/navigation";
 import Script from "next/script";
 import { ModuleCards } from "@/components/docs/ModuleCards";
+import { LearningSpaceTagline } from "@/components/ui/LearningSpaceTagline";
 import { useState } from "react";
 
 const containerVariants = {
@@ -334,6 +335,11 @@ export default function HomePage() {
                 <GitBranch className="w-5 h-5" />
                 {t("hero.cta.architecture")}
               </Link>
+            </motion.div>
+
+            {/* Learning Space Tagline - 研究性学习空间标语 */}
+            <motion.div className="mb-12" variants={itemVariants}>
+              <LearningSpaceTagline showDescription={true} />
             </motion.div>
 
             {/* Core Values - 五大核心价值 */}
