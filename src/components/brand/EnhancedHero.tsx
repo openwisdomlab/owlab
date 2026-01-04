@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ParticleField } from "./ParticleField";
-import { BookOpen, ArrowRight, Sparkles, Eye, Sun, Moon } from "lucide-react";
+import { BookOpen, ArrowRight, Sparkles, Eye } from "lucide-react";
 import { Link } from "@/components/ui/Link";
 import { brandColors } from "@/lib/brand/colors";
 import { useTheme } from "@/components/ui/ThemeProvider";
@@ -13,44 +13,11 @@ interface EnhancedHeroProps {
 }
 
 export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
-
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Theme Toggle Button - Top Right */}
-      <motion.button
-        onClick={toggleTheme}
-        className="absolute top-6 right-6 z-50 p-3 rounded-full backdrop-blur-xl transition-all duration-300"
-        style={{
-          background: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
-          border: `1px solid ${isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'}`,
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        aria-label="Toggle theme"
-      >
-        <motion.div
-          key={resolvedTheme}
-          initial={{ scale: 0.5, rotate: -90, opacity: 0 }}
-          animate={{ scale: 1, rotate: 0, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          {isDark ? (
-            <Sun className="w-5 h-5" style={{ color: brandColors.neonCyan }} />
-          ) : (
-            <Moon className="w-5 h-5" style={{ color: brandColors.violet }} />
-          )}
-        </motion.div>
-      </motion.button>
-
       {/* Particle Field Background */}
       <div className="absolute inset-0" style={{ background: isDark ? '#0E0E14' : '#F8FAFC' }}>
         <ParticleField
