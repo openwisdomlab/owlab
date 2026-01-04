@@ -399,10 +399,14 @@ export default function HomePage() {
                   color: '#8A8A7A',
                   svg: (
                     <svg viewBox="0 0 80 80" className="w-full h-full">
-                      <path d="M40 15 C55 25, 65 40, 40 65 C15 40, 25 25, 40 15" fill="none" stroke="currentColor" strokeWidth="2" />
-                      <path d="M40 25 C50 32, 55 42, 40 55 C25 42, 30 32, 40 25" fill="currentColor" opacity="0.3" />
-                      <circle cx="40" cy="40" r="3" fill="currentColor" />
-                      <path d="M40 43 L40 55" stroke="currentColor" strokeWidth="2" />
+                      {/* Circular arrows - recycling/sustainability symbol */}
+                      <path d="M40 18 L48 30 L42 30 L42 38 C42 48 52 52 58 46" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M58 46 L62 56 L52 54" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M58 50 C54 60 44 64 34 60 L30 68 L26 58 L36 56" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M30 58 C20 50 18 38 26 28 L18 26 L24 18 L30 28" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      {/* Center leaf */}
+                      <path d="M40 32 C48 36 50 44 46 52 C42 52 38 48 40 40 C36 48 32 52 28 52 C24 44 28 36 40 32" fill="currentColor" opacity="0.5" />
+                      <path d="M40 38 L40 50" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                     </svg>
                   ),
                   desc: '持续发展，生生不息的创新生态'
@@ -413,9 +417,28 @@ export default function HomePage() {
                   color: '#A49464',
                   svg: (
                     <svg viewBox="0 0 80 80" className="w-full h-full">
-                      <polygon points="40,12 52,28 68,32 56,46 58,64 40,56 22,64 24,46 12,32 28,28" fill="none" stroke="currentColor" strokeWidth="2" />
-                      <polygon points="40,22 48,32 58,34 50,42 52,54 40,48 28,54 30,42 22,34 32,32" fill="currentColor" opacity="0.3" />
-                      <circle cx="40" cy="38" r="6" fill="currentColor" />
+                      {/* CPU/Chip outer frame */}
+                      <rect x="22" y="22" width="36" height="36" rx="4" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="2.5" />
+                      {/* Inner circuit core */}
+                      <rect x="30" y="30" width="20" height="20" rx="2" fill="currentColor" opacity="0.4" stroke="currentColor" strokeWidth="2" />
+                      {/* Connection pins - top */}
+                      <line x1="32" y1="22" x2="32" y2="14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="40" y1="22" x2="40" y2="14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="48" y1="22" x2="48" y2="14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      {/* Connection pins - bottom */}
+                      <line x1="32" y1="58" x2="32" y2="66" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="40" y1="58" x2="40" y2="66" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="48" y1="58" x2="48" y2="66" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      {/* Connection pins - left */}
+                      <line x1="22" y1="32" x2="14" y2="32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="22" y1="40" x2="14" y2="40" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="22" y1="48" x2="14" y2="48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      {/* Connection pins - right */}
+                      <line x1="58" y1="32" x2="66" y2="32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="58" y1="40" x2="66" y2="40" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <line x1="58" y1="48" x2="66" y2="48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      {/* Center AI symbol */}
+                      <circle cx="40" cy="40" r="5" fill="currentColor" />
                     </svg>
                   ),
                   desc: 'AI时代的前沿工具与创新思维'
