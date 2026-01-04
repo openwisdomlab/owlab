@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ParticleField } from "./ParticleField";
-import { BookOpen, ArrowRight, Sparkles, Eye, Sun, Moon } from "lucide-react";
+import { BookOpen, ArrowRight, Sparkles, Eye } from "lucide-react";
 import { Link } from "@/components/ui/Link";
 import { brandColors } from "@/lib/brand/colors";
-import { useTheme } from "@/components/ui/ThemeProvider";
 
 interface EnhancedHeroProps {
   locale: string;
@@ -13,46 +12,10 @@ interface EnhancedHeroProps {
 }
 
 export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
-  const { resolvedTheme, setTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
-
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Theme Toggle Button - Top Right */}
-      <motion.button
-        onClick={toggleTheme}
-        className="absolute top-6 right-6 z-50 p-3 rounded-full backdrop-blur-xl transition-all duration-300"
-        style={{
-          background: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
-          border: `1px solid ${isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'}`,
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        aria-label="Toggle theme"
-      >
-        <motion.div
-          key={resolvedTheme}
-          initial={{ scale: 0.5, rotate: -90, opacity: 0 }}
-          animate={{ scale: 1, rotate: 0, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          {isDark ? (
-            <Sun className="w-5 h-5" style={{ color: brandColors.neonCyan }} />
-          ) : (
-            <Moon className="w-5 h-5" style={{ color: brandColors.violet }} />
-          )}
-        </motion.div>
-      </motion.button>
-
       {/* Particle Field Background */}
-      <div className="absolute inset-0" style={{ background: isDark ? '#0E0E14' : '#F8FAFC' }}>
+      <div className="absolute inset-0 bg-[#0E0E14]">
         <ParticleField
           count={100}
           connectionThreshold={180}
@@ -174,132 +137,91 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             </motion.div>
           </motion.div>
 
-          {/* "Open Wisdom Lab" Typography - Refined Size */}
+          {/* MASSIVE "Open Wisdom Lab" Typography */}
           <motion.h1
-            className="mb-4"
+            className="mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             <span
-              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter"
+              className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black leading-none tracking-tighter"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                background: isDark
-                  ? `linear-gradient(135deg, ${brandColors.neonCyan} 0%, ${brandColors.violet} 30%, ${brandColors.neonPink} 60%, ${brandColors.blue} 100%)`
-                  : `linear-gradient(135deg, ${brandColors.blue} 0%, ${brandColors.violet} 50%, ${brandColors.neonPink} 100%)`,
+                background: `linear-gradient(135deg, ${brandColors.neonCyan} 0%, ${brandColors.violet} 30%, ${brandColors.neonPink} 60%, ${brandColors.blue} 100%)`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                textShadow: isDark ? `0 0 60px ${brandColors.neonCyan}40` : 'none',
-                letterSpacing: '-0.03em'
+                textShadow: `0 0 80px ${brandColors.neonCyan}50`,
+                letterSpacing: '-0.05em'
               }}
             >
               OPEN
             </span>
             <span
-              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter -mt-2"
+              className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black leading-none tracking-tighter -mt-4"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                background: isDark
-                  ? `linear-gradient(135deg, ${brandColors.violet} 0%, ${brandColors.neonPink} 50%, ${brandColors.neonCyan} 100%)`
-                  : `linear-gradient(135deg, ${brandColors.violet} 0%, ${brandColors.neonPink} 100%)`,
+                background: `linear-gradient(135deg, ${brandColors.violet} 0%, ${brandColors.neonPink} 50%, ${brandColors.neonCyan} 100%)`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                letterSpacing: '-0.03em'
+                letterSpacing: '-0.05em'
               }}
             >
               WISDOM
             </span>
             <span
-              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter -mt-2"
+              className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black leading-none tracking-tighter -mt-4"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                background: isDark
-                  ? `linear-gradient(135deg, ${brandColors.neonPink} 0%, ${brandColors.blue} 50%, ${brandColors.violet} 100%)`
-                  : `linear-gradient(135deg, ${brandColors.neonPink} 0%, ${brandColors.blue} 100%)`,
+                background: `linear-gradient(135deg, ${brandColors.neonPink} 0%, ${brandColors.blue} 50%, ${brandColors.violet} 100%)`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                letterSpacing: '-0.03em'
+                letterSpacing: '-0.05em'
               }}
             >
               LAB
             </span>
           </motion.h1>
 
-          {/* Chinese Subtitle + Guide Label */}
+          {/* Chinese Subtitle */}
           <motion.div
-            className="mb-6"
+            className="mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
             <h2
-              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
               style={{
                 fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif",
-                color: isDark ? brandColors.neonCyan : brandColors.blue,
+                color: brandColors.neonCyan,
                 letterSpacing: '0.05em'
               }}
             >
               开放智慧实验室
             </h2>
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm"
-              style={{
-                background: isDark
-                  ? `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.neonPink}15)`
-                  : `linear-gradient(135deg, ${brandColors.violet}15, ${brandColors.neonPink}10)`,
-                border: `1px solid ${isDark ? brandColors.violet : brandColors.violet}40`,
-                boxShadow: isDark ? `0 0 20px ${brandColors.violet}20` : 'none'
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <BookOpen className="w-4 h-4" style={{ color: isDark ? brandColors.neonPink : brandColors.violet }} />
-              <span
-                className="text-sm sm:text-base md:text-lg font-semibold"
-                style={{
-                  background: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  letterSpacing: '0.08em'
-                }}
-              >
-                建设和运营指南
-              </span>
-            </motion.div>
           </motion.div>
 
-          {/* Philosophy Text - Refined */}
+          {/* Philosophy Text - NEW */}
           <motion.div
-            className="max-w-3xl mx-auto mb-10"
+            className="max-w-4xl mx-auto mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
           >
-            <div
-              className="relative p-6 rounded-2xl backdrop-blur-xl border"
-              style={{
-                background: isDark
-                  ? 'linear-gradient(135deg, rgba(14,14,20,0.6), rgba(26,26,46,0.4))'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.8), rgba(248,250,252,0.6))',
-                borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
-              }}
-            >
+            <div className="relative p-8 rounded-2xl backdrop-blur-xl bg-gradient-to-br from-[#0E0E14]/60 to-[#1a1a2e]/40 border border-white/10">
               {/* Corner decorations */}
-              <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 rounded-tl-2xl" style={{ borderColor: brandColors.neonPink }} />
-              <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 rounded-br-2xl" style={{ borderColor: isDark ? brandColors.neonCyan : brandColors.blue }} />
+              <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 rounded-tl-2xl" style={{ borderColor: brandColors.neonPink }} />
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 rounded-br-2xl" style={{ borderColor: brandColors.neonCyan }} />
 
               <p
-                className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed font-medium text-center"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed font-medium"
                 style={{
                   fontFamily: "'Source Han Sans CN', 'Noto Sans SC', sans-serif",
-                  background: isDark
-                    ? `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.neonPink})`
-                    : `linear-gradient(135deg, ${brandColors.blue}, ${brandColors.neonPink})`,
+                  background: `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.neonPink})`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -308,152 +230,43 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               >
                 一个开放、包容、创新的学习空间。
                 <br />
-                让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发。
+                <span className="inline-block mt-2">
+                  让有好奇心的人、天马行空的想法
+                </span>
+                <br />
+                <span className="inline-block mt-2">
+                  和有趣的问题在此汇聚和激发。
+                </span>
               </p>
-            </div>
-          </motion.div>
 
-          {/* OWL 汇聚 - Three Elements Row */}
-          <motion.div
-            className="mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.1 }}
-          >
-            <h3
-              className="text-center text-sm md:text-base font-medium mb-4"
-              style={{ color: isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)' }}
-            >
-              OWL 汇聚
-            </h3>
-            <div className="flex flex-row items-center justify-center gap-4 md:gap-6">
-              {/* 有好奇心的人 */}
-              <motion.div
-                className="flex flex-col items-center"
-                whileHover={{ scale: 1.05, y: -4 }}
-              >
-                <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2"
+              {/* Animated particles inside the box */}
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 rounded-full"
                   style={{
-                    background: isDark
-                      ? `linear-gradient(135deg, ${brandColors.neonCyan}20, ${brandColors.neonCyan}10)`
-                      : `linear-gradient(135deg, ${brandColors.blue}15, ${brandColors.blue}05)`,
-                    border: `1px solid ${isDark ? brandColors.neonCyan : brandColors.blue}40`
+                    background: i % 2 === 0 ? brandColors.neonPink : brandColors.neonCyan,
+                    left: `${20 + i * 15}%`,
+                    top: `${30 + i * 10}%`
                   }}
-                >
-                  <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8 md:w-10 md:h-10" style={{ color: isDark ? brandColors.neonCyan : brandColors.blue }}>
-                    <circle cx="24" cy="12" r="7" stroke="currentColor" strokeWidth="2" fill="none" />
-                    <path d="M12 44 C12 32, 18 26, 24 26 C30 26, 36 32, 36 44" stroke="currentColor" strokeWidth="2" fill="none" />
-                    <motion.g
-                      animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <circle cx="21" cy="10" r="1.5" fill="currentColor" />
-                      <circle cx="27" cy="10" r="1.5" fill="currentColor" />
-                    </motion.g>
-                  </svg>
-                </div>
-                <span
-                  className="text-xs md:text-sm font-medium whitespace-nowrap"
-                  style={{ color: isDark ? brandColors.neonCyan : brandColors.blue }}
-                >
-                  有好奇心的人
-                </span>
-              </motion.div>
-
-              {/* 连接符 × */}
-              <span className="text-xl md:text-2xl" style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)' }}>×</span>
-
-              {/* 天马行空的想法 */}
-              <motion.div
-                className="flex flex-col items-center"
-                whileHover={{ scale: 1.05, y: -4 }}
-              >
-                <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2"
-                  style={{
-                    background: `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.violet}10)`,
-                    border: `1px solid ${brandColors.violet}40`
+                  animate={{
+                    y: [-10, 10, -10],
+                    opacity: [0.3, 0.8, 0.3],
+                    scale: [0.8, 1.2, 0.8]
                   }}
-                >
-                  <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8 md:w-10 md:h-10" style={{ color: brandColors.violet }}>
-                    <path d="M8 32 Q12 28, 18 30 Q24 32, 30 28 Q36 24, 40 28" stroke="currentColor" strokeWidth="2" fill="none" />
-                    <motion.path
-                      d="M20 30 Q16 20, 24 14 Q32 20, 28 30"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      animate={{
-                        d: [
-                          "M20 30 Q16 20, 24 14 Q32 20, 28 30",
-                          "M20 30 Q14 18, 24 10 Q34 18, 28 30",
-                          "M20 30 Q16 20, 24 14 Q32 20, 28 30"
-                        ]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    <motion.circle
-                      cx="36" cy="16" r="2"
-                      fill="currentColor"
-                      animate={{ x: [0, -4, 0], y: [0, 4, 0], opacity: [1, 0.5, 1] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    />
-                  </svg>
-                </div>
-                <span
-                  className="text-xs md:text-sm font-medium whitespace-nowrap"
-                  style={{ color: brandColors.violet }}
-                >
-                  天马行空的想法
-                </span>
-              </motion.div>
-
-              {/* 连接符 × */}
-              <span className="text-xl md:text-2xl" style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)' }}>×</span>
-
-              {/* 有趣的问题 */}
-              <motion.div
-                className="flex flex-col items-center"
-                whileHover={{ scale: 1.05, y: -4 }}
-              >
-                <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2"
-                  style={{
-                    background: `linear-gradient(135deg, ${brandColors.neonPink}20, ${brandColors.neonPink}10)`,
-                    border: `1px solid ${brandColors.neonPink}40`
+                  transition={{
+                    duration: 3 + i,
+                    repeat: Infinity,
+                    delay: i * 0.3
                   }}
-                >
-                  <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8 md:w-10 md:h-10" style={{ color: brandColors.neonPink }}>
-                    <motion.path
-                      d="M18 16 Q18 8, 24 8 Q32 8, 32 16 Q32 22, 24 24 L24 30"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      fill="none"
-                      animate={{ pathLength: [0.8, 1, 0.8] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <motion.circle
-                      cx="24" cy="38" r="3"
-                      fill="currentColor"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    />
-                  </svg>
-                </div>
-                <span
-                  className="text-xs md:text-sm font-medium whitespace-nowrap"
-                  style={{ color: brandColors.neonPink }}
-                >
-                  有趣的问题
-                </span>
-              </motion.div>
+                />
+              ))}
             </div>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
+            className="flex flex-wrap items-center justify-center gap-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
@@ -465,26 +278,24 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             >
               <Link
                 href={`/${locale}/docs/knowledge-base`}
-                className="group relative inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg overflow-hidden text-white"
+                className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-xl overflow-hidden text-white"
                 style={{
                   background: `linear-gradient(135deg, ${brandColors.neonPink}, ${brandColors.violet})`,
-                  boxShadow: isDark
-                    ? `0 0 30px ${brandColors.neonPink}50, 0 8px 20px rgba(0,0,0,0.3)`
-                    : `0 4px 20px ${brandColors.neonPink}40`
+                  boxShadow: `0 0 40px ${brandColors.neonPink}60, 0 10px 30px rgba(0,0,0,0.3)`
                 }}
               >
                 <motion.div
                   className="absolute inset-0"
                   style={{
-                    background: `linear-gradient(135deg, ${isDark ? brandColors.neonCyan : brandColors.blue}, ${brandColors.blue})`
+                    background: `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.blue})`
                   }}
                   initial={{ x: '-100%' }}
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.3 }}
                 />
-                <BookOpen className="w-5 h-5 relative z-10" />
+                <BookOpen className="w-6 h-6 relative z-10" />
                 <span className="relative z-10">{t("hero.cta.start")}</span>
-                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-2 transition-transform" />
               </Link>
             </motion.div>
 
@@ -495,15 +306,14 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             >
               <Link
                 href={`/${locale}/lab`}
-                className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg backdrop-blur-xl transition-all duration-300"
+                className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-xl backdrop-blur-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
                 style={{
-                  background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
-                  border: `2px solid ${isDark ? brandColors.neonCyan : brandColors.blue}`,
-                  color: isDark ? brandColors.neonCyan : brandColors.blue,
-                  boxShadow: isDark ? `0 0 15px ${brandColors.neonCyan}20` : 'none'
+                  border: `2px solid ${brandColors.neonCyan}`,
+                  color: brandColors.neonCyan,
+                  boxShadow: `0 0 20px ${brandColors.neonCyan}30`
                 }}
               >
-                <Sparkles className="w-5 h-5" />
+                <Sparkles className="w-6 h-6" />
                 AI Lab
               </Link>
             </motion.div>
@@ -511,14 +321,14 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
 
           {/* Scroll Indicator */}
           <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
             <motion.div
               animate={{
-                y: [0, 8, 0]
+                y: [0, 10, 0]
               }}
               transition={{
                 duration: 2,
@@ -527,16 +337,11 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               }}
             >
               <div className="flex flex-col items-center gap-2">
-                <span
-                  className="text-xs md:text-sm"
-                  style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)' }}
-                >
-                  探索更多
-                </span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <span className="text-sm opacity-60">探索更多</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <motion.path
                     d="M12 5v14m0 0l-7-7m7 7l7-7"
-                    stroke={isDark ? brandColors.neonCyan : brandColors.blue}
+                    stroke={brandColors.neonCyan}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -559,10 +364,8 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: isDark
-            ? 'radial-gradient(circle at center, transparent 0%, #0E0E14 100%)'
-            : 'radial-gradient(circle at center, transparent 0%, rgba(248,250,252,0.8) 100%)',
-          opacity: isDark ? 0.6 : 0.4
+          background: 'radial-gradient(circle at center, transparent 0%, #0E0E14 100%)',
+          opacity: 0.6
         }}
       />
     </section>
