@@ -8,32 +8,119 @@
 export interface ScienceQuestion {
   id: string;
   question: string;
-  // 引力等级: 1-4, 决定圆环大小和亮度
+  // 问题简短解释
+  explanation?: string;
+  // 引力等级: 1-4, 影响问题的深度分类（但不影响圆环大小）
   gravity: 1 | 2 | 3 | 4;
   // 颜色主题
   color: 'cyan' | 'pink' | 'violet' | 'emerald' | 'blue' | 'orange';
+  // 多语言支持预留
+  i18n?: {
+    en?: {
+      question: string;
+      explanation?: string;
+    };
+  };
 }
 
 export const scienceQuestions: ScienceQuestion[] = [
-  // ===== 终极问题 (gravity: 4) - 最大最亮 =====
-  { id: 'q001', question: '宇宙为什么存在而不是一片虚无？', gravity: 4, color: 'cyan' },
-  { id: 'q002', question: '意识是如何从物质中涌现的？', gravity: 4, color: 'pink' },
-  { id: 'q003', question: '地球生命的第一个细胞是如何诞生的？', gravity: 4, color: 'violet' },
-  { id: 'q004', question: '时间的本质是什么，它真的在流动吗？', gravity: 4, color: 'blue' },
-  { id: 'q005', question: '为什么数学能如此精确地描述物理世界？', gravity: 4, color: 'emerald' },
-  { id: 'q006', question: '宇宙中的物理常数为何恰好允许生命存在？', gravity: 4, color: 'cyan' },
+  // ===== 终极问题 (gravity: 4) =====
+  {
+    id: 'q001',
+    question: '宇宙为什么存在而不是一片虚无？',
+    explanation: '这是莱布尼茨提出的终极哲学问题。为什么有"存在"而非"虚无"？现代物理学尝试用量子涨落解释，但仍无法回答"为什么有物理定律"这个更深层的问题。',
+    gravity: 4,
+    color: 'cyan',
+    i18n: { en: { question: 'Why is there something rather than nothing?' } }
+  },
+  {
+    id: 'q002',
+    question: '意识是如何从物质中涌现的？',
+    explanation: '这被称为"意识的难问题"。860亿个神经元的电化学活动如何产生主观体验？为什么有"感觉像是什么"这回事？',
+    gravity: 4,
+    color: 'pink',
+    i18n: { en: { question: 'How does consciousness emerge from matter?' } }
+  },
+  {
+    id: 'q003',
+    question: '地球生命的第一个细胞是如何诞生的？',
+    explanation: '从无机分子到能自我复制的细胞，中间经历了什么？RNA世界假说、热泉假说等理论都在探索这个40亿年前的谜题。',
+    gravity: 4,
+    color: 'violet',
+    i18n: { en: { question: 'How did the first cell on Earth come into being?' } }
+  },
+  {
+    id: 'q004',
+    question: '时间的本质是什么，它真的在流动吗？',
+    explanation: '在相对论中，时间是相对的；在量子力学中，时间有不同的角色。时间的"流动"可能只是意识的错觉？',
+    gravity: 4,
+    color: 'blue',
+    i18n: { en: { question: 'What is the nature of time? Does it really flow?' } }
+  },
+  {
+    id: 'q005',
+    question: '为什么数学能如此精确地描述物理世界？',
+    explanation: '物理学家尤金·维格纳称之为"数学在自然科学中不合理的有效性"。数学是发现的还是发明的？为什么抽象的数学公式能预测宇宙的行为？',
+    gravity: 4,
+    color: 'emerald',
+    i18n: { en: { question: 'Why can mathematics describe the physical world so precisely?' } }
+  },
+  {
+    id: 'q006',
+    question: '宇宙中的物理常数为何恰好允许生命存在？',
+    explanation: '如果引力常数或电磁力稍有不同，恒星、原子甚至生命都无法存在。这是巧合、多元宇宙、还是更深的原理？',
+    gravity: 4,
+    color: 'cyan',
+    i18n: { en: { question: 'Why are the physical constants fine-tuned for life?' } }
+  },
 
-  // ===== 世纪难题 (gravity: 3) - 大圆明亮 =====
-  { id: 'q007', question: '暗物质由什么粒子组成？', gravity: 3, color: 'cyan' },
-  { id: 'q008', question: '暗能量为何能加速宇宙膨胀？', gravity: 3, color: 'violet' },
-  { id: 'q009', question: '神经元活动如何转化为主观体验？', gravity: 3, color: 'pink' },
-  { id: 'q010', question: '量子力学与广义相对论能统一成量子引力理论吗？', gravity: 3, color: 'blue' },
+  // ===== 世纪难题 (gravity: 3) =====
+  {
+    id: 'q007',
+    question: '暗物质由什么粒子组成？',
+    explanation: '暗物质占宇宙物质总量的85%，但我们从未直接探测到它。WIMP、轴子、还是完全未知的粒子？',
+    gravity: 3,
+    color: 'cyan'
+  },
+  {
+    id: 'q008',
+    question: '暗能量为何能加速宇宙膨胀？',
+    explanation: '1998年发现宇宙正在加速膨胀，背后的"暗能量"是什么？宇宙学常数？还是某种动态场？',
+    gravity: 3,
+    color: 'violet'
+  },
+  {
+    id: 'q009',
+    question: '神经元活动如何转化为主观体验？',
+    explanation: '你看到红色时，大脑里发生了什么让你"体验"到红色？这是神经科学最难的问题之一。',
+    gravity: 3,
+    color: 'pink'
+  },
+  {
+    id: 'q010',
+    question: '量子力学与广义相对论能统一成量子引力理论吗？',
+    explanation: '爱因斯坦的引力理论和量子力学在极端情况下互相矛盾。弦理论、圈量子引力等尝试统一它们，但至今没有成功。',
+    gravity: 3,
+    color: 'blue'
+  },
   { id: 'q011', question: '黑洞内部的奇点处物理定律还成立吗？', gravity: 3, color: 'cyan' },
   { id: 'q012', question: '宇宙大爆炸之前是什么状态？', gravity: 3, color: 'violet' },
-  { id: 'q013', question: '银河系中存在其他智慧文明吗？', gravity: 3, color: 'emerald' },
+  {
+    id: 'q013',
+    question: '银河系中存在其他智慧文明吗？',
+    explanation: '费米悖论：宇宙这么大这么老，应该到处都是外星人，但我们为什么没发现他们？',
+    gravity: 3,
+    color: 'emerald'
+  },
   { id: 'q014', question: '人类寿命的生物学极限是多少岁？', gravity: 3, color: 'pink' },
   { id: 'q015', question: '长期记忆在大脑中以什么形式编码存储？', gravity: 3, color: 'orange' },
-  { id: 'q016', question: 'P与NP问题能否被证明或证伪？', gravity: 3, color: 'blue' },
+  {
+    id: 'q016',
+    question: 'P与NP问题能否被证明或证伪？',
+    explanation: '计算机科学的千禧年大奖难题之一：验证一个答案很容易的问题，找到答案是否同样容易？价值100万美元。',
+    gravity: 3,
+    color: 'blue'
+  },
   { id: 'q017', question: '宇宙是有限的还是无限延伸的？', gravity: 3, color: 'cyan' },
   { id: 'q018', question: '自由意志是真实的还是决定论的幻觉？', gravity: 3, color: 'pink' },
   { id: 'q019', question: '梦境在大脑中承担什么进化功能？', gravity: 3, color: 'violet' },

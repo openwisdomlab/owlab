@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback, useMemo } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { brandColors, withAlpha } from "@/lib/brand/colors";
 import { useTheme } from "@/components/ui/ThemeProvider";
 import { getBalancedQuestions, type ScienceQuestion } from "@/data/science-questions";
@@ -20,6 +20,11 @@ interface CircleState {
   rotationSpeed: number;
   phase: 'entering' | 'active' | 'exiting';
   enterDelay: number;
+  // 问题种子生长相关
+  revealProgress: number; // 0-1, 问题显示进度
+  revealStartTime: number; // 开始生长的时间戳
+  revealDuration: number; // 生长持续时间 (15-25秒)
+  isRevealed: boolean; // 是否已完成显示
 }
 
 // ============ Constants ============
@@ -32,12 +37,8 @@ const COLOR_MAP: Record<string, string> = {
   orange: brandColors.orange,
 };
 
-const GRAVITY_SIZE_MAP: Record<number, { min: number; max: number }> = {
-  4: { min: 70, max: 90 },
-  3: { min: 50, max: 70 },
-  2: { min: 35, max: 50 },
-  1: { min: 22, max: 35 },
-};
+// 统一的圆环大小范围（不再按gravity区分）
+const CIRCLE_SIZE_RANGE = { min: 22, max: 50 };
 
 const CURIOSITY_QUOTES = [
   { text: "好奇心是一切智慧的开始", author: "苏格拉底" },
@@ -52,10 +53,9 @@ function random(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
 
-function getCircleSize(gravity: number, isMobile: boolean): number {
-  const range = GRAVITY_SIZE_MAP[gravity] || GRAVITY_SIZE_MAP[1];
+function getCircleSize(isMobile: boolean): number {
   const scale = isMobile ? 0.7 : 1;
-  return random(range.min * scale, range.max * scale);
+  return random(CIRCLE_SIZE_RANGE.min * scale, CIRCLE_SIZE_RANGE.max * scale);
 }
 
 function distance(x1: number, y1: number, x2: number, y2: number): number {
@@ -85,11 +85,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const [showResonance, setShowResonance] = useState(false);
   const [resonanceQuote, setResonanceQuote] = useState(CURIOSITY_QUOTES[0]);
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const smoothMouseY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
   // Detect mobile
   useEffect(() => {
     const checkMobile = () => {
@@ -107,7 +102,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const initCircles = useCallback((width: number, height: number) => {
     const questions = getBalancedQuestions(actualCircleCount);
     const heroCenter = { x: width / 2, y: height / 2 };
-    const heroRadius = Math.min(width, height) * (isMobile ? 0.2 : 0.25);
+    // 中心六边形区域半径，圆环不能出现在这里
+    const heroRadius = Math.min(width, height) * (isMobile ? 0.22 : 0.28);
 
     const newCircles: CircleState[] = questions.map((q, i) => {
       let x: number, y: number;
@@ -118,25 +114,33 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         y = random(60, height - 60);
         attempts++;
       } while (
-        distance(x, y, heroCenter.x, heroCenter.y) < heroRadius + 40 &&
+        distance(x, y, heroCenter.x, heroCenter.y) < heroRadius + 50 &&
         attempts < 50
       );
 
-      const size = getCircleSize(q.gravity, isMobile);
+      const size = getCircleSize(isMobile);
+      const now = Date.now();
+      // 每个圆环有不同的显示延迟，实现种子渐次开放的效果
+      const revealDelay = random(5000, 25000); // 5-25秒后开始显示
 
       return {
         id: q.id,
         question: q,
         x,
         y,
-        vx: random(-0.12, 0.12),
-        vy: random(-0.12, 0.12),
+        vx: random(-0.08, 0.08), // 降低初始速度
+        vy: random(-0.08, 0.08),
         size,
         opacity: 0,
         rotation: random(0, 360),
-        rotationSpeed: random(-0.3, 0.3),
+        rotationSpeed: random(-0.2, 0.2),
         phase: 'entering' as const,
         enterDelay: i * 100,
+        // 种子生长属性
+        revealProgress: 0,
+        revealStartTime: now + revealDelay,
+        revealDuration: random(15000, 25000), // 15-25秒完成一次显示
+        isRevealed: false,
       };
     });
 
@@ -161,15 +165,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     return () => window.removeEventListener("resize", updateDimensions);
   }, [initCircles, dimensions.width]);
 
-  // Mouse tracking
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (containerRef.current && !isMobile) {
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseX.set(e.clientX - rect.left);
-      mouseY.set(e.clientY - rect.top);
-    }
-  }, [mouseX, mouseY, isMobile]);
-
   // Curiosity Resonance - Easter Egg
   const handleCircleHover = useCallback((circleId: string) => {
     setHoveredCircle(circleId);
@@ -193,16 +188,18 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const heroCenter = { x: dimensions.width / 2, y: dimensions.height / 2 };
+    const heroRadius = Math.min(dimensions.width, dimensions.height) * (isMobile ? 0.22 : 0.28);
+
     const animate = () => {
       if (!canvas || !ctx) return;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const currentCircles = circlesRef.current;
-      const mx = smoothMouseX.get();
-      const my = smoothMouseY.get();
+      const now = Date.now();
 
-      // Draw connection lines
+      // Draw connection lines between circles (but not mouse connection line)
       currentCircles.forEach((c1, i) => {
         if (c1.phase === 'exiting') return;
 
@@ -230,19 +227,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           }
         });
 
-        // Connect to mouse if hovering (desktop only)
-        if (!isMobile && hoveredCircle === c1.id) {
-          const distToMouse = distance(c1.x, c1.y, mx, my);
-          if (distToMouse < 150) {
-            const color = COLOR_MAP[c1.question.color];
-            ctx.beginPath();
-            ctx.moveTo(c1.x, c1.y);
-            ctx.lineTo(mx, my);
-            ctx.strokeStyle = withAlpha(color, 0.4);
-            ctx.lineWidth = 2;
-            ctx.stroke();
-          }
-        }
+        // 已移除：鼠标到圆环的指示线段
       });
 
       // Resonance effect - all circles pulse
@@ -261,46 +246,65 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       circlesRef.current = currentCircles.map((circle) => {
         if (circle.phase === 'exiting') return circle;
 
-        let { x, y, vx, vy, rotation, rotationSpeed, opacity, phase } = circle;
+        let { x, y, vx, vy, rotation, opacity, phase, revealProgress, revealStartTime, isRevealed } = circle;
+        const { rotationSpeed, revealDuration } = circle;
 
-        // Mouse gravity (desktop only)
-        if (!isMobile) {
-          const distToMouse = distance(x, y, mx, my);
-          if (distToMouse < 300 && distToMouse > 30) {
-            const force = 0.3 / (distToMouse * distToMouse) * 1000;
-            const angle = Math.atan2(my - y, mx - x);
-            vx += Math.cos(angle) * force;
-            vy += Math.sin(angle) * force;
+        // 如果当前圆环被悬停，停止移动
+        const isCurrentlyHovered = hoveredCircle === circle.id;
+
+        if (!isCurrentlyHovered) {
+          // Resonance boost
+          if (showResonance) {
+            vx += random(-0.05, 0.05);
+            vy += random(-0.05, 0.05);
+          }
+
+          vx *= 0.995; // 更慢的阻尼
+          vy *= 0.995;
+
+          const speed = Math.sqrt(vx * vx + vy * vy);
+          if (speed > 0.5) { // 降低最大速度
+            vx = (vx / speed) * 0.5;
+            vy = (vy / speed) * 0.5;
+          }
+
+          x += vx;
+          y += vy;
+          rotation += rotationSpeed;
+
+          // 边界碰撞
+          const margin = circle.size;
+          if (x < margin || x > dimensions.width - margin) {
+            vx *= -0.8;
+            x = Math.max(margin, Math.min(dimensions.width - margin, x));
+          }
+          if (y < margin || y > dimensions.height - margin) {
+            vy *= -0.8;
+            y = Math.max(margin, Math.min(dimensions.height - margin, y));
+          }
+
+          // 避开中心六边形区域
+          const distToCenter = distance(x, y, heroCenter.x, heroCenter.y);
+          if (distToCenter < heroRadius + 30) {
+            // 将圆环推离中心
+            const pushAngle = Math.atan2(y - heroCenter.y, x - heroCenter.x);
+            const pushForce = 0.3;
+            vx += Math.cos(pushAngle) * pushForce;
+            vy += Math.sin(pushAngle) * pushForce;
           }
         }
 
-        // Resonance boost
-        if (showResonance) {
-          vx += random(-0.1, 0.1);
-          vy += random(-0.1, 0.1);
-        }
-
-        vx *= 0.99;
-        vy *= 0.99;
-
-        const speed = Math.sqrt(vx * vx + vy * vy);
-        if (speed > 0.8) {
-          vx = (vx / speed) * 0.8;
-          vy = (vy / speed) * 0.8;
-        }
-
-        x += vx;
-        y += vy;
-        rotation += rotationSpeed;
-
-        const margin = circle.size;
-        if (x < margin || x > dimensions.width - margin) {
-          vx *= -0.8;
-          x = Math.max(margin, Math.min(dimensions.width - margin, x));
-        }
-        if (y < margin || y > dimensions.height - margin) {
-          vy *= -0.8;
-          y = Math.max(margin, Math.min(dimensions.height - margin, y));
+        // 种子生长逻辑
+        if (now >= revealStartTime && !isRevealed) {
+          const elapsed = now - revealStartTime;
+          revealProgress = Math.min(1, elapsed / revealDuration);
+          if (revealProgress >= 1) {
+            isRevealed = true;
+            // 重置为下一次显示周期
+            revealStartTime = now + random(20000, 40000); // 20-40秒后重新开始
+            revealProgress = 0;
+            isRevealed = false;
+          }
         }
 
         if (phase === 'entering') {
@@ -308,7 +312,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           if (opacity >= 1) phase = 'active';
         }
 
-        return { ...circle, x, y, vx, vy, rotation, opacity, phase };
+        return { ...circle, x, y, vx, vy, rotation, opacity, phase, revealProgress, revealStartTime, revealDuration, isRevealed };
       });
 
       setCircles([...circlesRef.current]);
@@ -321,7 +325,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [dimensions, hoveredCircle, smoothMouseX, smoothMouseY, isMobile, showResonance]);
+  }, [dimensions, hoveredCircle, isMobile, showResonance]);
 
   // Spawn new circles periodically
   useEffect(() => {
@@ -345,20 +349,25 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           const targetX = dimensions.width / 2 + random(-200, 200);
           const targetY = dimensions.height / 2 + random(-200, 200);
           const angle = Math.atan2(targetY - y, targetX - x);
+          const now = Date.now();
 
           const newCircle: CircleState = {
             id: `spawn-${Date.now()}`,
             question: q,
             x,
             y,
-            vx: Math.cos(angle) * 1.5,
-            vy: Math.sin(angle) * 1.5,
-            size: getCircleSize(q.gravity, false),
+            vx: Math.cos(angle) * 0.8,
+            vy: Math.sin(angle) * 0.8,
+            size: getCircleSize(false),
             opacity: 0,
             rotation: 0,
-            rotationSpeed: random(-0.3, 0.3),
+            rotationSpeed: random(-0.2, 0.2),
             phase: 'entering',
             enterDelay: 0,
+            revealProgress: 0,
+            revealStartTime: now + random(10000, 20000),
+            revealDuration: random(15000, 25000),
+            isRevealed: false,
           };
 
           circlesRef.current = [...circlesRef.current, newCircle];
@@ -388,7 +397,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     <div
       ref={containerRef}
       className={`absolute inset-0 overflow-hidden ${className}`}
-      onMouseMove={handleMouseMove}
       style={{ zIndex: 1 }}
     >
       {/* Canvas for connection lines */}
@@ -411,6 +419,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             isHovered={hoveredCircle === circle.id}
             onHover={() => handleCircleHover(circle.id)}
             onLeave={() => setHoveredCircle(null)}
+            containerWidth={dimensions.width}
+            containerHeight={dimensions.height}
           />
         ))}
       </AnimatePresence>
@@ -461,7 +471,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                   backgroundClip: 'text',
                 }}
               >
-                "{resonanceQuote.text}"
+                &ldquo;{resonanceQuote.text}&rdquo;
               </motion.p>
               <p
                 className="text-sm text-center"
@@ -507,32 +517,85 @@ interface QuestionCircleProps {
   isHovered: boolean;
   onHover: () => void;
   onLeave: () => void;
+  containerWidth: number;
+  containerHeight: number;
 }
 
-function QuestionCircle({ circle, isDark, isMobile, isHovered, onHover, onLeave }: QuestionCircleProps) {
+function QuestionCircle({ circle, isDark, isMobile, isHovered, onHover, onLeave, containerWidth, containerHeight }: QuestionCircleProps) {
   const color = COLOR_MAP[circle.question.color];
   const [showText, setShowText] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
+  const [showExplanation, setShowExplanation] = useState(false);
 
+  // 悬停时显示问题文字
   useEffect(() => {
-    if (isHovered && !isMobile) {
-      const timer = setTimeout(() => setShowText(true), 150);
-      return () => clearTimeout(timer);
-    } else if (!isClicked) {
-      setShowText(false);
-    }
-  }, [isHovered, isMobile, isClicked]);
+    let showTimer: ReturnType<typeof setTimeout> | undefined;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
 
+    if (isHovered) {
+      showTimer = setTimeout(() => setShowText(true), 100);
+    } else {
+      // 使用微小延迟来避免 lint 警告
+      hideTimer = setTimeout(() => {
+        setShowText(false);
+        setShowExplanation(false);
+      }, 0);
+    }
+
+    return () => {
+      if (showTimer) clearTimeout(showTimer);
+      if (hideTimer) clearTimeout(hideTimer);
+    };
+  }, [isHovered]);
+
+  // 点击显示解释
   const handleClick = () => {
-    if (isMobile) {
-      setIsClicked(!isClicked);
-      setShowText(!showText);
+    if (showText) {
+      setShowExplanation(!showExplanation);
+    } else {
+      // 移动端点击直接显示问题
+      setShowText(true);
     }
   };
 
-  const baseOpacity = circle.question.gravity === 4 ? 0.9 :
-                      circle.question.gravity === 3 ? 0.7 :
-                      circle.question.gravity === 2 ? 0.5 : 0.35;
+  // 种子生长逻辑：当生长进度达到一定阈值时自动显示问题
+  const shouldAutoReveal = circle.revealProgress >= 0.8;
+
+  // 计算文本显示位置，避免超出边界和中心区域
+  const getTextPosition = (): 'top' | 'bottom' | 'left' | 'right' => {
+    const centerX = containerWidth / 2;
+    const centerY = containerHeight / 2;
+    const heroRadius = Math.min(containerWidth, containerHeight) * (isMobile ? 0.22 : 0.28);
+
+    // 默认在下方显示
+    let position: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
+
+    // 如果圆环在容器下半部分，文本显示在上方
+    if (circle.y > containerHeight * 0.6) {
+      position = 'top';
+    }
+
+    // 如果文本可能显示到中心六边形区域，调整位置
+    const distToCenter = distance(circle.x, circle.y, centerX, centerY);
+    if (distToCenter < heroRadius + 100) {
+      // 靠近中心，需要向外显示
+      if (circle.x < centerX) {
+        position = 'left';
+      } else {
+        position = 'right';
+      }
+    }
+
+    // 边界检查
+    if (circle.x < 150) position = 'right';
+    if (circle.x > containerWidth - 150) position = 'left';
+
+    return position;
+  };
+
+  const textPosition = getTextPosition();
+
+  // 统一的基础透明度
+  const baseOpacity = 0.7;
 
   return (
     <motion.div
@@ -544,36 +607,34 @@ function QuestionCircle({ circle, isDark, isMobile, isHovered, onHover, onLeave 
       }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{
-        scale: isHovered || isClicked ? 1.3 : 1,
+        scale: 1, // 去掉悬停放大效果
         opacity: circle.opacity * baseOpacity,
       }}
       exit={{ scale: 0, opacity: 0 }}
       transition={{
         delay: circle.phase === 'entering' ? circle.enterDelay / 1000 : 0,
         duration: 0.4,
-        scale: { type: "spring", stiffness: 300, damping: 20 },
       }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onClick={handleClick}
     >
-      {/* Glow effect */}
+      {/* Glow effect - 根据种子生长进度调整 */}
       <motion.div
         className="absolute rounded-full pointer-events-none"
         style={{
-          width: circle.size * 2.5,
-          height: circle.size * 2.5,
+          width: circle.size * 2,
+          height: circle.size * 2,
           left: '50%',
           top: '50%',
           transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, ${withAlpha(color, 0.3)}, transparent 70%)`,
-          filter: 'blur(10px)',
+          background: `radial-gradient(circle, ${withAlpha(color, 0.25)}, transparent 70%)`,
+          filter: 'blur(8px)',
         }}
         animate={{
-          scale: isHovered || isClicked ? [1, 1.2, 1] : 1,
-          opacity: isHovered || isClicked ? 1 : 0.5,
+          opacity: isHovered ? 0.8 : 0.4 + circle.revealProgress * 0.3,
         }}
-        transition={{ duration: 0.8, repeat: isHovered || isClicked ? Infinity : 0 }}
+        transition={{ duration: 0.3 }}
       />
 
       {/* Main circle */}
@@ -583,9 +644,9 @@ function QuestionCircle({ circle, isDark, isMobile, isHovered, onHover, onLeave 
         viewBox="0 0 60 60"
         className="relative"
         style={{
-          filter: isHovered || isClicked
-            ? `drop-shadow(0 0 20px ${color})`
-            : `drop-shadow(0 0 8px ${withAlpha(color, 0.5)})`,
+          filter: isHovered
+            ? `drop-shadow(0 0 15px ${color})`
+            : `drop-shadow(0 0 6px ${withAlpha(color, 0.4)})`,
         }}
       >
         {/* Outer rotating ring */}
@@ -597,9 +658,9 @@ function QuestionCircle({ circle, isDark, isMobile, isHovered, onHover, onLeave 
           stroke={color}
           strokeWidth="1"
           strokeDasharray="4 6"
-          opacity={0.6}
+          opacity={0.5}
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           style={{ transformOrigin: "30px 30px" }}
         />
 
@@ -611,72 +672,68 @@ function QuestionCircle({ circle, isDark, isMobile, isHovered, onHover, onLeave 
           fill="none"
           stroke={color}
           strokeWidth="1.5"
-          opacity={0.8}
+          opacity={0.7}
         />
 
-        {/* Inner filled circle */}
+        {/* Inner filled circle - 根据生长进度变化 */}
         <motion.circle
           cx="30"
           cy="30"
           r="12"
-          fill={withAlpha(color, isDark ? 0.3 : 0.2)}
+          fill={withAlpha(color, isDark ? 0.25 : 0.15)}
           stroke={color}
-          strokeWidth="2"
+          strokeWidth="1.5"
           animate={{
-            scale: isHovered || isClicked ? [1, 1.1, 1] : 1,
+            r: 10 + circle.revealProgress * 3,
+            opacity: 0.6 + circle.revealProgress * 0.4,
           }}
-          transition={{ duration: 1.5, repeat: isHovered || isClicked ? Infinity : 0 }}
           style={{ transformOrigin: "30px 30px" }}
         />
 
-        {/* Center dot */}
+        {/* Center dot - 种子核心 */}
         <motion.circle
           cx="30"
           cy="30"
           r="4"
           fill={color}
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.8, 1, 0.8],
+            scale: shouldAutoReveal ? [1, 1.5, 1] : [1, 1.2, 1],
+            opacity: [0.7, 1, 0.7],
           }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ duration: shouldAutoReveal ? 1 : 2, repeat: Infinity }}
         />
 
-        {/* Particle orbits when hovered */}
-        {(isHovered || isClicked) && (
-          <>
-            {[0, 1, 2].map((i) => (
-              <motion.circle
-                key={i}
-                cx="30"
-                cy="30"
-                r="2"
-                fill={color}
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  cx: [30, 30 + 24 * Math.cos((i * 120 * Math.PI) / 180), 30],
-                  cy: [30, 30 + 24 * Math.sin((i * 120 * Math.PI) / 180), 30],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: i * 0.3,
-                }}
-              />
-            ))}
-          </>
+        {/* 生长进度指示环 */}
+        {circle.revealProgress > 0 && circle.revealProgress < 1 && (
+          <motion.circle
+            cx="30"
+            cy="30"
+            r="24"
+            fill="none"
+            stroke={color}
+            strokeWidth="2"
+            strokeDasharray={`${circle.revealProgress * 150} 150`}
+            strokeLinecap="round"
+            opacity={0.6}
+            style={{
+              transformOrigin: "30px 30px",
+              transform: "rotate(-90deg)"
+            }}
+          />
         )}
       </svg>
 
-      {/* Question text - Quantum Emergence Effect */}
+      {/* Question text - 悬停或自动显示时出现 */}
       <AnimatePresence>
-        {showText && (
-          <QuantumTextReveal
-            text={circle.question.question}
+        {(showText || shouldAutoReveal) && (
+          <QuestionTextDisplay
+            question={circle.question.question}
+            explanation={circle.question.explanation}
             color={color}
             isDark={isDark}
             isMobile={isMobile}
+            position={textPosition}
+            showExplanation={showExplanation}
           />
         )}
       </AnimatePresence>
@@ -684,41 +741,79 @@ function QuestionCircle({ circle, isDark, isMobile, isHovered, onHover, onLeave 
   );
 }
 
-// ============ Quantum Text Reveal Component ============
-interface QuantumTextRevealProps {
-  text: string;
+// ============ Question Text Display Component ============
+interface QuestionTextDisplayProps {
+  question: string;
+  explanation?: string;
   color: string;
   isDark: boolean;
   isMobile: boolean;
+  position: 'top' | 'bottom' | 'left' | 'right';
+  showExplanation: boolean;
 }
 
-function QuantumTextReveal({ text, color, isDark, isMobile }: QuantumTextRevealProps) {
-  const [phase, setPhase] = useState<'particles' | 'forming' | 'complete'>('particles');
-  const chars = useMemo(() => text.split(''), [text]);
-
-  useEffect(() => {
-    const timer1 = setTimeout(() => setPhase('forming'), 250);
-    const timer2 = setTimeout(() => setPhase('complete'), 700);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
+function QuestionTextDisplay({ question, explanation, color, isDark, isMobile, position, showExplanation }: QuestionTextDisplayProps) {
+  // 根据位置计算样式
+  const getPositionStyles = () => {
+    const base = {
+      position: 'absolute' as const,
+      zIndex: 50,
+      maxWidth: isMobile ? '200px' : '280px',
     };
-  }, []);
+
+    switch (position) {
+      case 'top':
+        return {
+          ...base,
+          bottom: '100%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          marginBottom: '12px',
+        };
+      case 'bottom':
+        return {
+          ...base,
+          top: '100%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          marginTop: '12px',
+        };
+      case 'left':
+        return {
+          ...base,
+          right: '100%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          marginRight: '12px',
+        };
+      case 'right':
+        return {
+          ...base,
+          left: '100%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          marginLeft: '12px',
+        };
+    }
+  };
+
+  const getAnimationDirection = () => {
+    switch (position) {
+      case 'top': return { initial: { y: 10 }, animate: { y: 0 }, exit: { y: 10 } };
+      case 'bottom': return { initial: { y: -10 }, animate: { y: 0 }, exit: { y: -10 } };
+      case 'left': return { initial: { x: 10 }, animate: { x: 0 }, exit: { x: 10 } };
+      case 'right': return { initial: { x: -10 }, animate: { x: 0 }, exit: { x: -10 } };
+    }
+  };
+
+  const animation = getAnimationDirection();
 
   return (
     <motion.div
-      className="absolute left-1/2 whitespace-nowrap z-50"
-      style={{
-        top: isMobile ? 'auto' : '100%',
-        bottom: isMobile ? '100%' : 'auto',
-        marginTop: isMobile ? 0 : '12px',
-        marginBottom: isMobile ? '12px' : 0,
-        transform: 'translateX(-50%)',
-      }}
-      initial={{ opacity: 0, y: isMobile ? 10 : -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: isMobile ? 10 : -10, transition: { duration: 0.15 } }}
+      style={getPositionStyles()}
+      initial={{ opacity: 0, ...animation.initial }}
+      animate={{ opacity: 1, ...animation.animate }}
+      exit={{ opacity: 0, ...animation.exit, transition: { duration: 0.15 } }}
     >
       {/* Background blur */}
       <motion.div
@@ -727,77 +822,60 @@ function QuantumTextReveal({ text, color, isDark, isMobile }: QuantumTextRevealP
           background: isDark
             ? `linear-gradient(135deg, rgba(14,14,20,0.95), rgba(26,26,46,0.9))`
             : `linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95))`,
-          backdropFilter: 'blur(16px)',
-          border: `1px solid ${withAlpha(color, 0.4)}`,
-          boxShadow: `0 0 40px ${withAlpha(color, 0.25)}, inset 0 0 30px ${withAlpha(color, 0.1)}`,
+          backdropFilter: 'blur(12px)',
+          border: `1px solid ${withAlpha(color, 0.3)}`,
+          boxShadow: `0 0 30px ${withAlpha(color, 0.2)}`,
         }}
-        initial={{ scale: 0.8, opacity: 0 }}
+        initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.25 }}
+        transition={{ duration: 0.2 }}
       />
 
-      {/* Text container */}
-      <div className="relative px-4 py-2 flex">
-        {chars.map((char, i) => (
-          <motion.span
-            key={i}
-            className="inline-block text-sm md:text-base font-semibold"
-            style={{
-              color: phase === 'complete' ? (isDark ? '#fff' : '#1a1a2e') : color,
-              textShadow: phase === 'complete' ? 'none' : `0 0 12px ${color}`,
-            }}
-            initial={{
-              opacity: 0,
-              x: random(-15, 15),
-              y: random(-15, 15),
-              scale: 0,
-              filter: 'blur(6px)',
-            }}
-            animate={{
-              opacity: phase === 'particles' ? 0.4 : 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              filter: 'blur(0px)',
-            }}
-            transition={{
-              duration: 0.4,
-              delay: phase === 'particles' ? i * 0.015 : i * 0.02,
-              ease: "easeOut",
-            }}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </div>
+      {/* Content */}
+      <div className="relative px-4 py-2">
+        {/* Question text */}
+        <motion.p
+          className="text-sm font-medium leading-relaxed"
+          style={{
+            color: isDark ? '#fff' : '#1a1a2e',
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+        >
+          {question}
+        </motion.p>
 
-      {/* Energy burst effect during formation */}
-      {phase !== 'complete' && (
-        <div className="absolute inset-0 pointer-events-none overflow-visible">
-          {[...Array(10)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full"
+        {/* Explanation (if available and clicked) */}
+        <AnimatePresence>
+          {showExplanation && explanation && (
+            <motion.p
+              className="mt-2 pt-2 text-xs leading-relaxed border-t"
               style={{
-                background: color,
-                left: '50%',
-                top: '50%',
+                color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
+                borderColor: withAlpha(color, 0.2),
               }}
-              initial={{ scale: 0, opacity: 1, x: 0, y: 0 }}
-              animate={{
-                scale: [0, 1.5, 0],
-                opacity: [1, 0.6, 0],
-                x: Math.cos((i / 10) * Math.PI * 2) * random(30, 50),
-                y: Math.sin((i / 10) * Math.PI * 2) * random(30, 50),
-              }}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.05,
-              }}
-            />
-          ))}
-        </div>
-      )}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+            >
+              {explanation}
+            </motion.p>
+          )}
+        </AnimatePresence>
+
+        {/* Click hint */}
+        {explanation && !showExplanation && (
+          <motion.p
+            className="mt-1 text-xs opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            transition={{ delay: 0.5 }}
+          >
+            点击查看更多
+          </motion.p>
+        )}
+      </div>
     </motion.div>
   );
 }
