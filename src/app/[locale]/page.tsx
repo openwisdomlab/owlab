@@ -38,7 +38,6 @@ import Script from "next/script";
 import { ModuleCards } from "@/features/doc-viewer/ModuleCards";
 import { LearningSpaceTagline } from "@/components/ui/LearningSpaceTagline";
 import { EnhancedHero } from "@/components/brand/EnhancedHero";
-import { EinsteinQuote } from "@/components/brand/EinsteinQuote";
 import { useState } from "react";
 
 const containerVariants = {
@@ -164,9 +163,6 @@ export default function HomePage() {
 
       {/* Hero Section - Enhanced OWL Visual Identity */}
       <EnhancedHero locale={locale} t={t} />
-
-      {/* Einstein Quote Section */}
-      <EinsteinQuote locale={locale} />
 
       {/* 前沿理念模块 Section - 独立展示 */}
       <section className="py-14 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
@@ -1552,12 +1548,84 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative p-6 md:p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl">
+          <div className="relative p-6 md:p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl overflow-hidden">
             {/* Quote Mark */}
             <div className="absolute -top-4 left-8 text-6xl text-[var(--neon-cyan)] opacity-20 font-serif">"</div>
 
+            {/* E=MC² Animated Formula */}
+            <motion.div
+              className="absolute -top-2 right-6 md:right-8 select-none pointer-events-none"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <motion.span
+                className="text-2xl md:text-3xl font-serif italic font-medium"
+                style={{
+                  background: "linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-cyan) 50%, var(--neon-pink) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textShadow: "0 0 30px rgba(139, 92, 246, 0.3)",
+                }}
+                animate={{
+                  opacity: [0.7, 1, 0.7],
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                E=mc²
+              </motion.span>
+              {/* Glow effect */}
+              <motion.div
+                className="absolute inset-0 -z-10 blur-xl"
+                style={{
+                  background: "radial-gradient(circle, var(--neon-violet) 0%, transparent 70%)",
+                }}
+                animate={{
+                  opacity: [0.2, 0.4, 0.2],
+                  scale: [1, 1.3, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              {/* Floating particles */}
+              <motion.div
+                className="absolute -right-2 top-0 w-1.5 h-1.5 rounded-full bg-[var(--neon-cyan)]"
+                animate={{
+                  y: [0, -8, 0],
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+              />
+              <motion.div
+                className="absolute right-4 -top-1 w-1 h-1 rounded-full bg-[var(--neon-pink)]"
+                animate={{
+                  y: [0, -6, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+              />
+              <motion.div
+                className="absolute -left-1 top-2 w-1 h-1 rounded-full bg-[var(--neon-violet)]"
+                animate={{
+                  y: [0, -10, 0],
+                  opacity: [0.4, 0.9, 0.4],
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+              />
+            </motion.div>
+
             {/* Quote Text */}
-            <blockquote className="relative text-lg md:text-xl text-[var(--foreground)] leading-relaxed italic text-center mb-6">
+            <blockquote className="relative text-lg md:text-xl text-[var(--foreground)] leading-relaxed italic text-center mb-6 mt-4">
               提出一个问题往往比解决一个问题更重要。因为解决问题也许仅是一个数学上或实验上的技能而已，而提出新的问题，却需要有创造性的想象力，标志着科学的真正进步。
             </blockquote>
 
