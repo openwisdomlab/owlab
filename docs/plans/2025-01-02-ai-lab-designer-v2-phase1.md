@@ -882,31 +882,49 @@ const [launcherState, setLauncherState] = useState<LauncherState | null>(null);
 
 ```tsx
 // 在其他 handler 函数附近添加
-const handleLauncherStart = async (state: LauncherState) => {
+const handleLauncherStart = useCallback(async (state: LauncherState) => {
   setLauncherState(state);
   setShowLauncher(false);
 
   // 如果是自然语言输入，调用 AI 生成布局
   if (state.mode === "chat" && state.prompt) {
-    // TODO: 调用 AI 生成布局
-    console.log("Generate layout from prompt:", state.prompt);
+    setShowAISidebar(true);
+
+    // 调用 AI 生成布局
+    try {
+      const response = await fetch("/api/ai/generate-layout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ requirements: state.prompt }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.layout) {
+          setLayout(data.layout);
+        }
+      }
+    } catch (error) {
+      console.error("Failed to generate layout from prompt:", error);
+    }
   }
 
   // 如果是快速选择，基于学科生成基础布局
   if (state.mode === "quick" && state.discipline) {
-    // TODO: 基于学科生成布局
-    console.log("Generate layout for discipline:", state.discipline, state.subDisciplines);
+    const newLayout = getLayoutFromDiscipline(state.discipline);
+    setLayout(newLayout);
+    setShowAISidebar(true);
   }
 
   // 如果是模板模式，打开模板库
   if (state.mode === "template") {
     setShowTemplates(true);
   }
-};
+}, [setLayout]);
 
-const handleLauncherSkip = () => {
+const handleLauncherSkip = useCallback(() => {
   setShowLauncher(false);
-};
+}, []);
 ```
 
 **Step 3: 修改 return 语句，添加条件渲染**
