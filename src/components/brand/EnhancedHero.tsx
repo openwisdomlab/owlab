@@ -570,7 +570,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               {/* 连接符 × */}
               <span className="text-xl md:text-2xl" style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)' }}>×</span>
 
-              {/* 天马行空的想法 */}
+              {/* 有想象力的空间 */}
               <motion.div
                 className="flex flex-col items-center"
                 whileHover={{ scale: 1.05, y: -4 }}
@@ -583,23 +583,28 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   }}
                 >
                   <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8 md:w-10 md:h-10" style={{ color: brandColors.violet }}>
-                    <path d="M8 32 Q12 28, 18 30 Q24 32, 30 28 Q36 24, 40 28" stroke="currentColor" strokeWidth="2" fill="none" />
-                    <motion.path
-                      d="M20 30 Q16 20, 24 14 Q32 20, 28 30"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        y: [0, -2, 0]
-                      }}
+                    {/* 空间框架 - 3D透视房间轮廓 */}
+                    <path d="M8 36 L8 16 L24 8 L40 16 L40 36 L24 44 Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+                    <path d="M8 16 L24 24 L40 16" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                    <path d="M24 24 L24 44" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                    {/* 想象力星星 - 动画闪烁 */}
+                    <motion.g
+                      animate={{ opacity: [0.4, 1, 0.4] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
+                    >
+                      <path d="M18 18 L19 20 L18 22 L17 20 Z" fill="currentColor" />
+                    </motion.g>
+                    <motion.g
+                      animate={{ opacity: [1, 0.4, 1] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <path d="M30 14 L31.5 17 L30 20 L28.5 17 Z" fill="currentColor" />
+                    </motion.g>
                     <motion.circle
-                      cx="36" cy="16" r="2"
+                      cx="34" cy="26" r="1.5"
                       fill="currentColor"
-                      animate={{ x: [0, -4, 0], y: [0, 4, 0], opacity: [1, 0.5, 1] }}
-                      transition={{ duration: 3, repeat: Infinity }}
+                      animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     />
                   </svg>
                 </div>
@@ -607,7 +612,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   className="text-xs md:text-sm font-medium whitespace-nowrap"
                   style={{ color: brandColors.violet }}
                 >
-                  天马行空的想法
+                  有想象力的空间
                 </span>
               </motion.div>
 
