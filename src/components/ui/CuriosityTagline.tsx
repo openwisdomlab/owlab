@@ -48,65 +48,64 @@ const elements: ElementConfig[] = [
     ),
   },
   {
-    text: "天马行空的想法",
+    text: "有想象力的空间",
     color: "var(--neon-violet)",
     glowColor: "rgba(139, 92, 246, 0.4)",
-    description: "打破常规思维，让想象力自由翱翔",
+    description: "激发创意的环境，让想象力自由生长",
     svgPath: (
       <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
-        {/* 天马 - 简化的飞马轮廓 */}
+        {/* 空间框架 - 立体房屋轮廓 */}
         <path
-          d="M8 32 Q12 28, 18 30 Q24 32, 30 28 Q36 24, 40 28"
+          d="M24 6 L42 18 L42 38 L24 46 L6 38 L6 18 Z"
           stroke="currentColor"
           strokeWidth="2"
           fill="none"
         />
-        {/* 翅膀 */}
-        <motion.path
-          d="M20 30 Q16 20, 24 14 Q32 20, 28 30"
+        <path
+          d="M24 6 L24 46"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.5"
+          opacity="0.5"
           fill="none"
-          animate={{
-            d: [
-              "M20 30 Q16 20, 24 14 Q32 20, 28 30",
-              "M20 30 Q14 18, 24 10 Q34 18, 28 30",
-              "M20 30 Q16 20, 24 14 Q32 20, 28 30"
-            ]
-          }}
+        />
+        <path
+          d="M6 18 L24 26 L42 18"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          opacity="0.5"
+          fill="none"
+        />
+        {/* 内部星星 - 代表想象力 */}
+        <motion.g
+          animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-        {/* 星星轨迹 */}
+        >
+          <circle cx="24" cy="32" r="2" fill="currentColor" />
+        </motion.g>
+        {/* 漂浮的灵感火花 */}
         <motion.circle
-          cx="36"
-          cy="16"
-          r="2"
-          fill="currentColor"
-          animate={{ x: [0, -4, 0], y: [0, 4, 0], opacity: [1, 0.5, 1] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-        <motion.circle
-          cx="12"
-          cy="20"
+          cx="18"
+          cy="24"
           r="1.5"
           fill="currentColor"
-          animate={{ x: [0, 4, 0], y: [0, -4, 0], opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+          animate={{ y: [0, -3, 0], opacity: [0.4, 0.9, 0.4] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
         />
-        {/* 云朵 */}
-        <path
-          d="M4 38 Q6 36, 10 38 Q14 36, 16 38"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          opacity="0.5"
-          fill="none"
+        <motion.circle
+          cx="30"
+          cy="22"
+          r="1.5"
+          fill="currentColor"
+          animate={{ y: [0, -3, 0], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
         />
-        <path
-          d="M32 36 Q36 34, 40 36 Q44 34, 46 36"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          opacity="0.5"
-          fill="none"
+        <motion.circle
+          cx="24"
+          cy="18"
+          r="1"
+          fill="currentColor"
+          animate={{ y: [0, -2, 0], opacity: [0.3, 0.8, 0.3] }}
+          transition={{ duration: 3, repeat: Infinity, delay: 1 }}
         />
       </svg>
     ),
