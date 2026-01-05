@@ -195,3 +195,27 @@ Update all references in these locations:
 - Use relative URLs without locale prefix in MDX: `/docs/core/01-foundations`
 - The routing system automatically adds locale prefix
 - Cross-reference format: `[Link Text](/docs/core/module-name)`
+
+### MDX Code Block Guidelines
+
+**IMPORTANT**: Turbopack (Next.js 16+) may attempt to evaluate code blocks as JavaScript. Follow these rules:
+
+1. **Always use language specifiers** for ASCII art and diagrams:
+   ```text
+   ┌────────────┐
+   │  Diagram   │
+   └────────────┘
+   ```
+   NOT:
+   ```
+   ┌────────────┐
+   ```
+
+2. **Avoid JavaScript-like patterns** in plain text code blocks:
+   - ❌ `(r=+0.72)` - looks like JS assignment
+   - ❌ `{value=123}` - looks like JSX expression
+   - ✅ `r = 0.72` or `相关系数: 0.72`
+
+3. **Run lint before build**: `pnpm lint:mdx`
+
+4. **Pre-build check**: The `prebuild` script automatically runs `lint-mdx.js` to catch issues before build fails.

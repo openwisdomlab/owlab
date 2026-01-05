@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/lint-mdx.js",
     "build": "next build && npm run postbuild",
     "postbuild": "pagefind --site .next --output-path public/_pagefind",
     "build:static": "next build && pagefind --site out",
     "start": "next start",
     "lint": "eslint",
+    "lint:mdx": "node scripts/lint-mdx.js",
     "search:index": "pagefind --site .next --output-path public/_pagefind",
     "validate": "node scripts/validate-content.mjs"
   },
