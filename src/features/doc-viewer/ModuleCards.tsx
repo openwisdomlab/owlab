@@ -365,9 +365,9 @@ export function ModuleCards({ locale, compact = false, showHighlights = true }: 
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {allTags.map((tag) => (
+                    {allTags.map((tag, index) => (
                       <Link
-                        key={tag}
+                        key={`${index}-${tag}`}
                         href={`/${locale}${module.path}`}
                         className="px-2.5 py-1 text-[11px] rounded-full transition-all hover:scale-105"
                         style={{
