@@ -67,6 +67,9 @@ src/
 │   └── utils/            # Utility functions
 └── stores/               # Zustand stores
 
+docs/tasks/                       # Auto Claude task specs
+└── SPECS.md                      # Task list for Auto Claude
+
 content/docs/zh/knowledge-base/   # Knowledge base MDX content
 ├── 01-foundations/               # M01 Philosophy & Theory
 ├── 02-governance/                # M02 Governance & Network
