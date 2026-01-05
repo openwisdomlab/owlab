@@ -1523,7 +1523,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Einstein Quote Section - 追光实验背景 */}
+      {/* 追光实验动画 Section - 纯视觉效果 */}
       <section className="py-10 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1531,14 +1531,10 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative p-6 md:p-8 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl overflow-hidden">
+          <div className="relative h-32 md:h-40 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl overflow-hidden">
 
-            {/* 追光实验背景动画 - Chasing Light Experiment (爱因斯坦16岁的思想实验) */}
+            {/* 追光实验背景动画 - Chasing Light Experiment */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {/* 思想实验标签 */}
-              <div className="absolute top-3 left-3 text-[9px] font-mono text-[var(--neon-cyan)]/50 tracking-wider">
-                「追光思想实验」Gedankenexperiment
-              </div>
 
               {/* 光束 - 以光速c向右传播 */}
               {[...Array(3)].map((_, i) => (
@@ -1663,11 +1659,6 @@ export default function HomePage() {
                   <line x1="12" y1="16" x2="8" y2="22" stroke="var(--neon-violet)" strokeWidth="2" strokeLinecap="round" />
                   <line x1="12" y1="16" x2="18" y2="20" stroke="var(--neon-violet)" strokeWidth="2" strokeLinecap="round" />
                 </motion.svg>
-
-                {/* 标签 */}
-                <div className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8px] text-[var(--neon-violet)] font-medium">
-                  追光者
-                </div>
               </motion.div>
 
               {/* 正在逃逸的光子 - 始终在追光者前方 */}
@@ -1700,33 +1691,12 @@ export default function HomePage() {
                     repeat: Infinity,
                   }}
                 />
-                {/* 光子标签 */}
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8px] text-[var(--neon-yellow)] font-medium">
-                  光 (c)
-                </div>
               </motion.div>
-
-              {/* 光速标注 */}
-              <motion.div
-                className="absolute bottom-3 right-3 text-[9px] font-mono text-[var(--neon-cyan)]/40"
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                c = 299,792,458 m/s
-              </motion.div>
-
-              {/* 问题提示 */}
-              <div className="absolute bottom-3 left-3 text-[8px] text-[var(--muted-foreground)]/50 italic max-w-[200px]">
-                如果以光速追逐光线，会看到什么？
-              </div>
             </div>
-
-            {/* Quote Mark */}
-            <div className="absolute -top-4 left-8 text-6xl text-[var(--neon-cyan)] opacity-20 font-serif">"</div>
 
             {/* E=MC² Animated Formula - 增强版 */}
             <motion.div
-              className="absolute -top-2 right-6 md:right-8 select-none pointer-events-none"
+              className="absolute top-4 right-6 md:right-8 select-none pointer-events-none"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -1794,40 +1764,9 @@ export default function HomePage() {
               ))}
             </motion.div>
 
-            {/* Quote Text */}
-            <blockquote className="relative text-lg md:text-xl text-[var(--foreground)] leading-relaxed italic text-center mb-6 mt-4 z-10">
-              提出一个问题往往比解决一个问题更重要。因为解决问题也许仅是一个数学上或实验上的技能而已，而提出新的问题，却需要有创造性的想象力，标志着科学的真正进步。
-            </blockquote>
-
-            {/* Author */}
-            <div className="flex items-center justify-center gap-3 relative z-10">
-              <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--neon-cyan)]"></div>
-              <cite className="not-italic text-sm md:text-base text-[var(--muted-foreground)] font-medium">
-                阿尔伯特·爱因斯坦
-              </cite>
-              <div className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--neon-cyan)]"></div>
-            </div>
-
             {/* Decorative corners */}
             <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[var(--neon-cyan)]/30 rounded-tr-2xl"></div>
             <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[var(--neon-cyan)]/30 rounded-bl-2xl"></div>
-
-            {/* Additional Quote */}
-            <motion.p
-              className="relative text-base md:text-lg font-medium text-center mt-6 z-10"
-              style={{
-                background: "linear-gradient(135deg, var(--neon-yellow) 0%, var(--neon-cyan) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
-              没有问题是太愚蠢的，没有想法是太疯狂的
-            </motion.p>
           </div>
         </motion.div>
       </section>
@@ -2289,80 +2228,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 知识体系导航 Section - 紧凑版 */}
-      <section className="py-8 px-4 bg-[var(--glass-bg)]/10">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+      {/* 名言展示 Section */}
+      <section className="py-10 px-4 bg-[var(--glass-bg)]/10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <motion.p
+            className="text-xl md:text-2xl font-medium"
+            style={{
+              background: "linear-gradient(135deg, var(--neon-yellow) 0%, var(--neon-cyan) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-8"
+            transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <h3 className="text-xl font-semibold mb-2 text-[var(--foreground)]">{t("threeLayerNav.title")}</h3>
-            <p className="text-sm text-[var(--muted-foreground)] max-w-2xl mx-auto">
-              {t("threeLayerNav.description")}
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-3 gap-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            {/* 前沿理念 */}
-            <motion.div variants={itemVariants}>
-              <Link href={`/${locale}/docs/research`}>
-                <div className="glass-card p-4 hover:border-[var(--neon-cyan)]/50 transition-all group">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Sparkles className="w-5 h-5 text-[var(--neon-cyan)]" />
-                    <h4 className="font-semibold text-[var(--foreground)]">
-                      {t("threeLayerNav.layers.philosophy.title")}
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[var(--muted-foreground)]">
-                    {t("threeLayerNav.layers.philosophy.description")}
-                  </p>
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* 核心知识库 */}
-            <motion.div variants={itemVariants}>
-              <Link href={`/${locale}/docs/core`}>
-                <div className="glass-card p-4 hover:border-[var(--neon-violet)]/50 transition-all group">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Rocket className="w-5 h-5 text-[var(--neon-violet)]" />
-                    <h4 className="font-semibold text-[var(--foreground)]">
-                      {t("threeLayerNav.layers.action.title")}
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[var(--muted-foreground)]">
-                    {t("threeLayerNav.layers.action.description")}
-                  </p>
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* 协作文档 */}
-            <motion.div variants={itemVariants}>
-              <Link href={`/${locale}/docs/core/ARCHITECTURE-V2`}>
-                <div className="glass-card p-4 hover:border-[var(--neon-green)]/50 transition-all group">
-                  <div className="flex items-center gap-3 mb-2">
-                    <FileText className="w-5 h-5 text-[var(--neon-green)]" />
-                    <h4 className="font-semibold text-[var(--foreground)]">
-                      {t("threeLayerNav.layers.docs.title")}
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[var(--muted-foreground)]">
-                    {t("threeLayerNav.layers.docs.description")}
-                  </p>
-                </div>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
+            没有问题是太愚蠢的，没有想法是太疯狂的
+          </motion.p>
+        </motion.div>
       </section>
 
       <footer className="py-10 px-4 border-t border-[var(--glass-border)]">
