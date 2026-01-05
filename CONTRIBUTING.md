@@ -38,9 +38,9 @@
 
 在贡献之前，请先阅读：
 
-1. [知识库架构文档](./content/docs/zh/knowledge-base/ARCHITECTURE-V2.mdx)
-2. [协作与版本机制](./content/docs/zh/knowledge-base/COLLABORATION-PROTOCOL.mdx)
-3. [全局定义与分级体系](./content/docs/zh/knowledge-base/GLOBAL-DEFINITIONS.mdx)
+1. [知识库架构文档](./content/docs/zh/core/ARCHITECTURE-V2.mdx)
+2. [协作与版本机制](./content/docs/zh/core/COLLABORATION-PROTOCOL.mdx)
+3. [全局定义与分级体系](./content/docs/zh/core/GLOBAL-DEFINITIONS.mdx)
 
 ---
 
@@ -259,7 +259,7 @@ Closes #123
 
 如果您在贡献过程中遇到问题：
 
-1. 查看 [FAQ](./content/docs/zh/knowledge-base/M00-Meta/index.mdx)
+1. 查看 [FAQ](./content/docs/zh/core/M00-Meta/index.mdx)
 2. 在 [Discussions](https://github.com/openwisdomlab/owlab/discussions) 中提问
 3. 通过 [Issues](https://github.com/openwisdomlab/owlab/issues) 报告问题
 
