@@ -20,8 +20,8 @@ export function getLocalePage(slug: string[] | undefined, locale: string) {
 
 // Helper to transform URL to proper format for next-intl
 // Strips the locale from the content path and adds locale prefix for routing
-// e.g., "/docs/zh/living-modules" -> "/{locale}/docs/research"
-// e.g., "zh/living-modules" -> "/{locale}/docs/research"
+// e.g., "/docs/zh/research" -> "/{locale}/docs/research"
+// e.g., "zh/research" -> "/{locale}/docs/research"
 function transformUrlForLocale(url: string, locale: string): string {
   let strippedUrl = url;
 

@@ -151,7 +151,7 @@ interface TreeNode {
 // Helper to normalize URL for comparison
 // Converts both formats to a common format: /docs/path (without locale)
 // Input formats:
-// - "/docs/zh/living-modules" (from fumadocs source) -> "/docs/research"
+// - "/docs/zh/research" (from fumadocs source) -> "/docs/research"
 // - "/zh/docs/research" (from transformed tree) -> "/docs/research"
 function normalizeUrlForComparison(url: string): string {
   const locales = ["en", "zh"];
