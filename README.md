@@ -50,7 +50,7 @@ OWL 通过 **Enlighten - Empower - Engage** 三个维度支持学生成长：
 | M06 安全与伦理 | 敢于冒险的前提——安全与边界 | Enlighten + Empower + Engage |
 | M07 人员与能力 | 不是教，而是点燃 | Enlighten + Empower + Engage |
 | M08 运营手册 | 让探究持续发生 | Enlighten + Empower + Engage |
-| M09 评价与影响 | 看见成长的痕迹 | Enlighten + Empower + Engage |
+| M09 成长与影响力 | 看见成长的痕迹 | Enlighten + Empower + Engage |
 
 ## AI Lab 设计工具
 

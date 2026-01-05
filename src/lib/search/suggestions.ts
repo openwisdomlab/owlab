@@ -43,7 +43,7 @@ export const moduleQuickLinks: Record<string, { title: string; path: string }[]>
     { title: "M06 安全与伦理", path: "/zh/docs/core/06-safety" },
     { title: "M07 人员与能力", path: "/zh/docs/core/07-people" },
     { title: "M08 运营手册", path: "/zh/docs/core/08-operations" },
-    { title: "M09 评价与影响", path: "/zh/docs/core/09-assessment" },
+    { title: "M09 成长与影响力", path: "/zh/docs/core/09-assessment" },
   ],
   en: [
     { title: "M01 Philosophy & Theory", path: "/en/docs/core/01-foundations" },
@@ -54,7 +54,7 @@ export const moduleQuickLinks: Record<string, { title: string; path: string }[]>
     { title: "M06 Safety & Ethics", path: "/en/docs/core/06-safety" },
     { title: "M07 People & Capability", path: "/en/docs/core/07-people" },
     { title: "M08 Operations Manual", path: "/en/docs/core/08-operations" },
-    { title: "M09 Assessment & Impact", path: "/en/docs/core/09-assessment" },
+    { title: "M09 Growth & Impact", path: "/en/docs/core/09-assessment" },
   ],
 };
 
