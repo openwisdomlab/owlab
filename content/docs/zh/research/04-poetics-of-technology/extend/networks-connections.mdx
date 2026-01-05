@@ -592,4 +592,1145 @@ Li-Fi 系统架构
 
 ---
 
-*本文档持续更新中，最后更新：2025-01*
+## 十、OWL 互联协议详解
+
+### 10.1 OWL 实验室互联标准 (OLIS)
+
+**OWL Lab Interconnection Standard (OLIS) v1.0**
+
+```
+OLIS 协议架构
+
+┌─────────────────────────────────────────────────────────────┐
+│                    应用层协议                                │
+│  ┌──────────┬──────────┬──────────┬──────────────────┐      │
+│  │ 项目共享  │ 实时通信  │ 资源发现  │ 身份认证         │      │
+│  │ OLIS-P   │ OLIS-C   │ OLIS-D   │ OLIS-ID          │      │
+│  └──────────┴──────────┴──────────┴──────────────────┘      │
+├─────────────────────────────────────────────────────────────┤
+│                    传输层                                    │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  HTTPS / WebSocket / Matrix / IPFS / LoRa            │   │
+│  └──────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────┤
+│                    数据格式                                  │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  JSON-LD / ActivityPub / Custom Schema               │   │
+│  └──────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 实验室身份标识
+
+```json
+{
+  "@context": "https://owl.global/schema/v1",
+  "@type": "OWLLab",
+  "id": "owl:lab:cn-sh-001",
+  "name": {
+    "zh": "OWL 上海实验室",
+    "en": "OWL Shanghai Lab"
+  },
+  "location": {
+    "country": "CN",
+    "city": "Shanghai",
+    "coordinates": [31.2304, 121.4737],
+    "timezone": "Asia/Shanghai"
+  },
+  "capabilities": [
+    "3d-printing",
+    "cnc",
+    "electronics",
+    "woodworking",
+    "textiles"
+  ],
+  "contact": {
+    "email": "shanghai@owl.global",
+    "matrix": "@owl-shanghai:matrix.org",
+    "website": "https://shanghai.owl.global"
+  },
+  "status": "active",
+  "founded": "2024-01-15",
+  "memberCount": 45,
+  "publicKey": "-----BEGIN PUBLIC KEY-----\n..."
+}
+```
+
+#### 项目共享协议 (OLIS-P)
+
+```json
+{
+  "@context": "https://owl.global/schema/project/v1",
+  "@type": "OWLProject",
+  "id": "owl:project:2025-001",
+  "title": {
+    "zh": "社区空气质量监测网络",
+    "en": "Community Air Quality Monitoring Network"
+  },
+  "originLab": "owl:lab:cn-sh-001",
+  "collaboratingLabs": [
+    "owl:lab:cn-bj-001",
+    "owl:lab:de-be-001"
+  ],
+  "status": "in_progress",
+  "created": "2025-01-10T08:00:00Z",
+  "updated": "2025-01-15T14:30:00Z",
+  "tags": ["environment", "iot", "citizen-science"],
+  "license": "CC-BY-SA-4.0",
+  "repository": "https://github.com/owl-labs/air-quality-network",
+  "documentation": "ipfs://QmXxx.../README.md",
+  "assets": {
+    "photos": "ipfs://QmXxx.../photos/",
+    "designs": "ipfs://QmXxx.../designs/",
+    "code": "git://github.com/owl-labs/air-quality-network.git"
+  },
+  "requirements": {
+    "skills": ["arduino", "python", "data-viz"],
+    "equipment": ["esp32", "pms5003", "bme280"],
+    "budget": {
+      "currency": "CNY",
+      "min": 500,
+      "max": 2000
+    }
+  },
+  "outcomes": {
+    "learningGoals": [
+      "understand air quality parameters",
+      "build IoT sensor network",
+      "analyze environmental data"
+    ],
+    "deliverables": [
+      "working sensor nodes",
+      "data dashboard",
+      "community report"
+    ]
+  }
+}
+```
+
+#### 实时状态同步 (OLIS-S)
+
+```json
+{
+  "@type": "LabStatus",
+  "lab": "owl:lab:cn-sh-001",
+  "timestamp": "2025-01-15T14:30:00Z",
+  "space": {
+    "open": true,
+    "capacity": 30,
+    "currentOccupancy": 12,
+    "activeAreas": ["electronics-bench", "3d-printing"]
+  },
+  "environment": {
+    "temperature": 23.5,
+    "humidity": 48,
+    "co2": 650
+  },
+  "equipment": [
+    {
+      "id": "3dp-001",
+      "type": "3d-printer",
+      "status": "busy",
+      "job": "printing-enclosure",
+      "progress": 67,
+      "eta": "2025-01-15T15:30:00Z"
+    },
+    {
+      "id": "laser-001",
+      "type": "laser-cutter",
+      "status": "available"
+    }
+  ],
+  "events": {
+    "current": {
+      "title": "Arduino 工作坊",
+      "participants": 8,
+      "endsAt": "2025-01-15T17:00:00Z"
+    },
+    "next": {
+      "title": "开放时间",
+      "startsAt": "2025-01-15T18:00:00Z"
+    }
+  }
+}
+```
+
+---
+
+### 10.2 完整工具清单
+
+#### 层次 1: 信息连接工具
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  信息连接工具清单                                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  文档协作                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ HackMD / HedgeDoc    免费      Markdown协作，适合技术文档 │
+│  □ Notion               免费/付费  全能型，适合项目管理      │
+│  □ Obsidian + Sync      免费/付费  本地优先，双向链接        │
+│  □ BookStack            免费(自托管) 开源Wiki系统           │
+│                                                              │
+│  版本控制                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ GitHub               免费      代码托管，协作首选         │
+│  □ GitLab               免费(自托管) 私有部署选项           │
+│  □ Gitea                免费(自托管) 轻量级Git服务          │
+│                                                              │
+│  知识管理                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Zotero               免费      学术资源管理               │
+│  □ Raindrop.io          免费/付费  书签管理                  │
+│  □ Logseq               免费      大纲式知识管理             │
+│                                                              │
+│  推荐组合 (入门):                                            │
+│  HackMD + GitHub + Zotero = ¥0/月                           │
+│                                                              │
+│  推荐组合 (进阶):                                            │
+│  BookStack(自托管) + GitLab(自托管) + Logseq = 服务器成本    │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 层次 2: 协作连接工具
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  协作连接工具清单                                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  视频会议                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Jitsi Meet           免费(自托管) 开源，无需注册         │
+│  □ Zoom                 免费/付费    功能完整               │
+│  □ Google Meet          免费         简单易用               │
+│  □ BigBlueButton        免费(自托管) 教育专用               │
+│                                                              │
+│  即时通信                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Matrix/Element       免费         去中心化，可自托管     │
+│  □ Slack                免费/付费    功能丰富               │
+│  □ Discord              免费         社区活跃               │
+│  □ Mattermost           免费(自托管) 开源Slack替代         │
+│  □ Zulip                免费(自托管) 话题式对话             │
+│                                                              │
+│  项目管理                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Linear               免费/付费    现代化体验             │
+│  □ Plane.so             免费(自托管) 开源Linear替代        │
+│  □ Taiga                免费(自托管) 敏捷项目管理           │
+│  □ OpenProject          免费(自托管) 企业级功能             │
+│                                                              │
+│  实时协作                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Excalidraw           免费         协作白板               │
+│  □ Miro                 免费/付费    专业白板               │
+│  □ Figma/FigJam         免费/付费    设计协作               │
+│                                                              │
+│  推荐组合 (OWL 标准):                                        │
+│  Jitsi + Matrix + Plane.so + Excalidraw = ¥0 + 服务器       │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 层次 3: 临场连接工具
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  临场连接工具清单                                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  虚拟空间                                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Gather Town          免费/付费  2D虚拟办公室，位置音频   │
+│  □ Wonder               免费/付费  社交活动，自然分组       │
+│  □ Mozilla Hubs         免费       开源VR空间               │
+│  □ Spatial              免费/付费  AR/VR会议                │
+│  □ VRChat               免费       社交VR平台               │
+│                                                              │
+│  远程临场硬件                                                │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Double Robotics      商业       专业临场机器人           │
+│  □ Ohmni Labs           商业       教育友好                 │
+│  □ DIY 临场机器人       ¥2000起   见下方指南               │
+│                                                              │
+│  直播与录制                                                  │
+│  ──────────────────────────────────────────────────────────  │
+│  □ OBS Studio           免费       专业直播软件             │
+│  □ Restream             免费/付费  多平台同时直播           │
+│  □ StreamYard           免费/付费  浏览器端直播             │
+│                                                              │
+│  360°/沉浸式                                                 │
+│  ──────────────────────────────────────────────────────────  │
+│  □ Insta360             商业硬件   360相机                  │
+│  □ Matterport           商业服务   空间扫描                 │
+│  □ 3DVista              商业软件   虚拟漫游制作             │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 10.3 项目一：DIY 远程临场机器人
+
+**构建低成本的 OWL 远程临场机器人**
+
+#### 材料清单
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  OWL 远程临场机器人材料清单                                  │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  移动底盘                                                    │
+│  □ 2WD 机器人底盘套件     ¥80       × 1                     │
+│  □ L298N 电机驱动板       ¥15       × 1                     │
+│  □ 18650 电池盒 (3节)     ¥10       × 1                     │
+│  □ 18650 锂电池           ¥15       × 3                     │
+│                                                              │
+│  控制单元                                                    │
+│  □ Raspberry Pi 4 (4GB)   ¥500      × 1                     │
+│  □ MicroSD 卡 (32GB)      ¥30       × 1                     │
+│  □ 5V/3A 电源管理模块     ¥25       × 1                     │
+│                                                              │
+│  视觉与音频                                                  │
+│  □ USB 摄像头 (1080p)     ¥80       × 1                     │
+│  □ USB 麦克风             ¥30       × 1                     │
+│  □ 小音箱 (USB供电)       ¥40       × 1                     │
+│                                                              │
+│  显示                                                        │
+│  □ 7寸 HDMI 显示屏        ¥200      × 1                     │
+│  □ 或: 平板/旧手机        ¥0        (已有)                  │
+│                                                              │
+│  结构件                                                      │
+│  □ 3D打印支架             ¥50       材料费                   │
+│  □ 铝型材/木板            ¥30       结构框架                 │
+│  □ 螺丝螺母套装           ¥15                                │
+│                                                              │
+├─────────────────────────────────────────────────────────────┤
+│  总计: 约 ¥1,100 - ¥1,500                                   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 系统架构
+
+```
+远程临场机器人系统架构
+
+操控端 (远程用户)                    机器人端 (实验室)
+┌──────────────────┐                ┌──────────────────┐
+│  Web 浏览器       │                │  Raspberry Pi    │
+│  ┌──────────────┐│    WebRTC      │  ┌──────────────┐│
+│  │ 视频显示     │◄───────────────►│  │ 摄像头       ││
+│  └──────────────┘│                │  └──────────────┘│
+│  ┌──────────────┐│    WebRTC      │  ┌──────────────┐│
+│  │ 音频输出     │◄───────────────►│  │ 麦克风       ││
+│  └──────────────┘│                │  └──────────────┘│
+│  ┌──────────────┐│    WebRTC      │  ┌──────────────┐│
+│  │ 麦克风输入   │────────────────►│  │ 扬声器       ││
+│  └──────────────┘│                │  └──────────────┘│
+│  ┌──────────────┐│    WebSocket   │  ┌──────────────┐│
+│  │ 方向键/摇杆  │────────────────►│  │ 电机控制     ││
+│  └──────────────┘│                │  └──────────────┘│
+│                   │                │  ┌──────────────┐│
+│  ┌──────────────┐│◄───────────────│  │ 电量/状态    ││
+│  │ 状态显示     ││                │  └──────────────┘│
+│  └──────────────┘│                │                   │
+└──────────────────┘                └──────────────────┘
+
+信令服务器 (可使用 PeerJS Cloud 或自建)
+```
+
+#### 核心代码
+
+**机器人端 (Python + Flask)**:
+
+```python
+# owl_telepresence_robot.py
+# 远程临场机器人 - 树莓派端代码
+
+from flask import Flask, render_template, Response
+from flask_socketio import SocketIO, emit
+import RPi.GPIO as GPIO
+import cv2
+import time
+import threading
+
+app = Flask(__name__)
+socketio = SocketIO(app, cors_allowed_origins="*")
+
+# 电机引脚定义
+MOTOR_LEFT_EN = 17
+MOTOR_LEFT_IN1 = 27
+MOTOR_LEFT_IN2 = 22
+MOTOR_RIGHT_EN = 18
+MOTOR_RIGHT_IN1 = 23
+MOTOR_RIGHT_IN2 = 24
+
+# GPIO 初始化
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+motor_pins = [MOTOR_LEFT_EN, MOTOR_LEFT_IN1, MOTOR_LEFT_IN2,
+              MOTOR_RIGHT_EN, MOTOR_RIGHT_IN1, MOTOR_RIGHT_IN2]
+for pin in motor_pins:
+    GPIO.setup(pin, GPIO.OUT)
+
+# PWM 设置
+left_pwm = GPIO.PWM(MOTOR_LEFT_EN, 1000)
+right_pwm = GPIO.PWM(MOTOR_RIGHT_EN, 1000)
+left_pwm.start(0)
+right_pwm.start(0)
+
+class MotorController:
+    def __init__(self):
+        self.speed = 70  # 默认速度 (0-100)
+
+    def forward(self):
+        GPIO.output(MOTOR_LEFT_IN1, GPIO.HIGH)
+        GPIO.output(MOTOR_LEFT_IN2, GPIO.LOW)
+        GPIO.output(MOTOR_RIGHT_IN1, GPIO.HIGH)
+        GPIO.output(MOTOR_RIGHT_IN2, GPIO.LOW)
+        left_pwm.ChangeDutyCycle(self.speed)
+        right_pwm.ChangeDutyCycle(self.speed)
+
+    def backward(self):
+        GPIO.output(MOTOR_LEFT_IN1, GPIO.LOW)
+        GPIO.output(MOTOR_LEFT_IN2, GPIO.HIGH)
+        GPIO.output(MOTOR_RIGHT_IN1, GPIO.LOW)
+        GPIO.output(MOTOR_RIGHT_IN2, GPIO.HIGH)
+        left_pwm.ChangeDutyCycle(self.speed)
+        right_pwm.ChangeDutyCycle(self.speed)
+
+    def left(self):
+        GPIO.output(MOTOR_LEFT_IN1, GPIO.LOW)
+        GPIO.output(MOTOR_LEFT_IN2, GPIO.HIGH)
+        GPIO.output(MOTOR_RIGHT_IN1, GPIO.HIGH)
+        GPIO.output(MOTOR_RIGHT_IN2, GPIO.LOW)
+        left_pwm.ChangeDutyCycle(self.speed)
+        right_pwm.ChangeDutyCycle(self.speed)
+
+    def right(self):
+        GPIO.output(MOTOR_LEFT_IN1, GPIO.HIGH)
+        GPIO.output(MOTOR_LEFT_IN2, GPIO.LOW)
+        GPIO.output(MOTOR_RIGHT_IN1, GPIO.LOW)
+        GPIO.output(MOTOR_RIGHT_IN2, GPIO.HIGH)
+        left_pwm.ChangeDutyCycle(self.speed)
+        right_pwm.ChangeDutyCycle(self.speed)
+
+    def stop(self):
+        left_pwm.ChangeDutyCycle(0)
+        right_pwm.ChangeDutyCycle(0)
+
+    def set_speed(self, speed):
+        self.speed = max(0, min(100, speed))
+
+motor = MotorController()
+
+# 视频流
+class VideoStream:
+    def __init__(self):
+        self.camera = cv2.VideoCapture(0)
+        self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        self.camera.set(cv2.CAP_PROP_FPS, 30)
+
+    def get_frame(self):
+        success, frame = self.camera.read()
+        if success:
+            ret, buffer = cv2.imencode('.jpg', frame,
+                [cv2.IMWRITE_JPEG_QUALITY, 70])
+            return buffer.tobytes()
+        return None
+
+video = VideoStream()
+
+def generate_frames():
+    while True:
+        frame = video.get_frame()
+        if frame:
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        time.sleep(0.033)  # ~30fps
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(generate_frames(),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/')
+def index():
+    return render_template('robot_control.html')
+
+# WebSocket 控制命令
+@socketio.on('control')
+def handle_control(data):
+    command = data.get('command')
+    if command == 'forward':
+        motor.forward()
+    elif command == 'backward':
+        motor.backward()
+    elif command == 'left':
+        motor.left()
+    elif command == 'right':
+        motor.right()
+    elif command == 'stop':
+        motor.stop()
+    elif command == 'speed':
+        motor.set_speed(data.get('value', 70))
+
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
+    emit('status', {'connected': True, 'battery': get_battery_level()})
+
+def get_battery_level():
+    # 实际项目中通过ADC读取电池电压
+    return 85  # 模拟值
+
+if __name__ == '__main__':
+    try:
+        socketio.run(app, host='0.0.0.0', port=5000)
+    finally:
+        motor.stop()
+        GPIO.cleanup()
+```
+
+**控制页面 (HTML/JS)**:
+
+```html
+<!-- templates/robot_control.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OWL 远程临场机器人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #ff6b35;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        #video-feed {
+            width: 100%;
+            display: block;
+        }
+        .status-bar {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 5px;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+        .control-btn {
+            padding: 30px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            background: #16213e;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .control-btn:hover {
+            background: #ff6b35;
+        }
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        .control-btn.empty {
+            visibility: hidden;
+        }
+        .speed-control {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .speed-slider {
+            width: 100%;
+            max-width: 300px;
+        }
+        .connection-status {
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .connected { background: #4CAF50; }
+        .disconnected { background: #f44336; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦉 OWL 远程临场机器人</h1>
+
+        <div id="connection-status" class="connection-status disconnected">
+            连接中...
+        </div>
+
+        <div class="video-container">
+            <img id="video-feed" src="/video_feed" alt="Video Feed">
+            <div class="status-bar">
+                <span>🔋 电量: <span id="battery">--</span>%</span>
+                <span>📶 延迟: <span id="latency">--</span>ms</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-btn empty"></div>
+            <button class="control-btn" id="btn-forward">⬆️</button>
+            <div class="control-btn empty"></div>
+
+            <button class="control-btn" id="btn-left">⬅️</button>
+            <button class="control-btn" id="btn-stop">⏹️</button>
+            <button class="control-btn" id="btn-right">➡️</button>
+
+            <div class="control-btn empty"></div>
+            <button class="control-btn" id="btn-backward">⬇️</button>
+            <div class="control-btn empty"></div>
+        </div>
+
+        <div class="speed-control">
+            <label>速度: <span id="speed-value">70</span>%</label>
+            <br>
+            <input type="range" id="speed-slider" class="speed-slider"
+                   min="20" max="100" value="70">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+
+        // 连接状态
+        socket.on('connect', () => {
+            document.getElementById('connection-status').textContent = '已连接';
+            document.getElementById('connection-status').className =
+                'connection-status connected';
+        });
+
+        socket.on('disconnect', () => {
+            document.getElementById('connection-status').textContent = '连接断开';
+            document.getElementById('connection-status').className =
+                'connection-status disconnected';
+        });
+
+        socket.on('status', (data) => {
+            document.getElementById('battery').textContent = data.battery;
+        });
+
+        // 控制命令
+        function sendCommand(cmd) {
+            socket.emit('control', { command: cmd });
+        }
+
+        // 按钮控制 (鼠标)
+        const buttons = {
+            'btn-forward': 'forward',
+            'btn-backward': 'backward',
+            'btn-left': 'left',
+            'btn-right': 'right',
+            'btn-stop': 'stop'
+        };
+
+        Object.keys(buttons).forEach(btnId => {
+            const btn = document.getElementById(btnId);
+            btn.addEventListener('mousedown', () => sendCommand(buttons[btnId]));
+            btn.addEventListener('mouseup', () => sendCommand('stop'));
+            btn.addEventListener('mouseleave', () => sendCommand('stop'));
+
+            // 触摸支持
+            btn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                sendCommand(buttons[btnId]);
+            });
+            btn.addEventListener('touchend', () => sendCommand('stop'));
+        });
+
+        // 键盘控制
+        const keyMap = {
+            'ArrowUp': 'forward',
+            'ArrowDown': 'backward',
+            'ArrowLeft': 'left',
+            'ArrowRight': 'right',
+            'w': 'forward',
+            's': 'backward',
+            'a': 'left',
+            'd': 'right',
+            ' ': 'stop'
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (keyMap[e.key]) {
+                sendCommand(keyMap[e.key]);
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (keyMap[e.key] && e.key !== ' ') {
+                sendCommand('stop');
+            }
+        });
+
+        // 速度控制
+        const speedSlider = document.getElementById('speed-slider');
+        speedSlider.addEventListener('input', (e) => {
+            document.getElementById('speed-value').textContent = e.target.value;
+            socket.emit('control', { command: 'speed', value: parseInt(e.target.value) });
+        });
+
+        // 延迟测量
+        setInterval(() => {
+            const start = Date.now();
+            socket.emit('ping', {}, () => {
+                const latency = Date.now() - start;
+                document.getElementById('latency').textContent = latency;
+            });
+        }, 2000);
+    </script>
+</body>
+</html>
+```
+
+---
+
+### 10.4 项目二：OWL Matrix 通信服务器部署
+
+**为 OWL 网络搭建去中心化通信基础设施**
+
+#### 为什么选择 Matrix？
+
+```
+Matrix vs 其他方案
+
+┌─────────────────────────────────────────────────────────────┐
+│  需求                 Slack   Discord   Matrix              │
+├─────────────────────────────────────────────────────────────┤
+│  免费                   部分     是        是               │
+│  自托管                 否       否        是               │
+│  数据主权               否       否        是               │
+│  去中心化               否       否        是               │
+│  跨服务器通信           否       否        是               │
+│  端到端加密             否       否        是               │
+│  开源                   否       否        是               │
+│  桥接其他平台           否       否        是               │
+│  长期可用性             ?        ?         ✓ (协议开放)     │
+└─────────────────────────────────────────────────────────────┘
+
+结论: Matrix 最符合 OWL 的长期主义和去中心化价值观
+```
+
+#### 服务器配置要求
+
+```
+OWL Matrix 服务器配置
+
+最小配置 (10-50用户):
+├── CPU: 2核
+├── 内存: 2GB
+├── 存储: 20GB SSD
+└── 带宽: 100Mbps
+
+推荐配置 (50-200用户):
+├── CPU: 4核
+├── 内存: 4GB
+├── 存储: 50GB SSD
+└── 带宽: 200Mbps
+
+预估成本:
+├── 云服务器: ¥50-150/月 (轻量型)
+└── 自托管: 电费 + 硬件折旧
+```
+
+#### 部署脚本 (Docker)
+
+```yaml
+# docker-compose.yml
+# OWL Matrix 服务器部署配置
+
+version: '3.8'
+
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    container_name: owl-matrix
+    restart: unless-stopped
+    volumes:
+      - ./synapse-data:/data
+    environment:
+      - SYNAPSE_SERVER_NAME=matrix.owl-lab.local
+      - SYNAPSE_REPORT_STATS=no
+    ports:
+      - "8008:8008"
+      - "8448:8448"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14
+    container_name: owl-matrix-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: synapse
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: synapse
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --lc-collate=C --lc-ctype=C"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  element-web:
+    image: vectorim/element-web:latest
+    container_name: owl-element
+    restart: unless-stopped
+    volumes:
+      - ./element-config.json:/app/config.json
+    ports:
+      - "8080:80"
+
+  nginx:
+    image: nginx:alpine
+    container_name: owl-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+    depends_on:
+      - synapse
+      - element-web
+```
+
+#### Element 客户端配置
+
+```json
+// element-config.json
+{
+    "default_server_config": {
+        "m.homeserver": {
+            "base_url": "https://matrix.owl-lab.local",
+            "server_name": "owl-lab.local"
+        }
+    },
+    "brand": "OWL Lab 通信",
+    "integrations_ui_url": "",
+    "integrations_rest_url": "",
+    "bug_report_endpoint_url": "",
+    "showLabsSettings": true,
+    "features": {
+        "feature_video_rooms": true,
+        "feature_group_calls": true
+    },
+    "default_theme": "dark",
+    "room_directory": {
+        "servers": [
+            "owl-lab.local",
+            "matrix.org"
+        ]
+    }
+}
+```
+
+#### OWL 房间结构建议
+
+```
+OWL Matrix 房间架构
+
+owl-lab.local
+├── #announcements:owl-lab.local     (公告)
+│   └── 全网重要通知
+│
+├── #general:owl-lab.local           (综合)
+│   └── 日常交流
+│
+├── #projects:owl-lab.local          (项目)
+│   ├── 项目讨论
+│   └── 子空间: 每个大项目一个
+│
+├── #help:owl-lab.local              (互助)
+│   ├── 技术问题
+│   └── 资源求助
+│
+├── #showcase:owl-lab.local          (展示)
+│   └── 作品分享
+│
+├── #random:owl-lab.local            (随机)
+│   └── 非工作话题
+│
+└── #labs:owl-lab.local              (实验室空间)
+    ├── #shanghai:owl-lab.local
+    ├── #beijing:owl-lab.local
+    └── #shenzhen:owl-lab.local
+```
+
+---
+
+### 10.5 项目三：LoRa 网状网络搭建
+
+**构建无需互联网的校园/社区通信网络**
+
+#### 材料清单
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  LoRa 网状网络材料清单 (3节点起步)                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  节点硬件 (每节点)                                           │
+│  □ TTGO T-Beam (ESP32+LoRa+GPS) ¥150     × 3               │
+│  或                                                          │
+│  □ Heltec LoRa 32 V3           ¥80      × 3                │
+│                                                              │
+│  天线升级 (可选，增加距离)                                   │
+│  □ 高增益天线 (5dBi)           ¥30      × 3                │
+│                                                              │
+│  电源                                                        │
+│  □ 18650 电池                  ¥15      × 6 (每节点2个)    │
+│  或                                                          │
+│  □ USB 电源 + 移动电源         ¥50      × 3                │
+│                                                              │
+│  外壳 (户外部署)                                             │
+│  □ 防水盒                      ¥20      × 3                │
+│  □ 固定支架                    ¥15      × 3                │
+│                                                              │
+├─────────────────────────────────────────────────────────────┤
+│  基础版总计 (3节点): 约 ¥450-700                            │
+│  扩展版 (10节点): 约 ¥1,500-2,500                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Meshtastic 快速部署
+
+```
+Meshtastic 部署步骤
+
+1. 硬件准备
+   ├── 购买支持的开发板 (T-Beam / Heltec)
+   ├── 安装电池
+   └── 连接天线 (重要: 不装天线开机会烧坏发射模块)
+
+2. 固件刷写
+   ├── 访问 flasher.meshtastic.org
+   ├── 连接USB，选择设备型号
+   ├── 点击 Flash
+   └── 等待完成
+
+3. 配置节点
+   ├── 下载 Meshtastic App (iOS/Android)
+   ├── 蓝牙连接设备
+   ├── 设置节点名称
+   ├── 选择区域 (中国选 CN)
+   └── 配置信道 (所有节点相同)
+
+4. 网络测试
+   ├── 部署多个节点
+   ├── 发送测试消息
+   ├── 检查消息转发
+   └── 测量覆盖范围
+
+5. 高级配置 (可选)
+   ├── MQTT 网关
+   ├── 位置共享
+   ├── 遥测数据
+   └── 加密频道
+```
+
+#### 校园部署方案
+
+```
+校园 LoRa 网络部署示意图
+
+                    ┌─────────────┐
+                    │  节点 A     │ ← 教学楼顶
+                    │  (Gateway)  │
+                    └──────┬──────┘
+                           │
+              ┌────────────┼────────────┐
+              │            │            │
+        ┌─────▼─────┐ ┌────▼────┐ ┌────▼────┐
+        │  节点 B   │ │ 节点 C  │ │ 节点 D  │
+        │  实验室   │ │ 图书馆  │ │ 操场    │
+        └─────┬─────┘ └────┬────┘ └────┬────┘
+              │            │            │
+              └────────────┼────────────┘
+                           │
+                    ┌──────▼──────┐
+                    │  节点 E     │ ← 宿舍区
+                    │  (扩展)     │
+                    └─────────────┘
+
+网络特性:
+- 每个节点自动转发消息
+- 支持跳数路由 (默认3跳)
+- 无需互联网即可通信
+- 覆盖范围: 城市2-5km, 开阔10km+
+
+应用场景:
+- 校园活动通知
+- 紧急通信
+- 位置共享 (活动、寻人)
+- 传感器数据采集
+```
+
+---
+
+### 10.6 跨实验室协作清单
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  OWL 跨实验室协作启动清单                                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Phase 1: 建立连接 (第1-2周)                                 │
+│  ──────────────────────────────────────────────────────────  │
+│  □ 确认参与实验室和联络人                                    │
+│  □ 建立共同通信渠道                                          │
+│    ├── Matrix 房间 / Slack 频道                             │
+│    └── 邮件列表                                              │
+│  □ 互相介绍                                                  │
+│    ├── 实验室简介文档                                        │
+│    ├── 团队成员介绍                                          │
+│    └── 设备和能力清单                                        │
+│  □ 确定时区和可用时间                                        │
+│  □ 约定沟通规范                                              │
+│    ├── 响应时间预期                                          │
+│    ├── 会议频率                                              │
+│    └── 文档语言                                              │
+│                                                              │
+│  Phase 2: 定义项目 (第3-4周)                                 │
+│  ──────────────────────────────────────────────────────────  │
+│  □ 项目选题讨论                                              │
+│  □ 明确各方角色和贡献                                        │
+│  □ 制定项目时间线                                            │
+│  □ 确定交付物                                                │
+│  □ 建立项目仓库                                              │
+│  □ 创建项目文档结构                                          │
+│                                                              │
+│  Phase 3: 协作执行 (持续)                                    │
+│  ──────────────────────────────────────────────────────────  │
+│  □ 定期同步会议 (周/双周)                                   │
+│  □ 异步进度更新                                              │
+│  □ 问题及时沟通                                              │
+│  □ 过程文档记录                                              │
+│  □ 阶段性成果分享                                            │
+│                                                              │
+│  Phase 4: 总结传承                                           │
+│  ──────────────────────────────────────────────────────────  │
+│  □ 项目复盘会议                                              │
+│  □ 完善项目文档                                              │
+│  □ 整理可复用资源                                            │
+│  □ 发布项目报告                                              │
+│  □ 经验分享给其他实验室                                      │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 远程会议最佳实践
+
+```
+OWL 跨时区会议指南
+
+会议前:
+─────────────────────────────────────────
+□ 提前24小时发送议程
+□ 明确会议目标和预期结论
+□ 分享相关文档供预读
+□ 确认参与者时区和参会方式
+□ 准备会议录制
+
+会议中:
+─────────────────────────────────────────
+□ 准时开始，简短寒暄
+□ 主持人控制节奏
+□ 鼓励摄像头开启
+□ 使用协作白板/文档
+□ 定期确认各方理解
+□ 会议记录实时共享
+
+会议后:
+─────────────────────────────────────────
+□ 24小时内发送会议纪要
+□ 明确 Action Items 和负责人
+□ 录像上传共享 (为缺席者)
+□ 跟进未完成事项
+
+会议替代方案:
+─────────────────────────────────────────
+对于简单事项，考虑:
+- 异步视频留言 (Loom)
+- 协作文档评论
+- 文字讨论 (Matrix)
+```
+
+---
+
+## 十一、与其他模块的关联
+
+### 网络连接的跨模块整合
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  网络与连接 × 其他 L04 主题                                  │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  × 感知的扩展                                                │
+│  ├── 远程传感器数据共享                                      │
+│  ├── 跨地域环境对比分析                                      │
+│  └── 全球感知网络                                            │
+│                                                              │
+│  × 空间的智能                                                │
+│  ├── 实验室状态互联 (OLIS-S 协议)                           │
+│  ├── 远程设备访问                                            │
+│  └── 空间数字孪生共享                                        │
+│                                                              │
+│  × 创造与表达                                                │
+│  ├── 协作艺术创作                                            │
+│  ├── 远程制造与发送                                          │
+│  └── 全球展览平台                                            │
+│                                                              │
+│  × EduTech 前沿                                              │
+│  ├── 跨校课程协作                                            │
+│  ├── 远程导师配对                                            │
+│  └── 学习数据研究共享                                        │
+│                                                              │
+│  × 可持续技术                                                │
+│  ├── 环境数据全球对比                                        │
+│  ├── 可持续实践经验共享                                      │
+│  └── 循环经济物流网络                                        │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+*本章节持续更新中，最后更新：2025-01*
