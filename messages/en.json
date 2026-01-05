@@ -273,7 +273,7 @@
       "modules": {
         "M01": {
           "title": "Curious Owl",
-          "subtitle": "Setting Sail",
+          "subtitle": "",
           "label": "Sparking Curiosity Through Theory",
           "slogan": "Curiosity is your superpower",
           "description": "Why do kids keep asking 'why'? Because curiosity is humanity's original learning engine! From the 4P theory of 'learn while playing' to the constructionist wisdom of 'hands make minds' — here lies the secret recipe for making learning fun. Ready to transform boring classrooms into exciting explorations?",
@@ -285,8 +285,8 @@
           "tags": ["Constructivism", "4P Theory", "Design Thinking", "Learning by Doing", "Creative Learning"]
         },
         "M02": {
-          "title": "Social Owl",
-          "subtitle": "Innovation Network",
+          "title": "Adventurous Owl",
+          "subtitle": "",
           "label": "Smart Labs & Ecosystem Networks",
           "slogan": "Alone we go fast, together we go far",
           "description": "The era of going solo is over! Imagine: your cool project in Beijing can be seen by peers in Shenzhen; mentors in Shanghai can guide students in Chengdu remotely. That's the magic of the OWL network — connecting innovation labs like a web, sharing resources, exchanging experiences, growing stronger together!",
@@ -299,7 +299,7 @@
         },
         "M03": {
           "title": "Creative Owl",
-          "subtitle": "The Third Space",
+          "subtitle": "",
           "label": "Creativity-Inspiring Spaces",
           "slogan": "Step through this door, creativity comes knocking",
           "description": "Why do coffee shops spark more inspiration than classrooms? The secret is in space design! Good spaces 'talk' — quiet corners for deep thinking, collaboration tables for brainstorming, maker zones for building dreams. Plus a 'Failure Museum' celebrating those 'glorious crashes'!",
@@ -311,8 +311,8 @@
           "tags": ["Space Design", "Zone Layout", "Digital Environment", "Cultural Atmosphere", "Accessibility"]
         },
         "M04": {
-          "title": "Explorer Owl",
-          "subtitle": "Knowledge Routes",
+          "title": "Studious Owl",
+          "subtitle": "",
           "label": "Curriculum & Research Projects",
           "slogan": "Learning is an adventure, not a checklist",
           "description": "Who says learning must be step-by-step? The Explorer takes you on a real learning adventure! First figure out where you're going (goals), then how you'll know you've arrived (assessment), finally plan the route (activities). Light curiosity with real problems, let AI be your smart co-pilot, level up as you go!",
@@ -324,8 +324,8 @@
           "tags": ["Backward Design", "Inquiry-Based Learning", "AI Teaching", "Driving Questions", "Authentic Products"]
         },
         "M05": {
-          "title": "Handy Owl",
-          "subtitle": "Maker Workshop",
+          "title": "Versatile Owl",
+          "subtitle": "",
           "label": "Methods, Tools & Assets",
           "slogan": "Sharp tools make good work",
           "description": "From screwdrivers to laser cutters, from Arduino to 3D printers — this is maker paradise! Tiered tools let beginners start safely, digital fabrication turns wild ideas into real objects, and open hardware opens infinite possibilities. Best part: high-tech doesn't have to cost a fortune!",
@@ -338,7 +338,7 @@
         },
         "M06": {
           "title": "Guardian Owl",
-          "subtitle": "Safety Code",
+          "subtitle": "",
           "label": "Lab Safety & Ethics",
           "slogan": "Safety is the starting line, not the finish line",
           "description": "Want to innovate boldly? First learn to protect yourself! These aren't scary rules — they're your armor for 'getting things done' safely. Physical safety prevents injuries, digital safety protects privacy, AI ethics guides responsible tech use. With these guardrails, you can truly let your imagination fly!",
@@ -350,8 +350,8 @@
           "tags": ["Risk Assessment", "Safety Training", "Emergency Response", "AI Ethics", "Age Guidelines"]
         },
         "M07": {
-          "title": "Caring Owl",
-          "subtitle": "Lighting the Way",
+          "title": "Wise Owl",
+          "subtitle": "",
           "label": "Faculty Training & Capability Building",
           "slogan": "Not teaching, but lighting a fire",
           "description": "The best teachers don't know everything — they ignite students' curiosity! From watching and learning to standing alone, from tech newbie to all-round mentor, here's a clear growth map. The key: mentors must stay curious too, because the best education is 'exploring together'!",
@@ -363,8 +363,8 @@
           "tags": ["Capability Tiers", "Role Matrix", "Mentor Certification", "Technical Training", "Community Facilitation"]
         },
         "M08": {
-          "title": "Soaring Owl",
-          "subtitle": "Operations Log",
+          "title": "Flying Owl",
+          "subtitle": "",
           "label": "Sustainable Operations Manual",
           "slogan": "Turn good practices into good habits",
           "description": "Great labs don't run on inspiration — they run on reliable systems! How to run open days? Manage equipment? Keep the community alive? Here you'll find 'foolproof' guides for everything. More importantly, cultivate a culture of 'dare to try, love to share, help each other' — that's the real moat!",
@@ -376,8 +376,8 @@
           "tags": ["Standard Procedures", "Membership System", "Community Culture", "Open Days", "Mentor Network"]
         },
         "M09": {
-          "title": "Molting Owl",
-          "subtitle": "Growth Portfolio",
+          "title": "Resilient Owl",
+          "subtitle": "",
           "label": "Long-term Development & Impact",
           "slogan": "Every step of growth deserves to be seen",
           "description": "Test scores are just the tip of the iceberg! What really matters: Do you dare to ask questions? Can you collaborate? Can you bounce back from failure? Here we capture your growth from multiple angles — projects, reflections, peer reviews, digital profiles — making progress visible, tangible, and proudly shareable!",
