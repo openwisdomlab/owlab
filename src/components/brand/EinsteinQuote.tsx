@@ -1,11 +1,249 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useCallback } from "react";
 import { brandColors } from "@/lib/brand/colors";
 import { useTheme } from "@/components/ui/ThemeProvider";
 
 interface EinsteinQuoteProps {
   locale?: string;
+}
+
+// Interactive E=MC² Formula Component
+function InteractiveFormula({ isDark }: { isDark: boolean }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isActivated, setIsActivated] = useState(false);
+
+  const primaryColor = isDark ? brandColors.neonCyan : brandColors.blue;
+  const accentColor = isDark ? brandColors.neonPink : brandColors.violet;
+  const energyColor = isDark ? brandColors.violet : brandColors.neonPink;
+
+  const handleClick = useCallback(() => {
+    setIsActivated(true);
+    setTimeout(() => setIsActivated(false), 1500);
+  }, []);
+
+  // Generate particle positions
+  const particles = Array.from({ length: 12 }, (_, i) => ({
+    id: i,
+    angle: (i * 30) * (Math.PI / 180),
+    delay: i * 0.1,
+    size: 2 + Math.random() * 3,
+  }));
+
+  return (
+    <motion.div
+      className="relative cursor-pointer select-none"
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      onClick={handleClick}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      {/* Outer glow ring */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl"
+        style={{
+          background: `radial-gradient(circle, ${energyColor}30 0%, transparent 70%)`,
+          filter: 'blur(20px)',
+          transform: 'scale(1.5)',
+        }}
+        animate={{
+          opacity: isHovered ? 0.8 : 0.3,
+          scale: isActivated ? [1.5, 2, 1.5] : 1.5,
+        }}
+        transition={{ duration: isActivated ? 0.5 : 0.3 }}
+      />
+
+      {/* Formula container */}
+      <div
+        className="relative px-6 py-4 md:px-8 md:py-5 rounded-2xl backdrop-blur-xl"
+        style={{
+          background: isDark
+            ? 'rgba(14, 14, 20, 0.6)'
+            : 'rgba(255, 255, 255, 0.7)',
+          border: `2px solid ${isHovered ? energyColor : primaryColor}40`,
+          boxShadow: isHovered
+            ? `0 0 40px ${energyColor}40, inset 0 0 30px ${energyColor}10`
+            : `0 0 20px ${primaryColor}20`,
+          transition: 'border-color 0.3s, box-shadow 0.3s',
+        }}
+      >
+        {/* Energy particles around formula */}
+        <AnimatePresence>
+          {(isHovered || isActivated) && particles.map((particle) => (
+            <motion.div
+              key={particle.id}
+              className="absolute rounded-full"
+              style={{
+                width: particle.size,
+                height: particle.size,
+                background: particle.id % 2 === 0 ? primaryColor : accentColor,
+                boxShadow: `0 0 ${particle.size * 2}px ${particle.id % 2 === 0 ? primaryColor : accentColor}`,
+              }}
+              initial={{
+                opacity: 0,
+                x: '50%',
+                y: '50%',
+                scale: 0,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                x: `calc(50% + ${Math.cos(particle.angle) * (isActivated ? 100 : 60)}px)`,
+                y: `calc(50% + ${Math.sin(particle.angle) * (isActivated ? 100 : 60)}px)`,
+                scale: [0, 1.5, 0],
+              }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                duration: isActivated ? 1 : 2,
+                delay: particle.delay,
+                repeat: isActivated ? 0 : Infinity,
+                ease: "easeOut",
+              }}
+            />
+          ))}
+        </AnimatePresence>
+
+        {/* The formula itself */}
+        <div className="relative flex items-baseline gap-1 md:gap-2">
+          {/* E */}
+          <motion.span
+            className="text-3xl md:text-4xl lg:text-5xl font-bold italic"
+            style={{
+              fontFamily: "'Times New Roman', 'Georgia', serif",
+              color: primaryColor,
+              textShadow: isHovered ? `0 0 20px ${primaryColor}80` : 'none',
+            }}
+            animate={{
+              scale: isActivated ? [1, 1.2, 1] : 1,
+              color: isActivated ? [primaryColor, energyColor, primaryColor] : primaryColor,
+            }}
+            transition={{ duration: 0.5 }}
+          >
+            E
+          </motion.span>
+
+          {/* = with energy flow effect */}
+          <motion.span
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mx-1 md:mx-2 relative"
+            style={{
+              color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)',
+            }}
+          >
+            <span className="relative z-10">=</span>
+            {/* Energy flow through equals sign */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center overflow-hidden"
+              style={{ opacity: isHovered ? 1 : 0 }}
+            >
+              <motion.div
+                className="w-full h-1 rounded-full"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${energyColor}, transparent)`,
+                }}
+                animate={{
+                  x: ['-100%', '100%'],
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </motion.div>
+          </motion.span>
+
+          {/* M */}
+          <motion.span
+            className="text-3xl md:text-4xl lg:text-5xl font-bold italic"
+            style={{
+              fontFamily: "'Times New Roman', 'Georgia', serif",
+              color: accentColor,
+              textShadow: isHovered ? `0 0 20px ${accentColor}80` : 'none',
+            }}
+            animate={{
+              scale: isActivated ? [1, 1.15, 1] : 1,
+            }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            M
+          </motion.span>
+
+          {/* C with superscript 2 */}
+          <motion.span
+            className="text-3xl md:text-4xl lg:text-5xl font-bold italic relative"
+            style={{
+              fontFamily: "'Times New Roman', 'Georgia', serif",
+              color: energyColor,
+              textShadow: isHovered ? `0 0 20px ${energyColor}80` : 'none',
+            }}
+            animate={{
+              scale: isActivated ? [1, 1.2, 1] : 1,
+            }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            C
+            {/* Superscript 2 with special animation */}
+            <motion.sup
+              className="absolute -top-1 md:-top-2 -right-3 md:-right-4 text-lg md:text-xl lg:text-2xl"
+              style={{
+                color: primaryColor,
+                fontStyle: 'normal',
+              }}
+              animate={{
+                scale: isHovered ? [1, 1.3, 1] : 1,
+                rotate: isActivated ? [0, 360] : 0,
+                color: isActivated
+                  ? [primaryColor, energyColor, accentColor, primaryColor]
+                  : primaryColor,
+              }}
+              transition={{
+                scale: { duration: 1.5, repeat: Infinity },
+                rotate: { duration: 0.5 },
+                color: { duration: 1.5 },
+              }}
+            >
+              2
+            </motion.sup>
+          </motion.span>
+        </div>
+
+        {/* Light speed indicator */}
+        <motion.div
+          className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap"
+          style={{
+            fontSize: '10px',
+            color: isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.3)',
+            fontFamily: 'monospace',
+          }}
+          animate={{
+            opacity: isHovered ? 1 : 0,
+            y: isHovered ? 0 : 5,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          c = 299,792,458 m/s
+        </motion.div>
+      </div>
+
+      {/* Activation burst effect */}
+      <AnimatePresence>
+        {isActivated && (
+          <motion.div
+            className="absolute inset-0 rounded-2xl pointer-events-none"
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: [0, 0.8, 0], scale: [1, 2.5, 3] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            style={{
+              border: `2px solid ${energyColor}`,
+              boxShadow: `0 0 30px ${energyColor}`,
+            }}
+          />
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
 }
 
 // Artistic Einstein silhouette SVG component
@@ -297,77 +535,96 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
             </motion.div>
           </motion.div>
 
-          {/* Einstein portrait - Right side */}
+          {/* Einstein portrait + Interactive Formula - Right side */}
           <motion.div
-            className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 flex-shrink-0 order-1 md:order-2"
-            initial={{ opacity: 0, scale: 0.8, x: 30 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            className="flex flex-col items-center gap-6 md:gap-8 flex-shrink-0 order-1 md:order-2"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            {/* Glow effect behind portrait */}
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: isDark
-                  ? `radial-gradient(circle, ${brandColors.violet}40 0%, ${brandColors.neonPink}20 40%, transparent 70%)`
-                  : `radial-gradient(circle, ${brandColors.blue}30 0%, ${brandColors.violet}15 40%, transparent 70%)`,
-                filter: 'blur(40px)',
-                transform: 'scale(1.3)'
-              }}
-            />
-
-            {/* Edge blur effect */}
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: `radial-gradient(circle, transparent 40%, ${isDark ? brandColors.dark : '#F8FAFC'} 100%)`,
-                zIndex: 10,
-                pointerEvents: 'none'
-              }}
-            />
-
-            {/* Portrait container */}
-            <div className="relative w-full h-full">
-              <EinsteinSilhouette isDark={isDark} />
-            </div>
-
-            {/* Animated ring */}
+            {/* Interactive E=MC² Formula */}
             <motion.div
-              className="absolute inset-0 rounded-full border-2"
-              style={{
-                borderColor: isDark ? brandColors.neonCyan : brandColors.blue,
-                opacity: 0.3
-              }}
-              animate={{
-                scale: [1, 1.15, 1],
-                opacity: [0.3, 0.1, 0.3]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <InteractiveFormula isDark={isDark} />
+            </motion.div>
 
-            {/* Second animated ring */}
+            {/* Einstein Portrait */}
             <motion.div
-              className="absolute inset-0 rounded-full border"
-              style={{
-                borderColor: isDark ? brandColors.neonPink : brandColors.violet,
-                opacity: 0.2
-              }}
-              animate={{
-                scale: [1.1, 1.25, 1.1],
-                opacity: [0.2, 0.05, 0.2]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5
-              }}
-            />
+              className="relative w-40 h-40 md:w-52 md:h-52 lg:w-60 lg:h-60"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              {/* Glow effect behind portrait */}
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: isDark
+                    ? `radial-gradient(circle, ${brandColors.violet}40 0%, ${brandColors.neonPink}20 40%, transparent 70%)`
+                    : `radial-gradient(circle, ${brandColors.blue}30 0%, ${brandColors.violet}15 40%, transparent 70%)`,
+                  filter: 'blur(40px)',
+                  transform: 'scale(1.3)'
+                }}
+              />
+
+              {/* Edge blur effect */}
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: `radial-gradient(circle, transparent 40%, ${isDark ? brandColors.dark : '#F8FAFC'} 100%)`,
+                  zIndex: 10,
+                  pointerEvents: 'none'
+                }}
+              />
+
+              {/* Portrait container */}
+              <div className="relative w-full h-full">
+                <EinsteinSilhouette isDark={isDark} />
+              </div>
+
+              {/* Animated ring */}
+              <motion.div
+                className="absolute inset-0 rounded-full border-2"
+                style={{
+                  borderColor: isDark ? brandColors.neonCyan : brandColors.blue,
+                  opacity: 0.3
+                }}
+                animate={{
+                  scale: [1, 1.15, 1],
+                  opacity: [0.3, 0.1, 0.3]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Second animated ring */}
+              <motion.div
+                className="absolute inset-0 rounded-full border"
+                style={{
+                  borderColor: isDark ? brandColors.neonPink : brandColors.violet,
+                  opacity: 0.2
+                }}
+                animate={{
+                  scale: [1.1, 1.25, 1.1],
+                  opacity: [0.2, 0.05, 0.2]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

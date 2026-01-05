@@ -514,7 +514,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               >
                 一个开放、包容、创新的学习空间。
                 <br />
-                让有好奇心的人、天马行空的想法和有趣的问题在此汇聚和激发。
+                让有好奇心的人和天马行空的想法在此汇聚和激发。
               </p>
             </div>
           </motion.div>
