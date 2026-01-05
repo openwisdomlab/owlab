@@ -7,6 +7,9 @@ import {
   BookOpen,
   FileText,
   ArrowRight,
+  Link2,
+  Lightbulb,
+  Wrench,
   type LucideIcon,
 } from "lucide-react";
 
@@ -14,13 +17,15 @@ interface ExtendCard {
   title: string;
   description: string;
   href: string;
-  type: "extend" | "evidence" | "checklist" | "sop";
+  type: "extend" | "evidence" | "checklist" | "sop" | "related-module" | "frontier" | "toolbox";
   status?: "completed" | "published" | "in_progress" | "planned" | "draft";
 }
 
 interface ExtendCardsProps {
   cards: ExtendCard[];
   locale?: string;
+  title?: string;
+  icon?: "layers" | "link2";
 }
 
 const typeConfig: Record<
@@ -46,6 +51,21 @@ const typeConfig: Record<
     icon: FileText,
     color: "var(--neon-blue)",
     label: "标准流程",
+  },
+  "related-module": {
+    icon: Link2,
+    color: "var(--neon-cyan)",
+    label: "跨模块",
+  },
+  frontier: {
+    icon: Lightbulb,
+    color: "var(--neon-pink)",
+    label: "前沿理念",
+  },
+  toolbox: {
+    icon: Wrench,
+    color: "var(--neon-yellow)",
+    label: "工具方法",
   },
 };
 
@@ -96,14 +116,17 @@ const itemVariants = {
   },
 };
 
-export function ExtendCards({ cards, locale = "zh" }: ExtendCardsProps) {
+export function ExtendCards({ cards, locale = "zh", title = "扩展阅读", icon = "layers" }: ExtendCardsProps) {
   if (cards.length === 0) return null;
+
+  const TitleIcon = icon === "link2" ? Link2 : Layers;
+  const iconColor = icon === "link2" ? "var(--neon-cyan)" : "var(--neon-violet)";
 
   return (
     <div className="mt-8">
       <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <Layers className="w-5 h-5 text-[var(--neon-violet)]" />
-        扩展阅读
+        <TitleIcon className="w-5 h-5" style={{ color: iconColor }} />
+        {title}
       </h3>
       <motion.div
         className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"
