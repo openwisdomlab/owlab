@@ -73,12 +73,22 @@ export async function searchWithLocalContent(
             const rawContent = await fs.readFile(file, "utf-8");
             const { title } = parseFrontmatter(rawContent);
 
-            // Calculate relative URL
-            // e.g., /Users/user/project/content/docs/zh/foo.mdx -> /docs/zh/foo
+            // Calculate relative URL with correct locale prefix
+            // e.g., /Users/user/project/content/docs/zh/foo.mdx -> /zh/docs/foo
             const relativePath = path.relative(contentDir, file);
-            const urlPath = "/" + relativePath
+            // relativePath: "docs/zh/knowledge-base/..." or "docs/en/knowledge-base/..."
+            const pathWithoutExt = relativePath
                 .replace(/\.(mdx|md)$/, "")
                 .replace(/\/index$/, ""); // Remove /index for root leaves
+
+            // Extract locale from path: docs/zh/... -> zh, docs/en/... -> en
+            const pathParts = pathWithoutExt.split("/");
+            // pathParts: ["docs", "zh", "knowledge-base", ...]
+            const locale = pathParts[1]; // "zh" or "en"
+            const remainingPath = pathParts.slice(2).join("/"); // "knowledge-base/..."
+
+            // Build correct URL: /<locale>/docs/<path>
+            const urlPath = `/${locale}/docs/${remainingPath}`;
 
             // Simple scoring
             let score = 0;
