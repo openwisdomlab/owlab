@@ -1304,7 +1304,7 @@ export default function HomePage() {
               {
                 label: '开放',
                 en: 'Open',
-                color: '#D91A7A',
+                color: '#9A6A8A',
                 svg: (
                   <svg viewBox="0 0 80 80" className="w-full h-full">
                     <circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 4" />
@@ -1358,12 +1358,34 @@ export default function HomePage() {
                 color: '#4A9A6A',
                 svg: (
                   <svg viewBox="0 0 80 80" className="w-full h-full">
-                    <path d="M40 18 L48 30 L42 30 L42 38 C42 48 52 52 58 46" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M58 46 L62 56 L52 54" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M58 50 C54 60 44 64 34 60 L30 68 L26 58 L36 56" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M30 58 C20 50 18 38 26 28 L18 26 L24 18 L30 28" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M40 32 C48 36 50 44 46 52 C42 52 38 48 40 40 C36 48 32 52 28 52 C24 44 28 36 40 32" fill="currentColor" opacity="0.5" />
-                    <path d="M40 38 L40 50" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    {/* 循环箭头 - 经典的可持续发展符号 */}
+                    <path
+                      d="M40 16 C55 16 66 27 66 40 C66 47 63 53 58 57"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <polygon points="58,50 64,58 52,58" fill="currentColor" />
+                    <path
+                      d="M58 57 C50 66 38 68 27 62 C20 58 16 50 16 40"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <polygon points="16,47 10,39 22,39" fill="currentColor" />
+                    <path
+                      d="M16 40 C16 27 27 16 40 16"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <polygon points="33,16 40,10 40,22" fill="currentColor" />
+                    {/* 中心叶子 */}
+                    <ellipse cx="40" cy="40" rx="8" ry="12" fill="currentColor" opacity="0.6" transform="rotate(-30, 40, 40)" />
+                    <path d="M40 34 L40 46" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
                   </svg>
                 ),
                 desc: '持续发展，生生不息的创新生态'
