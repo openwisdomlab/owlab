@@ -8,7 +8,6 @@ import { ThemeToggle } from "./ThemeToggle";
 import { SearchButton } from "@/components/search";
 import { BookOpen, Github, FlaskConical, Maximize2, Minimize2 } from "lucide-react";
 import { useFocusStore } from "@/stores/focus-store";
-import { EmotionSelector } from "@/components/ui/EmotionSelector";
 import type { Locale } from "@/i18n";
 
 type HeaderProps = {
@@ -83,7 +82,6 @@ export function Header({ locale }: HeaderProps) {
           >
             <Maximize2 className="w-5 h-5" />
           </button>
-          <EmotionSelector />
           <ThemeToggle />
           <LanguageSwitcher locale={locale} />
           <a
