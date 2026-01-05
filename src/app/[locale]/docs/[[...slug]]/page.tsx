@@ -27,6 +27,7 @@ import {
   OperationsExplorer,
   AssessmentExplorer,
 } from "@/features/doc-viewer/ModuleExplorers";
+import { ModulePageTitle } from "@/features/doc-viewer/ModulePageTitle";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -126,6 +127,9 @@ export default async function Page({ params }: Props) {
           ),
           AssessmentExplorer: (props: { className?: string }) => (
             <AssessmentExplorer {...props} />
+          ),
+          ModulePageTitle: (props: { moduleId: string; className?: string }) => (
+            <ModulePageTitle {...props} />
           ),
           EQUIPMENT_ACCESS_FLOW,
           SPACE_PLANNING_FLOW,
