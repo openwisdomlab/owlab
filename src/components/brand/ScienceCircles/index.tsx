@@ -20,10 +20,10 @@ interface CircleState {
   rotationSpeed: number;
   phase: 'entering' | 'active' | 'exiting';
   enterDelay: number;
-  revealProgress: number;
-  revealStartTime: number;
-  revealDuration: number;
-  isRevealed: boolean;
+  // 自动展示相关
+  autoRevealPhase: 'waiting' | 'revealing' | 'showing' | 'fading' | 'cooldown';
+  autoRevealStartTime: number; // 开始展示的时间
+  autoRevealShowUntil: number; // 停止展示的时间
   // 彩蛋相关
   isPinned: boolean; // 是否被固定在眼睛上方
   pinnedY?: number; // 固定位置的Y坐标
@@ -39,7 +39,8 @@ const COLOR_MAP: Record<string, string> = {
   orange: brandColors.orange,
 };
 
-const CIRCLE_SIZE_RANGE = { min: 22, max: 50 };
+// 减小圆圈尺寸，避免大泡沫效果
+const CIRCLE_SIZE_RANGE = { min: 18, max: 36 };
 
 const CURIOSITY_QUOTES = [
   { text: "好奇心是一切智慧的开始", author: "苏格拉底" },
@@ -55,6 +56,16 @@ const EYE_DISCOVERY_MESSAGES = [
   "好奇心就是这样运作的！",
   "你发现了一个隐藏彩蛋！",
 ];
+
+// 种子生长配置：25-30秒内只展示1-2个问题
+const AUTO_REVEAL_CONFIG = {
+  cycleInterval: 27000, // 27秒一个周期
+  maxSimultaneous: 2, // 最多同时展示2个
+  showDuration: 4000, // 展示停留4秒
+  fadeInDuration: 800, // 淡入800ms
+  fadeOutDuration: 1200, // 淡出1.2秒
+  cooldownDuration: 35000, // 展示后35秒冷却
+};
 
 // ============ Utility Functions ============
 function random(min: number, max: number): number {
@@ -116,39 +127,42 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     const questions = getBalancedQuestions(actualCircleCount);
     const center = { x: width / 2, y: height / 2 };
     const radius = Math.min(width, height) * (isMobile ? 0.22 : 0.28);
+    const now = Date.now();
 
     const newCircles: CircleState[] = questions.map((q, i) => {
       let x: number, y: number;
       let attempts = 0;
 
+      // 增大初始化时的排斥距离，确保远离中心六边形
       do {
         x = random(60, width - 60);
         y = random(60, height - 60);
         attempts++;
       } while (
-        distance(x, y, center.x, center.y) < radius + 50 &&
+        distance(x, y, center.x, center.y) < radius + 80 &&
         attempts < 50
       );
 
       const size = getCircleSize(isMobile);
-      const now = Date.now();
-      const revealDelay = random(8000, 30000);
+      // 随机分配自动展示时间，错开展示
+      const autoRevealDelay = random(8000, 60000);
 
       return {
         id: q.id + '-' + Date.now() + '-' + i,
         question: q,
         x, y,
-        vx: random(-0.06, 0.06),
-        vy: random(-0.06, 0.06),
+        // 增强移动性：提高初始速度
+        vx: random(-0.25, 0.25),
+        vy: random(-0.25, 0.25),
         size, opacity: 0,
         rotation: random(0, 360),
-        rotationSpeed: random(-0.15, 0.15),
+        rotationSpeed: random(-0.12, 0.12),
         phase: 'entering' as const,
         enterDelay: i * 80,
-        revealProgress: 0,
-        revealStartTime: now + revealDelay,
-        revealDuration: random(18000, 28000),
-        isRevealed: false,
+        // 新的自动展示状态
+        autoRevealPhase: 'waiting' as const,
+        autoRevealStartTime: now + autoRevealDelay,
+        autoRevealShowUntil: 0,
         isPinned: false,
       };
     });
@@ -304,30 +318,49 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         });
       }
 
+      // 统计当前正在自动展示的圆圈数量
+      const currentlyShowingCount = currentCircles.filter(
+        c => c.autoRevealPhase === 'revealing' || c.autoRevealPhase === 'showing' || c.autoRevealPhase === 'fading'
+      ).length;
+
       // Update circle positions
       circlesRef.current = currentCircles.map((circle) => {
         if (circle.phase === 'exiting') return circle;
         if (circle.isPinned) return circle; // 固定的圆环不移动
 
-        let { x, y, vx, vy, rotation, opacity, phase, revealProgress, revealStartTime, isRevealed } = circle;
-        const { rotationSpeed, revealDuration } = circle;
+        let { x, y, vx, vy, rotation, opacity, phase, autoRevealPhase, autoRevealStartTime, autoRevealShowUntil } = circle;
+        const { rotationSpeed } = circle;
 
         const isCurrentlyHovered = hoveredCircle === circle.id || clickedCircle === circle.id;
         const isBeingDragged = draggingCircle === circle.id;
 
+        // 增强移动性：只有悬停时才停止移动
         if (!isCurrentlyHovered && !isBeingDragged) {
           if (showResonance) {
-            vx += random(-0.03, 0.03);
-            vy += random(-0.03, 0.03);
+            vx += random(-0.05, 0.05);
+            vy += random(-0.05, 0.05);
           }
 
-          vx *= 0.997;
-          vy *= 0.997;
+          // 更慢的速度衰减，保持更长时间的运动
+          vx *= 0.9985;
+          vy *= 0.9985;
 
+          // 添加微小的随机扰动，保持持续运动
+          if (Math.random() < 0.02) {
+            vx += random(-0.08, 0.08);
+            vy += random(-0.08, 0.08);
+          }
+
+          // 提高最大速度限制
           const speed = Math.sqrt(vx * vx + vy * vy);
-          if (speed > 0.4) {
-            vx = (vx / speed) * 0.4;
-            vy = (vy / speed) * 0.4;
+          if (speed > 0.8) {
+            vx = (vx / speed) * 0.8;
+            vy = (vy / speed) * 0.8;
+          }
+          // 如果速度太低，给一个随机推力
+          if (speed < 0.05) {
+            vx = random(-0.15, 0.15);
+            vy = random(-0.15, 0.15);
           }
 
           x += vx;
@@ -336,32 +369,58 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
 
           const margin = circle.size;
           if (x < margin || x > dimensions.width - margin) {
-            vx *= -0.8;
+            vx *= -0.9;
             x = Math.max(margin, Math.min(dimensions.width - margin, x));
           }
           if (y < margin || y > dimensions.height - margin) {
-            vy *= -0.8;
+            vy *= -0.9;
             y = Math.max(margin, Math.min(dimensions.height - margin, y));
           }
 
+          // 增强中心区域排斥力，确保问题不出现在六边形内
           const distToCenter = distance(x, y, heroCenter.x, heroCenter.y);
-          if (distToCenter < heroRadius + 30) {
+          if (distToCenter < heroRadius + 60) {
             const pushAngle = Math.atan2(y - heroCenter.y, x - heroCenter.x);
-            const pushForce = 0.25;
+            // 越靠近中心，排斥力越强
+            const pushForce = 0.5 * (1 - distToCenter / (heroRadius + 60));
             vx += Math.cos(pushAngle) * pushForce;
             vy += Math.sin(pushAngle) * pushForce;
           }
         }
 
-        // 种子生长逻辑
-        if (now >= revealStartTime && !isRevealed) {
-          const elapsed = now - revealStartTime;
-          revealProgress = Math.min(1, elapsed / revealDuration);
-          if (revealProgress >= 1) {
-            isRevealed = true;
-            revealStartTime = now + random(25000, 50000);
-            revealProgress = 0;
-            isRevealed = false;
+        // 新的种子生长逻辑：控制同时展示数量
+        if (autoRevealPhase === 'waiting' && now >= autoRevealStartTime) {
+          // 只有当前展示数量 < 最大值时才开始展示
+          if (currentlyShowingCount < AUTO_REVEAL_CONFIG.maxSimultaneous) {
+            autoRevealPhase = 'revealing';
+            autoRevealShowUntil = now + AUTO_REVEAL_CONFIG.fadeInDuration + AUTO_REVEAL_CONFIG.showDuration;
+          } else {
+            // 延迟展示，等待其他圆圈完成
+            autoRevealStartTime = now + random(3000, 8000);
+          }
+        } else if (autoRevealPhase === 'revealing') {
+          // 淡入阶段
+          const elapsed = now - (autoRevealShowUntil - AUTO_REVEAL_CONFIG.showDuration - AUTO_REVEAL_CONFIG.fadeInDuration);
+          if (elapsed >= AUTO_REVEAL_CONFIG.fadeInDuration) {
+            autoRevealPhase = 'showing';
+          }
+        } else if (autoRevealPhase === 'showing') {
+          // 展示阶段，等待展示结束
+          if (now >= autoRevealShowUntil) {
+            autoRevealPhase = 'fading';
+            autoRevealShowUntil = now + AUTO_REVEAL_CONFIG.fadeOutDuration;
+          }
+        } else if (autoRevealPhase === 'fading') {
+          // 淡出阶段
+          if (now >= autoRevealShowUntil) {
+            autoRevealPhase = 'cooldown';
+            autoRevealStartTime = now + AUTO_REVEAL_CONFIG.cooldownDuration + random(0, 15000);
+          }
+        } else if (autoRevealPhase === 'cooldown') {
+          // 冷却阶段，等待下一次展示
+          if (now >= autoRevealStartTime) {
+            autoRevealPhase = 'waiting';
+            autoRevealStartTime = now + random(5000, 20000);
           }
         }
 
@@ -370,7 +429,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           if (opacity >= 1) phase = 'active';
         }
 
-        return { ...circle, x, y, vx, vy, rotation, opacity, phase, revealProgress, revealStartTime, revealDuration, isRevealed };
+        return { ...circle, x, y, vx, vy, rotation, opacity, phase, autoRevealPhase, autoRevealStartTime, autoRevealShowUntil };
       });
 
       setCircles([...circlesRef.current]);
@@ -418,13 +477,12 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             size: getCircleSize(false),
             opacity: 0,
             rotation: 0,
-            rotationSpeed: random(-0.15, 0.15),
+            rotationSpeed: random(-0.12, 0.12),
             phase: 'entering',
             enterDelay: 0,
-            revealProgress: 0,
-            revealStartTime: now + random(15000, 30000),
-            revealDuration: random(18000, 28000),
-            isRevealed: false,
+            autoRevealPhase: 'waiting',
+            autoRevealStartTime: now + random(15000, 40000),
+            autoRevealShowUntil: 0,
             isPinned: false,
           };
 
@@ -678,7 +736,27 @@ function QuestionCircle({
     onDragStart(e);
   };
 
-  const shouldAutoReveal = circle.revealProgress >= 0.85;
+  // 判断是否应该自动展示问题文本
+  const isAutoRevealing = circle.autoRevealPhase === 'revealing' ||
+                          circle.autoRevealPhase === 'showing' ||
+                          circle.autoRevealPhase === 'fading';
+
+  // 计算自动展示的透明度
+  const getAutoRevealOpacity = () => {
+    const now = Date.now();
+    if (circle.autoRevealPhase === 'revealing') {
+      const startTime = circle.autoRevealShowUntil - AUTO_REVEAL_CONFIG.showDuration - AUTO_REVEAL_CONFIG.fadeInDuration;
+      const elapsed = now - startTime;
+      return Math.min(1, elapsed / AUTO_REVEAL_CONFIG.fadeInDuration);
+    } else if (circle.autoRevealPhase === 'showing') {
+      return 1;
+    } else if (circle.autoRevealPhase === 'fading') {
+      const startTime = circle.autoRevealShowUntil - AUTO_REVEAL_CONFIG.fadeOutDuration;
+      const elapsed = now - startTime;
+      return Math.max(0, 1 - elapsed / AUTO_REVEAL_CONFIG.fadeOutDuration);
+    }
+    return 0;
+  };
 
   // 计算文本位置，改进边界检测
   const getTextPosition = (): 'top' | 'bottom' | 'left' | 'right' => {
@@ -750,21 +828,21 @@ function QuestionCircle({
       onClick={handleClick}
       onMouseDown={handleMouseDown}
     >
-      {/* Glow effect */}
+      {/* Glow effect - 减小光晕尺寸，避免大泡沫效果 */}
       <motion.div
         className="absolute rounded-full pointer-events-none"
         style={{
-          width: circle.size * 2,
-          height: circle.size * 2,
+          width: circle.size * 1.4,
+          height: circle.size * 1.4,
           left: '50%',
           top: '50%',
           transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, ${withAlpha(color, isDragging ? 0.4 : 0.25)}, transparent 70%)`,
-          filter: 'blur(8px)',
+          background: `radial-gradient(circle, ${withAlpha(color, isDragging ? 0.35 : 0.2)}, transparent 70%)`,
+          filter: 'blur(6px)',
         }}
         animate={{
-          opacity: isActive || isDragging ? 0.9 : 0.4 + circle.revealProgress * 0.3,
-          scale: isDragging ? 1.3 : 1,
+          opacity: isActive || isDragging ? 0.85 : isAutoRevealing ? 0.6 : 0.35,
+          scale: isDragging ? 1.2 : 1,
         }}
         transition={{ duration: 0.3 }}
       />
@@ -801,8 +879,8 @@ function QuestionCircle({
           fill={withAlpha(color, isDark ? 0.25 : 0.15)}
           stroke={color} strokeWidth="1.5"
           animate={{
-            r: 10 + circle.revealProgress * 3,
-            opacity: 0.6 + circle.revealProgress * 0.4,
+            r: isAutoRevealing ? 13 : 10,
+            opacity: isAutoRevealing ? 1 : 0.6,
           }}
           style={{ transformOrigin: "30px 30px" }}
         />
@@ -811,22 +889,21 @@ function QuestionCircle({
           cx="30" cy="30" r="4"
           fill={color}
           animate={{
-            scale: shouldAutoReveal ? [1, 1.5, 1] : [1, 1.2, 1],
+            scale: isAutoRevealing ? [1, 1.5, 1] : [1, 1.2, 1],
             opacity: [0.7, 1, 0.7],
           }}
-          transition={{ duration: shouldAutoReveal ? 1 : 2, repeat: Infinity }}
+          transition={{ duration: isAutoRevealing ? 1 : 2, repeat: Infinity }}
         />
 
-        {circle.revealProgress > 0 && circle.revealProgress < 1 && (
+        {/* 自动展示时的脉动光环 */}
+        {isAutoRevealing && (
           <motion.circle
-            cx="30" cy="30" r="24"
+            cx="30" cy="30" r="26"
             fill="none" stroke={color} strokeWidth="2"
-            strokeDasharray={`${circle.revealProgress * 150} 150`}
-            strokeLinecap="round" opacity={0.6}
-            style={{
-              transformOrigin: "30px 30px",
-              transform: "rotate(-90deg)"
-            }}
+            opacity={0.6 * getAutoRevealOpacity()}
+            animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.3, 0.6] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            style={{ transformOrigin: "30px 30px" }}
           />
         )}
 
@@ -844,7 +921,7 @@ function QuestionCircle({
 
       {/* Question text */}
       <AnimatePresence>
-        {((showText && !isDragging) || (shouldAutoReveal && !isDragging) || circle.isPinned) && (
+        {((showText && !isDragging) || (isAutoRevealing && !isDragging) || circle.isPinned) && (
           <QuestionTextDisplay
             question={circle.question.question}
             explanation={circle.question.explanation}
@@ -854,6 +931,7 @@ function QuestionCircle({
             position={textPosition}
             showExplanation={showExplanation || circle.isPinned}
             isPinned={circle.isPinned}
+            autoRevealOpacity={isAutoRevealing ? getAutoRevealOpacity() : 1}
           />
         )}
       </AnimatePresence>
@@ -871,17 +949,20 @@ interface QuestionTextDisplayProps {
   position: 'top' | 'bottom' | 'left' | 'right';
   showExplanation: boolean;
   isPinned?: boolean;
+  autoRevealOpacity?: number;
 }
 
 function QuestionTextDisplay({
   question, explanation, color, isDark, isMobile,
-  position, showExplanation, isPinned
+  position, showExplanation, isPinned, autoRevealOpacity = 1
 }: QuestionTextDisplayProps) {
   const getPositionStyles = () => {
+    // 显著提高 z-index，确保显示在最上方；增大宽度提高阅读友好性
     const base = {
       position: 'absolute' as const,
-      zIndex: 50,
-      maxWidth: isMobile ? '180px' : '260px',
+      zIndex: 1000,
+      maxWidth: isMobile ? '220px' : '320px',
+      minWidth: isMobile ? '180px' : '240px',
       whiteSpace: 'normal' as const,
     };
 
@@ -912,30 +993,30 @@ function QuestionTextDisplay({
     <motion.div
       style={getPositionStyles()}
       initial={{ opacity: 0, ...animation.initial }}
-      animate={{ opacity: 1, ...animation.animate }}
-      exit={{ opacity: 0, ...animation.exit, transition: { duration: 0.15 } }}
+      animate={{ opacity: autoRevealOpacity, ...animation.animate }}
+      exit={{ opacity: 0, ...animation.exit, transition: { duration: 0.3 } }}
     >
       <motion.div
-        className="absolute inset-0 -m-3 rounded-xl"
+        className="absolute inset-0 -m-4 rounded-2xl"
         style={{
           background: isDark
-            ? `linear-gradient(135deg, rgba(14,14,20,0.95), rgba(26,26,46,0.9))`
-            : `linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95))`,
-          backdropFilter: 'blur(12px)',
-          border: `1px solid ${withAlpha(color, isPinned ? 0.5 : 0.3)}`,
+            ? `linear-gradient(135deg, rgba(14,14,20,0.97), rgba(26,26,46,0.95))`
+            : `linear-gradient(135deg, rgba(255,255,255,0.99), rgba(248,250,252,0.97))`,
+          backdropFilter: 'blur(16px)',
+          border: `1px solid ${withAlpha(color, isPinned ? 0.5 : 0.35)}`,
           boxShadow: isPinned
             ? `0 0 40px ${withAlpha(color, 0.3)}, 0 0 60px ${withAlpha(brandColors.neonCyan, 0.2)}`
-            : `0 0 30px ${withAlpha(color, 0.2)}`,
+            : `0 4px 24px rgba(0,0,0,0.15), 0 0 30px ${withAlpha(color, 0.2)}`,
         }}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.25 }}
       />
 
-      <div className="relative px-4 py-2">
+      <div className="relative px-5 py-3">
         <motion.p
           className="text-sm font-medium leading-relaxed"
-          style={{ color: isDark ? '#fff' : '#1a1a2e' }}
+          style={{ color: isDark ? '#fff' : '#1a1a2e', lineHeight: 1.6 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
@@ -946,10 +1027,11 @@ function QuestionTextDisplay({
         <AnimatePresence>
           {showExplanation && (
             <motion.p
-              className="mt-2 pt-2 text-xs leading-relaxed border-t"
+              className="mt-3 pt-3 text-xs leading-relaxed border-t"
               style={{
-                color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
-                borderColor: withAlpha(color, 0.2),
+                color: isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)',
+                borderColor: withAlpha(color, 0.25),
+                lineHeight: 1.7,
               }}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
@@ -960,12 +1042,13 @@ function QuestionTextDisplay({
           )}
         </AnimatePresence>
 
-        {!showExplanation && !isPinned && (
+        {!showExplanation && !isPinned && autoRevealOpacity >= 0.8 && (
           <motion.p
-            className="mt-1 text-xs opacity-50"
+            className="mt-2 text-xs"
+            style={{ color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)' }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ delay: 0.5 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
           >
             点击查看更多
           </motion.p>
