@@ -9,7 +9,7 @@ import {
   CheckCircle2,
   Tag,
 } from "lucide-react";
-import { getOwlIcon } from "@/components/icons/OwlIcons";
+import { getModuleIcon } from "@/components/icons/ModuleIcons";
 
 interface SubModule {
   id: string;
@@ -254,9 +254,9 @@ export function ModuleCards({ locale, compact = false, showHighlights = true }: 
                     }}
                   >
                     {(() => {
-                      const OwlIcon = getOwlIcon(module.id);
+                      const ModuleIcon = getModuleIcon(module.id);
                       return (
-                        <OwlIcon
+                        <ModuleIcon
                           className={compact ? "w-8 h-8" : "w-12 h-12"}
                           color={module.color}
                         />
