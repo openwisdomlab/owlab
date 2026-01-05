@@ -28,9 +28,17 @@ OWL 通过 **Enlighten - Empower - Engage** 三个维度支持学生成长：
 ### Engage 连接 — 进入真实世界，产生真实影响
 连接大导师、科学家、全球社群，支持真实项目和长期投入，让学生的创造被看见、被认可。
 
-## 知识库模块
+## 内容结构
 
 本项目是 OWL《建设与运营标准手册》的模块化知识库，采用 **Core + Extend + Evidence** 三层架构。
+
+| 目录 | 内容 | 访问路径 |
+|------|------|----------|
+| **core/** | 核心标准 - 9大模块 (M01-M09) | `/docs/core` |
+| **research/** | 探索研究 - 4个前沿理念模块 | `/docs/research` |
+| **resources/** | 资源工具 - 实践工具和资源 | `/docs/resources` |
+
+## 知识库模块
 
 | 模块 | 定位 | 3E 维度 |
 |------|------|---------|
@@ -77,17 +85,21 @@ pnpm lint         # 运行 ESLint 检查
 
 ```
 owlab/
-├── content/docs/zh/knowledge-base/   # 知识库 MDX 内容
-│   ├── 01-foundations/               # M01 理念与理论
-│   ├── 02-governance/                # M02 治理与网络
-│   └── ...                           # M03-M09 模块
+├── content/docs/zh/
+│   ├── core/                         # 核心标准 (M01-M09 模块)
+│   ├── research/                     # 探索研究 (前沿理念)
+│   └── resources/                    # 资源工具
 ├── src/
 │   ├── app/                          # Next.js App Router
 │   │   ├── api/ai/                   # AI API 端点
 │   │   └── [locale]/                 # i18n 路由
 │   │       ├── lab/                  # AI Lab 设计工具
 │   │       └── docs/                 # 文档页面
-│   ├── components/                   # React 组件
+│   ├── features/                     # 功能组件
+│   │   ├── doc-viewer/               # 文档渲染组件
+│   │   └── lab-editor/               # Lab 编辑器组件
+│   ├── components/                   # 通用 UI 组件
+│   ├── data/                         # 强类型静态数据
 │   ├── hooks/                        # React Hooks
 │   └── lib/                          # 工具函数和配置
 └── public/                           # 静态资源
@@ -95,9 +107,9 @@ owlab/
 
 ## 贡献指南
 
-1. 阅读 [架构设计文档](./content/docs/zh/knowledge-base/ARCHITECTURE-V2.mdx)
-2. 使用 [文档模板](./content/docs/zh/knowledge-base/_templates/)
-3. 遵循 [证据等级](./content/docs/zh/knowledge-base/_meta/evidence-levels.mdx) 标注规范
+1. 阅读 [架构设计文档](./content/docs/zh/core/ARCHITECTURE-V2.mdx)
+2. 使用 [文档模板](./content/docs/zh/core/_templates/)
+3. 遵循 [证据等级](./content/docs/zh/core/_meta/evidence-levels.mdx) 标注规范
 
 ## 许可证
 

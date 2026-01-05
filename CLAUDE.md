@@ -57,9 +57,12 @@ src/
 │       ├── lab/           # AI Lab interactive tools
 │       └── docs/          # Documentation pages
 ├── components/
-│   ├── lab/               # Lab-specific components
 │   ├── layout/            # Layout components
 │   └── ui/                # Shared UI components
+├── features/              # Feature-based components
+│   ├── doc-viewer/        # Documentation rendering components
+│   └── lab-editor/        # Floor plan editor components
+├── data/                  # Strongly-typed static data
 ├── hooks/                 # React hooks
 ├── lib/
 │   ├── ai/               # AI configuration, agents, prompts
@@ -70,18 +73,21 @@ src/
 docs/tasks/                       # Auto Claude task specs
 └── SPECS.md                      # Task list for Auto Claude
 
-content/docs/zh/knowledge-base/   # Knowledge base MDX content
-├── 01-foundations/               # M01 Philosophy & Theory
-├── 02-governance/                # M02 Governance & Network
-├── 03-space/                     # M03 Space & Environment
-├── 04-programs/                  # M04 Programs & Projects
-├── 05-tools/                     # M05 Tools & Assets
-├── 06-safety/                    # M06 Safety & Ethics
-├── 07-people/                    # M07 People & Capability
-├── 08-operations/                # M08 Operations
-├── 09-assessment/                # M09 Assessment & Impact
-├── _meta/                        # Metadata definitions
-└── _templates/                   # Document templates
+content/docs/zh/
+├── core/                         # Core standards (核心标准)
+│   ├── 01-foundations/           # M01 Philosophy & Theory
+│   ├── 02-governance/            # M02 Governance & Network
+│   ├── 03-space/                 # M03 Space & Environment
+│   ├── 04-programs/              # M04 Programs & Projects
+│   ├── 05-tools/                 # M05 Tools & Assets
+│   ├── 06-safety/                # M06 Safety & Ethics
+│   ├── 07-people/                # M07 People & Capability
+│   ├── 08-operations/            # M08 Operations
+│   ├── 09-assessment/            # M09 Assessment & Impact
+│   ├── _meta/                    # Metadata definitions
+│   └── _templates/               # Document templates
+├── research/                     # Exploratory research (探索研究)
+└── resources/                    # Resources & tools (资源工具)
 ```
 
 ## Knowledge Base Modules
@@ -107,6 +113,30 @@ The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
 - **Extend**: Deep research, case studies, visualizations
 - **Evidence**: Structured citations and verification records
 
+### Documentation Structure
+
+```
+content/docs/zh/                 # Chinese documentation
+├── core/                        # Core standards (核心标准) - /docs/core
+│   ├── 01-foundations/          # M01-M09 modules
+│   ├── ...
+│   ├── _meta/                   # Metadata & schema definitions
+│   └── _templates/              # Document templates
+├── research/                    # Exploratory research (探索研究) - /docs/research
+│   ├── 01-space-as-educator/    # L01-L04 living modules
+│   ├── ...
+│   └── tools/                   # Research tools
+└── resources/                   # Resources & tools (资源工具) - /docs/resources
+```
+
+### URL Routing
+
+| Content Path | URL Route |
+|--------------|-----------|
+| `content/docs/zh/core/` | `/zh/docs/core/` |
+| `content/docs/zh/research/` | `/zh/docs/research/` |
+| `content/docs/zh/resources/` | `/zh/docs/resources/` |
+
 ## Key Patterns
 
 ### Path Aliases
@@ -118,8 +148,9 @@ The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
 - Supported locales: `zh`, `en`
 
 ### Component Conventions
-- Lab components in `src/components/lab/`
+- Feature components in `src/features/` (doc-viewer, lab-editor)
 - UI primitives in `src/components/ui/`
+- Layout components in `src/components/layout/`
 - Custom hooks in `src/hooks/`
 
 ### State Management
@@ -139,3 +170,28 @@ The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
 4. **Types**: Maintain strict TypeScript, use Zod for runtime validation
 5. **i18n**: Support both Chinese and English content
 6. **3E Alignment**: Every feature should consider how it contributes to Enlighten, Empower, and Engage
+
+## Documentation Maintenance
+
+When adding or modifying documentation structure:
+
+### Adding New Documents
+1. Create MDX file in appropriate directory under `content/docs/zh/`
+2. Update corresponding `meta.json` to include the new page
+3. Use internal links format: `/docs/core/...` or `/docs/research/...`
+
+### When Renaming Directories
+Update all references in these locations:
+- `content/docs/zh/*/meta.json` - Navigation configuration
+- `content/docs/zh/**/*.mdx` - Internal links in documents
+- `src/components/` - Any hardcoded paths in components
+- `src/features/` - Feature component paths
+- `src/lib/` - Utility functions with paths
+- `CLAUDE.md`, `README.md`, `CONTRIBUTING.md` - Project documentation
+- `public/manifest.json` - PWA shortcuts
+- `next.config.ts` - Build configuration
+
+### Internal Link Format
+- Use relative URLs without locale prefix in MDX: `/docs/core/01-foundations`
+- The routing system automatically adds locale prefix
+- Cross-reference format: `[Link Text](/docs/core/module-name)`

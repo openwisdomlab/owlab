@@ -8,15 +8,15 @@ import {
 import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { TOCItemType } from "fumadocs-core/toc";
-import { ModuleCards } from "@/components/docs/ModuleCards";
-import { ExtendCards } from "@/components/docs/ExtendCards";
-import { BackToSection } from "@/components/docs/BackToSection";
-import { TheoryLineage } from "@/components/docs/TheoryLineage";
-import { FourPFramework } from "@/components/docs/FourPFramework";
-import { FlowChart, EQUIPMENT_ACCESS_FLOW, SPACE_PLANNING_FLOW } from "@/components/docs/FlowChart";
-import { KnowledgeGraph } from "@/components/docs/KnowledgeGraph";
-import { ModuleSummary } from "@/components/docs/ModuleSummary";
-import { ConceptExplorer } from "@/components/docs/ConceptExplorer";
+import { ModuleCards } from "@/features/doc-viewer/ModuleCards";
+import { ExtendCards } from "@/features/doc-viewer/ExtendCards";
+import { BackToSection } from "@/features/doc-viewer/BackToSection";
+import { TheoryLineage } from "@/features/doc-viewer/TheoryLineage";
+import { FourPFramework } from "@/features/doc-viewer/FourPFramework";
+import { FlowChart, EQUIPMENT_ACCESS_FLOW, SPACE_PLANNING_FLOW } from "@/features/doc-viewer/FlowChart";
+import { KnowledgeGraph } from "@/features/doc-viewer/KnowledgeGraph";
+import { ModuleSummary } from "@/features/doc-viewer/ModuleSummary";
+import { ConceptExplorer } from "@/features/doc-viewer/ConceptExplorer";
 import {
   GovernanceExplorer,
   SpaceExplorer,
@@ -26,7 +26,7 @@ import {
   PeopleExplorer,
   OperationsExplorer,
   AssessmentExplorer,
-} from "@/components/docs/ModuleExplorers";
+} from "@/features/doc-viewer/ModuleExplorers";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -151,8 +151,8 @@ interface TreeNode {
 // Helper to normalize URL for comparison
 // Converts both formats to a common format: /docs/path (without locale)
 // Input formats:
-// - "/docs/zh/living-modules" (from fumadocs source) -> "/docs/living-modules"
-// - "/zh/docs/living-modules" (from transformed tree) -> "/docs/living-modules"
+// - "/docs/zh/research" (from fumadocs source) -> "/docs/research"
+// - "/zh/docs/research" (from transformed tree) -> "/docs/research"
 function normalizeUrlForComparison(url: string): string {
   const locales = ["en", "zh"];
   for (const loc of locales) {

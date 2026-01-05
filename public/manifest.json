@@ -34,10 +34,10 @@
             "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
         },
         {
-            "name": "Living Modules",
-            "short_name": "理念模块",
+            "name": "探索研究",
+            "short_name": "研究模块",
             "description": "探索前沿研究与理念",
-            "url": "/zh/docs/living-modules",
+            "url": "/zh/docs/research",
             "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
         },
         {

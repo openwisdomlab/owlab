@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { KnowledgeGraph } from "@/components/docs/KnowledgeGraph";
+import { KnowledgeGraph } from "@/features/doc-viewer/KnowledgeGraph";
 
 export default function KnowledgeMapPage() {
     const t = useTranslations("docs");

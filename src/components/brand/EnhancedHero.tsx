@@ -667,7 +667,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                href={`/${locale}/docs/knowledge-base`}
+                href={`/${locale}/docs/core`}
                 className="group relative inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg overflow-hidden text-white"
                 style={{
                   background: `linear-gradient(135deg, ${brandColors.neonPink}, ${brandColors.violet})`,

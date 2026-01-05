@@ -76,16 +76,16 @@ export async function searchWithLocalContent(
             // Calculate relative URL with correct locale prefix
             // e.g., /Users/user/project/content/docs/zh/foo.mdx -> /zh/docs/foo
             const relativePath = path.relative(contentDir, file);
-            // relativePath: "docs/zh/knowledge-base/..." or "docs/en/knowledge-base/..."
+            // relativePath: "docs/zh/core/..." or "docs/en/core/..."
             const pathWithoutExt = relativePath
                 .replace(/\.(mdx|md)$/, "")
                 .replace(/\/index$/, ""); // Remove /index for root leaves
 
             // Extract locale from path: docs/zh/... -> zh, docs/en/... -> en
             const pathParts = pathWithoutExt.split("/");
-            // pathParts: ["docs", "zh", "knowledge-base", ...]
+            // pathParts: ["docs", "zh", "core", ...]
             const locale = pathParts[1]; // "zh" or "en"
-            const remainingPath = pathParts.slice(2).join("/"); // "knowledge-base/..."
+            const remainingPath = pathParts.slice(2).join("/"); // "core/..."
 
             // Build correct URL: /<locale>/docs/<path>
             const urlPath = `/${locale}/docs/${remainingPath}`;

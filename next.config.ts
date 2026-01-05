@@ -35,10 +35,10 @@ const withPWA = withPWAInit({
       },
     },
     {
-      urlPattern: /^\/.*\/docs\/living-modules\/.*/i,
+      urlPattern: /^\/.*\/docs\/research\/.*/i,
       handler: "CacheFirst",
       options: {
-        cacheName: "living-modules",
+        cacheName: "research-modules",
         expiration: {
           maxEntries: 50,
           maxAgeSeconds: 30 * 24 * 60 * 60,
