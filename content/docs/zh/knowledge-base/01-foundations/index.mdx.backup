@@ -75,25 +75,25 @@ OWL的创立源于对这些根本问题的持续探索。我们深信，教育�
 
 在深入探讨OWL的具体原则和方法论之前，我们需要首先理解当下教育正在经历的根本性变革。这些转变不是渐进的调整，而是范式层面的重构——从工业时代的教育模式向适应AI时代的新型学习生态的全面转型。
 
-### 能力导向
+### 01 从应试导向到能力导向
 
 **为什么变革？** 想象一个学生能背诵所有化学元素周期表，却不知如何用科学方法解决日常问题——这就是应试教育的困境。传统教育将标准化考试视为评判学习成效的终极尺度，这种模式在工业时代确实高效地选拔和分流了大量人才。但当 AI 已经能够在绝大多数标准化测试中超越人类时，我们必须追问：**什么样的能力是 AI 难以替代的？**
 
-答案来自前沿研究：2024-2025 年的研究显示[1]，当代学生在批判性思维、创造力、沟通和协作这"4C"核心能力上仍有显著提升空间。更令人警醒的是，TeachAI 和 EY 2024 年报告[2]发现，近半数 Z 世代学生在"评估和识别 AI 技术的关键缺陷"方面表现不佳——他们无法判断 AI 是否在编造事实。
+答案来自前沿研究：[2024-2025 年的研究显示](https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1640212/full)，当代学生在批判性思维、创造力、沟通和协作这"4C"核心能力上仍有显著提升空间。更令人警醒的是，[TeachAI 和 EY 2024 年报告](https://www.weforum.org/stories/2025/05/why-ai-literacy-is-now-a-core-competency-in-education/)发现，近半数 Z 世代学生在"评估和识别 AI 技术的关键缺陷"方面表现不佳——他们无法判断 AI 是否在编造事实。
 
 **如何实现？** OWL 通过空间设计和评价体系来培养这些不可替代的能力：
 
 - **展示墙与作品集**：实验室的墙面不是装饰，而是学习的见证。学生的项目作品、失败记录、思维导图铺满墙面，让学习过程可视化。这种设计鼓励学生关注"我如何解决问题"而非"我得了多少分"。
 
-- **多元评价系统**：OWL 不依赖单一考试成绩，而是通过项目作品集、过程性记录、同伴反馈和自我反思等多元方式，全面呈现学习者的真实成长。世界经济论坛《2025 年就业前景报告》[3]预测，未来五年内全球劳动力所需技能将有近 40% 发生变化——这要求教育必须超越传统课程，培养算法思维、提示工程和数据偏见识别等 AI 时代的核心能力。
+- **多元评价系统**：OWL 不依赖单一考试成绩，而是通过项目作品集、过程性记录、同伴反馈和自我反思等多元方式，全面呈现学习者的真实成长。[世界经济论坛《2025 年就业前景报告》](https://www.weforum.org/stories/2025/05/why-ai-literacy-is-now-a-core-competency-in-education/)预测，未来五年内全球劳动力所需技能将有近 40% 发生变化——这要求教育必须超越传统课程，培养算法思维、提示工程和数据偏见识别等 AI 时代的核心能力。
 
 - **真实问题驱动**：学习者不是为考试而学，而是为解决真实世界的问题而学。当学生设计一个减少校园塑料垃圾的方案时，他们需要整合科学知识、数据分析、沟通技巧和伦理思考——这些正是 AI 难以替代的综合能力。
 
-### 思维培养
+### 02 从知识灌输到思维培养
 
 **为什么变革？** 想象两个学生：一个能流利背诵牛顿三定律，却无法解释为什么骑自行车时身体要前倾；另一个可能记不清公式，但能通过实验和思考推导出答案。谁的学习更有价值？当 Google 能在 0.5 秒内给出任何事实，**记忆大量知识点的能力价值急剧下降**。真正重要的是：如何质疑假设、如何验证论点、如何在矛盾信息中形成判断、如何将看似无关的概念建立连接。
 
-前沿研究证实了这一转变的紧迫性：2024 年研究[4]发现，高阶思维能力（如批判性思维和元认知意识）与问题解决能力之间存在显著相关性。更重要的是，元认知教学法在数学教育中的元分析[5]表明，整合元认知的教学能显著提升学生的数学表现、问题解决能力和对数学的态度。
+前沿研究证实了这一转变的紧迫性：[2024 年研究](https://pmc.ncbi.nlm.nih.gov/articles/PMC12487179/)发现，高阶思维能力（如批判性思维和元认知意识）与问题解决能力之间存在显著相关性。更重要的是，[元认知教学法在数学教育中的元分析](https://www.tandfonline.com/doi/full/10.1080/2331186X.2025.2517510)表明，整合元认知的教学能显著提升学生的数学表现、问题解决能力和对数学的态度。
 
 **如何实现？** OWL 通过空间设计和教学实践来培养"思维的思维"：
 
@@ -101,11 +101,11 @@ OWL的创立源于对这些根本问题的持续探索。我们深信，教育�
 
 - **苏格拉底式对话区**：创设专门的讨论角落，配备舒适座椅和记录工具，鼓励学生通过提问和辩论来深化理解。导师不是给答案，而是问"你为什么这样认为？""还有其他可能吗？""如何验证这个假设？"
 
-- **反思与自我调节**：每个项目都包含结构化的反思环节。2024 年研究[6]显示，基于元认知的课程能显著提升学生的元认知技能和学科理解。OWL 要求学生记录"反思日志"：我学到了什么？我的思维方式发生了什么变化？下次我会如何改进？
+- **反思与自我调节**：每个项目都包含结构化的反思环节。[2024 年研究](https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2024.1460496/full)显示，基于元认知的课程能显著提升学生的元认知技能和学科理解。OWL 要求学生记录"反思日志"：我学到了什么？我的思维方式发生了什么变化？下次我会如何改进？
 
-- **高阶思维脚手架**：OWL 强调元认知能力的培养——让学习者学会"学习如何学习"，建立批判性思维、系统思维和设计思维的心智模型。 [游戏化学习研究][7]表明，适当的教学策略能促进学生的监控和自我调节等元认知过程发展。
+- **高阶思维脚手架**：OWL 强调元认知能力的培养——让学习者学会"学习如何学习"，建立批判性思维、系统思维和设计思维的心智模型。[游戏化学习研究](https://f1000research.com/articles/14-1387/v1)表明，适当的教学策略能促进学生的监控和自我调节等元认知过程发展。
 
-### 个性化
+### 03 从标准化到个性化
 
 **为什么变革？** 工业时代的教育像流水线，追求规模化生产"合格产品"——所有学生同一进度、同一教材、同一评价标准。但这忽略了一个基本事实：**每个学生都是独一无二的**。有的学生是视觉学习者，有的偏好动手实践；有的在音乐中找到数学规律，有的通过编程理解物理原理；有的需要更多时间消化，有的渴望加速探索。
 
@@ -123,7 +123,7 @@ OWL的创立源于对这些根本问题的持续探索。我们深信，教育�
 
 - **个性化不是放任**：个性化是在共同的价值框架（好奇心、创造力、责任感）下，为每个独特的火花提供适宜的燃料。就像园丁不会让所有植物长成同样的形状，但会确保每株植物都得到阳光、水分和养料。
 
-### 学生中心
+### 04 从教师中心到学生中心
 
 **为什么变革？** 传统课堂是这样的：老师站在讲台上讲了 45 分钟，学生坐在下面听。下课铃一响，学生记住了什么？可能只有"今天老师穿了件蓝衬衫"。这种"教师中心"的模式假设知识可以像倒水一样从老师的脑子倒进学生的脑子——但学习不是这样运作的。
 
@@ -141,7 +141,7 @@ OWL的创立源于对这些根本问题的持续探索。我们深信，教育�
 
 - **学生主导的讨论和同伴教学**：[2024-2025 研究](https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1518602/full)指出，学生中心模式的一个定义特征是强调协作学习和参与深度讨论。OWL 鼓励学生互相教学——当你能教会别人时，说明你真正理解了。
 
-### 开放生态
+### 05 从封闭系统到开放生态
 
 **为什么变革？** 传统学校像一座孤岛：高墙围起来，课本是唯一的知识来源，老师是唯一的权威，分数是唯一的目标。学生在这个封闭系统里学习，却与真实世界脱节。他们学习光合作用却没见过真正的植物生长，学习电路原理却从未修过坏掉的台灯，学习社会学却对社区问题视而不见。
 
@@ -160,6 +160,42 @@ OWL的创立源于对这些根本问题的持续探索。我们深信，教育�
 - **真实世界项目**：学生的学习不停留在实验室里。他们为当地农民开发病虫害监测系统，为社区老人设计辅助设备，为环保组织收集数据。[创客空间作为创业教育催化剂](https://www.mdpi.com/2227-7102/15/10/1295)的研究表明，创客空间通过同伴协作、创造力、知识共享和主动性，促进学生的创业能力，让学生深度参与并创新思考。
 
 - **社区导师网络**：除了校内教师，OWL 建立了广泛的社区导师网络——工程师教学生编程，艺术家指导设计，科学家带领研究。开放不仅是资源的开放，更是心态的开放——**接纳失败、拥抱不确定、在多元碰撞中产生创新**。
+
+---
+
+## 参考文献
+
+### L01: 从应试导向到能力导向
+- [Frontiers | Influence of AI literacy and 21st-century skills on the acceptance of generative artificial intelligence among college students](https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1640212/full)
+- [Why AI literacy is now a core competency in education | World Economic Forum](https://www.weforum.org/stories/2025/05/why-ai-literacy-is-now-a-core-competency-in-education/)
+- [Creativity, Critical Thinking, Communication, and Collaboration: Assessment, Certification, and Promotion of 21st Century Skills](https://pmc.ncbi.nlm.nih.gov/articles/PMC10054602/)
+- [Must-Have Competencies and Skills in Our New AI World: A Synthesis for Educational Reform](https://er.educause.edu/articles/2024/9/must-have-competencies-and-skills-in-our-new-ai-world-a-synthesis-for-educational-reform)
+
+### L02: 从知识灌输到思维培养
+- [The relationship between higher-order thinking and problem-solving skills development among pre-service teachers using generative AI](https://pmc.ncbi.nlm.nih.gov/articles/PMC12487179/)
+- [A meta-analysis of the effect of metacognitive instruction on mathematics achievement](https://www.tandfonline.com/doi/full/10.1080/2331186X.2025.2517510)
+- [The impact of a metacognition-based course on school students' metacognitive skills and biology comprehension](https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2024.1460496/full)
+- [Gamification and the development of metacognitive processes: a systematic literature review](https://f1000research.com/articles/14-1387/v1)
+- [Assessing teachers' knowledge of teaching thinking and metacognition (TKTM): a new research tool](https://www.tandfonline.com/doi/full/10.1080/13664530.2025.2542214)
+
+### L03: 从标准化到个性化
+- [Personalized adaptive learning in higher education: A scoping review](https://pmc.ncbi.nlm.nih.gov/articles/PMC11544060/)
+- [On the promise of personalized learning for educational equity](https://www.nature.com/articles/s41539-023-00174-x)
+- [The Impact of Adaptive Learning Technologies, Personalized Feedback, and Interactive AI Tools on Student Engagement](https://www.mdpi.com/2071-1050/17/3/1133)
+- [Empowering Personalized Learning with Generative Artificial Intelligence: Mechanisms, Challenges and Pathways](https://link.springer.com/article/10.1007/s44366-025-0056-9)
+
+### L04: 从教师中心到学生中心
+- [Redefining learning: student-centered strategies for academic and personal growth](https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1518602/full)
+- [Impact of collaborative learning on student engagement in college English programs](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1525192/full)
+- [Examining the Impact of Project-Based Learning on Students' Self-Reported and Actual Learning Outcomes](https://journals.sagepub.com/doi/10.1177/23733799241234065)
+- [Student-Centered Learning: Some Issues and Recommendations for Its Implementation](https://www.mdpi.com/2227-7102/14/11/1179)
+
+### L05: 从封闭系统到开放生态
+- [CC Open Education: 2024 Year in Review - Creative Commons](https://creativecommons.org/2024/12/11/cc-open-education-2024-in-review/)
+- [Makerspaces Fostering Creativity: A Systematic Literature Review](https://link.springer.com/article/10.1007/s10956-023-10041-4)
+- [Introducing open educational resources typology to digital libraries](https://www.tandfonline.com/doi/full/10.1080/02680513.2024.2362673)
+- [Increasing Sustainability in Open Learning: Prospects of a Distributed Learning Ecosystem for OER](https://frontiersin.org/articles/10.3389/feduc.2022.866917/full)
+- [Makerspaces as Catalysts for Entrepreneurial Education: Insights from a Systematic Literature Review](https://www.mdpi.com/2227-7102/15/10/1295)
 
 ---
 
@@ -562,80 +598,31 @@ OWL将持续深化理论研究与实践探索，为培养具有创新能力、�
 
 ## 参考文献
 
-### 教育转变相关研究
+见 [evidence/refs.json](./evidence/refs.json)
 
-[1] Frontiers. (2025). Influence of AI literacy and 21st-century skills on the acceptance of generative artificial intelligence among college students. *Frontiers in Education*. https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1640212/full
+**中国政策文件**:
+- 教育部等七部门 (2025年11月). 《关于加强中小学科技教育的意见》. [E1]
+- 教育部等十八部门 (2023年). 《关于加强新时代中小学科学教育工作的意见》. [E1]
+- 中共中央、国务院 (2024年). 《教育强国建设规划纲要(2024至2035年)》. [E1]
+- 教育部等九部门 (2025年4月). 《关于加快推进教育数字化的意见》. [E1]
+- 教育部 (2022年). 《义务教育课程方案和课程标准》. [E1]
 
-[2] World Economic Forum. (2025). Why AI literacy is now a core competency in education. https://www.weforum.org/stories/2025/05/why-ai-literacy-is-now-a-core-competency-in-education/
+**学习理论经典著作**:
+- Papert, S. (1980). 《心灵风暴：儿童、计算机与强大理念》. Basic Books. [E2]
+- Vygotsky, L.S. (1978). 《思维与社会》. Harvard University Press. [E3]
+- Lave, J. & Wenger, E. (1991). 《情境学习：合法的边缘参与》. Cambridge University Press. [E2]
+- Dewey, J. (1916). 《民主主义与教育》. Macmillan. [E3]
+- Resnick, M. (2017). 《终身幼儿园：用项目、热情、同伴和玩耍培养创造力》. MIT Press. [E2]
 
-[3] World Economic Forum. (2025). Future of Jobs Report 2025.
+**教育方法论**:
+- IDEO (2012). 《教育者设计思维工具包》. [E1]
+- P21 Partnership (2019). 《二十一世纪学习框架》. [E1]
+- Martinez, S.L. & Stager, G. (2013). 《发明来学习》. Constructing Modern Knowledge Press. [E1]
+- Blikstein, P. (2013). 《数字制造与教育中的"创客"》. Stanford University. [E2]
 
-[4] PMC. (2025). The relationship between higher-order thinking and problem-solving skills development among pre-service teachers using generative AI. https://pmc.ncbi.nlm.nih.gov/articles/PMC12487179/
+**认知与学习科学**:
+- Piaget, J. (1952). 《儿童智慧的起源》. Routledge. [E3]
+- Bandura, A. (1977). 《社会学习理论》. Prentice-Hall. [E3]
+- Dweck, C. (2006). 《心态：成功的新心理学》. Random House. [E2]
 
-[5] Taylor & Francis. (2025). A meta-analysis of the effect of metacognitive instruction on mathematics achievement. *Cogent Education*. https://www.tandfonline.com/doi/full/10.1080/2331186X.2025.2517510
-
-[6] Frontiers. (2024). The impact of a metacognition-based course on school students' metacognitive skills and biology comprehension. *Frontiers in Education*. https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2024.1460496/full
-
-[7] F1000Research. (2024). Gamification and the development of metacognitive processes: a systematic literature review. https://f1000research.com/articles/14-1387/v1
-
-[8] PMC. (2024). Personalized adaptive learning in higher education: A scoping review. https://pmc.ncbi.nlm.nih.gov/articles/PMC11544060/
-
-[9] Nature. (2023). On the promise of personalized learning for educational equity. *npj Science of Learning*. https://www.nature.com/articles/s41539-023-00174-x
-
-[10] MDPI. (2025). The Impact of Adaptive Learning Technologies, Personalized Feedback, and Interactive AI Tools on Student Engagement. *Sustainability*. https://www.mdpi.com/2071-1050/17/3/1133
-
-[11] Springer. (2025). Empowering Personalized Learning with Generative Artificial Intelligence. https://link.springer.com/article/10.1007/s44366-025-0056-9
-
-[12] Frontiers. (2025). Redefining learning: student-centered strategies for academic and personal growth. *Frontiers in Education*. https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1518602/full
-
-[13] Frontiers. (2025). Impact of collaborative learning on student engagement in college English programs. *Frontiers in Psychology*. https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1525192/full
-
-[14] SAGE. (2024). Examining the Impact of Project-Based Learning on Students' Self-Reported and Actual Learning Outcomes. https://journals.sagepub.com/doi/10.1177/23733799241234065
-
-[15] Creative Commons. (2024). CC Open Education: 2024 Year in Review. https://creativecommons.org/2024/12/11/cc-open-education-2024-in-review/
-
-[16] Springer. (2023). Makerspaces Fostering Creativity: A Systematic Literature Review. *Journal of Science Education and Technology*. https://link.springer.com/article/10.1007/s10956-023-10041-4
-
-[17] MDPI. (2024). Makerspaces as Catalysts for Entrepreneurial Education. *Education Sciences*. https://www.mdpi.com/2227-7102/15/10/1295
-
-### 学习理论经典著作
-
-[18] Papert, S. (1980). *Mindstorms: Children, Computers, and Powerful Ideas*. Basic Books.
-
-[19] Vygotsky, L.S. (1978). *Mind in Society*. Harvard University Press.
-
-[20] Lave, J. & Wenger, E. (1991). *Situated Learning: Legitimate Peripheral Participation*. Cambridge University Press.
-
-[21] Dewey, J. (1916). *Democracy and Education*. Macmillan.
-
-[22] Resnick, M. (2017). *Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play*. MIT Press.
-
-[23] Piaget, J. (1952). *The Origins of Intelligence in Children*. Routledge.
-
-[24] Bandura, A. (1977). *Social Learning Theory*. Prentice-Hall.
-
-[25] Dweck, C. (2006). *Mindset: The New Psychology of Success*. Random House.
-
-### 中国政策文件
-
-[26] 教育部等七部门. (2025). 《关于加强中小学科技教育的意见》.
-
-[27] 教育部等十八部门. (2023). 《关于加强新时代中小学科学教育工作的意见》.
-
-[28] 中共中央、国务院. (2024). 《教育强国建设规划纲要(2024-2035年)》.
-
-[29] 教育部等九部门. (2025). 《关于加快推进教育数字化的意见》.
-
-[30] 教育部. (2022). 《义务教育课程方案和课程标准》.
-
-### 教育方法论
-
-[31] IDEO. (2012). *Design Thinking for Educators Toolkit*.
-
-[32] P21 Partnership. (2019). *Framework for 21st Century Learning*.
-
-[33] Martinez, S.L. & Stager, G. (2013). *Invent to Learn*. Constructing Modern Knowledge Press.
-
-[34] Blikstein, P. (2013). Digital Fabrication and 'Making' in Education. Stanford University.
-
-> 完整文献数据见 [evidence/refs.json](./evidence/refs.json)
+> ⚠️ 文献待人工验证，部分引用需根据实际出版物补充完整书目信息。
