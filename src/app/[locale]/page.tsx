@@ -1668,6 +1668,9 @@ export default function HomePage() {
             <p className="text-sm italic text-[var(--neon-violet)]">
               {t("actionTools.tagline")}
             </p>
+            <p className="text-sm italic text-[var(--neon-violet)]">
+              {t("actionTools.tagline2")}
+            </p>
           </motion.div>
 
           {/* OWL 创意工具箱 - 突出入口卡片 */}
