@@ -1662,8 +1662,14 @@ export default function HomePage() {
               {t("actionTools.subtitle")}
             </motion.div>
             <h2 className="text-3xl font-bold mb-2 text-[var(--foreground)]">{t("actionTools.title")}</h2>
-            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
+            <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto mb-3">
               {t("actionTools.description")}
+            </p>
+            <p className="text-sm italic text-[var(--neon-violet)]">
+              {t("actionTools.tagline")}
+            </p>
+            <p className="text-sm italic text-[var(--neon-violet)]">
+              {t("actionTools.tagline2")}
             </p>
           </motion.div>
 
