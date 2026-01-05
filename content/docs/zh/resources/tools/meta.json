@@ -1,0 +1,13 @@
+{
+  "title": "平台工具",
+  "description": "AI 赋能的实践工具矩阵",
+  "defaultOpen": true,
+  "pages": [
+    "t01-layout-generator",
+    "t02-planning-wizard",
+    "t03-curriculum-designer",
+    "t04-hardware-selector",
+    "t05-safety-assessor",
+    "t06-case-map"
+  ]
+}

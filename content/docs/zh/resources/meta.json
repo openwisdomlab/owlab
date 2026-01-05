@@ -1,7 +1,10 @@
 {
   "title": "资源工具",
+  "description": "从理念到实践的桥梁",
   "defaultOpen": true,
   "pages": [
-    "index"
+    "index",
+    "---",
+    "...tools"
   ]
 }
