@@ -1,0 +1,34 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(/Users/jili/Documents/GitHub/owlab/**)",
+      "Write(/Users/jili/Documents/GitHub/owlab/**)",
+      "Edit(/Users/jili/Documents/GitHub/owlab/**)",
+      "Glob(/Users/jili/Documents/GitHub/owlab/**)",
+      "Grep(/Users/jili/Documents/GitHub/owlab/**)",
+      "Read(/Users/jili/Documents/GitHub/owlab/.auto-claude/specs/002-spec-002-3e/**)",
+      "Write(/Users/jili/Documents/GitHub/owlab/.auto-claude/specs/002-spec-002-3e/**)",
+      "Edit(/Users/jili/Documents/GitHub/owlab/.auto-claude/specs/002-spec-002-3e/**)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__context7__resolve-library-id(*)",
+      "mcp__context7__get-library-docs(*)",
+      "mcp__graphiti-memory__search_nodes(*)",
+      "mcp__graphiti-memory__search_facts(*)",
+      "mcp__graphiti-memory__add_episode(*)",
+      "mcp__graphiti-memory__get_episodes(*)",
+      "mcp__graphiti-memory__get_entity_edge(*)"
+    ]
+  }
+}
