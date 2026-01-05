@@ -13,6 +13,9 @@ import {
   ChevronUp,
   Bot,
   User,
+  LayoutGrid,
+  Shield,
+  Package,
 } from "lucide-react";
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
 import { useToast } from "@/components/ui/Toast";
@@ -42,6 +45,38 @@ interface AISidebarProps {
   isOpen: boolean;
   onToggle: () => void;
 }
+
+// ============================================
+// Quick Actions Configuration
+// ============================================
+
+interface QuickAction {
+  id: string;
+  label: string;
+  icon: typeof LayoutGrid;
+  message: string;
+}
+
+const QUICK_ACTIONS: QuickAction[] = [
+  {
+    id: "optimize-layout",
+    label: "优化布局",
+    icon: LayoutGrid,
+    message: "请帮我优化当前的实验室布局，提升空间利用率和工作流效率。",
+  },
+  {
+    id: "check-safety",
+    label: "检查安全",
+    icon: Shield,
+    message: "请检查当前布局的安全性，包括紧急通道、设备间距和安全隐患。",
+  },
+  {
+    id: "suggest-equipment",
+    label: "推荐设备",
+    icon: Package,
+    message: "根据当前的实验室布局和功能区域，请推荐适合的设备配置。",
+  },
+];
 
 // ============================================
 // Animation Variants
@@ -288,6 +323,65 @@ export function AISidebar({
     setSuggestions((prev) => prev.filter((s) => s.id !== id));
   };
 
+  // Handle quick action button click
+  const handleQuickAction = useCallback((action: QuickAction) => {
+    if (isLoading) return;
+
+    const userMessage: ChatMessage = {
+      id: Date.now().toString(),
+      role: "user",
+      content: action.message,
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setIsLoading(true);
+
+    fetch("/api/ai/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages: [...messages, userMessage].map((m) => ({
+          role: m.role,
+          content: m.content,
+        })),
+        layout,
+      }),
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Failed to get response");
+        return response.json();
+      })
+      .then((data) => {
+        const assistantMessage: ChatMessage = {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: data.message,
+          timestamp: new Date(),
+        };
+
+        setMessages((prev) => [...prev, assistantMessage]);
+
+        if (data.layout) {
+          onLayoutUpdate(data.layout);
+          toast.success("布局已更新", "根据您的要求已修改布局配置。");
+        }
+      })
+      .catch(() => {
+        const errorMessage: ChatMessage = {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: "抱歉，处理您的请求时出现了问题。请稍后再试。",
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+        toast.error("请求失败", "无法处理您的请求，请重试。");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [isLoading, messages, layout, onLayoutUpdate, toast]);
+
   // Collapsed state - floating button
   if (!isOpen) {
     return (
@@ -414,6 +508,33 @@ export function AISidebar({
           </AnimatePresence>
         </div>
       )}
+
+      {/* Quick Actions */}
+      <div className="p-3 border-b border-[var(--glass-border)]">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-xs font-medium text-[var(--muted-foreground)]">
+            快速操作
+          </span>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {QUICK_ACTIONS.map((action) => {
+            const Icon = action.icon;
+            return (
+              <motion.button
+                key={action.id}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleQuickAction(action)}
+                disabled={isLoading}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] text-xs font-medium hover:border-emerald-500/50 hover:bg-emerald-500/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              >
+                <Icon className="w-3.5 h-3.5 text-emerald-400" />
+                <span>{action.label}</span>
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Chat Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
