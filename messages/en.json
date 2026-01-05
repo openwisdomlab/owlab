@@ -272,119 +272,119 @@
       "description": "Construction and Operations Standard Manual",
       "modules": {
         "M01": {
-          "title": "Philosophy & Theory",
-          "subtitle": "Planting the Seeds of Ideas",
+          "title": "Curiosity Spark",
+          "subtitle": "Setting Sail",
           "label": "Sparking Curiosity Through Theory",
-          "slogan": "Curiosity is the most precious ability",
-          "description": "Why build a maker space? Learning science provides the answer. From Dewey's 'learning by doing' to Seymour Papert's constructivism, from MIT Media Lab's 4P theory to IDEO's design thinking — these foundational theories converge on one insight: meaningful learning happens through authentic creation.",
+          "slogan": "Curiosity is your superpower",
+          "description": "Why do kids keep asking 'why'? Because curiosity is humanity's original learning engine! From the 4P theory of 'learn while playing' to the constructionist wisdom of 'hands make minds' — here lies the secret recipe for making learning fun. Ready to transform boring classrooms into exciting explorations?",
           "highlights": [
-            "Constructivist Learning: Knowledge is actively constructed through hands-on practice, not passively received",
-            "4P Framework: Projects, Passion, Peers, Play — the four pillars of creative learning",
-            "Design Thinking Cycle: Empathize → Define → Ideate → Prototype → Test — cultivating real-world problem solvers"
+            "Hands make minds: Knowledge isn't poured in — it's built through doing",
+            "4P Magic Formula: Projects + Passion + Peers + Play = Creativity unleashed",
+            "Design Thinking Loop: Empathize → Define → Brainstorm → Prototype → Test — your universal problem-solving key"
           ],
           "tags": ["Constructivism", "4P Theory", "Design Thinking", "Learning by Doing", "Creative Learning"]
         },
         "M02": {
-          "title": "Governance & Network",
-          "subtitle": "Weaving the Innovation Ecosystem",
+          "title": "Connector",
+          "subtitle": "Innovation Network",
           "label": "Smart Labs & Ecosystem Networks",
-          "slogan": "Weaving the innovation web",
-          "description": "A maker space is not an island but a node in an innovation ecosystem. Distributed governance breaks traditional hierarchies, enabling agile decisions and efficient collaboration. The Hub-Spoke-Satellite architecture creates network effects through resource sharing and knowledge flow.",
+          "slogan": "Alone we go fast, together we go far",
+          "description": "The era of going solo is over! Imagine: your cool project in Beijing can be seen by peers in Shenzhen; mentors in Shanghai can guide students in Chengdu remotely. That's the magic of the OWL network — connecting innovation labs like a web, sharing resources, exchanging experiences, growing stronger together!",
           "highlights": [
-            "Three-tier Node Architecture: Hub outputs standards, Spoke enables regional reach, Satellite extends flexibility",
-            "Agile Governance: Flat decision-making, transparent operations, community participation — everyone is a co-builder",
-            "Alliance Collaboration: Cross-institutional, cross-regional, cross-industry resource integration amplifying innovation impact"
+            "Three-tier network: Hub HQ sets standards, regional Spokes provide support, school Satellites adapt flexibly",
+            "Flat operations: No bureaucracy, just do it — everyone is a co-builder",
+            "Cross-boundary collaboration: Schools + enterprises + communities, breaking walls, letting innovation resources flow"
           ],
           "tags": ["Distributed Network", "Node Classification", "Agile Governance", "Resource Sharing", "Alliance Collaboration"]
         },
         "M03": {
-          "title": "Space & Environment",
-          "subtitle": "Space as the Third Teacher",
+          "title": "Creative Portal",
+          "subtitle": "The Third Space",
           "label": "Creativity-Inspiring Spaces",
-          "slogan": "Let space be the third teacher",
-          "description": "Reggio Emilia says 'space is the third teacher.' Physical space, digital environment, and cultural atmosphere form a trinity that shapes learning experiences. A great maker space isn't just about equipment — it sparks curiosity, lowers barriers to experimentation, and enables serendipitous connections.",
+          "slogan": "Step through this door, creativity comes knocking",
+          "description": "Why do coffee shops spark more inspiration than classrooms? The secret is in space design! Good spaces 'talk' — quiet corners for deep thinking, collaboration tables for brainstorming, maker zones for building dreams. Plus a 'Failure Museum' celebrating those 'glorious crashes'!",
           "highlights": [
-            "Zoning Principles: Quiet thinking → Collaborative discussion → Hands-on making → Showcase sharing — a progressive spatial sequence",
-            "Digital Infrastructure: Network topology, cloud collaboration, version control, knowledge management — bridging online and offline",
-            "Visible Culture: Work walls, failure museums, progress boards — making learning visible and growth traceable"
+            "Four-zone journey: Quiet thinking → Brainstorming → Hands-on making → Showcase stage — ideas become reality step by step",
+            "Online meets offline: Cloud collaboration, version control, knowledge base — work anytime, anywhere",
+            "Making growth visible: Work walls track progress, failure walls celebrate 'valuable mistakes', progress boards chase goals"
           ],
           "tags": ["Space Design", "Zone Layout", "Digital Environment", "Cultural Atmosphere", "Accessibility"]
         },
         "M04": {
-          "title": "Courses & Projects",
-          "subtitle": "Where Learning Truly Happens",
+          "title": "Explorer",
+          "subtitle": "Knowledge Routes",
           "label": "Curriculum & Research Projects",
-          "slogan": "Make learning truly happen",
-          "description": "Curriculum is not a knowledge checklist but a carefully designed learning journey. Use Understanding by Design (UbD) to work backward from outcomes; apply Inquiry-Based Learning with real problems driving deep inquiry; integrate AI tools as learning accelerators rather than replacements.",
+          "slogan": "Learning is an adventure, not a checklist",
+          "description": "Who says learning must be step-by-step? The Explorer takes you on a real learning adventure! First figure out where you're going (goals), then how you'll know you've arrived (assessment), finally plan the route (activities). Light curiosity with real problems, let AI be your smart co-pilot, level up as you go!",
           "highlights": [
-            "Backward Design: Identify outcomes → Determine evidence → Design experiences — goal-driven curriculum development",
-            "Inquiry-Based Learning: Driving question → Sustained inquiry → Authentic product → Public showcase — learning through doing",
-            "AI-Enhanced Teaching: Generative AI for idea expansion, intelligent tutoring for personalization, data-driven learning analytics"
+            "Design backwards: Set the destination, imagine the evidence, then plan the path — that's smart curriculum design",
+            "Real problems, real outputs: From asking questions to public showcase, every project is for real",
+            "AI as teammate, not cheat code: Use it for brainstorming, guidance, analysis — but core thinking is yours"
           ],
           "tags": ["Backward Design", "Inquiry-Based Learning", "AI Teaching", "Driving Questions", "Authentic Products"]
         },
         "M05": {
-          "title": "Tools & Assets",
-          "subtitle": "Bridging Ideas to Reality",
+          "title": "Treasure Chest",
+          "subtitle": "Maker Workshop",
           "label": "Methods, Tools & Assets",
-          "slogan": "From ideas to practice",
-          "description": "Tools are the soul of a maker space — from entry-level hand tools to professional CNC equipment, from open-source hardware to digital fabrication. A tiered management system ensures safety and control, lifecycle management maximizes asset value, and open ecosystems expand possibilities.",
+          "slogan": "Sharp tools make good work",
+          "description": "From screwdrivers to laser cutters, from Arduino to 3D printers — this is maker paradise! Tiered tools let beginners start safely, digital fabrication turns wild ideas into real objects, and open hardware opens infinite possibilities. Best part: high-tech doesn't have to cost a fortune!",
           "highlights": [
-            "Equipment Tiers: L0 Free access → L1 Basic training → L2 Certified operation → L3 Expert supervision — progressive access control",
-            "Digital Fabrication Pipeline: 3D modeling → Slicing → Material selection → Manufacturing → Post-processing — design to reality",
-            "Open Hardware Ecosystem: Arduino, Raspberry Pi, ESP32 platforms with sensors, actuators, and communication modules"
+            "Safety levels: Green = free to use, Yellow = training needed, Orange = certified, Red = expert supervision — step by step, no pitfalls",
+            "Idea to reality: 3D modeling → Slicing → Materials → Printing → Finishing — complete digital manufacturing pipeline",
+            "Open ecosystem: Arduino, Raspberry Pi, ESP32, plus all kinds of sensors — whatever you want to build, there's a way"
           ],
           "tags": ["Equipment Tiers", "Digital Fabrication", "Open Hardware", "Asset Management", "Maintenance"]
         },
         "M06": {
-          "title": "Safety & Ethics",
-          "subtitle": "Guardrails That Set You Free",
+          "title": "Guardian",
+          "subtitle": "Safety Code",
           "label": "Lab Safety & Ethics",
-          "slogan": "Guard the baseline, unleash freedom",
-          "description": "Safety isn't restriction — it's the foundation for creative freedom. A three-layer architecture covers physical, digital, and ethical dimensions; risk-graded assessment enables targeted management; AI ethics guidelines set boundaries for emerging technologies. With guardrails, true exploration becomes possible.",
+          "slogan": "Safety is the starting line, not the finish line",
+          "description": "Want to innovate boldly? First learn to protect yourself! These aren't scary rules — they're your armor for 'getting things done' safely. Physical safety prevents injuries, digital safety protects privacy, AI ethics guides responsible tech use. With these guardrails, you can truly let your imagination fly!",
           "highlights": [
-            "Three-Layer Safety: Physical (equipment, materials, environment) → Digital (data, privacy, network) → Ethical (AI usage norms)",
-            "Risk Matrix: Likelihood × Severity assessment, Red/Orange/Yellow/Green alerts, precision resource allocation",
-            "AI Ethics Framework: Transparency, explainability, fairness, privacy protection — responsible technology guidelines"
+            "Three-layer shield: Equipment won't hurt, data won't leak, AI won't go rogue — all-around protection",
+            "Risk traffic lights: Green = go ahead, Yellow = be careful, Orange = proceed with caution, Red = stop — crystal clear",
+            "AI citizen code: Transparent, explainable, fair, privacy-protecting — be a responsible citizen of the AI era"
           ],
           "tags": ["Risk Assessment", "Safety Training", "Emergency Response", "AI Ethics", "Age Guidelines"]
         },
         "M07": {
-          "title": "People & Capability",
-          "subtitle": "Nurturing Those Who Ignite Others",
+          "title": "Torch Bearer",
+          "subtitle": "Lighting the Way",
           "label": "Faculty Training & Capability Building",
-          "slogan": "From imparting knowledge to igniting passion",
-          "description": "Maker mentors are not knowledge transporters but learning facilitators and creativity catalysts. E0-E3 capability levels map the journey from novice to expert, role matrices define responsibilities for mentors, technicians, and volunteers, and certification ensures professionalism and sustainability.",
+          "slogan": "Not teaching, but lighting a fire",
+          "description": "The best teachers don't know everything — they ignite students' curiosity! From watching and learning to standing alone, from tech newbie to all-round mentor, here's a clear growth map. The key: mentors must stay curious too, because the best education is 'exploring together'!",
           "highlights": [
-            "Capability Tiers: E0 Observe → E1 Assist → E2 Independent → E3 Mentor — a clear growth ladder",
-            "Role-Capability Matrix: Technical × Pedagogical × Community skills — multi-dimensional competency model",
-            "Certification Pathway: Beginner → Intermediate → Advanced → Expert — continuous learning and professional growth"
+            "Four-step ladder: Watch and learn → Assist → Work independently → Mentor others — become a master step by step",
+            "3D capability model: Tech skills + Teaching skills + Community skills — well-rounded, no weak spots",
+            "Keep evolving: Beginner → Intermediate → Advanced → Expert certification — learning never stops, teaching never stops"
           ],
           "tags": ["Capability Tiers", "Role Matrix", "Mentor Certification", "Technical Training", "Community Facilitation"]
         },
         "M08": {
-          "title": "Operations Manual",
-          "subtitle": "Making Excellence Replicable",
+          "title": "Navigator",
+          "subtitle": "Operations Log",
           "label": "Sustainable Operations Manual",
-          "slogan": "Make best practices replicable",
-          "description": "Great operations don't rely on inspiration but on replicable systems. Standard Operating Procedures (SOPs) ensure service consistency; membership systems drive sustained engagement; community culture cultivates belonging and creativity. From open days to workshops, mentor networks to knowledge sharing — every process is documented.",
+          "slogan": "Turn good practices into good habits",
+          "description": "Great labs don't run on inspiration — they run on reliable systems! How to run open days? Manage equipment? Keep the community alive? Here you'll find 'foolproof' guides for everything. More importantly, cultivate a culture of 'dare to try, love to share, help each other' — that's the real moat!",
           "highlights": [
-            "SOP Standards: Open day reception → Equipment usage → Project mentoring → Safety checks — operational guides for every scenario",
-            "Member Growth System: Newcomer → Learner → Member → Core → Mentor — progression with matched privileges and responsibilities",
-            "Culture Pillars: Openness, sharing, embracing failure, respectful collaboration — culture outlasts rules"
+            "SOPs anyone can follow: From welcoming guests to closing checks, every scenario has a playbook",
+            "Member leveling up: Newcomer → Learner → Member → Core → Mentor — responsibilities grow with privileges",
+            "Culture beats rules: Open, sharing, failure-friendly, respectful collaboration — giving the space a soul"
           ],
           "tags": ["Standard Procedures", "Membership System", "Community Culture", "Open Days", "Mentor Network"]
         },
         "M09": {
-          "title": "Assessment & Impact",
-          "subtitle": "Making Growth Visible",
+          "title": "Growth Tree",
+          "subtitle": "Growth Portfolio",
           "label": "Long-term Development & Impact",
-          "slogan": "Make growth visible",
-          "description": "Traditional assessment focuses on outcomes; maker education values process. Multi-dimensional assessment captures creativity, collaboration, and resilience — qualities hard to quantify. Growth portfolios document learning journeys; digital literacy profiles make development visible, traceable, and shareable.",
+          "slogan": "Every step of growth deserves to be seen",
+          "description": "Test scores are just the tip of the iceberg! What really matters: Do you dare to ask questions? Can you collaborate? Can you bounce back from failure? Here we capture your growth from multiple angles — projects, reflections, peer reviews, digital profiles — making progress visible, tangible, and proudly shareable!",
           "highlights": [
-            "Multi-Dimensional Assessment: Technical skills × Creative thinking × Collaboration × Reflection — holistic profiling beyond scores",
-            "Growth Portfolios: Project artifacts, process documentation, reflection journals, peer reviews — complete learning trails",
-            "Digital Literacy Profiles: Knowledge graphs, capability radars, growth curves, milestone badges — data-driven visualization"
+            "360° portrait: Tech + Creativity + Collaboration + Reflection — not just scores, but how you grow",
+            "Growth portfolio: Project collection, process logs, reflection journals, peer kudos — your complete learning journey",
+            "Digital growth curve: Knowledge maps, skill radars, growth charts, milestone badges — data telling your story"
           ],
           "tags": ["Multi-Dimensional Assessment", "Growth Portfolio", "Digital Profile", "Process Evaluation", "Capability Certification"]
         }
