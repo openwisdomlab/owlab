@@ -5,19 +5,19 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://owlab.ai";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Space - Agentic Documentation Framework",
-    template: "%s | AI Space",
+    default: "猫头鹰实验室 - 建设和运营标准",
+    template: "%s | 猫头鹰实验室",
   },
   description:
-    "Build intelligent, self-evolving documentation with AI agents. A futuristic framework for designing AI research laboratories and technical documentation.",
+    "猫头鹰实验室（OWL）是一个模块化知识库，帮助建设和运营创新学习空间。点燃好奇心，培养有潜力改变世界的未来科学创新者。",
   keywords: [
-    "AI",
-    "documentation",
-    "artificial intelligence",
-    "lab design",
-    "agentic",
-    "Next.js",
-    "React",
+    "创新实验室",
+    "STEAM教育",
+    "创客空间",
+    "科学教育",
+    "OWL",
+    "猫头鹰实验室",
+    "创新学习",
   ],
   authors: [{ name: "OWLAB Team" }],
   creator: "OWLAB",
@@ -25,27 +25,27 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
-    locale: "en_US",
-    alternateLocale: "zh_CN",
+    locale: "zh_CN",
+    alternateLocale: "en_US",
     url: siteUrl,
-    siteName: "AI Space",
-    title: "AI Space - Agentic Documentation Framework",
+    siteName: "猫头鹰实验室",
+    title: "猫头鹰实验室 - 建设和运营标准",
     description:
-      "Build intelligent, self-evolving documentation with AI agents. Design AI research laboratories with intelligent assistance.",
+      "猫头鹰实验室（OWL）是一个模块化知识库，帮助建设和运营创新学习空间。点燃好奇心，培养有潜力改变世界的未来科学创新者。",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AI Space - Agentic Documentation Framework",
+        alt: "猫头鹰实验室 - 建设和运营标准",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Space - Agentic Documentation Framework",
+    title: "猫头鹰实验室 - 建设和运营标准",
     description:
-      "Build intelligent, self-evolving documentation with AI agents.",
+      "猫头鹰实验室（OWL）是一个模块化知识库，帮助建设和运营创新学习空间。",
     images: ["/og-image.png"],
   },
   robots: {
@@ -60,15 +60,15 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "OWL",
+    title: "猫头鹰实验室",
   },
   formatDetection: {
     telephone: false,
