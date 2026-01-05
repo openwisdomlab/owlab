@@ -289,17 +289,23 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
 
                   {/* 内容 */}
                   <div className="flex-1 min-w-0">
-                    {/* 模块 ID */}
-                    <div className="flex items-center gap-2 mb-1">
+                    {/* 模块 ID + 功能标签 */}
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span
                         className="text-xs font-mono font-bold"
                         style={{ color: module.color }}
                       >
                         {module.id}
                       </span>
+                      {/* 功能描述小标签 */}
+                      {!compact && (
+                        <span className="text-[10px] text-[var(--muted-foreground)] opacity-70">
+                          {t(`modules.${module.id}.label`)}
+                        </span>
+                      )}
                     </div>
 
-                    {/* 标题 */}
+                    {/* 猫头鹰名称（主标题） */}
                     <h3 className={`
                       font-bold mb-0.5 group-hover:text-[var(--foreground)] transition-colors
                       ${compact ? "text-sm" : "text-lg"}
@@ -307,11 +313,18 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
                       {t(`modules.${module.id}.title`)}
                     </h3>
 
-                    {/* 副标题 - 比喻性描述 */}
+                    {/* 副标题 */}
                     {!compact && subtitle && (
-                      <p className="text-sm text-[var(--muted-foreground)] flex items-center gap-1.5 mb-2">
+                      <p className="text-sm text-[var(--muted-foreground)] flex items-center gap-1.5 mb-1">
                         <Sparkles className="w-3.5 h-3.5" style={{ color: module.color }} />
                         <span className="italic">{subtitle}</span>
+                      </p>
+                    )}
+
+                    {/* Slogan */}
+                    {!compact && (
+                      <p className="text-xs text-[var(--muted-foreground)] opacity-80">
+                        {t(`modules.${module.id}.slogan`)}
                       </p>
                     )}
                   </div>

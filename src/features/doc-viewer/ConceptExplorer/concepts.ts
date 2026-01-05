@@ -11,6 +11,7 @@ export interface Concept {
   insight: string;
   practices: string[];
   connections: string[];
+  tags?: string[]; // 前沿技术趋势标签
 }
 
 export const CONCEPTS: Concept[] = [
@@ -29,6 +30,7 @@ export const CONCEPTS: Concept[] = [
       '研究者连接：与真正的科学家对话',
     ],
     connections: ['inquiry-based', 'intrinsic-motivation', 'low-floor'],
+    tags: ['合成生物学', '量子计算', '可控核聚变', 'AGI安全', '气候工程'],
   },
   {
     id: 'inquiry-based',
@@ -44,6 +46,7 @@ export const CONCEPTS: Concept[] = [
       '公开发表：成果向真实世界展示',
     ],
     connections: ['frontier-question', 'gamified', 'low-floor'],
+    tags: ['公民科学', '开放数据', '可重复研究', 'AI辅助科研', '预印本'],
   },
   {
     id: 'gamified',
@@ -59,6 +62,7 @@ export const CONCEPTS: Concept[] = [
       '自主节奏：没有统一进度表',
     ],
     connections: ['inquiry-based', 'hard-fun', 'low-floor'],
+    tags: ['元宇宙教育', 'AI NPC', '生成式关卡', '自适应难度', '沉浸式叙事'],
   },
 
   // 设计原则层
@@ -76,6 +80,7 @@ export const CONCEPTS: Concept[] = [
       '从 Scratch 到 Python，从乐高到 CNC',
     ],
     connections: ['frontier-question', 'inquiry-based', 'gamified', 'constructionism', 'embodied', 'hard-fun'],
+    tags: ['低代码平台', 'AI编程助手', '可视化编程', '模块化设计', '个性化学习路径'],
   },
 
   // 方法论层
@@ -92,6 +97,7 @@ export const CONCEPTS: Concept[] = [
       '迭代改进，不追求一次完美',
     ],
     connections: ['low-floor', 'embodied', 'zpd'],
+    tags: ['3D打印', '数字制造', 'IoT物联网', '机器人', 'AI创作'],
   },
   {
     id: 'embodied',
@@ -106,6 +112,7 @@ export const CONCEPTS: Concept[] = [
       '空间设计支持多种学习姿态',
     ],
     connections: ['low-floor', 'constructionism', 'hard-fun'],
+    tags: ['触觉反馈', 'VR/AR沉浸', '体感交互', '空间计算', '多感官学习'],
   },
   {
     id: 'hard-fun',
@@ -120,6 +127,7 @@ export const CONCEPTS: Concept[] = [
       '设计有适度挑战的任务',
     ],
     connections: ['low-floor', 'gamified', 'embodied'],
+    tags: ['心流理论', '挑战式学习', '失败友好', '快速原型', '迭代设计'],
   },
 
   // 支撑层
@@ -136,6 +144,7 @@ export const CONCEPTS: Concept[] = [
       '根据学习者状态动态调整难度',
     ],
     connections: ['constructionism', 'intrinsic-motivation', 'community'],
+    tags: ['AI自适应学习', '智能辅导系统', '学习分析', '能力画像', '动态评估'],
   },
   {
     id: 'intrinsic-motivation',
@@ -150,6 +159,7 @@ export const CONCEPTS: Concept[] = [
       '减少外在评判，增加内在反馈',
     ],
     connections: ['frontier-question', 'zpd', 'community'],
+    tags: ['自主学习', '兴趣驱动', '项目式学习', '真实问题', '意义感'],
   },
   {
     id: 'community',
@@ -165,6 +175,7 @@ export const CONCEPTS: Concept[] = [
       '支持性的社区氛围',
     ],
     connections: ['zpd', 'intrinsic-motivation'],
+    tags: ['开源协作', '同伴学习', 'DAO社区', '知识共享', '全球网络'],
   },
 ];
 
