@@ -47,11 +47,10 @@ const modules: Module[] = [
     status: "in_progress",
     color: "var(--neon-yellow)",
     subModules: [
-      { id: "learning-theories", path: "/docs/knowledge-base/01-foundations/extend/learning-theories" },
-      { id: "constructionism", path: "/docs/knowledge-base/01-foundations/extend/constructionism" },
+      { id: "curiosity-cultivation", path: "/docs/knowledge-base/01-foundations/extend/curiosity-cultivation" },
       { id: "4p-creative-learning", path: "/docs/knowledge-base/01-foundations/extend/4p-creative-learning" },
-      { id: "steam-framework", path: "/docs/knowledge-base/01-foundations/extend/steam-framework" },
-      { id: "maker-movement", path: "/docs/knowledge-base/01-foundations/extend/maker-movement" },
+      { id: "constructionism", path: "/docs/knowledge-base/01-foundations/extend/constructionism" },
+      { id: "ai-maker-education", path: "/docs/knowledge-base/01-foundations/extend/ai-maker-education" },
     ],
   },
   {
@@ -63,9 +62,8 @@ const modules: Module[] = [
     subModules: [
       { id: "distributed-innovation", path: "/docs/knowledge-base/02-governance/extend/distributed-innovation" },
       { id: "node-governance-model", path: "/docs/knowledge-base/02-governance/extend/node-governance-model" },
-      { id: "member-charter", path: "/docs/knowledge-base/02-governance/extend/member-charter" },
+      { id: "school-partnership", path: "/docs/knowledge-base/02-governance/extend/school-partnership" },
       { id: "financial-sustainability", path: "/docs/knowledge-base/02-governance/extend/financial-sustainability" },
-      { id: "multi-stakeholder", path: "/docs/knowledge-base/02-governance/extend/multi-stakeholder" },
     ],
   },
   {
@@ -75,11 +73,10 @@ const modules: Module[] = [
     status: "in_progress",
     color: "var(--neon-cyan)",
     subModules: [
+      { id: "core-space-philosophy", path: "/docs/knowledge-base/03-space/extend/core-space-philosophy" },
       { id: "physical-design", path: "/docs/knowledge-base/03-space/extend/physical-design" },
-      { id: "digital-environment", path: "/docs/knowledge-base/03-space/extend/digital-environment" },
       { id: "culture-atmosphere", path: "/docs/knowledge-base/03-space/extend/culture-atmosphere" },
-      { id: "innovation-friendly", path: "/docs/knowledge-base/03-space/extend/innovation-friendly" },
-      { id: "environmental-psychology", path: "/docs/knowledge-base/03-space/extend/environmental-psychology" },
+      { id: "low-cost-renovation", path: "/docs/knowledge-base/03-space/extend/low-cost-renovation" },
     ],
   },
   {
@@ -91,9 +88,8 @@ const modules: Module[] = [
     subModules: [
       { id: "pbl-design", path: "/docs/knowledge-base/04-programs/extend/pbl-design" },
       { id: "design-thinking-toolkit", path: "/docs/knowledge-base/04-programs/extend/design-thinking-toolkit" },
-      { id: "gamified-learning-philosophy", path: "/docs/knowledge-base/04-programs/extend/gamified-learning-philosophy" },
+      { id: "ai-in-curriculum", path: "/docs/knowledge-base/04-programs/extend/ai-in-curriculum" },
       { id: "micro-projects", path: "/docs/knowledge-base/04-programs/extend/micro-projects" },
-      { id: "family-collaboration", path: "/docs/knowledge-base/04-programs/extend/family-collaboration" },
     ],
   },
   {
@@ -104,10 +100,9 @@ const modules: Module[] = [
     color: "var(--neon-orange)",
     subModules: [
       { id: "equipment-catalog", path: "/docs/knowledge-base/05-tools/extend/equipment-catalog" },
-      { id: "digital-fabrication", path: "/docs/knowledge-base/05-tools/extend/digital-fabrication" },
       { id: "ai-tools-guide", path: "/docs/knowledge-base/05-tools/extend/ai-tools-guide" },
+      { id: "digital-fabrication", path: "/docs/knowledge-base/05-tools/extend/digital-fabrication" },
       { id: "opensource-hardware", path: "/docs/knowledge-base/05-tools/extend/opensource-hardware" },
-      { id: "maintenance-guide", path: "/docs/knowledge-base/05-tools/extend/maintenance-guide" },
     ],
   },
   {
@@ -118,11 +113,9 @@ const modules: Module[] = [
     color: "var(--neon-red)",
     subModules: [
       { id: "risk-assessment", path: "/docs/knowledge-base/06-safety/extend/risk-assessment" },
-      { id: "safety-training", path: "/docs/knowledge-base/06-safety/extend/safety-training" },
-      { id: "emergency-response", path: "/docs/knowledge-base/06-safety/extend/emergency-response" },
       { id: "psychological-safety", path: "/docs/knowledge-base/06-safety/extend/psychological-safety" },
-      { id: "digital-security", path: "/docs/knowledge-base/06-safety/extend/digital-security" },
       { id: "ai-ethics", path: "/docs/knowledge-base/06-safety/extend/ai-ethics" },
+      { id: "child-protection-policy", path: "/docs/knowledge-base/06-safety/extend/child-protection-policy" },
     ],
   },
   {
@@ -133,10 +126,9 @@ const modules: Module[] = [
     color: "var(--neon-pink)",
     subModules: [
       { id: "competency-model", path: "/docs/knowledge-base/07-people/extend/competency-model" },
-      { id: "certification", path: "/docs/knowledge-base/07-people/extend/certification" },
-      { id: "community-experts", path: "/docs/knowledge-base/07-people/extend/community-experts" },
+      { id: "facilitator-guide", path: "/docs/knowledge-base/07-people/extend/facilitator-guide" },
       { id: "peer-mentoring", path: "/docs/knowledge-base/07-people/extend/peer-mentoring" },
-      { id: "volunteer-management", path: "/docs/knowledge-base/07-people/extend/volunteer-management" },
+      { id: "training-system", path: "/docs/knowledge-base/07-people/extend/training-system" },
     ],
   },
   {
@@ -147,11 +139,9 @@ const modules: Module[] = [
     color: "var(--neon-blue)",
     subModules: [
       { id: "openday-workshop", path: "/docs/knowledge-base/08-operations/extend/openday-workshop" },
-      { id: "mentor-network", path: "/docs/knowledge-base/08-operations/extend/mentor-network" },
       { id: "community-culture", path: "/docs/knowledge-base/08-operations/extend/community-culture" },
+      { id: "mentor-network", path: "/docs/knowledge-base/08-operations/extend/mentor-network" },
       { id: "knowledge-sharing", path: "/docs/knowledge-base/08-operations/extend/knowledge-sharing" },
-      { id: "cross-generational", path: "/docs/knowledge-base/08-operations/extend/cross-generational" },
-      { id: "incentive-certification", path: "/docs/knowledge-base/08-operations/extend/incentive-certification" },
     ],
   },
   {
@@ -162,10 +152,9 @@ const modules: Module[] = [
     color: "var(--neon-teal)",
     subModules: [
       { id: "portfolio-assessment", path: "/docs/knowledge-base/09-assessment/extend/portfolio-assessment" },
-      { id: "rubric-design", path: "/docs/knowledge-base/09-assessment/extend/rubric-design" },
       { id: "theory-of-change", path: "/docs/knowledge-base/09-assessment/extend/theory-of-change" },
-      { id: "operations-dashboard", path: "/docs/knowledge-base/09-assessment/extend/operations-dashboard" },
       { id: "impact-evaluation", path: "/docs/knowledge-base/09-assessment/extend/impact-evaluation" },
+      { id: "tech-literacy-profile", path: "/docs/knowledge-base/09-assessment/extend/tech-literacy-profile" },
     ],
   },
 ];

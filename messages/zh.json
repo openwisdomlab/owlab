@@ -439,72 +439,58 @@
         "count": "{count} 个扩展主题",
         "coreOnly": "仅包含核心内容",
         "M01": {
-          "learning-theories": "学习理论详解",
-          "constructionism": "建构主义",
+          "curiosity-cultivation": "好奇心培养",
           "4p-creative-learning": "4P 创意学习",
-          "steam-framework": "STEAM 框架",
-          "maker-movement": "创客运动"
+          "constructionism": "建构主义",
+          "ai-maker-education": "AI 与创客教育"
         },
         "M02": {
           "distributed-innovation": "分布式创新网络",
           "node-governance-model": "节点治理模型",
-          "member-charter": "成员公约",
-          "financial-sustainability": "财务可持续性",
-          "multi-stakeholder": "多方利益相关者"
+          "school-partnership": "学校合作模式",
+          "financial-sustainability": "财务可持续性"
         },
         "M03": {
+          "core-space-philosophy": "空间设计哲学",
           "physical-design": "物理空间设计",
-          "digital-environment": "数字环境搭建",
           "culture-atmosphere": "文化氛围营造",
-          "accessibility": "无障碍设计",
-          "innovation-friendly": "创新友好空间",
-          "environmental-psychology": "环境心理学应用"
+          "low-cost-renovation": "低成本改造"
         },
         "M04": {
           "pbl-design": "研究性学习指南",
           "design-thinking-toolkit": "设计思维工具包",
-          "gamified-learning-philosophy": "游戏化学习哲学",
-          "micro-projects": "微项目库",
-          "family-collaboration": "家庭协作指南"
+          "ai-in-curriculum": "AI 课程整合",
+          "micro-projects": "微项目库"
         },
         "M05": {
           "equipment-catalog": "设备目录与选型",
-          "digital-fabrication": "数字制造技术",
           "ai-tools-guide": "AI 工具使用指南",
-          "opensource-hardware": "开源硬件生态",
-          "maintenance-guide": "设备维护手册"
+          "digital-fabrication": "数字制造技术",
+          "opensource-hardware": "开源硬件生态"
         },
         "M06": {
           "risk-assessment": "风险评估方法",
-          "safety-training": "安全培训体系",
-          "emergency-response": "应急响应预案",
-          "equipment-access": "设备准入管理",
-          "digital-security": "数字安全防护",
+          "psychological-safety": "心理安全建设",
           "ai-ethics": "AI 伦理规范",
-          "age-guidelines": "年龄分级指南",
-          "psychological-safety": "心理安全建设"
+          "child-protection-policy": "儿童保护政策"
         },
         "M07": {
           "competency-model": "能力模型",
-          "certification": "认证体系",
-          "community-experts": "社区专家资源",
+          "facilitator-guide": "促进者指南",
           "peer-mentoring": "同伴导师计划",
-          "volunteer-management": "志愿者管理"
+          "training-system": "培训体系"
         },
         "M08": {
           "openday-workshop": "开放日与工作坊",
-          "mentor-network": "导师网络建设",
           "community-culture": "社区文化培育",
-          "knowledge-sharing": "知识分享机制",
-          "cross-generational": "跨代学习实践",
-          "incentive-certification": "激励与认证体系"
+          "mentor-network": "导师网络建设",
+          "knowledge-sharing": "知识分享机制"
         },
         "M09": {
           "portfolio-assessment": "档案袋评价",
-          "rubric-design": "量规设计指南",
           "theory-of-change": "变化理论",
-          "operations-dashboard": "运营仪表盘",
-          "impact-evaluation": "影响力评估"
+          "impact-evaluation": "影响力评估",
+          "tech-literacy-profile": "科技素养画像"
         }
       }
     }

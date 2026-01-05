@@ -378,45 +378,58 @@
         "count": "{count} extended topics",
         "coreOnly": "Core content only",
         "M01": {
-          "learning-theories": "Learning Theories Deep Dive"
+          "curiosity-cultivation": "Curiosity Cultivation",
+          "4p-creative-learning": "4P Creative Learning",
+          "constructionism": "Constructionism",
+          "ai-maker-education": "AI & Maker Education"
         },
         "M02": {
-          "distributed-innovation": "Distributed Innovation Networks"
+          "distributed-innovation": "Distributed Innovation Networks",
+          "node-governance-model": "Node Governance Model",
+          "school-partnership": "School Partnership Model",
+          "financial-sustainability": "Financial Sustainability"
         },
         "M03": {
+          "core-space-philosophy": "Space Design Philosophy",
           "physical-design": "Physical Space Design",
-          "digital-environment": "Digital Environment Setup",
           "culture-atmosphere": "Culture & Atmosphere Building",
-          "accessibility": "Accessibility Design",
-          "innovation-friendly": "Innovation-Friendly Spaces",
-          "environmental-psychology": "Environmental Psychology Application"
+          "low-cost-renovation": "Low-Cost Renovation"
         },
         "M04": {
-          "pbl-design": "Inquiry-Based Learning Guide"
+          "pbl-design": "Inquiry-Based Learning Guide",
+          "design-thinking-toolkit": "Design Thinking Toolkit",
+          "ai-in-curriculum": "AI in Curriculum",
+          "micro-projects": "Micro Projects Library"
         },
         "M05": {
           "equipment-catalog": "Equipment Catalog & Selection",
-          "digital-fabrication": "Digital Fabrication Technologies",
           "ai-tools-guide": "AI Tools Usage Guide",
-          "opensource-hardware": "Open Source Hardware Ecosystem",
-          "maintenance-guide": "Equipment Maintenance Manual"
+          "digital-fabrication": "Digital Fabrication Technologies",
+          "opensource-hardware": "Open Source Hardware Ecosystem"
         },
         "M06": {
           "risk-assessment": "Risk Assessment Methods",
-          "safety-training": "Safety Training System",
-          "emergency-response": "Emergency Response Plan",
-          "equipment-access": "Equipment Access Management",
-          "digital-security": "Digital Security Protection",
+          "psychological-safety": "Psychological Safety",
           "ai-ethics": "AI Ethics Guidelines",
-          "age-guidelines": "Age-Appropriate Guidelines"
+          "child-protection-policy": "Child Protection Policy"
+        },
+        "M07": {
+          "competency-model": "Competency Model",
+          "facilitator-guide": "Facilitator Guide",
+          "peer-mentoring": "Peer Mentoring Program",
+          "training-system": "Training System"
         },
         "M08": {
           "openday-workshop": "Open Days & Workshops",
-          "mentor-network": "Mentor Network Building",
           "community-culture": "Community Culture Cultivation",
-          "knowledge-sharing": "Knowledge Sharing Mechanisms",
-          "cross-generational": "Cross-Generational Learning",
-          "incentive-certification": "Incentive & Certification Systems"
+          "mentor-network": "Mentor Network Building",
+          "knowledge-sharing": "Knowledge Sharing Mechanisms"
+        },
+        "M09": {
+          "portfolio-assessment": "Portfolio Assessment",
+          "theory-of-change": "Theory of Change",
+          "impact-evaluation": "Impact Evaluation",
+          "tech-literacy-profile": "Tech Literacy Profile"
         }
       }
     }
