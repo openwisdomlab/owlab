@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf .source .next",
     "dev": "next dev",
     "prebuild": "node scripts/lint-mdx.js",
     "build": "next build && npm run postbuild",
