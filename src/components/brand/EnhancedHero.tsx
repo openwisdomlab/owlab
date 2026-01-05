@@ -533,13 +533,13 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               OWL 汇聚
             </h3>
             <div className="flex flex-row items-center justify-center gap-4 md:gap-6">
-              {/* 有好奇心的人 */}
+              {/* 有好奇心的人 - 神经网络连接的探索者 */}
               <motion.div
                 className="flex flex-col items-center"
                 whileHover={{ scale: 1.05, y: -4 }}
               >
                 <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2"
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2 relative overflow-hidden"
                   style={{
                     background: isDark
                       ? `linear-gradient(135deg, ${brandColors.neonCyan}20, ${brandColors.neonCyan}10)`
@@ -548,15 +548,47 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   }}
                 >
                   <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8 md:w-10 md:h-10" style={{ color: isDark ? brandColors.neonCyan : brandColors.blue }}>
-                    <circle cx="24" cy="12" r="7" stroke="currentColor" strokeWidth="2" fill="none" />
-                    <path d="M12 44 C12 32, 18 26, 24 26 C30 26, 36 32, 36 44" stroke="currentColor" strokeWidth="2" fill="none" />
+                    {/* 头部 - 发光的圆形 */}
+                    <motion.circle
+                      cx="24" cy="14" r="8"
+                      stroke="currentColor" strokeWidth="2" fill="none"
+                      animate={{ filter: ['drop-shadow(0 0 2px currentColor)', 'drop-shadow(0 0 6px currentColor)', 'drop-shadow(0 0 2px currentColor)'] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    {/* 神经元发散的连接线 */}
                     <motion.g
-                      animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      animate={{ opacity: [0.3, 0.8, 0.3] }}
+                      transition={{ duration: 2.5, repeat: Infinity }}
                     >
-                      <circle cx="21" cy="10" r="1.5" fill="currentColor" />
-                      <circle cx="27" cy="10" r="1.5" fill="currentColor" />
+                      <line x1="24" y1="6" x2="24" y2="2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="16" y1="8" x2="12" y2="4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="32" y1="8" x2="36" y2="4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <circle cx="24" cy="2" r="1.5" fill="currentColor" />
+                      <circle cx="12" cy="4" r="1.5" fill="currentColor" />
+                      <circle cx="36" cy="4" r="1.5" fill="currentColor" />
                     </motion.g>
+                    {/* 好奇闪烁的眼睛 */}
+                    <motion.g
+                      animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <circle cx="20" cy="13" r="2" fill="currentColor" />
+                      <circle cx="28" cy="13" r="2" fill="currentColor" />
+                      {/* 眼睛高光 */}
+                      <circle cx="21" cy="12" r="0.5" fill={isDark ? '#fff' : '#fff'} />
+                      <circle cx="29" cy="12" r="0.5" fill={isDark ? '#fff' : '#fff'} />
+                    </motion.g>
+                    {/* 身体 - 简化的能量形态 */}
+                    <path d="M16 44 C16 34, 18 28, 24 26 C30 28, 32 34, 32 44" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.8" />
+                    {/* 环绕的能量光环 */}
+                    <motion.circle
+                      cx="24" cy="24" r="18"
+                      stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.3"
+                      strokeDasharray="3 5"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                      style={{ transformOrigin: '24px 24px' }}
+                    />
                   </svg>
                 </div>
                 <span
@@ -570,41 +602,76 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               {/* 连接符 × */}
               <span className="text-xl md:text-2xl" style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)' }}>×</span>
 
-              {/* 有想象力的空间 */}
+              {/* 有想象力的空间 - 无限门户/星门概念 */}
               <motion.div
                 className="flex flex-col items-center"
                 whileHover={{ scale: 1.05, y: -4 }}
               >
                 <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2"
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2 relative overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.violet}10)`,
                     border: `1px solid ${brandColors.violet}40`
                   }}
                 >
                   <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8 md:w-10 md:h-10" style={{ color: brandColors.violet }}>
-                    {/* 空间框架 - 3D透视房间轮廓 */}
-                    <path d="M8 36 L8 16 L24 8 L40 16 L40 36 L24 44 Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
-                    <path d="M8 16 L24 24 L40 16" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                    <path d="M24 24 L24 44" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                    {/* 想象力星星 - 动画闪烁 */}
-                    <motion.g
-                      animate={{ opacity: [0.4, 1, 0.4] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <path d="M18 18 L19 20 L18 22 L17 20 Z" fill="currentColor" />
-                    </motion.g>
-                    <motion.g
-                      animate={{ opacity: [1, 0.4, 1] }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <path d="M30 14 L31.5 17 L30 20 L28.5 17 Z" fill="currentColor" />
-                    </motion.g>
+                    {/* 外圈门户框架 */}
                     <motion.circle
-                      cx="34" cy="26" r="1.5"
-                      fill="currentColor"
-                      animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      cx="24" cy="24" r="18"
+                      stroke="currentColor" strokeWidth="2" fill="none"
+                      strokeDasharray="4 2"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      style={{ transformOrigin: '24px 24px' }}
+                    />
+                    {/* 内圈旋转门户 */}
+                    <motion.circle
+                      cx="24" cy="24" r="13"
+                      stroke="currentColor" strokeWidth="1.5" fill="none"
+                      strokeDasharray="8 4"
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                      style={{ transformOrigin: '24px 24px' }}
+                    />
+                    {/* 门户中心 - 渐变深度效果 */}
+                    <motion.circle
+                      cx="24" cy="24" r="8"
+                      fill="currentColor" opacity="0.15"
+                      animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+                    {/* 门户内的星星/银河 */}
+                    <motion.g
+                      animate={{ rotate: 360, opacity: [0.5, 1, 0.5] }}
+                      transition={{ rotate: { duration: 8, repeat: Infinity, ease: "linear" }, opacity: { duration: 2, repeat: Infinity } }}
+                      style={{ transformOrigin: '24px 24px' }}
+                    >
+                      <circle cx="24" cy="20" r="1" fill="currentColor" />
+                      <circle cx="20" cy="25" r="0.8" fill="currentColor" />
+                      <circle cx="28" cy="26" r="0.6" fill="currentColor" />
+                      <circle cx="24" cy="28" r="1.2" fill="currentColor" />
+                      <circle cx="22" cy="22" r="0.5" fill="currentColor" />
+                    </motion.g>
+                    {/* 飘散的想象力粒子 */}
+                    <motion.circle
+                      cx="8" cy="12" r="1.5" fill="currentColor"
+                      animate={{ y: [0, -5, 0], x: [0, 2, 0], opacity: [0.3, 0.8, 0.3] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+                    <motion.circle
+                      cx="40" cy="14" r="1" fill="currentColor"
+                      animate={{ y: [0, -4, 0], x: [0, -2, 0], opacity: [0.4, 0.9, 0.4] }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+                    />
+                    <motion.circle
+                      cx="10" cy="38" r="1.2" fill="currentColor"
+                      animate={{ y: [0, -3, 0], opacity: [0.2, 0.7, 0.2] }}
+                      transition={{ duration: 2.8, repeat: Infinity, delay: 1 }}
+                    />
+                    <motion.circle
+                      cx="38" cy="36" r="0.8" fill="currentColor"
+                      animate={{ y: [0, -4, 0], opacity: [0.3, 0.8, 0.3] }}
+                      transition={{ duration: 3.2, repeat: Infinity, delay: 0.3 }}
                     />
                   </svg>
                 </div>
@@ -619,34 +686,73 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               {/* 连接符 × */}
               <span className="text-xl md:text-2xl" style={{ color: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)' }}>×</span>
 
-              {/* 有趣的问题 */}
+              {/* 有趣的问题 - 灯泡+问号+螺旋创意 */}
               <motion.div
                 className="flex flex-col items-center"
                 whileHover={{ scale: 1.05, y: -4 }}
               >
                 <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2"
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-2 relative overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, ${brandColors.neonPink}20, ${brandColors.neonPink}10)`,
                     border: `1px solid ${brandColors.neonPink}40`
                   }}
                 >
                   <svg viewBox="0 0 48 48" fill="none" className="w-8 h-8 md:w-10 md:h-10" style={{ color: brandColors.neonPink }}>
+                    {/* 灯泡轮廓 */}
                     <motion.path
-                      d="M18 16 Q18 8, 24 8 Q32 8, 32 16 Q32 22, 24 24 L24 30"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      fill="none"
-                      animate={{ pathLength: [0.8, 1, 0.8] }}
+                      d="M24 4 C14 4, 8 12, 8 20 C8 26, 12 30, 16 34 L16 38 L32 38 L32 34 C36 30, 40 26, 40 20 C40 12, 34 4, 24 4"
+                      stroke="currentColor" strokeWidth="1.5" fill="none"
+                      animate={{ filter: ['drop-shadow(0 0 2px currentColor)', 'drop-shadow(0 0 8px currentColor)', 'drop-shadow(0 0 2px currentColor)'] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
-                    <motion.circle
-                      cx="24" cy="38" r="3"
-                      fill="currentColor"
-                      animate={{ scale: [1, 1.2, 1] }}
+                    {/* 灯泡底座 */}
+                    <path d="M18 38 L18 42 L30 42 L30 38" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                    <line x1="18" y1="44" x2="30" y2="44" stroke="currentColor" strokeWidth="1.5" />
+                    {/* 问号在灯泡内 - 核心创意 */}
+                    <motion.g
+                      animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <path
+                        d="M20 16 Q20 10, 24 10 Q30 10, 30 16 Q30 20, 24 22"
+                        stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none"
+                      />
+                      <circle cx="24" cy="28" r="2" fill="currentColor" />
+                    </motion.g>
+                    {/* 发散的灵感火花 */}
+                    <motion.g
+                      animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.1, 0.9] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
-                    />
+                    >
+                      <line x1="24" y1="0" x2="24" y2="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <line x1="4" y1="20" x2="6" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <line x1="42" y1="20" x2="44" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </motion.g>
+                    <motion.g
+                      animate={{ opacity: [0.2, 0.8, 0.2], scale: [0.8, 1, 0.8] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    >
+                      <line x1="8" y1="8" x2="10" y2="10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="40" y1="8" x2="38" y2="10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="6" y1="32" x2="8" y2="30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="42" y1="32" x2="40" y2="30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    </motion.g>
+                    {/* 小型思考符号 */}
+                    <motion.text
+                      x="2" y="14" fontSize="6" fill="currentColor" fontWeight="bold"
+                      animate={{ opacity: [0.2, 0.7, 0.2], y: [0, -2, 0] }}
+                      transition={{ duration: 2.5, repeat: Infinity }}
+                    >
+                      !
+                    </motion.text>
+                    <motion.text
+                      x="44" y="30" fontSize="5" fill="currentColor" fontWeight="bold"
+                      animate={{ opacity: [0.3, 0.8, 0.3], y: [0, -1, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, delay: 0.8 }}
+                    >
+                      *
+                    </motion.text>
                   </svg>
                 </div>
                 <span
@@ -673,12 +779,14 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             >
               <Link
                 href={`/${locale}/docs/core`}
-                className="group relative inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg overflow-hidden text-white"
+                className="group relative inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, ${brandColors.neonPink}, ${brandColors.violet})`,
                   boxShadow: isDark
                     ? `0 0 30px ${brandColors.neonPink}50, 0 8px 20px rgba(0,0,0,0.3)`
-                    : `0 4px 20px ${brandColors.neonPink}40`
+                    : `0 4px 20px ${brandColors.neonPink}40`,
+                  color: '#FFFFFF',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.3), 0 0 8px rgba(0,0,0,0.2)'
                 }}
               >
                 <motion.div
@@ -690,9 +798,9 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.3 }}
                 />
-                <BookOpen className="w-5 h-5 relative z-10" />
-                <span className="relative z-10">{t("hero.cta.start")}</span>
-                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <BookOpen className="w-5 h-5 relative z-10" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
+                <span className="relative z-10" style={{ fontWeight: 700 }}>{t("hero.cta.start")}</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
               </Link>
             </motion.div>
 
