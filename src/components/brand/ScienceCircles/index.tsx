@@ -24,6 +24,7 @@ interface CircleState {
   autoRevealPhase: 'waiting' | 'revealing' | 'showing' | 'fading' | 'cooldown';
   autoRevealStartTime: number; // 开始展示的时间
   autoRevealShowUntil: number; // 停止展示的时间
+  autoRevealOpacity: number; // 自动展示的透明度（在动画循环中更新）
   // 彩蛋相关
   isPinned: boolean; // 是否被固定在眼睛上方
   pinnedY?: number; // 固定位置的Y坐标
@@ -57,14 +58,15 @@ const EYE_DISCOVERY_MESSAGES = [
   "你发现了一个隐藏彩蛋！",
 ];
 
-// 种子生长配置：25-30秒内只展示1-2个问题
+// 种子生长配置：降低自动展示频率，增加周期间隔
 const AUTO_REVEAL_CONFIG = {
-  cycleInterval: 27000, // 27秒一个周期
-  maxSimultaneous: 2, // 最多同时展示2个
-  showDuration: 4000, // 展示停留4秒
-  fadeInDuration: 800, // 淡入800ms
-  fadeOutDuration: 1200, // 淡出1.2秒
-  cooldownDuration: 35000, // 展示后35秒冷却
+  cycleInterval: 45000, // 45秒一个周期（更长间隔）
+  maxSimultaneous: 1, // 最多同时展示1个（降低密度）
+  showDuration: 5000, // 展示停留5秒
+  fadeInDuration: 1000, // 淡入1秒（更平缓）
+  fadeOutDuration: 1500, // 淡出1.5秒
+  cooldownDuration: 60000, // 展示后60秒冷却（更长冷却）
+  initialDelay: 15000, // 首次展示延迟15秒（避免刚进入页面就展示）
 };
 
 // ============ Utility Functions ============
@@ -106,7 +108,14 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const [isMobile, setIsMobile] = useState(false);
   const [showResonance, setShowResonance] = useState(false);
   const [resonanceQuote, setResonanceQuote] = useState(CURIOSITY_QUOTES[0]);
-  const [eyeDiscovery, setEyeDiscovery] = useState<{ show: boolean; message: string; question: string } | null>(null);
+  const [eyeDiscovery, setEyeDiscovery] = useState<{ show: boolean; message: string; question: string; explanation?: string } | null>(null);
+  const [isPageVisible, setIsPageVisible] = useState(true);
+  const lastVisibleTimeRef = useRef<number>(0);
+
+  // 初始化 lastVisibleTimeRef
+  useEffect(() => {
+    lastVisibleTimeRef.current = Date.now();
+  }, []);
 
   // Detect mobile
   useEffect(() => {
@@ -117,6 +126,38 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Page visibility detection - 避免长时间不访问后突然闪现很多问题
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const nowVisible = !document.hidden;
+      const now = Date.now();
+
+      if (nowVisible && !isPageVisible) {
+        // 页面从不可见变为可见
+        const hiddenDuration = now - lastVisibleTimeRef.current;
+
+        // 如果隐藏超过30秒，重置所有圆环的自动展示时间，避免大量同时展示
+        if (hiddenDuration > 30000) {
+          circlesRef.current = circlesRef.current.map((circle, index) => ({
+            ...circle,
+            autoRevealPhase: 'waiting' as const,
+            autoRevealStartTime: now + AUTO_REVEAL_CONFIG.initialDelay + random(index * 3000, index * 5000),
+            autoRevealShowUntil: 0,
+            autoRevealOpacity: 0,
+          }));
+        }
+      }
+
+      setIsPageVisible(nowVisible);
+      if (nowVisible) {
+        lastVisibleTimeRef.current = now;
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [isPageVisible]);
 
   const actualCircleCount = isMobile ? Math.floor(circleCount * 0.4) : circleCount;
   const heroRadius = Math.min(dimensions.width, dimensions.height) * (isMobile ? 0.22 : 0.28);
@@ -144,8 +185,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       );
 
       const size = getCircleSize(isMobile);
-      // 随机分配自动展示时间，错开展示
-      const autoRevealDelay = random(8000, 60000);
+      // 随机分配自动展示时间，错开展示，使用更长的延迟避免初始密集展示
+      const autoRevealDelay = AUTO_REVEAL_CONFIG.initialDelay + random(i * 2000, i * 4000 + 30000);
 
       return {
         id: q.id + '-' + Date.now() + '-' + i,
@@ -163,6 +204,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         autoRevealPhase: 'waiting' as const,
         autoRevealStartTime: now + autoRevealDelay,
         autoRevealShowUntil: 0,
+        autoRevealOpacity: 0,
         isPinned: false,
       };
     });
@@ -222,16 +264,21 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       // 彩蛋：如果拖入眼睛中心区域
       if (distToCenter < heroRadius * 0.6) {
         const message = EYE_DISCOVERY_MESSAGES[Math.floor(Math.random() * EYE_DISCOVERY_MESSAGES.length)];
-        setEyeDiscovery({ show: true, message, question: draggedCircle.question.question });
+        setEyeDiscovery({
+          show: true,
+          message,
+          question: draggedCircle.question.question,
+          explanation: draggedCircle.question.explanation, // 包含问题解释
+        });
 
-        // 固定问题在眼睛上方
+        // 固定问题在眼睛上方，并保持显示问题解释卡片
         circlesRef.current = circlesRef.current.map(circle => {
           if (circle.id === dragRef.current?.id) {
             return {
               ...circle,
               isPinned: true,
               x: heroCenter.x,
-              y: heroCenter.y - heroRadius - 60,
+              y: heroCenter.y - heroRadius - 80, // 稍微调高位置
               vx: 0, vy: 0,
             };
           }
@@ -239,7 +286,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         });
         setCircles([...circlesRef.current]);
 
-        setTimeout(() => setEyeDiscovery(null), 3000);
+        // 彩蛋消息显示更久（5秒），但问题会一直保留在眼睛上方
+        setTimeout(() => setEyeDiscovery(null), 5000);
       }
     }
 
@@ -424,12 +472,26 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           }
         }
 
+        // 计算自动展示透明度
+        let autoRevealOpacity = 0;
+        if (autoRevealPhase === 'revealing') {
+          const startTime = autoRevealShowUntil - AUTO_REVEAL_CONFIG.showDuration - AUTO_REVEAL_CONFIG.fadeInDuration;
+          const elapsed = now - startTime;
+          autoRevealOpacity = Math.min(1, elapsed / AUTO_REVEAL_CONFIG.fadeInDuration);
+        } else if (autoRevealPhase === 'showing') {
+          autoRevealOpacity = 1;
+        } else if (autoRevealPhase === 'fading') {
+          const startTime = autoRevealShowUntil - AUTO_REVEAL_CONFIG.fadeOutDuration;
+          const elapsed = now - startTime;
+          autoRevealOpacity = Math.max(0, 1 - elapsed / AUTO_REVEAL_CONFIG.fadeOutDuration);
+        }
+
         if (phase === 'entering') {
           opacity = Math.min(1, opacity + 0.012);
           if (opacity >= 1) phase = 'active';
         }
 
-        return { ...circle, x, y, vx, vy, rotation, opacity, phase, autoRevealPhase, autoRevealStartTime, autoRevealShowUntil };
+        return { ...circle, x, y, vx, vy, rotation, opacity, phase, autoRevealPhase, autoRevealStartTime, autoRevealShowUntil, autoRevealOpacity };
       });
 
       setCircles([...circlesRef.current]);
@@ -481,8 +543,9 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             phase: 'entering',
             enterDelay: 0,
             autoRevealPhase: 'waiting',
-            autoRevealStartTime: now + random(15000, 40000),
+            autoRevealStartTime: now + random(30000, 60000), // 更长的延迟
             autoRevealShowUntil: 0,
+            autoRevealOpacity: 0,
             isPinned: false,
           };
 
@@ -572,44 +635,109 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         ))}
       </AnimatePresence>
 
-      {/* Eye Discovery Easter Egg */}
+      {/* Eye Discovery Easter Egg - 增强版 */}
       <AnimatePresence>
         {eyeDiscovery?.show && (
           <motion.div
             className="absolute left-1/2 z-50 pointer-events-none"
             style={{
-              top: heroCenter.y - heroRadius - 120,
+              top: heroCenter.y - heroRadius - 160,
               transform: 'translateX(-50%)',
             }}
-            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            initial={{ opacity: 0, y: 30, scale: 0.7 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.8 }}
+            exit={{ opacity: 0, y: -30, scale: 0.7 }}
+            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           >
+            {/* 发光背景特效 */}
+            <motion.div
+              className="absolute inset-0 -m-8 rounded-3xl pointer-events-none"
+              style={{
+                background: `radial-gradient(ellipse at center, ${withAlpha(brandColors.neonCyan, 0.15)}, ${withAlpha(brandColors.violet, 0.1)}, transparent 70%)`,
+              }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.8, 0.4, 0.8],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+
             <div
-              className="px-6 py-4 rounded-2xl text-center max-w-xs"
+              className="relative px-6 py-5 rounded-2xl text-center max-w-sm"
               style={{
                 background: isDark
                   ? 'linear-gradient(135deg, rgba(14,14,20,0.98), rgba(26,26,46,0.95))'
                   : 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95))',
-                backdropFilter: 'blur(20px)',
-                border: `2px solid ${withAlpha(brandColors.neonCyan, 0.5)}`,
-                boxShadow: `0 0 40px ${withAlpha(brandColors.neonCyan, 0.4)}, 0 0 80px ${withAlpha(brandColors.violet, 0.3)}`,
+                backdropFilter: 'blur(24px)',
+                border: `2px solid ${withAlpha(brandColors.neonCyan, 0.6)}`,
+                boxShadow: `
+                  0 0 60px ${withAlpha(brandColors.neonCyan, 0.5)},
+                  0 0 100px ${withAlpha(brandColors.violet, 0.4)},
+                  0 0 140px ${withAlpha(brandColors.neonPink, 0.2)},
+                  inset 0 0 30px ${withAlpha(brandColors.neonCyan, 0.1)}
+                `,
               }}
             >
-              <p
-                className="text-sm font-bold mb-2"
+              {/* 顶部装饰线 */}
+              <motion.div
+                className="absolute -top-px left-1/2 -translate-x-1/2 h-1 rounded-full"
                 style={{
-                  backgroundImage: `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.violet})`,
+                  width: '60%',
+                  background: `linear-gradient(90deg, transparent, ${brandColors.neonCyan}, ${brandColors.violet}, ${brandColors.neonPink}, transparent)`,
+                }}
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+
+              <motion.p
+                className="text-sm font-bold mb-3"
+                style={{
+                  backgroundImage: `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.violet}, ${brandColors.neonPink})`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
                 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
               >
-                {eyeDiscovery.message}
-              </p>
-              <p className="text-xs" style={{ color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)' }}>
+                ✨ {eyeDiscovery.message}
+              </motion.p>
+
+              <motion.p
+                className="text-sm font-medium mb-2"
+                style={{ color: isDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.8)' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
                 {eyeDiscovery.question}
-              </p>
+              </motion.p>
+
+              {eyeDiscovery.explanation && (
+                <motion.p
+                  className="text-xs leading-relaxed pt-2 border-t"
+                  style={{
+                    color: isDark ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.55)',
+                    borderColor: withAlpha(brandColors.neonCyan, 0.2),
+                  }}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {eyeDiscovery.explanation}
+                </motion.p>
+              )}
+
+              <motion.p
+                className="text-xs mt-3"
+                style={{ color: withAlpha(brandColors.neonCyan, 0.7) }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                问题已被好奇心之眼捕获 👁
+              </motion.p>
             </div>
           </motion.div>
         )}
@@ -740,23 +868,6 @@ function QuestionCircle({
   const isAutoRevealing = circle.autoRevealPhase === 'revealing' ||
                           circle.autoRevealPhase === 'showing' ||
                           circle.autoRevealPhase === 'fading';
-
-  // 计算自动展示的透明度
-  const getAutoRevealOpacity = () => {
-    const now = Date.now();
-    if (circle.autoRevealPhase === 'revealing') {
-      const startTime = circle.autoRevealShowUntil - AUTO_REVEAL_CONFIG.showDuration - AUTO_REVEAL_CONFIG.fadeInDuration;
-      const elapsed = now - startTime;
-      return Math.min(1, elapsed / AUTO_REVEAL_CONFIG.fadeInDuration);
-    } else if (circle.autoRevealPhase === 'showing') {
-      return 1;
-    } else if (circle.autoRevealPhase === 'fading') {
-      const startTime = circle.autoRevealShowUntil - AUTO_REVEAL_CONFIG.fadeOutDuration;
-      const elapsed = now - startTime;
-      return Math.max(0, 1 - elapsed / AUTO_REVEAL_CONFIG.fadeOutDuration);
-    }
-    return 0;
-  };
 
   // 计算文本位置，改进边界检测
   const getTextPosition = (): 'top' | 'bottom' | 'left' | 'right' => {
@@ -900,7 +1011,7 @@ function QuestionCircle({
           <motion.circle
             cx="30" cy="30" r="26"
             fill="none" stroke={color} strokeWidth="2"
-            opacity={0.6 * getAutoRevealOpacity()}
+            opacity={0.6 * circle.autoRevealOpacity}
             animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.3, 0.6] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             style={{ transformOrigin: "30px 30px" }}
@@ -931,7 +1042,7 @@ function QuestionCircle({
             position={textPosition}
             showExplanation={showExplanation || circle.isPinned}
             isPinned={circle.isPinned}
-            autoRevealOpacity={isAutoRevealing ? getAutoRevealOpacity() : 1}
+            autoRevealOpacity={isAutoRevealing ? circle.autoRevealOpacity : 1}
           />
         )}
       </AnimatePresence>
