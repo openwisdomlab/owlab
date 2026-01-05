@@ -13,7 +13,11 @@ import {
   Sparkles,
   ArrowRight,
   Wand2,
+  Palette,
+  Leaf,
+  Zap,
 } from "lucide-react";
+import { useEmotionStore, type Emotion } from "@/stores/emotion-store";
 import { RecommendationWizard } from "@/features/lab-editor/RecommendationWizard";
 
 const containerVariants = {
@@ -29,11 +33,47 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const CREATIVE_THEMES = [
+  {
+    id: "default" as Emotion,
+    name: "Owl",
+    description: "默认主题",
+    icon: Palette,
+    color: "#2563EB",
+    bgClass: "from-blue-500/20 to-blue-600/20",
+  },
+  {
+    id: "calm" as Emotion,
+    name: "Forest",
+    description: "平静专注",
+    icon: Leaf,
+    color: "#10B981",
+    bgClass: "from-emerald-500/20 to-emerald-600/20",
+  },
+  {
+    id: "energetic" as Emotion,
+    name: "Solar",
+    description: "充沛活力",
+    icon: Zap,
+    color: "#F97316",
+    bgClass: "from-orange-500/20 to-orange-600/20",
+  },
+  {
+    id: "creative" as Emotion,
+    name: "Nebula",
+    description: "创意灵感",
+    icon: Sparkles,
+    color: "#A855F7",
+    bgClass: "from-purple-500/20 to-purple-600/20",
+  },
+];
+
 export default function LabPage() {
   const t = useTranslations("lab");
   const params = useParams();
   const locale = params.locale as string;
   const [showWizard, setShowWizard] = useState(false);
+  const { emotion, setEmotion } = useEmotionStore();
 
   const modules = [
     {
@@ -140,6 +180,60 @@ export default function LabPage() {
               </motion.div>
             </Link>
           ))}
+        </motion.div>
+
+        {/* Creative Atmosphere */}
+        <motion.div variants={itemVariants} className="glass-card p-8">
+          <h2 className="text-2xl font-bold mb-2 flex items-center gap-3">
+            <Palette className="w-6 h-6 text-[var(--neon-violet)]" />
+            创意氛围
+          </h2>
+          <p className="text-[var(--muted-foreground)] mb-6">
+            选择一个视觉主题，为你的创作过程营造不同氛围
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {CREATIVE_THEMES.map((theme) => {
+              const isActive = emotion === theme.id;
+              return (
+                <motion.button
+                  key={theme.id}
+                  onClick={() => setEmotion(theme.id)}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`relative p-4 rounded-xl border-2 transition-all text-left ${
+                    isActive
+                      ? "border-current bg-gradient-to-br"
+                      : "border-[var(--glass-border)] hover:border-[var(--muted-foreground)]"
+                  } ${isActive ? theme.bgClass : ""}`}
+                  style={{ color: isActive ? theme.color : undefined }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTheme"
+                      className="absolute inset-0 rounded-xl border-2"
+                      style={{ borderColor: theme.color }}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
+                    style={{ backgroundColor: `${theme.color}20` }}
+                  >
+                    <theme.icon
+                      className="w-5 h-5"
+                      style={{ color: theme.color }}
+                    />
+                  </div>
+                  <div className="font-semibold" style={{ color: isActive ? theme.color : "var(--foreground)" }}>
+                    {theme.name}
+                  </div>
+                  <div className="text-sm text-[var(--muted-foreground)]">
+                    {theme.description}
+                  </div>
+                </motion.button>
+              );
+            })}
+          </div>
         </motion.div>
 
         {/* Features */}
