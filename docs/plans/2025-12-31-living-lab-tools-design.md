@@ -797,7 +797,7 @@ const SCIENTIFIC_SAFEGUARDS = {
 | **M08 运营手册** | quest-system-ops.mdx | 任务系统运营 |
 | | memory-hall-ops.mdx | 记忆馆运营 |
 | | game-workshop-ops.mdx | 游戏工坊运营 |
-| **M09 评价与影响** | narrative-assessment.mdx | 叙事评价方法 |
+| **M09 成长与影响力** | narrative-assessment.mdx | 叙事评价方法 |
 | | failure-transformation.mdx | 失败转化指标 |
 | | legacy-impact.mdx | 世代影响评估 |
 
