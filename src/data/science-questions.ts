@@ -587,22 +587,22 @@ export const scienceQuestions: ScienceQuestion[] = [
   },
   {
     id: 'q079',
-    question: '天空是蓝色的，但太空中看地球为什么是另一种蓝？',
-    explanation: '天空的蓝是瑞利散射造成的，地球的蓝主要来自海洋的反射。大气和水共同创造了我们的"蓝色星球"。',
+    question: '宇宙中是否存在我们尚未发现的第五种基本力？',
+    explanation: '除了引力、电磁力、强核力和弱核力，可能还存在第五种基本力。最新实验中发现的异常暗示着超出标准模型的新物理。',
     gravity: 1,
     color: 'cyan'
   },
   {
     id: 'q080',
-    question: '宇宙有中心吗？大爆炸发生在哪里？',
-    explanation: '宇宙没有中心，因为大爆炸不是发生在某个点的爆炸，而是空间本身的膨胀。每个点都是"中心"。',
+    question: '宇宙的最终命运是大撕裂、大冻结还是大反弹？',
+    explanation: '暗能量的性质决定宇宙的终极命运。如果暗能量在增强，宇宙可能被撕裂；如果恒定，将走向热寂；如果减弱，可能会坍缩重生。',
     gravity: 1,
     color: 'violet'
   },
   {
     id: 'q081',
-    question: '镜子里的左右颠倒为什么不是上下颠倒？',
-    explanation: '其实镜子颠倒的是前后，不是左右。这是一个关于参照系和对称性的有趣思考题。',
+    question: '是什么机制让中微子几乎能穿透任何物质？',
+    explanation: '中微子只参与弱相互作用，几乎不与普通物质发生反应。每秒有数万亿中微子穿过你的身体，却几乎无法被探测到。',
     gravity: 1,
     color: 'violet'
   },
@@ -692,15 +692,15 @@ export const scienceQuestions: ScienceQuestion[] = [
   },
   {
     id: 'q094',
-    question: '为什么我们无法挠自己的痒？',
-    explanation: '大脑能预测自己身体的动作，所以自己挠痒会被"取消"。这种预测机制可能帮助我们区分自我和外部刺激。',
+    question: '为什么有些人对某种药物有效，另一些人却完全无效？',
+    explanation: '药物反应的个体差异巨大。基因组学、表观遗传学和微生物组都在发挥作用。精准医学正在探索如何预测每个人的最佳治疗方案。',
     gravity: 1,
     color: 'pink'
   },
   {
     id: 'q095',
-    question: '双胞胎的指纹为什么不同？',
-    explanation: '基因相同，但指纹形成受子宫内微环境影响——压力、营养物质流动都不同。这是混沌理论的例子。',
+    question: '为什么基因相同的同卵双胞胎会发展出不同的疾病？',
+    explanation: '同卵双胞胎基因相同，但一个可能患上癌症或自身免疫病而另一个健康。表观遗传学、随机性和环境如何共同决定命运？',
     gravity: 1,
     color: 'violet'
   },
@@ -762,15 +762,15 @@ export const scienceQuestions: ScienceQuestion[] = [
   },
   {
     id: 'q104',
-    question: '蝴蝶效应真的存在吗？',
-    explanation: '混沌系统对初始条件极度敏感，但这不意味着蝴蝶能引发飓风。真正的混沌在气象预测中设定了极限。',
+    question: '我们能否精确预测复杂系统的长期行为？',
+    explanation: '从天气到股市，复杂系统的长期预测似乎有根本性限制。混沌理论设定了预测的边界，但这个边界究竟在哪里？',
     gravity: 1,
     color: 'orange'
   },
   {
     id: 'q105',
-    question: '为什么手指泡水会起皱？',
-    explanation: '不是被动吸水膨胀，而是神经控制的主动反应。皱纹增加抓握湿滑物体的摩擦力——进化的适应。',
+    question: '生物进化是否具有可预测性和方向性？',
+    explanation: '进化是随机突变还是存在可预测的路径？不同环境下的趋同进化暗示着某种深层规律。如果重演进化历史，结果会相似吗？',
     gravity: 1,
     color: 'blue'
   },
@@ -783,8 +783,8 @@ export const scienceQuestions: ScienceQuestion[] = [
   },
   {
     id: 'q107',
-    question: '人类的骨头比混凝土还硬吗？',
-    explanation: '按重量算，骨骼强度确实超过混凝土。骨骼是活的器官，能自我修复、适应压力重塑。',
+    question: '人体如何感知时间的流逝？',
+    explanation: '我们没有专门的"时间感官"，但能感知时间流逝。大脑如何构建时间体验？为什么快乐时光飞逝，无聊时度日如年？',
     gravity: 1,
     color: 'orange'
   },
