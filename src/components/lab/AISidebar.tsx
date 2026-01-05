@@ -17,7 +17,8 @@ import {
   Shield,
   Package,
 } from "lucide-react";
-import type { LayoutData } from "@/lib/ai/agents/layout-agent";
+import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
+import type { Discipline } from "@/lib/schemas/launcher";
 import { useToast } from "@/components/ui/Toast";
 
 // ============================================
@@ -44,6 +45,7 @@ interface AISidebarProps {
   onLayoutUpdate: (layout: LayoutData) => void;
   isOpen: boolean;
   onToggle: () => void;
+  discipline?: Discipline;
 }
 
 // ============================================
@@ -149,6 +151,86 @@ function getSuggestionStyles(type: AISuggestion["type"]) {
 }
 
 // ============================================
+// Safety Analysis Helpers
+// ============================================
+
+/**
+ * Calculate distance between two zones (center to center)
+ */
+function calculateZoneDistance(zone1: ZoneData, zone2: ZoneData): number {
+  const center1 = {
+    x: zone1.position.x + zone1.size.width / 2,
+    y: zone1.position.y + zone1.size.height / 2,
+  };
+  const center2 = {
+    x: zone2.position.x + zone2.size.width / 2,
+    y: zone2.position.y + zone2.size.height / 2,
+  };
+  return Math.sqrt(
+    Math.pow(center2.x - center1.x, 2) + Math.pow(center2.y - center1.y, 2)
+  );
+}
+
+/**
+ * Check if two zones overlap or are adjacent
+ */
+function zonesAreAdjacent(zone1: ZoneData, zone2: ZoneData, threshold: number = 1): boolean {
+  const distance = calculateZoneDistance(zone1, zone2);
+  const avgSize = (Math.max(zone1.size.width, zone1.size.height) +
+                   Math.max(zone2.size.width, zone2.size.height)) / 2;
+  return distance < avgSize + threshold;
+}
+
+/**
+ * Calculate walkway percentage - estimate based on zone coverage
+ * Walkway = Total Area - Zone Area
+ */
+function calculateWalkwayPercentage(layout: LayoutData): number {
+  const totalArea = layout.dimensions.width * layout.dimensions.height;
+  const zoneArea = layout.zones.reduce(
+    (acc, zone) => acc + zone.size.width * zone.size.height,
+    0
+  );
+  return ((totalArea - zoneArea) / totalArea) * 100;
+}
+
+/**
+ * Zone types that require water supply
+ */
+const WATER_ZONE_TYPES = ["lab", "biosafety", "utility", "safety"];
+
+/**
+ * Zone types with sensitive electronic equipment
+ */
+const ELECTRONIC_ZONE_TYPES = ["compute", "pcr-isolation", "cleanroom"];
+
+/**
+ * Discipline-specific zone recommendations
+ */
+const DISCIPLINE_ZONE_RECOMMENDATIONS: Record<Discipline, { required: string[]; tips: string[] }> = {
+  "life-health": {
+    required: ["lab", "biosafety", "safety"],
+    tips: ["建议添加清洁消毒区以满足生物安全要求", "细胞培养室应远离PCR区域以防止交叉污染"],
+  },
+  "deep-space-ocean": {
+    required: ["cleanroom", "compute"],
+    tips: ["洁净室应与普通区域保持正压差", "建议设置振动隔离区用于精密测量设备"],
+  },
+  "social-innovation": {
+    required: ["workspace", "meeting"],
+    tips: ["建议增加开放式讨论区促进团队协作", "可考虑添加展示区用于项目展示"],
+  },
+  "micro-nano": {
+    required: ["cleanroom", "compute"],
+    tips: ["微纳实验区需要严格的温湿度控制", "建议设置独立的样品准备区"],
+  },
+  "digital-info": {
+    required: ["compute", "workspace"],
+    tips: ["建议设置独立的服务器机房区", "可增加VR/AR体验区用于可视化研究"],
+  },
+};
+
+// ============================================
 // Main Component
 // ============================================
 
@@ -157,6 +239,7 @@ export function AISidebar({
   onLayoutUpdate,
   isOpen,
   onToggle,
+  discipline,
 }: AISidebarProps) {
   const toast = useToast();
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -198,6 +281,60 @@ export function AISidebar({
       });
     }
 
+    // ===========================================
+    // Walkway Analysis (<15% triggers warning)
+    // ===========================================
+    const walkwayPercentage = calculateWalkwayPercentage(layout);
+    if (layout.zones.length > 0) {
+      if (walkwayPercentage < 15) {
+        newSuggestions.push({
+          id: "walkway-critical",
+          type: "warning",
+          title: "过道空间不足",
+          description: `当前过道空间仅占 ${walkwayPercentage.toFixed(1)}%，低于安全标准（15%）。这可能影响紧急疏散和日常通行。建议减少区域面积或增加实验室尺寸。`,
+        });
+      } else if (walkwayPercentage < 20) {
+        newSuggestions.push({
+          id: "walkway-warning",
+          type: "tip",
+          title: "过道空间偏低",
+          description: `当前过道空间占 ${walkwayPercentage.toFixed(1)}%。建议保持20%以上以确保舒适通行。`,
+        });
+      } else if (walkwayPercentage >= 20 && walkwayPercentage <= 35) {
+        newSuggestions.push({
+          id: "walkway-good",
+          type: "success",
+          title: "过道空间合理",
+          description: `当前过道空间占 ${walkwayPercentage.toFixed(1)}%，通行空间充足。`,
+        });
+      }
+    }
+
+    // ===========================================
+    // Zone Proximity Conflict Detection
+    // ===========================================
+    // Check for electronic zones near water zones (compute near lab/biosafety)
+    const electronicZones = layout.zones.filter((z) =>
+      ELECTRONIC_ZONE_TYPES.includes(z.type)
+    );
+    const waterZones = layout.zones.filter((z) =>
+      WATER_ZONE_TYPES.includes(z.type)
+    );
+
+    for (const eZone of electronicZones) {
+      for (const wZone of waterZones) {
+        if (zonesAreAdjacent(eZone, wZone, 2)) {
+          newSuggestions.push({
+            id: `proximity-${eZone.id}-${wZone.id}`,
+            type: "warning",
+            title: "设备与水源冲突",
+            description: `"${eZone.name}" 区域距离 "${wZone.name}" 区域过近。水源可能对敏感电子设备造成损害。建议增加间隔或设置防水措施。`,
+          });
+          break; // Only one warning per electronic zone
+        }
+      }
+    }
+
     // Check for compute zones near entrance
     const entranceZone = layout.zones.find((z) => z.type === "entrance");
     const computeZones = layout.zones.filter((z) => z.type === "compute");
@@ -214,11 +351,95 @@ export function AISidebar({
           id: "compute-entrance",
           type: "warning",
           title: "计算区位置建议",
-          description: "计算设备区域距离入口较近，可能会受到人流干扰。建议将其移至更安静的位置。",
+          description: "计算设备区域距离入口较近，可能会受到人流干扰和安全风险。建议将其移至更安静的位置。",
         });
       }
     }
 
+    // ===========================================
+    // Safety Zone Violations
+    // ===========================================
+    // Check for biosafety zones without nearby safety/decontamination zone
+    const biosafetyZones = layout.zones.filter((z) =>
+      z.type === "biosafety" || z.type === "lab"
+    );
+    const safetyZones = layout.zones.filter((z) => z.type === "safety");
+
+    if (biosafetyZones.length > 0 && safetyZones.length === 0) {
+      newSuggestions.push({
+        id: "no-safety-zone",
+        type: "warning",
+        title: "缺少安全消毒区",
+        description: "您的布局包含实验区但没有清洁消毒区域。建议添加安全区以满足生物安全要求。",
+      });
+    }
+
+    // Check if storage is too far from lab areas
+    const storageZones = layout.zones.filter((z) => z.type === "storage");
+    if (biosafetyZones.length > 0 && storageZones.length > 0) {
+      const allStorageFarFromLab = biosafetyZones.every((lab) =>
+        storageZones.every((storage) => calculateZoneDistance(lab, storage) > 8)
+      );
+      if (allStorageFarFromLab) {
+        newSuggestions.push({
+          id: "storage-far-from-lab",
+          type: "tip",
+          title: "储存区位置建议",
+          description: "储存区域距离实验区较远，可能增加试剂取用时间。考虑将储存区移近实验区域。",
+        });
+      }
+    }
+
+    // ===========================================
+    // Discipline-Specific Suggestions
+    // ===========================================
+    if (discipline && DISCIPLINE_ZONE_RECOMMENDATIONS[discipline]) {
+      const disciplineConfig = DISCIPLINE_ZONE_RECOMMENDATIONS[discipline];
+      const existingTypes = layout.zones.map((z) => z.type);
+
+      // Check for missing required zone types
+      const missingRequired = disciplineConfig.required.filter(
+        (requiredType) => !existingTypes.includes(requiredType)
+      );
+
+      if (missingRequired.length > 0) {
+        const zoneNames: Record<string, string> = {
+          "lab": "实验区",
+          "biosafety": "生物安全区",
+          "safety": "安全消毒区",
+          "cleanroom": "洁净室",
+          "compute": "计算区",
+          "workspace": "工作区",
+          "meeting": "会议区",
+        };
+        const missingNames = missingRequired.map((t) => zoneNames[t] || t).join("、");
+        newSuggestions.push({
+          id: "discipline-missing-zones",
+          type: "tip",
+          title: `${discipline === "life-health" ? "生命健康" :
+                   discipline === "deep-space-ocean" ? "深空深海" :
+                   discipline === "social-innovation" ? "社会创新" :
+                   discipline === "micro-nano" ? "微纳尺度" : "数智信息"}领域建议`,
+          description: `该领域建议配置：${missingNames}。这些区域对于相关研究至关重要。`,
+        });
+      }
+
+      // Add discipline-specific tips if layout has some zones
+      if (layout.zones.length >= 2 && disciplineConfig.tips.length > 0) {
+        // Show first applicable tip based on current layout
+        const tipIndex = Math.min(layout.zones.length - 2, disciplineConfig.tips.length - 1);
+        newSuggestions.push({
+          id: `discipline-tip-${discipline}`,
+          type: "tip",
+          title: "领域专家建议",
+          description: disciplineConfig.tips[tipIndex],
+        });
+      }
+    }
+
+    // ===========================================
+    // General Layout Suggestions
+    // ===========================================
     // Check for meeting zones
     const meetingZones = layout.zones.filter((z) => z.type === "meeting");
     if (meetingZones.length === 0 && layout.zones.length >= 3) {
@@ -242,20 +463,23 @@ export function AISidebar({
       newSuggestions.push({
         id: "high-density",
         type: "warning",
-        title: "空间利用率较高",
+        title: "空间利用率过高",
         description: "当前布局的空间利用率超过 85%，可能会影响通行和工作效率。考虑增加过道空间。",
       });
-    } else if (utilization > 0.6 && utilization <= 0.85) {
-      newSuggestions.push({
-        id: "good-utilization",
-        type: "success",
-        title: "空间利用率良好",
-        description: "当前布局的空间利用率在合理范围内，兼顾了功能性和舒适度。",
-      });
+    } else if (utilization > 0.6 && utilization <= 0.85 && layout.zones.length >= 2) {
+      // Only show this if we haven't already added the walkway success
+      if (!newSuggestions.some(s => s.id === "walkway-good")) {
+        newSuggestions.push({
+          id: "good-utilization",
+          type: "success",
+          title: "空间利用率良好",
+          description: "当前布局的空间利用率在合理范围内，兼顾了功能性和舒适度。",
+        });
+      }
     }
 
     setSuggestions(newSuggestions);
-  }, [layout]);
+  }, [layout, discipline]);
 
   // Handle sending messages
   const handleSubmit = async (e: React.FormEvent) => {

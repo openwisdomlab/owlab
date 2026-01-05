@@ -743,6 +743,7 @@ export default function FloorPlanPageEnhanced() {
         onLayoutUpdate={handleLayoutFromAI}
         isOpen={showAISidebar}
         onToggle={() => setShowAISidebar(!showAISidebar)}
+        discipline={launcherState?.discipline}
       />
 
       {/* Modals/Dialogs */}
