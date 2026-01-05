@@ -165,8 +165,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           message:
-            "I'm currently in demo mode as no AI API keys are configured. In production, I would help you design and modify your lab layout using natural language. Try adding zones manually or configure an API key to enable AI features.",
+            "您好！我目前处于演示模式，AI API 密钥尚未配置。在演示模式下，您仍可以手动添加和编辑功能区域。配置 ANTHROPIC_API_KEY 或 POE_API_KEY 环境变量后，即可启用 AI 智能布局设计功能。",
           layout: null,
+          demoMode: true,
         },
         { status: 200 }
       );

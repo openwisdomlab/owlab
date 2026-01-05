@@ -16,6 +16,7 @@ import {
   LayoutGrid,
   Shield,
   Package,
+  Info,
 } from "lucide-react";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { Discipline } from "@/lib/schemas/launcher";
@@ -257,6 +258,7 @@ export function AISidebar({
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isDemoMode, setIsDemoMode] = useState(false);
 
   // Scroll to bottom when messages change
   const scrollToBottom = useCallback(() => {
@@ -514,6 +516,11 @@ export function AISidebar({
 
       const data = await response.json();
 
+      // Check if we're in demo mode
+      if (data.demoMode) {
+        setIsDemoMode(true);
+      }
+
       const assistantMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
@@ -577,6 +584,11 @@ export function AISidebar({
         return response.json();
       })
       .then((data) => {
+        // Check if we're in demo mode
+        if (data.demoMode) {
+          setIsDemoMode(true);
+        }
+
         const assistantMessage: ChatMessage = {
           id: (Date.now() + 1).toString(),
           role: "assistant",
@@ -656,6 +668,21 @@ export function AISidebar({
           <X className="w-5 h-5" />
         </button>
       </div>
+
+      {/* Demo Mode Banner */}
+      {isDemoMode && (
+        <div className="px-4 py-3 border-b border-[var(--glass-border)] bg-amber-500/10">
+          <div className="flex items-start gap-2">
+            <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+            <div className="text-xs text-amber-200">
+              <span className="font-medium">演示模式</span>
+              <p className="text-amber-300/80 mt-0.5">
+                AI API 未配置。您仍可手动设计布局，配置 API 密钥后可启用智能生成功能。
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Suggestions Section */}
       {suggestions.length > 0 && (
