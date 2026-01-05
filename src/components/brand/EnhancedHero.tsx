@@ -5,6 +5,7 @@ import { BookOpen, ArrowRight, Sparkles, Eye } from "lucide-react";
 import { Link } from "@/components/ui/Link";
 import { brandColors } from "@/lib/brand/colors";
 import { useTheme } from "@/components/ui/ThemeProvider";
+import { ScienceCircles } from "./ScienceCircles";
 
 interface EnhancedHeroProps {
   locale: string;
@@ -19,6 +20,9 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0" style={{ background: isDark ? '#0E0E14' : '#F8FAFC' }} />
+
+      {/* Science Circles - Interactive Question Universe */}
+      <ScienceCircles circleCount={28} />
 
       {/* Map/Blueprint Grid Overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
