@@ -1,4 +1,12 @@
 {
   "title": "深度内容",
-  "pages": ["cognitive-offloading", "socratic-ai", "research-updates"]
+  "pages": [
+    "embodied-cognition",
+    "tool-integration",
+    "symbolic-extension",
+    "practice-cases",
+    "assessment-framework",
+    "research-updates",
+    "research-updates-2025"
+  ]
 }
