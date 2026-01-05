@@ -1,29 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/components/ui/Link";
 import {
-  Lightbulb,
-  Network,
-  Building2,
-  BookOpen,
-  Wrench,
-  ShieldCheck,
-  Users,
-  ClipboardList,
-  BarChart3,
   ArrowRight,
-  ChevronDown,
-  ChevronUp,
-  Layers,
-  FileText,
   Sparkles,
   CheckCircle2,
   Tag,
-  type LucideIcon,
 } from "lucide-react";
+import { getOwlIcon } from "@/components/icons/OwlIcons";
 
 interface SubModule {
   id: string;
@@ -32,7 +18,6 @@ interface SubModule {
 
 interface Module {
   id: string;
-  icon: LucideIcon;
   path: string;
   status: "completed" | "in_progress" | "planned";
   color: string;
@@ -42,7 +27,6 @@ interface Module {
 const modules: Module[] = [
   {
     id: "M01",
-    icon: Lightbulb,
     path: "/docs/core/01-foundations",
     status: "in_progress",
     color: "var(--neon-yellow)",
@@ -55,7 +39,6 @@ const modules: Module[] = [
   },
   {
     id: "M02",
-    icon: Network,
     path: "/docs/core/02-governance",
     status: "in_progress",
     color: "var(--neon-violet)",
@@ -68,7 +51,6 @@ const modules: Module[] = [
   },
   {
     id: "M03",
-    icon: Building2,
     path: "/docs/core/03-space",
     status: "in_progress",
     color: "var(--neon-cyan)",
@@ -81,7 +63,6 @@ const modules: Module[] = [
   },
   {
     id: "M04",
-    icon: BookOpen,
     path: "/docs/core/04-programs",
     status: "in_progress",
     color: "var(--neon-green)",
@@ -94,7 +75,6 @@ const modules: Module[] = [
   },
   {
     id: "M05",
-    icon: Wrench,
     path: "/docs/core/05-tools",
     status: "in_progress",
     color: "var(--neon-orange)",
@@ -107,7 +87,6 @@ const modules: Module[] = [
   },
   {
     id: "M06",
-    icon: ShieldCheck,
     path: "/docs/core/06-safety",
     status: "in_progress",
     color: "var(--neon-red)",
@@ -120,7 +99,6 @@ const modules: Module[] = [
   },
   {
     id: "M07",
-    icon: Users,
     path: "/docs/core/07-people",
     status: "in_progress",
     color: "var(--neon-pink)",
@@ -133,7 +111,6 @@ const modules: Module[] = [
   },
   {
     id: "M08",
-    icon: ClipboardList,
     path: "/docs/core/08-operations",
     status: "in_progress",
     color: "var(--neon-blue)",
@@ -146,7 +123,6 @@ const modules: Module[] = [
   },
   {
     id: "M09",
-    icon: BarChart3,
     path: "/docs/core/09-assessment",
     status: "in_progress",
     color: "var(--neon-teal)",
@@ -186,27 +162,11 @@ const itemVariants = {
 interface ModuleCardsProps {
   locale: string;
   compact?: boolean;
-  showSubModules?: boolean;
   showHighlights?: boolean;
 }
 
-export function ModuleCards({ locale, compact = false, showSubModules = true, showHighlights = true }: ModuleCardsProps) {
+export function ModuleCards({ locale, compact = false, showHighlights = true }: ModuleCardsProps) {
   const t = useTranslations("docs.knowledgeBase");
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
-
-  const toggleExpand = (moduleId: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setExpandedModules(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(moduleId)) {
-        newSet.delete(moduleId);
-      } else {
-        newSet.add(moduleId);
-      }
-      return newSet;
-    });
-  };
 
   // 获取模块的 highlights 数组
   const getHighlights = (moduleId: string): string[] => {
@@ -228,6 +188,17 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
     }
   };
 
+  // 获取子模块名称作为额外标签
+  const getSubModuleTags = (moduleId: string, subModules: SubModule[]): string[] => {
+    return subModules.map(sub => {
+      try {
+        return t(`subModules.${moduleId}.${sub.id}`);
+      } catch {
+        return sub.id;
+      }
+    });
+  };
+
   return (
     <motion.div
       className={compact ? "grid md:grid-cols-2 lg:grid-cols-3 gap-3" : "grid md:grid-cols-2 lg:grid-cols-3 gap-6"}
@@ -236,10 +207,11 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
       variants={containerVariants}
     >
       {modules.map((module) => {
-        const isExpanded = expandedModules.has(module.id);
-        const hasSubModules = module.subModules.length > 0;
         const highlights = getHighlights(module.id);
         const tags = getTags(module.id);
+        const subModuleTags = getSubModuleTags(module.id, module.subModules);
+        // 合并相关主题和扩展主题为一个标签列表
+        const allTags = [...tags, ...subModuleTags];
 
         // 检查是否有 subtitle
         let subtitle = "";
@@ -270,21 +242,26 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
                 className="group block"
               >
                 <div className="flex items-start gap-4">
-                  {/* 图标 */}
+                  {/* 猫头鹰图标 */}
                   <div
                     className={`
-                      flex-shrink-0 rounded-xl flex items-center justify-center
+                      flex-shrink-0 rounded-xl flex items-center justify-center overflow-hidden
                       group-hover:scale-110 transition-transform duration-300
                       ${compact ? "w-10 h-10" : "w-14 h-14"}
                     `}
                     style={{
-                      backgroundColor: `color-mix(in srgb, ${module.color} 15%, transparent)`,
+                      backgroundColor: `color-mix(in srgb, ${module.color} 10%, transparent)`,
                     }}
                   >
-                    <module.icon
-                      className={compact ? "w-5 h-5" : "w-7 h-7"}
-                      style={{ color: module.color }}
-                    />
+                    {(() => {
+                      const OwlIcon = getOwlIcon(module.id);
+                      return (
+                        <OwlIcon
+                          className={compact ? "w-8 h-8" : "w-12 h-12"}
+                          color={module.color}
+                        />
+                      );
+                    })()}
                   </div>
 
                   {/* 内容 */}
@@ -378,8 +355,8 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
                 </div>
               )}
 
-              {/* 可点击标签 */}
-              {!compact && tags.length > 0 && (
+              {/* 合并后的主题标签（相关主题 + 扩展主题） */}
+              {!compact && allTags.length > 0 && (
                 <div className="mt-4 pt-3 border-t border-[var(--glass-border)]">
                   <div className="flex items-center gap-1.5 mb-2">
                     <Tag className="w-3.5 h-3.5" style={{ color: module.color }} />
@@ -388,7 +365,7 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {tags.map((tag) => (
+                    {allTags.map((tag) => (
                       <Link
                         key={tag}
                         href={`/${locale}${module.path}`}
@@ -403,66 +380,6 @@ export function ModuleCards({ locale, compact = false, showSubModules = true, sh
                       </Link>
                     ))}
                   </div>
-                </div>
-              )}
-
-              {/* 子模块展开区域 */}
-              {showSubModules && hasSubModules && !compact && (
-                <>
-                  {/* 展开按钮 */}
-                  <button
-                    onClick={(e) => toggleExpand(module.id, e)}
-                    className="w-full mt-4 pt-3 border-t border-[var(--glass-border)] flex items-center justify-between text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-                  >
-                    <span className="flex items-center gap-1.5">
-                      <Layers className="w-3.5 h-3.5" />
-                      {t("subModules.count", { count: module.subModules.length })}
-                    </span>
-                    {isExpanded ? (
-                      <ChevronUp className="w-4 h-4" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4" />
-                    )}
-                  </button>
-
-                  {/* 子模块列表 */}
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pt-3 space-y-1.5">
-                          {module.subModules.map((sub) => (
-                            <Link
-                              key={sub.id}
-                              href={`/${locale}${sub.path}`}
-                              className="group/sub flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
-                            >
-                              <FileText className="w-3.5 h-3.5 text-[var(--muted-foreground)]" />
-                              <span className="text-xs flex-1">
-                                {t(`subModules.${module.id}.${sub.id}`)}
-                              </span>
-                              <ArrowRight className="w-3 h-3 text-[var(--muted-foreground)] opacity-0 group-hover/sub:opacity-100 group-hover/sub:translate-x-0.5 transition-all" />
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </>
-              )}
-
-              {/* 无子模块时的占位提示 */}
-              {showSubModules && !hasSubModules && !compact && (
-                <div className="mt-4 pt-3 border-t border-[var(--glass-border)]">
-                  <span className="text-xs text-[var(--muted-foreground)] opacity-60 flex items-center gap-1.5">
-                    <FileText className="w-3.5 h-3.5" />
-                    {t("subModules.coreOnly")}
-                  </span>
                 </div>
               )}
             </div>
