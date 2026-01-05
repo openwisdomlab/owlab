@@ -1,0 +1,673 @@
+{
+  "templates": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440100",
+      "name": "Small K-12 STEM Lab",
+      "description": "Compact STEM laboratory designed for elementary and middle school students. Includes workspace for 30 students, basic electronics stations, and a small maker area.",
+      "category": "k12",
+      "tags": ["stem", "elementary", "middle-school", "budget-friendly"],
+      "featured": true,
+      "downloadCount": 245,
+      "createdAt": "2024-09-15T00:00:00Z",
+      "author": "Dr. Sarah Chen",
+      "organization": "Education Design Institute",
+      "metadata": {
+        "estimatedCost": 25000,
+        "capacity": 30,
+        "areaSize": 150,
+        "difficulty": "beginner"
+      },
+      "layout": {
+        "id": "layout-100",
+        "name": "Small K-12 STEM Lab",
+        "description": "Compact STEM laboratory for elementary and middle school students",
+        "dimensions": { "width": 15, "height": 10, "unit": "m" },
+        "zones": [
+          {
+            "id": "zone-100-1",
+            "name": "Student Workspace",
+            "type": "workspace",
+            "position": { "x": 1, "y": 1 },
+            "size": { "width": 8, "height": 6 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440002",
+                "name": "Workstation PC",
+                "quantity": 15,
+                "price": 2500,
+                "category": "compute"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440004",
+                "name": "Adjustable Standing Desk",
+                "quantity": 15,
+                "price": 600,
+                "category": "furniture"
+              }
+            ]
+          },
+          {
+            "id": "zone-100-2",
+            "name": "Maker Station",
+            "type": "workspace",
+            "position": { "x": 10, "y": 1 },
+            "size": { "width": 4, "height": 4 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440006",
+                "name": "3D Printer (FDM)",
+                "quantity": 2,
+                "price": 3500,
+                "category": "tools"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440020",
+                "name": "Arduino Starter Kit",
+                "quantity": 10,
+                "price": 95,
+                "category": "electronics"
+              }
+            ]
+          },
+          {
+            "id": "zone-100-3",
+            "name": "Storage",
+            "type": "storage",
+            "position": { "x": 10, "y": 6 },
+            "size": { "width": 4, "height": 3 },
+            "color": "#f59e0b",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440018",
+                "name": "Storage Cabinet (Metal)",
+                "quantity": 3,
+                "price": 400,
+                "category": "furniture"
+              }
+            ]
+          },
+          {
+            "id": "zone-100-4",
+            "name": "Teaching Area",
+            "type": "meeting",
+            "position": { "x": 1, "y": 8 },
+            "size": { "width": 6, "height": 1.5 },
+            "color": "#10b981",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440011",
+                "name": "Interactive Whiteboard",
+                "quantity": 1,
+                "price": 3000,
+                "category": "electronics"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440101",
+      "name": "University AI Research Lab",
+      "description": "Advanced AI research laboratory with high-performance computing, collaborative workspace, and meeting areas. Designed for graduate students and research faculty.",
+      "category": "university",
+      "tags": ["ai", "ml", "research", "gpu", "high-performance"],
+      "featured": true,
+      "downloadCount": 189,
+      "createdAt": "2024-10-02T00:00:00Z",
+      "author": "Prof. Michael Zhang",
+      "organization": "Tech University",
+      "metadata": {
+        "estimatedCost": 150000,
+        "capacity": 20,
+        "areaSize": 300,
+        "difficulty": "advanced"
+      },
+      "layout": {
+        "id": "layout-101",
+        "name": "University AI Research Lab",
+        "description": "Advanced AI research laboratory with high-performance computing and collaborative workspace",
+        "dimensions": { "width": 20, "height": 15, "unit": "m" },
+        "zones": [
+          {
+            "id": "zone-101-1",
+            "name": "GPU Server Room",
+            "type": "compute",
+            "position": { "x": 0, "y": 0 },
+            "size": { "width": 6, "height": 5 },
+            "color": "#22d3ee",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440001",
+                "name": "NVIDIA A100 GPU Server",
+                "quantity": 2,
+                "price": 75000,
+                "category": "compute"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440012",
+                "name": "Server Rack (42U)",
+                "quantity": 2,
+                "price": 800,
+                "category": "utilities"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440015",
+                "name": "HVAC Cooling Unit",
+                "quantity": 1,
+                "price": 5000,
+                "category": "utilities"
+              }
+            ]
+          },
+          {
+            "id": "zone-101-2",
+            "name": "Research Workspace",
+            "type": "workspace",
+            "position": { "x": 7, "y": 0 },
+            "size": { "width": 8, "height": 7 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440002",
+                "name": "Workstation PC",
+                "quantity": 12,
+                "price": 2500,
+                "category": "compute"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440003",
+                "name": "4K Monitor 32\"",
+                "quantity": 24,
+                "price": 800,
+                "category": "electronics"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440004",
+                "name": "Adjustable Standing Desk",
+                "quantity": 12,
+                "price": 600,
+                "category": "furniture"
+              }
+            ]
+          },
+          {
+            "id": "zone-101-3",
+            "name": "Collaboration Room",
+            "type": "meeting",
+            "position": { "x": 16, "y": 0 },
+            "size": { "width": 4, "height": 5 },
+            "color": "#10b981",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440010",
+                "name": "Conference Table (8-person)",
+                "quantity": 1,
+                "price": 1200,
+                "category": "furniture"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440011",
+                "name": "Interactive Whiteboard",
+                "quantity": 1,
+                "price": 3000,
+                "category": "electronics"
+              }
+            ]
+          },
+          {
+            "id": "zone-101-4",
+            "name": "VR/AR Lab",
+            "type": "workspace",
+            "position": { "x": 7, "y": 8 },
+            "size": { "width": 5, "height": 5 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440024",
+                "name": "VR Headset (Meta Quest 3)",
+                "quantity": 8,
+                "price": 500,
+                "category": "electronics"
+              }
+            ]
+          },
+          {
+            "id": "zone-101-5",
+            "name": "Equipment Storage",
+            "type": "storage",
+            "position": { "x": 0, "y": 6 },
+            "size": { "width": 3, "height": 4 },
+            "color": "#f59e0b",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440018",
+                "name": "Storage Cabinet (Metal)",
+                "quantity": 4,
+                "price": 400,
+                "category": "furniture"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440102",
+      "name": "Community Maker Space",
+      "description": "Multi-purpose maker space for community use with woodworking, electronics, 3D printing, and laser cutting areas. Suitable for all ages and skill levels.",
+      "category": "maker-space",
+      "tags": ["maker", "community", "fabrication", "woodworking", "electronics"],
+      "featured": true,
+      "downloadCount": 312,
+      "createdAt": "2024-08-20T00:00:00Z",
+      "author": "Lisa Rodriguez",
+      "organization": "Maker Community Foundation",
+      "metadata": {
+        "estimatedCost": 65000,
+        "capacity": 40,
+        "areaSize": 500,
+        "difficulty": "intermediate"
+      },
+      "layout": {
+        "id": "layout-102",
+        "name": "Community Maker Space",
+        "description": "Multi-purpose maker space for community use with digital fabrication and electronics workshop",
+        "dimensions": { "width": 25, "height": 20, "unit": "m" },
+        "zones": [
+          {
+            "id": "zone-102-1",
+            "name": "Digital Fabrication",
+            "type": "workspace",
+            "position": { "x": 1, "y": 1 },
+            "size": { "width": 10, "height": 8 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440006",
+                "name": "3D Printer (FDM)",
+                "quantity": 5,
+                "price": 3500,
+                "category": "tools"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440007",
+                "name": "Laser Cutter",
+                "quantity": 2,
+                "price": 8000,
+                "category": "tools"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440002",
+                "name": "Workstation PC",
+                "quantity": 8,
+                "price": 2500,
+                "category": "compute"
+              }
+            ]
+          },
+          {
+            "id": "zone-102-2",
+            "name": "Electronics Workshop",
+            "type": "workspace",
+            "position": { "x": 12, "y": 1 },
+            "size": { "width": 7, "height": 6 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440008",
+                "name": "Oscilloscope",
+                "quantity": 4,
+                "price": 1200,
+                "category": "electronics"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440009",
+                "name": "Soldering Station",
+                "quantity": 10,
+                "price": 350,
+                "category": "tools"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440020",
+                "name": "Arduino Starter Kit",
+                "quantity": 15,
+                "price": 95,
+                "category": "electronics"
+              }
+            ]
+          },
+          {
+            "id": "zone-102-3",
+            "name": "Meeting & Teaching",
+            "type": "meeting",
+            "position": { "x": 20, "y": 1 },
+            "size": { "width": 4, "height": 6 },
+            "color": "#10b981",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440010",
+                "name": "Conference Table (8-person)",
+                "quantity": 2,
+                "price": 1200,
+                "category": "furniture"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440011",
+                "name": "Interactive Whiteboard",
+                "quantity": 1,
+                "price": 3000,
+                "category": "electronics"
+              }
+            ]
+          },
+          {
+            "id": "zone-102-4",
+            "name": "Tool Storage",
+            "type": "storage",
+            "position": { "x": 1, "y": 10 },
+            "size": { "width": 6, "height": 4 },
+            "color": "#f59e0b",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440018",
+                "name": "Storage Cabinet (Metal)",
+                "quantity": 8,
+                "price": 400,
+                "category": "furniture"
+              }
+            ]
+          },
+          {
+            "id": "zone-102-5",
+            "name": "Safety Station",
+            "type": "utility",
+            "position": { "x": 8, "y": 10 },
+            "size": { "width": 3, "height": 3 },
+            "color": "#6b7280",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440016",
+                "name": "Fire Extinguisher (ABC)",
+                "quantity": 4,
+                "price": 80,
+                "category": "safety"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440017",
+                "name": "First Aid Kit",
+                "quantity": 2,
+                "price": 150,
+                "category": "safety"
+              }
+            ]
+          },
+          {
+            "id": "zone-102-6",
+            "name": "Entrance & Reception",
+            "type": "entrance",
+            "position": { "x": 20, "y": 8 },
+            "size": { "width": 4, "height": 3 },
+            "color": "#ec4899",
+            "equipment": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440103",
+      "name": "Corporate Innovation Lab",
+      "description": "Enterprise innovation space with design thinking areas, prototyping facilities, and executive meeting rooms. Perfect for corporate R&D and innovation teams.",
+      "category": "corporate",
+      "tags": ["corporate", "innovation", "r-d", "design-thinking", "prototyping"],
+      "featured": true,
+      "downloadCount": 156,
+      "createdAt": "2024-11-10T00:00:00Z",
+      "author": "James Wilson",
+      "organization": "Corporate Design Labs",
+      "metadata": {
+        "estimatedCost": 180000,
+        "capacity": 35,
+        "areaSize": 750,
+        "difficulty": "advanced"
+      },
+      "layout": {
+        "id": "layout-103",
+        "name": "Corporate Innovation Lab",
+        "description": "Enterprise innovation space with design thinking areas and prototyping facilities",
+        "dimensions": { "width": 30, "height": 25, "unit": "m" },
+        "zones": [
+          {
+            "id": "zone-103-1",
+            "name": "Design Thinking Studio",
+            "type": "workspace",
+            "position": { "x": 1, "y": 1 },
+            "size": { "width": 12, "height": 10 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440002",
+                "name": "Workstation PC",
+                "quantity": 20,
+                "price": 2500,
+                "category": "compute"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440003",
+                "name": "4K Monitor 32\"",
+                "quantity": 20,
+                "price": 800,
+                "category": "electronics"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440004",
+                "name": "Adjustable Standing Desk",
+                "quantity": 20,
+                "price": 600,
+                "category": "furniture"
+              }
+            ]
+          },
+          {
+            "id": "zone-103-2",
+            "name": "Rapid Prototyping",
+            "type": "workspace",
+            "position": { "x": 14, "y": 1 },
+            "size": { "width": 8, "height": 8 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440006",
+                "name": "3D Printer (FDM)",
+                "quantity": 4,
+                "price": 3500,
+                "category": "tools"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440007",
+                "name": "Laser Cutter",
+                "quantity": 1,
+                "price": 8000,
+                "category": "tools"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440021",
+                "name": "CAD Software License (Annual)",
+                "quantity": 10,
+                "price": 2000,
+                "category": "software"
+              }
+            ]
+          },
+          {
+            "id": "zone-103-3",
+            "name": "Executive Meeting Room",
+            "type": "meeting",
+            "position": { "x": 23, "y": 1 },
+            "size": { "width": 6, "height": 8 },
+            "color": "#10b981",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440010",
+                "name": "Conference Table (8-person)",
+                "quantity": 2,
+                "price": 1200,
+                "category": "furniture"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440011",
+                "name": "Interactive Whiteboard",
+                "quantity": 2,
+                "price": 3000,
+                "category": "electronics"
+              }
+            ]
+          },
+          {
+            "id": "zone-103-4",
+            "name": "VR Experience Center",
+            "type": "workspace",
+            "position": { "x": 1, "y": 12 },
+            "size": { "width": 8, "height": 6 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440024",
+                "name": "VR Headset (Meta Quest 3)",
+                "quantity": 12,
+                "price": 500,
+                "category": "electronics"
+              }
+            ]
+          },
+          {
+            "id": "zone-103-5",
+            "name": "Server Infrastructure",
+            "type": "compute",
+            "position": { "x": 10, "y": 12 },
+            "size": { "width": 4, "height": 4 },
+            "color": "#22d3ee",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440012",
+                "name": "Server Rack (42U)",
+                "quantity": 2,
+                "price": 800,
+                "category": "utilities"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440013",
+                "name": "Network Switch (48-port)",
+                "quantity": 2,
+                "price": 1500,
+                "category": "compute"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440014",
+                "name": "UPS Battery Backup (3000VA)",
+                "quantity": 2,
+                "price": 900,
+                "category": "utilities"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440104",
+      "name": "Robotics Workshop",
+      "description": "Specialized robotics workshop for educational institutions with robot assembly areas, testing zones, and programming stations. Ideal for FIRST Robotics and VEX competitions.",
+      "category": "k12",
+      "tags": ["robotics", "competition", "stem", "programming", "engineering"],
+      "featured": false,
+      "downloadCount": 98,
+      "createdAt": "2024-07-15T00:00:00Z",
+      "author": "Coach Emma Martinez",
+      "organization": "Robotics Education Alliance",
+      "metadata": {
+        "estimatedCost": 45000,
+        "capacity": 25,
+        "areaSize": 216,
+        "difficulty": "intermediate"
+      },
+      "layout": {
+        "id": "layout-104",
+        "name": "Robotics Workshop",
+        "description": "Specialized robotics workshop for educational institutions with assembly and testing areas",
+        "dimensions": { "width": 18, "height": 12, "unit": "m" },
+        "zones": [
+          {
+            "id": "zone-104-1",
+            "name": "Robot Assembly Area",
+            "type": "workspace",
+            "position": { "x": 1, "y": 1 },
+            "size": { "width": 10, "height": 6 },
+            "color": "#8b5cf6",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440019",
+                "name": "Robotics Kit (Educational)",
+                "quantity": 8,
+                "price": 1500,
+                "category": "tools"
+              },
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440004",
+                "name": "Adjustable Standing Desk",
+                "quantity": 8,
+                "price": 600,
+                "category": "furniture"
+              }
+            ]
+          },
+          {
+            "id": "zone-104-2",
+            "name": "Programming Stations",
+            "type": "compute",
+            "position": { "x": 12, "y": 1 },
+            "size": { "width": 5, "height": 6 },
+            "color": "#22d3ee",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440002",
+                "name": "Workstation PC",
+                "quantity": 10,
+                "price": 2500,
+                "category": "compute"
+              }
+            ]
+          },
+          {
+            "id": "zone-104-3",
+            "name": "Testing Arena",
+            "type": "workspace",
+            "position": { "x": 1, "y": 8 },
+            "size": { "width": 8, "height": 3 },
+            "color": "#8b5cf6",
+            "equipment": []
+          },
+          {
+            "id": "zone-104-4",
+            "name": "Parts Storage",
+            "type": "storage",
+            "position": { "x": 10, "y": 8 },
+            "size": { "width": 4, "height": 3 },
+            "color": "#f59e0b",
+            "equipment": [
+              {
+                "equipmentId": "550e8400-e29b-41d4-a716-446655440018",
+                "name": "Storage Cabinet (Metal)",
+                "quantity": 6,
+                "price": 400,
+                "category": "furniture"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

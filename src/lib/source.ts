@@ -20,8 +20,8 @@ export function getLocalePage(slug: string[] | undefined, locale: string) {
 
 // Helper to transform URL to proper format for next-intl
 // Strips the locale from the content path and adds locale prefix for routing
-// e.g., "/docs/zh/living-modules" -> "/{locale}/docs/living-modules"
-// e.g., "zh/living-modules" -> "/{locale}/docs/living-modules"
+// e.g., "/docs/zh/living-modules" -> "/{locale}/docs/research"
+// e.g., "zh/living-modules" -> "/{locale}/docs/research"
 function transformUrlForLocale(url: string, locale: string): string {
   let strippedUrl = url;
 
@@ -57,7 +57,7 @@ function transformUrlForLocale(url: string, locale: string): string {
   }
 
   // Add locale prefix for proper routing
-  // e.g., "/docs/knowledge-base" -> "/zh/docs/knowledge-base"
+  // e.g., "/docs/core" -> "/zh/docs/core"
   return `/${locale}${strippedUrl}`;
 }
 

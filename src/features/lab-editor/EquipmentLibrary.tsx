@@ -18,6 +18,7 @@ import type {
   EquipmentFilter,
 } from "@/lib/schemas/equipment";
 import { formatCurrency } from "@/lib/utils/budget";
+import { getAllEquipment } from "@/data";
 
 interface EquipmentLibraryProps {
   onAddEquipment: (equipment: EquipmentItem) => void;
@@ -58,17 +59,9 @@ export function EquipmentLibrary({
   const [selectedItem, setSelectedItem] = useState<EquipmentItem | null>(null);
 
   useEffect(() => {
-    // Load equipment catalog
-    fetch("/data/equipment-catalog.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setEquipment(data.equipment);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Failed to load equipment catalog:", error);
-        setLoading(false);
-      });
+    // Load equipment catalog from typed data layer
+    setEquipment(getAllEquipment());
+    setLoading(false);
   }, []);
 
   const filteredEquipment = useMemo(() => {

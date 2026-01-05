@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import type { Template, TemplateCategory, TemplateFilter } from "@/lib/schemas/template";
 import { formatCurrency } from "@/lib/utils/budget";
+import { getAllTemplates } from "@/data";
 
 interface TemplateGalleryProps {
   onSelectTemplate: (template: Template) => void;
@@ -52,17 +53,9 @@ export function TemplateGallery({
   const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
-    // Load templates
-    fetch("/data/templates.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setTemplates(data.templates);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Failed to load templates:", error);
-        setLoading(false);
-      });
+    // Load templates from typed data layer
+    setTemplates(getAllTemplates());
+    setLoading(false);
   }, []);
 
   const filteredTemplates = useMemo(() => {

@@ -14,7 +14,7 @@ import {
   ArrowRight,
   Wand2,
 } from "lucide-react";
-import { RecommendationWizard } from "@/components/lab/RecommendationWizard";
+import { RecommendationWizard } from "@/features/lab-editor/RecommendationWizard";
 
 const containerVariants = {
   hidden: { opacity: 0 },

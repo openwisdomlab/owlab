@@ -20,7 +20,7 @@ export function Header({ locale }: HeaderProps) {
 
   const navItems = [
     { href: `/${locale}`, label: t("home"), icon: null },
-    { href: `/${locale}/docs/knowledge-base`, label: t("docs"), icon: BookOpen },
+    { href: `/${locale}/docs/core`, label: t("docs"), icon: BookOpen },
     { href: `/${locale}/lab`, label: t("lab"), icon: FlaskConical },
   ];
 

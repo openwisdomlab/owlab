@@ -1,0 +1,39 @@
+// Lab Editor Feature - Floor Plan & Space Design Components
+export { AIChatPanel } from "./AIChatPanel";
+export { AISidebar } from "./AISidebar";
+export { AlignmentGuides } from "./AlignmentGuides";
+export { AllenCurveOverlay } from "./AllenCurveOverlay";
+export { AllenCurvePanel } from "./AllenCurvePanel";
+export { ArrangeToolbar } from "./ArrangeToolbar";
+export { BudgetDashboard } from "./BudgetDashboard";
+export { Canvas3D } from "./Canvas3D";
+export { EmotionDesignDialog } from "./EmotionDesignDialog";
+export { EmotionNodePicker } from "./EmotionNodePicker";
+export { EmotionTimelineEditor } from "./EmotionTimelineEditor";
+export { EquipmentLibrary } from "./EquipmentLibrary";
+export { ExportDialog } from "./ExportDialog";
+export { FloorPlanCanvas } from "./FloorPlanCanvas";
+export { FloorPlanToolbar } from "./FloorPlanToolbar";
+export { KeyboardShortcutsDialog } from "./KeyboardShortcutsDialog";
+export { LayerItem } from "./LayerItem";
+export { LayerPanel } from "./LayerPanel";
+export { MeasurementOverlay } from "./MeasurementOverlay";
+export { MeasurementToolbar } from "./MeasurementToolbar";
+export { ParallelUniverseDialog } from "./ParallelUniverseDialog";
+export { Preview3D } from "./Preview3D";
+export { PsychologicalSafetyPanel } from "./PsychologicalSafetyPanel";
+export { QuickStatsPanel } from "./QuickStatsPanel";
+export { RecommendationWizard } from "./RecommendationWizard";
+export { SafetyPanel } from "./SafetyPanel";
+export { SaveTemplateDialog } from "./SaveTemplateDialog";
+export { Scene3DRenderer } from "./Scene3DRenderer";
+export { SimplifiedToolbar } from "./SimplifiedToolbar";
+export { SmartLauncher } from "./SmartLauncher";
+export { SpatialRecommendationPanel } from "./SpatialRecommendationPanel";
+export { TemplateGallery } from "./TemplateGallery";
+export { TemplatePreviewDialog } from "./TemplatePreviewDialog";
+export { UniverseComparisonPanel } from "./UniverseComparisonPanel";
+export { UniverseSelector } from "./UniverseSelector";
+
+// Page-level components
+export { FloorPlanEditor } from "./FloorPlanEditor";

@@ -198,23 +198,24 @@ function calculateWalkwayPercentage(layout: LayoutData): number {
 /**
  * Zone types that require water supply
  */
-const WATER_ZONE_TYPES = ["lab", "biosafety", "utility", "safety"];
+const WATER_ZONE_TYPES: ZoneData["type"][] = ["workspace", "utility"];
 
 /**
  * Zone types with sensitive electronic equipment
  */
-const ELECTRONIC_ZONE_TYPES = ["compute", "pcr-isolation", "cleanroom"];
+const ELECTRONIC_ZONE_TYPES: ZoneData["type"][] = ["compute"];
 
 /**
  * Discipline-specific zone recommendations
+ * Note: Using valid ZoneData types only
  */
-const DISCIPLINE_ZONE_RECOMMENDATIONS: Record<Discipline, { required: string[]; tips: string[] }> = {
+const DISCIPLINE_ZONE_RECOMMENDATIONS: Record<Discipline, { required: ZoneData["type"][]; tips: string[] }> = {
   "life-health": {
-    required: ["lab", "biosafety", "safety"],
+    required: ["workspace", "utility"],
     tips: ["建议添加清洁消毒区以满足生物安全要求", "细胞培养室应远离PCR区域以防止交叉污染"],
   },
   "deep-space-ocean": {
-    required: ["cleanroom", "compute"],
+    required: ["workspace", "compute"],
     tips: ["洁净室应与普通区域保持正压差", "建议设置振动隔离区用于精密测量设备"],
   },
   "social-innovation": {
@@ -222,7 +223,7 @@ const DISCIPLINE_ZONE_RECOMMENDATIONS: Record<Discipline, { required: string[]; 
     tips: ["建议增加开放式讨论区促进团队协作", "可考虑添加展示区用于项目展示"],
   },
   "micro-nano": {
-    required: ["cleanroom", "compute"],
+    required: ["workspace", "compute"],
     tips: ["微纳实验区需要严格的温湿度控制", "建议设置独立的样品准备区"],
   },
   "digital-info": {
@@ -361,13 +362,13 @@ export function AISidebar({
     // ===========================================
     // Safety Zone Violations
     // ===========================================
-    // Check for biosafety zones without nearby safety/decontamination zone
-    const biosafetyZones = layout.zones.filter((z) =>
-      z.type === "biosafety" || z.type === "lab"
+    // Check for compute/workspace zones without nearby utility/decontamination zone
+    const labWorkZones = layout.zones.filter((z) =>
+      z.type === "compute" || z.type === "workspace"
     );
-    const safetyZones = layout.zones.filter((z) => z.type === "safety");
+    const safetyZones = layout.zones.filter((z) => z.type === "utility");
 
-    if (biosafetyZones.length > 0 && safetyZones.length === 0) {
+    if (labWorkZones.length > 0 && safetyZones.length === 0) {
       newSuggestions.push({
         id: "no-safety-zone",
         type: "warning",
@@ -378,8 +379,8 @@ export function AISidebar({
 
     // Check if storage is too far from lab areas
     const storageZones = layout.zones.filter((z) => z.type === "storage");
-    if (biosafetyZones.length > 0 && storageZones.length > 0) {
-      const allStorageFarFromLab = biosafetyZones.every((lab) =>
+    if (labWorkZones.length > 0 && storageZones.length > 0) {
+      const allStorageFarFromLab = labWorkZones.every((lab) =>
         storageZones.every((storage) => calculateZoneDistance(lab, storage) > 8)
       );
       if (allStorageFarFromLab) {

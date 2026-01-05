@@ -2,9 +2,9 @@
   "title": "文档",
   "pages": [
     "---",
-    "living-modules",
-    "knowledge-base",
-    "tools",
+    "core",
+    "research",
+    "resources",
     "---"
   ]
 }
