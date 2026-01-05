@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords: [
     "创新实验室",
     "STEAM教育",
-    "创客空间",
+    "开放智慧实验室",
     "科学教育",
     "OWL",
     "猫头鹰实验室",
