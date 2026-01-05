@@ -196,35 +196,35 @@
         }
       },
       "tools": {
-        "floorPlan": {
+        "spaceDesigner": {
           "id": "T01",
-          "title": "AI Lab Layout Generator",
-          "description": "Smart floor plan design, 3D visualization, Allen curve analysis, one-click professional layouts"
+          "title": "AI Space Designer",
+          "description": "Smart layout generation, 3D visualization, Allen curve analysis, one-click professional lab design"
         },
-        "wizard": {
+        "researchTeam": {
           "id": "T02",
-          "title": "Smart Planning Wizard",
-          "description": "Input area, budget, positioning, and AI generates personalized construction plans"
+          "title": "Virtual Research Team",
+          "description": "Build cross-school research groups, assign roles and tasks, collaboratively explore real research problems"
         },
-        "equipmentGuide": {
+        "gameWorkshop": {
           "id": "T03",
-          "title": "Equipment Selection Guide",
-          "description": "Smart recommendations based on Lite/Pro/Ultra tier system for your equipment list"
+          "title": "Game Workshop",
+          "description": "Design gamified course activities, generate learning path maps, create achievement badge systems"
         },
-        "aiToolsGuide": {
+        "connector": {
           "id": "T04",
-          "title": "AI Tools Guide",
-          "description": "Generative AI, code assistants, creative tools coverage with education best practices"
+          "title": "Wisdom Connector",
+          "description": "Discover OWL node networks, explore cross-disciplinary connections, match like-minded explorers"
         },
-        "costCalculator": {
+        "showcaseGenerator": {
           "id": "T05",
-          "title": "Cost Calculator",
-          "description": "Full lifecycle budgeting for equipment, space, personnel across 30-500m² scales"
+          "title": "Showcase Generator",
+          "description": "AI auto-generates project posters, research summaries, presentation slides to make your work shine"
         },
-        "hardwareSelector": {
+        "opensourceHub": {
           "id": "T06",
-          "title": "Open Hardware Selection",
-          "description": "Arduino, Raspberry Pi, ESP32 platform comparison with local brand recommendations"
+          "title": "Open Source Hub",
+          "description": "Curated navigation of open hardware, software, and curriculum resources - a community-contributed treasure trove"
         }
       }
     },
@@ -274,6 +274,8 @@
         "M01": {
           "title": "Philosophy & Theory",
           "subtitle": "Planting the Seeds of Ideas",
+          "label": "Sparking Curiosity Through Theory",
+          "slogan": "Curiosity is the most precious ability",
           "description": "Why build a maker space? Learning science provides the answer. From Dewey's 'learning by doing' to Seymour Papert's constructivism, from MIT Media Lab's 4P theory to IDEO's design thinking — these foundational theories converge on one insight: meaningful learning happens through authentic creation.",
           "highlights": [
             "Constructivist Learning: Knowledge is actively constructed through hands-on practice, not passively received",
@@ -285,6 +287,8 @@
         "M02": {
           "title": "Governance & Network",
           "subtitle": "Weaving the Innovation Ecosystem",
+          "label": "Smart Labs & Ecosystem Networks",
+          "slogan": "Weaving the innovation web",
           "description": "A maker space is not an island but a node in an innovation ecosystem. Distributed governance breaks traditional hierarchies, enabling agile decisions and efficient collaboration. The Hub-Spoke-Satellite architecture creates network effects through resource sharing and knowledge flow.",
           "highlights": [
             "Three-tier Node Architecture: Hub outputs standards, Spoke enables regional reach, Satellite extends flexibility",
@@ -296,6 +300,8 @@
         "M03": {
           "title": "Space & Environment",
           "subtitle": "Space as the Third Teacher",
+          "label": "Creativity-Inspiring Spaces",
+          "slogan": "Let space be the third teacher",
           "description": "Reggio Emilia says 'space is the third teacher.' Physical space, digital environment, and cultural atmosphere form a trinity that shapes learning experiences. A great maker space isn't just about equipment — it sparks curiosity, lowers barriers to experimentation, and enables serendipitous connections.",
           "highlights": [
             "Zoning Principles: Quiet thinking → Collaborative discussion → Hands-on making → Showcase sharing — a progressive spatial sequence",
@@ -307,6 +313,8 @@
         "M04": {
           "title": "Courses & Projects",
           "subtitle": "Where Learning Truly Happens",
+          "label": "Curriculum & Research Projects",
+          "slogan": "Make learning truly happen",
           "description": "Curriculum is not a knowledge checklist but a carefully designed learning journey. Use Understanding by Design (UbD) to work backward from outcomes; apply Inquiry-Based Learning with real problems driving deep inquiry; integrate AI tools as learning accelerators rather than replacements.",
           "highlights": [
             "Backward Design: Identify outcomes → Determine evidence → Design experiences — goal-driven curriculum development",
@@ -318,6 +326,8 @@
         "M05": {
           "title": "Tools & Assets",
           "subtitle": "Bridging Ideas to Reality",
+          "label": "Methods, Tools & Assets",
+          "slogan": "From ideas to practice",
           "description": "Tools are the soul of a maker space — from entry-level hand tools to professional CNC equipment, from open-source hardware to digital fabrication. A tiered management system ensures safety and control, lifecycle management maximizes asset value, and open ecosystems expand possibilities.",
           "highlights": [
             "Equipment Tiers: L0 Free access → L1 Basic training → L2 Certified operation → L3 Expert supervision — progressive access control",
@@ -329,6 +339,8 @@
         "M06": {
           "title": "Safety & Ethics",
           "subtitle": "Guardrails That Set You Free",
+          "label": "Lab Safety & Ethics",
+          "slogan": "Guard the baseline, unleash freedom",
           "description": "Safety isn't restriction — it's the foundation for creative freedom. A three-layer architecture covers physical, digital, and ethical dimensions; risk-graded assessment enables targeted management; AI ethics guidelines set boundaries for emerging technologies. With guardrails, true exploration becomes possible.",
           "highlights": [
             "Three-Layer Safety: Physical (equipment, materials, environment) → Digital (data, privacy, network) → Ethical (AI usage norms)",
@@ -340,6 +352,8 @@
         "M07": {
           "title": "People & Capability",
           "subtitle": "Nurturing Those Who Ignite Others",
+          "label": "Faculty Training & Capability Building",
+          "slogan": "From imparting knowledge to igniting passion",
           "description": "Maker mentors are not knowledge transporters but learning facilitators and creativity catalysts. E0-E3 capability levels map the journey from novice to expert, role matrices define responsibilities for mentors, technicians, and volunteers, and certification ensures professionalism and sustainability.",
           "highlights": [
             "Capability Tiers: E0 Observe → E1 Assist → E2 Independent → E3 Mentor — a clear growth ladder",
@@ -351,6 +365,8 @@
         "M08": {
           "title": "Operations Manual",
           "subtitle": "Making Excellence Replicable",
+          "label": "Sustainable Operations Manual",
+          "slogan": "Make best practices replicable",
           "description": "Great operations don't rely on inspiration but on replicable systems. Standard Operating Procedures (SOPs) ensure service consistency; membership systems drive sustained engagement; community culture cultivates belonging and creativity. From open days to workshops, mentor networks to knowledge sharing — every process is documented.",
           "highlights": [
             "SOP Standards: Open day reception → Equipment usage → Project mentoring → Safety checks — operational guides for every scenario",
@@ -362,6 +378,8 @@
         "M09": {
           "title": "Assessment & Impact",
           "subtitle": "Making Growth Visible",
+          "label": "Long-term Development & Impact",
+          "slogan": "Make growth visible",
           "description": "Traditional assessment focuses on outcomes; maker education values process. Multi-dimensional assessment captures creativity, collaboration, and resilience — qualities hard to quantify. Growth portfolios document learning journeys; digital literacy profiles make development visible, traceable, and shareable.",
           "highlights": [
             "Multi-Dimensional Assessment: Technical skills × Creative thinking × Collaboration × Reflection — holistic profiling beyond scores",
