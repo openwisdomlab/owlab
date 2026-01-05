@@ -1,0 +1,1494 @@
+---
+title: 创造与表达
+description: 生成艺术、数字制造与新媒体表达 | Creation & Expression
+---
+
+# 创造与表达
+
+**Creation & Expression: Generative Art, Digital Fabrication & New Media**
+
+---
+
+## 核心问题
+
+> 当技术成为创造的媒介，艺术与工程的边界在哪里？如何让每个学习者都能用技术"说话"——不是复制、模仿，而是真正的自我表达？
+
+```
+创造的三个维度
+
+        审美 (Aesthetic)
+            △
+           /|\
+          / | \
+         /  |  \
+        /   |   \
+       /    |    \
+      /     |     \
+     ───────●───────
+   技术              意义
+(Technical)      (Meaningful)
+
+最佳创作在三维度的交汇处:
+- 技术精湛但无美感 = 工程习作
+- 美感强但无技术 = 传统艺术
+- 有意义但无形式 = 未完成的想法
+```
+
+---
+
+## 一、生成艺术 (Generative Art)
+
+### 1.1 什么是生成艺术？
+
+**定义**：使用自主系统（算法、规则、AI）作为创作过程一部分的艺术。艺术家设计系统，系统产生作品。
+
+```
+传统艺术 vs 生成艺术
+
+传统艺术:
+艺术家 ───► 作品
+(直接创作)
+
+生成艺术:
+艺术家 ───► 系统 ───► 作品(s)
+(设计规则)   (执行规则)  (可能无限多)
+```
+
+**核心张力**：
+- 控制 vs 随机
+- 意图 vs 涌现
+- 作者身份 vs 系统产出
+
+### 1.2 代码作为艺术媒介
+
+#### Processing / p5.js
+
+**特点**：
+- 为艺术家和设计师设计的编程环境
+- 即时视觉反馈
+- 低地板（简单开始）+ 高天花板（复杂可能）
+
+**经典技法**：
+
+```javascript
+// 粒子系统示例 (p5.js)
+let particles = [];
+
+function setup() {
+  createCanvas(800, 600);
+}
+
+function draw() {
+  background(0, 20); // 半透明背景产生拖尾效果
+
+  // 在鼠标位置创建新粒子
+  if (mouseIsPressed) {
+    particles.push(new Particle(mouseX, mouseY));
+  }
+
+  // 更新并绘制所有粒子
+  for (let p of particles) {
+    p.update();
+    p.display();
+  }
+
+  // 移除"死亡"粒子
+  particles = particles.filter(p => !p.isDead());
+}
+```
+
+#### TouchDesigner
+
+**特点**：
+- 节点式可视化编程
+- 实时渲染
+- 音频响应、数据驱动
+- 专业级视觉表演
+
+**应用场景**：
+- 音乐会视觉
+- 交互装置
+- 建筑投影
+- 数据可视化
+
+#### Shader 艺术
+
+**什么是 Shader？**
+运行在 GPU 上的程序，并行处理每个像素。
+
+**为什么艺术家喜欢 Shader？**
+- 极高性能（实时渲染复杂图案）
+- 数学之美（用公式创造图像）
+- 无限分辨率（算法描述而非像素）
+
+**学习资源**：
+- [The Book of Shaders](https://thebookofshaders.com/) - 交互式教程
+- [Shadertoy](https://www.shadertoy.com/) - 在线创作社区
+
+### 1.3 AI 辅助创作
+
+```
+AI 在创意流程中的角色谱
+
+人类主导 ◄─────────────────────────────► AI主导
+    │           │           │           │
+  AI作为工具   AI作为助手   AI作为合作者  AI作为创作者
+    │           │           │           │
+  风格迁移    构图建议     共同创作      完全自主
+  图像增强    色彩推荐     对话迭代      提示生成
+```
+
+**生成式 AI 工具**：
+
+| 工具 | 类型 | 适用场景 |
+|-----|------|---------|
+| Midjourney | 图像生成 | 概念探索、视觉灵感 |
+| Stable Diffusion | 图像生成(开源) | 本地部署、定制训练 |
+| RunwayML | 视频生成/编辑 | 动态内容创作 |
+| Suno/Udio | 音乐生成 | 音乐原型、配乐 |
+| Claude/GPT | 文本/代码 | 创意写作、代码生成 |
+
+**创作伦理问题**：
+- 作者身份与署名
+- 训练数据的版权
+- AI 作品的价值
+- 人机协作的边界
+
+---
+
+## 二、程序生成与涌现 (Procedural Generation & Emergence)
+
+### 2.1 无限世界的算法
+
+**程序生成**：用算法而非手工创建内容。
+
+**经典算法**：
+
+| 算法 | 生成内容 | 特点 |
+|-----|---------|------|
+| Perlin Noise | 地形、云彩、纹理 | 平滑、自然 |
+| L-System | 植物、分形 | 递归、生长 |
+| Voronoi | 细胞、裂缝、地图 | 分区、自然 |
+| Wave Function Collapse | 瓷砖地图、建筑 | 约束满足 |
+| Cellular Automata | 生命、地形 | 涌现复杂性 |
+
+### 2.2 涌现与复杂系统
+
+**涌现 (Emergence)**：简单规则产生复杂行为。
+
+```
+涌现的经典案例: 康威生命游戏
+
+规则 (极其简单):
+1. 活细胞 + 2或3个邻居 → 存活
+2. 活细胞 + <2 或 >3 邻居 → 死亡
+3. 死细胞 + 正好3个邻居 → 诞生
+
+结果 (极其复杂):
+- 滑翔机、飞船
+- 振荡器、静物
+- 图灵完备的计算机
+- 自我复制机器
+
+┌─────────────────────────────────────┐
+│  □ ■ □     □ □ ■     □ □ □     □ □ □│
+│  □ □ ■  →  ■ □ ■  →  ■ □ ■  →  □ ■ □│
+│  ■ ■ ■     □ ■ ■     □ □ ■     ■ □ ■│
+│                                     │
+│         滑翔机 (Glider)              │
+└─────────────────────────────────────┘
+```
+
+**教育价值**：
+- 复杂性思维
+- 因果与涌现的区别
+- 不可预测性的理解
+- 系统动力学直觉
+
+### 2.3 生成式游戏设计
+
+**Roguelike 的启示**：
+- 每次游戏都是新的
+- 重玩价值极高
+- 玩家作为探索者
+
+**教育游戏设计**：
+- 自动生成的数学题
+- 程序化的历史场景
+- 涌现式的物理模拟
+- 无尽的创意挑战
+
+---
+
+## 三、数字制造与工艺 (Digital Fabrication & Craft)
+
+### 3.1 制造的民主化
+
+```
+制造技术的演进
+
+大规模生产            数字制造            个人制造
+(Mass Production)    (Digital Fab)       (Personal Fab)
+─────────────────────────────────────────────────────
+工厂               创客空间             家庭/教室
+专业设备           共享设备             桌面设备
+批量相同           小批量定制           单件定制
+高门槛             中等门槛             低门槛
+```
+
+### 3.2 核心数字制造技术
+
+#### 3D 打印 (增材制造)
+
+```
+3D打印技术对比
+
+FDM (熔融沉积)           SLA (光固化)           SLS (粉末烧结)
+─────────────────────────────────────────────────────────────
+热塑性塑料              光敏树脂               尼龙/金属粉末
+线材层层堆积            光照固化树脂           激光烧结粉末
+精度: 中等              精度: 高               精度: 高
+成本: 低                成本: 中               成本: 高
+速度: 中                速度: 中               速度: 中
+
+适用:                   适用:                  适用:
+原型、玩具              珠宝、牙科             工程件、功能件
+```
+
+**教育项目**：
+- 3D 打印解剖模型
+- 定制化学习辅具
+- 机械原理演示
+- 个人创意物品
+
+#### 激光切割
+
+**材料可能**：
+- 木材、亚克力、纸板
+- 皮革、布料
+- 薄金属（雕刻）
+
+**技术原理教学机会**：
+- 光学聚焦
+- 材料热响应
+- 矢量 vs 光栅
+- 公差与配合
+
+#### CNC 加工
+
+**减材制造的精确性**：
+- 金属、木材、塑料
+- 高精度、高强度
+- 传统机械加工的数字化
+
+### 3.3 参数化设计
+
+**什么是参数化设计？**
+
+用参数和规则定义形态，而非直接绘制形状。
+
+```
+传统设计 vs 参数化设计
+
+传统:
+画一个圆，半径 50mm
+
+参数化:
+定义: radius = 50
+画圆: circle(radius)
+改变 radius → 圆自动更新
+
+进阶:
+radius = base_radius * sin(angle) + offset
+angle 变化 → 形态动态演变
+```
+
+**工具**：
+- **Grasshopper** (Rhino): 建筑、产品设计
+- **OpenSCAD**: 程序化3D建模
+- **Fusion 360**: 参数化CAD
+- **p5.js + 导出**: 代码生成可制造文件
+
+### 3.4 传统工艺 × 数字技术
+
+```
+传统与数字的对话
+
+传统工艺                数字工具               融合可能
+──────────────────────────────────────────────────────
+木工榫卯          +    CNC精确切割     =    复杂榫卯批量制作
+陶瓷手工塑形      +    3D打印模具      =    精确复杂造型
+纺织编织          +    参数化图案      =    算法生成织物
+金属锻造          +    数字模拟        =    优化的力学结构
+```
+
+**项目案例**：
+- 激光切割 + 传统竹编
+- 3D 打印 + 陶瓷釉色
+- CNC + 传统木工
+- 参数化 + 手工刺绣
+
+---
+
+## 四、新媒体与交互装置 (New Media & Interactive Installation)
+
+### 4.1 交互艺术的设计框架
+
+```
+交互装置设计要素
+
+┌─────────────────────────────────────────────────────┐
+│                    概念层                            │
+│   主题 · 情感 · 叙事 · 意义                          │
+├─────────────────────────────────────────────────────┤
+│                    交互层                            │
+│   输入方式 · 响应逻辑 · 反馈形式 · 时间结构           │
+├─────────────────────────────────────────────────────┤
+│                    感知层                            │
+│   视觉 · 听觉 · 触觉 · 空间 · 社交                   │
+├─────────────────────────────────────────────────────┤
+│                    技术层                            │
+│   传感器 · 计算 · 执行器 · 材料 · 结构               │
+└─────────────────────────────────────────────────────┘
+```
+
+### 4.2 交互模式类型
+
+| 模式 | 描述 | 例子 |
+|-----|------|------|
+| 响应式 | 直接输入→输出 | 踩地板→发光 |
+| 探索式 | 发现隐藏关系 | 移动物体改变声音 |
+| 参与式 | 用户成为内容 | 影子投影互动 |
+| 协作式 | 多人共同创造 | 集体绘画、音乐 |
+| 生成式 | 系统持续演化 | 人工生命装置 |
+
+### 4.3 物理计算工具箱
+
+**硬件平台**：
+
+| 平台 | 特点 | 适用场景 |
+|-----|------|---------|
+| Arduino | 简单、稳定、资源多 | 入门、原型 |
+| ESP32 | WiFi/蓝牙、低成本 | IoT、远程 |
+| Raspberry Pi | 完整Linux、强算力 | 视觉、AI、复杂逻辑 |
+| Teensy | 高性能、低延迟 | 音频、实时控制 |
+| micro:bit | 极简、教育优化 | 儿童、快速原型 |
+
+**传感器类型**：
+
+```
+传感器分类图
+
+环境感知                    人体感知                    交互感知
+─────────────────────────────────────────────────────────────
+温度、湿度                 心率、肌电                 触摸、按压
+光照、颜色                 脑电、皮电                 接近、距离
+声音、频率                 动作捕捉                   力、重量
+气体、空气质量             表情识别                   旋转、位置
+```
+
+**输出/执行器**：
+- **视觉**：LED、投影、屏幕、激光
+- **声音**：扬声器、超声波、音频模块
+- **运动**：电机、舵机、气动、电磁
+- **触觉**：振动、气囊、形变
+
+### 4.4 经典交互装置案例分析
+
+**1. Rain Room (Random International)**
+- 概念：在"雨"中行走却不湿
+- 交互：传感器追踪人的位置，上方水流停止
+- 体验：控制自然的神奇感
+
+**2. Pulse (Rafael Lozano-Hemmer)**
+- 概念：用心跳点亮灯泡
+- 交互：握住传感器，心跳转化为光的闪烁
+- 体验：集体心跳的同步与差异
+
+**3. 团体像素 (teamLab)**
+- 概念：人成为数字环境的一部分
+- 交互：存在即改变，移动即创造
+- 体验：沉浸式的参与感
+
+---
+
+## 五、声音艺术与音乐技术
+
+### 5.1 声音作为艺术媒介
+
+**声音艺术的维度**：
+- 时间性：声音在时间中展开
+- 空间性：声音占据和定义空间
+- 身体性：声音直接影响身体
+- 社会性：声音作为交流媒介
+
+### 5.2 电子音乐创作工具
+
+```
+音乐创作工具谱
+
+入门级                     专业级
+───────────────────────────────────────────────►
+GarageBand    Ableton Live    Max/MSP    SuperCollider
+Soundtrap     Logic Pro       Pure Data   CSound
+BandLab       FL Studio       VCV Rack    Faust
+
+低代码                     高代码
+```
+
+**Live Coding 音乐**：
+- 用代码实时演奏
+- 观众看到代码过程
+- 即兴 + 算法
+- 社区文化 (Algorave)
+
+### 5.3 声音装置设计
+
+**类型**：
+- **声音雕塑**：物理形态产生声音
+- **声音景观**：环境声音设计
+- **交互音乐**：观众参与创作
+- **数据声化**：将数据转为声音
+
+**项目案例**：
+- 风琴管道装置
+- 雨水音乐系统
+- 步态节奏生成
+- 空气质量声化
+
+---
+
+## 六、设计原则：创造的诗意
+
+### 6.1 技术表达检查清单
+
+```
+创作项目评估
+
+□ 技术维度
+  ├── 技术选择是否服务于表达？
+  ├── 技术是否"可见"或"隐退"？
+  └── 技术复杂度是否适当？
+
+□ 审美维度
+  ├── 是否有独特的视觉/听觉语言？
+  ├── 细节是否被关注？
+  └── 整体是否统一？
+
+□ 意义维度
+  ├── 想表达什么？
+  ├── 观众能感受到吗？
+  └── 有个人视角吗？
+
+□ 过程维度
+  ├── 创作过程有学习吗？
+  ├── 有迭代和改进吗？
+  └── 能分享过程吗？
+```
+
+### 6.2 低地板 → 高天花板路径
+
+```
+创意编程学习路径
+
+Level 1: 临摹与修改
+├── 运行示例代码
+├── 修改参数
+└── 观察变化
+
+Level 2: 组合与变体
+├── 合并多个示例
+├── 创建变体
+└── 建立直觉
+
+Level 3: 原创与表达
+├── 从想法出发
+├── 技术服务于想法
+└── 发展个人风格
+
+Level 4: 系统与复杂
+├── 设计生成系统
+├── 处理涌现
+└── 批判性反思
+```
+
+### 6.3 反模式警示
+
+| 反模式 | 表现 | 解法 |
+|-------|------|------|
+| 技术炫技 | 技术复杂但表达空洞 | 先问"想说什么" |
+| 模仿陷阱 | 永远在临摹 | 引入个人元素 |
+| 完美主义 | 永远不完成 | 设定发布节点 |
+| 工具焦虑 | 不断学新工具 | 深入一个工具 |
+
+---
+
+## 七、实践项目库
+
+### 7.1 入门级项目
+
+| 项目 | 描述 | 工具 | 时长 |
+|-----|------|------|------|
+| 生成海报 | 参数化图形设计 | p5.js | 2-4小时 |
+| 声音可视化 | 音频驱动图形 | Processing | 3-5小时 |
+| LED 互动 | 传感器触发灯光 | Arduino | 4-6小时 |
+| 激光切割名牌 | 参数化文字设计 | Illustrator + 激光 | 2-3小时 |
+
+### 7.2 进阶级项目
+
+| 项目 | 描述 | 工具 | 时长 |
+|-----|------|------|------|
+| 交互墙面 | 触摸响应投影 | Processing + 投影仪 | 1-2周 |
+| 动态雕塑 | 电机驱动运动装置 | Arduino + 机械 | 1-2周 |
+| Live Coding 表演 | 现场代码音乐 | Sonic Pi | 数周练习 |
+| AI 协作画 | 人机共同创作 | Stable Diffusion + 手绘 | 数天 |
+
+### 7.3 挑战级项目
+
+| 项目 | 描述 | 工具 | 时长 |
+|-----|------|------|------|
+| 沉浸式空间 | 多感官交互环境 | 投影 + 音频 + 传感器 | 数月 |
+| 生成式游戏 | 程序化内容游戏 | Unity + PCG算法 | 数月 |
+| 数据物化 | 将数据转为实体 | 数据分析 + 数字制造 | 数月 |
+| 公共艺术装置 | 城市空间介入 | 多种技术 + 跨学科 | 学期 |
+
+---
+
+## 八、与其他模块的关联
+
+- **→ L01 空间的塑造**：创作如何改变空间体验
+- **→ L02 思维的延伸**：AI 作为创意伙伴
+- **→ L03 涌现的智慧**：协作创作与集体艺术
+- **→ M04 项目与课程**：创意项目的课程设计
+- **→ M05 工具与技术**：创作工具选型指南
+
+---
+
+## 延伸阅读
+
+### 学术资源
+- [Leonardo Journal - Art, Science, Technology](https://www.leonardo.info/)
+- [ACM SIGGRAPH](https://www.siggraph.org/)
+- [Ars Electronica Archive](https://archive.aec.at/)
+
+### 实践资源
+- [p5.js](https://p5js.org/)
+- [Processing](https://processing.org/)
+- [openFrameworks](https://openframeworks.cc/)
+- [TouchDesigner](https://derivative.ca/)
+- [Sonic Pi](https://sonic-pi.net/)
+
+### 社区
+- [Creative Coding Subreddit](https://www.reddit.com/r/creativecoding/)
+- [OpenProcessing](https://openprocessing.org/)
+- [Shadertoy](https://www.shadertoy.com/)
+
+---
+
+## 九、AI 艺术工具实操指南
+
+### 9.1 Stable Diffusion 本地部署与创作
+
+**为什么本地部署？**
+- 完全控制，无审核限制
+- 无需付费，无限生成
+- 可以训练自定义模型
+- 支持高级工作流
+
+#### 安装指南 (Windows/Mac/Linux)
+
+```
+Stable Diffusion WebUI 安装步骤
+
+系统要求:
+├── GPU: NVIDIA RTX 3060 或以上 (8GB+ 显存)
+├── 内存: 16GB 以上
+├── 硬盘: 20GB 可用空间
+└── Python: 3.10.x
+
+方式一: AUTOMATIC1111 WebUI (最流行)
+─────────────────────────────────────────
+1. 安装 Git 和 Python 3.10
+2. 克隆仓库:
+   git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
+3. 下载模型文件 (.safetensors) 放入 models/Stable-diffusion/
+4. 运行启动脚本:
+   Windows: webui-user.bat
+   Linux/Mac: ./webui.sh
+5. 浏览器打开 http://localhost:7860
+
+方式二: ComfyUI (节点式，更强大)
+─────────────────────────────────────────
+1. 克隆仓库:
+   git clone https://github.com/comfyanonymous/ComfyUI
+2. 安装依赖:
+   pip install -r requirements.txt
+3. 下载模型放入对应文件夹
+4. 运行:
+   python main.py
+5. 浏览器打开 http://localhost:8188
+
+方式三: 云端 (无需显卡)
+─────────────────────────────────────────
+- Google Colab: 免费 GPU，有时间限制
+- RunPod: 按小时付费，专业级显卡
+- Vast.ai: 社区显卡租赁，价格灵活
+```
+
+#### 提示词工程 (Prompt Engineering)
+
+```
+提示词结构模板
+
+基础结构:
+[主题] + [风格] + [媒介] + [艺术家] + [质量标签]
+
+示例:
+"a wise owl reading books in a magical library,
+ digital art, fantasy style, by Studio Ghibli,
+ highly detailed, 4k, trending on artstation"
+
+分解:
+├── 主题: a wise owl reading books in a magical library
+├── 风格: fantasy style
+├── 媒介: digital art
+├── 艺术家: by Studio Ghibli
+└── 质量: highly detailed, 4k, trending on artstation
+
+高级技巧:
+─────────────────────────────────────────
+1. 权重调整: (keyword:1.5) 增强, (keyword:0.5) 减弱
+2. 否定提示: 放在 Negative Prompt 中排除不想要的元素
+3. BREAK 分隔: 用于复杂场景的分段描述
+4. LoRA 叠加: 使用微调模型添加特定风格
+
+常用质量标签:
+├── 正面: masterpiece, best quality, highly detailed
+├── 负面: lowres, bad anatomy, blurry, watermark
+└── 风格: anime, photorealistic, oil painting, pixel art
+```
+
+#### 创作工作流示例
+
+```
+OWL 主题海报创作流程
+
+Step 1: 概念草图 (30分钟)
+─────────────────────────────────────────
+├── 确定主题: "OWL 创新实验室开放日"
+├── 草绘构图: 中心猫头鹰 + 周围工具/作品
+├── 色彩情绪: 温暖、活力、创造力
+└── 参考收集: Pinterest / Behance 找灵感
+
+Step 2: AI 图像生成 (1-2小时)
+─────────────────────────────────────────
+提示词:
+"an owl mascot surrounded by maker tools,
+ 3d printers, arduino boards, laser cut projects,
+ warm golden lighting, isometric illustration style,
+ vibrant colors, clean design, --ar 2:3"
+
+迭代:
+├── 生成 4 张初版
+├── 选择最佳 1-2 张
+├── 调整提示词优化细节
+├── 使用 img2img 精修
+└── 局部重绘 (Inpainting) 修正问题
+
+Step 3: 后期处理 (1小时)
+─────────────────────────────────────────
+├── 导入 Photoshop/Figma
+├── 调整构图和裁剪
+├── 添加文字和标识
+├── 统一色调
+└── 输出多种尺寸
+
+Step 4: 输出与展示
+─────────────────────────────────────────
+├── 打印版: 300dpi, CMYK
+├── 屏幕版: 72dpi, RGB
+├── 社交媒体: 各平台尺寸适配
+└── 存档: 保存源文件和提示词
+```
+
+---
+
+### 9.2 p5.js 生成艺术完整教程
+
+**从零到作品的完整流程**
+
+#### 环境搭建
+
+```html
+<!-- 方法1: 在线编辑器 -->
+<!-- https://editor.p5js.org/ -->
+
+<!-- 方法2: 本地文件 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+</head>
+<body>
+  <script src="sketch.js"></script>
+</body>
+</html>
+```
+
+#### 项目一：动态波浪海报
+
+```javascript
+// sketch.js - 动态波浪海报
+// 适合: 初学者 | 时长: 2小时
+
+let waveOffset = 0;
+
+function setup() {
+  createCanvas(800, 1000);
+  colorMode(HSB, 360, 100, 100, 100);
+}
+
+function draw() {
+  // 渐变背景
+  for (let y = 0; y < height; y++) {
+    let inter = map(y, 0, height, 0, 1);
+    let c = lerpColor(color(220, 60, 90), color(280, 80, 40), inter);
+    stroke(c);
+    line(0, y, width, y);
+  }
+
+  // 波浪层
+  noFill();
+  strokeWeight(2);
+
+  for (let layer = 0; layer < 8; layer++) {
+    // 每层不同颜色和透明度
+    let hue = map(layer, 0, 8, 180, 300);
+    let alpha = map(layer, 0, 8, 30, 80);
+    stroke(hue, 70, 90, alpha);
+
+    beginShape();
+    for (let x = 0; x <= width; x += 10) {
+      // 多层正弦波叠加
+      let y = height * 0.3 + layer * 80;
+      y += sin((x * 0.01) + waveOffset + layer * 0.5) * 50;
+      y += sin((x * 0.02) + waveOffset * 1.5) * 30;
+      y += sin((x * 0.005) + waveOffset * 0.5) * 80;
+
+      vertex(x, y);
+    }
+    endShape();
+  }
+
+  // 添加粒子效果
+  for (let i = 0; i < 20; i++) {
+    let x = random(width);
+    let y = random(height);
+    let size = random(1, 4);
+    fill(0, 0, 100, 30);
+    noStroke();
+    ellipse(x, y, size);
+  }
+
+  // 动画
+  waveOffset += 0.02;
+
+  // 添加标题
+  fill(0, 0, 100);
+  noStroke();
+  textAlign(CENTER);
+  textSize(48);
+  text("OWL", width/2, height - 150);
+  textSize(24);
+  text("Open Wisdom Lab", width/2, height - 110);
+}
+
+// 保存图片
+function keyPressed() {
+  if (key === 's') {
+    saveCanvas('wave-poster', 'png');
+  }
+}
+```
+
+#### 项目二：粒子系统交互艺术
+
+```javascript
+// sketch.js - 粒子系统交互艺术
+// 适合: 进阶 | 时长: 4小时
+
+let particles = [];
+let attractors = [];
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB, 360, 100, 100, 100);
+  background(0);
+
+  // 初始化吸引子
+  for (let i = 0; i < 3; i++) {
+    attractors.push({
+      x: random(width),
+      y: random(height),
+      strength: random(100, 300)
+    });
+  }
+}
+
+function draw() {
+  // 半透明背景产生拖尾
+  background(0, 0, 0, 5);
+
+  // 更新吸引子位置 (缓慢移动)
+  for (let att of attractors) {
+    att.x += sin(frameCount * 0.01) * 2;
+    att.y += cos(frameCount * 0.01) * 2;
+    att.x = constrain(att.x, 50, width - 50);
+    att.y = constrain(att.y, 50, height - 50);
+
+    // 可视化吸引子
+    noFill();
+    stroke(60, 50, 100, 20);
+    ellipse(att.x, att.y, att.strength * 2);
+  }
+
+  // 鼠标位置创建粒子
+  if (mouseIsPressed || frameCount < 100) {
+    let x = mouseIsPressed ? mouseX : random(width);
+    let y = mouseIsPressed ? mouseY : random(height);
+    for (let i = 0; i < 3; i++) {
+      particles.push(new Particle(x + random(-20, 20), y + random(-20, 20)));
+    }
+  }
+
+  // 更新和绘制粒子
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+
+    // 应用吸引力
+    for (let att of attractors) {
+      p.attract(att);
+    }
+
+    p.update();
+    p.display();
+
+    if (p.isDead()) {
+      particles.splice(i, 1);
+    }
+  }
+
+  // 显示粒子数量
+  fill(0, 0, 100);
+  noStroke();
+  textSize(12);
+  text(`Particles: ${particles.length}`, 20, 30);
+}
+
+class Particle {
+  constructor(x, y) {
+    this.pos = createVector(x, y);
+    this.vel = p5.Vector.random2D().mult(random(1, 3));
+    this.acc = createVector(0, 0);
+    this.lifespan = 255;
+    this.hue = random(160, 260);
+    this.size = random(2, 6);
+  }
+
+  attract(attractor) {
+    let force = createVector(attractor.x - this.pos.x, attractor.y - this.pos.y);
+    let distance = constrain(force.mag(), 50, 200);
+    force.normalize();
+    let strength = attractor.strength / (distance * distance) * 10;
+    force.mult(strength);
+    this.acc.add(force);
+  }
+
+  update() {
+    this.vel.add(this.acc);
+    this.vel.limit(8);
+    this.pos.add(this.vel);
+    this.acc.mult(0);
+    this.lifespan -= 1.5;
+  }
+
+  display() {
+    let alpha = map(this.lifespan, 0, 255, 0, 100);
+    noStroke();
+    fill(this.hue, 80, 90, alpha);
+    ellipse(this.pos.x, this.pos.y, this.size);
+  }
+
+  isDead() {
+    return this.lifespan < 0;
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  background(0);
+}
+
+function keyPressed() {
+  if (key === 's') {
+    saveCanvas('particles', 'png');
+  }
+  if (key === 'c') {
+    particles = [];
+    background(0);
+  }
+}
+```
+
+#### 项目三：数据驱动可视化
+
+```javascript
+// sketch.js - OWL 实验室数据可视化
+// 适合: 进阶 | 时长: 6小时
+
+// 模拟传感器数据
+let sensorData = {
+  temperature: [],
+  humidity: [],
+  co2: [],
+  activity: []
+};
+
+let timeLabels = [];
+
+function setup() {
+  createCanvas(1200, 800);
+  colorMode(HSB, 360, 100, 100, 100);
+
+  // 生成模拟数据 (24小时)
+  for (let hour = 0; hour < 24; hour++) {
+    timeLabels.push(`${hour}:00`);
+
+    // 温度: 20-26°C，白天高
+    let temp = 20 + sin(map(hour, 0, 24, -PI/2, 3*PI/2)) * 3 + random(-1, 1);
+    sensorData.temperature.push(temp);
+
+    // 湿度: 40-60%，随机波动
+    let hum = 50 + random(-10, 10);
+    sensorData.humidity.push(hum);
+
+    // CO2: 400-1200ppm，工作时间高
+    let co2Base = hour >= 9 && hour <= 18 ? 800 : 500;
+    sensorData.co2.push(co2Base + random(-100, 100));
+
+    // 活动量: 0-100，工作时间高
+    let activity = hour >= 9 && hour <= 18 ? random(50, 100) : random(0, 30);
+    sensorData.activity.push(activity);
+  }
+}
+
+function draw() {
+  background(220, 10, 15);
+
+  // 标题
+  fill(0, 0, 95);
+  textAlign(LEFT);
+  textSize(28);
+  text("🦉 OWL 实验室环境监测 - 24小时数据", 50, 50);
+
+  textSize(14);
+  fill(0, 0, 60);
+  text("数据更新时间: " + new Date().toLocaleString(), 50, 75);
+
+  // 绘制四个图表
+  drawChart("温度 (°C)", sensorData.temperature, 50, 120, 500, 150, 15, 30, 180);
+  drawChart("湿度 (%)", sensorData.humidity, 600, 120, 500, 150, 30, 70, 200);
+  drawChart("CO2 (ppm)", sensorData.co2, 50, 320, 500, 150, 300, 1500, 30);
+  drawChart("活动指数", sensorData.activity, 600, 320, 500, 150, 0, 100, 120);
+
+  // 实时指标卡片
+  drawMetricCard("当前温度", sensorData.temperature[sensorData.temperature.length-1].toFixed(1) + "°C", 50, 520, 140);
+  drawMetricCard("当前湿度", sensorData.humidity[sensorData.humidity.length-1].toFixed(0) + "%", 220, 520, 200);
+  drawMetricCard("当前CO2", sensorData.co2[sensorData.co2.length-1].toFixed(0) + " ppm", 390, 520, 30);
+  drawMetricCard("环境评分", calculateScore().toFixed(0) + "/100", 560, 520, 90);
+
+  // 不循环，静态展示
+  noLoop();
+}
+
+function drawChart(title, data, x, y, w, h, minVal, maxVal, hue) {
+  // 背景
+  fill(220, 20, 20);
+  noStroke();
+  rect(x, y, w, h, 10);
+
+  // 标题
+  fill(0, 0, 90);
+  textSize(14);
+  textAlign(LEFT);
+  text(title, x + 10, y + 20);
+
+  // 绘制折线
+  stroke(hue, 70, 80);
+  strokeWeight(2);
+  noFill();
+
+  beginShape();
+  for (let i = 0; i < data.length; i++) {
+    let px = map(i, 0, data.length - 1, x + 30, x + w - 20);
+    let py = map(data[i], minVal, maxVal, y + h - 30, y + 40);
+    vertex(px, py);
+  }
+  endShape();
+
+  // 绘制数据点
+  for (let i = 0; i < data.length; i++) {
+    let px = map(i, 0, data.length - 1, x + 30, x + w - 20);
+    let py = map(data[i], minVal, maxVal, y + h - 30, y + 40);
+
+    fill(hue, 70, 90);
+    noStroke();
+    ellipse(px, py, 6);
+  }
+
+  // X轴标签 (每4小时)
+  fill(0, 0, 60);
+  textSize(10);
+  textAlign(CENTER);
+  for (let i = 0; i < 24; i += 4) {
+    let px = map(i, 0, 23, x + 30, x + w - 20);
+    text(timeLabels[i], px, y + h - 10);
+  }
+
+  // Y轴范围
+  textAlign(LEFT);
+  text(maxVal, x + 5, y + 45);
+  text(minVal, x + 5, y + h - 25);
+}
+
+function drawMetricCard(label, value, x, y, hue) {
+  // 卡片背景
+  fill(220, 20, 25);
+  noStroke();
+  rect(x, y, 150, 100, 10);
+
+  // 标签
+  fill(0, 0, 60);
+  textSize(12);
+  textAlign(LEFT);
+  text(label, x + 15, y + 25);
+
+  // 数值
+  fill(hue, 60, 90);
+  textSize(24);
+  text(value, x + 15, y + 60);
+
+  // 趋势指示
+  fill(0, 0, 50);
+  textSize(10);
+  text("▲ 较昨日", x + 15, y + 85);
+}
+
+function calculateScore() {
+  let temp = sensorData.temperature[sensorData.temperature.length-1];
+  let hum = sensorData.humidity[sensorData.humidity.length-1];
+  let co2 = sensorData.co2[sensorData.co2.length-1];
+
+  let score = 100;
+  if (temp < 20 || temp > 26) score -= 20;
+  if (hum < 40 || hum > 60) score -= 15;
+  if (co2 > 1000) score -= 25;
+
+  return max(0, score);
+}
+
+function keyPressed() {
+  if (key === 's') {
+    saveCanvas('owl-dashboard', 'png');
+  }
+}
+```
+
+---
+
+### 9.3 Sonic Pi Live Coding 音乐入门
+
+**用代码演奏音乐**
+
+#### 基础语法
+
+```ruby
+# Sonic Pi 基础 - 第一个节拍
+# 适合: 初学者 | 时长: 1小时
+
+# 播放单个音符
+play 60  # 中央C (MIDI编号60)
+
+# 等待
+sleep 1  # 等待1拍
+
+# 音符序列
+play 60
+sleep 0.5
+play 64
+sleep 0.5
+play 67
+sleep 0.5
+play 72
+sleep 0.5
+
+# 使用音符名称
+play :c4
+play :e4
+play :g4
+
+# 采样 (预录制声音)
+sample :bd_haus  # 底鼓
+sample :sn_dub   # 军鼓
+sample :hat_metal  # 踩镲
+
+# 循环
+live_loop :drums do
+  sample :bd_haus
+  sleep 0.5
+  sample :sn_dub
+  sleep 0.5
+end
+```
+
+#### OWL 主题音乐项目
+
+```ruby
+# OWL 主题 Ambient 音乐
+# 适合: 进阶 | 时长: 3小时
+
+use_bpm 72
+
+# 环境氛围层
+live_loop :ambient do
+  use_synth :hollow
+  with_fx :reverb, room: 0.9, mix: 0.7 do
+    with_fx :lpf, cutoff: 80 do
+      play chord(:c3, :minor7), attack: 2, release: 4, amp: 0.3
+      sleep 4
+      play chord(:eb3, :major7), attack: 2, release: 4, amp: 0.3
+      sleep 4
+    end
+  end
+end
+
+# 闪烁的高音
+live_loop :sparkles do
+  use_synth :pretty_bell
+  with_fx :echo, phase: 0.375, mix: 0.5 do
+    if one_in(3)
+      play scale(:c5, :minor_pentatonic).choose, amp: 0.2, release: 2
+    end
+    sleep 0.5
+  end
+end
+
+# 缓慢的低音脉冲
+live_loop :bass_pulse do
+  use_synth :sine
+  with_fx :lpf, cutoff: 60 do
+    play :c2, attack: 1, sustain: 2, release: 2, amp: 0.4
+    sleep 8
+    play :eb2, attack: 1, sustain: 2, release: 2, amp: 0.4
+    sleep 8
+  end
+end
+
+# 猫头鹰叫声 (合成)
+live_loop :owl_call do
+  if one_in(8)
+    use_synth :sine
+    with_fx :reverb, room: 0.95 do
+      with_fx :wobble, phase: 0.5 do
+        play 72, attack: 0.1, release: 1.5, amp: 0.15
+        sleep 0.3
+        play 67, attack: 0.1, release: 2, amp: 0.12
+      end
+    end
+  end
+  sleep 4
+end
+
+# 雨滴声
+live_loop :rain do
+  sample :perc_snap, rate: rrand(1.5, 3), amp: rrand(0.01, 0.05)
+  sleep rrand(0.1, 0.3)
+end
+```
+
+#### 互动表演模板
+
+```ruby
+# Live Coding 表演模板
+# 适合: 表演 | 可实时修改参数
+
+# === 全局设置 ===
+use_bpm 120
+set :intensity, 0.5  # 0-1, 控制整体强度
+
+# === 鼓组 ===
+live_loop :kick do
+  sample :bd_haus, amp: get(:intensity)
+  sleep 1
+end
+
+live_loop :snare do
+  sleep 1
+  sample :sn_dub, amp: get(:intensity) * 0.8
+  sleep 1
+end
+
+live_loop :hats do
+  sample :drum_cymbal_closed, amp: get(:intensity) * 0.3
+  sleep 0.25
+end
+
+# === 贝斯 ===
+live_loop :bass do
+  use_synth :tb303
+  with_fx :lpf, cutoff: 80 + (get(:intensity) * 40) do
+    play :c2, release: 0.2, amp: get(:intensity)
+    sleep 0.5
+    play :c2, release: 0.1, amp: get(:intensity) * 0.5
+    sleep 0.5
+  end
+end
+
+# === 旋律 ===
+live_loop :melody do
+  use_synth :prophet
+  notes = (ring :c4, :eb4, :g4, :bb4, :c5, :bb4, :g4, :eb4)
+  play notes.tick, release: 0.3, amp: get(:intensity) * 0.4
+  sleep 0.5
+end
+
+# === 表演时修改这里 ===
+# 改变强度:
+# set :intensity, 0.8
+
+# 停止某个循环:
+# stop :kick
+
+# 改变速度:
+# use_bpm 140
+```
+
+---
+
+### 9.4 TouchDesigner 快速入门
+
+```
+TouchDesigner 基础概念
+
+节点类型 (Operators):
+─────────────────────────────────────────
+CHOP (Channel)    - 数据/信号处理
+TOP (Texture)     - 图像处理
+SOP (Surface)     - 3D几何体
+DAT (Data)        - 文本/表格数据
+COMP (Component)  - 容器/UI
+MAT (Material)    - 材质
+
+基础工作流:
+─────────────────────────────────────────
+输入 → 处理 → 输出
+
+示例: 音频响应圆形
+1. audioIn CHOP      (音频输入)
+2. analyze CHOP      (提取音量)
+3. math CHOP         (缩放数值)
+4. circle TOP        (绘制圆形)
+5. transform TOP     (应用缩放)
+6. out TOP           (输出)
+
+连接方式:
+├── 拖拽节点底部的圆点连接
+├── 同类型节点可以连接
+└── 不同类型需要转换节点
+```
+
+#### TouchDesigner 常用节点组合
+
+```
+实用节点组合速查
+
+1. 音频可视化
+   audiodeviceIn CHOP
+   → audioSpectrum CHOP
+   → chopTo TOP
+   → 显示
+
+2. 摄像头效果
+   videoDeviceIn TOP
+   → level TOP (调色)
+   → blur TOP (模糊)
+   → edge TOP (边缘检测)
+   → 显示
+
+3. 粒子系统
+   noise CHOP (位置扰动)
+   → geometry COMP
+   → particleSOP
+   → render TOP
+
+4. 交互映射
+   kinect/leapmotion CHOP
+   → select CHOP (提取手部位置)
+   → math CHOP (缩放)
+   → 控制其他参数
+
+5. 数据驱动
+   webClient DAT (获取API数据)
+   → jsonParse DAT
+   → datTo CHOP
+   → 驱动视觉参数
+```
+
+---
+
+### 9.5 创作项目实施清单
+
+#### AI 艺术创作清单
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  AI 图像创作项目清单                                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  □ 前期准备                                                  │
+│    ├── □ 明确创作目的和用途                                  │
+│    ├── □ 收集参考图像和灵感                                  │
+│    ├── □ 确定风格方向                                        │
+│    ├── □ 选择合适的AI工具                                    │
+│    └── □ 准备后期处理软件                                    │
+│                                                              │
+│  □ 提示词开发                                                │
+│    ├── □ 撰写基础提示词                                      │
+│    ├── □ 添加风格和质量修饰词                                │
+│    ├── □ 编写否定提示词                                      │
+│    ├── □ 测试并迭代                                          │
+│    └── □ 记录有效的提示词组合                                │
+│                                                              │
+│  □ 生成与筛选                                                │
+│    ├── □ 批量生成候选图像                                    │
+│    ├── □ 建立评判标准                                        │
+│    ├── □ 筛选最佳候选                                        │
+│    ├── □ 进行变体生成                                        │
+│    └── □ 局部重绘优化                                        │
+│                                                              │
+│  □ 后期处理                                                  │
+│    ├── □ 放大/超分辨率                                       │
+│    ├── □ 色彩调整                                            │
+│    ├── □ 瑕疵修复                                            │
+│    ├── □ 添加文字/标识                                       │
+│    └── □ 多尺寸输出                                          │
+│                                                              │
+│  □ 存档与发布                                                │
+│    ├── □ 保存源文件和提示词                                  │
+│    ├── □ 标注创作过程                                        │
+│    ├── □ 声明 AI 辅助创作                                    │
+│    └── □ 选择合适的发布渠道                                  │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 生成艺术作品清单
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  生成艺术项目清单                                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  □ 概念阶段                                                  │
+│    ├── □ 定义核心想法/主题                                   │
+│    ├── □ 研究相关艺术家和作品                                │
+│    ├── □ 画草图/写伪代码                                     │
+│    └── □ 选择技术栈                                          │
+│                                                              │
+│  □ 原型阶段                                                  │
+│    ├── □ 搭建基础框架                                        │
+│    ├── □ 实现核心算法                                        │
+│    ├── □ 测试参数范围                                        │
+│    └── □ 收集反馈                                            │
+│                                                              │
+│  □ 迭代阶段                                                  │
+│    ├── □ 优化视觉效果                                        │
+│    ├── □ 调整参数平衡                                        │
+│    ├── □ 添加交互(如需要)                                    │
+│    ├── □ 性能优化                                            │
+│    └── □ 处理边缘情况                                        │
+│                                                              │
+│  □ 完成阶段                                                  │
+│    ├── □ 最终参数锁定                                        │
+│    ├── □ 生成多个版本/变体                                   │
+│    ├── □ 选择最佳作品                                        │
+│    ├── □ 高质量输出                                          │
+│    └── □ 文档化过程                                          │
+│                                                              │
+│  □ 展示阶段                                                  │
+│    ├── □ 准备展示材料                                        │
+│    ├── □ 撰写艺术家陈述                                      │
+│    ├── □ 创建演示视频                                        │
+│    ├── □ 开源代码(可选)                                      │
+│    └── □ 社区分享                                            │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 9.6 工具与资源速查
+
+| 类别 | 工具 | 用途 | 难度 | 成本 |
+|-----|------|------|------|------|
+| AI图像 | Stable Diffusion | 本地图像生成 | ⭐⭐⭐ | 免费(需显卡) |
+| AI图像 | Midjourney | 云端图像生成 | ⭐⭐ | $10/月起 |
+| AI图像 | DALL-E 3 | 集成在ChatGPT | ⭐ | 免费/付费 |
+| 编程艺术 | p5.js | 网页创意编程 | ⭐⭐ | 免费 |
+| 编程艺术 | Processing | 桌面创意编程 | ⭐⭐ | 免费 |
+| 编程艺术 | openFrameworks | C++创意编程 | ⭐⭐⭐⭐ | 免费 |
+| 可视化编程 | TouchDesigner | 实时视觉 | ⭐⭐⭐ | 免费(非商用) |
+| 可视化编程 | Max/MSP | 音视频 | ⭐⭐⭐⭐ | 付费 |
+| 声音 | Sonic Pi | 音乐编程 | ⭐⭐ | 免费 |
+| 声音 | Pure Data | 音频编程 | ⭐⭐⭐ | 免费 |
+| 3D | Blender | 3D建模动画 | ⭐⭐⭐ | 免费 |
+| 3D | Three.js | 网页3D | ⭐⭐⭐ | 免费 |
+
+---
+
+## 十、与其他模块的关联
+
+```
+创造与表达 × L04 其他主题整合
+
+┌─────────────────────────────────────────────────────────────┐
+│  × 感知的扩展                                                │
+│  ├── 多感官艺术创作 (声音雕塑、触觉装置)                    │
+│  ├── 感知数据驱动的生成艺术                                  │
+│  └── 沉浸式体验设计                                          │
+├─────────────────────────────────────────────────────────────┤
+│  × 空间的智能                                                │
+│  ├── 响应式空间艺术装置                                      │
+│  ├── 数据驱动的环境投影                                      │
+│  └── 空间叙事与互动体验                                      │
+├─────────────────────────────────────────────────────────────┤
+│  × 网络与连接                                                │
+│  ├── 远程协作创作                                            │
+│  ├── 全球分布式艺术项目                                      │
+│  └── 网络化的互动装置                                        │
+├─────────────────────────────────────────────────────────────┤
+│  × EduTech 前沿                                              │
+│  ├── 创意编程教育                                            │
+│  ├── AI 辅助艺术教学                                         │
+│  └── 数字素养与表达能力                                      │
+├─────────────────────────────────────────────────────────────┤
+│  × 可持续技术                                                │
+│  ├── 环保材料数字制造                                        │
+│  ├── 循环经济中的创意再利用                                  │
+│  └── 环境数据艺术化展示                                      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+*本章节持续更新中，最后更新：2025-01*

@@ -1,4 +1,16 @@
 {
   "title": "深度内容",
-  "pages": ["embodied-tech", "tinkerability", "research-updates"]
+  "pages": [
+    "tech-radar",
+    "expanding-perception",
+    "spatial-intelligence",
+    "networks-connections",
+    "creation-expression",
+    "edutech-frontier",
+    "sustainable-tech",
+    "---",
+    "embodied-tech",
+    "tinkerability",
+    "research-updates"
+  ]
 }
