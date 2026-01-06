@@ -198,24 +198,69 @@ Update all references in these locations:
 
 ### MDX Code Block Guidelines
 
-**IMPORTANT**: Turbopack (Next.js 16+) may attempt to evaluate code blocks as JavaScript. Follow these rules:
+**CRITICAL**: Turbopack (Next.js 16+) evaluates code blocks as JavaScript when no language specifier is provided. This causes build errors like:
 
-1. **Always use language specifiers** for ASCII art and diagrams:
-   ```text
-   ┌────────────┐
-   │  Diagram   │
-   └────────────┘
-   ```
-   NOT:
-   ```
-   ┌────────────┐
-   ```
+```
+Error evaluating Node.js code
+index.mdx:52:52: Unexpected character `3` (U+0033) before name
+```
 
-2. **Avoid JavaScript-like patterns** in plain text code blocks:
-   - ❌ `(r=+0.72)` - looks like JS assignment
-   - ❌ `{value=123}` - looks like JSX expression
-   - ✅ `r = 0.72` or `相关系数: 0.72`
+#### Rule 1: ALWAYS Use Language Specifiers
 
-3. **Run lint before build**: `pnpm lint:mdx`
+Every fenced code block MUST have a language specifier. Use `text` for plain text, diagrams, and ASCII art:
 
-4. **Pre-build check**: The `prebuild` script automatically runs `lint-mdx.js` to catch issues before build fails.
+```text
+✅ CORRECT:
+```text
+┌────────────┐
+│  Diagram   │
+└────────────┘
+```
+
+❌ WRONG (will cause build error):
+```
+┌────────────┐
+```
+```
+
+**Common language specifiers:**
+- `text` - Plain text, ASCII art, Unicode diagrams, checklists
+- `bash` - Shell commands
+- `typescript` / `javascript` - Code examples
+- `json` - JSON data
+- `markdown` - Markdown examples
+
+#### Rule 2: Check Code Blocks When Writing MDX
+
+Before committing any MDX file, verify:
+- [ ] Every ` ``` ` opening has a language specifier (e.g., ` ```text `)
+- [ ] Opening and closing blocks are properly paired
+- [ ] No bare ` ``` ` without language specifier
+
+**Quick check command:**
+```bash
+grep -n '^```$' content/docs/zh/core/**/*.mdx
+```
+If this returns any results, those files need fixing.
+
+#### Rule 3: Avoid JavaScript-like Patterns
+
+Even with `text` specifier, avoid patterns that look like JS expressions:
+- ❌ `(r=+0.72)` - looks like JS assignment
+- ❌ `{value=123}` - looks like JSX expression
+- ✅ `r = 0.72` or `相关系数: 0.72`
+
+#### Rule 4: Run Lint Before Build
+
+```bash
+pnpm lint:mdx          # Check for MDX issues
+pnpm build             # prebuild script runs lint-mdx.js automatically
+```
+
+#### Common Error Patterns
+
+| Error Message | Cause | Fix |
+|---------------|-------|-----|
+| `Unexpected character before name` | Code block without language specifier | Add `text` or appropriate language |
+| `Error evaluating Node.js code` | Turbopack treating content as JS | Add language specifier to code block |
+| Position like `52:52` in error | Usually points to content after bare code block | Find and fix the bare ` ``` ` above that line |
