@@ -52,10 +52,25 @@ const CURIOSITY_QUOTES = [
 ];
 
 const EYE_DISCOVERY_MESSAGES = [
-  "这个问题被你的好奇心捕获了！",
-  "问题进入了洞察之眼...",
-  "好奇心就是这样运作的！",
-  "你发现了一个隐藏彩蛋！",
+  "🔮 这个问题被好奇心之眼捕获了...",
+  "✨ 问题正在洞察之眼中沉淀...",
+  "👁 你发现了一个隐藏的思考空间",
+  "💫 这个问题值得更深入的凝视...",
+  "🌀 问题正在眼中发酵，等待新的视角...",
+];
+
+// 彩蛋引导性问题 - 用提问方式激发更多思考
+const EYE_PROVOCATIVE_PROMPTS = [
+  "如果这个问题的答案完全颠覆你的认知，你准备好了吗？",
+  "有没有可能，提出这个问题本身就比找到答案更重要？",
+  "如果10岁的孩子问你这个问题，你会怎么回答？",
+  "假设这个问题永远不会有标准答案，你还会继续探索吗？",
+  "如果你必须用一个新问题来回应这个问题，你会问什么？",
+  "这个问题的答案，会让世界变得更好还是更复杂？",
+  "有没有可能，你已经知道答案，只是还没意识到？",
+  "如果这个问题的答案藏在你今天遇到的某件小事里呢？",
+  "这个问题让你想起了哪个你一直逃避的问题？",
+  "如果宇宙用这个问题考验人类，我们及格了吗？",
 ];
 
 // 种子生长配置：降低自动展示频率，增加周期间隔
@@ -113,6 +128,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     message: string;
     question: string;
     explanation?: string;
+    provocativePrompt: string; // 引导性问题
     deepThought?: {
       followUpQuestions?: string[];
       scenario?: string;
@@ -271,15 +287,19 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     if (draggedCircle) {
       const distToCenter = distance(draggedCircle.x, draggedCircle.y, heroCenter.x, heroCenter.y);
 
-      // 彩蛋：如果拖入眼睛中心区域
-      if (distToCenter < heroRadius * 0.6) {
+      // 彩蛋：扩大进入眼睛区域的判定范围（从0.6倍扩大到1.2倍）
+      // 让用户更容易将问题拖入眼睛区域
+      if (distToCenter < heroRadius * 1.2) {
         const message = EYE_DISCOVERY_MESSAGES[Math.floor(Math.random() * EYE_DISCOVERY_MESSAGES.length)];
+        const provocativePrompt = EYE_PROVOCATIVE_PROMPTS[Math.floor(Math.random() * EYE_PROVOCATIVE_PROMPTS.length)];
+
         setEyeDiscovery({
           show: true,
           message,
           question: draggedCircle.question.question,
           explanation: draggedCircle.question.explanation,
-          deepThought: draggedCircle.question.deepThought, // 包含深度思考内容
+          provocativePrompt, // 添加引导性问题
+          deepThought: draggedCircle.question.deepThought,
         });
 
         // 固定问题在眼睛上方，并保持显示问题解释卡片
@@ -289,7 +309,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
               ...circle,
               isPinned: true,
               x: heroCenter.x,
-              y: heroCenter.y - heroRadius - 80, // 稍微调高位置
+              y: heroCenter.y - heroRadius - 80,
               vx: 0, vy: 0,
             };
           }
@@ -297,8 +317,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         });
         setCircles([...circlesRef.current]);
 
-        // 延长显示时间到15秒，让用户有更多时间思考
-        setTimeout(() => setEyeDiscovery(null), 15000);
+        // 延长显示时间到45秒，给用户充足的时间深入思考
+        setTimeout(() => setEyeDiscovery(null), 45000);
       }
     }
 
@@ -646,7 +666,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         ))}
       </AnimatePresence>
 
-      {/* Eye Discovery Easter Egg - 深度思考版 */}
+      {/* Eye Discovery Easter Egg - 引发思考版 */}
       <AnimatePresence>
         {eyeDiscovery?.show && (
           <motion.div
@@ -678,8 +698,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             <div
               className="relative px-6 py-5 rounded-2xl text-left"
               style={{
-                width: isMobile ? '90vw' : '420px',
-                maxWidth: '420px',
+                width: isMobile ? '90vw' : '440px',
+                maxWidth: '440px',
                 background: isDark
                   ? 'linear-gradient(135deg, rgba(14,14,20,0.98), rgba(26,26,46,0.95))'
                   : 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95))',
@@ -704,7 +724,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
 
-              {/* 头部信息 */}
+              {/* 头部信息 - 随机发现消息 */}
               <motion.p
                 className="text-xs font-bold mb-3 text-center"
                 style={{
@@ -717,12 +737,12 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                👁 好奇心之眼正在凝视这个问题...
+                {eyeDiscovery.message}
               </motion.p>
 
               {/* 主问题 */}
               <motion.p
-                className="text-base font-semibold mb-3"
+                className="text-base font-semibold mb-4"
                 style={{ color: isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.9)' }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -731,53 +751,56 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                 {eyeDiscovery.question}
               </motion.p>
 
-              {/* 问题背景 */}
-              {eyeDiscovery.explanation && (
-                <motion.p
-                  className="text-xs leading-relaxed pb-3 mb-3 border-b"
-                  style={{
-                    color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
-                    borderColor: withAlpha(brandColors.neonCyan, 0.2),
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
+              {/* 引导性问题 - 用提问代替陈述，引发更多思考 */}
+              <motion.div
+                className="mb-4 p-4 rounded-xl"
+                style={{
+                  background: `linear-gradient(135deg, ${withAlpha(brandColors.neonCyan, 0.08)}, ${withAlpha(brandColors.violet, 0.06)})`,
+                  border: `1px solid ${withAlpha(brandColors.neonCyan, 0.25)}`,
+                }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <p
+                  className="text-sm leading-relaxed italic"
+                  style={{ color: isDark ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.75)' }}
                 >
-                  {eyeDiscovery.explanation}
-                </motion.p>
-              )}
+                  &ldquo;{eyeDiscovery.provocativePrompt}&rdquo;
+                </p>
+              </motion.div>
 
-              {/* 深度思考内容 */}
+              {/* 深度思考内容 - 只显示延伸问题，以提问为主 */}
               {eyeDiscovery.deepThought && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
                 >
-                  {/* 延伸问题 */}
+                  {/* 延伸问题 - 核心内容 */}
                   {eyeDiscovery.deepThought.followUpQuestions && eyeDiscovery.deepThought.followUpQuestions.length > 0 && (
-                    <div className="mb-3">
+                    <div className="mb-4">
                       <p
                         className="text-xs font-semibold mb-2"
                         style={{ color: brandColors.neonCyan }}
                       >
-                        💭 继续追问
+                        🌀 这个问题还能引出更多问题...
                       </p>
-                      <ul className="space-y-1">
+                      <ul className="space-y-2">
                         {eyeDiscovery.deepThought.followUpQuestions.map((q, i) => (
                           <motion.li
                             key={i}
-                            className="text-xs pl-3 relative"
-                            style={{ color: isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)' }}
+                            className="text-xs pl-4 relative leading-relaxed"
+                            style={{ color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)' }}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 1 + i * 0.15 }}
+                            transition={{ delay: 1 + i * 0.2 }}
                           >
                             <span
                               className="absolute left-0"
                               style={{ color: brandColors.violet }}
                             >
-                              •
+                              ?
                             </span>
                             {q}
                           </motion.li>
@@ -786,23 +809,23 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                     </div>
                   )}
 
-                  {/* 假设场景 */}
+                  {/* 假设场景 - 改为提问形式 */}
                   {eyeDiscovery.deepThought.scenario && (
                     <motion.div
-                      className="mb-3 p-3 rounded-lg"
+                      className="mb-4 p-3 rounded-lg"
                       style={{
                         background: withAlpha(brandColors.violet, 0.1),
                         border: `1px solid ${withAlpha(brandColors.violet, 0.3)}`,
                       }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 1.5 }}
+                      transition={{ delay: 1.6 }}
                     >
                       <p
                         className="text-xs font-semibold mb-1"
                         style={{ color: brandColors.violet }}
                       >
-                        🎭 思想实验
+                        🎭 如果你来设计一个思想实验...
                       </p>
                       <p
                         className="text-xs leading-relaxed"
@@ -813,19 +836,19 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                     </motion.div>
                   )}
 
-                  {/* 关联领域 */}
+                  {/* 关联领域 - 改为提问形式 */}
                   {eyeDiscovery.deepThought.connections && eyeDiscovery.deepThought.connections.length > 0 && (
                     <motion.div
-                      className="flex flex-wrap gap-1.5"
+                      className="flex flex-wrap gap-1.5 items-center"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 1.8 }}
+                      transition={{ delay: 2 }}
                     >
                       <span
                         className="text-xs"
                         style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)' }}
                       >
-                        🔗
+                        这和什么有关？
                       </span>
                       {eyeDiscovery.deepThought.connections.map((conn, i) => (
                         <span
@@ -845,18 +868,18 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                 </motion.div>
               )}
 
-              {/* 底部提示 */}
+              {/* 底部提示 - 邀请式提问 */}
               <motion.p
                 className="text-xs mt-4 pt-3 text-center border-t"
                 style={{
-                  color: withAlpha(brandColors.neonCyan, 0.6),
+                  color: withAlpha(brandColors.neonCyan, 0.7),
                   borderColor: withAlpha(brandColors.neonCyan, 0.15),
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2 }}
+                transition={{ delay: 2.2 }}
               >
-                问题将在眼睛上方停留，供你深入思考 ✨
+                这个问题会停留在这里... 你打算思考多久？ ✨
               </motion.p>
             </div>
           </motion.div>
