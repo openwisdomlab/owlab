@@ -37,6 +37,7 @@
       "cta": {
         "start": "开始探索",
         "guide": "建设和运营指南",
+        "journey": "研究性学习之旅",
         "architecture": "了解架构"
       }
     },
@@ -755,6 +756,87 @@
       "description": "从好奇出发，向创造进发。让我们一起点燃探索的火焰。",
       "primary": "进入知识库",
       "secondary": "探索 AI 工具"
+    }
+  },
+  "journey": {
+    "back": "返回首页",
+    "viewDocs": "查看完整知识库",
+    "selectStage": "选择阶段",
+    "navigate": "导航",
+    "metrics": {
+      "title": "探索指标",
+      "active": "激活",
+      "heartRate": "心率",
+      "entropy": "认知熵",
+      "thinking": "思维扩展",
+      "convergent": "收敛",
+      "divergent": "发散",
+      "log": "研究日志"
+    },
+    "protocols": {
+      "title": "探索协议"
+    },
+    "stages": {
+      "0": {
+        "hero": "启航",
+        "meta": "ANCHORING",
+        "title": "锚定启航：问题的深度解构",
+        "desc": "在科研的视界边缘，首要任务是确立稳固的认知原点。通过对混沌现象的逻辑剥离，我们将模糊的直觉压缩为硬核的科学命题。",
+        "log": "地基协议已激活。思维引擎进入发散模式，正在对未知领域进行最大化全频段扫描。",
+        "tasks": {
+          "0": "问题重构 | Problem Reframing",
+          "1": "边界推演 | Boundary Deduction",
+          "2": "原点锚定 | Anchor Points"
+        }
+      },
+      "1": {
+        "hero": "离地",
+        "meta": "TRANSCENDENCE",
+        "title": "跨域穿越：跨学科的视界扫描",
+        "desc": "挣脱既有学科范式的重力束缚，进入非向导性的信息真空区。像深空望远镜一样探测每一个可能的知识共振点。",
+        "log": "熟悉的世界正在视界线后坍塌。思维拓扑正在扩张，尝试在异构数据中建立量子化的关联。",
+        "tasks": {
+          "0": "异质信号捕捉 | Cross-domain Signal",
+          "1": "关联映射 | Correlation Mapping",
+          "2": "视界扫描 | Horizon Scanning"
+        }
+      },
+      "2": {
+        "hero": "伴月",
+        "meta": "OBSERVATION",
+        "title": "深度观测：底层规律的环绕剥离",
+        "desc": "围绕目标信号进行多维度的环绕观测。利用第一性原理分析，将表象的噪音逐层剥离，提炼出具有因果强度的底层逻辑。",
+        "log": "进入高稳定轨道。规律正在思维透镜下聚焦，我们正从杂乱的现象中萃取真理的晶体。",
+        "tasks": {
+          "0": "第一性提炼 | First Principles",
+          "1": "归因矩阵 | Attribution Matrix",
+          "2": "洞察结晶 | Insight Crystallization"
+        }
+      },
+      "3": {
+        "hero": "见日",
+        "meta": "SYNTHESIS",
+        "title": "系统构建：系统模型的熵减融合",
+        "desc": "获得全局视野，直视知识的核心能源。将碎片化的洞察汇聚成一个自洽的、低熵的系统架构。",
+        "log": "全景已在恒星光芒下显现。根据收敛指令，在虚空中构建首个完整系统蓝图。",
+        "tasks": {
+          "0": "架构融合 | Architecture Synthesis",
+          "1": "极值平衡 | Boundary Optimization",
+          "2": "演化模拟 | Evolution Simulation"
+        }
+      },
+      "4": {
+        "hero": "着陆",
+        "meta": "VALIDATION",
+        "title": "验证归位：理论在地表的真实回响",
+        "desc": "探索任务的终极检验发生在现实的地表。将系统投入真实环境，在严苛的碰撞中验证理论的每一个细节。",
+        "log": "降落程序完成。所有的理论最终都在这一刻得到了真实的洗礼。这是演变的落幕，也是新航程的起点。",
+        "tasks": {
+          "0": "实证闭环 | Empirical Cycle",
+          "1": "数据回收 | Data Retrieval",
+          "2": "迭代归位 | Iterative Adjustment"
+        }
+      }
     }
   }
 }

@@ -300,32 +300,35 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                 </svg>
               </motion.div>
 
-              {/* The main badge */}
-              <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm pointer-events-auto"
-                style={{
-                  background: isDark
-                    ? `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.neonPink}15)`
-                    : `linear-gradient(135deg, ${brandColors.violet}15, ${brandColors.neonPink}10)`,
-                  border: `1px solid ${isDark ? brandColors.violet : brandColors.violet}40`,
-                  boxShadow: isDark ? `0 0 20px ${brandColors.violet}20` : 'none'
-                }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <BookOpen className="w-4 h-4" style={{ color: isDark ? brandColors.neonPink : brandColors.violet }} />
-                <span
-                  className="text-sm sm:text-base md:text-lg font-semibold"
+              {/* The main badge - now clickable link to docs */}
+              <Link href={`/${locale}/docs/core`} className="pointer-events-auto">
+                <motion.div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm cursor-pointer"
                   style={{
-                    backgroundImage: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    letterSpacing: '0.08em'
+                    background: isDark
+                      ? `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.neonPink}15)`
+                      : `linear-gradient(135deg, ${brandColors.violet}15, ${brandColors.neonPink}10)`,
+                    border: `1px solid ${isDark ? brandColors.violet : brandColors.violet}40`,
+                    boxShadow: isDark ? `0 0 20px ${brandColors.violet}20` : 'none'
                   }}
+                  whileHover={{ scale: 1.05, boxShadow: isDark ? `0 0 30px ${brandColors.violet}40` : `0 4px 20px ${brandColors.violet}30` }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  建设和运营指南
-                </span>
-              </motion.div>
+                  <BookOpen className="w-4 h-4" style={{ color: isDark ? brandColors.neonPink : brandColors.violet }} />
+                  <span
+                    className="text-sm sm:text-base md:text-lg font-semibold"
+                    style={{
+                      backgroundImage: `linear-gradient(135deg, ${isDark ? brandColors.neonPink : brandColors.violet}, ${isDark ? brandColors.violet : brandColors.neonPink})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      letterSpacing: '0.08em'
+                    }}
+                  >
+                    {t("hero.cta.guide")}
+                  </span>
+                </motion.div>
+              </Link>
             </div>
           </motion.div>
 
@@ -648,20 +651,20 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.3 }}
                 />
-                <Rocket className="w-5 h-5 relative z-10" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
+                <Sparkles className="w-5 h-5 relative z-10" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
                 <span className="relative z-10" style={{ fontWeight: 700 }}>{t("hero.cta.start")}</span>
                 <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
               </Link>
             </motion.div>
 
-            {/* Secondary CTA - 建设和运营指南 */}
+            {/* Secondary CTA - 研究性学习之旅 (Rocket Launch to Journey) */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                href={`/${locale}/docs/core`}
-                className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg backdrop-blur-xl transition-all duration-300"
+                href={`/${locale}/journey`}
+                className="group relative inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg backdrop-blur-xl transition-all duration-300 overflow-hidden"
                 style={{
                   background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
                   border: `2px solid ${isDark ? brandColors.neonCyan : brandColors.blue}`,
@@ -669,8 +672,20 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   boxShadow: isDark ? `0 0 15px ${brandColors.neonCyan}20` : 'none'
                 }}
               >
-                <BookOpen className="w-5 h-5" />
-                {t("hero.cta.guide")}
+                <motion.div
+                  animate={{
+                    y: [0, -2, 0],
+                    rotate: [0, 5, 0]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Rocket className="w-5 h-5" />
+                </motion.div>
+                <span>{t("hero.cta.journey")}</span>
               </Link>
             </motion.div>
           </motion.div>

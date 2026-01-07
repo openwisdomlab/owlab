@@ -37,6 +37,7 @@
       "cta": {
         "start": "Start Exploring",
         "guide": "Construction & Operations Guide",
+        "journey": "Research Learning Journey",
         "architecture": "View Architecture"
       }
     },
@@ -809,6 +810,87 @@
       "description": "From curiosity to creation. Let's ignite the flame of exploration together.",
       "primary": "Enter Knowledge Base",
       "secondary": "Explore AI Tools"
+    }
+  },
+  "journey": {
+    "back": "Back to Home",
+    "viewDocs": "View Complete Knowledge Base",
+    "selectStage": "Select Stage",
+    "navigate": "Navigate",
+    "metrics": {
+      "title": "Exploration Metric",
+      "active": "Active",
+      "heartRate": "Heart Rate",
+      "entropy": "Cognitive Entropy",
+      "thinking": "Thinking Expansion",
+      "convergent": "Convergent",
+      "divergent": "Divergent",
+      "log": "Research Log"
+    },
+    "protocols": {
+      "title": "Exploration Protocols"
+    },
+    "stages": {
+      "0": {
+        "hero": "Launch",
+        "meta": "ANCHORING",
+        "title": "Anchoring Launch: Deep Problem Deconstruction",
+        "desc": "At the edge of research, the first task is to establish a solid cognitive anchor. Through logical deconstruction of chaotic phenomena, we compress vague intuition into hardcore scientific propositions.",
+        "log": "Foundation protocol activated. Thinking engine entering divergent mode, scanning unknown territories with maximum bandwidth.",
+        "tasks": {
+          "0": "Problem Reframing",
+          "1": "Boundary Deduction",
+          "2": "Anchor Points"
+        }
+      },
+      "1": {
+        "hero": "Liftoff",
+        "meta": "TRANSCENDENCE",
+        "title": "Cross-Domain Traversal: Interdisciplinary Horizon Scanning",
+        "desc": "Breaking free from the gravity of existing paradigms, entering uncharted information space. Like a deep space telescope, detecting every possible knowledge resonance point.",
+        "log": "The familiar world is collapsing beyond the horizon. Mental topology expanding, attempting to establish quantum correlations in heterogeneous data.",
+        "tasks": {
+          "0": "Cross-domain Signal Capture",
+          "1": "Correlation Mapping",
+          "2": "Horizon Scanning"
+        }
+      },
+      "2": {
+        "hero": "Orbit",
+        "meta": "OBSERVATION",
+        "title": "Deep Observation: Extracting Underlying Patterns",
+        "desc": "Conducting multi-dimensional orbital observation around target signals. Using first principles analysis, stripping away noise layer by layer to extract underlying logic with causal strength.",
+        "log": "Entering stable orbit. Patterns crystallizing under the lens of thought, extracting truth crystals from chaotic phenomena.",
+        "tasks": {
+          "0": "First Principles Extraction",
+          "1": "Attribution Matrix",
+          "2": "Insight Crystallization"
+        }
+      },
+      "3": {
+        "hero": "Solar",
+        "meta": "SYNTHESIS",
+        "title": "System Construction: Entropy-Reducing Model Fusion",
+        "desc": "Gaining panoramic vision, directly facing the core energy of knowledge. Converging fragmented insights into a self-consistent, low-entropy system architecture.",
+        "log": "Full panorama revealed in stellar brilliance. Following convergence directives, constructing the first complete system blueprint in the void.",
+        "tasks": {
+          "0": "Architecture Synthesis",
+          "1": "Boundary Optimization",
+          "2": "Evolution Simulation"
+        }
+      },
+      "4": {
+        "hero": "Landing",
+        "meta": "VALIDATION",
+        "title": "Validation Return: Theory's Real-World Echo",
+        "desc": "The ultimate test of exploration occurs on real ground. Deploying the system into real environments, validating every detail of theory through rigorous collision.",
+        "log": "Landing sequence complete. All theories finally baptized by reality. This is both the curtain call of evolution and the starting point of a new voyage.",
+        "tasks": {
+          "0": "Empirical Cycle",
+          "1": "Data Retrieval",
+          "2": "Iterative Adjustment"
+        }
+      }
     }
   }
 }
