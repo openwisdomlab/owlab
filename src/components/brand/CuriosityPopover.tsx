@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye, X, ChevronDown, Trash2 } from "lucide-react";
 import { brandColors, withAlpha } from "@/lib/brand/colors";
@@ -28,25 +28,30 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
 
   const count = capturedQuestions.length;
 
-  // 滚动检测 - 向下滚动时收起卡片和popover
+  // 滚动检测 - 任何滚动时都收起popover
+  const lastScrollY = useRef(0);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const threshold = window.innerHeight * 0.3; // 滚动超过30%视口高度时收起
-      const wasScrolledDown = isScrolledDown;
+      const threshold = window.innerHeight * 0.3; // 滚动超过30%视口高度时切换为迷你模式
       const nowScrolledDown = scrollY > threshold;
 
-      if (!wasScrolledDown && nowScrolledDown) {
-        // 从顶部滚动到下方时，自动关闭popover
+      // 检测是否有显著滚动（超过20px）
+      const scrollDelta = Math.abs(scrollY - lastScrollY.current);
+      if (scrollDelta > 20 && isOpen) {
+        // 任何方向的显著滚动都关闭popover
         setIsOpen(false);
       }
+
+      lastScrollY.current = scrollY;
       setIsScrolledDown(nowScrolledDown);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // 初始检查
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isScrolledDown]);
+  }, [isOpen]);
 
   // 点击外部关闭
   useEffect(() => {
@@ -94,134 +99,146 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
       {/* 主眼睛按钮 - 内联模式作为"O"或独立模式 */}
       <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
         {inline ? (
-          /* 内联模式：作为"OPEN"中的"O"，与文字融合 */
+          /* 内联模式：作为"OPEN"中的"O"，与文字融合 - 设计为一个神秘的眼睛字母O */
           <motion.button
             ref={eyeRef}
             onClick={() => setIsOpen(!isOpen)}
             className="relative cursor-pointer inline-block"
             style={{
-              // 匹配文字大小 - 响应式
-              width: '0.95em',
-              height: '0.95em',
+              // 匹配文字大小 - 响应式，略宽以匹配O的视觉宽度
+              width: '0.85em',
+              height: '1em',
               verticalAlign: 'baseline',
-              marginRight: '-0.02em',
+              marginRight: '0.02em',
+              marginLeft: '0.02em',
             }}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
             aria-label="好奇心捕获"
           >
-            {/* 内联眼睛SVG - 与文字渐变融合 */}
+            {/* 神秘眼睛O - 完全融入字体设计 */}
             <svg
-              viewBox="0 0 100 100"
+              viewBox="0 0 85 100"
               className="w-full h-full"
               style={{ display: 'block' }}
+              preserveAspectRatio="xMidYMid meet"
             >
               <defs>
-                {/* 渐变与文字匹配 */}
-                <linearGradient id="eyeTextGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                {/* 主渐变 - 与PEN文字完全一致 */}
+                <linearGradient id="eyeOGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor={isDark ? brandColors.neonCyan : brandColors.blue} />
-                  <stop offset="50%" stopColor={brandColors.violet} />
-                  <stop offset="100%" stopColor={brandColors.neonPink} />
+                  <stop offset="30%" stopColor={brandColors.violet} />
+                  <stop offset="60%" stopColor={brandColors.neonPink} />
+                  <stop offset="100%" stopColor={isDark ? brandColors.blue : brandColors.violet} />
                 </linearGradient>
-                {/* 发光滤镜 */}
-                <filter id="inlineEyeGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="2" result="blur" />
+                {/* 内部发光 */}
+                <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor={brandColors.violet} stopOpacity="0.6" />
+                  <stop offset="100%" stopColor={isDark ? brandColors.neonCyan : brandColors.blue} stopOpacity="0" />
+                </radialGradient>
+                {/* 瞳孔渐变 - 更神秘的深紫到青色 */}
+                <radialGradient id="irisGradient" cx="30%" cy="30%" r="70%">
+                  <stop offset="0%" stopColor={brandColors.neonCyan} />
+                  <stop offset="40%" stopColor={brandColors.violet} />
+                  <stop offset="100%" stopColor={brandColors.neonPink} />
+                </radialGradient>
+                {/* 柔和发光 */}
+                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="1.5" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
-                {/* 瞳孔渐变 */}
-                <radialGradient id="pupilGradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor={brandColors.neonCyan} />
-                  <stop offset="70%" stopColor={brandColors.violet} />
-                  <stop offset="100%" stopColor={brandColors.neonPink} />
-                </radialGradient>
               </defs>
 
-              {/* 眼眶外轮廓 - 类似字母O的形状 */}
+              {/* 字母O的外轮廓 - 粗体风格匹配字体 */}
               <motion.ellipse
-                cx="50" cy="50" rx="42" ry="38"
+                cx="42.5" cy="50" rx="34" ry="42"
                 fill="none"
-                stroke="url(#eyeTextGradient)"
-                strokeWidth="8"
-                filter="url(#inlineEyeGlow)"
+                stroke="url(#eyeOGradient)"
+                strokeWidth="12"
+                filter={isDark ? "url(#softGlow)" : undefined}
               />
 
-              {/* 眼白/内部 */}
-              <motion.ellipse
-                cx="50" cy="50" rx="30" ry="22"
-                fill={isDark ? "rgba(14, 14, 20, 0.8)" : "rgba(255, 255, 255, 0.9)"}
-                stroke="url(#eyeTextGradient)"
+              {/* 内部发光填充 */}
+              <ellipse
+                cx="42.5" cy="50" rx="26" ry="34"
+                fill="url(#innerGlow)"
+                opacity="0.5"
+              />
+
+              {/* 横向眼睛形状 - 中央的杏仁眼 */}
+              <motion.path
+                d="M 12 50 Q 42.5 25, 73 50 Q 42.5 75, 12 50 Z"
+                fill={isDark ? "rgba(14, 14, 20, 0.9)" : "rgba(255, 255, 255, 0.95)"}
+                stroke="url(#eyeOGradient)"
                 strokeWidth="2"
+                animate={{
+                  d: [
+                    "M 12 50 Q 42.5 25, 73 50 Q 42.5 75, 12 50 Z",
+                    "M 12 50 Q 42.5 30, 73 50 Q 42.5 70, 12 50 Z",
+                    "M 12 50 Q 42.5 25, 73 50 Q 42.5 75, 12 50 Z",
+                  ]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
 
               {/* 虹膜 */}
               <motion.circle
-                cx="50" cy="50" r="15"
-                fill="url(#pupilGradient)"
+                cx="42.5" cy="50" r="14"
+                fill="url(#irisGradient)"
                 animate={{
-                  scale: [1, 1.1, 1],
+                  r: [14, 15, 14],
                 }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                style={{ transformOrigin: '50px 50px' }}
               />
 
-              {/* 瞳孔 */}
-              <motion.circle
-                cx="50" cy="50" r="7"
-                fill={isDark ? "#0E0E14" : "#1a1a2e"}
+              {/* 瞳孔 - 垂直椭圆更像猫/神秘眼 */}
+              <motion.ellipse
+                cx="42.5" cy="50" rx="4" ry="8"
+                fill={isDark ? "#0a0a12" : "#1a1a2e"}
                 animate={{
-                  scale: [1, 0.8, 1],
+                  ry: [8, 6, 8],
+                  rx: [4, 5, 4],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 2.5,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                style={{ transformOrigin: '50px 50px' }}
               />
 
-              {/* 瞳孔高光 */}
+              {/* 高光点 - 让眼睛更有生命力 */}
               <motion.circle
-                cx="45" cy="45" r="4"
+                cx="36" cy="44" r="4"
                 fill="white"
-                opacity={0.8}
+                opacity={0.9}
                 animate={{
-                  opacity: [0.6, 1, 0.6],
+                  opacity: [0.7, 1, 0.7],
+                  r: [4, 4.5, 4],
                 }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
                 }}
               />
+              <circle cx="48" cy="54" r="2" fill="white" opacity={0.5} />
 
-              {/* 次高光 */}
-              <circle cx="56" cy="54" r="2" fill="white" opacity={0.5} />
-
-              {/* 环绕的光芒效果 */}
+              {/* 眼睛周围的神秘光芒 - hover时增强 */}
               <motion.g
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                style={{ transformOrigin: '50px 50px' }}
+                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 3, repeat: Infinity }}
               >
-                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
-                  <motion.line
-                    key={angle}
-                    x1={50 + Math.cos(angle * Math.PI / 180) * 44}
-                    y1={50 + Math.sin(angle * Math.PI / 180) * 40}
-                    x2={50 + Math.cos(angle * Math.PI / 180) * 48}
-                    y2={50 + Math.sin(angle * Math.PI / 180) * 44}
-                    stroke="url(#eyeTextGradient)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    opacity={0.4}
-                  />
-                ))}
+                <ellipse cx="42.5" cy="50" rx="28" ry="36" fill="none" stroke="url(#eyeOGradient)" strokeWidth="0.5" opacity="0.3" />
               </motion.g>
             </svg>
 
@@ -234,16 +251,17 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
                   exit={{ scale: 0, opacity: 0 }}
                   className="absolute z-20 flex items-center justify-center"
                   style={{
-                    top: '-0.15em',
-                    right: '-0.15em',
-                    minWidth: '0.35em',
-                    height: '0.35em',
+                    top: '-0.12em',
+                    right: '-0.18em',
+                    minWidth: '0.32em',
+                    height: '0.32em',
                     borderRadius: '50%',
-                    background: brandColors.neonPink,
+                    background: `linear-gradient(135deg, ${brandColors.neonPink}, ${brandColors.violet})`,
                     color: "#fff",
-                    fontSize: '0.2em',
+                    fontSize: '0.18em',
                     fontWeight: 700,
-                    boxShadow: `0 0 8px ${withAlpha(brandColors.neonPink, 0.6)}`,
+                    boxShadow: `0 0 6px ${withAlpha(brandColors.neonPink, 0.7)}`,
+                    border: `1px solid ${withAlpha('#fff', 0.3)}`,
                   }}
                 >
                   <motion.span
