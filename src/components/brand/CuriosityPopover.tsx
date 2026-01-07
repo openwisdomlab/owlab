@@ -649,14 +649,14 @@ function QuestionCard({
   );
 }
 
-// 引导线组件 - 从眼睛延伸到卡片的动画线段
+// 引导线组件 - 从眼睛延伸到卡片的折线动画
 interface GuideLineProps {
   eyeRef: React.RefObject<HTMLButtonElement | null>;
 }
 
 function GuideLine({ eyeRef }: GuideLineProps) {
+  const [pathPoints, setPathPoints] = useState<{ x: number; y: number }[]>([]);
   const [path, setPath] = useState<string>("");
-  const [endPoint, setEndPoint] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const calculatePath = () => {
@@ -664,20 +664,36 @@ function GuideLine({ eyeRef }: GuideLineProps) {
 
       const eyeRect = eyeRef.current.getBoundingClientRect();
       const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-      const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+      const eyeBottomY = eyeRect.top + eyeRect.height;
 
       // 卡片位置: left: 40, bottom: 120 (相对于视口)
-      const cardX = 200; // 卡片中心大约位置
-      const cardY = window.innerHeight - 340; // 卡片顶部位置
+      const cardTopX = 200; // 卡片顶部中心位置
+      const cardTopY = window.innerHeight - 340; // 卡片顶部位置
 
-      // 计算贝塞尔曲线控制点 - 创建优雅的曲线
-      const controlX = eyeCenterX * 0.4; // 控制点向左偏移
-      const controlY = (eyeCenterY + cardY) / 2; // 控制点在中间高度
+      // 计算折线路径点 - 使用温和的折线引导
+      // 从眼睛底部 → 向下延伸 → 向左折 → 向下到卡片
+      const startY = eyeBottomY + 10;
+      const midY1 = startY + 60; // 第一个转折点高度
+      const midX = Math.max(cardTopX + 60, eyeCenterX * 0.5); // 中间过渡点
+      const midY2 = cardTopY - 40; // 第二个转折点高度
 
-      // 构建路径
-      const pathD = `M ${eyeCenterX} ${eyeCenterY + 40} Q ${controlX} ${controlY}, ${cardX} ${cardY}`;
+      const points = [
+        { x: eyeCenterX, y: startY },
+        { x: eyeCenterX, y: midY1 },
+        { x: midX, y: midY1 },
+        { x: midX, y: midY2 },
+        { x: cardTopX, y: midY2 },
+        { x: cardTopX, y: cardTopY },
+      ];
+
+      setPathPoints(points);
+
+      // 构建折线路径
+      const pathD = points.reduce((acc, point, i) => {
+        return i === 0 ? `M ${point.x} ${point.y}` : `${acc} L ${point.x} ${point.y}`;
+      }, "");
+
       setPath(pathD);
-      setEndPoint({ x: cardX, y: cardY });
     };
 
     calculatePath();
@@ -685,11 +701,13 @@ function GuideLine({ eyeRef }: GuideLineProps) {
     return () => window.removeEventListener("resize", calculatePath);
   }, [eyeRef]);
 
-  if (!path) return null;
+  if (!path || pathPoints.length === 0) return null;
+
+  const endPoint = pathPoints[pathPoints.length - 1];
 
   return (
     <>
-      {/* 从眼睛延伸到卡片的引导线 */}
+      {/* 从眼睛延伸到卡片的折线引导 */}
       <motion.svg
         className="fixed pointer-events-none"
         style={{
@@ -711,30 +729,54 @@ function GuideLine({ eyeRef }: GuideLineProps) {
             <stop offset="100%" stopColor={brandColors.neonPink} />
           </linearGradient>
           <filter id="guideGlow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
             <feMerge>
               <feMergeNode in="coloredBlur"/>
               <feMergeNode in="SourceGraphic"/>
             </feMerge>
           </filter>
+          {/* 虚线效果 */}
+          <pattern id="dashPattern" patternUnits="userSpaceOnUse" width="12" height="1">
+            <line x1="0" y1="0" x2="8" y2="0" stroke="url(#guideLineGradient)" strokeWidth="1.5" />
+          </pattern>
         </defs>
 
-        {/* 主引导路径 */}
+        {/* 主折线路径 - 虚线风格更温和 */}
         <motion.path
           d={path}
           stroke="url(#guideLineGradient)"
-          strokeWidth="2"
+          strokeWidth="1.5"
           fill="none"
+          strokeDasharray="8 4"
           filter="url(#guideGlow)"
           initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.8 }}
+          animate={{ pathLength: 1, opacity: 0.7 }}
           exit={{ pathLength: 0, opacity: 0 }}
           transition={{
-            pathLength: { duration: 0.6, ease: "easeOut" },
+            pathLength: { duration: 0.8, ease: "easeOut" },
             opacity: { duration: 0.3 }
           }}
-          style={{ strokeLinecap: 'round' }}
+          style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }}
         />
+
+        {/* 折点装饰 - 小圆点标记转折 */}
+        {pathPoints.slice(1, -1).map((point, i) => (
+          <motion.circle
+            key={i}
+            cx={point.x}
+            cy={point.y}
+            r="3"
+            fill={brandColors.violet}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.6 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{
+              delay: 0.2 + i * 0.1,
+              duration: 0.3,
+              ease: "easeOut"
+            }}
+          />
+        ))}
 
         {/* 沿路径移动的光点效果 */}
         <motion.circle
@@ -742,19 +784,19 @@ function GuideLine({ eyeRef }: GuideLineProps) {
           fill={brandColors.neonCyan}
           filter="url(#guideGlow)"
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0] }}
+          animate={{ opacity: [0, 0.8, 0] }}
           transition={{
-            duration: 1.5,
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 0.6,
+            delay: 0.8,
           }}
         >
           <animateMotion
-            dur="1.5s"
+            dur="2s"
             repeatCount="indefinite"
             path={path}
-            begin="0.6s"
+            begin="0.8s"
           />
         </motion.circle>
 
@@ -762,78 +804,59 @@ function GuideLine({ eyeRef }: GuideLineProps) {
         <motion.circle
           cx={endPoint.x}
           cy={endPoint.y}
-          r="6"
+          r="5"
           fill={brandColors.neonPink}
           initial={{ scale: 0, opacity: 0 }}
           animate={{
-            scale: [0, 1.2, 1],
+            scale: [0, 1.1, 1],
             opacity: [0, 1, 0.8],
           }}
           exit={{ scale: 0, opacity: 0 }}
           transition={{
-            delay: 0.5,
+            delay: 0.6,
             duration: 0.4,
             ease: "easeOut"
           }}
           filter="url(#guideGlow)"
         />
 
-        {/* 末端脉冲波纹 */}
-        {[0, 1, 2].map((i) => (
+        {/* 末端温和波纹 - 减少数量和强度 */}
+        {[0, 1].map((i) => (
           <motion.circle
             key={i}
             cx={endPoint.x}
             cy={endPoint.y}
-            r="10"
+            r="8"
             fill="none"
             stroke={brandColors.neonPink}
             strokeWidth="1"
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{
-              scale: [1, 2.5],
-              opacity: [0.6, 0],
+              scale: [1, 2],
+              opacity: [0.4, 0],
             }}
             transition={{
-              duration: 1.5,
+              duration: 2,
               repeat: Infinity,
-              delay: 0.6 + i * 0.3,
+              delay: 0.8 + i * 0.5,
               ease: "easeOut"
             }}
           />
         ))}
-      </motion.svg>
 
-      {/* 扩散波纹效果 - 从眼睛发出 */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          left: 40,
-          top: 40,
-          width: 0,
-          height: 0,
-        }}
-      >
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              border: `2px solid ${brandColors.neonCyan}`,
-              left: -20,
-              top: -20,
-              width: 40,
-              height: 40,
-            }}
-            initial={{ scale: 0.5, opacity: 0.8 }}
-            animate={{ scale: 3, opacity: 0 }}
-            transition={{
-              duration: 1.2,
-              delay: i * 0.2,
-              ease: "easeOut",
-            }}
-          />
-        ))}
-      </motion.div>
+        {/* 起点装饰 - 小箭头指向下方 */}
+        <motion.path
+          d={`M ${pathPoints[0].x - 4} ${pathPoints[0].y - 8} L ${pathPoints[0].x} ${pathPoints[0].y} L ${pathPoints[0].x + 4} ${pathPoints[0].y - 8}`}
+          stroke={brandColors.neonCyan}
+          strokeWidth="1.5"
+          fill="none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          exit={{ opacity: 0 }}
+          transition={{ delay: 0.3, duration: 0.3 }}
+          style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }}
+        />
+      </motion.svg>
     </>
   );
 }
