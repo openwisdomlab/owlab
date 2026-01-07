@@ -2025,7 +2025,7 @@ export default function HomePage() {
       </section>
 
       {/* Philosophy Quote Section - 没有问题是太愚蠢的 */}
-      <section className="py-20 px-4 relative overflow-hidden">
+      <section className="py-10 md:py-12 px-4 relative overflow-hidden">
         {/* 背景装饰 - 问号和灯泡漂浮 */}
         <div className="absolute inset-0 pointer-events-none">
           {/* 扩散圆环 */}
@@ -2110,7 +2110,7 @@ export default function HomePage() {
             >
               {/* 第一句 */}
               <motion.h2
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-relaxed"
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -2132,8 +2132,8 @@ export default function HomePage() {
                       问题
                     </span>
                     <motion.span
-                      className="absolute -top-2 -right-3 text-base"
-                      animate={{ rotate: [0, 15, 0], y: [0, -3, 0] }}
+                      className="absolute -top-1 -right-2 text-xs"
+                      animate={{ rotate: [0, 15, 0], y: [0, -2, 0] }}
                       transition={{ duration: 2, repeat: Infinity, type: "tween" }}
                     >
                       ?
@@ -2153,7 +2153,7 @@ export default function HomePage() {
 
               {/* 第二句 */}
               <motion.h2
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-relaxed"
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -2175,7 +2175,7 @@ export default function HomePage() {
                       想法
                     </span>
                     <motion.span
-                      className="absolute -top-2 -right-3 text-base"
+                      className="absolute -top-1 -right-2 text-xs"
                       animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
@@ -2197,7 +2197,7 @@ export default function HomePage() {
 
             {/* 互动提示区域 */}
             <motion.div
-              className="mt-10 md:mt-14 flex flex-wrap justify-center gap-3 md:gap-4"
+              className="mt-6 md:mt-8 flex flex-wrap justify-center gap-2 md:gap-3"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2255,7 +2255,7 @@ export default function HomePage() {
 
             {/* 装饰性元素 */}
             <motion.div
-              className="mt-8 flex justify-center gap-2"
+              className="mt-4 flex justify-center gap-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

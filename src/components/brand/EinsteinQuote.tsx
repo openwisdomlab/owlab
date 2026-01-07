@@ -57,7 +57,7 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
 
       {/* Formula container */}
       <div
-        className="relative px-6 py-4 md:px-8 md:py-5 rounded-2xl backdrop-blur-xl"
+        className="relative px-4 py-2.5 md:px-5 md:py-3 rounded-xl backdrop-blur-xl"
         style={{
           background: isDark
             ? 'rgba(14, 14, 20, 0.6)'
@@ -106,10 +106,10 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
         </AnimatePresence>
 
         {/* The formula itself */}
-        <div className="relative flex items-baseline gap-1 md:gap-2">
+        <div className="relative flex items-baseline gap-0.5 md:gap-1">
           {/* E */}
           <motion.span
-            className="text-3xl md:text-4xl lg:text-5xl font-bold italic"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold italic"
             style={{
               fontFamily: "'Times New Roman', 'Georgia', serif",
               color: primaryColor,
@@ -126,7 +126,7 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
 
           {/* = with energy flow effect */}
           <motion.span
-            className="text-2xl md:text-3xl lg:text-4xl font-bold mx-1 md:mx-2 relative"
+            className="text-xl md:text-2xl lg:text-3xl font-bold mx-0.5 md:mx-1 relative"
             style={{
               color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)',
             }}
@@ -156,7 +156,7 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
 
           {/* M */}
           <motion.span
-            className="text-3xl md:text-4xl lg:text-5xl font-bold italic"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold italic"
             style={{
               fontFamily: "'Times New Roman', 'Georgia', serif",
               color: accentColor,
@@ -172,7 +172,7 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
 
           {/* C with superscript 2 */}
           <motion.span
-            className="text-3xl md:text-4xl lg:text-5xl font-bold italic relative"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold italic relative"
             style={{
               fontFamily: "'Times New Roman', 'Georgia', serif",
               color: energyColor,
@@ -186,7 +186,7 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
             C
             {/* Superscript 2 with special animation */}
             <motion.sup
-              className="absolute -top-1 md:-top-2 -right-3 md:-right-4 text-lg md:text-xl lg:text-2xl"
+              className="absolute -top-0.5 md:-top-1 -right-2 md:-right-3 text-sm md:text-base lg:text-lg"
               style={{
                 color: primaryColor,
                 fontStyle: 'normal',
@@ -442,7 +442,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
   const author = "阿尔伯特·爱因斯坦";
 
   return (
-    <section className="relative py-16 md:py-24 px-4 overflow-hidden">
+    <section className="relative py-8 md:py-12 px-4 overflow-hidden">
       {/* Background gradient */}
       <div
         className="absolute inset-0"
@@ -463,7 +463,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
       />
 
       <div className="relative max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
           {/* Quote content - Left side */}
           <motion.div
             className="flex-1 text-left order-2 md:order-1"
@@ -474,14 +474,14 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
           >
             {/* Quote mark */}
             <motion.div
-              className="mb-4"
+              className="mb-2"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <span
-                className="text-6xl md:text-8xl font-serif leading-none"
+                className="text-4xl md:text-5xl font-serif leading-none"
                 style={{
                   color: isDark ? brandColors.violet : brandColors.blue,
                   opacity: 0.3
@@ -493,7 +493,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
 
             {/* Quote text */}
             <motion.blockquote
-              className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium mb-6"
+              className="text-sm md:text-base lg:text-lg leading-relaxed font-medium mb-4"
               style={{
                 color: isDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.85)',
                 fontFamily: "'Source Han Serif CN', 'Noto Serif SC', 'STSong', serif",
@@ -516,15 +516,15 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <div
-                  className="h-px w-12"
+                  className="h-px w-8"
                   style={{
                     background: `linear-gradient(to right, transparent, ${isDark ? brandColors.neonPink : brandColors.violet})`
                   }}
                 />
                 <span
-                  className="text-base md:text-lg font-semibold tracking-wide"
+                  className="text-sm md:text-base font-semibold tracking-wide"
                   style={{
                     color: isDark ? brandColors.neonPink : brandColors.violet,
                     fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif"
@@ -538,7 +538,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
 
           {/* Einstein portrait + Interactive Formula - Right side */}
           <motion.div
-            className="flex flex-col items-center gap-6 md:gap-8 flex-shrink-0 order-1 md:order-2"
+            className="flex flex-col items-center gap-3 md:gap-4 flex-shrink-0 order-1 md:order-2"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -556,7 +556,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
 
             {/* Einstein Portrait */}
             <motion.div
-              className="relative w-40 h-40 md:w-52 md:h-52 lg:w-60 lg:h-60"
+              className="relative w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
