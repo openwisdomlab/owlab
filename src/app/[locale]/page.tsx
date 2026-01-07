@@ -1398,60 +1398,26 @@ export default function HomePage() {
         />
 
         <div className="relative max-w-5xl mx-auto">
-          {/* 核心概念：问 > 答 */}
+          {/* E=mc² 右上角装饰 */}
           <motion.div
-            className="text-center mb-8 md:mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="absolute -top-8 right-0 md:right-4"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center justify-center gap-3 md:gap-5">
-              {/* 问 - 核心强调 */}
-              <motion.span
-                className="text-5xl md:text-7xl lg:text-8xl font-black"
-                style={{
-                  fontFamily: "'Source Han Serif CN', 'Noto Serif SC', serif",
-                  background: 'linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-violet) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  filter: 'drop-shadow(0 0 30px rgba(217, 26, 122, 0.3))',
-                }}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                问
-              </motion.span>
-
-              {/* 大于号 */}
-              <motion.span
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--muted-foreground)]"
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 0.6, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-              >
-                ＞
-              </motion.span>
-
-              {/* 答 - 次要 */}
-              <motion.span
-                className="text-5xl md:text-7xl lg:text-8xl font-black"
-                style={{
-                  fontFamily: "'Source Han Serif CN', 'Noto Serif SC', serif",
-                  color: 'var(--muted-foreground)',
-                  opacity: 0.4,
-                }}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 0.4, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                答
-              </motion.span>
-            </div>
+            <span
+              className="text-xl md:text-2xl lg:text-3xl font-bold italic"
+              style={{
+                fontFamily: "'Times New Roman', 'Georgia', serif",
+                background: 'linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-cyan) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(0 0 10px rgba(139, 92, 246, 0.3))',
+              }}
+            >
+              E=mc²
+            </span>
           </motion.div>
 
           {/* 名言内容 */}
@@ -1536,24 +1502,11 @@ export default function HomePage() {
                   background: 'linear-gradient(to right, transparent, var(--neon-violet))'
                 }}
               />
-              <div className="flex items-center gap-3">
-                {/* E=mc² 小装饰 */}
-                <span
-                  className="text-sm md:text-base font-bold italic opacity-60"
-                  style={{
-                    fontFamily: "'Times New Roman', 'Georgia', serif",
-                    color: 'var(--neon-violet)',
-                  }}
-                >
-                  E=mc²
-                </span>
-                <span className="text-[var(--muted-foreground)]">·</span>
-                <span
-                  className="text-sm md:text-base font-medium tracking-wide text-[var(--foreground)]"
-                >
-                  阿尔伯特·爱因斯坦
-                </span>
-              </div>
+              <span
+                className="text-sm md:text-base font-medium tracking-wide text-[var(--foreground)]"
+              >
+                阿尔伯特·爱因斯坦
+              </span>
               <div
                 className="h-px w-12"
                 style={{
