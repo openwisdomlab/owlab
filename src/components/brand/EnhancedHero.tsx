@@ -133,6 +133,18 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
           transition={{ duration: 1 }}
           className="text-center"
         >
+          {/* Eye Icon Above OPEN - Clickable Curiosity Capture */}
+          <motion.div
+            className="flex flex-col items-center mb-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="pointer-events-auto">
+              <CuriosityPopover isDark={isDark} isMobile={isMobile} inline={false} />
+            </div>
+          </motion.div>
+
           {/* "Open Wisdom Lab" Typography - Refined Size */}
           <motion.h1
             className="mb-4"
@@ -140,29 +152,21 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            {/* OPEN with Eye replacing O - 👁PEN */}
+            {/* OPEN - Full letters */}
             <span
-              className="inline-flex items-baseline justify-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter pointer-events-auto"
+              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                letterSpacing: '-0.03em'
+                letterSpacing: '-0.03em',
+                backgroundImage: isDark
+                  ? `linear-gradient(135deg, ${brandColors.neonCyan} 0%, ${brandColors.violet} 30%, ${brandColors.neonPink} 60%, ${brandColors.blue} 100%)`
+                  : `linear-gradient(135deg, ${brandColors.blue} 0%, ${brandColors.violet} 50%, ${brandColors.neonPink} 100%)`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
-              {/* 眼睛作为"O" - 与PEN文字对齐 */}
-              <CuriosityPopover isDark={isDark} isMobile={isMobile} inline={true} />
-              {/* PEN 文字 */}
-              <span
-                style={{
-                  backgroundImage: isDark
-                    ? `linear-gradient(135deg, ${brandColors.neonCyan} 0%, ${brandColors.violet} 30%, ${brandColors.neonPink} 60%, ${brandColors.blue} 100%)`
-                    : `linear-gradient(135deg, ${brandColors.blue} 0%, ${brandColors.violet} 50%, ${brandColors.neonPink} 100%)`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                PEN
-              </span>
+              OPEN
             </span>
             <span
               className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter -mt-2"
