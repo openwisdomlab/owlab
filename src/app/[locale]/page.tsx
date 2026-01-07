@@ -1523,67 +1523,84 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 追光实验动画 Section - 纯视觉效果 */}
-      <section className="py-10 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="relative h-32 md:h-40 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/50 backdrop-blur-xl overflow-hidden">
+      {/* 追光实验 + 爱因斯坦名言 Section */}
+      <section className="py-16 md:py-24 px-4 relative overflow-hidden">
+        {/* 背景渐变 */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(6, 182, 212, 0.05) 50%, rgba(236, 72, 153, 0.03) 100%)'
+          }}
+        />
 
-            {/* 追光实验背景动画 - Chasing Light Experiment */}
+        {/* 背景光点装饰 */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={`bg-particle-${i}`}
+              className="absolute w-1 h-1 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                background: i % 3 === 0 ? 'var(--neon-cyan)' : i % 3 === 1 ? 'var(--neon-violet)' : 'var(--neon-pink)',
+                opacity: 0.3,
+              }}
+              animate={{
+                opacity: [0.1, 0.4, 0.1],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="relative max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-3xl border border-[var(--glass-border)] bg-[var(--glass-bg)]/60 backdrop-blur-xl overflow-hidden"
+          >
+            {/* 追光动画背景层 */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-
               {/* 光束 - 以光速c向右传播 */}
               {[...Array(3)].map((_, i) => (
                 <motion.div
                   key={`lightbeam-${i}`}
                   className="absolute"
                   style={{
-                    top: `${35 + i * 15}%`,
+                    top: `${30 + i * 20}%`,
                     left: 0,
                     height: '2px',
                     width: '100%',
                   }}
                 >
-                  {/* 光束主体 - 金色光线 */}
                   <motion.div
                     className="absolute h-full"
                     style={{
-                      width: '120px',
+                      width: '150px',
                       background: 'linear-gradient(to right, transparent, var(--neon-yellow) 20%, var(--neon-yellow) 80%, transparent)',
                       boxShadow: '0 0 15px var(--neon-yellow), 0 0 30px var(--neon-yellow)',
-                      opacity: 0.6,
+                      opacity: 0.4,
                     }}
                     animate={{
-                      x: ['-120px', 'calc(100% + 120px)'],
+                      x: ['-150px', 'calc(100% + 150px)'],
                     }}
                     transition={{
-                      duration: 2.5,
+                      duration: 4,
                       repeat: Infinity,
-                      delay: i * 0.8,
+                      delay: i * 1.2,
                       ease: "linear",
                     }}
                   />
                 </motion.div>
               ))}
 
-              {/* 光波纹 - 电磁波特性 */}
-              <svg className="absolute inset-0 w-full h-full opacity-10">
-                <motion.path
-                  d="M 0 50% Q 25% 30%, 50% 50% T 100% 50%"
-                  stroke="var(--neon-cyan)"
-                  strokeWidth="1"
-                  fill="none"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: [0, 1, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
-              </svg>
-
-              {/* 追光者 - 代表年轻的爱因斯坦骑在光上 */}
+              {/* 追光者 - 年轻的爱因斯坦 */}
               <motion.div
                 className="absolute flex items-center"
                 style={{
@@ -1592,183 +1609,297 @@ export default function HomePage() {
                   transform: 'translateY(-50%)',
                 }}
                 animate={{
-                  x: ['0%', '90%'],
+                  x: ['5%', '25%'],
                 }}
                 transition={{
-                  duration: 8,
+                  duration: 12,
                   repeat: Infinity,
-                  ease: "linear",
+                  repeatType: "reverse",
+                  ease: "easeInOut",
                 }}
               >
                 {/* 追光者拖尾轨迹 */}
                 <motion.div
                   className="absolute h-1"
                   style={{
-                    width: '60px',
+                    width: '80px',
                     right: '100%',
                     background: 'linear-gradient(to left, var(--neon-violet), var(--neon-pink), transparent)',
-                    opacity: 0.6,
-                    filter: 'blur(1px)',
+                    opacity: 0.5,
+                    filter: 'blur(2px)',
                   }}
                 />
 
                 {/* 追光者外光晕 */}
                 <motion.div
-                  className="absolute w-14 h-14 rounded-full"
+                  className="absolute w-20 h-20 rounded-full"
                   style={{
                     background: 'radial-gradient(circle, var(--neon-violet) 0%, var(--neon-pink) 30%, transparent 70%)',
-                    filter: 'blur(8px)',
+                    filter: 'blur(12px)',
                     transform: 'translate(-50%, -50%)',
                   }}
                   animate={{
                     scale: [1, 1.3, 1],
-                    opacity: [0.4, 0.7, 0.4],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                />
+
+                {/* 追光者 - 人形图标 */}
+                <motion.div
+                  className="relative z-10 w-10 h-10 rounded-full flex items-center justify-center"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-pink) 100%)',
+                    boxShadow: '0 0 20px var(--neon-violet)',
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                  animate={{
+                    y: [-3, 3, -3],
                   }}
                   transition={{
                     duration: 1.5,
                     repeat: Infinity,
                   }}
-                />
-
-                {/* 追光者 - 人形简笔画 */}
-                <motion.svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="relative z-10"
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                    filter: 'drop-shadow(0 0 8px var(--neon-violet))',
-                  }}
-                  animate={{
-                    y: [-2, 2, -2],
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    repeat: Infinity,
-                  }}
                 >
-                  {/* 头 */}
-                  <circle cx="12" cy="5" r="4" fill="var(--neon-violet)" />
-                  {/* 身体 */}
-                  <line x1="12" y1="9" x2="12" y2="16" stroke="var(--neon-violet)" strokeWidth="2" strokeLinecap="round" />
-                  {/* 手臂 - 向前伸出追逐姿态 */}
-                  <line x1="12" y1="11" x2="20" y2="9" stroke="var(--neon-violet)" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="12" y1="11" x2="4" y2="13" stroke="var(--neon-violet)" strokeWidth="2" strokeLinecap="round" />
-                  {/* 腿 - 奔跑姿态 */}
-                  <line x1="12" y1="16" x2="8" y2="22" stroke="var(--neon-violet)" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="12" y1="16" x2="18" y2="20" stroke="var(--neon-violet)" strokeWidth="2" strokeLinecap="round" />
-                </motion.svg>
-              </motion.div>
-
-              {/* 正在逃逸的光子 - 始终在追光者前方 */}
-              <motion.div
-                className="absolute flex items-center"
-                style={{
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                }}
-                animate={{
-                  x: ['15%', '105%'],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              >
-                <motion.div
-                  className="w-6 h-6 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle, var(--neon-yellow) 0%, var(--neon-cyan) 50%, transparent 70%)',
-                    boxShadow: '0 0 20px var(--neon-yellow), 0 0 40px var(--neon-cyan)',
-                  }}
-                  animate={{
-                    scale: [1, 1.2, 1],
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    repeat: Infinity,
-                  }}
-                />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <circle cx="12" cy="6" r="4" />
+                    <path d="M12 12 L12 18 M8 14 L16 14 M10 24 L12 18 L14 24" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </motion.div>
               </motion.div>
             </div>
 
-            {/* E=MC² Animated Formula - 增强版 */}
-            <motion.div
-              className="absolute top-4 right-6 md:right-8 select-none pointer-events-none"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            >
-              <motion.span
-                className="text-2xl md:text-3xl font-serif italic font-medium"
-                style={{
-                  background: "linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-cyan) 50%, var(--neon-pink) 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  textShadow: "0 0 30px rgba(139, 92, 246, 0.3)",
-                }}
-                animate={{
-                  opacity: [0.7, 1, 0.7],
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                E=mc²
-              </motion.span>
-              {/* Glow effect - 增强发光 */}
+            {/* 内容区域 */}
+            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 p-8 md:p-12 lg:p-16">
+              {/* 左侧：名言 */}
               <motion.div
-                className="absolute inset-0 -z-10 blur-xl"
-                style={{
-                  background: "radial-gradient(circle, var(--neon-violet) 0%, transparent 70%)",
-                }}
-                animate={{
-                  opacity: [0.2, 0.5, 0.2],
-                  scale: [1, 1.4, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              {/* 能量粒子 - 从公式向外辐射 */}
-              {[...Array(6)].map((_, i) => (
+                className="flex-1"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                {/* 引号装饰 */}
                 <motion.div
-                  key={`energy-${i}`}
-                  className="absolute w-1 h-1 rounded-full"
-                  style={{
-                    left: '50%',
-                    top: '50%',
-                    background: i % 2 === 0 ? 'var(--neon-cyan)' : 'var(--neon-pink)',
-                  }}
-                  animate={{
-                    x: [0, Math.cos(i * Math.PI / 3) * 20],
-                    y: [0, Math.sin(i * Math.PI / 3) * 20],
-                    opacity: [0.8, 0],
-                    scale: [1, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.3,
-                  }}
-                />
-              ))}
-            </motion.div>
+                  className="mb-4"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <span
+                    className="text-5xl md:text-6xl font-serif leading-none"
+                    style={{
+                      background: 'linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-cyan) 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      opacity: 0.6,
+                    }}
+                  >
+                    "
+                  </span>
+                </motion.div>
 
-            {/* Decorative corners */}
-            <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[var(--neon-cyan)]/30 rounded-tr-2xl"></div>
-            <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[var(--neon-cyan)]/30 rounded-bl-2xl"></div>
-          </div>
-        </motion.div>
+                {/* 名言文字 */}
+                <motion.blockquote
+                  className="text-lg md:text-xl lg:text-2xl leading-relaxed font-medium mb-6 text-[var(--foreground)]"
+                  style={{
+                    fontFamily: "'Source Han Serif CN', 'Noto Serif SC', 'STSong', serif",
+                    letterSpacing: '0.02em',
+                    lineHeight: '1.9',
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  提出一个问题往往比解决一个问题更重要。因为解决问题也许仅是一个数学上或实验上的技能而已，而提出新的问题，却需要有创造性的想象力，标志着科学的真正进步。
+                </motion.blockquote>
+
+                {/* 作者署名 */}
+                <motion.div
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  <div
+                    className="h-px w-12"
+                    style={{
+                      background: 'linear-gradient(to right, var(--neon-violet), var(--neon-cyan))'
+                    }}
+                  />
+                  <span
+                    className="text-base md:text-lg font-semibold tracking-wide"
+                    style={{
+                      background: 'linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-cyan) 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                    }}
+                  >
+                    阿尔伯特·爱因斯坦
+                  </span>
+                </motion.div>
+              </motion.div>
+
+              {/* 右侧：E=mc² 公式 */}
+              <motion.div
+                className="flex-shrink-0"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <motion.div
+                  className="relative px-8 py-6 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%)',
+                    border: '1px solid rgba(139, 92, 246, 0.2)',
+                    boxShadow: '0 0 40px rgba(139, 92, 246, 0.1)',
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: '0 0 60px rgba(139, 92, 246, 0.2)',
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* 外环光晕 */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl"
+                    style={{
+                      background: 'radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)',
+                      filter: 'blur(20px)',
+                    }}
+                    animate={{
+                      opacity: [0.3, 0.6, 0.3],
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                    }}
+                  />
+
+                  {/* 公式本体 */}
+                  <motion.div
+                    className="relative flex items-baseline gap-1"
+                    animate={{
+                      y: [0, -3, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <motion.span
+                      className="text-4xl md:text-5xl lg:text-6xl font-bold italic"
+                      style={{
+                        fontFamily: "'Times New Roman', 'Georgia', serif",
+                        background: 'linear-gradient(135deg, var(--neon-violet) 0%, var(--neon-cyan) 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                      }}
+                    >
+                      E
+                    </motion.span>
+                    <motion.span
+                      className="text-3xl md:text-4xl lg:text-5xl font-bold mx-2"
+                      style={{
+                        color: 'var(--muted-foreground)',
+                      }}
+                    >
+                      =
+                    </motion.span>
+                    <motion.span
+                      className="text-4xl md:text-5xl lg:text-6xl font-bold italic"
+                      style={{
+                        fontFamily: "'Times New Roman', 'Georgia', serif",
+                        background: 'linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-violet) 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                      }}
+                    >
+                      m
+                    </motion.span>
+                    <motion.span
+                      className="text-4xl md:text-5xl lg:text-6xl font-bold italic"
+                      style={{
+                        fontFamily: "'Times New Roman', 'Georgia', serif",
+                        background: 'linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-yellow) 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                      }}
+                    >
+                      c
+                    </motion.span>
+                    <motion.sup
+                      className="text-xl md:text-2xl lg:text-3xl font-bold"
+                      style={{
+                        background: 'linear-gradient(135deg, var(--neon-yellow) 0%, var(--neon-cyan) 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                      }}
+                      animate={{
+                        scale: [1, 1.2, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                      }}
+                    >
+                      2
+                    </motion.sup>
+                  </motion.div>
+
+                  {/* 光速标注 */}
+                  <motion.div
+                    className="text-center mt-4 text-xs text-[var(--muted-foreground)]"
+                    style={{ fontFamily: 'monospace' }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.8 }}
+                  >
+                    c = 299,792,458 m/s
+                  </motion.div>
+
+                  {/* 能量粒子 */}
+                  {[...Array(8)].map((_, i) => (
+                    <motion.div
+                      key={`formula-particle-${i}`}
+                      className="absolute w-1.5 h-1.5 rounded-full"
+                      style={{
+                        left: '50%',
+                        top: '50%',
+                        background: i % 2 === 0 ? 'var(--neon-cyan)' : 'var(--neon-pink)',
+                      }}
+                      animate={{
+                        x: [0, Math.cos(i * Math.PI / 4) * 40],
+                        y: [0, Math.sin(i * Math.PI / 4) * 40],
+                        opacity: [0.8, 0],
+                        scale: [1, 0.3],
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                      }}
+                    />
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* 装饰角落 */}
+            <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-[var(--neon-cyan)]/20 rounded-tr-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-[var(--neon-violet)]/20 rounded-bl-3xl pointer-events-none" />
+          </motion.div>
+        </div>
       </section>
 
       {/* 行动层工具 Section */}
