@@ -18,6 +18,7 @@ interface CuriosityPopoverProps {
 export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const eyeRef = useRef<HTMLButtonElement>(null);
 
@@ -25,6 +26,19 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
     useCuriosityCaptureStore();
 
   const count = capturedQuestions.length;
+
+  // 滚动检测 - 向下滚动时收起卡片
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const threshold = window.innerHeight * 0.3; // 滚动超过30%视口高度时收起
+      setIsScrolledDown(scrollY > threshold);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // 初始检查
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // 点击外部关闭
   useEffect(() => {
@@ -68,119 +82,161 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
   };
 
   return (
-    <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
-      {/* 眼睛按钮 */}
-      <motion.button
-        ref={eyeRef}
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative w-20 h-20 flex items-center justify-center cursor-pointer"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="好奇心捕获"
-      >
-        {/* 背景光晕 */}
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: `radial-gradient(circle, ${brandColors.blue}40, transparent)`,
-            filter: "blur(20px)",
-          }}
-        />
+    <>
+      {/* 主眼睛按钮 - 在顶部居中位置 */}
+      <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
+        <motion.button
+          ref={eyeRef}
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative w-20 h-20 flex items-center justify-center cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="好奇心捕获"
+        >
+          {/* 背景光晕 */}
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${brandColors.blue}40, transparent)`,
+              filter: "blur(20px)",
+            }}
+          />
 
-        {/* 眼睛图标 */}
-        <Eye
-          className="w-20 h-20 relative z-10"
-          style={{ color: brandColors.neonCyan }}
-        />
+          {/* 眼睛图标 */}
+          <Eye
+            className="w-20 h-20 relative z-10"
+            style={{ color: brandColors.neonCyan }}
+          />
 
-        {/* 脉动环 */}
-        <motion.div
-          className="absolute inset-0 rounded-full border-2"
-          style={{ borderColor: brandColors.neonPink }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 0, 0.5],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeOut",
-          }}
-        />
+          {/* 脉动环 */}
+          <motion.div
+            className="absolute inset-0 rounded-full border-2"
+            style={{ borderColor: brandColors.neonPink }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 0, 0.5],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeOut",
+            }}
+          />
 
-        {/* 徽章计数 */}
-        <AnimatePresence>
-          {count > 0 && (
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              className="absolute -top-1 -right-1 z-20 flex items-center justify-center"
-              style={{
-                minWidth: 22,
-                height: 22,
-                borderRadius: 11,
-                background: brandColors.neonPink,
-                color: "#fff",
-                fontSize: 12,
-                fontWeight: 700,
-                padding: "0 6px",
-                boxShadow: `0 2px 8px ${withAlpha(brandColors.neonPink, 0.5)}`,
-              }}
-            >
-              <motion.span
-                key={count}
-                initial={{ scale: 1.5 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 500, damping: 20 }}
+          {/* 徽章计数 */}
+          <AnimatePresence>
+            {count > 0 && (
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                className="absolute -top-1 -right-1 z-20 flex items-center justify-center"
+                style={{
+                  minWidth: 22,
+                  height: 22,
+                  borderRadius: 11,
+                  background: brandColors.neonPink,
+                  color: "#fff",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  padding: "0 6px",
+                  boxShadow: `0 2px 8px ${withAlpha(brandColors.neonPink, 0.5)}`,
+                }}
               >
-                {count}
-              </motion.span>
-            </motion.div>
+                <motion.span
+                  key={count}
+                  initial={{ scale: 1.5 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                >
+                  {count}
+                </motion.span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+
+        {/* 眼睛打开时的注意力引导动效 - 延伸线段引导视线到卡片 */}
+        <AnimatePresence>
+          {isOpen && !isMobile && !isScrolledDown && (
+            <GuideLine eyeRef={eyeRef} />
           )}
         </AnimatePresence>
-      </motion.button>
+      </div>
 
-      {/* 眼睛打开时的注意力引导动效 */}
+      {/* 滚动后收起的迷你图标 - 靠近左下角N图标位置 */}
       <AnimatePresence>
-        {isOpen && !isMobile && (
-          <>
-            {/* 扩散波纹效果 - 引导视线 */}
-            <motion.div
-              className="absolute pointer-events-none"
+        {isScrolledDown && !isMobile && (
+          <motion.button
+            className="fixed z-50 pointer-events-auto"
+            style={{
+              left: 56,
+              bottom: 20,
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            onClick={() => setIsOpen(!isOpen)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="好奇心捕获"
+          >
+            <div
+              className="relative w-10 h-10 rounded-full flex items-center justify-center"
               style={{
-                left: 40,
-                top: 40,
-                width: 0,
-                height: 0,
+                background: isDark
+                  ? `linear-gradient(135deg, ${withAlpha(brandColors.neonCyan, 0.2)}, ${withAlpha(brandColors.violet, 0.15)})`
+                  : `linear-gradient(135deg, ${withAlpha(brandColors.blue, 0.15)}, ${withAlpha(brandColors.violet, 0.1)})`,
+                border: `1px solid ${isDark ? withAlpha(brandColors.neonCyan, 0.3) : withAlpha(brandColors.blue, 0.2)}`,
+                backdropFilter: "blur(8px)",
+                boxShadow: isDark
+                  ? `0 4px 12px ${withAlpha(brandColors.neonCyan, 0.2)}`
+                  : "0 4px 12px rgba(0,0,0,0.1)",
               }}
             >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  className="absolute rounded-full"
+              <Eye
+                className="w-5 h-5"
+                style={{ color: isDark ? brandColors.neonCyan : brandColors.blue }}
+              />
+              {/* 迷你徽章 */}
+              {count > 0 && (
+                <div
+                  className="absolute -top-1 -right-1 flex items-center justify-center"
                   style={{
-                    border: `2px solid ${brandColors.neonCyan}`,
-                    left: -20,
-                    top: -20,
-                    width: 40,
-                    height: 40,
+                    minWidth: 16,
+                    height: 16,
+                    borderRadius: 8,
+                    background: brandColors.neonPink,
+                    color: "#fff",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    boxShadow: `0 2px 6px ${withAlpha(brandColors.neonPink, 0.5)}`,
                   }}
-                  initial={{ scale: 0.5, opacity: 0.8 }}
-                  animate={{ scale: 3, opacity: 0 }}
-                  transition={{
-                    duration: 1.2,
-                    delay: i * 0.2,
-                    ease: "easeOut",
-                  }}
-                />
-              ))}
-            </motion.div>
-          </>
+                >
+                  {count}
+                </div>
+              )}
+            </div>
+            {/* 脉冲提示 */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{
+                border: `1px solid ${brandColors.neonCyan}`,
+              }}
+              animate={{
+                scale: [1, 1.5],
+                opacity: [0.5, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+            />
+          </motion.button>
         )}
       </AnimatePresence>
-
-      {/* 连接线动画已移除 - 眼睛和卡片位置独立 */}
 
       {/* Popover 面板 - 左下方固定位置 */}
       <AnimatePresence>
@@ -377,7 +433,7 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
           </div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 
@@ -590,5 +646,194 @@ function QuestionCard({
         )}
       </AnimatePresence>
     </motion.div>
+  );
+}
+
+// 引导线组件 - 从眼睛延伸到卡片的动画线段
+interface GuideLineProps {
+  eyeRef: React.RefObject<HTMLButtonElement | null>;
+}
+
+function GuideLine({ eyeRef }: GuideLineProps) {
+  const [path, setPath] = useState<string>("");
+  const [endPoint, setEndPoint] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const calculatePath = () => {
+      if (!eyeRef.current) return;
+
+      const eyeRect = eyeRef.current.getBoundingClientRect();
+      const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+      const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+      // 卡片位置: left: 40, bottom: 120 (相对于视口)
+      const cardX = 200; // 卡片中心大约位置
+      const cardY = window.innerHeight - 340; // 卡片顶部位置
+
+      // 计算贝塞尔曲线控制点 - 创建优雅的曲线
+      const controlX = eyeCenterX * 0.4; // 控制点向左偏移
+      const controlY = (eyeCenterY + cardY) / 2; // 控制点在中间高度
+
+      // 构建路径
+      const pathD = `M ${eyeCenterX} ${eyeCenterY + 40} Q ${controlX} ${controlY}, ${cardX} ${cardY}`;
+      setPath(pathD);
+      setEndPoint({ x: cardX, y: cardY });
+    };
+
+    calculatePath();
+    window.addEventListener("resize", calculatePath);
+    return () => window.removeEventListener("resize", calculatePath);
+  }, [eyeRef]);
+
+  if (!path) return null;
+
+  return (
+    <>
+      {/* 从眼睛延伸到卡片的引导线 */}
+      <motion.svg
+        className="fixed pointer-events-none"
+        style={{
+          left: 0,
+          top: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: 99,
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <defs>
+          <linearGradient id="guideLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={brandColors.neonCyan} />
+            <stop offset="50%" stopColor={brandColors.violet} />
+            <stop offset="100%" stopColor={brandColors.neonPink} />
+          </linearGradient>
+          <filter id="guideGlow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* 主引导路径 */}
+        <motion.path
+          d={path}
+          stroke="url(#guideLineGradient)"
+          strokeWidth="2"
+          fill="none"
+          filter="url(#guideGlow)"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.8 }}
+          exit={{ pathLength: 0, opacity: 0 }}
+          transition={{
+            pathLength: { duration: 0.6, ease: "easeOut" },
+            opacity: { duration: 0.3 }
+          }}
+          style={{ strokeLinecap: 'round' }}
+        />
+
+        {/* 沿路径移动的光点效果 */}
+        <motion.circle
+          r="4"
+          fill={brandColors.neonCyan}
+          filter="url(#guideGlow)"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1, 0] }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.6,
+          }}
+        >
+          <animateMotion
+            dur="1.5s"
+            repeatCount="indefinite"
+            path={path}
+            begin="0.6s"
+          />
+        </motion.circle>
+
+        {/* 路径末端的脉冲点 */}
+        <motion.circle
+          cx={endPoint.x}
+          cy={endPoint.y}
+          r="6"
+          fill={brandColors.neonPink}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: [0, 1.2, 1],
+            opacity: [0, 1, 0.8],
+          }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={{
+            delay: 0.5,
+            duration: 0.4,
+            ease: "easeOut"
+          }}
+          filter="url(#guideGlow)"
+        />
+
+        {/* 末端脉冲波纹 */}
+        {[0, 1, 2].map((i) => (
+          <motion.circle
+            key={i}
+            cx={endPoint.x}
+            cy={endPoint.y}
+            r="10"
+            fill="none"
+            stroke={brandColors.neonPink}
+            strokeWidth="1"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{
+              scale: [1, 2.5],
+              opacity: [0.6, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              delay: 0.6 + i * 0.3,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </motion.svg>
+
+      {/* 扩散波纹效果 - 从眼睛发出 */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{
+          left: 40,
+          top: 40,
+          width: 0,
+          height: 0,
+        }}
+      >
+        {[0, 1, 2].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              border: `2px solid ${brandColors.neonCyan}`,
+              left: -20,
+              top: -20,
+              width: 40,
+              height: 40,
+            }}
+            initial={{ scale: 0.5, opacity: 0.8 }}
+            animate={{ scale: 3, opacity: 0 }}
+            transition={{
+              duration: 1.2,
+              delay: i * 0.2,
+              ease: "easeOut",
+            }}
+          />
+        ))}
+      </motion.div>
+    </>
   );
 }
