@@ -18,6 +18,7 @@ interface CuriosityPopoverProps {
 export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const eyeRef = useRef<HTMLButtonElement>(null);
 
@@ -25,6 +26,19 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
     useCuriosityCaptureStore();
 
   const count = capturedQuestions.length;
+
+  // 滚动检测 - 向下滚动时收起卡片
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const threshold = window.innerHeight * 0.3; // 滚动超过30%视口高度时收起
+      setIsScrolledDown(scrollY > threshold);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // 初始检查
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // 点击外部关闭
   useEffect(() => {
@@ -68,83 +82,159 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
   };
 
   return (
-    <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
-      {/* 眼睛按钮 */}
-      <motion.button
-        ref={eyeRef}
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative w-20 h-20 flex items-center justify-center cursor-pointer"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="好奇心捕获"
-      >
-        {/* 背景光晕 */}
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: `radial-gradient(circle, ${brandColors.blue}40, transparent)`,
-            filter: "blur(20px)",
-          }}
-        />
+    <>
+      {/* 主眼睛按钮 - 在顶部居中位置 */}
+      <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
+        <motion.button
+          ref={eyeRef}
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative w-20 h-20 flex items-center justify-center cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="好奇心捕获"
+        >
+          {/* 背景光晕 */}
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${brandColors.blue}40, transparent)`,
+              filter: "blur(20px)",
+            }}
+          />
 
-        {/* 眼睛图标 */}
-        <Eye
-          className="w-20 h-20 relative z-10"
-          style={{ color: brandColors.neonCyan }}
-        />
+          {/* 眼睛图标 */}
+          <Eye
+            className="w-20 h-20 relative z-10"
+            style={{ color: brandColors.neonCyan }}
+          />
 
-        {/* 脉动环 */}
-        <motion.div
-          className="absolute inset-0 rounded-full border-2"
-          style={{ borderColor: brandColors.neonPink }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 0, 0.5],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeOut",
-          }}
-        />
+          {/* 脉动环 */}
+          <motion.div
+            className="absolute inset-0 rounded-full border-2"
+            style={{ borderColor: brandColors.neonPink }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 0, 0.5],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeOut",
+            }}
+          />
 
-        {/* 徽章计数 */}
-        <AnimatePresence>
-          {count > 0 && (
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              className="absolute -top-1 -right-1 z-20 flex items-center justify-center"
-              style={{
-                minWidth: 22,
-                height: 22,
-                borderRadius: 11,
-                background: brandColors.neonPink,
-                color: "#fff",
-                fontSize: 12,
-                fontWeight: 700,
-                padding: "0 6px",
-                boxShadow: `0 2px 8px ${withAlpha(brandColors.neonPink, 0.5)}`,
-              }}
-            >
-              <motion.span
-                key={count}
-                initial={{ scale: 1.5 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 500, damping: 20 }}
+          {/* 徽章计数 */}
+          <AnimatePresence>
+            {count > 0 && (
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                className="absolute -top-1 -right-1 z-20 flex items-center justify-center"
+                style={{
+                  minWidth: 22,
+                  height: 22,
+                  borderRadius: 11,
+                  background: brandColors.neonPink,
+                  color: "#fff",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  padding: "0 6px",
+                  boxShadow: `0 2px 8px ${withAlpha(brandColors.neonPink, 0.5)}`,
+                }}
               >
-                {count}
-              </motion.span>
-            </motion.div>
+                <motion.span
+                  key={count}
+                  initial={{ scale: 1.5 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                >
+                  {count}
+                </motion.span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+
+        {/* 眼睛打开时的注意力引导动效 - 延伸线段引导视线到卡片 */}
+        <AnimatePresence>
+          {isOpen && !isMobile && !isScrolledDown && (
+            <GuideLine eyeRef={eyeRef} />
           )}
         </AnimatePresence>
-      </motion.button>
+      </div>
 
-      {/* 眼睛打开时的注意力引导动效 - 延伸线段引导视线到卡片 */}
+      {/* 滚动后收起的迷你图标 - 靠近左下角N图标位置 */}
       <AnimatePresence>
-        {isOpen && !isMobile && (
-          <GuideLine eyeRef={eyeRef} />
+        {isScrolledDown && !isMobile && (
+          <motion.button
+            className="fixed z-50 pointer-events-auto"
+            style={{
+              left: 56,
+              bottom: 20,
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            onClick={() => setIsOpen(!isOpen)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="好奇心捕获"
+          >
+            <div
+              className="relative w-10 h-10 rounded-full flex items-center justify-center"
+              style={{
+                background: isDark
+                  ? `linear-gradient(135deg, ${withAlpha(brandColors.neonCyan, 0.2)}, ${withAlpha(brandColors.violet, 0.15)})`
+                  : `linear-gradient(135deg, ${withAlpha(brandColors.blue, 0.15)}, ${withAlpha(brandColors.violet, 0.1)})`,
+                border: `1px solid ${isDark ? withAlpha(brandColors.neonCyan, 0.3) : withAlpha(brandColors.blue, 0.2)}`,
+                backdropFilter: "blur(8px)",
+                boxShadow: isDark
+                  ? `0 4px 12px ${withAlpha(brandColors.neonCyan, 0.2)}`
+                  : "0 4px 12px rgba(0,0,0,0.1)",
+              }}
+            >
+              <Eye
+                className="w-5 h-5"
+                style={{ color: isDark ? brandColors.neonCyan : brandColors.blue }}
+              />
+              {/* 迷你徽章 */}
+              {count > 0 && (
+                <div
+                  className="absolute -top-1 -right-1 flex items-center justify-center"
+                  style={{
+                    minWidth: 16,
+                    height: 16,
+                    borderRadius: 8,
+                    background: brandColors.neonPink,
+                    color: "#fff",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    boxShadow: `0 2px 6px ${withAlpha(brandColors.neonPink, 0.5)}`,
+                  }}
+                >
+                  {count}
+                </div>
+              )}
+            </div>
+            {/* 脉冲提示 */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{
+                border: `1px solid ${brandColors.neonCyan}`,
+              }}
+              animate={{
+                scale: [1, 1.5],
+                opacity: [0.5, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+            />
+          </motion.button>
         )}
       </AnimatePresence>
 
@@ -343,7 +433,7 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
           </div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 
