@@ -142,16 +142,14 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
           >
             {/* OPEN with Eye replacing O - 👁PEN */}
             <span
-              className="flex items-center justify-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter pointer-events-auto"
+              className="inline-flex items-baseline justify-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter pointer-events-auto"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
                 letterSpacing: '-0.03em'
               }}
             >
-              {/* 眼睛作为"O" - 内联模式 */}
-              <span className="relative inline-flex items-center" style={{ marginRight: '-0.02em' }}>
-                <CuriosityPopover isDark={isDark} isMobile={isMobile} inline={true} />
-              </span>
+              {/* 眼睛作为"O" - 与PEN文字对齐 */}
+              <CuriosityPopover isDark={isDark} isMobile={isMobile} inline={true} />
               {/* PEN 文字 */}
               <span
                 style={{
@@ -161,7 +159,6 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  textShadow: isDark ? `0 0 60px ${brandColors.neonCyan}40` : 'none',
                 }}
               >
                 PEN
