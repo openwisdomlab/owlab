@@ -99,13 +99,12 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
       {/* 主眼睛按钮 - 内联模式作为"O"或独立模式 */}
       <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
         {inline ? (
-          /* 内联模式：作为"OPEN"中的"O"，与文字融合 - 设计为一个神秘的眼睛字母O */
+          /* 内联模式：作为"OPEN"中的"O"，简洁优雅的眼睛设计 */
           <motion.button
             ref={eyeRef}
             onClick={() => setIsOpen(!isOpen)}
             className="relative cursor-pointer inline-block"
             style={{
-              // 匹配文字大小 - 响应式，略宽以匹配O的视觉宽度
               width: '0.85em',
               height: '1em',
               verticalAlign: 'baseline',
@@ -116,7 +115,7 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
             whileTap={{ scale: 0.98 }}
             aria-label="好奇心捕获"
           >
-            {/* 神秘眼睛O - 完全融入字体设计 */}
+            {/* 简洁的眼睛O设计 */}
             <svg
               viewBox="0 0 85 100"
               className="w-full h-full"
@@ -124,77 +123,59 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
               preserveAspectRatio="xMidYMid meet"
             >
               <defs>
-                {/* 主渐变 - 与PEN文字完全一致 */}
+                {/* 主渐变 - 与PEN文字一致 */}
                 <linearGradient id="eyeOGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor={isDark ? brandColors.neonCyan : brandColors.blue} />
                   <stop offset="30%" stopColor={brandColors.violet} />
                   <stop offset="60%" stopColor={brandColors.neonPink} />
                   <stop offset="100%" stopColor={isDark ? brandColors.blue : brandColors.violet} />
                 </linearGradient>
-                {/* 内部发光 */}
-                <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor={brandColors.violet} stopOpacity="0.6" />
-                  <stop offset="100%" stopColor={isDark ? brandColors.neonCyan : brandColors.blue} stopOpacity="0" />
-                </radialGradient>
-                {/* 瞳孔渐变 - 更神秘的深紫到青色 */}
-                <radialGradient id="irisGradient" cx="30%" cy="30%" r="70%">
+                {/* 虹膜渐变 */}
+                <radialGradient id="irisGradient" cx="35%" cy="35%" r="65%">
                   <stop offset="0%" stopColor={brandColors.neonCyan} />
-                  <stop offset="40%" stopColor={brandColors.violet} />
+                  <stop offset="50%" stopColor={brandColors.violet} />
                   <stop offset="100%" stopColor={brandColors.neonPink} />
                 </radialGradient>
-                {/* 柔和发光 */}
-                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
               </defs>
 
-              {/* 字母O的外轮廓 - 粗体风格匹配字体 */}
-              <motion.ellipse
-                cx="42.5" cy="50" rx="34" ry="42"
+              {/* 字母O外圈 - 粗体描边 */}
+              <ellipse
+                cx={42.5}
+                cy={50}
+                rx={34}
+                ry={42}
                 fill="none"
                 stroke="url(#eyeOGradient)"
-                strokeWidth="12"
-                filter={isDark ? "url(#softGlow)" : undefined}
+                strokeWidth={12}
               />
 
-              {/* 内部发光填充 */}
+              {/* 眼白区域 - 简单的杏仁形 */}
               <ellipse
-                cx="42.5" cy="50" rx="26" ry="34"
-                fill="url(#innerGlow)"
-                opacity="0.5"
-              />
-
-              {/* 横向眼睛形状 - 中央的杏仁眼 */}
-              <motion.path
-                d="M 12 50 Q 42.5 25, 73 50 Q 42.5 75, 12 50 Z"
-                fill={isDark ? "rgba(14, 14, 20, 0.9)" : "rgba(255, 255, 255, 0.95)"}
+                cx={42.5}
+                cy={50}
+                rx={22}
+                ry={14}
+                fill={isDark ? "rgba(20, 20, 30, 0.95)" : "rgba(255, 255, 255, 0.98)"}
                 stroke="url(#eyeOGradient)"
-                strokeWidth="2"
-                animate={{
-                  d: [
-                    "M 12 50 Q 42.5 25, 73 50 Q 42.5 75, 12 50 Z",
-                    "M 12 50 Q 42.5 30, 73 50 Q 42.5 70, 12 50 Z",
-                    "M 12 50 Q 42.5 25, 73 50 Q 42.5 75, 12 50 Z",
-                  ]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                strokeWidth={1.5}
               />
 
-              {/* 虹膜 */}
-              <motion.circle
-                cx="42.5" cy="50" r="14"
+              {/* 虹膜 - 简单圆形 */}
+              <circle
+                cx={42.5}
+                cy={50}
+                r={11}
                 fill="url(#irisGradient)"
-                animate={{
-                  r: [14, 15, 14],
-                }}
+              />
+
+              {/* 瞳孔 - 简单圆形 */}
+              <motion.circle
+                cx={42.5}
+                cy={50}
+                r={5}
+                fill={isDark ? "#0a0a12" : "#1a1a2e"}
+                initial={{ r: 5 }}
+                animate={{ r: [5, 4, 5] }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
@@ -202,44 +183,9 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
                 }}
               />
 
-              {/* 瞳孔 - 垂直椭圆更像猫/神秘眼 */}
-              <motion.ellipse
-                cx="42.5" cy="50" rx="4" ry="8"
-                fill={isDark ? "#0a0a12" : "#1a1a2e"}
-                animate={{
-                  ry: [8, 6, 8],
-                  rx: [4, 5, 4],
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-
-              {/* 高光点 - 让眼睛更有生命力 */}
-              <motion.circle
-                cx="36" cy="44" r="4"
-                fill="white"
-                opacity={0.9}
-                animate={{
-                  opacity: [0.7, 1, 0.7],
-                  r: [4, 4.5, 4],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
-              />
-              <circle cx="48" cy="54" r="2" fill="white" opacity={0.5} />
-
-              {/* 眼睛周围的神秘光芒 - hover时增强 */}
-              <motion.g
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <ellipse cx="42.5" cy="50" rx="28" ry="36" fill="none" stroke="url(#eyeOGradient)" strokeWidth="0.5" opacity="0.3" />
-              </motion.g>
+              {/* 高光点 - 单个简洁的高光 */}
+              <circle cx={38} cy={46} r={3} fill="white" opacity={0.85} />
+              <circle cx={46} cy={52} r={1.5} fill="white" opacity={0.4} />
             </svg>
 
             {/* 内联模式徽章 - 右上角小尺寸 */}
@@ -959,9 +905,10 @@ function GuideLine({ eyeRef }: GuideLineProps) {
             key={i}
             cx={point.x}
             cy={point.y}
-            r="3"
+            r={3}
             fill={brandColors.violet}
-            initial={{ scale: 0, opacity: 0 }}
+            opacity={0}
+            initial={{ scale: 0 }}
             animate={{ scale: 1, opacity: 0.6 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{
@@ -974,9 +921,10 @@ function GuideLine({ eyeRef }: GuideLineProps) {
 
         {/* 沿路径移动的光点效果 */}
         <motion.circle
-          r="4"
+          r={4}
           fill={brandColors.neonCyan}
           filter="url(#guideGlow)"
+          opacity={0}
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 0.8, 0] }}
           transition={{
@@ -998,9 +946,10 @@ function GuideLine({ eyeRef }: GuideLineProps) {
         <motion.circle
           cx={endPoint.x}
           cy={endPoint.y}
-          r="5"
+          r={5}
           fill={brandColors.neonPink}
-          initial={{ scale: 0, opacity: 0 }}
+          opacity={0}
+          initial={{ scale: 0 }}
           animate={{
             scale: [0, 1.1, 1],
             opacity: [0, 1, 0.8],
@@ -1020,11 +969,12 @@ function GuideLine({ eyeRef }: GuideLineProps) {
             key={i}
             cx={endPoint.x}
             cy={endPoint.y}
-            r="8"
+            r={8}
             fill="none"
             stroke={brandColors.neonPink}
-            strokeWidth="1"
-            initial={{ scale: 0.5, opacity: 0 }}
+            strokeWidth={1}
+            opacity={0}
+            initial={{ scale: 0.5 }}
             animate={{
               scale: [1, 2],
               opacity: [0.4, 0],
@@ -1042,8 +992,9 @@ function GuideLine({ eyeRef }: GuideLineProps) {
         <motion.path
           d={`M ${pathPoints[0].x - 4} ${pathPoints[0].y - 8} L ${pathPoints[0].x} ${pathPoints[0].y} L ${pathPoints[0].x + 4} ${pathPoints[0].y - 8}`}
           stroke={brandColors.neonCyan}
-          strokeWidth="1.5"
+          strokeWidth={1.5}
           fill="none"
+          opacity={0}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           exit={{ opacity: 0 }}
