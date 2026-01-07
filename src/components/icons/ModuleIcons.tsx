@@ -258,7 +258,7 @@ export const SpaceStationIcon = ({ className, color = "var(--neon-cyan)" }: Modu
   </svg>
 );
 
-// M04: 探索线 (Flight Route) - 星际航线图，代表课程路径
+// M04: 远航线 (Flight Route) - 星际航线图，代表课程路径
 export const FlightRouteIcon = ({ className, color = "var(--neon-green)" }: ModuleIconProps) => (
   <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
     {/* 星图背景网格 */}
@@ -634,7 +634,7 @@ export const SupplyStationIcon = ({ className, color = "var(--neon-blue)" }: Mod
   </svg>
 );
 
-// M09: 成长轨 (Star Track) - 轨道路径，代表成长轨迹
+// M09: 逐星轨 (Star Track) - 轨道路径，代表成长轨迹
 export const StarTrackIcon = ({ className, color = "var(--neon-teal)" }: ModuleIconProps) => (
   <svg viewBox="0 0 64 64" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
     {/* 中心恒星 */}
