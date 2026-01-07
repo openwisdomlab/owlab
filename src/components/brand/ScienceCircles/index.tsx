@@ -43,15 +43,6 @@ const COLOR_MAP: Record<string, string> = {
 // 减小圆圈尺寸，避免大泡沫效果
 const CIRCLE_SIZE_RANGE = { min: 18, max: 36 };
 
-const CURIOSITY_QUOTES = [
-  { text: "好奇心是一切智慧的开始", author: "苏格拉底" },
-  { text: "提出问题比解决问题更重要", author: "爱因斯坦" },
-  { text: "保持好奇，保持愚蠢", author: "乔布斯" },
-  { text: "问题是通往真理的门户", author: "培根" },
-  { text: "好奇心是科学之母", author: "伽利略" },
-];
-
-
 // 种子生长配置：降低自动展示频率，增加周期间隔
 const AUTO_REVEAL_CONFIG = {
   cycleInterval: 45000, // 45秒一个周期（更长间隔）
@@ -91,7 +82,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const circlesRef = useRef<CircleState[]>([]);
-  const hoverHistoryRef = useRef<number[]>([]);
   const dragRef = useRef<{ id: string; startX: number; startY: number; offsetX: number; offsetY: number } | null>(null);
 
   const [circles, setCircles] = useState<CircleState[]>([]);
@@ -100,8 +90,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const [draggingCircle, setDraggingCircle] = useState<string | null>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
-  const [showResonance, setShowResonance] = useState(false);
-  const [resonanceQuote, setResonanceQuote] = useState(CURIOSITY_QUOTES[0]);
   const [isPageVisible, setIsPageVisible] = useState(true);
   const [isNearEyeZone, setIsNearEyeZone] = useState(false); // 拖拽时是否接近眼睛区域
   const lastVisibleTimeRef = useRef<number>(0);
@@ -299,19 +287,10 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     dragRef.current = null;
   }, [heroCenter.x, heroCenter.y, heroRadius]);
 
-  // Curiosity Resonance - Easter Egg
+  // Handle circle hover
   const handleCircleHover = useCallback((circleId: string) => {
     setHoveredCircle(circleId);
-
-    const now = Date.now();
-    hoverHistoryRef.current = [...hoverHistoryRef.current.filter(t => now - t < 3000), now];
-
-    if (hoverHistoryRef.current.length >= 4 && !showResonance) {
-      setResonanceQuote(CURIOSITY_QUOTES[Math.floor(Math.random() * CURIOSITY_QUOTES.length)]);
-      setShowResonance(true);
-      setTimeout(() => setShowResonance(false), 4000);
-    }
-  }, [showResonance]);
+  }, []);
 
   // Animation loop
   useEffect(() => {
@@ -358,18 +337,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         });
       });
 
-      // Resonance effect
-      if (showResonance) {
-        currentCircles.forEach((c) => {
-          const color = COLOR_MAP[c.question.color];
-          ctx.beginPath();
-          ctx.arc(c.x, c.y, c.size * 0.8, 0, Math.PI * 2);
-          ctx.strokeStyle = withAlpha(color, 0.3);
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        });
-      }
-
       // 统计当前正在自动展示的圆圈数量
       const currentlyShowingCount = currentCircles.filter(
         c => c.autoRevealPhase === 'revealing' || c.autoRevealPhase === 'showing' || c.autoRevealPhase === 'fading'
@@ -388,11 +355,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
 
         // 增强移动性：只有悬停时才停止移动
         if (!isCurrentlyHovered && !isBeingDragged) {
-          if (showResonance) {
-            vx += random(-0.05, 0.05);
-            vy += random(-0.05, 0.05);
-          }
-
           // 更慢的速度衰减，保持更长时间的运动
           vx *= 0.9985;
           vy *= 0.9985;
@@ -508,7 +470,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [dimensions, hoveredCircle, clickedCircle, draggingCircle, isMobile, showResonance, heroCenter.x, heroCenter.y, heroRadius]);
+  }, [dimensions, hoveredCircle, clickedCircle, draggingCircle, isMobile, heroCenter.x, heroCenter.y, heroRadius]);
 
   // Spawn new circles periodically (slower)
   useEffect(() => {
@@ -585,6 +547,9 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     const rect = containerRef.current.getBoundingClientRect();
     const circle = circlesRef.current.find(c => c.id === circleId);
     if (!circle) return;
+
+    // 不允许拖拽已固定的圆圈
+    if (circle.isPinned) return;
 
     dragRef.current = {
       id: circleId,
@@ -724,63 +689,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           />
         ))}
       </AnimatePresence>
-
-      {/* Curiosity Resonance */}
-      <AnimatePresence>
-        {showResonance && (
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="absolute inset-0"
-              style={{
-                background: `radial-gradient(ellipse at center, ${withAlpha(brandColors.neonCyan, 0.1)}, ${withAlpha(brandColors.violet, 0.05)}, transparent 70%)`,
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-
-            <motion.div
-              className="relative px-8 py-6 rounded-2xl max-w-md mx-4"
-              style={{
-                background: isDark
-                  ? 'linear-gradient(135deg, rgba(14,14,20,0.95), rgba(26,26,46,0.9))'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95))',
-                backdropFilter: 'blur(20px)',
-                border: `1px solid ${withAlpha(brandColors.neonCyan, 0.3)}`,
-                boxShadow: `0 0 60px ${withAlpha(brandColors.neonCyan, 0.3)}, 0 0 120px ${withAlpha(brandColors.violet, 0.2)}`,
-              }}
-              initial={{ scale: 0.8, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.8, y: 20 }}
-            >
-              <motion.p
-                className="text-xl md:text-2xl font-bold text-center mb-3"
-                style={{
-                  backgroundImage: `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.violet}, ${brandColors.neonPink})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                &ldquo;{resonanceQuote.text}&rdquo;
-              </motion.p>
-              <p
-                className="text-sm text-center"
-                style={{ color: isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)' }}
-              >
-                — {resonanceQuote.author}
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
@@ -897,9 +805,14 @@ function QuestionCircle({
   const textPosition = getTextPosition();
   const baseOpacity = 0.7;
 
+  // 固定的圆圈不接受鼠标事件，避免干扰其他圆圈的拖拽
+  const pointerClass = circle.isPinned
+    ? 'absolute pointer-events-none'
+    : `absolute pointer-events-auto ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`;
+
   return (
     <motion.div
-      className={`absolute pointer-events-auto ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+      className={pointerClass}
       style={{
         left: circle.x,
         top: circle.y,
@@ -1017,6 +930,7 @@ function QuestionCircle({
         {circle.isPinned && !isDragging && (
           <PinnedQuestionTag
             question={circle.question.question}
+            explanation={circle.question.explanation}
             color={color}
             isDark={isDark}
             isMobile={isMobile}
@@ -1046,12 +960,13 @@ function QuestionCircle({
 // ============ Pinned Question Tag Component ============
 interface PinnedQuestionTagProps {
   question: string;
+  explanation: string;
   color: string;
   isDark: boolean;
   isMobile: boolean;
 }
 
-function PinnedQuestionTag({ question, color, isDark, isMobile }: PinnedQuestionTagProps) {
+function PinnedQuestionTag({ question, explanation, color, isDark, isMobile }: PinnedQuestionTagProps) {
   return (
     <motion.div
       className="absolute pointer-events-none"
@@ -1151,18 +1066,19 @@ function PinnedQuestionTag({ question, color, isDark, isMobile }: PinnedQuestion
           {question}
         </motion.p>
 
-        {/* 底部提示 */}
+        {/* 解读文本 */}
         <motion.p
-          className="text-xs mt-3 pt-2 border-t"
+          className="text-xs mt-3 pt-3 border-t leading-relaxed"
           style={{
-            color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)',
-            borderColor: withAlpha(brandColors.neonCyan, 0.2),
+            color: isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)',
+            borderColor: withAlpha(color, 0.25),
+            lineHeight: 1.7,
           }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35 }}
         >
-          ✨ 这个问题正在被深入探索...
+          {explanation}
         </motion.p>
 
         {/* 角落装饰点 */}
