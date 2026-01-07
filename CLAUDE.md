@@ -71,7 +71,14 @@ src/
 └── stores/               # Zustand stores
 
 docs/tasks/                       # Auto Claude task specs
-└── SPECS.md                      # Task list for Auto Claude
+├── SPECS.md                      # Active task list (001-NNN)
+└── COMPLETED.md                  # Completed task archive (C001-CNNN)
+
+### Task Management
+
+- **Active tasks** (SPECS.md): Sequential numbering 001-NNN, reset when reorganized
+- **Completed tasks** (COMPLETED.md): Prefix `C` + original number (C001, C002...)
+- **Workflow**: Task complete → Move details to COMPLETED.md → Keep summary in SPECS.md
 
 content/docs/zh/
 ├── core/                         # Core standards (核心标准)
