@@ -96,8 +96,9 @@ export const NetworkIcon = ({ className, color = "var(--neon-violet)" }: ModuleI
       stroke={color}
       strokeWidth="1"
       opacity="0.3"
-      animate={{ r: [24, 28, 24], opacity: [0.3, 0.1, 0.3] }}
-      transition={{ duration: 2, repeat: Infinity }}
+      animate={{ scale: [1, 1.17, 1], opacity: [0.3, 0.1, 0.3] }}
+      transition={{ duration: 2, repeat: Infinity, type: "tween" }}
+      style={{ transformOrigin: "32px 32px" }}
     />
   </svg>
 );
@@ -164,7 +165,7 @@ export const CompassIcon = ({ className, color = "var(--neon-green)" }: ModuleIc
     {/* 指南针指针 */}
     <motion.g
       animate={{ rotate: [-5, 5, -5] }}
-      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", type: "tween" }}
       style={{ transformOrigin: "32px 32px" }}
     >
       {/* 北指针 */}
@@ -187,7 +188,7 @@ export const ToolboxIcon = ({ className, color = "var(--neon-orange)" }: ModuleI
     {/* 箱盖 */}
     <motion.g
       animate={{ y: [0, -2, 0] }}
-      transition={{ duration: 2, repeat: Infinity }}
+      transition={{ duration: 2, repeat: Infinity, type: "tween" }}
     >
       <path
         d="M6 24 L32 10 L58 24 L6 24"
@@ -200,7 +201,7 @@ export const ToolboxIcon = ({ className, color = "var(--neon-orange)" }: ModuleI
     {/* 工具露出来 */}
     <motion.g
       animate={{ y: [0, -4, 0] }}
-      transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+      transition={{ duration: 2, repeat: Infinity, delay: 0.3, type: "tween" }}
     >
       {/* 扳手 */}
       <rect x="20" y="18" width="4" height="14" rx="1" fill={color} opacity="0.9" />
@@ -283,7 +284,7 @@ export const TorchIcon = ({ className, color = "var(--neon-pink)" }: ModuleIconP
     {/* 火焰 */}
     <motion.g
       animate={{ y: [-1, 1, -1], scale: [1, 1.05, 1] }}
-      transition={{ duration: 0.5, repeat: Infinity }}
+      transition={{ duration: 0.5, repeat: Infinity, type: "tween" }}
     >
       {/* 外层火焰 */}
       <path
@@ -354,7 +355,7 @@ export const LogbookIcon = ({ className, color = "var(--neon-blue)" }: ModuleIco
     {/* 飞机图标 */}
     <motion.g
       animate={{ x: [0, 2, 0], y: [0, -1, 0] }}
-      transition={{ duration: 1.5, repeat: Infinity }}
+      transition={{ duration: 1.5, repeat: Infinity, type: "tween" }}
     >
       <path
         d="M44 32 L48 28 L52 30 L48 32 L52 34 L48 32 L44 32"

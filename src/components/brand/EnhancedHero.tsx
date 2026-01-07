@@ -660,22 +660,22 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                     <motion.circle
                       cx="8" cy="12" r="1.5" fill="currentColor"
                       animate={{ y: [0, -5, 0], x: [0, 2, 0], opacity: [0.3, 0.8, 0.3] }}
-                      transition={{ duration: 3, repeat: Infinity }}
+                      transition={{ duration: 3, repeat: Infinity, type: "tween" }}
                     />
                     <motion.circle
                       cx="40" cy="14" r="1" fill="currentColor"
                       animate={{ y: [0, -4, 0], x: [0, -2, 0], opacity: [0.4, 0.9, 0.4] }}
-                      transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: 0.5, type: "tween" }}
                     />
                     <motion.circle
                       cx="10" cy="38" r="1.2" fill="currentColor"
                       animate={{ y: [0, -3, 0], opacity: [0.2, 0.7, 0.2] }}
-                      transition={{ duration: 2.8, repeat: Infinity, delay: 1 }}
+                      transition={{ duration: 2.8, repeat: Infinity, delay: 1, type: "tween" }}
                     />
                     <motion.circle
                       cx="38" cy="36" r="0.8" fill="currentColor"
                       animate={{ y: [0, -4, 0], opacity: [0.3, 0.8, 0.3] }}
-                      transition={{ duration: 3.2, repeat: Infinity, delay: 0.3 }}
+                      transition={{ duration: 3.2, repeat: Infinity, delay: 0.3, type: "tween" }}
                     />
                   </svg>
                 </div>
@@ -843,7 +843,8 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
+                type: "tween"
               }}
             >
               <div className="flex flex-col items-center gap-2">

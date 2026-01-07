@@ -2215,12 +2215,12 @@ export default function HomePage() {
               background: 'radial-gradient(circle, var(--neon-yellow)/5 0%, transparent 70%)',
             }}
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", type: "tween" }}
           />
           <motion.div
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[var(--neon-cyan)]/10"
             animate={{ scale: [1.1, 1, 1.1], rotate: [0, 180, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear", type: "tween" }}
           />
 
           {/* 漂浮的问号 */}
@@ -2241,6 +2241,7 @@ export default function HomePage() {
                 duration: 4 + i * 0.5,
                 repeat: Infinity,
                 delay: i * 0.8,
+                type: "tween",
               }}
             >
               ?
@@ -2313,7 +2314,7 @@ export default function HomePage() {
                     <motion.span
                       className="absolute -top-2 -right-3 text-base"
                       animate={{ rotate: [0, 15, 0], y: [0, -3, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                      transition={{ duration: 2, repeat: Infinity, type: "tween" }}
                     >
                       ?
                     </motion.span>
@@ -2364,7 +2365,7 @@ export default function HomePage() {
                   <span className="text-[var(--foreground)]">是太</span>
                   <motion.span
                     className="inline-block bg-gradient-to-r from-[var(--neon-orange)] to-[var(--neon-pink)] bg-clip-text text-transparent mx-1"
-                    whileHover={{ scale: 1.1, rotate: [-2, 2, -2] }}
+                    whileHover={{ scale: 1.1, rotate: 2 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
                     疯狂
