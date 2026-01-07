@@ -1,20 +1,31 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, ArrowRight, Sparkles, Eye } from "lucide-react";
+import { BookOpen, ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "@/components/ui/Link";
 import { brandColors } from "@/lib/brand/colors";
 import { useTheme } from "@/components/ui/ThemeProvider";
 import { ScienceCircles } from "./ScienceCircles";
+import { CuriosityPopover } from "./CuriosityPopover";
 
 interface EnhancedHeroProps {
   locale: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
 }
 
 export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -256,47 +267,14 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
           transition={{ duration: 1 }}
           className="text-center"
         >
-          {/* Curious Owl Eye Icon */}
+          {/* Curious Owl Eye Icon - Interactive Curiosity Capture */}
           <motion.div
             className="inline-flex items-center justify-center mb-8"
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            <motion.div
-              className="relative w-20 h-20"
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.8, 1, 0.8]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: `radial-gradient(circle, ${brandColors.blue}40, transparent)`,
-                  filter: 'blur(20px)'
-                }}
-              />
-              <Eye className="w-20 h-20 relative z-10" style={{ color: brandColors.neonCyan }} />
-              <motion.div
-                className="absolute inset-0 rounded-full border-2"
-                style={{ borderColor: brandColors.neonPink }}
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 0, 0.5]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeOut"
-                }}
-              />
-            </motion.div>
+            <CuriosityPopover isDark={isDark} isMobile={isMobile} />
           </motion.div>
 
           {/* "Open Wisdom Lab" Typography - Refined Size */}
