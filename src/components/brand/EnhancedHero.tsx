@@ -710,13 +710,13 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
         </motion.div>
       </div>
 
-      {/* Curiosity Capture - Fixed Left Position */}
+      {/* Curiosity Capture - Fixed Left Position (closer to edge, avoiding center content) */}
       {!isMobile && (
         <motion.div
           className="fixed z-50 pointer-events-none"
           style={{
-            left: 40,
-            top: '50%',
+            left: 16,
+            top: '35%',
             transform: 'translateY(-50%)',
           }}
           initial={{ opacity: 0, x: -50 }}
