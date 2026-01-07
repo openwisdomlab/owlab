@@ -469,7 +469,10 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
                 color: isDark ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.8)',
                 fontFamily: "'Source Han Serif CN', 'Noto Serif SC', 'STSong', serif",
                 letterSpacing: '0.01em',
-                lineHeight: '1.6'
+                lineHeight: '1.6',
+                borderLeft: 'none',
+                paddingLeft: 0,
+                background: 'transparent',
               }}
             >
               <span
