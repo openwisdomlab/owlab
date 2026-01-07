@@ -36,6 +36,7 @@
       },
       "cta": {
         "start": "开始探索",
+        "guide": "建设和运营指南",
         "architecture": "了解架构"
       }
     },
@@ -703,6 +704,57 @@
       "noMatching": "未找到匹配文档",
       "hint": "定位标题和摘要",
       "globalHint": "⌘K 深度搜索"
+    }
+  },
+  "explore": {
+    "badge": "开始探索",
+    "title": "探索 OWL 知识宇宙",
+    "description": "从理念到实践，从好奇到创造——发现适合你的学习路径",
+    "tagline": "万物皆可研究，人人参与研究，处处展开研究",
+    "actions": {
+      "guide": {
+        "title": "建设和运营指南",
+        "description": "九大核心模块，从理念到落地的完整指南",
+        "cta": "进入知识库"
+      },
+      "tools": {
+        "title": "AI 智能工具",
+        "description": "空间设计、规划向导等 AI 驱动的创造力工具",
+        "cta": "打开工具箱"
+      },
+      "research": {
+        "title": "前沿理念探索",
+        "description": "四大理念模块，追踪前沿研究进展",
+        "cta": "开始探索"
+      }
+    },
+    "philosophy": {
+      "badge": "理念层 Philosophy",
+      "title": "前沿理念模块",
+      "description": "AI 持续追踪的活文档系统，为创新实验室建设提供思想支撑",
+      "viewAll": "探索完整理念系统"
+    },
+    "core": {
+      "badge": "行动层 Action",
+      "title": "九大核心模块",
+      "description": "覆盖开放智慧实验室全生命周期的建设与运营指南",
+      "viewAll": "进入完整知识库"
+    },
+    "tools": {
+      "badge": "智能工具 AI Tools",
+      "title": "AI 智能创造力工坊",
+      "description": "从理念到实践的智能桥梁，让创建和管理开放智慧实验室更加高效",
+      "lab": {
+        "title": "OWL 创意工具箱",
+        "description": "空间设计器、智能规划向导、概念可视化等 AI 驱动的创造力工具",
+        "cta": "打开工具箱"
+      }
+    },
+    "cta": {
+      "title": "准备好开始你的 OWL 之旅了吗？",
+      "description": "从好奇出发，向创造进发。让我们一起点燃探索的火焰。",
+      "primary": "进入知识库",
+      "secondary": "探索 AI 工具"
     }
   }
 }
