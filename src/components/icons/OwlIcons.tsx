@@ -249,7 +249,7 @@ export const GrowthOwl = ({ className, color = "var(--neon-teal)" }: OwlIconProp
     {/* 飘落的羽毛 */}
     <motion.g
       animate={{ y: [0, 5, 0], x: [0, 2, 0], rotate: [0, 10, 0] }}
-      transition={{ duration: 3, repeat: Infinity }}
+      transition={{ duration: 3, repeat: Infinity, type: "tween" }}
     >
       <path
         d="M8 50 Q6 55, 10 58 Q8 55, 10 52 Q8 52, 8 50"

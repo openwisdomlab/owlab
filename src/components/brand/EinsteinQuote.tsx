@@ -99,6 +99,7 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
                 delay: particle.delay,
                 repeat: isActivated ? 0 : Infinity,
                 ease: "easeOut",
+                type: "tween",
               }}
             />
           ))}
@@ -425,7 +426,7 @@ function EinsteinSilhouette({ isDark }: { isDark: boolean }) {
           opacity: [0.4, 0.8, 0.4],
           y: [30, 25, 30]
         }}
-        transition={{ duration: 4, repeat: Infinity }}
+        transition={{ duration: 4, repeat: Infinity, type: "tween" }}
       >
         E=mc²
       </motion.text>

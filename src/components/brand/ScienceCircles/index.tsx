@@ -1232,7 +1232,7 @@ function QuestionCircle({
           fill={withAlpha(color, isDark ? 0.25 : 0.15)}
           stroke={color} strokeWidth="1.5"
           animate={{
-            r: isAutoRevealing ? 13 : 10,
+            scale: isAutoRevealing ? 1.083 : 0.833,
             opacity: isAutoRevealing ? 1 : 0.6,
           }}
           style={{ transformOrigin: "30px 30px" }}
@@ -1245,7 +1245,7 @@ function QuestionCircle({
             scale: isAutoRevealing ? [1, 1.5, 1] : [1, 1.2, 1],
             opacity: [0.7, 1, 0.7],
           }}
-          transition={{ duration: isAutoRevealing ? 1 : 2, repeat: Infinity }}
+          transition={{ duration: isAutoRevealing ? 1 : 2, repeat: Infinity, type: "tween" }}
         />
 
         {/* 自动展示时的脉动光环 */}
@@ -1255,7 +1255,7 @@ function QuestionCircle({
             fill="none" stroke={color} strokeWidth="2"
             opacity={0.6 * circle.autoRevealOpacity}
             animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.3, 0.6] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            transition={{ duration: 1.5, repeat: Infinity, type: "tween" }}
             style={{ transformOrigin: "30px 30px" }}
           />
         )}
@@ -1266,7 +1266,7 @@ function QuestionCircle({
             fill="none" stroke={brandColors.neonCyan}
             strokeWidth="2" opacity={0.8}
             animate={{ scale: [1, 1.1, 1], opacity: [0.8, 0.4, 0.8] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2, repeat: Infinity, type: "tween" }}
             style={{ transformOrigin: "30px 30px" }}
           />
         )}
