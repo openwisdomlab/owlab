@@ -2093,6 +2093,11 @@ export default function HomePage() {
             <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
               「夜视者」—— 在深夜星空中洞察光明，于未知领域激发创意
             </p>
+            <p className="text-[var(--muted-foreground)] text-sm max-w-3xl mx-auto mt-4 leading-relaxed">
+              融合霓虹粉与深邃蓝的双色体系，以几何晶格、能量粒子流、混合符号三大视觉基因，
+              构建沉稳而富有创意的品牌语言。猫头鹰五种状态——凝视、灵光、连接、飞翔、分享——
+              完整呈现从好奇到创造的学习旅程。
+            </p>
           </motion.div>
 
           <motion.div
