@@ -41,6 +41,7 @@ import Script from "next/script";
 import { ModuleCards } from "@/features/doc-viewer/ModuleCards";
 import { LearningSpaceTagline } from "@/components/ui/LearningSpaceTagline";
 import { EnhancedHero } from "@/components/brand/EnhancedHero";
+import { ThinkingZone } from "@/components/brand/ThinkingZone";
 import { useState } from "react";
 
 const containerVariants = {
@@ -166,6 +167,9 @@ export default function HomePage() {
 
       {/* Hero Section - Enhanced OWL Visual Identity */}
       <EnhancedHero locale={locale} t={t} />
+
+      {/* Thinking Zone - 好奇心捕获专属思考区 */}
+      <ThinkingZone />
 
       {/* 前沿理念模块 Section - 独立展示 */}
       <section className="py-14 px-4 border-y border-[var(--glass-border)] bg-[var(--glass-bg)]/30">
