@@ -710,10 +710,10 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
         </motion.div>
       </div>
 
-      {/* Curiosity Capture - Fixed Center Position (above OPEN WISDOM LAB title) */}
+      {/* Curiosity Capture - Absolute position above OPEN WISDOM LAB title (scrolls with page) */}
       {!isMobile && (
         <motion.div
-          className="fixed z-50 pointer-events-none"
+          className="absolute z-50 pointer-events-none"
           style={{
             left: '50%',
             top: '12%',
