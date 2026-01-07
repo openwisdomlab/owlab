@@ -9,27 +9,24 @@ interface EinsteinQuoteProps {
   locale?: string;
 }
 
-// Interactive E=MC² Formula Component
+// Interactive E=MC² Formula Component with enhanced physics-inspired animations
 function InteractiveFormula({ isDark }: { isDark: boolean }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isActivated, setIsActivated] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
 
   const primaryColor = isDark ? brandColors.neonCyan : brandColors.blue;
   const accentColor = isDark ? brandColors.neonPink : brandColors.violet;
   const energyColor = isDark ? brandColors.violet : brandColors.neonPink;
 
   const handleClick = useCallback(() => {
+    setClickCount(prev => prev + 1);
     setIsActivated(true);
-    setTimeout(() => setIsActivated(false), 1500);
+    setTimeout(() => setIsActivated(false), 1200);
   }, []);
 
-  // Generate particle positions
-  const particles = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    angle: (i * 30) * (Math.PI / 180),
-    delay: i * 0.1,
-    size: 2 + Math.random() * 3,
-  }));
+  // Energy wave ripples on click
+  const ripples = Array.from({ length: 3 }, (_, i) => i);
 
   return (
     <motion.div
@@ -37,212 +34,183 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onClick={handleClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
-      {/* Outer glow ring */}
+      {/* Persistent subtle pulse - the formula is "alive" */}
       <motion.div
-        className="absolute inset-0 rounded-2xl"
+        className="absolute inset-0 rounded-xl"
         style={{
-          background: `radial-gradient(circle, ${energyColor}30 0%, transparent 70%)`,
-          filter: 'blur(20px)',
-          transform: 'scale(1.5)',
+          background: `radial-gradient(circle, ${primaryColor}15 0%, transparent 70%)`,
+          filter: 'blur(8px)',
         }}
         animate={{
-          opacity: isHovered ? 0.8 : 0.3,
-          scale: isActivated ? [1.5, 2, 1.5] : 1.5,
+          scale: [1, 1.15, 1],
+          opacity: [0.3, 0.5, 0.3],
         }}
-        transition={{ duration: isActivated ? 0.5 : 0.3 }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
       />
 
       {/* Formula container */}
       <div
-        className="relative px-3 py-2 md:px-4 md:py-2.5 rounded-xl backdrop-blur-xl"
+        className="relative px-2.5 py-1.5 md:px-3 md:py-2 rounded-lg"
         style={{
           background: isDark
-            ? 'rgba(14, 14, 20, 0.6)'
-            : 'rgba(255, 255, 255, 0.7)',
-          border: `2px solid ${isHovered ? energyColor : primaryColor}40`,
+            ? 'rgba(14, 14, 20, 0.7)'
+            : 'rgba(255, 255, 255, 0.8)',
+          border: `1.5px solid ${isHovered ? energyColor : primaryColor}50`,
           boxShadow: isHovered
-            ? `0 0 40px ${energyColor}40, inset 0 0 30px ${energyColor}10`
-            : `0 0 20px ${primaryColor}20`,
+            ? `0 0 20px ${energyColor}30`
+            : `0 0 10px ${primaryColor}15`,
           transition: 'border-color 0.3s, box-shadow 0.3s',
         }}
       >
-        {/* Energy particles around formula */}
-        <AnimatePresence>
-          {(isHovered || isActivated) && particles.map((particle) => (
-            <motion.div
-              key={particle.id}
-              className="absolute rounded-full"
-              style={{
-                width: particle.size,
-                height: particle.size,
-                background: particle.id % 2 === 0 ? primaryColor : accentColor,
-                boxShadow: `0 0 ${particle.size * 2}px ${particle.id % 2 === 0 ? primaryColor : accentColor}`,
-              }}
-              initial={{
-                opacity: 0,
-                x: '50%',
-                y: '50%',
-                scale: 0,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                x: `calc(50% + ${Math.cos(particle.angle) * (isActivated ? 100 : 60)}px)`,
-                y: `calc(50% + ${Math.sin(particle.angle) * (isActivated ? 100 : 60)}px)`,
-                scale: [0, 1.5, 0],
-              }}
-              exit={{ opacity: 0, scale: 0 }}
-              transition={{
-                duration: isActivated ? 1 : 2,
-                delay: particle.delay,
-                repeat: isActivated ? 0 : Infinity,
-                ease: "easeOut",
-                type: "tween",
-              }}
-            />
-          ))}
-        </AnimatePresence>
-
-        {/* The formula itself */}
-        <div className="relative flex items-baseline gap-0.5 md:gap-1">
-          {/* E */}
+        {/* The formula */}
+        <div className="relative flex items-baseline">
+          {/* E - Energy */}
           <motion.span
-            className="text-xl md:text-2xl lg:text-3xl font-bold italic"
+            className="text-base md:text-lg lg:text-xl font-bold italic"
             style={{
               fontFamily: "'Times New Roman', 'Georgia', serif",
               color: primaryColor,
-              textShadow: isHovered ? `0 0 20px ${primaryColor}80` : 'none',
             }}
             animate={{
-              scale: isActivated ? [1, 1.2, 1] : 1,
-              color: isActivated ? [primaryColor, energyColor, primaryColor] : primaryColor,
+              textShadow: isHovered
+                ? `0 0 12px ${primaryColor}`
+                : isActivated
+                  ? [`0 0 0px ${primaryColor}`, `0 0 25px ${primaryColor}`, `0 0 8px ${primaryColor}`]
+                  : `0 0 4px ${primaryColor}60`,
+              scale: isActivated ? [1, 1.15, 1] : 1,
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
           >
             E
           </motion.span>
 
-          {/* = with energy flow effect */}
+          {/* = with energy transfer animation */}
           <motion.span
-            className="text-lg md:text-xl lg:text-2xl font-bold mx-0.5 md:mx-1 relative"
+            className="text-sm md:text-base lg:text-lg font-bold mx-0.5 relative overflow-hidden"
             style={{
-              color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)',
+              color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
+              width: '12px',
+              textAlign: 'center',
             }}
           >
             <span className="relative z-10">=</span>
-            {/* Energy flow through equals sign */}
+            {/* Energy flow line */}
             <motion.div
-              className="absolute inset-0 flex items-center justify-center overflow-hidden"
-              style={{ opacity: isHovered ? 1 : 0 }}
-            >
-              <motion.div
-                className="w-full h-1 rounded-full"
-                style={{
-                  background: `linear-gradient(90deg, transparent, ${energyColor}, transparent)`,
-                }}
-                animate={{
-                  x: ['-100%', '100%'],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-            </motion.div>
+              className="absolute top-1/2 left-0 w-full h-0.5 -translate-y-1/2"
+              style={{
+                background: `linear-gradient(90deg, transparent, ${energyColor}, transparent)`,
+              }}
+              animate={{
+                x: isHovered || isActivated ? ['-100%', '100%'] : '-100%',
+                opacity: isHovered || isActivated ? 1 : 0,
+              }}
+              transition={{
+                x: { duration: 0.6, repeat: isHovered ? Infinity : 0, ease: "linear" },
+                opacity: { duration: 0.2 },
+              }}
+            />
           </motion.span>
 
-          {/* M */}
+          {/* M - Mass */}
           <motion.span
-            className="text-xl md:text-2xl lg:text-3xl font-bold italic"
+            className="text-base md:text-lg lg:text-xl font-bold italic"
             style={{
               fontFamily: "'Times New Roman', 'Georgia', serif",
               color: accentColor,
-              textShadow: isHovered ? `0 0 20px ${accentColor}80` : 'none',
             }}
             animate={{
-              scale: isActivated ? [1, 1.15, 1] : 1,
+              textShadow: isHovered
+                ? `0 0 12px ${accentColor}`
+                : isActivated
+                  ? [`0 0 0px ${accentColor}`, `0 0 25px ${accentColor}`, `0 0 8px ${accentColor}`]
+                  : `0 0 4px ${accentColor}60`,
+              scale: isActivated ? [1, 1.1, 1] : 1,
             }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.4, delay: isActivated ? 0.1 : 0 }}
           >
             M
           </motion.span>
 
-          {/* C with superscript 2 */}
+          {/* C² - Speed of light squared */}
           <motion.span
-            className="text-xl md:text-2xl lg:text-3xl font-bold italic relative"
+            className="text-base md:text-lg lg:text-xl font-bold italic relative"
             style={{
               fontFamily: "'Times New Roman', 'Georgia', serif",
               color: energyColor,
-              textShadow: isHovered ? `0 0 20px ${energyColor}80` : 'none',
             }}
             animate={{
+              textShadow: isHovered
+                ? `0 0 12px ${energyColor}`
+                : isActivated
+                  ? [`0 0 0px ${energyColor}`, `0 0 30px ${energyColor}`, `0 0 10px ${energyColor}`]
+                  : `0 0 4px ${energyColor}60`,
               scale: isActivated ? [1, 1.2, 1] : 1,
             }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: isActivated ? 0.2 : 0 }}
           >
             C
-            {/* Superscript 2 with special animation */}
+            {/* Superscript 2 */}
             <motion.sup
-              className="absolute -top-0.5 md:-top-1 -right-1.5 md:-right-2 text-xs md:text-sm lg:text-base"
+              className="absolute -top-0.5 -right-2 text-[10px] md:text-xs font-bold"
               style={{
                 color: primaryColor,
                 fontStyle: 'normal',
               }}
               animate={{
-                scale: isHovered ? [1, 1.3, 1] : 1,
                 rotate: isActivated ? [0, 360] : 0,
-                color: isActivated
-                  ? [primaryColor, energyColor, accentColor, primaryColor]
-                  : primaryColor,
+                scale: isHovered ? [1, 1.2, 1] : 1,
               }}
               transition={{
-                scale: { duration: 1.5, repeat: Infinity },
-                rotate: { duration: 0.5 },
-                color: { duration: 1.5 },
+                rotate: { duration: 0.5, ease: "easeOut" },
+                scale: { duration: 1, repeat: isHovered ? Infinity : 0 },
               }}
             >
               2
             </motion.sup>
           </motion.span>
         </div>
-
-        {/* Light speed indicator */}
-        <motion.div
-          className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap"
-          style={{
-            fontSize: '10px',
-            color: isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.3)',
-            fontFamily: 'monospace',
-          }}
-          animate={{
-            opacity: isHovered ? 1 : 0,
-            y: isHovered ? 0 : 5,
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          c = 299,792,458 m/s
-        </motion.div>
       </div>
 
-      {/* Activation burst effect */}
+      {/* Click ripple effects - energy release waves */}
       <AnimatePresence>
-        {isActivated && (
+        {isActivated && ripples.map((i) => (
           <motion.div
-            className="absolute inset-0 rounded-2xl pointer-events-none"
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: [0, 0.8, 0], scale: [1, 2.5, 3] }}
+            key={`${clickCount}-${i}`}
+            className="absolute inset-0 rounded-lg pointer-events-none"
+            initial={{ opacity: 0.6, scale: 1 }}
+            animate={{ opacity: 0, scale: 2 + i * 0.5 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8, delay: i * 0.15, ease: "easeOut" }}
             style={{
-              border: `2px solid ${energyColor}`,
-              boxShadow: `0 0 30px ${energyColor}`,
+              border: `1px solid ${i === 0 ? energyColor : i === 1 ? accentColor : primaryColor}`,
             }}
           />
-        )}
+        ))}
       </AnimatePresence>
+
+      {/* Hover tooltip - light speed */}
+      <motion.div
+        className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none"
+        style={{
+          fontSize: '9px',
+          color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)',
+          fontFamily: 'monospace',
+        }}
+        animate={{
+          opacity: isHovered ? 1 : 0,
+          y: isHovered ? 0 : 3,
+        }}
+        transition={{ duration: 0.2 }}
+      >
+        c = 299,792,458 m/s
+      </motion.div>
     </motion.div>
   );
 }
@@ -442,7 +410,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
   const author = "阿尔伯特·爱因斯坦";
 
   return (
-    <section className="relative py-3 md:py-4 px-4 overflow-hidden">
+    <section className="relative py-2 md:py-2.5 px-4 overflow-hidden">
       {/* Background gradient */}
       <div
         className="absolute inset-0"
@@ -454,10 +422,10 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
       />
 
       <div className="relative max-w-4xl mx-auto">
-        <div className="flex flex-row items-center gap-3 md:gap-4">
+        <div className="flex flex-row items-center gap-2 md:gap-3">
           {/* Einstein portrait + Formula - Left side (compact) */}
           <motion.div
-            className="flex flex-col items-center gap-1 flex-shrink-0"
+            className="flex flex-col items-center gap-0.5 flex-shrink-0"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -465,7 +433,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
           >
             {/* Einstein Portrait - smaller */}
             <motion.div
-              className="relative w-14 h-14 md:w-16 md:h-16"
+              className="relative w-12 h-12 md:w-14 md:h-14"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -482,13 +450,12 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
 
           {/* Quote content - Right side with boundary */}
           <motion.div
-            className="flex-1 rounded-lg px-3 py-2 md:px-4 md:py-2.5"
+            className="flex-1 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2"
             style={{
               background: isDark
                 ? 'rgba(255, 255, 255, 0.03)'
                 : 'rgba(0, 0, 0, 0.02)',
               border: `1px solid ${isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'}`,
-              borderLeft: `3px solid ${isDark ? brandColors.violet : brandColors.blue}`,
             }}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
