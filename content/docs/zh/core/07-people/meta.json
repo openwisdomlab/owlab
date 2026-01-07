@@ -1,6 +1,6 @@
 {
-  "title": "M07 人员与能力",
-  "description": "培养点燃学习者的人",
-  "icon": "Users",
+  "title": "M07 领航员",
+  "description": "指引而非替代的人",
+  "icon": "Compass",
   "pages": ["index", "...extend", "...cases", "...evidence"]
 }

@@ -1,6 +1,6 @@
 {
-  "title": "M03 空间与环境",
-  "description": "创新友好的学习环境",
-  "icon": "Building2",
+  "title": "M03 空间站",
+  "description": "探险者的创造基地",
+  "icon": "Satellite",
   "pages": ["index", "...extend", "...cases", "...evidence"]
 }

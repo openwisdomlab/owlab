@@ -1,6 +1,6 @@
 {
-  "title": "M09 成长与影响力",
-  "description": "看见成长证明价值",
-  "icon": "BarChart3",
+  "title": "M09 星轨",
+  "description": "成长的轨迹记录",
+  "icon": "Orbit",
   "pages": ["index", "...extend", "...evidence"]
 }
