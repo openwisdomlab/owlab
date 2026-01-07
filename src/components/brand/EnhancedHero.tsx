@@ -710,14 +710,14 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
         </motion.div>
       </div>
 
-      {/* Curiosity Capture - Absolute position above OPEN WISDOM LAB title (scrolls with page) */}
+      {/* Curiosity Capture - Positioned to align with OPEN/WISDOM title center */}
       {!isMobile && (
         <motion.div
           className="absolute z-50 pointer-events-none"
           style={{
             left: '50%',
-            top: '12%',
-            transform: 'translateX(-50%)',
+            top: '26%',
+            transform: 'translateX(calc(-50% + 280px))',
           }}
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
