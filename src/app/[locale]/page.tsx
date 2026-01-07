@@ -2025,7 +2025,7 @@ export default function HomePage() {
       </section>
 
       {/* Philosophy Quote Section - 没有问题是太愚蠢的 */}
-      <section className="py-10 md:py-12 px-4 relative overflow-hidden">
+      <section className="py-6 md:py-8 px-4 relative overflow-hidden">
         {/* 背景装饰 - 问号和灯泡漂浮 */}
         <div className="absolute inset-0 pointer-events-none">
           {/* 扩散圆环 */}
@@ -2101,21 +2101,21 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* 主标语 - 交互式设计 */}
+            {/* 主标语 - 交互式设计（合并为一行） */}
             <motion.div
               className="relative inline-block"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
-              {/* 第一句 */}
               <motion.h2
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 leading-relaxed"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
+                {/* 第一句 */}
                 <motion.span
                   className="inline-block"
                   whileHover={{ scale: 1.05 }}
@@ -2123,7 +2123,7 @@ export default function HomePage() {
                 >
                   <span className="text-[var(--foreground)]">没有</span>
                   <motion.span
-                    className="relative inline-block mx-1"
+                    className="relative inline-block mx-0.5"
                     whileHover={{
                       textShadow: "0 0 20px var(--neon-yellow)",
                     }}
@@ -2132,7 +2132,7 @@ export default function HomePage() {
                       问题
                     </span>
                     <motion.span
-                      className="absolute -top-1 -right-2 text-xs"
+                      className="absolute -top-0.5 -right-1.5 text-[10px]"
                       animate={{ rotate: [0, 15, 0], y: [0, -2, 0] }}
                       transition={{ duration: 2, repeat: Infinity, type: "tween" }}
                     >
@@ -2141,7 +2141,7 @@ export default function HomePage() {
                   </motion.span>
                   <span className="text-[var(--foreground)]">是太</span>
                   <motion.span
-                    className="inline-block bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] bg-clip-text text-transparent mx-1"
+                    className="inline-block bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] bg-clip-text text-transparent mx-0.5"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
@@ -2149,16 +2149,11 @@ export default function HomePage() {
                   </motion.span>
                   <span className="text-[var(--foreground)]">的</span>
                 </motion.span>
-              </motion.h2>
 
-              {/* 第二句 */}
-              <motion.h2
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              >
+                {/* 分隔符 */}
+                <span className="mx-2 md:mx-3 text-[var(--foreground)]/40">·</span>
+
+                {/* 第二句 */}
                 <motion.span
                   className="inline-block"
                   whileHover={{ scale: 1.05 }}
@@ -2166,7 +2161,7 @@ export default function HomePage() {
                 >
                   <span className="text-[var(--foreground)]">没有</span>
                   <motion.span
-                    className="relative inline-block mx-1"
+                    className="relative inline-block mx-0.5"
                     whileHover={{
                       textShadow: "0 0 20px var(--neon-pink)",
                     }}
@@ -2175,7 +2170,7 @@ export default function HomePage() {
                       想法
                     </span>
                     <motion.span
-                      className="absolute -top-1 -right-2 text-xs"
+                      className="absolute -top-0.5 -right-1.5 text-[10px]"
                       animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
@@ -2184,7 +2179,7 @@ export default function HomePage() {
                   </motion.span>
                   <span className="text-[var(--foreground)]">是太</span>
                   <motion.span
-                    className="inline-block bg-gradient-to-r from-[var(--neon-orange)] to-[var(--neon-pink)] bg-clip-text text-transparent mx-1"
+                    className="inline-block bg-gradient-to-r from-[var(--neon-orange)] to-[var(--neon-pink)] bg-clip-text text-transparent mx-0.5"
                     whileHover={{ scale: 1.1, rotate: 2 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
@@ -2197,7 +2192,7 @@ export default function HomePage() {
 
             {/* 互动提示区域 */}
             <motion.div
-              className="mt-6 md:mt-8 flex flex-wrap justify-center gap-2 md:gap-3"
+              className="mt-4 md:mt-5 flex flex-wrap justify-center gap-2 md:gap-3"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
