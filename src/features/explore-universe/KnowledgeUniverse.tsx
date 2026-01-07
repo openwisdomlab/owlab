@@ -1,14 +1,25 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { useTranslations } from "next-intl";
 import {
   Rocket, Compass, Target, Wrench, Shield,
   GraduationCap, BookOpen, BarChart3, Layers,
-  ArrowLeft, ExternalLink, Sparkles, Settings
+  ArrowLeft, ExternalLink, Sparkles, Settings,
+  AlertTriangle
 } from "lucide-react";
+
+// Deterministic PRNG for consistent particles across renders
+function mulberry32(seed: number) {
+  return function () {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
 import { brandColors, withAlpha } from "@/lib/brand/colors";
 import { SpaceIcon, MindIcon, EmergenceIcon, PoeticsIcon } from "@/components/icons/LivingModuleIcons";
 import { ConnectionsLayer } from "./ConnectionLine";
@@ -66,13 +77,47 @@ export default function KnowledgeUniverse({ locale }: Props) {
   const t = useTranslations("explore");
   const tDocs = useTranslations("docs.knowledgeBase");
   const tLiving = useTranslations("home.livingModules");
+  const reduceMotion = useReducedMotion();
 
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [normalizedMouse, setNormalizedMouse] = useState({ x: 0, y: 0 }); // -0.5..0.5
   const [signalRings, setSignalRings] = useState<{ x: number; y: number; id: number; color: string }[]>([]);
   const [showRecommendations, setShowRecommendations] = useState(true);
   const [svgDimensions, setSvgDimensions] = useState({ width: 1200, height: 800 });
+  const [viewport, setViewport] = useState({ w: 1200, h: 800 });
+  const [alertOn, setAlertOn] = useState(false);
+
+  // Generate dust particles with depth
+  const dustParticles = useMemo(() => {
+    const rnd = mulberry32(1337);
+    return Array.from({ length: 24 }, () => {
+      const z = rnd(); // depth 0..1
+      return {
+        top: rnd() * 100,
+        left: rnd() * 100,
+        z,
+        size: 1 + z * 3,
+        opacity: 0.03 + z * 0.08,
+        blur: z > 0.7 ? "blur-sm" : z > 0.4 ? "blur-[1px]" : "",
+        drift: 6 + z * 14,
+        dur: 10 + rnd() * 12,
+        delay: rnd() * 4,
+      };
+    });
+  }, []);
+
+  // Parallax amounts based on mouse position
+  const deepParallax = useMemo(() => ({
+    x: reduceMotion ? 0 : normalizedMouse.x * -20,
+    y: reduceMotion ? 0 : normalizedMouse.y * -20,
+  }), [normalizedMouse, reduceMotion]);
+
+  const midParallax = useMemo(() => ({
+    x: reduceMotion ? 0 : normalizedMouse.x * -10,
+    y: reduceMotion ? 0 : normalizedMouse.y * -10,
+  }), [normalizedMouse, reduceMotion]);
 
   // Compute active system (L module) based on selection or hover
   const activeSystem = useMemo(() => {
@@ -151,16 +196,38 @@ export default function KnowledgeUniverse({ locale }: Props) {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  // Mouse parallax
+  // Mouse parallax and viewport tracking
   useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 15,
-        y: (e.clientY / window.innerHeight - 0.5) * 15,
-      });
+    const updateViewport = () => {
+      setViewport({ w: window.innerWidth || 1, h: window.innerHeight || 1 });
     };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
+    updateViewport();
+
+    const handleMouse = (e: MouseEvent) => {
+      const w = window.innerWidth || 1;
+      const h = window.innerHeight || 1;
+      // Normalized -0.5 to 0.5
+      const nx = e.clientX / w - 0.5;
+      const ny = e.clientY / h - 0.5;
+      setNormalizedMouse({ x: nx, y: ny });
+      setMousePos({ x: nx * 15, y: ny * 15 });
+    };
+
+    window.addEventListener("mousemove", handleMouse, { passive: true });
+    window.addEventListener("resize", updateViewport);
+    return () => {
+      window.removeEventListener("mousemove", handleMouse);
+      window.removeEventListener("resize", updateViewport);
+    };
+  }, []);
+
+  // Alert flash timer (occasional)
+  useEffect(() => {
+    const alertInterval = setInterval(() => {
+      setAlertOn(true);
+      setTimeout(() => setAlertOn(false), 800);
+    }, 15000); // Flash every 15 seconds
+    return () => clearInterval(alertInterval);
   }, []);
 
   // Keyboard navigation
@@ -353,34 +420,105 @@ export default function KnowledgeUniverse({ locale }: Props) {
       : mModuleColors[selectedModule]?.colorRgb || "255, 255, 255",
   } : null;
 
+  // Camera drift animation
+  const cameraAnim = reduceMotion
+    ? { x: 0, y: 0, rotateZ: 0 }
+    : {
+        x: [0, 1, -0.6, 0.4, 0],
+        y: [0, -0.7, 0.8, -0.3, 0],
+        rotateZ: [0, 0.1, -0.08, 0.05, 0],
+      };
+
   return (
-    <div className="min-h-screen bg-[#020617] text-white overflow-hidden relative">
-      {/* Nebula canvas */}
-      <canvas
-        ref={nebulaRef}
-        className="absolute inset-0 z-0 opacity-70 blur-[80px] mix-blend-screen"
-      />
+    <div className="min-h-screen bg-[#020617] text-white overflow-hidden relative cursor-none">
+      {/* Camera rig with subtle drift */}
+      <motion.div
+        className="absolute inset-0"
+        animate={cameraAnim}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {/* Layer 1: Deep space (strongest parallax) */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{ x: deepParallax.x, y: deepParallax.y, scale: 1.04 }}
+          transition={{ type: "tween", duration: 0.1 }}
+        >
+          {/* Nebula canvas */}
+          <canvas
+            ref={nebulaRef}
+            className="absolute inset-0 z-0 opacity-70 blur-[80px] mix-blend-screen"
+          />
 
-      {/* Star field canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-0" />
+          {/* Star field canvas */}
+          <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
-      {/* Blueprint grid overlay */}
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 217, 255, 0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-        }}
-      />
+          {/* Nebula blobs */}
+          <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl mix-blend-screen" />
+          <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-purple-500/8 blur-3xl mix-blend-screen" />
+        </motion.div>
 
-      {/* Vignette */}
-      <div
-        className="fixed inset-0 z-10 pointer-events-none"
-        style={{ boxShadow: "inset 0 0 200px 60px rgba(2, 6, 23, 0.85)" }}
-      />
+        {/* Layer 2: Mid space - Planet limb */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          animate={{ x: midParallax.x, y: midParallax.y }}
+          transition={{ type: "tween", duration: 0.1 }}
+        >
+          <div className="absolute -bottom-1/3 -left-1/4 h-2/3 w-[140%] opacity-30">
+            <div className="h-full w-full rounded-[100%] bg-gradient-to-t from-cyan-900/50 via-slate-950 to-transparent border-t border-cyan-500/20" />
+          </div>
+        </motion.div>
+
+        {/* Blueprint grid overlay */}
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 217, 255, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: "50px 50px",
+          }}
+        />
+
+        {/* Cockpit frame vignette */}
+        <div
+          className="fixed inset-0 z-10 pointer-events-none"
+          style={{ boxShadow: "inset 0 0 200px 80px rgba(2, 6, 23, 0.9)" }}
+        />
+
+        {/* Glass glare effects */}
+        <div className="pointer-events-none absolute inset-0 z-[11]">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-40" />
+          <div className="absolute -left-1/4 top-0 h-full w-1/2 rotate-12 bg-white/3 blur-2xl opacity-30" />
+        </div>
+
+        {/* Dust motes with depth */}
+        <div className="pointer-events-none absolute inset-0 z-[12]">
+          {dustParticles.map((p, i) => (
+            <motion.div
+              key={i}
+              className={`absolute rounded-full bg-white ${p.blur}`}
+              style={{
+                top: `${p.top}%`,
+                left: `${p.left}%`,
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                opacity: p.opacity,
+              }}
+              animate={
+                reduceMotion
+                  ? { x: 0, y: 0 }
+                  : { x: [0, p.drift, 0], y: [0, -p.drift * 0.6, 0] }
+              }
+              transition={{
+                duration: p.dur,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: p.delay,
+              }}
+            />
+          ))}
+        </div>
 
       {/* Station Frame (cabin walls) */}
       <StationFrame
@@ -895,6 +1033,53 @@ export default function KnowledgeUniverse({ locale }: Props) {
         <span className="hidden md:inline">
           {t("universe.nav.hint")}
         </span>
+      </motion.div>
+
+      {/* Post FX: Scanlines overlay */}
+      <div className="pointer-events-none fixed inset-0 z-[100] opacity-15 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_3px]" />
+
+      {/* Subtle noise texture */}
+      <div className="pointer-events-none fixed inset-0 z-[101] opacity-[0.04] bg-[radial-gradient(circle,white_1px,transparent_1px)] bg-[length:3px_3px]" />
+
+      {/* Alert flash */}
+      <AnimatePresence>
+        {alertOn && !reduceMotion && (
+          <motion.div
+            className="pointer-events-none fixed inset-0 z-[102] bg-red-500/5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="absolute left-6 top-20 flex items-center gap-2 text-red-400/80 text-xs font-mono">
+              <AlertTriangle className="h-4 w-4" />
+              {locale === "zh" ? "传感器检测到异常" : "SENSOR ANOMALY DETECTED"}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Custom sci-fi cursor */}
+      <div className="pointer-events-none fixed inset-0 z-[200] hidden md:block">
+        <motion.div
+          className="fixed left-0 top-0 h-8 w-8 -ml-4 -mt-4"
+          animate={{
+            x: viewport.w * 0.5 + normalizedMouse.x * viewport.w,
+            y: viewport.h * 0.5 + normalizedMouse.y * viewport.h,
+          }}
+          transition={{ type: "tween", duration: 0.05 }}
+        >
+          <div className="absolute inset-0 rounded-full border border-cyan-400/40" />
+          <div className="absolute inset-2 rounded-full border border-cyan-200/60" />
+          <div className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_6px_rgba(34,211,238,0.8)]" />
+          {/* Crosshair lines */}
+          <div className="absolute left-1/2 top-0 h-2 w-px -translate-x-1/2 bg-cyan-400/40" />
+          <div className="absolute left-1/2 bottom-0 h-2 w-px -translate-x-1/2 bg-cyan-400/40" />
+          <div className="absolute top-1/2 left-0 w-2 h-px -translate-y-1/2 bg-cyan-400/40" />
+          <div className="absolute top-1/2 right-0 w-2 h-px -translate-y-1/2 bg-cyan-400/40" />
+        </motion.div>
+      </div>
+
       </motion.div>
     </div>
   );
