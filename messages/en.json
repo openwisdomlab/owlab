@@ -36,6 +36,7 @@
       },
       "cta": {
         "start": "Start Exploring",
+        "guide": "Construction & Operations Guide",
         "architecture": "View Architecture"
       }
     },
@@ -757,6 +758,57 @@
       "noMatching": "No matching docs",
       "hint": "Locate by title & summary",
       "globalHint": "⌘K for deep search"
+    }
+  },
+  "explore": {
+    "badge": "Start Exploring",
+    "title": "Explore the OWL Knowledge Universe",
+    "description": "From philosophy to practice, from curiosity to creation — discover your learning path",
+    "tagline": "Everything is researchable, everyone participates, everywhere exploration happens",
+    "actions": {
+      "guide": {
+        "title": "Construction & Operations Guide",
+        "description": "Nine core modules, a complete guide from philosophy to practice",
+        "cta": "Enter Knowledge Base"
+      },
+      "tools": {
+        "title": "AI Smart Tools",
+        "description": "Space design, planning wizard and other AI-driven creative tools",
+        "cta": "Open Toolbox"
+      },
+      "research": {
+        "title": "Frontier Philosophy Exploration",
+        "description": "Four philosophy modules, tracking cutting-edge research progress",
+        "cta": "Start Exploring"
+      }
+    },
+    "philosophy": {
+      "badge": "Philosophy Layer",
+      "title": "Frontier Philosophy Modules",
+      "description": "AI-powered living documentation system, providing intellectual foundation for innovation labs",
+      "viewAll": "Explore Complete Philosophy System"
+    },
+    "core": {
+      "badge": "Action Layer",
+      "title": "Nine Core Modules",
+      "description": "Complete guide for building and operating Open Wisdom Labs throughout their lifecycle",
+      "viewAll": "Enter Complete Knowledge Base"
+    },
+    "tools": {
+      "badge": "Smart Tools",
+      "title": "AI Creative Workshop",
+      "description": "Intelligent bridge from philosophy to practice, making lab creation and management more efficient",
+      "lab": {
+        "title": "OWL Creative Toolbox",
+        "description": "Space designer, smart planning wizard, concept visualizer and other AI-driven creative tools",
+        "cta": "Open Toolbox"
+      }
+    },
+    "cta": {
+      "title": "Ready to start your OWL journey?",
+      "description": "From curiosity to creation. Let's ignite the flame of exploration together.",
+      "primary": "Enter Knowledge Base",
+      "secondary": "Explore AI Tools"
     }
   }
 }

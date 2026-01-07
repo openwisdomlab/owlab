@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, ArrowRight, Sparkles } from "lucide-react";
+import { BookOpen, ArrowRight, Sparkles, Rocket } from "lucide-react";
 import { Link } from "@/components/ui/Link";
 import { brandColors } from "@/lib/brand/colors";
 import { useTheme } from "@/components/ui/ThemeProvider";
@@ -622,13 +622,13 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
           >
-            {/* Primary CTA */}
+            {/* Primary CTA - 开始探索 with Rocket */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                href={`/${locale}/docs/core`}
+                href={`/${locale}/explore`}
                 className="group relative inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, ${brandColors.neonPink}, ${brandColors.violet})`,
@@ -648,19 +648,19 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.3 }}
                 />
-                <BookOpen className="w-5 h-5 relative z-10" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
+                <Rocket className="w-5 h-5 relative z-10" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
                 <span className="relative z-10" style={{ fontWeight: 700 }}>{t("hero.cta.start")}</span>
                 <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }} />
               </Link>
             </motion.div>
 
-            {/* Secondary CTA */}
+            {/* Secondary CTA - 建设和运营指南 */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                href={`/${locale}/lab`}
+                href={`/${locale}/docs/core`}
                 className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg backdrop-blur-xl transition-all duration-300"
                 style={{
                   background: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
@@ -669,8 +669,8 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
                   boxShadow: isDark ? `0 0 15px ${brandColors.neonCyan}20` : 'none'
                 }}
               >
-                <Sparkles className="w-5 h-5" />
-                AI Lab
+                <BookOpen className="w-5 h-5" />
+                {t("hero.cta.guide")}
               </Link>
             </motion.div>
           </motion.div>
