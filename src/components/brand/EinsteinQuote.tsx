@@ -442,7 +442,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
   const author = "阿尔伯特·爱因斯坦";
 
   return (
-    <section className="relative py-4 md:py-6 px-4 overflow-hidden">
+    <section className="relative py-3 md:py-4 px-4 overflow-hidden">
       {/* Background gradient */}
       <div
         className="absolute inset-0"
@@ -453,194 +453,93 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
         }}
       />
 
-      {/* Subtle pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, ${isDark ? brandColors.neonCyan : brandColors.blue} 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}
-      />
-
-      <div className="relative max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6">
-          {/* Quote content - Left side */}
+      <div className="relative max-w-4xl mx-auto">
+        <div className="flex flex-row items-center gap-3 md:gap-4">
+          {/* Einstein portrait + Formula - Left side (compact) */}
           <motion.div
-            className="flex-1 text-left order-2 md:order-1"
-            initial={{ opacity: 0, x: -30 }}
+            className="flex flex-col items-center gap-1 flex-shrink-0"
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            {/* Quote mark */}
+            {/* Einstein Portrait - smaller */}
             <motion.div
-              className="mb-1"
+              className="relative w-14 h-14 md:w-16 md:h-16"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="relative w-full h-full">
+                <EinsteinSilhouette isDark={isDark} />
+              </div>
+            </motion.div>
+
+            {/* Interactive E=MC² Formula - smaller */}
+            <InteractiveFormula isDark={isDark} />
+          </motion.div>
+
+          {/* Quote content - Right side with boundary */}
+          <motion.div
+            className="flex-1 rounded-lg px-3 py-2 md:px-4 md:py-2.5"
+            style={{
+              background: isDark
+                ? 'rgba(255, 255, 255, 0.03)'
+                : 'rgba(0, 0, 0, 0.02)',
+              border: `1px solid ${isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'}`,
+              borderLeft: `3px solid ${isDark ? brandColors.violet : brandColors.blue}`,
+            }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {/* Quote text */}
+            <blockquote
+              className="text-xs md:text-sm leading-relaxed font-medium"
+              style={{
+                color: isDark ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.8)',
+                fontFamily: "'Source Han Serif CN', 'Noto Serif SC', 'STSong', serif",
+                letterSpacing: '0.01em',
+                lineHeight: '1.6'
+              }}
             >
               <span
-                className="text-3xl md:text-4xl font-serif leading-none"
+                className="text-lg md:text-xl font-serif"
                 style={{
                   color: isDark ? brandColors.violet : brandColors.blue,
-                  opacity: 0.3
+                  opacity: 0.4
                 }}
               >
                 "
               </span>
-            </motion.div>
-
-            {/* Quote text */}
-            <motion.blockquote
-              className="text-sm md:text-base leading-relaxed font-medium mb-2"
-              style={{
-                color: isDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.85)',
-                fontFamily: "'Source Han Serif CN', 'Noto Serif SC', 'STSong', serif",
-                letterSpacing: '0.02em',
-                lineHeight: '1.7'
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
               {quote}
-            </motion.blockquote>
-
-            {/* Author - Right aligned */}
-            <motion.div
-              className="flex justify-end"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <div className="flex items-center gap-2">
-                <div
-                  className="h-px w-8"
-                  style={{
-                    background: `linear-gradient(to right, transparent, ${isDark ? brandColors.neonPink : brandColors.violet})`
-                  }}
-                />
-                <span
-                  className="text-sm md:text-base font-semibold tracking-wide"
-                  style={{
-                    color: isDark ? brandColors.neonPink : brandColors.violet,
-                    fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif"
-                  }}
-                >
-                  {author}
-                </span>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Einstein portrait + Interactive Formula - Right side */}
-          <motion.div
-            className="flex flex-col items-center gap-2 md:gap-3 flex-shrink-0 order-1 md:order-2"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            {/* Interactive E=MC² Formula */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <InteractiveFormula isDark={isDark} />
-            </motion.div>
-
-            {/* Einstein Portrait */}
-            <motion.div
-              className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              {/* Glow effect behind portrait */}
-              <div
-                className="absolute inset-0 rounded-full"
+              <span
+                className="text-lg md:text-xl font-serif"
                 style={{
-                  background: isDark
-                    ? `radial-gradient(circle, ${brandColors.violet}40 0%, ${brandColors.neonPink}20 40%, transparent 70%)`
-                    : `radial-gradient(circle, ${brandColors.blue}30 0%, ${brandColors.violet}15 40%, transparent 70%)`,
-                  filter: 'blur(40px)',
-                  transform: 'scale(1.3)'
+                  color: isDark ? brandColors.violet : brandColors.blue,
+                  opacity: 0.4
                 }}
-              />
+              >
+                "
+              </span>
+            </blockquote>
 
-              {/* Edge blur effect */}
-              <div
-                className="absolute inset-0 rounded-full"
+            {/* Author - inline right aligned */}
+            <div className="flex justify-end mt-1">
+              <span
+                className="text-xs md:text-sm font-medium"
                 style={{
-                  background: `radial-gradient(circle, transparent 40%, ${isDark ? brandColors.dark : '#F8FAFC'} 100%)`,
-                  zIndex: 10,
-                  pointerEvents: 'none'
+                  color: isDark ? brandColors.neonPink : brandColors.violet,
                 }}
-              />
-
-              {/* Portrait container */}
-              <div className="relative w-full h-full">
-                <EinsteinSilhouette isDark={isDark} />
-              </div>
-
-              {/* Animated ring */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2"
-                style={{
-                  borderColor: isDark ? brandColors.neonCyan : brandColors.blue,
-                  opacity: 0.3
-                }}
-                animate={{
-                  scale: [1, 1.15, 1],
-                  opacity: [0.3, 0.1, 0.3]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-
-              {/* Second animated ring */}
-              <motion.div
-                className="absolute inset-0 rounded-full border"
-                style={{
-                  borderColor: isDark ? brandColors.neonPink : brandColors.violet,
-                  opacity: 0.2
-                }}
-                animate={{
-                  scale: [1.1, 1.25, 1.1],
-                  opacity: [0.2, 0.05, 0.2]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-              />
-            </motion.div>
+              >
+                — {author}
+              </span>
+            </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom decorative line */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{
-          background: `linear-gradient(to right, transparent, ${isDark ? brandColors.violet : brandColors.blue}40, transparent)`
-        }}
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.5 }}
-      />
     </section>
   );
 }
