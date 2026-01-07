@@ -137,6 +137,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     };
   } | null>(null);
   const [isPageVisible, setIsPageVisible] = useState(true);
+  const [isNearEyeZone, setIsNearEyeZone] = useState(false); // 拖拽时是否接近眼睛区域
   const lastVisibleTimeRef = useRef<number>(0);
 
   // 初始化 lastVisibleTimeRef
@@ -265,24 +266,35 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
+    // 计算拖拽圆圈的实际位置
+    const circleX = x - dragRef.current.offsetX;
+    const circleY = y - dragRef.current.offsetY;
+
+    // 检测是否接近眼睛区域（使用 1.5 倍半径作为提示范围）
+    const distToCenter = distance(circleX, circleY, heroCenter.x, heroCenter.y);
+    setIsNearEyeZone(distToCenter < heroRadius * 1.5);
+
     // Update circle position
     circlesRef.current = circlesRef.current.map(circle => {
       if (circle.id === dragRef.current?.id) {
         return {
           ...circle,
-          x: x - dragRef.current.offsetX,
-          y: y - dragRef.current.offsetY,
+          x: circleX,
+          y: circleY,
           vx: 0, vy: 0,
         };
       }
       return circle;
     });
     setCircles([...circlesRef.current]);
-  }, []);
+  }, [heroCenter.x, heroCenter.y, heroRadius]);
 
   // Mouse up handler for drag end
   const handleMouseUp = useCallback(() => {
     if (!dragRef.current) return;
+
+    // 重置眼睛区域接近状态
+    setIsNearEyeZone(false);
 
     const draggedCircle = circlesRef.current.find(c => c.id === dragRef.current?.id);
     if (draggedCircle) {
@@ -640,6 +652,92 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         className="absolute inset-0 pointer-events-none"
         style={{ opacity: isDark ? 1 : 0.7 }}
       />
+
+      {/* 拖拽中的远距离提示 - 当拖拽但未接近眼睛时显示 */}
+      <AnimatePresence>
+        {draggingCircle && !isNearEyeZone && (
+          <motion.div
+            className="absolute pointer-events-none"
+            style={{
+              left: heroCenter.x,
+              top: heroCenter.y - heroRadius - 20,
+              transform: 'translateX(-50%)',
+              zIndex: 45,
+            }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 0.7, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
+          >
+            <span
+              className="text-xs px-3 py-1.5 rounded-full whitespace-nowrap"
+              style={{
+                background: withAlpha(isDark ? '#fff' : '#000', 0.1),
+                color: isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)',
+                backdropFilter: 'blur(8px)',
+              }}
+            >
+              拖到眼睛里深入探索 👁
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 眼睛区域拖拽提示 - 当拖拽圆圈接近时显示 */}
+      <AnimatePresence>
+        {isNearEyeZone && draggingCircle && (
+          <motion.div
+            className="absolute pointer-events-none"
+            style={{
+              left: heroCenter.x,
+              top: heroCenter.y,
+              transform: 'translate(-50%, -50%)',
+              width: heroRadius * 2.4,
+              height: heroRadius * 2.4,
+              zIndex: 50,
+            }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* 外圈发光环 */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{
+                border: `2px dashed ${withAlpha(brandColors.neonCyan, 0.6)}`,
+                boxShadow: `
+                  0 0 30px ${withAlpha(brandColors.neonCyan, 0.4)},
+                  inset 0 0 30px ${withAlpha(brandColors.neonCyan, 0.2)}
+                `,
+              }}
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.8, 1, 0.8],
+              }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            {/* 提示文字 */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <span
+                className="text-xs font-medium px-3 py-1 rounded-full"
+                style={{
+                  background: withAlpha(brandColors.neonCyan, 0.15),
+                  color: brandColors.neonCyan,
+                  border: `1px solid ${withAlpha(brandColors.neonCyan, 0.3)}`,
+                }}
+              >
+                松开以深入探索
+              </span>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {circles.map((circle) => (
@@ -1174,9 +1272,9 @@ function QuestionCircle({
         )}
       </svg>
 
-      {/* Question text */}
+      {/* Question text - 不在 isPinned 时显示，因为 eyeDiscovery 面板会接管显示 */}
       <AnimatePresence>
-        {((showText && !isDragging) || (isAutoRevealing && !isDragging) || circle.isPinned) && (
+        {((showText && !isDragging && !circle.isPinned) || (isAutoRevealing && !isDragging && !circle.isPinned)) && (
           <QuestionTextDisplay
             question={circle.question.question}
             explanation={circle.question.explanation}
@@ -1184,8 +1282,7 @@ function QuestionCircle({
             isDark={isDark}
             isMobile={isMobile}
             position={textPosition}
-            showExplanation={showExplanation || circle.isPinned}
-            isPinned={circle.isPinned}
+            showExplanation={showExplanation}
             autoRevealOpacity={isAutoRevealing ? circle.autoRevealOpacity : 1}
           />
         )}
@@ -1203,13 +1300,12 @@ interface QuestionTextDisplayProps {
   isMobile: boolean;
   position: 'top' | 'bottom' | 'left' | 'right';
   showExplanation: boolean;
-  isPinned?: boolean;
   autoRevealOpacity?: number;
 }
 
 function QuestionTextDisplay({
   question, explanation, color, isDark, isMobile,
-  position, showExplanation, isPinned, autoRevealOpacity = 1
+  position, showExplanation, autoRevealOpacity = 1
 }: QuestionTextDisplayProps) {
   const getPositionStyles = () => {
     // 显著提高 z-index，确保显示在最上方；增大宽度提高阅读友好性
@@ -1258,10 +1354,8 @@ function QuestionTextDisplay({
             ? `linear-gradient(135deg, rgba(14,14,20,0.97), rgba(26,26,46,0.95))`
             : `linear-gradient(135deg, rgba(255,255,255,0.99), rgba(248,250,252,0.97))`,
           backdropFilter: 'blur(16px)',
-          border: `1px solid ${withAlpha(color, isPinned ? 0.5 : 0.35)}`,
-          boxShadow: isPinned
-            ? `0 0 40px ${withAlpha(color, 0.3)}, 0 0 60px ${withAlpha(brandColors.neonCyan, 0.2)}`
-            : `0 4px 24px rgba(0,0,0,0.15), 0 0 30px ${withAlpha(color, 0.2)}`,
+          border: `1px solid ${withAlpha(color, 0.35)}`,
+          boxShadow: `0 4px 24px rgba(0,0,0,0.15), 0 0 30px ${withAlpha(color, 0.2)}`,
         }}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
