@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { brandColors, withAlpha } from "@/lib/brand/colors";
 import { useTheme } from "@/components/ui/ThemeProvider";
 import { getBalancedQuestions, type ScienceQuestion } from "@/data/science-questions";
+import { useCuriosityCaptureStore } from "@/stores/curiosity-capture-store";
 
 // ============ Types ============
 interface CircleState {
@@ -104,15 +105,16 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(true);
-  const [pinnedCircleId, setPinnedCircleId] = useState<string | null>(null); // 当前固定的圆圈ID
-  const [captureAnimation, setCaptureAnimation] = useState<{
+  const [, setCaptureAnimation] = useState<{
     active: boolean;
     circleId: string | null;
     startTime: number;
   }>({ active: false, circleId: null, startTime: 0 });
   const [eyeReaction, setEyeReaction] = useState(false); // 眼睛捕获反馈动画
-  const [isFirstCapture, setIsFirstCapture] = useState(true); // 是否首次捕获
   const lastVisibleTimeRef = useRef<number>(0);
+
+  // 使用 store 管理捕获的问题
+  const { captureQuestion, isFirstCapture } = useCuriosityCaptureStore();
 
   // 初始化 lastVisibleTimeRef
   useEffect(() => {
@@ -301,35 +303,19 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     setEyeReaction(true);
     setTimeout(() => setEyeReaction(false), 600);
 
-    // 设置为已固定
-    circlesRef.current = circlesRef.current.map(c => {
-      if (c.id === circleId) {
-        return {
-          ...c,
-          isPinned: true,
-          isBeingSucked: false,
-          suckProgress: 1,
-        };
-      }
-      return c;
-    });
-    setCircles([...circlesRef.current]);
-
-    setPinnedCircleId(circleId);
-    setCaptureAnimation({ active: false, circleId: null, startTime: 0 });
-
-    // 标记首次捕获完成
-    if (isFirstCapture) {
-      setIsFirstCapture(false);
+    // 找到被捕获的圆圈
+    const capturedCircle = circlesRef.current.find(c => c.id === circleId);
+    if (capturedCircle) {
+      // 将问题添加到思考区 store
+      captureQuestion(capturedCircle.question);
     }
 
-    // 卡片显示后自动消失
-    setTimeout(() => {
-      circlesRef.current = circlesRef.current.filter(c => c.id !== circleId);
-      setCircles([...circlesRef.current]);
-      setPinnedCircleId(null);
-    }, GRAVITY_VORTEX_CONFIG.cardDisplayDuration);
-  }, [isFirstCapture]);
+    // 立即移除被捕获的圆圈（已经添加到思考区了）
+    circlesRef.current = circlesRef.current.filter(c => c.id !== circleId);
+    setCircles([...circlesRef.current]);
+
+    setCaptureAnimation({ active: false, circleId: null, startTime: 0 });
+  }, [captureQuestion]);
 
   // Mouse up handler for drag end - 引力漩涡版本
   const handleMouseUp = useCallback(() => {
@@ -796,8 +782,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             isHovered={hoveredCircle === circle.id}
             isClicked={clickedCircle === circle.id}
             isDragging={draggingCircle === circle.id}
-            hasPinnedCircle={!!pinnedCircleId && pinnedCircleId !== circle.id}
-            isFirstCapture={isFirstCapture}
             onHover={() => handleCircleHover(circle.id)}
             onLeave={() => {
               setHoveredCircle(null);
@@ -825,8 +809,6 @@ interface QuestionCircleProps {
   isHovered: boolean;
   isClicked: boolean;
   isDragging: boolean;
-  hasPinnedCircle: boolean; // 是否有其他圆圈被固定（用于隐藏此圆圈的标签）
-  isFirstCapture: boolean; // 是否首次捕获
   onHover: () => void;
   onLeave: () => void;
   onClick: () => void;
@@ -837,7 +819,7 @@ interface QuestionCircleProps {
 }
 
 function QuestionCircle({
-  circle, isDark, isMobile, isHovered, isClicked, isDragging, hasPinnedCircle, isFirstCapture,
+  circle, isDark, isMobile, isHovered, isClicked, isDragging,
   onHover, onLeave, onClick, onDragStart,
   containerWidth, containerHeight, heroRadius
 }: QuestionCircleProps) {
@@ -1085,26 +1067,9 @@ function QuestionCircle({
       </svg>
       )}
 
-      {/* 固定标签显示 - 当圆圈被捕获后显示卡片 */}
+      {/* Question text - 悬停或自动展示时显示问题文本 */}
       <AnimatePresence>
-        {circle.isPinned && !isDragging && (
-          <PinnedQuestionTag
-            question={circle.question.question}
-            explanation={circle.question.explanation}
-            color={color}
-            isDark={isDark}
-            isMobile={isMobile}
-            isFirstCapture={isFirstCapture}
-            containerWidth={containerWidth}
-            containerHeight={containerHeight}
-            heroRadius={heroRadius}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Question text - 不在 isPinned/isBeingSucked 时显示，也不在有其他固定圆圈时显示 */}
-      <AnimatePresence>
-        {!hasPinnedCircle && !isBeingSucked && ((showText && !isDragging && !circle.isPinned) || (isAutoRevealing && !isDragging && !circle.isPinned)) && (
+        {!isBeingSucked && ((showText && !isDragging) || (isAutoRevealing && !isDragging)) && (
           <QuestionTextDisplay
             question={circle.question.question}
             explanation={circle.question.explanation}
@@ -1117,205 +1082,6 @@ function QuestionCircle({
           />
         )}
       </AnimatePresence>
-    </motion.div>
-  );
-}
-
-// ============ Pinned Question Tag Component ============
-interface PinnedQuestionTagProps {
-  question: string;
-  explanation: string;
-  color: string;
-  isDark: boolean;
-  isMobile: boolean;
-  isFirstCapture: boolean;
-  containerWidth: number;
-  containerHeight: number;
-  heroRadius: number;
-}
-
-function PinnedQuestionTag({
-  question,
-  explanation,
-  color,
-  isDark,
-  isMobile,
-  isFirstCapture,
-  containerWidth,
-  containerHeight,
-  heroRadius,
-}: PinnedQuestionTagProps) {
-  // 卡片固定在页面下半部分中央，确保完全可见且不被遮挡
-  const cardWidth = isMobile ? Math.min(320, containerWidth - 40) : 420;
-  const cardTop = containerHeight / 2 + heroRadius + 60; // 眼睛下方60px
-
-  return (
-    <motion.div
-      className="fixed pointer-events-none"
-      style={{
-        top: cardTop,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: 9999,
-        width: cardWidth,
-        maxWidth: '90vw',
-      }}
-      initial={{ opacity: 0, y: 40, scale: 0.85 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.9 }}
-      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-    >
-      {/* 发光背景 - 增强可见性 */}
-      <motion.div
-        className="absolute -inset-4 rounded-3xl"
-        style={{
-          background: `radial-gradient(ellipse at center, ${withAlpha(brandColors.neonCyan, 0.3)}, ${withAlpha(color, 0.2)}, transparent 70%)`,
-          filter: 'blur(30px)',
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.7, 1, 0.7],
-        }}
-        transition={{ duration: 2.5, repeat: Infinity }}
-      />
-
-      {/* 主容器 - 更大的内边距和圆角 */}
-      <motion.div
-        className="relative px-6 py-5 rounded-2xl"
-        style={{
-          background: isDark
-            ? `linear-gradient(145deg, rgba(10,10,16,0.98), rgba(20,20,36,0.96))`
-            : `linear-gradient(145deg, rgba(255,255,255,0.99), rgba(248,250,252,0.98))`,
-          backdropFilter: 'blur(30px)',
-          border: `2px solid ${withAlpha(brandColors.neonCyan, 0.8)}`,
-          boxShadow: `
-            0 0 50px ${withAlpha(brandColors.neonCyan, 0.6)},
-            0 0 100px ${withAlpha(color, 0.4)},
-            0 20px 40px rgba(0,0,0,0.3),
-            inset 0 0 30px ${withAlpha(brandColors.neonCyan, 0.1)}
-          `,
-        }}
-      >
-        {/* 顶部装饰条 */}
-        <motion.div
-          className="absolute -top-0.5 left-1/2 -translate-x-1/2 h-1 rounded-full"
-          style={{
-            width: '60%',
-            background: `linear-gradient(90deg, transparent, ${brandColors.neonCyan}, ${color}, transparent)`,
-          }}
-          animate={{ opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        />
-
-        {/* 标题区域 - 更醒目 */}
-        <motion.div
-          className="flex items-center gap-3 mb-4 pb-3 border-b"
-          style={{ borderColor: withAlpha(brandColors.neonCyan, 0.2) }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <motion.div
-            className="flex items-center justify-center w-10 h-10 rounded-full"
-            style={{
-              background: `linear-gradient(135deg, ${withAlpha(brandColors.neonCyan, 0.2)}, ${withAlpha(color, 0.15)})`,
-              border: `1px solid ${withAlpha(brandColors.neonCyan, 0.4)}`,
-            }}
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <span className="text-xl">👁</span>
-          </motion.div>
-          <div>
-            <span
-              className="text-base font-bold block"
-              style={{
-                background: `linear-gradient(90deg, ${brandColors.neonCyan}, ${color})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              好奇心捕获
-            </span>
-            {isFirstCapture && (
-              <motion.span
-                className="text-xs"
-                style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                你发现了一个彩蛋！
-              </motion.span>
-            )}
-          </div>
-        </motion.div>
-
-        {/* 问题文本 - 更大字号 */}
-        <motion.p
-          className="text-base font-semibold leading-relaxed mb-4"
-          style={{
-            color: isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.9)',
-            lineHeight: 1.8,
-          }}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          {question}
-        </motion.p>
-
-        {/* 解读文本 - 带背景区分 */}
-        <motion.div
-          className="rounded-xl px-4 py-3"
-          style={{
-            background: isDark
-              ? withAlpha(brandColors.neonCyan, 0.05)
-              : withAlpha(color, 0.05),
-            border: `1px solid ${withAlpha(color, 0.15)}`,
-          }}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <p
-            className="text-sm leading-relaxed"
-            style={{
-              color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)',
-              lineHeight: 1.8,
-            }}
-          >
-            {explanation}
-          </p>
-        </motion.div>
-
-        {/* 角落装饰 */}
-        <motion.div
-          className="absolute -top-1.5 -left-1.5 w-3 h-3 rounded-full"
-          style={{ background: brandColors.neonCyan, boxShadow: `0 0 10px ${brandColors.neonCyan}` }}
-          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full"
-          style={{ background: color, boxShadow: `0 0 10px ${color}` }}
-          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
-        />
-        <motion.div
-          className="absolute -bottom-1.5 -left-1.5 w-3 h-3 rounded-full"
-          style={{ background: color, boxShadow: `0 0 10px ${color}` }}
-          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 0.25 }}
-        />
-        <motion.div
-          className="absolute -bottom-1.5 -right-1.5 w-3 h-3 rounded-full"
-          style={{ background: brandColors.neonCyan, boxShadow: `0 0 10px ${brandColors.neonCyan}` }}
-          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 0.75 }}
-        />
-      </motion.div>
     </motion.div>
   );
 }
