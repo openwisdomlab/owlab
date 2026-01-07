@@ -133,16 +133,6 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
           transition={{ duration: 1 }}
           className="text-center"
         >
-          {/* Curious Owl Eye Icon - Interactive Curiosity Capture */}
-          <motion.div
-            className="inline-flex items-center justify-center mb-8"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            <CuriosityPopover isDark={isDark} isMobile={isMobile} />
-          </motion.div>
-
           {/* "Open Wisdom Lab" Typography - Refined Size */}
           <motion.h1
             className="mb-4"
@@ -719,6 +709,39 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Curiosity Capture - Fixed Left Position */}
+      {!isMobile && (
+        <motion.div
+          className="fixed z-50 pointer-events-none"
+          style={{
+            left: 40,
+            top: '50%',
+            transform: 'translateY(-50%)',
+          }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <CuriosityPopover isDark={isDark} isMobile={isMobile} />
+        </motion.div>
+      )}
+
+      {/* Mobile Curiosity Capture - Bottom Fixed */}
+      {isMobile && (
+        <motion.div
+          className="fixed z-50 pointer-events-none"
+          style={{
+            left: 16,
+            bottom: 80,
+          }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <CuriosityPopover isDark={isDark} isMobile={isMobile} />
+        </motion.div>
+      )}
 
       {/* Vignette overlay */}
       <div
