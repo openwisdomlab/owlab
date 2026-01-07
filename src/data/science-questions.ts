@@ -10,6 +10,12 @@ export interface ScienceQuestion {
   question: string;
   // 问题简短解释
   explanation: string;
+  // 延伸思考：更多问题、场景、背景 - 用于眼睛捕获后的深度展示
+  deepThought?: {
+    followUpQuestions?: string[];  // 延伸问题
+    scenario?: string;             // 假设场景
+    connections?: string[];        // 关联领域
+  };
   // 引力等级: 1-4, 影响问题的深度分类（但不影响圆环大小）
   gravity: 1 | 2 | 3 | 4;
   // 颜色主题
@@ -28,7 +34,12 @@ export const scienceQuestions: ScienceQuestion[] = [
   {
     id: 'q001',
     question: '宇宙为什么存在而不是一片虚无？',
-    explanation: '这是莱布尼茨提出的终极哲学问题。为什么有"存在"而非"虚无"？现代物理学尝试用量子涨落解释，但仍无法回答"为什么有物理定律"这个更深层的问题。',
+    explanation: '这是莱布尼茨提出的终极哲学问题——为什么有"存在"而非"虚无"？现代物理学尝试用量子涨落解释，但仍无法回答"为什么有物理定律"这个更深层的问题。',
+    deepThought: {
+      followUpQuestions: ['虚无本身是否也是一种存在？', '如果没有观察者，宇宙还"存在"吗？', '存在的"意义"需要意识来赋予吗？'],
+      scenario: '想象你是宇宙中唯一的意识，你能证明除你之外的一切都"存在"而非你的想象吗？',
+      connections: ['量子力学', '意识哲学', '本体论'],
+    },
     gravity: 4,
     color: 'cyan',
     i18n: { en: { question: 'Why is there something rather than nothing?' } }
@@ -36,7 +47,12 @@ export const scienceQuestions: ScienceQuestion[] = [
   {
     id: 'q002',
     question: '意识是如何从物质中涌现的？',
-    explanation: '这被称为"意识的难问题"。860亿个神经元的电化学活动如何产生主观体验？为什么有"感觉像是什么"这回事？',
+    explanation: '这被称为"意识的难问题"——860亿个神经元的电化学活动如何产生主观体验？为什么有"感觉像是什么"这回事？',
+    deepThought: {
+      followUpQuestions: ['蚂蚁有意识吗？植物呢？', '意识可以被复制或上传吗？', '如果AI说它有意识，我们如何判断真假？'],
+      scenario: '如果你的大脑被逐个神经元替换成电子元件，在哪个瞬间"你"会消失？',
+      connections: ['神经科学', '人工智能', '心灵哲学'],
+    },
     gravity: 4,
     color: 'pink',
     i18n: { en: { question: 'How does consciousness emerge from matter?' } }
@@ -45,6 +61,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q003',
     question: '地球生命的第一个细胞是如何诞生的？',
     explanation: '从无机分子到能自我复制的细胞，中间经历了什么？RNA世界假说、热泉假说等理论都在探索这个40亿年前的谜题。',
+    deepThought: {
+      followUpQuestions: ['生命只能起源一次，还是可能多次独立起源？', '如果再给地球一次机会，生命还会出现吗？', '最简单的生命需要多少基因？'],
+      scenario: '假设你有一个完美模拟早期地球的实验室，你会如何尝试从零创造生命？',
+      connections: ['天体生物学', '化学进化', '合成生物学'],
+    },
     gravity: 4,
     color: 'violet',
     i18n: { en: { question: 'How did the first cell on Earth come into being?' } }
@@ -53,6 +74,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q004',
     question: '时间的本质是什么，它真的在流动吗？',
     explanation: '在相对论中，时间是相对的；在量子力学中，时间有不同的角色。时间的"流动"可能只是意识的错觉？',
+    deepThought: {
+      followUpQuestions: ['如果时间不流动，为什么我们能记住过去却不能记住未来？', '"现在"这个瞬间有多长？', '在黑洞边缘，时间真的会停止吗？'],
+      scenario: '如果你能从宇宙外部观看，会看到所有时刻同时存在吗？',
+      connections: ['相对论', '热力学', '心理学'],
+    },
     gravity: 4,
     color: 'blue',
     i18n: { en: { question: 'What is the nature of time? Does it really flow?' } }
@@ -61,6 +87,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q005',
     question: '为什么数学能如此精确地描述物理世界？',
     explanation: '物理学家尤金·维格纳称之为"数学在自然科学中不合理的有效性"。数学是发现的还是发明的？为什么抽象的数学公式能预测宇宙的行为？',
+    deepThought: {
+      followUpQuestions: ['外星文明会发现同样的数学吗？', '是否存在人类智慧永远无法理解的数学？', '如果宇宙是数学结构本身呢？'],
+      scenario: '想象一个物理定律完全不同的宇宙，那里的智慧生命会发展出什么样的数学？',
+      connections: ['数学哲学', '计算理论', '物理学基础'],
+    },
     gravity: 4,
     color: 'emerald',
     i18n: { en: { question: 'Why can mathematics describe the physical world so precisely?' } }
@@ -69,6 +100,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q006',
     question: '宇宙中的物理常数为何恰好允许生命存在？',
     explanation: '如果引力常数或电磁力稍有不同，恒星、原子甚至生命都无法存在。这是巧合、多元宇宙、还是更深的原理？',
+    deepThought: {
+      followUpQuestions: ['这是否暗示宇宙是被"设计"的？', '在其他物理常数下，是否可能有完全不同形式的生命？', '人择原理是解释还是回避问题？'],
+      scenario: '如果你能调节宇宙的参数，改变哪个常数最小幅度就会让生命不可能存在？',
+      connections: ['宇宙学', '多元宇宙', '生命科学'],
+    },
     gravity: 4,
     color: 'cyan',
     i18n: { en: { question: 'Why are the physical constants fine-tuned for life?' } }
@@ -77,6 +113,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q007',
     question: '我们生活在模拟中吗？',
     explanation: '哲学家尼克·博斯特罗姆的模拟假说认为，如果未来文明能创造逼真的模拟，我们很可能就生活在其中。这个假说无法被证伪。',
+    deepThought: {
+      followUpQuestions: ['如果是模拟，"创造者"是谁？他们也在模拟中吗？', '模拟中的意识是"真实"的吗？', '发现真相会改变什么？'],
+      scenario: '如果你发现了证明我们在模拟中的证据，你会公开它吗？',
+      connections: ['计算理论', '认识论', '数字物理学'],
+    },
     gravity: 4,
     color: 'violet',
     i18n: { en: { question: 'Are we living in a simulation?' } }
@@ -85,6 +126,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q008',
     question: '死亡后意识会发生什么？',
     explanation: '科学目前无法回答。意识是大脑的产物还是更基本的存在？濒死体验的报告是大脑缺氧的幻觉还是另有深意？',
+    deepThought: {
+      followUpQuestions: ['如果意识可以被复制，哪个是"真正的你"？', '无意识的睡眠和死亡有本质区别吗？', '"永生"意味着什么？'],
+      scenario: '如果科技能让意识永存，你会选择吗？在第一个一百万年后，你还是"你"吗？',
+      connections: ['神经科学', '死亡学', '技术伦理'],
+    },
     gravity: 4,
     color: 'pink',
     i18n: { en: { question: 'What happens to consciousness after death?' } }
@@ -95,6 +141,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q009',
     question: '暗物质由什么粒子组成？',
     explanation: '暗物质占宇宙物质总量的85%，但我们从未直接探测到它。WIMP、轴子、还是完全未知的粒子？',
+    deepThought: {
+      followUpQuestions: ['如果暗物质不是粒子而是引力定律的修正呢？', '暗物质会与自己相互作用吗？', '为什么暗物质和普通物质的比例恰好是这个数字？'],
+      scenario: '如果你能"看见"暗物质，夜空会是什么样子？',
+      connections: ['粒子物理', '宇宙学', '引力理论'],
+    },
     gravity: 3,
     color: 'cyan'
   },
@@ -102,6 +153,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q010',
     question: '暗能量为何能加速宇宙膨胀？',
     explanation: '1998年发现宇宙正在加速膨胀，背后的"暗能量"是什么？宇宙学常数？还是某种动态场？',
+    deepThought: {
+      followUpQuestions: ['暗能量会随时间变化吗？', '它是空间本身的属性还是充满空间的某种物质？', '暗能量与真空涨落有关系吗？'],
+      scenario: '如果暗能量在增强，万亿年后宇宙中的一切都会被撕裂，你觉得这是宇宙的终点还是新的开始？',
+      connections: ['宇宙学', '量子场论', '热力学'],
+    },
     gravity: 3,
     color: 'violet'
   },
@@ -109,6 +165,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q011',
     question: '神经元活动如何转化为主观体验？',
     explanation: '你看到红色时，大脑里发生了什么让你"体验"到红色？这是神经科学最难的问题之一。',
+    deepThought: {
+      followUpQuestions: ['色盲的人"看到"的红色和我们一样吗？', '是否存在我们永远无法体验的感知？', '机器能有主观体验吗？'],
+      scenario: '如果科学家能读取你大脑的所有数据，他们能"看到"你正在想象的画面吗？',
+      connections: ['认知科学', '现象学', '计算神经科学'],
+    },
     gravity: 3,
     color: 'pink'
   },
@@ -116,6 +177,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q012',
     question: '量子力学与广义相对论能统一成量子引力理论吗？',
     explanation: '爱因斯坦的引力理论和量子力学在极端情况下互相矛盾。弦理论、圈量子引力等尝试统一它们，但至今没有成功。',
+    deepThought: {
+      followUpQuestions: ['时空本身是量子化的吗？', '在普朗克尺度下，空间是连续的还是离散的？', '如果引力是量子化的，引力子存在吗？'],
+      scenario: '想象你能缩小到普朗克长度，你会看到什么？时空泡沫？量子涨落的海洋？',
+      connections: ['弦理论', '圈量子引力', '黑洞物理'],
+    },
     gravity: 3,
     color: 'blue'
   },
@@ -414,6 +480,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q054',
     question: '蜜蜂大脑只有100万个神经元，却能完成复杂的数学计算？',
     explanation: '蜜蜂能找到多个花丛之间的最短路径——这是著名的"旅行商问题"。它们是如何用如此微小的大脑解决连超级计算机都难以快速解决的问题？',
+    deepThought: {
+      followUpQuestions: ['蜜蜂使用了什么算法？', '这是真正的计算还是某种启发式方法？', '我们能从中学到什么来改进AI？'],
+      scenario: '如果你能设计一个只有100万个元件的计算机，你会如何让它解决旅行商问题？',
+      connections: ['群体智能', '优化算法', '神经网络'],
+    },
     gravity: 1,
     color: 'orange'
   },
@@ -421,6 +492,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q055',
     question: '为什么人类每天必须花三分之一时间睡眠？',
     explanation: '睡眠时大脑清理代谢废物、巩固记忆。但完全不睡觉的动物也存在，为什么我们不能？',
+    deepThought: {
+      followUpQuestions: ['海豚和鸟类能半脑睡眠，为什么人类不行？', '如果人类可以不睡觉，社会会变成什么样？', '睡眠是否有我们尚未发现的重要功能？'],
+      scenario: '假设未来技术能让你完全不需要睡眠，你会选择吗？多出来的时间你会做什么？',
+      connections: ['神经科学', '进化生物学', '时间哲学'],
+    },
     gravity: 1,
     color: 'pink'
   },
@@ -428,6 +504,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q056',
     question: '章鱼的分布式神经系统如何协调八条触手？',
     explanation: '章鱼的神经元大部分在触手中而非大脑。每条触手可以独立"思考"，但又能协调行动。',
+    deepThought: {
+      followUpQuestions: ['章鱼有多少个"意识"？', '分布式智能是否比集中式更高效？', '未来的AI会模仿章鱼的架构吗？'],
+      scenario: '如果你有八条能独立思考的手臂，你的"自我"会是什么感觉？',
+      connections: ['分布式系统', '意识研究', '机器人学'],
+    },
     gravity: 1,
     color: 'emerald'
   },
@@ -435,6 +516,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q057',
     question: '植物能感知疼痛或对威胁做出反应吗？',
     explanation: '植物没有神经系统，但能释放化学信号警告邻近植物。被虫咬时会产生防御化合物。这算"感知"吗？',
+    deepThought: {
+      followUpQuestions: ['感知一定需要神经系统吗？', '如果植物有某种形式的"痛苦"，我们应该改变对待它们的方式吗？', '植物的"智能"如何定义？'],
+      scenario: '如果证实植物能感受痛苦，素食主义的伦理基础会如何改变？',
+      connections: ['植物神经生物学', '伦理学', '意识研究'],
+    },
     gravity: 1,
     color: 'emerald'
   },
@@ -442,6 +528,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q058',
     question: '为什么看别人打哈欠的视频也会让你想打哈欠，但看自己的视频却不会？',
     explanation: '打哈欠的传染性与共情能力相关，自闭症患者受影响较少。但为什么大脑会区分"自己"和"他人"的哈欠？这种社交镜像机制的深层目的是什么？',
+    deepThought: {
+      followUpQuestions: ['这与镜像神经元有什么关系？', '打哈欠传染是否有社交功能？', '为什么有些人更容易"被传染"？'],
+      scenario: '如果你完全失去了被哈欠传染的能力，你的社交生活会有什么变化？',
+      connections: ['社会神经科学', '共情研究', '进化心理学'],
+    },
     gravity: 1,
     color: 'pink'
   },
@@ -449,6 +540,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q059',
     question: '北极燕鸥一生飞行240万公里，它的"内置地图"存储在哪里？',
     explanation: '北极燕鸥每年往返南北极，一生飞行距离相当于地月往返三次。这种精确到具体湖泊的"记忆"如何在只有几克重的大脑中编码？是否存在某种我们尚未理解的生物导航系统？',
+    deepThought: {
+      followUpQuestions: ['是基因编码的还是学习的？', '它们如何感知地球磁场？', '人类能否开发出类似的导航能力？'],
+      scenario: '如果你闭着眼睛也能准确知道自己在地球上的位置，你的生活会有什么不同？',
+      connections: ['磁感受', '认知地图', '生物导航'],
+    },
     gravity: 1,
     color: 'cyan'
   },
@@ -456,6 +552,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q060',
     question: '蚂蚁群体如何在没有领导者的情况下做出复杂决策？',
     explanation: '蚁后不发号施令，每只蚂蚁只遵循简单规则，但整个群体能做出复杂决策。这是"涌现智能"的典范。',
+    deepThought: {
+      followUpQuestions: ['简单规则如何产生复杂行为？', '人类社会能从蚂蚁那里学到什么？', '去中心化的组织是否更高效？'],
+      scenario: '如果人类社会完全没有领导者，只依靠简单规则协作，会变成什么样？',
+      connections: ['复杂系统', '去中心化', '群体智能'],
+    },
     gravity: 1,
     color: 'orange'
   },
@@ -463,6 +564,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q061',
     question: '为什么音乐能激发人类如此强烈的情感？',
     explanation: '音乐激活大脑的奖赏系统，释放多巴胺。但为什么特定的音符组合能让人热泪盈眶？进化上有什么意义？',
+    deepThought: {
+      followUpQuestions: ['音乐是人类独有的吗？', '为什么不同文化的音乐有相似的结构？', '失去音乐感知能力会如何影响一个人？'],
+      scenario: '如果外星文明发来一段"音乐"，我们能理解它传达的情感吗？',
+      connections: ['音乐认知', '情感神经科学', '进化美学'],
+    },
     gravity: 1,
     color: 'pink'
   },
@@ -470,6 +576,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q062',
     question: '动物在睡眠时是否也会做梦？',
     explanation: '狗睡觉时腿会动，猫会发出呜呜声。大鼠的大脑在睡眠时会"重放"迷宫路径。它们可能真的在做梦。',
+    deepThought: {
+      followUpQuestions: ['动物的梦有情节吗？', '它们会做噩梦吗？', '梦对动物的生存有什么作用？'],
+      scenario: '如果你能进入你宠物的梦境，你觉得会看到什么？',
+      connections: ['比较心理学', '睡眠研究', '动物认知'],
+    },
     gravity: 1,
     color: 'violet'
   },
@@ -477,6 +588,11 @@ export const scienceQuestions: ScienceQuestion[] = [
     id: 'q063',
     question: '光合作用的量子效率为何接近100%？',
     explanation: '植物捕获光能的效率高得惊人，可能利用了量子相干效应。理解这点可能革新太阳能技术。',
+    deepThought: {
+      followUpQuestions: ['生命是否"发现"了量子计算？', '我们能模仿这种效率吗？', '量子生物学还有哪些未解之谜？'],
+      scenario: '如果人类能像植物一样进行光合作用，我们的生活和社会会有什么改变？',
+      connections: ['量子生物学', '光伏技术', '生物物理'],
+    },
     gravity: 1,
     color: 'emerald'
   },
