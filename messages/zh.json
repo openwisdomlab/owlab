@@ -756,6 +756,36 @@
       "description": "从好奇出发，向创造进发。让我们一起点燃探索的火焰。",
       "primary": "进入知识库",
       "secondary": "探索 AI 工具"
+    },
+    "back": "返回首页",
+    "universe": {
+      "title": "OWL 知识宇宙",
+      "subtitle": "从理念到实践，从好奇到创造",
+      "explore": "深入探索",
+      "beacon": {
+        "enlighten": "启智",
+        "empower": "赋能",
+        "engage": "连接"
+      },
+      "portals": {
+        "guide": {
+          "title": "知识指南",
+          "preview": "探索九大核心模块"
+        },
+        "lab": {
+          "title": "创意工坊",
+          "preview": "AI 驱动的创新工具"
+        },
+        "research": {
+          "title": "前沿研究",
+          "preview": "四大探索方向"
+        }
+      },
+      "nav": {
+        "modules": "核心模块",
+        "living": "前沿理念",
+        "hint": "点击星球探索 · 按 1-9 切换模块 · ESC 关闭"
+      }
     }
   },
   "journey": {

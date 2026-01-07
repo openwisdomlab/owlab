@@ -810,6 +810,36 @@
       "description": "From curiosity to creation. Let's ignite the flame of exploration together.",
       "primary": "Enter Knowledge Base",
       "secondary": "Explore AI Tools"
+    },
+    "back": "Back to Home",
+    "universe": {
+      "title": "OWL Knowledge Universe",
+      "subtitle": "From philosophy to practice, from curiosity to creation",
+      "explore": "Explore",
+      "beacon": {
+        "enlighten": "Enlighten",
+        "empower": "Empower",
+        "engage": "Engage"
+      },
+      "portals": {
+        "guide": {
+          "title": "Knowledge Guide",
+          "preview": "Explore nine core modules"
+        },
+        "lab": {
+          "title": "Creative Workshop",
+          "preview": "AI-driven innovation tools"
+        },
+        "research": {
+          "title": "Frontier Research",
+          "preview": "Four exploration directions"
+        }
+      },
+      "nav": {
+        "modules": "Core Modules",
+        "living": "Living Modules",
+        "hint": "Click planets to explore · Press 1-9 for modules · ESC to close"
+      }
     }
   },
   "journey": {
