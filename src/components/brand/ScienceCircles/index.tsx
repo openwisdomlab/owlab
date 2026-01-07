@@ -51,28 +51,6 @@ const CURIOSITY_QUOTES = [
   { text: "好奇心是科学之母", author: "伽利略" },
 ];
 
-const EYE_DISCOVERY_MESSAGES = [
-  "如果这个问题有答案，会带来什么新问题？",
-  "谁第一次问出这个问题？他们在想什么？",
-  "如果一千年后有人再问这个问题，会有不同的含义吗？",
-  "这个问题背后，藏着什么更大的未知？",
-  "你愿意用多长时间去追寻这个问题的答案？",
-  "如果这个问题永远没有答案，它还值得被问吗？",
-];
-
-// 彩蛋引导性问题 - 用提问方式激发更多思考
-const EYE_PROVOCATIVE_PROMPTS = [
-  "如果这个问题的答案完全颠覆你的认知，你准备好了吗？",
-  "有没有可能，提出这个问题本身就比找到答案更重要？",
-  "如果10岁的孩子问你这个问题，你会怎么回答？",
-  "假设这个问题永远不会有标准答案，你还会继续探索吗？",
-  "如果你必须用一个新问题来回应这个问题，你会问什么？",
-  "这个问题的答案，会让世界变得更好还是更复杂？",
-  "有没有可能，你已经知道答案，只是还没意识到？",
-  "如果这个问题的答案藏在你今天遇到的某件小事里呢？",
-  "这个问题让你想起了哪个你一直逃避的问题？",
-  "如果宇宙用这个问题考验人类，我们及格了吗？",
-];
 
 // 种子生长配置：降低自动展示频率，增加周期间隔
 const AUTO_REVEAL_CONFIG = {
@@ -124,18 +102,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const [isMobile, setIsMobile] = useState(false);
   const [showResonance, setShowResonance] = useState(false);
   const [resonanceQuote, setResonanceQuote] = useState(CURIOSITY_QUOTES[0]);
-  const [eyeDiscovery, setEyeDiscovery] = useState<{
-    show: boolean;
-    message: string;
-    question: string;
-    explanation?: string;
-    provocativePrompt: string; // 引导性问题
-    deepThought?: {
-      followUpQuestions?: string[];
-      scenario?: string;
-      connections?: string[];
-    };
-  } | null>(null);
   const [isPageVisible, setIsPageVisible] = useState(true);
   const [isNearEyeZone, setIsNearEyeZone] = useState(false); // 拖拽时是否接近眼睛区域
   const lastVisibleTimeRef = useRef<number>(0);
@@ -303,26 +269,14 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       // 彩蛋：扩大进入眼睛区域的判定范围（从0.6倍扩大到1.2倍）
       // 让用户更容易将问题拖入眼睛区域
       if (distToCenter < heroRadius * 1.2) {
-        const message = EYE_DISCOVERY_MESSAGES[Math.floor(Math.random() * EYE_DISCOVERY_MESSAGES.length)];
-        const provocativePrompt = EYE_PROVOCATIVE_PROMPTS[Math.floor(Math.random() * EYE_PROVOCATIVE_PROMPTS.length)];
-
-        setEyeDiscovery({
-          show: true,
-          message,
-          question: draggedCircle.question.question,
-          explanation: draggedCircle.question.explanation,
-          provocativePrompt, // 添加引导性问题
-          deepThought: draggedCircle.question.deepThought,
-        });
-
-        // 固定问题在眼睛上方，并保持显示问题解释卡片
+        // 固定问题在眼睛上方，使用新的固定标签显示
         circlesRef.current = circlesRef.current.map(circle => {
           if (circle.id === dragRef.current?.id) {
             return {
               ...circle,
               isPinned: true,
               x: heroCenter.x,
-              y: heroCenter.y - heroRadius - 80,
+              y: heroCenter.y - heroRadius - 60,
               vx: 0, vy: 0,
             };
           }
@@ -330,8 +284,23 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         });
         setCircles([...circlesRef.current]);
 
-        // 延长显示时间到45秒，给用户充足的时间深入思考
-        setTimeout(() => setEyeDiscovery(null), 45000);
+        // 固定显示15秒后自动解除固定
+        const pinnedCircleId = dragRef.current?.id;
+        setTimeout(() => {
+          circlesRef.current = circlesRef.current.map(circle => {
+            if (circle.id === pinnedCircleId) {
+              return {
+                ...circle,
+                isPinned: false,
+                // 给一个随机方向的推力让它飘走
+                vx: random(-0.4, 0.4),
+                vy: random(-0.3, -0.1),
+              };
+            }
+            return circle;
+          });
+          setCircles([...circlesRef.current]);
+        }, 15000);
       }
     }
 
@@ -765,226 +734,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         ))}
       </AnimatePresence>
 
-      {/* Eye Discovery Easter Egg - 引发思考版 */}
-      <AnimatePresence>
-        {eyeDiscovery?.show && (
-          <motion.div
-            className="absolute left-1/2 z-50 pointer-events-auto"
-            style={{
-              top: heroCenter.y - heroRadius - 180,
-              transform: 'translateX(-50%)',
-              maxHeight: '70vh',
-              overflowY: 'auto',
-            }}
-            initial={{ opacity: 0, y: 30, scale: 0.7 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -30, scale: 0.7 }}
-            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          >
-            {/* 发光背景特效 */}
-            <motion.div
-              className="absolute inset-0 -m-8 rounded-3xl pointer-events-none"
-              style={{
-                background: `radial-gradient(ellipse at center, ${withAlpha(brandColors.neonCyan, 0.15)}, ${withAlpha(brandColors.violet, 0.1)}, transparent 70%)`,
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.8, 0.4, 0.8],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-
-            <div
-              className="relative px-6 py-5 rounded-2xl text-left"
-              style={{
-                width: isMobile ? '90vw' : '440px',
-                maxWidth: '440px',
-                background: isDark
-                  ? 'linear-gradient(135deg, rgba(14,14,20,0.98), rgba(26,26,46,0.95))'
-                  : 'linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95))',
-                backdropFilter: 'blur(24px)',
-                border: `2px solid ${withAlpha(brandColors.neonCyan, 0.6)}`,
-                boxShadow: `
-                  0 0 60px ${withAlpha(brandColors.neonCyan, 0.5)},
-                  0 0 100px ${withAlpha(brandColors.violet, 0.4)},
-                  0 0 140px ${withAlpha(brandColors.neonPink, 0.2)},
-                  inset 0 0 30px ${withAlpha(brandColors.neonCyan, 0.1)}
-                `,
-              }}
-            >
-              {/* 顶部装饰线 */}
-              <motion.div
-                className="absolute -top-px left-1/2 -translate-x-1/2 h-1 rounded-full"
-                style={{
-                  width: '60%',
-                  background: `linear-gradient(90deg, transparent, ${brandColors.neonCyan}, ${brandColors.violet}, ${brandColors.neonPink}, transparent)`,
-                }}
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-
-              {/* 头部信息 - 随机发现消息 */}
-              <motion.p
-                className="text-xs font-bold mb-3 text-center"
-                style={{
-                  backgroundImage: `linear-gradient(135deg, ${brandColors.neonCyan}, ${brandColors.violet}, ${brandColors.neonPink})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                👁 {eyeDiscovery.message}
-              </motion.p>
-
-              {/* 主问题 */}
-              <motion.p
-                className="text-base font-semibold mb-4"
-                style={{ color: isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.9)' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                {eyeDiscovery.question}
-              </motion.p>
-
-              {/* 引导性问题 - 用提问代替陈述，引发更多思考 */}
-              <motion.div
-                className="mb-4 p-4 rounded-xl"
-                style={{
-                  background: `linear-gradient(135deg, ${withAlpha(brandColors.neonCyan, 0.08)}, ${withAlpha(brandColors.violet, 0.06)})`,
-                  border: `1px solid ${withAlpha(brandColors.neonCyan, 0.25)}`,
-                }}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                <p
-                  className="text-sm leading-relaxed italic"
-                  style={{ color: isDark ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.75)' }}
-                >
-                  &ldquo;{eyeDiscovery.provocativePrompt}&rdquo;
-                </p>
-              </motion.div>
-
-              {/* 深度思考内容 - 只显示延伸问题，以提问为主 */}
-              {eyeDiscovery.deepThought && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 }}
-                >
-                  {/* 延伸问题 - 核心内容 */}
-                  {eyeDiscovery.deepThought.followUpQuestions && eyeDiscovery.deepThought.followUpQuestions.length > 0 && (
-                    <div className="mb-4">
-                      <p
-                        className="text-xs font-semibold mb-2"
-                        style={{ color: brandColors.neonCyan }}
-                      >
-                        💭 如果再往深想一步呢？
-                      </p>
-                      <ul className="space-y-2">
-                        {eyeDiscovery.deepThought.followUpQuestions.map((q, i) => (
-                          <motion.li
-                            key={i}
-                            className="text-xs pl-4 relative leading-relaxed"
-                            style={{ color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)' }}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 1 + i * 0.2 }}
-                          >
-                            <span
-                              className="absolute left-0"
-                              style={{ color: brandColors.violet }}
-                            >
-                              ?
-                            </span>
-                            {q}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* 假设场景 - 改为提问形式 */}
-                  {eyeDiscovery.deepThought.scenario && (
-                    <motion.div
-                      className="mb-4 p-3 rounded-lg"
-                      style={{
-                        background: withAlpha(brandColors.violet, 0.1),
-                        border: `1px solid ${withAlpha(brandColors.violet, 0.3)}`,
-                      }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.6 }}
-                    >
-                      <p
-                        className="text-xs font-semibold mb-1"
-                        style={{ color: brandColors.violet }}
-                      >
-                        🎭 想象一下…
-                      </p>
-                      <p
-                        className="text-xs leading-relaxed"
-                        style={{ color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)' }}
-                      >
-                        {eyeDiscovery.deepThought.scenario}
-                      </p>
-                    </motion.div>
-                  )}
-
-                  {/* 关联领域 - 改为提问形式 */}
-                  {eyeDiscovery.deepThought.connections && eyeDiscovery.deepThought.connections.length > 0 && (
-                    <motion.div
-                      className="flex flex-wrap gap-1.5 items-center"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 2 }}
-                    >
-                      <span
-                        className="text-xs"
-                        style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)' }}
-                      >
-                        🔗 还能连接到…
-                      </span>
-                      {eyeDiscovery.deepThought.connections.map((conn, i) => (
-                        <span
-                          key={i}
-                          className="text-xs px-2 py-0.5 rounded-full"
-                          style={{
-                            background: withAlpha(brandColors.neonPink, 0.15),
-                            color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
-                            border: `1px solid ${withAlpha(brandColors.neonPink, 0.3)}`,
-                          }}
-                        >
-                          {conn}
-                        </span>
-                      ))}
-                    </motion.div>
-                  )}
-                </motion.div>
-              )}
-
-              {/* 底部提示 - 邀请式提问 */}
-              <motion.p
-                className="text-xs mt-4 pt-3 text-center border-t"
-                style={{
-                  color: withAlpha(brandColors.neonCyan, 0.7),
-                  borderColor: withAlpha(brandColors.neonCyan, 0.15),
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2.2 }}
-              >
-                这个问题会陪伴你一段时间…你会想到什么？
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Curiosity Resonance */}
       <AnimatePresence>
         {showResonance && (
@@ -1272,7 +1021,19 @@ function QuestionCircle({
         )}
       </svg>
 
-      {/* Question text - 不在 isPinned 时显示，因为 eyeDiscovery 面板会接管显示 */}
+      {/* 固定标签显示 - 当圆圈被固定在眼睛上方时显示更显著的标签 */}
+      <AnimatePresence>
+        {circle.isPinned && !isDragging && (
+          <PinnedQuestionTag
+            question={circle.question.question}
+            color={color}
+            isDark={isDark}
+            isMobile={isMobile}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Question text - 不在 isPinned 时显示，因为固定标签会接管显示 */}
       <AnimatePresence>
         {((showText && !isDragging && !circle.isPinned) || (isAutoRevealing && !isDragging && !circle.isPinned)) && (
           <QuestionTextDisplay
@@ -1287,6 +1048,158 @@ function QuestionCircle({
           />
         )}
       </AnimatePresence>
+    </motion.div>
+  );
+}
+
+// ============ Pinned Question Tag Component ============
+interface PinnedQuestionTagProps {
+  question: string;
+  color: string;
+  isDark: boolean;
+  isMobile: boolean;
+}
+
+function PinnedQuestionTag({ question, color, isDark, isMobile }: PinnedQuestionTagProps) {
+  return (
+    <motion.div
+      className="absolute pointer-events-none"
+      style={{
+        top: '100%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        marginTop: '16px',
+        zIndex: 1000,
+        width: isMobile ? '280px' : '360px',
+        maxWidth: '90vw',
+      }}
+      initial={{ opacity: 0, y: -20, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -10, scale: 0.9 }}
+      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+    >
+      {/* 发光背景 */}
+      <motion.div
+        className="absolute inset-0 -m-3 rounded-2xl"
+        style={{
+          background: `radial-gradient(ellipse at center, ${withAlpha(brandColors.neonCyan, 0.25)}, ${withAlpha(color, 0.15)}, transparent 80%)`,
+          filter: 'blur(20px)',
+        }}
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.6, 0.9, 0.6],
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
+      />
+
+      {/* 主容器 */}
+      <motion.div
+        className="relative px-5 py-4 rounded-xl"
+        style={{
+          background: isDark
+            ? `linear-gradient(135deg, rgba(14,14,20,0.98), rgba(26,26,46,0.95))`
+            : `linear-gradient(135deg, rgba(255,255,255,0.99), rgba(248,250,252,0.97))`,
+          backdropFilter: 'blur(24px)',
+          border: `2px solid ${withAlpha(brandColors.neonCyan, 0.7)}`,
+          boxShadow: `
+            0 0 40px ${withAlpha(brandColors.neonCyan, 0.5)},
+            0 0 80px ${withAlpha(color, 0.3)},
+            inset 0 0 20px ${withAlpha(brandColors.neonCyan, 0.1)}
+          `,
+        }}
+      >
+        {/* 顶部装饰条 */}
+        <motion.div
+          className="absolute -top-px left-1/2 -translate-x-1/2 h-1 rounded-full"
+          style={{
+            width: '50%',
+            background: `linear-gradient(90deg, transparent, ${brandColors.neonCyan}, ${color}, transparent)`,
+          }}
+          animate={{ opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        />
+
+        {/* 眼睛图标和标题 */}
+        <motion.div
+          className="flex items-center gap-2 mb-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.15 }}
+        >
+          <motion.span
+            className="text-lg"
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            👁
+          </motion.span>
+          <span
+            className="text-xs font-semibold"
+            style={{
+              background: `linear-gradient(90deg, ${brandColors.neonCyan}, ${color})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            好奇心捕获
+          </span>
+        </motion.div>
+
+        {/* 问题文本 */}
+        <motion.p
+          className="text-sm font-medium leading-relaxed"
+          style={{
+            color: isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.9)',
+            lineHeight: 1.7,
+          }}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+        >
+          {question}
+        </motion.p>
+
+        {/* 底部提示 */}
+        <motion.p
+          className="text-xs mt-3 pt-2 border-t"
+          style={{
+            color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)',
+            borderColor: withAlpha(brandColors.neonCyan, 0.2),
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          ✨ 这个问题正在被深入探索...
+        </motion.p>
+
+        {/* 角落装饰点 */}
+        <motion.div
+          className="absolute -top-1 -left-1 w-2 h-2 rounded-full"
+          style={{ background: brandColors.neonCyan }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute -top-1 -right-1 w-2 h-2 rounded-full"
+          style={{ background: color }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full"
+          style={{ background: color }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: 0.25 }}
+        />
+        <motion.div
+          className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full"
+          style={{ background: brandColors.neonCyan }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: 0.75 }}
+        />
+      </motion.div>
     </motion.div>
   );
 }
