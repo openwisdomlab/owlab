@@ -270,13 +270,14 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       // 让用户更容易将问题拖入眼睛区域
       if (distToCenter < heroRadius * 1.2) {
         // 固定问题在眼睛上方，使用新的固定标签显示
+        // 圆圈位于眼睛上边缘，卡片在圆圈上方展示
         circlesRef.current = circlesRef.current.map(circle => {
           if (circle.id === dragRef.current?.id) {
             return {
               ...circle,
               isPinned: true,
               x: heroCenter.x,
-              y: heroCenter.y - heroRadius - 60,
+              y: heroCenter.y - heroRadius - 30,
               vx: 0, vy: 0,
             };
           }
@@ -284,23 +285,13 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         });
         setCircles([...circlesRef.current]);
 
-        // 固定显示15秒后自动解除固定
+        // 固定显示20秒后卡片消失，圆圈也不再显示
         const pinnedCircleId = dragRef.current?.id;
         setTimeout(() => {
-          circlesRef.current = circlesRef.current.map(circle => {
-            if (circle.id === pinnedCircleId) {
-              return {
-                ...circle,
-                isPinned: false,
-                // 给一个随机方向的推力让它飘走
-                vx: random(-0.4, 0.4),
-                vy: random(-0.3, -0.1),
-              };
-            }
-            return circle;
-          });
+          // 直接从数组中删除该圆圈，而不是让它飘走
+          circlesRef.current = circlesRef.current.filter(circle => circle.id !== pinnedCircleId);
           setCircles([...circlesRef.current]);
-        }, 15000);
+        }, 20000);
       }
     }
 
@@ -1065,18 +1056,18 @@ function PinnedQuestionTag({ question, color, isDark, isMobile }: PinnedQuestion
     <motion.div
       className="absolute pointer-events-none"
       style={{
-        top: '100%',
+        bottom: '100%',
         left: '50%',
         transform: 'translateX(-50%)',
-        marginTop: '16px',
+        marginBottom: '20px',
         zIndex: 1000,
-        width: isMobile ? '280px' : '360px',
+        width: isMobile ? '280px' : '380px',
         maxWidth: '90vw',
       }}
-      initial={{ opacity: 0, y: -20, scale: 0.8 }}
+      initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -10, scale: 0.9 }}
-      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
       {/* 发光背景 */}
       <motion.div
