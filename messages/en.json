@@ -282,7 +282,7 @@
             "4P Magic Formula: Projects + Passion + Peers + Play = Creativity unleashed",
             "Design Thinking Loop: Empathize → Define → Brainstorm → Prototype → Test — your universal problem-solving key"
           ],
-          "tags": ["Constructivism", "4P Theory", "Design Thinking", "Learning by Doing", "Creative Learning"]
+          "tags": ["4P Theory", "Constructivism", "Design Thinking"]
         },
         "M02": {
           "title": "Adventurous Owl",
@@ -295,7 +295,7 @@
             "Flat operations: No bureaucracy, just do it — everyone is a co-builder",
             "Cross-boundary collaboration: Schools + enterprises + communities, breaking walls, letting innovation resources flow"
           ],
-          "tags": ["Distributed Network", "Node Classification", "Agile Governance", "Resource Sharing", "Alliance Collaboration"]
+          "tags": ["Distributed Network", "Agile Governance", "Alliance Collaboration"]
         },
         "M03": {
           "title": "Creative Owl",
@@ -308,7 +308,7 @@
             "Online meets offline: Cloud collaboration, version control, knowledge base — work anytime, anywhere",
             "Making growth visible: Work walls track progress, failure walls celebrate 'valuable mistakes', progress boards chase goals"
           ],
-          "tags": ["Space Design", "Zone Layout", "Digital Environment", "Cultural Atmosphere", "Accessibility"]
+          "tags": ["Space Design", "Cultural Atmosphere", "Low-cost Renovation"]
         },
         "M04": {
           "title": "Studious Owl",
@@ -321,7 +321,7 @@
             "Real problems, real outputs: From asking questions to public showcase, every project is for real",
             "AI as teammate, not cheat code: Use it for brainstorming, guidance, analysis — but core thinking is yours"
           ],
-          "tags": ["Backward Design", "Inquiry-Based Learning", "AI Teaching", "Driving Questions", "Authentic Products"]
+          "tags": ["Backward Design", "Inquiry-Based Learning", "AI Teaching"]
         },
         "M05": {
           "title": "Versatile Owl",
@@ -334,7 +334,7 @@
             "Idea to reality: 3D modeling → Slicing → Materials → Printing → Finishing — complete digital manufacturing pipeline",
             "Open ecosystem: Arduino, Raspberry Pi, ESP32, plus all kinds of sensors — whatever you want to build, there's a way"
           ],
-          "tags": ["Equipment Tiers", "Digital Fabrication", "Open Hardware", "Asset Management", "Maintenance"]
+          "tags": ["Digital Fabrication", "Open Hardware", "AI Tools"]
         },
         "M06": {
           "title": "Guardian Owl",
@@ -347,7 +347,7 @@
             "Risk traffic lights: Green = go ahead, Yellow = be careful, Orange = proceed with caution, Red = stop — crystal clear",
             "AI citizen code: Transparent, explainable, fair, privacy-protecting — be a responsible citizen of the AI era"
           ],
-          "tags": ["Risk Assessment", "Safety Training", "Emergency Response", "AI Ethics", "Age Guidelines"]
+          "tags": ["Risk Assessment", "Psychological Safety", "AI Ethics"]
         },
         "M07": {
           "title": "Wise Owl",
@@ -360,7 +360,7 @@
             "3D capability model: Tech skills + Teaching skills + Community skills — well-rounded, no weak spots",
             "Keep evolving: Beginner → Intermediate → Advanced → Expert certification — learning never stops, teaching never stops"
           ],
-          "tags": ["Capability Tiers", "Role Matrix", "Mentor Certification", "Technical Training", "Community Facilitation"]
+          "tags": ["Capability Model", "Facilitator Guide", "Peer Mentoring"]
         },
         "M08": {
           "title": "Flying Owl",
@@ -373,7 +373,7 @@
             "Member leveling up: Newcomer → Learner → Member → Core → Mentor — responsibilities grow with privileges",
             "Culture beats rules: Open, sharing, failure-friendly, respectful collaboration — giving the space a soul"
           ],
-          "tags": ["Standard Procedures", "Membership System", "Community Culture", "Open Days", "Mentor Network"]
+          "tags": ["Standard Procedures", "Community Culture", "Open Days"]
         },
         "M09": {
           "title": "Resilient Owl",
@@ -386,7 +386,7 @@
             "Growth portfolio: Project collection, process logs, reflection journals, peer kudos — your complete learning journey",
             "Digital growth curve: Knowledge maps, skill radars, growth charts, milestone badges — data telling your story"
           ],
-          "tags": ["Multi-Dimensional Assessment", "Growth Portfolio", "Digital Profile", "Process Evaluation", "Capability Certification"]
+          "tags": ["Portfolio Assessment", "Theory of Change", "Growth Visualization"]
         }
       },
       "status": {

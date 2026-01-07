@@ -188,17 +188,6 @@ export function ModuleCards({ locale, compact = false, showHighlights = true }: 
     }
   };
 
-  // 获取子模块名称作为额外标签
-  const getSubModuleTags = (moduleId: string, subModules: SubModule[]): string[] => {
-    return subModules.map(sub => {
-      try {
-        return t(`subModules.${moduleId}.${sub.id}`);
-      } catch {
-        return sub.id;
-      }
-    });
-  };
-
   return (
     <motion.div
       className={compact ? "grid md:grid-cols-2 lg:grid-cols-3 gap-3" : "grid md:grid-cols-2 lg:grid-cols-3 gap-6"}
@@ -209,9 +198,6 @@ export function ModuleCards({ locale, compact = false, showHighlights = true }: 
       {modules.map((module) => {
         const highlights = getHighlights(module.id);
         const tags = getTags(module.id);
-        const subModuleTags = getSubModuleTags(module.id, module.subModules);
-        // 合并相关主题和扩展主题为一个标签列表
-        const allTags = [...tags, ...subModuleTags];
 
         // 检查是否有 subtitle
         let subtitle = "";
@@ -355,8 +341,8 @@ export function ModuleCards({ locale, compact = false, showHighlights = true }: 
                 </div>
               )}
 
-              {/* 合并后的主题标签（相关主题 + 扩展主题） */}
-              {!compact && allTags.length > 0 && (
+              {/* 相关主题标签 */}
+              {!compact && tags.length > 0 && (
                 <div className="mt-4 pt-3 border-t border-[var(--glass-border)]">
                   <div className="flex items-center gap-1.5 mb-2">
                     <Tag className="w-3.5 h-3.5" style={{ color: module.color }} />
@@ -365,7 +351,7 @@ export function ModuleCards({ locale, compact = false, showHighlights = true }: 
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {allTags.map((tag, index) => (
+                    {tags.map((tag, index) => (
                       <Link
                         key={`${index}-${tag}`}
                         href={`/${locale}${module.path}`}
