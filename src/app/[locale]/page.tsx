@@ -2073,28 +2073,75 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Research Philosophy Section - 研究无边界 */}
-      <section className="py-16 px-4 relative overflow-hidden">
-        {/* 背景装饰 - 扩散的圆环 */}
+      {/* Philosophy Quote Section - 没有问题是太愚蠢的 */}
+      <section className="py-20 px-4 relative overflow-hidden">
+        {/* 背景装饰 - 问号和灯泡漂浮 */}
         <div className="absolute inset-0 pointer-events-none">
+          {/* 扩散圆环 */}
           <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-[var(--neon-cyan)]/10"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+            style={{
+              background: 'radial-gradient(circle, var(--neon-yellow)/5 0%, transparent 70%)',
+            }}
+            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[var(--neon-violet)]/15"
-            animate={{ scale: [1.2, 1, 1.2], opacity: [0.15, 0.25, 0.15] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[var(--neon-cyan)]/10"
+            animate={{ scale: [1.1, 1, 1.1], rotate: [0, 180, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           />
-          <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-[var(--neon-pink)]/20"
-            animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.3, 0.2] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          />
+
+          {/* 漂浮的问号 */}
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={`question-${i}`}
+              className="absolute text-2xl md:text-3xl opacity-20"
+              style={{
+                left: `${10 + i * 20}%`,
+                top: `${15 + (i % 3) * 25}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                rotate: [-10, 10, -10],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 4 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.8,
+              }}
+            >
+              ?
+            </motion.div>
+          ))}
+
+          {/* 漂浮的灯泡 */}
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={`bulb-${i}`}
+              className="absolute text-xl md:text-2xl"
+              style={{
+                left: `${20 + i * 22}%`,
+                top: `${60 + (i % 2) * 20}%`,
+              }}
+              animate={{
+                y: [0, -15, 0],
+                scale: [1, 1.2, 1],
+                opacity: [0.15, 0.35, 0.15],
+              }}
+              transition={{
+                duration: 3 + i * 0.7,
+                repeat: Infinity,
+                delay: i * 0.5 + 1,
+              }}
+            >
+              💡
+            </motion.div>
+          ))}
         </div>
 
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -2102,83 +2149,185 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* 主标语 */}
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <span className="bg-gradient-to-r from-[var(--neon-cyan)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent">
-                研究无边界
-              </span>
-              <span className="text-[var(--muted-foreground)]">，</span>
-              <span className="bg-gradient-to-r from-[var(--neon-pink)] via-[var(--neon-violet)] to-[var(--neon-cyan)] bg-clip-text text-transparent">
-                好奇即起点
-              </span>
-            </motion.h2>
-
-            {/* 副标语 - 三个理念 */}
+            {/* 主标语 - 交互式设计 */}
             <motion.div
-              className="flex flex-wrap justify-center items-center gap-3 md:gap-6"
+              className="relative inline-block"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              {/* 第一句 */}
+              <motion.h2
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <motion.span
+                  className="inline-block"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <span className="text-[var(--foreground)]">没有</span>
+                  <motion.span
+                    className="relative inline-block mx-1"
+                    whileHover={{
+                      textShadow: "0 0 20px var(--neon-yellow)",
+                    }}
+                  >
+                    <span className="bg-gradient-to-r from-[var(--neon-yellow)] via-[var(--neon-orange)] to-[var(--neon-yellow)] bg-clip-text text-transparent">
+                      问题
+                    </span>
+                    <motion.span
+                      className="absolute -top-2 -right-3 text-base"
+                      animate={{ rotate: [0, 15, 0], y: [0, -3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ?
+                    </motion.span>
+                  </motion.span>
+                  <span className="text-[var(--foreground)]">是太</span>
+                  <motion.span
+                    className="inline-block bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] bg-clip-text text-transparent mx-1"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    愚蠢
+                  </motion.span>
+                  <span className="text-[var(--foreground)]">的</span>
+                </motion.span>
+              </motion.h2>
+
+              {/* 第二句 */}
+              <motion.h2
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <motion.span
+                  className="inline-block"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <span className="text-[var(--foreground)]">没有</span>
+                  <motion.span
+                    className="relative inline-block mx-1"
+                    whileHover={{
+                      textShadow: "0 0 20px var(--neon-pink)",
+                    }}
+                  >
+                    <span className="bg-gradient-to-r from-[var(--neon-pink)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent">
+                      想法
+                    </span>
+                    <motion.span
+                      className="absolute -top-2 -right-3 text-base"
+                      animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      💡
+                    </motion.span>
+                  </motion.span>
+                  <span className="text-[var(--foreground)]">是太</span>
+                  <motion.span
+                    className="inline-block bg-gradient-to-r from-[var(--neon-orange)] to-[var(--neon-pink)] bg-clip-text text-transparent mx-1"
+                    whileHover={{ scale: 1.1, rotate: [-2, 2, -2] }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    疯狂
+                  </motion.span>
+                  <span className="text-[var(--foreground)]">的</span>
+                </motion.span>
+              </motion.h2>
+            </motion.div>
+
+            {/* 互动提示区域 */}
+            <motion.div
+              className="mt-10 md:mt-14 flex flex-wrap justify-center gap-3 md:gap-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
               {[
-                { text: "万物皆可研究", icon: "🔬", color: "var(--neon-cyan)" },
-                { text: "人人参与研究", icon: "👥", color: "var(--neon-violet)" },
-                { text: "处处展开研究", icon: "🌍", color: "var(--neon-pink)" },
+                { text: "敢于提问", icon: "🙋", color: "var(--neon-yellow)", hoverColor: "var(--neon-yellow)" },
+                { text: "勇于尝试", icon: "🚀", color: "var(--neon-cyan)", hoverColor: "var(--neon-cyan)" },
+                { text: "乐于失败", icon: "🔄", color: "var(--neon-violet)", hoverColor: "var(--neon-violet)" },
+                { text: "敢于创造", icon: "✨", color: "var(--neon-pink)", hoverColor: "var(--neon-pink)" },
               ].map((item, index) => (
                 <motion.div
                   key={item.text}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full glass-card"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  className="group relative flex items-center gap-2 px-4 py-2.5 rounded-full glass-card cursor-pointer overflow-hidden"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
                   whileHover={{
-                    scale: 1.05,
-                    boxShadow: `0 0 20px ${item.color}30`,
+                    scale: 1.08,
+                    y: -3,
                   }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <span className="text-lg">{item.icon}</span>
+                  {/* 悬浮发光背景 */}
+                  <motion.div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, ${item.color}20 0%, transparent 100%)`,
+                    }}
+                  />
+                  <motion.span
+                    className="text-lg relative z-10"
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                  >
+                    {item.icon}
+                  </motion.span>
                   <span
-                    className="text-sm md:text-base font-medium"
+                    className="text-sm md:text-base font-medium relative z-10 transition-colors duration-300"
                     style={{ color: item.color }}
                   >
                     {item.text}
                   </span>
+                  {/* 悬浮边框光效 */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      boxShadow: `0 0 20px ${item.color}40, inset 0 0 20px ${item.color}10`,
+                    }}
+                  />
                 </motion.div>
               ))}
             </motion.div>
 
-            {/* 装饰性光点 */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {[...Array(6)].map((_, i) => (
+            {/* 装饰性元素 */}
+            <motion.div
+              className="mt-8 flex justify-center gap-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 1.2 }}
+            >
+              {[...Array(3)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1 h-1 rounded-full"
+                  className="w-2 h-2 rounded-full"
                   style={{
-                    background: i % 3 === 0 ? 'var(--neon-cyan)' : i % 3 === 1 ? 'var(--neon-violet)' : 'var(--neon-pink)',
-                    left: `${15 + i * 14}%`,
-                    top: `${20 + (i % 2) * 60}%`,
+                    background: i === 0 ? 'var(--neon-yellow)' : i === 1 ? 'var(--neon-cyan)' : 'var(--neon-pink)',
                   }}
                   animate={{
-                    y: [0, -10, 0],
-                    opacity: [0.3, 0.8, 0.3],
                     scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5],
                   }}
                   transition={{
-                    duration: 3 + i * 0.5,
+                    duration: 2,
                     repeat: Infinity,
                     delay: i * 0.3,
                   }}
                 />
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -2226,32 +2375,6 @@ export default function HomePage() {
             </Link>
           </motion.div>
         </div>
-      </section>
-
-      {/* 名言展示 Section */}
-      <section className="py-10 px-4 bg-[var(--glass-bg)]/10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <motion.p
-            className="text-xl md:text-2xl font-medium"
-            style={{
-              background: "linear-gradient(135deg, var(--neon-yellow) 0%, var(--neon-cyan) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            没有问题是太愚蠢的，没有想法是太疯狂的
-          </motion.p>
-        </motion.div>
       </section>
 
       <footer className="py-10 px-4 border-t border-[var(--glass-border)]">
