@@ -81,12 +81,9 @@ export default function KnowledgeUniverse({ locale }: Props) {
 
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [normalizedMouse, setNormalizedMouse] = useState({ x: 0, y: 0 }); // -0.5..0.5
   const [signalRings, setSignalRings] = useState<{ x: number; y: number; id: number; color: string }[]>([]);
   const [showRecommendations, setShowRecommendations] = useState(true);
   const [svgDimensions, setSvgDimensions] = useState({ width: 1200, height: 800 });
-  const [viewport, setViewport] = useState({ w: 1200, h: 800 });
   const [alertOn, setAlertOn] = useState(false);
 
   // Generate dust particles with depth
@@ -107,17 +104,6 @@ export default function KnowledgeUniverse({ locale }: Props) {
       };
     });
   }, []);
-
-  // Parallax amounts based on mouse position
-  const deepParallax = useMemo(() => ({
-    x: reduceMotion ? 0 : normalizedMouse.x * -20,
-    y: reduceMotion ? 0 : normalizedMouse.y * -20,
-  }), [normalizedMouse, reduceMotion]);
-
-  const midParallax = useMemo(() => ({
-    x: reduceMotion ? 0 : normalizedMouse.x * -10,
-    y: reduceMotion ? 0 : normalizedMouse.y * -10,
-  }), [normalizedMouse, reduceMotion]);
 
   // Compute active system (L module) based on selection or hover
   const activeSystem = useMemo(() => {
@@ -196,30 +182,6 @@ export default function KnowledgeUniverse({ locale }: Props) {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  // Mouse parallax and viewport tracking
-  useEffect(() => {
-    const updateViewport = () => {
-      setViewport({ w: window.innerWidth || 1, h: window.innerHeight || 1 });
-    };
-    updateViewport();
-
-    const handleMouse = (e: MouseEvent) => {
-      const w = window.innerWidth || 1;
-      const h = window.innerHeight || 1;
-      // Normalized -0.5 to 0.5
-      const nx = e.clientX / w - 0.5;
-      const ny = e.clientY / h - 0.5;
-      setNormalizedMouse({ x: nx, y: ny });
-      setMousePos({ x: nx * 15, y: ny * 15 });
-    };
-
-    window.addEventListener("mousemove", handleMouse, { passive: true });
-    window.addEventListener("resize", updateViewport);
-    return () => {
-      window.removeEventListener("mousemove", handleMouse);
-      window.removeEventListener("resize", updateViewport);
-    };
-  }, []);
 
   // Alert flash timer (occasional)
   useEffect(() => {
@@ -430,19 +392,15 @@ export default function KnowledgeUniverse({ locale }: Props) {
       };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white overflow-hidden relative cursor-none">
+    <div className="min-h-screen bg-[#020617] text-white overflow-hidden relative">
       {/* Camera rig with subtle drift */}
       <motion.div
         className="absolute inset-0"
         animate={cameraAnim}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* Layer 1: Deep space (strongest parallax) */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{ x: deepParallax.x, y: deepParallax.y, scale: 1.04 }}
-          transition={{ type: "tween", duration: 0.1 }}
-        >
+        {/* Layer 1: Deep space */}
+        <div className="absolute inset-0">
           {/* Nebula canvas */}
           <canvas
             ref={nebulaRef}
@@ -455,18 +413,14 @@ export default function KnowledgeUniverse({ locale }: Props) {
           {/* Nebula blobs */}
           <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl mix-blend-screen" />
           <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-purple-500/8 blur-3xl mix-blend-screen" />
-        </motion.div>
+        </div>
 
         {/* Layer 2: Mid space - Planet limb */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          animate={{ x: midParallax.x, y: midParallax.y }}
-          transition={{ type: "tween", duration: 0.1 }}
-        >
+        <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -bottom-1/3 -left-1/4 h-2/3 w-[140%] opacity-30">
             <div className="h-full w-full rounded-[100%] bg-gradient-to-t from-cyan-900/50 via-slate-950 to-transparent border-t border-cyan-500/20" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Blueprint grid overlay */}
         <div
@@ -615,16 +569,8 @@ export default function KnowledgeUniverse({ locale }: Props) {
       <motion.div
         ref={containerRef}
         className="relative z-20 w-full h-screen flex items-center justify-center p-8"
-        animate={{
-          scale: focusScale,
-          x: mousePos.x,
-          y: mousePos.y,
-        }}
-        transition={{
-          scale: { duration: 0.5, ease: "easeOut" },
-          x: { duration: 0 },
-          y: { duration: 0 },
-        }}
+        animate={{ scale: focusScale }}
+        transition={{ scale: { duration: 0.5, ease: "easeOut" } }}
       >
         <svg
           viewBox={`0 0 ${blueprintLayout.viewBox.width} ${blueprintLayout.viewBox.height}`}
@@ -1058,27 +1004,6 @@ export default function KnowledgeUniverse({ locale }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Custom sci-fi cursor */}
-      <div className="pointer-events-none fixed inset-0 z-[200] hidden md:block">
-        <motion.div
-          className="fixed left-0 top-0 h-8 w-8 -ml-4 -mt-4"
-          animate={{
-            x: viewport.w * 0.5 + normalizedMouse.x * viewport.w,
-            y: viewport.h * 0.5 + normalizedMouse.y * viewport.h,
-          }}
-          transition={{ type: "tween", duration: 0.05 }}
-        >
-          <div className="absolute inset-0 rounded-full border border-cyan-400/40" />
-          <div className="absolute inset-2 rounded-full border border-cyan-200/60" />
-          <div className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_6px_rgba(34,211,238,0.8)]" />
-          {/* Crosshair lines */}
-          <div className="absolute left-1/2 top-0 h-2 w-px -translate-x-1/2 bg-cyan-400/40" />
-          <div className="absolute left-1/2 bottom-0 h-2 w-px -translate-x-1/2 bg-cyan-400/40" />
-          <div className="absolute top-1/2 left-0 w-2 h-px -translate-y-1/2 bg-cyan-400/40" />
-          <div className="absolute top-1/2 right-0 w-2 h-px -translate-y-1/2 bg-cyan-400/40" />
-        </motion.div>
-      </div>
 
       </motion.div>
     </div>
