@@ -1,6 +1,6 @@
 {
-  "title": "M08 运营手册",
-  "description": "让运营自然流畅",
-  "icon": "ClipboardList",
+  "title": "M08 补给站",
+  "description": "让远航持续进行",
+  "icon": "Fuel",
   "pages": ["index", "...extend", "...sops", "...cases", "...evidence"]
 }

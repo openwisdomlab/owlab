@@ -1,6 +1,6 @@
 {
-  "title": "M05 工具与资产",
-  "description": "设备管理让创造可能",
-  "icon": "Wrench",
+  "title": "M05 装备舱",
+  "description": "探险者的工具仓库",
+  "icon": "Package",
   "pages": ["index", "...extend", "...cases", "...evidence"]
 }

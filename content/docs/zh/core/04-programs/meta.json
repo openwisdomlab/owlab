@@ -1,6 +1,6 @@
 {
-  "title": "M04 课程与项目",
-  "description": "有效的学习体验设计",
-  "icon": "BookOpen",
+  "title": "M04 航线",
+  "description": "从已知到未知的路径",
+  "icon": "Map",
   "pages": ["index", "...extend", "...cases", "...evidence"]
 }

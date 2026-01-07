@@ -1,6 +1,6 @@
 {
-  "title": "M02 治理与网络",
-  "description": "组织形式与协作规则",
-  "icon": "Network",
+  "title": "M02 航道",
+  "description": "让资源自由流动",
+  "icon": "Route",
   "pages": ["index", "...extend", "...cases", "...evidence"]
 }
