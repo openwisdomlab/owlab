@@ -2205,9 +2205,9 @@ export default function HomePage() {
             >
               {[
                 { text: "敢于提问", icon: "🙋", color: "var(--neon-yellow)", hoverColor: "var(--neon-yellow)" },
-                { text: "勇于尝试", icon: "🚀", color: "var(--neon-cyan)", hoverColor: "var(--neon-cyan)" },
-                { text: "乐于失败", icon: "🔄", color: "var(--neon-violet)", hoverColor: "var(--neon-violet)" },
-                { text: "敢于创造", icon: "✨", color: "var(--neon-pink)", hoverColor: "var(--neon-pink)" },
+                { text: "探索未知", icon: "🔍", color: "var(--neon-cyan)", hoverColor: "var(--neon-cyan)" },
+                { text: "打破边界", icon: "🦋", color: "var(--neon-violet)", hoverColor: "var(--neon-violet)" },
+                { text: "永葆好奇", icon: "🤔", color: "var(--neon-pink)", hoverColor: "var(--neon-pink)" },
               ].map((item, index) => (
                 <motion.div
                   key={item.text}
