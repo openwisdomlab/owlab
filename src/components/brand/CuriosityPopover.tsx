@@ -144,7 +144,7 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
       {/* 连接射线动画 - 从眼睛到左侧卡片 */}
       <AnimatePresence>
         {isOpen && count > 0 && !isMobile && (
-          <motion.svg
+          <div
             className="absolute pointer-events-none"
             style={{
               top: "50%",
@@ -152,80 +152,94 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
               width: 120,
               height: 60,
               transform: "translateY(-50%)",
-              overflow: "visible",
               zIndex: 90,
             }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
           >
-            {/* 种子发射轨迹 */}
-            <motion.path
-              d="M 120 30 Q 80 30 40 30"
-              stroke={brandColors.neonCyan}
-              strokeWidth="2"
-              fill="none"
-              strokeDasharray="8 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.6 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-            {/* 发光粒子效果 */}
-            <motion.circle
-              r="3"
-              fill={brandColors.neonCyan}
-              initial={{ cx: 120, cy: 30, opacity: 1 }}
-              animate={{
-                cx: [120, 40],
-                opacity: [1, 0.3],
-              }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              style={{ filter: `drop-shadow(0 0 6px ${brandColors.neonCyan})` }}
-            />
-          </motion.svg>
+            <motion.svg
+              width="120"
+              height="60"
+              style={{ overflow: "visible" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* 种子发射轨迹 */}
+              <motion.path
+                d="M 120 30 Q 80 30 40 30"
+                stroke={brandColors.neonCyan}
+                strokeWidth="2"
+                fill="none"
+                strokeDasharray="8 4"
+                opacity={0}
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1, opacity: 0.6 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              />
+              {/* 发光粒子效果 */}
+              <motion.circle
+                r="3"
+                fill={brandColors.neonCyan}
+                cx={120}
+                cy={30}
+                initial={{ opacity: 1 }}
+                animate={{
+                  cx: [120, 40],
+                  opacity: [1, 0.3],
+                }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                style={{ filter: `drop-shadow(0 0 6px ${brandColors.neonCyan})` }}
+              />
+            </motion.svg>
+          </div>
         )}
       </AnimatePresence>
 
       {/* Popover 面板 - 移到左侧 */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: 30, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 30, scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="fixed md:absolute"
-            style={{
-              // 移动端：底部弹出；桌面端：左侧展开
-              ...(isMobile
+          /* 桌面端使用wrapper div进行垂直居中，避免transform冲突 */
+          <div
+            className={isMobile ? "fixed" : "absolute"}
+            style={
+              isMobile
                 ? {
                     left: 16,
                     right: 16,
                     bottom: 80,
-                    width: "auto",
+                    zIndex: 100,
                   }
                 : {
                     right: "100%",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    marginRight: 20,
-                    width: 320,
-                  }),
-              maxHeight: isMobile ? "60vh" : 400,
-              zIndex: 100,
-              borderRadius: 16,
-              background: isDark
-                ? "rgba(14, 14, 20, 0.95)"
-                : "rgba(255, 255, 255, 0.95)",
-              border: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
-              backdropFilter: "blur(16px)",
-              boxShadow: isDark
-                ? `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${withAlpha(brandColors.neonCyan, 0.15)}`
-                : "0 20px 50px rgba(0,0,0,0.15)",
-              overflow: "hidden",
-            }}
+                    top: 0,
+                    bottom: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    paddingRight: 20,
+                    zIndex: 100,
+                  }
+            }
           >
+            <motion.div
+              initial={{ opacity: 0, x: 30, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 30, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              style={{
+                width: isMobile ? "auto" : 320,
+                maxHeight: isMobile ? "60vh" : 400,
+                borderRadius: 16,
+                background: isDark
+                  ? "rgba(14, 14, 20, 0.95)"
+                  : "rgba(255, 255, 255, 0.95)",
+                border: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
+                backdropFilter: "blur(16px)",
+                boxShadow: isDark
+                  ? `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${withAlpha(brandColors.neonCyan, 0.15)}`
+                  : "0 20px 50px rgba(0,0,0,0.15)",
+                overflow: "hidden",
+              }}
+            >
             {/* 左边缘装饰条 */}
             <div
               className="absolute left-0 top-0 bottom-0 w-1"
@@ -375,7 +389,8 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
                 </div>
               )}
             </div>
-          </motion.div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
