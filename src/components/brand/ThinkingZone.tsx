@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useDragControls } from "framer-motion";
 import { Eye, X, ChevronDown, Sparkles } from "lucide-react";
 import { brandColors, withAlpha } from "@/lib/brand/colors";
@@ -14,6 +14,7 @@ export function ThinkingZone() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
   const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const { capturedQuestions, recentlyCapturedId, removeQuestion, clearAll } =
     useCuriosityCaptureStore();
@@ -31,10 +32,21 @@ export function ThinkingZone() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // 有新问题捕获时，移动端自动打开 sheet
+  // 有新问题捕获时的处理
   useEffect(() => {
-    if (isMobile && recentlyCapturedId) {
-      setIsSheetOpen(true);
+    if (recentlyCapturedId) {
+      if (isMobile) {
+        // 移动端：自动打开 sheet（使用 setTimeout 避免同步 setState）
+        setTimeout(() => setIsSheetOpen(true), 0);
+      } else {
+        // 桌面端：平滑滚动到思考区
+        setTimeout(() => {
+          sectionRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 100);
+      }
     }
   }, [isMobile, recentlyCapturedId]);
 
@@ -73,11 +85,11 @@ export function ThinkingZone() {
   // 桌面端：显示固定区域
   // 没有捕获的问题时，显示空状态引导
   if (capturedQuestions.length === 0) {
-    return <EmptyState isDark={isDark} />;
+    return <EmptyState isDark={isDark} sectionRef={sectionRef} />;
   }
 
   return (
-    <section className="relative py-16 px-4">
+    <section ref={sectionRef} className="relative py-16 px-4">
       {/* 背景装饰 */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -688,9 +700,9 @@ function QuestionCard({
 }
 
 // ============ Empty State Component (Desktop) ============
-function EmptyState({ isDark }: { isDark: boolean }) {
+function EmptyState({ isDark, sectionRef }: { isDark: boolean; sectionRef: React.RefObject<HTMLElement | null> }) {
   return (
-    <section className="relative py-16 px-4">
+    <section ref={sectionRef} className="relative py-16 px-4">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
