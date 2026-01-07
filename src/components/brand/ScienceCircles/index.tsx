@@ -33,6 +33,7 @@ interface CircleState {
   suckProgress: number; // 吸入进度 0-1
   suckStartX: number; // 吸入开始时的X位置
   suckStartY: number; // 吸入开始时的Y位置
+  captureCompleted: boolean; // 是否已完成捕获（防止重复调用）
 }
 
 // ============ Constants ============
@@ -216,6 +217,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         suckProgress: 0,
         suckStartX: 0,
         suckStartY: 0,
+        captureCompleted: false,
       };
     });
 
@@ -415,10 +417,16 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           const newX = heroCenter.x + Math.cos(spiralAngle) * currentDist;
           const newY = heroCenter.y + Math.sin(spiralAngle) * currentDist;
 
-          // 吸入完成
-          if (progress >= 1) {
-            completeCapture(circle.id);
-            return { ...circle, x: heroCenter.x, y: heroCenter.y, suckProgress: 1 };
+          // 吸入完成 - 使用 captureCompleted 标志防止重复调用
+          if (progress >= 1 && !circle.captureCompleted) {
+            // 先标记为已完成，然后异步调用 completeCapture
+            setTimeout(() => completeCapture(circle.id), 0);
+            return { ...circle, x: heroCenter.x, y: heroCenter.y, suckProgress: 1, captureCompleted: true };
+          }
+
+          // 如果已经完成捕获，保持当前状态等待被移除
+          if (circle.captureCompleted) {
+            return circle;
           }
 
           return {
@@ -600,6 +608,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             suckProgress: 0,
             suckStartX: 0,
             suckStartY: 0,
+            captureCompleted: false,
           };
 
           circlesRef.current = [...circlesRef.current, newCircle];
