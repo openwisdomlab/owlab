@@ -1,5 +1,5 @@
 {
-  "title": "M09 星轨",
+  "title": "M09 逐星轨",
   "description": "成长的轨迹记录",
   "icon": "Orbit",
   "pages": ["index", "...extend", "...evidence"]

@@ -1,5 +1,5 @@
 {
-  "title": "M04 航线",
+  "title": "M04 远航线",
   "description": "从已知到未知的路径",
   "icon": "Map",
   "pages": ["index", "...extend", "...cases", "...evidence"]
