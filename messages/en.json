@@ -891,6 +891,23 @@
           "2": "Iterative Adjustment"
         }
       }
+    },
+    "hotspots": {
+      "earth": {
+        "anchor": "Anchor Point: Establishing first stable reference in chaos",
+        "scan": "Full-spectrum Scan: Searching all possible signal sources"
+      },
+      "moon": {
+        "principles": "First Principles: Stripping surface to reach essence",
+        "shield": "Cognitive Shield: Identifying and filtering interference"
+      },
+      "sun": {
+        "singularity": "Singularity Convergence: Multi-dimensional insights crystallizing",
+        "convergence": "System Fusion: Building complete framework from fragments"
+      },
+      "mars": {
+        "validation": "Empirical Validation: Theory's ultimate test in reality"
+      }
     }
   }
 }

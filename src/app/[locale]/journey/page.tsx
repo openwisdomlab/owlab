@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { useParams } from "next/navigation";
@@ -11,6 +11,26 @@ import {
   BookOpen, Wrench, Shield, GraduationCap, BarChart3
 } from "lucide-react";
 import { brandColors, withAlpha } from "@/lib/brand/colors";
+
+// Hotspot configuration for each planet
+const hotspotConfig: Record<string, { x: string; y: string; infoKey: string }[]> = {
+  earth: [
+    { x: "42%", y: "25%", infoKey: "earth.anchor" },
+    { x: "55%", y: "60%", infoKey: "earth.scan" },
+  ],
+  moon: [
+    { x: "20%", y: "40%", infoKey: "moon.principles" },
+    { x: "75%", y: "15%", infoKey: "moon.shield" },
+  ],
+  sun: [
+    { x: "35%", y: "15%", infoKey: "sun.singularity" },
+    { x: "30%", y: "75%", infoKey: "sun.convergence" },
+  ],
+  mars: [
+    { x: "50%", y: "20%", infoKey: "mars.validation" },
+  ],
+  space: [],
+};
 
 // Stage configuration - using brand colors
 // Text content is loaded from translations
@@ -62,6 +82,7 @@ const stageConfig = [
     colorRgb: "245, 158, 11",
     modules: ["M07", "M08"],
     planet: "sun" as const,
+    distance: "150.2M KM (1.004 AU)",
   },
   {
     id: 4,
@@ -114,10 +135,16 @@ export default function JourneyPage() {
   const [isWarping, setIsWarping] = useState(false);
   const [tasks, setTasks] = useState(missionStages[0].tasks.map(task => ({ ...task })));
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [signalRings, setSignalRings] = useState<{ x: number; y: number; id: number }[]>([]);
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; text: string } | null>(null);
+  const [jitterBpm, setJitterBpm] = useState(missionStages[0].bpm);
+  const [jitterEntropy, setJitterEntropy] = useState(missionStages[0].entropy);
+  const [capturedHotspots, setCapturedHotspots] = useState<Set<string>>(new Set());
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nebulaRef = useRef<HTMLCanvasElement>(null);
   const ecgRef = useRef<HTMLCanvasElement>(null);
   const starsRef = useRef<{ x: number; y: number; z: number; a: number }[]>([]);
+  const shootingStarsRef = useRef<{ x: number; y: number; len: number; speed: number; opacity: number }[]>([]);
 
   const stage = missionStages[activeIdx];
 
@@ -155,7 +182,31 @@ export default function JourneyPage() {
     return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
 
-  // Star field animation
+  // Metric jitter effect - telemetry feel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setJitterBpm(Math.round(stage.bpm + (Math.random() - 0.5) * 4));
+      setJitterEntropy(stage.entropy + (Math.random() - 0.5) * 0.02);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [stage.bpm, stage.entropy]);
+
+  // Hotspot signal capture
+  const triggerSignalCapture = useCallback((e: React.MouseEvent, hotspotKey: string) => {
+    if (capturedHotspots.has(hotspotKey)) return;
+
+    const rect = (e.target as HTMLElement).getBoundingClientRect();
+    const id = Date.now();
+    setSignalRings(prev => [...prev, {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+      id
+    }]);
+    setCapturedHotspots(prev => new Set([...prev, hotspotKey]));
+    setTimeout(() => setSignalRings(prev => prev.filter(r => r.id !== id)), 1000);
+  }, [capturedHotspots]);
+
+  // Star field animation with shooting stars and animated nebula
   useEffect(() => {
     const canvas = canvasRef.current;
     const nebula = nebulaRef.current;
@@ -172,7 +223,7 @@ export default function JourneyPage() {
 
     const createStars = () => {
       starsRef.current = [];
-      for (let i = 0; i < 300; i++) {
+      for (let i = 0; i < 350; i++) {
         starsRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -192,7 +243,7 @@ export default function JourneyPage() {
       ctx.clearRect(0, 0, w, h);
       nctx.clearRect(0, 0, w, h);
 
-      // Nebula
+      // Nebula base gradient
       const grad = nctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w);
       grad.addColorStop(0, `rgba(${stage.colorRgb}, 0.15)`);
       grad.addColorStop(0.5, `rgba(${stage.colorRgb}, 0.05)`);
@@ -200,10 +251,47 @@ export default function JourneyPage() {
       nctx.fillStyle = grad;
       nctx.fillRect(0, 0, w, h);
 
+      // Animated nebula blobs
+      for (let i = 0; i < 3; i++) {
+        const bx = w * (0.3 + 0.4 * Math.sin(Date.now() * 0.0005 + i));
+        const by = h * (0.3 + 0.4 * Math.cos(Date.now() * 0.0007 + i));
+        const bgrad = nctx.createRadialGradient(bx, by, 0, bx, by, 400);
+        bgrad.addColorStop(0, `rgba(${stage.colorRgb}, 0.1)`);
+        bgrad.addColorStop(1, "transparent");
+        nctx.fillStyle = bgrad;
+        nctx.fillRect(0, 0, w, h);
+      }
+
+      // Shooting stars - spawn randomly
+      if (Math.random() < 0.01 && shootingStarsRef.current.length < 2) {
+        shootingStarsRef.current.push({
+          x: Math.random() * w,
+          y: 0,
+          len: 50 + Math.random() * 100,
+          speed: 10 + Math.random() * 15,
+          opacity: 1
+        });
+      }
+
+      // Draw and update shooting stars
+      shootingStarsRef.current.forEach(s => {
+        s.x += s.speed * 0.5;
+        s.y += s.speed;
+        s.opacity -= 0.01;
+        ctx.strokeStyle = `rgba(255,255,255,${s.opacity})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x - s.len * 0.5, s.y - s.len);
+        ctx.stroke();
+      });
+      shootingStarsRef.current = shootingStarsRef.current.filter(s => s.y < h && s.opacity > 0);
+
       // Stars
       ctx.fillStyle = "#fff";
       starsRef.current.forEach((s) => {
-        const speed = isWarping ? 15 : 0.2 + s.z * (activeIdx === 1 ? 4 : 1);
+        const baseSpeed = 0.2 + s.z * (activeIdx === 1 ? 8 : 1.2);
+        const speed = isWarping ? baseSpeed * 15 : baseSpeed;
         s.y += speed;
         if (s.y > h) s.y = 0;
 
@@ -214,7 +302,7 @@ export default function JourneyPage() {
           ctx.lineWidth = s.z;
           ctx.beginPath();
           ctx.moveTo(s.x, s.y);
-          ctx.lineTo(s.x, s.y - speed * 3);
+          ctx.lineTo(s.x, s.y - speed * 2);
           ctx.stroke();
         } else {
           ctx.beginPath();
@@ -389,8 +477,17 @@ export default function JourneyPage() {
         </svg>
       </div>
 
-      {/* Planet scenes */}
-      <div className="absolute inset-0 z-[1] overflow-hidden perspective-[2500px]">
+      {/* Planet scenes with enhanced warp effect */}
+      <div
+        className="absolute inset-0 z-[1] overflow-hidden perspective-[2500px] transition-all duration-600"
+        style={isWarping ? {
+          filter: "blur(8px) contrast(1.5) brightness(1.2) hue-rotate(30deg)",
+          transform: "scale(0.95) translateZ(-100px)",
+        } : {
+          filter: "none",
+          transform: "scale(1) translateZ(0)",
+        }}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={stage.id}
@@ -421,17 +518,50 @@ export default function JourneyPage() {
               />
             )}
 
-            {/* Space (stage 1) */}
+            {/* Space (stage 1 - 离地) - Receding Earth visible */}
             {stage.planet === "space" && (
               <div className="absolute inset-0">
-                <div
-                  className="absolute rounded-full opacity-40"
+                {/* Receding Earth - smaller, dimmer, off to the side */}
+                <motion.div
+                  className="absolute rounded-full"
+                  initial={{ scale: 0.8, opacity: 0.6 }}
+                  animate={{ scale: 0.5, opacity: 0.4, y: [0, 10, 0] }}
+                  transition={{ y: { duration: 8, repeat: Infinity, ease: "easeInOut" } }}
                   style={{
-                    bottom: "-80vh",
-                    left: "30%",
-                    width: "100vh",
-                    height: "100vh",
-                    background: "radial-gradient(circle at 50% 10%, #3b82f6, #0c4a6e, transparent)",
+                    bottom: "-30vh",
+                    left: "15%",
+                    width: "80vh",
+                    height: "80vh",
+                    background: `
+                      radial-gradient(circle at 40% 30%, rgba(255,255,255,0.4) 0%, transparent 20%),
+                      radial-gradient(circle at 35% 25%, #22c55e 0%, transparent 18%),
+                      radial-gradient(circle at 55% 45%, #15803d 0%, transparent 22%),
+                      radial-gradient(circle at 50% 10%, #3b82f6, #0c4a6e, #020617)
+                    `,
+                    boxShadow: "0 0 80px rgba(59, 130, 246, 0.3), inset -30px -30px 60px rgba(0,0,0,0.6)",
+                  }}
+                />
+                {/* Atmosphere glow around receding Earth */}
+                <div
+                  className="absolute rounded-full pointer-events-none"
+                  style={{
+                    bottom: "-32vh",
+                    left: "14%",
+                    width: "84vh",
+                    height: "84vh",
+                    background: "radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)",
+                  }}
+                />
+                {/* Deep space distant glow */}
+                <div
+                  className="absolute"
+                  style={{
+                    top: "10%",
+                    right: "10%",
+                    width: "300px",
+                    height: "300px",
+                    background: "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
+                    filter: "blur(40px)",
                   }}
                 />
               </div>
@@ -463,9 +593,55 @@ export default function JourneyPage() {
               </div>
             )}
 
-            {/* Sun */}
+            {/* Sun with lens flares and enhanced corona */}
             {stage.planet === "sun" && (
               <>
+                {/* Solar flare 1 - diagonal */}
+                <motion.div
+                  className="absolute pointer-events-none"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  style={{
+                    left: "10%",
+                    top: "15%",
+                    width: "600px",
+                    height: "600px",
+                    background: "radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%)",
+                    mixBlendMode: "screen",
+                    transform: "scale(8, 0.1) rotate(45deg)",
+                  }}
+                />
+                {/* Solar flare 2 - perpendicular */}
+                <motion.div
+                  className="absolute pointer-events-none"
+                  animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+                  style={{
+                    left: "10%",
+                    top: "15%",
+                    width: "600px",
+                    height: "600px",
+                    background: "radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%)",
+                    mixBlendMode: "screen",
+                    transform: "scale(0.1, 8) rotate(45deg)",
+                  }}
+                />
+                {/* Solar flare 3 - wide */}
+                <motion.div
+                  className="absolute pointer-events-none"
+                  animate={{ opacity: [0.2, 0.35, 0.2] }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                  style={{
+                    left: "10%",
+                    top: "15%",
+                    width: "600px",
+                    height: "600px",
+                    background: "radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 60%)",
+                    mixBlendMode: "screen",
+                    transform: "scale(12, 0.05) rotate(-30deg)",
+                  }}
+                />
+                {/* Main sun - larger with better corona */}
                 <motion.div
                   className="absolute rounded-full"
                   animate={{ scale: [1, 1.08, 1] }}
@@ -473,20 +649,33 @@ export default function JourneyPage() {
                   style={{
                     left: "10%",
                     top: "15%",
-                    width: "400px",
-                    height: "400px",
+                    width: "600px",
+                    height: "600px",
                     background: "radial-gradient(circle at 40% 40%, #fff 0%, #fff7ed 15%, #fef3c7 30%, #fbbf24 60%, #f59e0b)",
                     boxShadow: `
-                      0 0 100px 40px rgba(255,255,255,0.9),
-                      0 0 200px 80px rgba(251,191,36,0.7),
-                      0 0 400px 150px rgba(245,158,11,0.5)
+                      0 0 200px 80px rgba(255,255,255,0.95),
+                      0 0 400px 160px rgba(251,191,36,0.8),
+                      0 0 800px 300px rgba(245,158,11,0.6)
                     `,
+                  }}
+                />
+                {/* Corona pulse */}
+                <motion.div
+                  className="absolute rounded-full pointer-events-none"
+                  animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  style={{
+                    left: "calc(10% - 30px)",
+                    top: "calc(15% - 30px)",
+                    width: "660px",
+                    height: "660px",
+                    background: "radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%)",
                   }}
                 />
               </>
             )}
 
-            {/* Mars */}
+            {/* Mars with terrain detail and dust storm */}
             {stage.planet === "mars" && (
               <div
                 className="absolute overflow-hidden"
@@ -495,22 +684,153 @@ export default function JourneyPage() {
                   left: "-10vw",
                   width: "120vw",
                   height: "50vh",
-                  background: "linear-gradient(to top, #1a0505, #451a03 35%, #a16207 65%, transparent)",
                 }}
               >
-                <motion.div
+                {/* Base gradient */}
+                <div
                   className="absolute inset-0"
-                  animate={{ x: ["0%", "100%"] }}
+                  style={{
+                    background: "linear-gradient(to top, #1a0505, #451a03 35%, #a16207 65%, transparent)",
+                    maskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+                  }}
+                />
+                {/* Terrain detail layer */}
+                <div
+                  className="absolute inset-0 opacity-60"
+                  style={{
+                    backgroundImage: `
+                      conic-gradient(from 120deg at 20% 30%, transparent, rgba(251, 191, 36, 0.1) 40deg, transparent 80deg),
+                      conic-gradient(from -60deg at 80% 40%, transparent, rgba(251, 191, 36, 0.1) 40deg, transparent 80deg),
+                      radial-gradient(ellipse at 30% 25%, rgba(0, 0, 0, 0.7) 0%, transparent 40%),
+                      radial-gradient(ellipse at 75% 55%, rgba(0, 0, 0, 0.6) 0%, transparent 45%)
+                    `,
+                    filter: "contrast(125%) brightness(1.1)",
+                  }}
+                />
+                {/* Mountain ridges */}
+                <div
+                  className="absolute inset-0 opacity-40"
+                  style={{
+                    backgroundImage: `
+                      radial-gradient(circle at 15% 45%, #7c2d12 0%, transparent 8%),
+                      radial-gradient(circle at 45% 35%, #92400e 0%, transparent 6%),
+                      radial-gradient(circle at 85% 50%, #78350f 0%, transparent 10%)
+                    `,
+                    filter: "blur(2px) contrast(150%)",
+                  }}
+                />
+                {/* Dust storm animation */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  animate={{ x: ["-100%", "100%"] }}
                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                   style={{
-                    background: "linear-gradient(90deg, transparent, rgba(185,28,28,0.1), transparent)",
+                    background: "linear-gradient(90deg, transparent, rgba(185,28,28,0.15), transparent)",
                     filter: "blur(20px)",
+                  }}
+                />
+                {/* Secondary dust layer */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  animate={{ x: ["100%", "-100%"] }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  style={{
+                    background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.08), transparent)",
+                    filter: "blur(30px)",
                   }}
                 />
               </div>
             )}
           </motion.div>
         </AnimatePresence>
+
+        {/* Planet Hotspots */}
+        {hotspotConfig[stage.planet]?.map((hotspot, idx) => {
+          const hotspotKey = `${stage.planet}-${idx}`;
+          const isCaptured = capturedHotspots.has(hotspotKey);
+          return (
+            <motion.div
+              key={hotspotKey}
+              className={`absolute w-5 h-5 rounded-full cursor-pointer z-[10] ${isCaptured ? 'opacity-50' : ''}`}
+              style={{
+                left: hotspot.x,
+                top: hotspot.y,
+                background: `rgba(${stage.colorRgb}, 0.5)`,
+                border: "2px solid #fff",
+              }}
+              animate={!isCaptured ? {
+                scale: [1, 1.2, 1],
+                boxShadow: [
+                  "0 0 0 0 rgba(255, 255, 255, 0.7)",
+                  "0 0 0 10px rgba(255, 255, 255, 0)",
+                  "0 0 0 0 rgba(255, 255, 255, 0)"
+                ]
+              } : undefined}
+              transition={{ duration: 2, repeat: Infinity }}
+              onClick={(e) => triggerSignalCapture(e, hotspotKey)}
+              onMouseEnter={(e) => {
+                const rect = (e.target as HTMLElement).getBoundingClientRect();
+                setTooltip({
+                  x: rect.left + rect.width / 2,
+                  y: rect.top - 10,
+                  text: t(`hotspots.${hotspot.infoKey}`)
+                });
+              }}
+              onMouseLeave={() => setTooltip(null)}
+              role="button"
+              aria-label={t(`hotspots.${hotspot.infoKey}`)}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && triggerSignalCapture(e as unknown as React.MouseEvent, hotspotKey)}
+            />
+          );
+        })}
+      </div>
+
+      {/* Signal Ring Animations */}
+      {signalRings.map(ring => (
+        <motion.div
+          key={ring.id}
+          className="fixed rounded-full border-2 pointer-events-none z-[10000]"
+          style={{ left: ring.x, top: ring.y, borderColor: stage.color }}
+          initial={{ width: 0, height: 0, x: "-50%", y: "-50%", opacity: 1 }}
+          animate={{ width: 300, height: 300, opacity: 0 }}
+          transition={{ duration: 1, ease: [0.1, 0.5, 0.5, 1] }}
+        />
+      ))}
+
+      {/* Tooltip */}
+      <AnimatePresence>
+        {tooltip && (
+          <motion.div
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 5 }}
+            className="fixed z-[2000] px-3 py-2 rounded-lg font-mono text-[10px] text-white pointer-events-none backdrop-blur-md"
+            style={{
+              left: tooltip.x,
+              top: tooltip.y,
+              transform: "translate(-50%, -100%)",
+              background: "rgba(15, 23, 42, 0.85)",
+              border: `1px solid ${stage.color}`,
+              boxShadow: `0 0 15px rgba(${stage.colorRgb}, 0.3)`,
+            }}
+          >
+            {tooltip.text}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Stage Watermark - Large hero text on side */}
+      <div
+        className="hidden lg:block absolute right-[5vw] top-1/2 -translate-y-1/2 text-[clamp(80px,14vw,180px)] font-black opacity-[0.04] pointer-events-none z-[5] tracking-[0.2em]"
+        style={{
+          color: stage.color,
+          textShadow: `0 0 40px rgba(${stage.colorRgb}, 0.2)`,
+          writingMode: "vertical-rl",
+          textOrientation: "upright",
+        }}
+      >
+        {stage.hero}
       </div>
 
       {/* Shuttle */}
@@ -570,17 +890,39 @@ export default function JourneyPage() {
       {/* HUD Panel */}
       <div className="absolute bottom-0 left-0 right-0 z-[100] h-[38vh] bg-gradient-to-t from-[#020617] via-[#020617]/80 to-transparent border-t border-white/10">
         <div className="h-full max-w-7xl mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Left Panel - Metrics */}
-          <div className="hidden md:flex flex-col gap-4 p-6 bg-[rgba(15,23,42,0.75)] border border-white/10 rounded-3xl backdrop-blur-xl">
+          {/* Left Panel - Metrics with scanline overlay */}
+          <div className="hidden md:flex flex-col gap-4 p-6 bg-[rgba(15,23,42,0.75)] border border-white/10 rounded-3xl backdrop-blur-xl relative overflow-hidden">
+            {/* Scanline overlay */}
+            <div
+              className="absolute inset-0 pointer-events-none z-10 opacity-30"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))
+                `,
+                backgroundSize: "100% 2px, 3px 100%",
+              }}
+            />
             <div className="flex justify-between items-baseline">
               <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("metrics.title")}</span>
-              <span className="text-xs text-green-500">{t("metrics.active").toUpperCase()}</span>
+              <motion.span
+                className="text-xs text-green-500"
+                animate={{ opacity: [1, 0.7, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                {t("metrics.active").toUpperCase()}
+              </motion.span>
             </div>
             <div className="flex justify-between items-baseline">
               <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("metrics.heartRate")}</span>
-              <span className="font-mono text-xl font-bold" style={{ color: stage.color }}>
-                {stage.bpm} <small className="text-[10px]">BPM</small>
-              </span>
+              <motion.span
+                className="font-mono text-xl font-bold"
+                style={{ color: stage.color }}
+                animate={{ x: [0, 0.5, 0] }}
+                transition={{ duration: 0.3, repeat: Infinity }}
+              >
+                {jitterBpm} <small className="text-[10px]">BPM</small>
+              </motion.span>
             </div>
             {/* ECG */}
             <div className="h-10 bg-white/5 rounded-lg overflow-hidden">
@@ -588,9 +930,14 @@ export default function JourneyPage() {
             </div>
             <div className="flex justify-between items-baseline">
               <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("metrics.entropy")}</span>
-              <span className="font-mono text-xl font-bold" style={{ color: stage.color }}>
-                {stage.entropy.toFixed(2)}
-              </span>
+              <motion.span
+                className="font-mono text-xl font-bold"
+                style={{ color: stage.color }}
+                animate={{ x: [0, 0.5, 0] }}
+                transition={{ duration: 0.3, repeat: Infinity }}
+              >
+                {jitterEntropy.toFixed(2)}
+              </motion.span>
             </div>
             {/* Thinking wave */}
             <div>
@@ -621,6 +968,9 @@ export default function JourneyPage() {
               style={{ color: stage.color }}
             >
               {stage.meta}
+              {"distance" in stage && stage.distance && (
+                <span className="ml-2 opacity-60">[{stage.distance}]</span>
+              )}
             </div>
             <h1 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
               {stage.title}
@@ -661,21 +1011,32 @@ export default function JourneyPage() {
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
-            {/* Mobile metrics - condensed view */}
+            {/* Mobile metrics - condensed view with jitter */}
             <div className="flex md:hidden gap-4 mt-4 text-xs font-mono">
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
                 <span className="text-slate-400">{t("metrics.heartRate")}:</span>
-                <span style={{ color: stage.color }}>{stage.bpm}</span>
+                <span style={{ color: stage.color }}>{jitterBpm}</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
                 <span className="text-slate-400">{t("metrics.entropy")}:</span>
-                <span style={{ color: stage.color }}>{stage.entropy.toFixed(2)}</span>
+                <span style={{ color: stage.color }}>{jitterEntropy.toFixed(2)}</span>
               </div>
             </div>
           </div>
 
-          {/* Right Panel - Protocols */}
-          <div className="hidden md:flex flex-col gap-4 p-6 bg-[rgba(15,23,42,0.75)] border border-white/10 rounded-3xl backdrop-blur-xl">
+          {/* Right Panel - Protocols with scanline overlay */}
+          <div className="hidden md:flex flex-col gap-4 p-6 bg-[rgba(15,23,42,0.75)] border border-white/10 rounded-3xl backdrop-blur-xl relative overflow-hidden">
+            {/* Scanline overlay */}
+            <div
+              className="absolute inset-0 pointer-events-none z-10 opacity-30"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))
+                `,
+                backgroundSize: "100% 2px, 3px 100%",
+              }}
+            />
             <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("protocols.title")}</span>
             <ul className="flex flex-col gap-3" role="list" aria-label={t("protocols.title")}>
               {tasks.map((task, i) => (

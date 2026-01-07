@@ -837,6 +837,23 @@
           "2": "迭代归位 | Iterative Adjustment"
         }
       }
+    },
+    "hotspots": {
+      "earth": {
+        "anchor": "锚点定位：在混沌中建立首个稳定参照系",
+        "scan": "全频扫描：搜索所有可能的信号来源"
+      },
+      "moon": {
+        "principles": "第一性原理：剥离表象直达本质",
+        "shield": "认知屏障：识别并排除干扰因素"
+      },
+      "sun": {
+        "singularity": "奇点收敛：多维信息汇聚成核心洞察",
+        "convergence": "系统融合：碎片知识构建完整框架"
+      },
+      "mars": {
+        "validation": "实证验证：理论在现实中的最终检验"
+      }
     }
   }
 }
