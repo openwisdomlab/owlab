@@ -92,6 +92,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const [isMobile, setIsMobile] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(true);
   const [isNearEyeZone, setIsNearEyeZone] = useState(false); // 拖拽时是否接近眼睛区域
+  const [pinnedCircleId, setPinnedCircleId] = useState<string | null>(null); // 当前固定的圆圈ID
   const lastVisibleTimeRef = useRef<number>(0);
 
   // 初始化 lastVisibleTimeRef
@@ -257,10 +258,12 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       // 彩蛋：扩大进入眼睛区域的判定范围（从0.6倍扩大到1.2倍）
       // 让用户更容易将问题拖入眼睛区域
       if (distToCenter < heroRadius * 1.2) {
+        const currentPinnedId = dragRef.current?.id;
+
         // 固定问题在眼睛上方，使用新的固定标签显示
         // 圆圈位于眼睛上边缘，卡片在圆圈上方展示
         circlesRef.current = circlesRef.current.map(circle => {
-          if (circle.id === dragRef.current?.id) {
+          if (circle.id === currentPinnedId) {
             return {
               ...circle,
               isPinned: true,
@@ -273,12 +276,19 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         });
         setCircles([...circlesRef.current]);
 
+        // 设置当前固定的圆圈ID（用于隐藏其他圆圈的标签）
+        setPinnedCircleId(currentPinnedId ?? null);
+
+        // 清除其他圆圈的悬停和点击状态
+        setHoveredCircle(null);
+        setClickedCircle(null);
+
         // 固定显示20秒后卡片消失，圆圈也不再显示
-        const pinnedCircleId = dragRef.current?.id;
         setTimeout(() => {
           // 直接从数组中删除该圆圈，而不是让它飘走
-          circlesRef.current = circlesRef.current.filter(circle => circle.id !== pinnedCircleId);
+          circlesRef.current = circlesRef.current.filter(circle => circle.id !== currentPinnedId);
           setCircles([...circlesRef.current]);
+          setPinnedCircleId(null);
         }, 20000);
       }
     }
@@ -674,6 +684,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             isHovered={hoveredCircle === circle.id}
             isClicked={clickedCircle === circle.id}
             isDragging={draggingCircle === circle.id}
+            hasPinnedCircle={!!pinnedCircleId && pinnedCircleId !== circle.id}
             onHover={() => handleCircleHover(circle.id)}
             onLeave={() => {
               setHoveredCircle(null);
@@ -701,6 +712,7 @@ interface QuestionCircleProps {
   isHovered: boolean;
   isClicked: boolean;
   isDragging: boolean;
+  hasPinnedCircle: boolean; // 是否有其他圆圈被固定（用于隐藏此圆圈的标签）
   onHover: () => void;
   onLeave: () => void;
   onClick: () => void;
@@ -711,7 +723,7 @@ interface QuestionCircleProps {
 }
 
 function QuestionCircle({
-  circle, isDark, isMobile, isHovered, isClicked, isDragging,
+  circle, isDark, isMobile, isHovered, isClicked, isDragging, hasPinnedCircle,
   onHover, onLeave, onClick, onDragStart,
   containerWidth, containerHeight, heroRadius
 }: QuestionCircleProps) {
@@ -834,26 +846,29 @@ function QuestionCircle({
       onClick={handleClick}
       onMouseDown={handleMouseDown}
     >
-      {/* Glow effect - 减小光晕尺寸，避免大泡沫效果 */}
-      <motion.div
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          width: circle.size * 1.4,
-          height: circle.size * 1.4,
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, ${withAlpha(color, isDragging ? 0.35 : 0.2)}, transparent 70%)`,
-          filter: 'blur(6px)',
-        }}
-        animate={{
-          opacity: isActive || isDragging ? 0.85 : isAutoRevealing ? 0.6 : 0.35,
-          scale: isDragging ? 1.2 : 1,
-        }}
-        transition={{ duration: 0.3 }}
-      />
+      {/* Glow effect - 减小光晕尺寸，避免大泡沫效果；固定时隐藏 */}
+      {!circle.isPinned && (
+        <motion.div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: circle.size * 1.4,
+            height: circle.size * 1.4,
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: `radial-gradient(circle, ${withAlpha(color, isDragging ? 0.35 : 0.2)}, transparent 70%)`,
+            filter: 'blur(6px)',
+          }}
+          animate={{
+            opacity: isActive || isDragging ? 0.85 : isAutoRevealing ? 0.6 : 0.35,
+            scale: isDragging ? 1.2 : 1,
+          }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
 
-      {/* Main circle */}
+      {/* Main circle - 固定时隐藏，只显示卡片 */}
+      {!circle.isPinned && (
       <svg
         width={circle.size}
         height={circle.size}
@@ -913,34 +928,59 @@ function QuestionCircle({
           />
         )}
 
-        {circle.isPinned && (
-          <motion.circle
-            cx="30" cy="30" r="26"
-            fill="none" stroke={brandColors.neonCyan}
-            strokeWidth="2" opacity={0.8}
-            animate={{ scale: [1, 1.1, 1], opacity: [0.8, 0.4, 0.8] }}
-            transition={{ duration: 2, repeat: Infinity, type: "tween" }}
-            style={{ transformOrigin: "30px 30px" }}
-          />
-        )}
+        {/* 固定时不再显示额外的脉动圆环，避免干扰卡片阅读 */}
       </svg>
+      )}
 
       {/* 固定标签显示 - 当圆圈被固定在眼睛上方时显示更显著的标签 */}
       <AnimatePresence>
         {circle.isPinned && !isDragging && (
-          <PinnedQuestionTag
-            question={circle.question.question}
-            explanation={circle.question.explanation}
-            color={color}
-            isDark={isDark}
-            isMobile={isMobile}
-          />
+          <>
+            {/* 小眼睛图标指示捕获位置 */}
+            <motion.div
+              className="absolute flex items-center justify-center"
+              style={{
+                width: 36,
+                height: 36,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 999,
+              }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="w-8 h-8 rounded-full flex items-center justify-center"
+                style={{
+                  background: `radial-gradient(circle, ${withAlpha(brandColors.neonCyan, 0.2)}, transparent)`,
+                  border: `1.5px solid ${withAlpha(brandColors.neonCyan, 0.5)}`,
+                }}
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.7, 1, 0.7],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <span className="text-sm">👁</span>
+              </motion.div>
+            </motion.div>
+            <PinnedQuestionTag
+              question={circle.question.question}
+              explanation={circle.question.explanation}
+              color={color}
+              isDark={isDark}
+              isMobile={isMobile}
+            />
+          </>
         )}
       </AnimatePresence>
 
-      {/* Question text - 不在 isPinned 时显示，因为固定标签会接管显示 */}
+      {/* Question text - 不在 isPinned 时显示，也不在有其他固定圆圈时显示（避免遮挡固定卡片） */}
       <AnimatePresence>
-        {((showText && !isDragging && !circle.isPinned) || (isAutoRevealing && !isDragging && !circle.isPinned)) && (
+        {!hasPinnedCircle && ((showText && !isDragging && !circle.isPinned) || (isAutoRevealing && !isDragging && !circle.isPinned)) && (
           <QuestionTextDisplay
             question={circle.question.question}
             explanation={circle.question.explanation}
@@ -971,17 +1011,17 @@ function PinnedQuestionTag({ question, explanation, color, isDark, isMobile }: P
     <motion.div
       className="absolute pointer-events-none"
       style={{
-        bottom: '100%',
+        // 将卡片定位在当前位置上方，确保清晰可见
+        bottom: '20px',
         left: '50%',
         transform: 'translateX(-50%)',
-        marginBottom: '20px',
         zIndex: 1000,
-        width: isMobile ? '280px' : '380px',
+        width: isMobile ? '300px' : '400px',
         maxWidth: '90vw',
       }}
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+      exit={{ opacity: 0, y: 15, scale: 0.95 }}
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
       {/* 发光背景 */}
