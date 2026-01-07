@@ -25,9 +25,11 @@ interface CircleState {
   autoRevealStartTime: number; // 开始展示的时间
   autoRevealShowUntil: number; // 停止展示的时间
   autoRevealOpacity: number; // 自动展示的透明度（在动画循环中更新）
-  // 彩蛋相关
-  isPinned: boolean; // 是否被固定在眼睛上方
-  pinnedY?: number; // 固定位置的Y坐标
+  // 引力漩涡捕获相关
+  isPinned: boolean; // 是否被固定（已捕获）
+  isBeingSucked: boolean; // 是否正在被吸入
+  suckStartTime: number; // 吸入开始时间
+  suckProgress: number; // 吸入进度 0-1
 }
 
 // ============ Constants ============
@@ -52,6 +54,15 @@ const AUTO_REVEAL_CONFIG = {
   fadeOutDuration: 1500, // 淡出1.5秒
   cooldownDuration: 60000, // 展示后60秒冷却（更长冷却）
   initialDelay: 15000, // 首次展示延迟15秒（避免刚进入页面就展示）
+};
+
+// 引力漩涡配置
+const GRAVITY_VORTEX_CONFIG = {
+  gravityRadius: 1.8, // 引力场半径倍数（相对于heroRadius）
+  captureRadius: 1.0, // 捕获判定半径倍数
+  suckDuration: 800, // 吸入动画时长（毫秒）
+  spiralTurns: 1.5, // 螺旋圈数
+  cardDisplayDuration: 25000, // 卡片显示时长（毫秒）
 };
 
 // ============ Utility Functions ============
@@ -91,8 +102,14 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(true);
-  const [isNearEyeZone, setIsNearEyeZone] = useState(false); // 拖拽时是否接近眼睛区域
   const [pinnedCircleId, setPinnedCircleId] = useState<string | null>(null); // 当前固定的圆圈ID
+  const [captureAnimation, setCaptureAnimation] = useState<{
+    active: boolean;
+    circleId: string | null;
+    startTime: number;
+  }>({ active: false, circleId: null, startTime: 0 });
+  const [eyeReaction, setEyeReaction] = useState(false); // 眼睛捕获反馈动画
+  const [isFirstCapture, setIsFirstCapture] = useState(true); // 是否首次捕获
   const lastVisibleTimeRef = useRef<number>(0);
 
   // 初始化 lastVisibleTimeRef
@@ -188,7 +205,11 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         autoRevealStartTime: now + autoRevealDelay,
         autoRevealShowUntil: 0,
         autoRevealOpacity: 0,
+        // 引力漩涡状态
         isPinned: false,
+        isBeingSucked: false,
+        suckStartTime: 0,
+        suckProgress: 0,
       };
     });
 
@@ -225,11 +246,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     const circleX = x - dragRef.current.offsetX;
     const circleY = y - dragRef.current.offsetY;
 
-    // 检测是否接近眼睛区域（使用 1.5 倍半径作为提示范围）
-    const distToCenter = distance(circleX, circleY, heroCenter.x, heroCenter.y);
-    setIsNearEyeZone(distToCenter < heroRadius * 1.5);
-
-    // Update circle position
+    // Update circle position (不再显示任何提示)
     circlesRef.current = circlesRef.current.map(circle => {
       if (circle.id === dragRef.current?.id) {
         return {
@@ -242,60 +259,89 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       return circle;
     });
     setCircles([...circlesRef.current]);
-  }, [heroCenter.x, heroCenter.y, heroRadius]);
+  }, []);
 
-  // Mouse up handler for drag end
+  // 触发引力吸入动画
+  const triggerGravitySuck = useCallback((circleId: string) => {
+    const circle = circlesRef.current.find(c => c.id === circleId);
+    if (!circle) return;
+
+    const now = Date.now();
+
+    // 标记圆圈开始被吸入
+    circlesRef.current = circlesRef.current.map(c => {
+      if (c.id === circleId) {
+        return {
+          ...c,
+          isBeingSucked: true,
+          suckStartTime: now,
+          suckProgress: 0,
+        };
+      }
+      return c;
+    });
+
+    setCaptureAnimation({ active: true, circleId, startTime: now });
+
+    // 清除悬停和点击状态
+    setHoveredCircle(null);
+    setClickedCircle(null);
+  }, []);
+
+  // 完成捕获
+  const completeCapture = useCallback((circleId: string) => {
+    // 触发眼睛反馈动画
+    setEyeReaction(true);
+    setTimeout(() => setEyeReaction(false), 600);
+
+    // 设置为已固定
+    circlesRef.current = circlesRef.current.map(c => {
+      if (c.id === circleId) {
+        return {
+          ...c,
+          isPinned: true,
+          isBeingSucked: false,
+          suckProgress: 1,
+        };
+      }
+      return c;
+    });
+    setCircles([...circlesRef.current]);
+
+    setPinnedCircleId(circleId);
+    setCaptureAnimation({ active: false, circleId: null, startTime: 0 });
+
+    // 标记首次捕获完成
+    if (isFirstCapture) {
+      setIsFirstCapture(false);
+    }
+
+    // 卡片显示后自动消失
+    setTimeout(() => {
+      circlesRef.current = circlesRef.current.filter(c => c.id !== circleId);
+      setCircles([...circlesRef.current]);
+      setPinnedCircleId(null);
+    }, GRAVITY_VORTEX_CONFIG.cardDisplayDuration);
+  }, [isFirstCapture]);
+
+  // Mouse up handler for drag end - 引力漩涡版本
   const handleMouseUp = useCallback(() => {
     if (!dragRef.current) return;
-
-    // 重置眼睛区域接近状态
-    setIsNearEyeZone(false);
 
     const draggedCircle = circlesRef.current.find(c => c.id === dragRef.current?.id);
     if (draggedCircle) {
       const distToCenter = distance(draggedCircle.x, draggedCircle.y, heroCenter.x, heroCenter.y);
+      const gravityRadius = heroRadius * GRAVITY_VORTEX_CONFIG.gravityRadius;
 
-      // 彩蛋：扩大进入眼睛区域的判定范围（从0.6倍扩大到1.2倍）
-      // 让用户更容易将问题拖入眼睛区域
-      if (distToCenter < heroRadius * 1.2) {
-        const currentPinnedId = dragRef.current?.id;
-
-        // 固定问题在眼睛上方，使用新的固定标签显示
-        // 圆圈位于眼睛上边缘，卡片在圆圈上方展示
-        circlesRef.current = circlesRef.current.map(circle => {
-          if (circle.id === currentPinnedId) {
-            return {
-              ...circle,
-              isPinned: true,
-              x: heroCenter.x,
-              y: heroCenter.y - heroRadius - 30,
-              vx: 0, vy: 0,
-            };
-          }
-          return circle;
-        });
-        setCircles([...circlesRef.current]);
-
-        // 设置当前固定的圆圈ID（用于隐藏其他圆圈的标签）
-        setPinnedCircleId(currentPinnedId ?? null);
-
-        // 清除其他圆圈的悬停和点击状态
-        setHoveredCircle(null);
-        setClickedCircle(null);
-
-        // 固定显示20秒后卡片消失，圆圈也不再显示
-        setTimeout(() => {
-          // 直接从数组中删除该圆圈，而不是让它飘走
-          circlesRef.current = circlesRef.current.filter(circle => circle.id !== currentPinnedId);
-          setCircles([...circlesRef.current]);
-          setPinnedCircleId(null);
-        }, 20000);
+      // 引力漩涡：在引力范围内释放，触发吸入动画
+      if (distToCenter < gravityRadius) {
+        triggerGravitySuck(draggedCircle.id);
       }
     }
 
     setDraggingCircle(null);
     dragRef.current = null;
-  }, [heroCenter.x, heroCenter.y, heroRadius]);
+  }, [heroCenter.x, heroCenter.y, heroRadius, triggerGravitySuck]);
 
   // Handle circle hover
   const handleCircleHover = useCallback((circleId: string) => {
@@ -355,7 +401,42 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
       // Update circle positions
       circlesRef.current = currentCircles.map((circle) => {
         if (circle.phase === 'exiting') return circle;
-        if (circle.isPinned) return circle; // 固定的圆环不移动
+        if (circle.isPinned) return circle; // 已捕获的圆环不移动
+
+        // 处理螺旋吸入动画
+        if (circle.isBeingSucked) {
+          const elapsed = now - circle.suckStartTime;
+          const progress = Math.min(1, elapsed / GRAVITY_VORTEX_CONFIG.suckDuration);
+
+          // 螺旋路径计算
+          const startDist = distance(circle.x, circle.y, heroCenter.x, heroCenter.y);
+          const startAngle = Math.atan2(circle.y - heroCenter.y, circle.x - heroCenter.x);
+
+          // 使用缓动函数让吸入更自然（先慢后快）
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+          // 螺旋：距离逐渐缩小，角度增加
+          const currentDist = startDist * (1 - easedProgress);
+          const spiralAngle = startAngle + GRAVITY_VORTEX_CONFIG.spiralTurns * Math.PI * 2 * easedProgress;
+
+          const newX = heroCenter.x + Math.cos(spiralAngle) * currentDist;
+          const newY = heroCenter.y + Math.sin(spiralAngle) * currentDist;
+
+          // 吸入完成
+          if (progress >= 1) {
+            completeCapture(circle.id);
+            return { ...circle, x: heroCenter.x, y: heroCenter.y, suckProgress: 1 };
+          }
+
+          return {
+            ...circle,
+            x: newX,
+            y: newY,
+            suckProgress: progress,
+            opacity: circle.opacity * (1 - progress * 0.3), // 轻微透明
+            size: circle.size * (1 - progress * 0.4), // 逐渐缩小
+          };
+        }
 
         let { x, y, vx, vy, rotation, opacity, phase, autoRevealPhase, autoRevealStartTime, autoRevealShowUntil } = circle;
         const { rotationSpeed } = circle;
@@ -480,7 +561,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [dimensions, hoveredCircle, clickedCircle, draggingCircle, isMobile, heroCenter.x, heroCenter.y, heroRadius]);
+  }, [dimensions, hoveredCircle, clickedCircle, draggingCircle, isMobile, heroCenter.x, heroCenter.y, heroRadius, completeCapture]);
 
   // Spawn new circles periodically (slower)
   useEffect(() => {
@@ -523,6 +604,9 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             autoRevealShowUntil: 0,
             autoRevealOpacity: 0,
             isPinned: false,
+            isBeingSucked: false,
+            suckStartTime: 0,
+            suckProgress: 0,
           };
 
           circlesRef.current = [...circlesRef.current, newCircle];
@@ -588,88 +672,109 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         style={{ opacity: isDark ? 1 : 0.7 }}
       />
 
-      {/* 拖拽中的远距离提示 - 当拖拽但未接近眼睛时显示 */}
+      {/* 眼睛捕获反馈动画 - 当捕获成功时显示光晕涟漪 */}
       <AnimatePresence>
-        {draggingCircle && !isNearEyeZone && (
-          <motion.div
-            className="absolute pointer-events-none"
-            style={{
-              left: heroCenter.x,
-              top: heroCenter.y - heroRadius - 20,
-              transform: 'translateX(-50%)',
-              zIndex: 45,
-            }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 0.7, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
-          >
-            <span
-              className="text-xs px-3 py-1.5 rounded-full whitespace-nowrap"
-              style={{
-                background: withAlpha(isDark ? '#fff' : '#000', 0.1),
-                color: isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)',
-                backdropFilter: 'blur(8px)',
-              }}
-            >
-              拖到眼睛里深入探索 👁
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* 眼睛区域拖拽提示 - 当拖拽圆圈接近时显示 */}
-      <AnimatePresence>
-        {isNearEyeZone && draggingCircle && (
+        {eyeReaction && (
           <motion.div
             className="absolute pointer-events-none"
             style={{
               left: heroCenter.x,
               top: heroCenter.y,
               transform: 'translate(-50%, -50%)',
-              width: heroRadius * 2.4,
-              height: heroRadius * 2.4,
-              zIndex: 50,
+              zIndex: 60,
             }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            {/* 外圈发光环 */}
+            {/* 涟漪波纹1 */}
             <motion.div
-              className="absolute inset-0 rounded-full"
+              className="absolute rounded-full"
               style={{
-                border: `2px dashed ${withAlpha(brandColors.neonCyan, 0.6)}`,
-                boxShadow: `
-                  0 0 30px ${withAlpha(brandColors.neonCyan, 0.4)},
-                  inset 0 0 30px ${withAlpha(brandColors.neonCyan, 0.2)}
-                `,
+                width: heroRadius * 0.5,
+                height: heroRadius * 0.5,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                border: `2px solid ${brandColors.neonCyan}`,
               }}
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.8, 1, 0.8],
-              }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              initial={{ scale: 0.5, opacity: 1 }}
+              animate={{ scale: 3, opacity: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
             />
-            {/* 提示文字 */}
+            {/* 涟漪波纹2 */}
             <motion.div
-              className="absolute inset-0 flex items-center justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span
-                className="text-xs font-medium px-3 py-1 rounded-full"
-                style={{
-                  background: withAlpha(brandColors.neonCyan, 0.15),
-                  color: brandColors.neonCyan,
-                  border: `1px solid ${withAlpha(brandColors.neonCyan, 0.3)}`,
-                }}
-              >
-                松开以深入探索
-              </span>
-            </motion.div>
+              className="absolute rounded-full"
+              style={{
+                width: heroRadius * 0.5,
+                height: heroRadius * 0.5,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                border: `2px solid ${brandColors.neonPink}`,
+              }}
+              initial={{ scale: 0.5, opacity: 1 }}
+              animate={{ scale: 2.5, opacity: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+            />
+            {/* 中心光点爆发 */}
+            <motion.div
+              className="absolute rounded-full"
+              style={{
+                width: 20,
+                height: 20,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                background: `radial-gradient(circle, ${brandColors.neonCyan}, transparent)`,
+              }}
+              initial={{ scale: 1, opacity: 1 }}
+              animate={{ scale: 4, opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 首次捕获特殊效果 - 粒子庆祝 */}
+      <AnimatePresence>
+        {eyeReaction && isFirstCapture && (
+          <motion.div
+            className="absolute pointer-events-none"
+            style={{
+              left: heroCenter.x,
+              top: heroCenter.y,
+              transform: 'translate(-50%, -50%)',
+              zIndex: 61,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* 四散的粒子 */}
+            {[...Array(8)].map((_, i) => {
+              const angle = (i / 8) * Math.PI * 2;
+              const dist = heroRadius * 0.8;
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 rounded-full"
+                  style={{
+                    background: i % 2 === 0 ? brandColors.neonCyan : brandColors.neonPink,
+                    left: '50%',
+                    top: '50%',
+                  }}
+                  initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+                  animate={{
+                    x: Math.cos(angle) * dist,
+                    y: Math.sin(angle) * dist,
+                    scale: 0,
+                    opacity: 0,
+                  }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: i * 0.03 }}
+                />
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
@@ -685,6 +790,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             isClicked={clickedCircle === circle.id}
             isDragging={draggingCircle === circle.id}
             hasPinnedCircle={!!pinnedCircleId && pinnedCircleId !== circle.id}
+            isFirstCapture={isFirstCapture}
             onHover={() => handleCircleHover(circle.id)}
             onLeave={() => {
               setHoveredCircle(null);
@@ -713,6 +819,7 @@ interface QuestionCircleProps {
   isClicked: boolean;
   isDragging: boolean;
   hasPinnedCircle: boolean; // 是否有其他圆圈被固定（用于隐藏此圆圈的标签）
+  isFirstCapture: boolean; // 是否首次捕获
   onHover: () => void;
   onLeave: () => void;
   onClick: () => void;
@@ -723,7 +830,7 @@ interface QuestionCircleProps {
 }
 
 function QuestionCircle({
-  circle, isDark, isMobile, isHovered, isClicked, isDragging, hasPinnedCircle,
+  circle, isDark, isMobile, isHovered, isClicked, isDragging, hasPinnedCircle, isFirstCapture,
   onHover, onLeave, onClick, onDragStart,
   containerWidth, containerHeight, heroRadius
 }: QuestionCircleProps) {
@@ -732,6 +839,7 @@ function QuestionCircle({
   const [showExplanation, setShowExplanation] = useState(false);
 
   const isActive = isHovered || isClicked || circle.isPinned;
+  const isBeingSucked = circle.isBeingSucked;
 
   // 显示文字逻辑
   useEffect(() => {
@@ -817,8 +925,8 @@ function QuestionCircle({
   const textPosition = getTextPosition();
   const baseOpacity = 0.7;
 
-  // 固定的圆圈不接受鼠标事件，避免干扰其他圆圈的拖拽
-  const pointerClass = circle.isPinned
+  // 固定的圆圈或正在被吸入的圆圈不接受鼠标事件
+  const pointerClass = circle.isPinned || isBeingSucked
     ? 'absolute pointer-events-none'
     : `absolute pointer-events-auto ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`;
 
@@ -856,15 +964,53 @@ function QuestionCircle({
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',
-            background: `radial-gradient(circle, ${withAlpha(color, isDragging ? 0.35 : 0.2)}, transparent 70%)`,
+            background: `radial-gradient(circle, ${withAlpha(color, isDragging ? 0.35 : isBeingSucked ? 0.5 : 0.2)}, transparent 70%)`,
             filter: 'blur(6px)',
           }}
           animate={{
-            opacity: isActive || isDragging ? 0.85 : isAutoRevealing ? 0.6 : 0.35,
-            scale: isDragging ? 1.2 : 1,
+            opacity: isBeingSucked ? 0.9 : isActive || isDragging ? 0.85 : isAutoRevealing ? 0.6 : 0.35,
+            scale: isBeingSucked ? 1.5 : isDragging ? 1.2 : 1,
           }}
           transition={{ duration: 0.3 }}
         />
+      )}
+
+      {/* 吸入时的光粒子尾迹 */}
+      {isBeingSucked && (
+        <motion.div
+          className="absolute pointer-events-none"
+          style={{
+            width: circle.size * 2,
+            height: circle.size * 2,
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 rounded-full"
+              style={{
+                background: color,
+                left: '50%',
+                top: '50%',
+                boxShadow: `0 0 8px ${color}`,
+              }}
+              animate={{
+                x: [0, Math.cos((i / 6) * Math.PI * 2) * 20],
+                y: [0, Math.sin((i / 6) * Math.PI * 2) * 20],
+                opacity: [1, 0],
+                scale: [1, 0.5],
+              }}
+              transition={{
+                duration: 0.4,
+                repeat: Infinity,
+                delay: i * 0.05,
+              }}
+            />
+          ))}
+        </motion.div>
       )}
 
       {/* Main circle - 固定时隐藏，只显示卡片 */}
@@ -932,55 +1078,26 @@ function QuestionCircle({
       </svg>
       )}
 
-      {/* 固定标签显示 - 当圆圈被固定在眼睛上方时显示更显著的标签 */}
+      {/* 固定标签显示 - 当圆圈被捕获后显示卡片 */}
       <AnimatePresence>
         {circle.isPinned && !isDragging && (
-          <>
-            {/* 小眼睛图标指示捕获位置 */}
-            <motion.div
-              className="absolute flex items-center justify-center"
-              style={{
-                width: 36,
-                height: 36,
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 999,
-              }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{
-                  background: `radial-gradient(circle, ${withAlpha(brandColors.neonCyan, 0.2)}, transparent)`,
-                  border: `1.5px solid ${withAlpha(brandColors.neonCyan, 0.5)}`,
-                }}
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.7, 1, 0.7],
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <span className="text-sm">👁</span>
-              </motion.div>
-            </motion.div>
-            <PinnedQuestionTag
-              question={circle.question.question}
-              explanation={circle.question.explanation}
-              color={color}
-              isDark={isDark}
-              isMobile={isMobile}
-            />
-          </>
+          <PinnedQuestionTag
+            question={circle.question.question}
+            explanation={circle.question.explanation}
+            color={color}
+            isDark={isDark}
+            isMobile={isMobile}
+            isFirstCapture={isFirstCapture}
+            containerWidth={containerWidth}
+            containerHeight={containerHeight}
+            heroRadius={heroRadius}
+          />
         )}
       </AnimatePresence>
 
-      {/* Question text - 不在 isPinned 时显示，也不在有其他固定圆圈时显示（避免遮挡固定卡片） */}
+      {/* Question text - 不在 isPinned/isBeingSucked 时显示，也不在有其他固定圆圈时显示 */}
       <AnimatePresence>
-        {!hasPinnedCircle && ((showText && !isDragging && !circle.isPinned) || (isAutoRevealing && !isDragging && !circle.isPinned)) && (
+        {!hasPinnedCircle && !isBeingSucked && ((showText && !isDragging && !circle.isPinned) || (isAutoRevealing && !isDragging && !circle.isPinned)) && (
           <QuestionTextDisplay
             question={circle.question.question}
             explanation={circle.question.explanation}
@@ -1004,145 +1121,190 @@ interface PinnedQuestionTagProps {
   color: string;
   isDark: boolean;
   isMobile: boolean;
+  isFirstCapture: boolean;
+  containerWidth: number;
+  containerHeight: number;
+  heroRadius: number;
 }
 
-function PinnedQuestionTag({ question, explanation, color, isDark, isMobile }: PinnedQuestionTagProps) {
+function PinnedQuestionTag({
+  question,
+  explanation,
+  color,
+  isDark,
+  isMobile,
+  isFirstCapture,
+  containerWidth,
+  containerHeight,
+  heroRadius,
+}: PinnedQuestionTagProps) {
+  // 卡片固定在页面下半部分中央，确保完全可见且不被遮挡
+  const cardWidth = isMobile ? Math.min(320, containerWidth - 40) : 420;
+  const cardTop = containerHeight / 2 + heroRadius + 60; // 眼睛下方60px
+
   return (
     <motion.div
-      className="absolute pointer-events-none"
+      className="fixed pointer-events-none"
       style={{
-        // 将卡片定位在当前位置上方，确保清晰可见
-        bottom: '20px',
+        top: cardTop,
         left: '50%',
         transform: 'translateX(-50%)',
-        zIndex: 1000,
-        width: isMobile ? '300px' : '400px',
+        zIndex: 9999,
+        width: cardWidth,
         maxWidth: '90vw',
       }}
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      initial={{ opacity: 0, y: 40, scale: 0.85 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 15, scale: 0.95 }}
-      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+      exit={{ opacity: 0, y: 20, scale: 0.9 }}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
     >
-      {/* 发光背景 */}
+      {/* 发光背景 - 增强可见性 */}
       <motion.div
-        className="absolute inset-0 -m-3 rounded-2xl"
+        className="absolute -inset-4 rounded-3xl"
         style={{
-          background: `radial-gradient(ellipse at center, ${withAlpha(brandColors.neonCyan, 0.25)}, ${withAlpha(color, 0.15)}, transparent 80%)`,
-          filter: 'blur(20px)',
+          background: `radial-gradient(ellipse at center, ${withAlpha(brandColors.neonCyan, 0.3)}, ${withAlpha(color, 0.2)}, transparent 70%)`,
+          filter: 'blur(30px)',
         }}
         animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.6, 0.9, 0.6],
+          scale: [1, 1.1, 1],
+          opacity: [0.7, 1, 0.7],
         }}
-        transition={{ duration: 2, repeat: Infinity }}
+        transition={{ duration: 2.5, repeat: Infinity }}
       />
 
-      {/* 主容器 */}
+      {/* 主容器 - 更大的内边距和圆角 */}
       <motion.div
-        className="relative px-5 py-4 rounded-xl"
+        className="relative px-6 py-5 rounded-2xl"
         style={{
           background: isDark
-            ? `linear-gradient(135deg, rgba(14,14,20,0.98), rgba(26,26,46,0.95))`
-            : `linear-gradient(135deg, rgba(255,255,255,0.99), rgba(248,250,252,0.97))`,
-          backdropFilter: 'blur(24px)',
-          border: `2px solid ${withAlpha(brandColors.neonCyan, 0.7)}`,
+            ? `linear-gradient(145deg, rgba(10,10,16,0.98), rgba(20,20,36,0.96))`
+            : `linear-gradient(145deg, rgba(255,255,255,0.99), rgba(248,250,252,0.98))`,
+          backdropFilter: 'blur(30px)',
+          border: `2px solid ${withAlpha(brandColors.neonCyan, 0.8)}`,
           boxShadow: `
-            0 0 40px ${withAlpha(brandColors.neonCyan, 0.5)},
-            0 0 80px ${withAlpha(color, 0.3)},
-            inset 0 0 20px ${withAlpha(brandColors.neonCyan, 0.1)}
+            0 0 50px ${withAlpha(brandColors.neonCyan, 0.6)},
+            0 0 100px ${withAlpha(color, 0.4)},
+            0 20px 40px rgba(0,0,0,0.3),
+            inset 0 0 30px ${withAlpha(brandColors.neonCyan, 0.1)}
           `,
         }}
       >
         {/* 顶部装饰条 */}
         <motion.div
-          className="absolute -top-px left-1/2 -translate-x-1/2 h-1 rounded-full"
+          className="absolute -top-0.5 left-1/2 -translate-x-1/2 h-1 rounded-full"
           style={{
-            width: '50%',
+            width: '60%',
             background: `linear-gradient(90deg, transparent, ${brandColors.neonCyan}, ${color}, transparent)`,
           }}
-          animate={{ opacity: [0.7, 1, 0.7] }}
+          animate={{ opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         />
 
-        {/* 眼睛图标和标题 */}
+        {/* 标题区域 - 更醒目 */}
         <motion.div
-          className="flex items-center gap-2 mb-2"
+          className="flex items-center gap-3 mb-4 pb-3 border-b"
+          style={{ borderColor: withAlpha(brandColors.neonCyan, 0.2) }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.15 }}
+          transition={{ delay: 0.2 }}
         >
-          <motion.span
-            className="text-lg"
-            animate={{ scale: [1, 1.1, 1] }}
+          <motion.div
+            className="flex items-center justify-center w-10 h-10 rounded-full"
+            style={{
+              background: `linear-gradient(135deg, ${withAlpha(brandColors.neonCyan, 0.2)}, ${withAlpha(color, 0.15)})`,
+              border: `1px solid ${withAlpha(brandColors.neonCyan, 0.4)}`,
+            }}
+            animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            👁
-          </motion.span>
-          <span
-            className="text-xs font-semibold"
-            style={{
-              background: `linear-gradient(90deg, ${brandColors.neonCyan}, ${color})`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            好奇心捕获
-          </span>
+            <span className="text-xl">👁</span>
+          </motion.div>
+          <div>
+            <span
+              className="text-base font-bold block"
+              style={{
+                background: `linear-gradient(90deg, ${brandColors.neonCyan}, ${color})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              好奇心捕获
+            </span>
+            {isFirstCapture && (
+              <motion.span
+                className="text-xs"
+                style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                你发现了一个彩蛋！
+              </motion.span>
+            )}
+          </div>
         </motion.div>
 
-        {/* 问题文本 */}
+        {/* 问题文本 - 更大字号 */}
         <motion.p
-          className="text-sm font-medium leading-relaxed"
+          className="text-base font-semibold leading-relaxed mb-4"
           style={{
             color: isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.9)',
-            lineHeight: 1.7,
+            lineHeight: 1.8,
           }}
-          initial={{ opacity: 0, y: 5 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
+          transition={{ delay: 0.3 }}
         >
           {question}
         </motion.p>
 
-        {/* 解读文本 */}
-        <motion.p
-          className="text-xs mt-3 pt-3 border-t leading-relaxed"
-          style={{
-            color: isDark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.65)',
-            borderColor: withAlpha(color, 0.25),
-            lineHeight: 1.7,
-          }}
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35 }}
-        >
-          {explanation}
-        </motion.p>
-
-        {/* 角落装饰点 */}
+        {/* 解读文本 - 带背景区分 */}
         <motion.div
-          className="absolute -top-1 -left-1 w-2 h-2 rounded-full"
-          style={{ background: brandColors.neonCyan }}
+          className="rounded-xl px-4 py-3"
+          style={{
+            background: isDark
+              ? withAlpha(brandColors.neonCyan, 0.05)
+              : withAlpha(color, 0.05),
+            border: `1px solid ${withAlpha(color, 0.15)}`,
+          }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <p
+            className="text-sm leading-relaxed"
+            style={{
+              color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)',
+              lineHeight: 1.8,
+            }}
+          >
+            {explanation}
+          </p>
+        </motion.div>
+
+        {/* 角落装饰 */}
+        <motion.div
+          className="absolute -top-1.5 -left-1.5 w-3 h-3 rounded-full"
+          style={{ background: brandColors.neonCyan, boxShadow: `0 0 10px ${brandColors.neonCyan}` }}
           animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         />
         <motion.div
-          className="absolute -top-1 -right-1 w-2 h-2 rounded-full"
-          style={{ background: color }}
+          className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full"
+          style={{ background: color, boxShadow: `0 0 10px ${color}` }}
           animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
         />
         <motion.div
-          className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full"
-          style={{ background: color }}
+          className="absolute -bottom-1.5 -left-1.5 w-3 h-3 rounded-full"
+          style={{ background: color, boxShadow: `0 0 10px ${color}` }}
           animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: 0.25 }}
         />
         <motion.div
-          className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full"
-          style={{ background: brandColors.neonCyan }}
+          className="absolute -bottom-1.5 -right-1.5 w-3 h-3 rounded-full"
+          style={{ background: brandColors.neonCyan, boxShadow: `0 0 10px ${brandColors.neonCyan}` }}
           animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: 0.75 }}
         />
