@@ -560,18 +560,39 @@ export default function KnowledgeUniverse({ locale }: Props) {
               onViewportEnter={() => setActiveLayer(layer.id)}
             >
               {/* Layer container */}
-              <div
-                className="relative rounded-2xl border p-6 backdrop-blur-sm"
+              <motion.div
+                className="relative rounded-2xl border p-6 backdrop-blur-sm overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, ${withAlpha(layer.color, 0.05)}, transparent)`,
-                  borderColor: withAlpha(layer.color, 0.2),
+                  background: `linear-gradient(135deg, ${withAlpha(layer.color, 0.08)}, ${withAlpha(layer.color, 0.02)}, transparent)`,
+                  borderColor: withAlpha(layer.color, 0.25),
+                }}
+                whileHover={{
+                  borderColor: withAlpha(layer.color, 0.4),
                 }}
               >
+                {/* Animated corner accent */}
+                <motion.div
+                  className="absolute -top-20 -left-20 w-40 h-40 rounded-full pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle, ${withAlpha(layer.color, 0.15)}, transparent 70%)`,
+                    filter: "blur(40px)",
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 0.7, 0.5],
+                  }}
+                  transition={{
+                    duration: 4 + layerIdx,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+
                 {/* Layer glow */}
                 <div
                   className="absolute inset-0 rounded-2xl pointer-events-none"
                   style={{
-                    boxShadow: `inset 0 0 60px ${withAlpha(layer.color, 0.05)}, 0 0 40px ${withAlpha(layer.color, 0.08)}`,
+                    boxShadow: `inset 0 0 80px ${withAlpha(layer.color, 0.06)}, 0 0 50px ${withAlpha(layer.color, 0.1)}`,
                   }}
                 />
 
@@ -660,23 +681,49 @@ export default function KnowledgeUniverse({ locale }: Props) {
                     );
                   })}
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Flow arrow between layers */}
+              {/* Energy flow connector between layers */}
               {layerIdx < layers.length - 1 && (
                 <motion.div
-                  className="flex justify-center py-3"
+                  className="flex flex-col items-center py-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 + layerIdx * 0.15 }}
                 >
+                  {/* Gradient flow line */}
+                  <div
+                    className="relative w-0.5 h-8 rounded-full overflow-hidden"
+                    style={{
+                      background: `linear-gradient(to bottom, ${withAlpha(layer.color, 0.3)}, ${withAlpha(layers[layerIdx + 1].color, 0.3)})`,
+                    }}
+                  >
+                    {/* Animated energy particle */}
+                    <motion.div
+                      className="absolute w-full h-3 rounded-full"
+                      style={{
+                        background: `linear-gradient(to bottom, transparent, ${layer.color}, ${layers[layerIdx + 1].color}, transparent)`,
+                      }}
+                      animate={{
+                        top: ["-12px", "32px"],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: layerIdx * 0.3,
+                      }}
+                    />
+                  </div>
+
+                  {/* Chevron indicator */}
                   <motion.div
-                    animate={{ y: [0, 4, 0] }}
+                    animate={{ y: [0, 3, 0], opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <ChevronDown
-                      size={24}
-                      className="text-white/20"
+                      size={18}
+                      style={{ color: layers[layerIdx + 1].color }}
                     />
                   </motion.div>
                 </motion.div>
