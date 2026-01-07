@@ -518,19 +518,19 @@ export default function JourneyPage() {
               />
             )}
 
-            {/* Space (stage 1 - 离地) - Earth still visible, just departed */}
+            {/* Space (stage 1 - 离地) - Earth receding below, gaining distance */}
             {stage.planet === "space" && (
               <div className="absolute inset-0">
-                {/* Earth - still relatively close, just left atmosphere */}
+                {/* Earth - receding, smaller, positioned lower left corner */}
                 <motion.div
                   className="absolute rounded-full"
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                  animate={{ y: [0, 5, 0], scale: [1, 0.98, 1] }}
+                  transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
                   style={{
-                    bottom: "-45vh",
-                    left: "20%",
-                    width: "120vh",
-                    height: "120vh",
+                    bottom: "-55vh",
+                    left: "5%",
+                    width: "90vh",
+                    height: "90vh",
                     background: `
                       radial-gradient(circle at 40% 30%, rgba(255,255,255,0.4) 0%, transparent 20%),
                       radial-gradient(circle at 35% 25%, #22c55e 0%, transparent 18%),
@@ -539,31 +539,43 @@ export default function JourneyPage() {
                       radial-gradient(circle at 45% 65%, #166534 0%, transparent 20%),
                       radial-gradient(circle at 50% 10%, #3b82f6, #0c4a6e, #020617)
                     `,
-                    boxShadow: "0 0 100px rgba(59, 130, 246, 0.4), inset -40px -40px 80px rgba(0,0,0,0.6)",
-                    opacity: 0.7,
+                    boxShadow: "0 0 80px rgba(59, 130, 246, 0.35), inset -35px -35px 70px rgba(0,0,0,0.6)",
+                    opacity: 0.65,
                   }}
                 />
                 {/* Atmosphere glow around Earth */}
                 <div
                   className="absolute rounded-full pointer-events-none"
                   style={{
-                    bottom: "-47vh",
-                    left: "19%",
-                    width: "124vh",
-                    height: "124vh",
-                    background: "radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.2) 0%, rgba(147, 197, 253, 0.1) 30%, transparent 60%)",
+                    bottom: "-57vh",
+                    left: "4%",
+                    width: "94vh",
+                    height: "94vh",
+                    background: "radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(147, 197, 253, 0.08) 30%, transparent 55%)",
                   }}
                 />
-                {/* Deep space distant glow */}
+                {/* Deep space nebula glow */}
                 <div
                   className="absolute"
                   style={{
-                    top: "10%",
-                    right: "10%",
-                    width: "300px",
-                    height: "300px",
-                    background: "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
-                    filter: "blur(40px)",
+                    top: "8%",
+                    right: "12%",
+                    width: "350px",
+                    height: "350px",
+                    background: "radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 65%)",
+                    filter: "blur(50px)",
+                  }}
+                />
+                {/* Secondary space glow */}
+                <div
+                  className="absolute"
+                  style={{
+                    top: "25%",
+                    left: "60%",
+                    width: "200px",
+                    height: "200px",
+                    background: "radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)",
+                    filter: "blur(30px)",
                   }}
                 />
               </div>
@@ -669,199 +681,255 @@ export default function JourneyPage() {
               </>
             )}
 
-            {/* Mars - LANDED on surface with volcanic terrain */}
+            {/* Mars - Sci-fi ethereal landing with base and volcanoes */}
             {stage.planet === "mars" && (
               <>
-                {/* Martian sky - reddish atmosphere, no planet visible (we're ON Mars) */}
+                {/* Ethereal Martian atmosphere - gradient with tech feel */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     background: `
                       linear-gradient(to bottom,
-                        #1a0a0a 0%,
-                        #2d1515 15%,
-                        #4a1c1c 35%,
-                        #6b2c2c 55%,
-                        #8b4513 75%,
+                        rgba(10, 5, 15, 0.95) 0%,
+                        rgba(40, 15, 25, 0.9) 20%,
+                        rgba(80, 30, 40, 0.8) 45%,
+                        rgba(120, 50, 50, 0.6) 70%,
                         transparent 100%
                       )
                     `,
                   }}
                 />
-                {/* Distant sun - small and pale on Mars */}
-                <motion.div
-                  className="absolute rounded-full"
-                  animate={{ opacity: [0.7, 0.9, 0.7] }}
-                  transition={{ duration: 8, repeat: Infinity }}
+                {/* Holographic grid overlay - tech feel */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-[0.03]"
                   style={{
-                    top: "12%",
-                    right: "25%",
-                    width: "60px",
-                    height: "60px",
-                    background: "radial-gradient(circle, #fff9e6 0%, #fef3c7 40%, #fcd34d 70%, transparent 100%)",
-                    boxShadow: "0 0 40px 15px rgba(254, 243, 199, 0.4), 0 0 80px 30px rgba(252, 211, 77, 0.2)",
+                    backgroundImage: `
+                      linear-gradient(rgba(239, 68, 68, 0.5) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(239, 68, 68, 0.5) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "50px 50px",
+                    perspective: "500px",
+                    transform: "rotateX(60deg)",
+                    transformOrigin: "center bottom",
                   }}
                 />
-                {/* Volcanic mountains on horizon */}
+                {/* Distant sun with lens flare */}
+                <motion.div
+                  className="absolute rounded-full"
+                  animate={{ opacity: [0.6, 0.85, 0.6] }}
+                  transition={{ duration: 6, repeat: Infinity }}
+                  style={{
+                    top: "10%",
+                    right: "20%",
+                    width: "50px",
+                    height: "50px",
+                    background: "radial-gradient(circle, #fff 0%, #fef3c7 30%, #fcd34d 60%, transparent 100%)",
+                    boxShadow: "0 0 30px 10px rgba(254, 243, 199, 0.5), 0 0 60px 25px rgba(252, 211, 77, 0.25)",
+                  }}
+                />
+                {/* Volcanic mountains - ethereal silhouette */}
                 <div
                   className="absolute"
                   style={{
-                    bottom: "35vh",
+                    bottom: "32vh",
                     left: "-5vw",
                     width: "110vw",
-                    height: "25vh",
+                    height: "28vh",
                   }}
                 >
-                  {/* Olympus Mons style volcanic silhouette */}
+                  {/* Olympus Mons - large volcano */}
                   <div
                     className="absolute"
                     style={{
                       bottom: 0,
-                      left: "10%",
-                      width: "40vw",
+                      left: "5%",
+                      width: "45vw",
                       height: "100%",
-                      background: "linear-gradient(135deg, transparent 40%, #3d1a1a 40%, #2d1212 60%, #1a0808 80%)",
-                      clipPath: "polygon(0% 100%, 20% 60%, 35% 40%, 50% 25%, 65% 35%, 80% 50%, 100% 100%)",
+                      background: "linear-gradient(to top, rgba(60, 20, 30, 0.9), rgba(40, 15, 25, 0.7), transparent)",
+                      clipPath: "polygon(0% 100%, 15% 75%, 30% 50%, 45% 30%, 55% 25%, 65% 35%, 75% 50%, 90% 70%, 100% 100%)",
+                      filter: "blur(1px)",
                     }}
                   />
+                  {/* Secondary volcano */}
                   <div
                     className="absolute"
                     style={{
                       bottom: 0,
-                      right: "5%",
-                      width: "35vw",
-                      height: "80%",
-                      background: "linear-gradient(135deg, transparent 40%, #4a2020 40%, #3d1818 60%, #2d1010 80%)",
-                      clipPath: "polygon(0% 100%, 30% 70%, 50% 40%, 70% 55%, 100% 100%)",
+                      right: "0%",
+                      width: "40vw",
+                      height: "75%",
+                      background: "linear-gradient(to top, rgba(70, 25, 35, 0.85), rgba(50, 20, 30, 0.6), transparent)",
+                      clipPath: "polygon(0% 100%, 25% 65%, 45% 35%, 55% 40%, 75% 60%, 100% 100%)",
+                      filter: "blur(1px)",
                     }}
                   />
-                  {/* Volcanic glow from caldera */}
+                  {/* Volcanic glow - caldera */}
                   <motion.div
                     className="absolute"
-                    animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
-                    transition={{ duration: 4, repeat: Infinity }}
+                    animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.15, 1] }}
+                    transition={{ duration: 3, repeat: Infinity }}
                     style={{
-                      bottom: "50%",
-                      left: "32%",
-                      width: "80px",
-                      height: "40px",
-                      background: "radial-gradient(ellipse, rgba(239, 68, 68, 0.5) 0%, rgba(245, 158, 11, 0.3) 40%, transparent 70%)",
-                      filter: "blur(10px)",
+                      bottom: "55%",
+                      left: "28%",
+                      width: "100px",
+                      height: "50px",
+                      background: "radial-gradient(ellipse, rgba(239, 68, 68, 0.6) 0%, rgba(245, 158, 11, 0.4) 40%, transparent 70%)",
+                      filter: "blur(12px)",
                     }}
                   />
                 </div>
-                {/* Mars terrain - full ground coverage */}
+                {/* Mars Base - futuristic dome structures */}
+                <div className="absolute" style={{ bottom: "35vh", right: "15%", zIndex: 10 }}>
+                  {/* Main dome */}
+                  <motion.div
+                    animate={{ opacity: [0.7, 0.9, 0.7] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    style={{
+                      width: "120px",
+                      height: "60px",
+                      background: "linear-gradient(to bottom, rgba(100, 150, 200, 0.3), rgba(60, 100, 140, 0.2))",
+                      borderRadius: "60px 60px 0 0",
+                      border: "1px solid rgba(100, 180, 255, 0.3)",
+                      boxShadow: "0 0 20px rgba(100, 180, 255, 0.2), inset 0 -10px 20px rgba(0,0,0,0.3)",
+                    }}
+                  />
+                  {/* Dome lights */}
+                  <motion.div
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute"
+                    style={{
+                      bottom: "10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: "8px",
+                      height: "8px",
+                      background: "#22d3ee",
+                      borderRadius: "50%",
+                      boxShadow: "0 0 10px #22d3ee, 0 0 20px #22d3ee",
+                    }}
+                  />
+                  {/* Small dome */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "-50px",
+                      bottom: "0",
+                      width: "60px",
+                      height: "30px",
+                      background: "linear-gradient(to bottom, rgba(100, 150, 200, 0.25), rgba(60, 100, 140, 0.15))",
+                      borderRadius: "30px 30px 0 0",
+                      border: "1px solid rgba(100, 180, 255, 0.2)",
+                    }}
+                  />
+                  {/* Connecting tube */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "-20px",
+                      bottom: "5px",
+                      width: "40px",
+                      height: "10px",
+                      background: "rgba(80, 120, 160, 0.2)",
+                      border: "1px solid rgba(100, 180, 255, 0.15)",
+                    }}
+                  />
+                </div>
+                {/* Communication tower */}
+                <div className="absolute" style={{ bottom: "35vh", right: "35%", zIndex: 10 }}>
+                  <div style={{ width: "4px", height: "40px", background: "linear-gradient(to top, rgba(100, 150, 200, 0.4), rgba(100, 180, 255, 0.2))" }} />
+                  <motion.div
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    style={{
+                      position: "absolute",
+                      top: "-5px",
+                      left: "-3px",
+                      width: "10px",
+                      height: "10px",
+                      background: "#ef4444",
+                      borderRadius: "50%",
+                      boxShadow: "0 0 8px #ef4444, 0 0 15px #ef4444",
+                    }}
+                  />
+                </div>
+                {/* Mars terrain - ethereal ground */}
                 <div
                   className="absolute overflow-hidden"
                   style={{
                     bottom: "-5vh",
                     left: "-15vw",
                     width: "130vw",
-                    height: "45vh",
+                    height: "42vh",
                   }}
                 >
-                  {/* Base gradient - volcanic red terrain */}
+                  {/* Base gradient - softer, more ethereal */}
                   <div
                     className="absolute inset-0"
                     style={{
                       background: `
                         linear-gradient(to top,
-                          #1a0505 0%,
-                          #450a0a 15%,
-                          #7c2d12 35%,
-                          #b45309 55%,
-                          #92400e 75%,
-                          #6b2c2c 100%
+                          rgba(30, 10, 15, 1) 0%,
+                          rgba(80, 30, 40, 0.9) 25%,
+                          rgba(120, 50, 50, 0.8) 50%,
+                          rgba(100, 45, 45, 0.6) 75%,
+                          transparent 100%
                         )
                       `,
                     }}
                   />
-                  {/* Rocky terrain texture */}
+                  {/* Terrain texture - softened */}
                   <div
-                    className="absolute inset-0 opacity-80"
+                    className="absolute inset-0 opacity-50"
                     style={{
                       backgroundImage: `
-                        conic-gradient(from 120deg at 20% 30%, transparent, rgba(251, 191, 36, 0.15) 40deg, transparent 80deg),
-                        conic-gradient(from -60deg at 80% 40%, transparent, rgba(251, 191, 36, 0.12) 40deg, transparent 80deg),
-                        conic-gradient(from 45deg at 50% 60%, transparent, rgba(185, 28, 28, 0.15) 30deg, transparent 60deg),
-                        radial-gradient(ellipse at 30% 25%, rgba(0, 0, 0, 0.8) 0%, transparent 35%),
-                        radial-gradient(ellipse at 75% 55%, rgba(0, 0, 0, 0.7) 0%, transparent 40%),
-                        radial-gradient(ellipse at 55% 40%, rgba(0, 0, 0, 0.6) 0%, transparent 30%)
-                      `,
-                      filter: "contrast(150%) brightness(1.1)",
-                    }}
-                  />
-                  {/* Rocks and boulders */}
-                  <div
-                    className="absolute inset-0 opacity-60"
-                    style={{
-                      backgroundImage: `
-                        radial-gradient(circle at 8% 55%, #5c1c1c 0%, transparent 4%),
-                        radial-gradient(circle at 15% 45%, #7c2d12 0%, transparent 6%),
-                        radial-gradient(circle at 28% 60%, #92400e 0%, transparent 5%),
-                        radial-gradient(circle at 42% 50%, #78350f 0%, transparent 8%),
-                        radial-gradient(circle at 55% 65%, #6b2c2c 0%, transparent 4%),
-                        radial-gradient(circle at 68% 45%, #7c2d12 0%, transparent 6%),
-                        radial-gradient(circle at 82% 55%, #92400e 0%, transparent 5%),
-                        radial-gradient(circle at 92% 48%, #78350f 0%, transparent 4%)
-                      `,
-                      filter: "blur(1px) contrast(170%)",
-                    }}
-                  />
-                  {/* Crater details */}
-                  <div
-                    className="absolute inset-0 opacity-40"
-                    style={{
-                      backgroundImage: `
-                        radial-gradient(circle at 18% 55%, rgba(0,0,0,0.9) 0%, rgba(120, 53, 15, 0.4) 2%, transparent 4%),
-                        radial-gradient(circle at 45% 60%, rgba(0,0,0,0.8) 0%, rgba(120, 53, 15, 0.3) 3%, transparent 5%),
-                        radial-gradient(circle at 72% 50%, rgba(0,0,0,0.7) 0%, rgba(120, 53, 15, 0.3) 2%, transparent 4%),
-                        radial-gradient(circle at 88% 58%, rgba(0,0,0,0.6) 0%, rgba(120, 53, 15, 0.2) 1.5%, transparent 3%)
+                        radial-gradient(ellipse at 25% 40%, rgba(0, 0, 0, 0.5) 0%, transparent 40%),
+                        radial-gradient(ellipse at 70% 50%, rgba(0, 0, 0, 0.4) 0%, transparent 35%),
+                        radial-gradient(ellipse at 50% 60%, rgba(0, 0, 0, 0.3) 0%, transparent 30%)
                       `,
                     }}
                   />
                 </div>
-                {/* Dust storm animation */}
+                {/* Atmospheric dust - ethereal particles */}
                 <motion.div
                   className="absolute pointer-events-none"
-                  animate={{ x: ["-100%", "100%"] }}
-                  transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                  animate={{ x: ["-80%", "80%"], opacity: [0.15, 0.3, 0.15] }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                   style={{
-                    bottom: "0",
+                    bottom: "10vh",
                     left: "0",
                     width: "100%",
-                    height: "50vh",
-                    background: "linear-gradient(90deg, transparent 20%, rgba(185,28,28,0.15) 50%, transparent 80%)",
-                    filter: "blur(30px)",
+                    height: "40vh",
+                    background: "linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.08), transparent)",
+                    filter: "blur(40px)",
                   }}
                 />
-                {/* Ground-level dust */}
+                {/* Scan line effect - tech feel */}
                 <motion.div
                   className="absolute pointer-events-none"
-                  animate={{ x: ["-30%", "30%"], opacity: [0.2, 0.4, 0.2] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  animate={{ y: ["100%", "-100%"] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                   style={{
-                    bottom: "5vh",
-                    left: "-15%",
-                    width: "130%",
-                    height: "20vh",
-                    background: "linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.12), rgba(245, 158, 11, 0.1), transparent)",
-                    filter: "blur(20px)",
+                    left: "0",
+                    width: "100%",
+                    height: "2px",
+                    background: "linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.3), transparent)",
+                    boxShadow: "0 0 10px rgba(34, 211, 238, 0.3)",
                   }}
                 />
-                {/* Landing site marker glow */}
+                {/* Landing beacon */}
                 <motion.div
                   className="absolute pointer-events-none"
-                  animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2.5, repeat: Infinity }}
+                  animate={{ opacity: [0.3, 0.8, 0.3], scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
                   style={{
-                    bottom: "38vh",
+                    bottom: "36vh",
                     left: "50%",
                     transform: "translateX(-50%)",
-                    width: "150px",
-                    height: "80px",
-                    background: "radial-gradient(ellipse, rgba(34, 197, 94, 0.4) 0%, rgba(34, 197, 94, 0.1) 50%, transparent 70%)",
-                    filter: "blur(15px)",
+                    width: "120px",
+                    height: "60px",
+                    background: "radial-gradient(ellipse, rgba(34, 211, 238, 0.4) 0%, rgba(34, 211, 238, 0.1) 50%, transparent 70%)",
+                    filter: "blur(10px)",
                   }}
                 />
               </>
