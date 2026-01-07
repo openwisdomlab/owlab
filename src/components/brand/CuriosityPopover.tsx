@@ -141,61 +141,97 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
         </AnimatePresence>
       </motion.button>
 
-      {/* 连接射线动画 - 从眼睛到左侧卡片 */}
+      {/* 连接射线动画 - 从眼睛到右侧卡片 */}
       <AnimatePresence>
         {isOpen && count > 0 && !isMobile && (
           <div
             className="absolute pointer-events-none"
             style={{
               top: "50%",
-              right: "100%",
-              width: 120,
-              height: 60,
+              left: "100%",
+              width: 200,
+              height: 80,
               transform: "translateY(-50%)",
               zIndex: 90,
             }}
           >
             <motion.svg
-              width="120"
-              height="60"
+              width="200"
+              height="80"
               style={{ overflow: "visible" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {/* 种子发射轨迹 */}
+              {/* 主引导线 - 更长且带弧度 */}
               <motion.path
-                d="M 120 30 Q 80 30 40 30"
+                d="M 0 40 C 60 40, 120 40, 180 40"
                 stroke={brandColors.neonCyan}
                 strokeWidth="2"
                 fill="none"
-                strokeDasharray="8 4"
+                strokeDasharray="10 5"
                 opacity={0}
                 initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1, opacity: 0.6 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                animate={{ pathLength: 1, opacity: 0.7 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
-              {/* 发光粒子效果 */}
+              {/* 起点光晕 */}
+              <motion.circle
+                r="4"
+                fill={brandColors.neonCyan}
+                cx={0}
+                cy={40}
+                initial={{ scale: 0 }}
+                animate={{ scale: [0, 1.2, 1], opacity: [0, 1, 0.6] }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                style={{ filter: `drop-shadow(0 0 8px ${brandColors.neonCyan})` }}
+              />
+              {/* 发光粒子沿线移动 */}
               <motion.circle
                 r="3"
                 fill={brandColors.neonCyan}
-                cx={120}
-                cy={30}
+                cx={0}
+                cy={40}
                 initial={{ opacity: 1 }}
                 animate={{
-                  cx: [120, 40],
-                  opacity: [1, 0.3],
+                  cx: [0, 180],
+                  opacity: [1, 0.4],
                 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                style={{ filter: `drop-shadow(0 0 8px ${brandColors.neonCyan})` }}
+              />
+              {/* 终点连接点 */}
+              <motion.circle
+                r="5"
+                fill="none"
+                stroke={brandColors.neonCyan}
+                strokeWidth="2"
+                cx={180}
+                cy={40}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 0.8 }}
+                transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
                 style={{ filter: `drop-shadow(0 0 6px ${brandColors.neonCyan})` }}
+              />
+              {/* 脉冲光环 */}
+              <motion.circle
+                r="5"
+                fill="none"
+                stroke={brandColors.neonCyan}
+                strokeWidth="1"
+                cx={180}
+                cy={40}
+                initial={{ scale: 1, opacity: 0 }}
+                animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+                transition={{ duration: 1, repeat: Infinity, delay: 0.5 }}
               />
             </motion.svg>
           </div>
         )}
       </AnimatePresence>
 
-      {/* Popover 面板 - 移到左侧 */}
+      {/* Popover 面板 - 在右侧展开 */}
       <AnimatePresence>
         {isOpen && (
           /* 桌面端使用wrapper div进行垂直居中，避免transform冲突 */
@@ -210,20 +246,20 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
                     zIndex: 100,
                   }
                 : {
-                    right: "100%",
+                    left: "100%",
                     top: 0,
                     bottom: 0,
                     display: "flex",
                     alignItems: "center",
-                    paddingRight: 20,
+                    paddingLeft: 220,
                     zIndex: 100,
                   }
             }
           >
             <motion.div
-              initial={{ opacity: 0, x: 30, scale: 0.95 }}
+              initial={{ opacity: 0, x: -30, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 30, scale: 0.95 }}
+              exit={{ opacity: 0, x: -30, scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
               style={{
                 width: isMobile ? "auto" : 320,
@@ -240,11 +276,12 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
                 overflow: "hidden",
               }}
             >
-            {/* 左边缘装饰条 */}
+            {/* 左边缘装饰条 - 连接线的延续 */}
             <div
               className="absolute left-0 top-0 bottom-0 w-1"
               style={{
                 background: `linear-gradient(180deg, ${brandColors.neonCyan}, ${brandColors.violet}, ${brandColors.neonPink})`,
+                boxShadow: `0 0 10px ${brandColors.neonCyan}50`,
               }}
             />
 
