@@ -120,37 +120,41 @@
           "id": "L01",
           "title": "Space Shaping",
           "subtitle": "Neuroarchitecture and Innovation Environment Design",
-          "description": "Space shapes people, people shape space—a bidirectional process. From neuroarchitecture to Third Space 2.0, understanding how physical environments affect cognition, behavior, and creativity.",
+          "description": "Environment is the most powerful hidden curriculum—every wall, every beam of light teaches silently. Neuroscience confirms: space reshapes the brain, brain reshapes behavior. Designing physical space IS designing thinking patterns.",
           "meta": "Space as Educator",
           "principles": "6 Evidence-Based Design Principles",
-          "checklist": "Evidence-Based Space Design Checklist"
+          "checklist": "Evidence-Based Space Design Checklist",
+          "tags": ["Environmental Neuroscience", "Cognitive Spatial Design", "Third Space 2.0", "Biophilic Design", "Atmosphere Engineering"]
         },
         "extendedMind": {
           "id": "L02",
           "title": "Extended Mind",
           "subtitle": "AI-Enhanced Cognition and Learning Science",
-          "description": "AI as cognitive exoskeleton—extending human capabilities rather than replacing human thinking. Exploring the optimal balance of human-AI collaboration and developing core competencies for the AI era.",
+          "description": "In the human-AI symbiosis era, AI is not a tool—it's a thinking collaborator. When external memory exceeds brain capacity, when computing power breaks cognitive boundaries, human core value lies in: questioning, judging, and creating.",
           "meta": "Extended Mind",
           "principles": "6 Evidence-Based Design Principles",
-          "checklist": "AI Integration Design Checklist"
+          "checklist": "AI Integration Design Checklist",
+          "tags": ["Human-AI Symbiosis", "Cognitive Offloading", "AI-Native Thinking", "Hybrid Intelligence", "Metacognitive Literacy"]
         },
         "emergentWisdom": {
           "id": "L03",
           "title": "Emergent Wisdom",
           "subtitle": "Community Dynamics and Collaborative Cognition",
-          "description": "Communities are incubators of wisdom—individual intelligence is amplified, recombined, and evolved within communities. From psychological safety to cognitive diversity, understanding the emergence mechanisms of collective intelligence.",
+          "description": "The miracle of complex systems: the whole is greater than the sum of parts. When diverse minds collide, when psychological safety guards, collective intelligence isn't addition—it's emergence, quantum leap, creative mutation.",
           "meta": "Emergent Wisdom",
           "principles": "6 Evidence-Based Design Principles",
-          "checklist": "Collective Intelligence Building Checklist"
+          "checklist": "Collective Intelligence Building Checklist",
+          "tags": ["Cognitive Diversity", "Collective Emergence", "Psychological Safety", "Cross-Boundary Collaboration", "Wisdom Crowdsourcing"]
         },
         "poeticsOfTechnology": {
           "id": "L04",
           "title": "Poetics of Technology",
           "subtitle": "Embodied Tools and Post-Screen Era",
-          "description": "Technology should 'disappear'—the best technology makes you forget technology exists. From embodied learning to repairability, rethinking the relationship between tools and humans.",
+          "description": "The most profound technology is invisible—integrated into life, becoming an extension of the body, liberating rather than constraining human potential. In the post-screen era, technology should be like air: essential, yet unnoticed.",
           "meta": "Poetics of Technology",
           "principles": "6 Evidence-Based Design Principles",
-          "checklist": "Age-Appropriate Tool Matrix"
+          "checklist": "Age-Appropriate Tool Matrix",
+          "tags": ["Invisible Technology", "Embodied Computing", "Post-Screen Interaction", "Repairability", "Technology Ethics"]
         }
       },
       "viewAll": "Explore Complete Living Module System"
