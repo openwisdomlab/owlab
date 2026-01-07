@@ -4,34 +4,119 @@ Auto Claude 任务清单
 
 ---
 
-## 001 - M01 好奇心探索器
+# 已完成任务
+
+以下任务已基本完成，进入维护阶段。
+
+---
+
+## 001 - M01 好奇心探索器 ✅
+
+**状态**：已完成 (75%) | **完成日期**：2026-01
 
 开发 M01 理念模块的可视化导览组件「好奇心探索器」。
 
+### 任务描述
 - 设计文档：`docs/plans/2026-01-04-m01-visualization-design.md`
 - 技术栈：React + Framer Motion + Tailwind CSS
 - 将 9 个核心教育理念呈现为可探索的"星图"
 - 用户通过点击发现方式逐步点亮节点
 
+### 完成情况
+
+| 交付物 | 状态 | 路径 |
+|--------|------|------|
+| 设计文档 | ✅ 完成 | `docs/plans/2026-01-04-m01-visualization-design.md` |
+| ConceptExplorer 组件 | ✅ 完成 | `src/features/doc-viewer/ConceptExplorer/` |
+| ConceptPyramid 可视化 | ✅ 完成 | `src/features/doc-viewer/ConceptExplorer/ConceptPyramid.tsx` |
+| 9 个理念数据定义 | ✅ 完成 | `src/features/doc-viewer/ConceptExplorer/concepts.ts` |
+
+### 功能入口
+- **URL**: `/zh/docs/core/01-foundations`
+
+### 待优化项
+- [ ] 星图网络可视化（当前为金字塔形式）
+- [ ] 响应式星图展示（桌面端星图、移动端列表）
+- [ ] 理念脉络弹窗（历史人物连接）
+- [ ] 流光激活动画效果
+
 ---
 
-## 002 - 3E 叙事落地
+## 002 - 3E 叙事落地 ✅
+
+**状态**：已完成 (85%) | **完成日期**：2026-01
 
 将 OWL 的 3E 叙事框架落地到知识库各模块。
 
+### 任务描述
 - 设计文档：`docs/plans/2026-01-04-owl-positioning-design.md`
 - 更新各模块 index.mdx，加入 3E 维度
 - 更新各模块 tagline，使用新叙事
 
+### 完成情况
+
+| 交付物 | 状态 | 路径 |
+|--------|------|------|
+| 设计文档 | ✅ 完成 | `docs/plans/2026-01-04-owl-positioning-design.md` |
+| 核心首页 3E 框架 | ✅ 完成 | `content/docs/zh/core/index.mdx` |
+| M01-M05 tagline 更新 | ✅ 完成 | 各模块 `index.mdx` |
+| ModuleSummary 组件 | ✅ 完成 | 包含新 tagline 和理念体系 |
+
+### 功能入口
+- **URL**: `/zh/docs/core`
+
+### 3E 维度覆盖
+| 维度 | 覆盖模块 |
+|------|---------|
+| **Enlighten 激发** | M01 理念、M03 空间、M04 QFocus |
+| **Empower 赋能** | M04 101课程、M05 工具、M06 安全、M07 人员 |
+| **Engage 连接** | M02 网络、M08 运营、M09 评估 |
+
+### 待优化项
+- [ ] M06-M09 的 tagline 更新确认
+- [ ] 各模块中 3E 维度的显式标记
+- [ ] 理念层 vs 标准层的叙事分离
+
 ---
 
-## 003 - AI 实验室设计器
+## 003 - AI 实验室设计器 ✅
+
+**状态**：已完成 (80%) | **完成日期**：2026-01
 
 继续开发 AI 实验室设计器的第一阶段功能。
 
+### 任务描述
 - 设计文档：`docs/plans/2025-01-02-ai-lab-designer-v2-phase1.md`
-- 现有代码：`src/app/[locale]/lab/` 和 `src/components/lab/`
+- 现有代码：`src/app/[locale]/lab/` 和 `src/features/lab-editor/`
 - 技术栈：React + TypeScript + Zustand + react-konva
+
+### 完成情况
+
+| 交付物 | 状态 | 路径 |
+|--------|------|------|
+| 设计文档 | ✅ 完成 | `docs/plans/2025-01-02-ai-lab-designer-v2-phase1.md` |
+| SmartLauncher 组件 | ✅ 完成 | `src/features/lab-editor/SmartLauncher.tsx` |
+| AISidebar 组件 | ✅ 完成 | `src/features/lab-editor/AISidebar.tsx` |
+| SimplifiedToolbar 组件 | ✅ 完成 | `src/features/lab-editor/SimplifiedToolbar.tsx` |
+| FloorPlanEditor 集成 | ✅ 完成 | `src/features/lab-editor/FloorPlanEditor.tsx` |
+| 5 大学科分类 | ✅ 完成 | 生命健康/深空海地/社会创新/微纳界面/数字信息 |
+| 实时智能建议 | ✅ 完成 | 过道分析/冲突检测/安全检查/学科建议 |
+
+### 功能入口
+- **URL**: `/zh/lab/floor-plan`
+- **流程**: SmartLauncher → 学科选择 → 编辑器 → AISidebar 助手
+
+### 待优化项
+- [ ] AI 对话代理完整实现（需配置 API 密钥）
+- [ ] `/api/ai/generate-layout` 布局生成
+- [ ] 学科模板数据库
+- [ ] 用户数据持久化
+
+---
+
+# 进行中任务
+
+以下任务正在开发或待开发。
 
 ---
 
