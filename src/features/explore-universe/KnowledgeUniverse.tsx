@@ -12,6 +12,9 @@ import {
 import { brandColors, withAlpha } from "@/lib/brand/colors";
 import { SpaceIcon, MindIcon, EmergenceIcon, PoeticsIcon } from "@/components/icons/LivingModuleIcons";
 import { ConnectionsLayer } from "./ConnectionLine";
+import StationFrame from "./StationFrame";
+import StationHUD from "./StationHUD";
+import EnvironmentEffects from "./EnvironmentEffects";
 import {
   moduleConnections,
   deckLayers,
@@ -70,6 +73,24 @@ export default function KnowledgeUniverse({ locale }: Props) {
   const [signalRings, setSignalRings] = useState<{ x: number; y: number; id: number; color: string }[]>([]);
   const [showRecommendations, setShowRecommendations] = useState(true);
   const [svgDimensions, setSvgDimensions] = useState({ width: 1200, height: 800 });
+
+  // Compute active system (L module) based on selection or hover
+  const activeSystem = useMemo(() => {
+    if (selectedModule?.startsWith("L")) return selectedModule;
+    if (hoveredModule?.startsWith("L")) return hoveredModule;
+    if (selectedModule?.startsWith("M")) {
+      const connectedLs = getConnectedLModules(selectedModule);
+      return connectedLs[0] || null;
+    }
+    if (hoveredModule?.startsWith("M")) {
+      const connectedLs = getConnectedLModules(hoveredModule);
+      return connectedLs[0] || null;
+    }
+    return null;
+  }, [selectedModule, hoveredModule]);
+
+  // Focus scale for spatial depth effect
+  const focusScale = selectedModule ? 0.98 : 1;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nebulaRef = useRef<HTMLCanvasElement>(null);
@@ -202,6 +223,22 @@ export default function KnowledgeUniverse({ locale }: Props) {
       grad.addColorStop(1, "transparent");
       nctx.fillStyle = grad;
       nctx.fillRect(0, 0, w, h);
+
+      // Drifting nebula clouds
+      const time = Date.now() * 0.0001;
+      const nebulaClouds = [
+        { x: w * 0.3 + Math.sin(time) * 50, y: h * 0.25, size: 300, color: "0, 100, 150", opacity: 0.06 },
+        { x: w * 0.7 + Math.cos(time * 0.7) * 40, y: h * 0.6, size: 250, color: "80, 40, 120", opacity: 0.05 },
+        { x: w * 0.5 + Math.sin(time * 0.5) * 60, y: h * 0.8, size: 350, color: "20, 60, 100", opacity: 0.04 },
+      ];
+      nebulaClouds.forEach(cloud => {
+        const cloudGrad = nctx.createRadialGradient(cloud.x, cloud.y, 0, cloud.x, cloud.y, cloud.size);
+        cloudGrad.addColorStop(0, `rgba(${cloud.color}, ${cloud.opacity})`);
+        cloudGrad.addColorStop(0.5, `rgba(${cloud.color}, ${cloud.opacity * 0.5})`);
+        cloudGrad.addColorStop(1, "transparent");
+        nctx.fillStyle = cloudGrad;
+        nctx.fillRect(0, 0, w, h);
+      });
 
       // Corner glows for L modules
       const cornerGlows = [
@@ -345,6 +382,27 @@ export default function KnowledgeUniverse({ locale }: Props) {
         style={{ boxShadow: "inset 0 0 200px 60px rgba(2, 6, 23, 0.85)" }}
       />
 
+      {/* Station Frame (cabin walls) */}
+      <StationFrame
+        activeSystem={activeSystem}
+        hoveredSystem={hoveredModule?.startsWith("L") ? hoveredModule : null}
+      />
+
+      {/* Environment Effects (ambient lighting, pipes, debris) */}
+      <EnvironmentEffects activeSystem={activeSystem} />
+
+      {/* Station HUD (top status bar) */}
+      <StationHUD
+        locale={locale}
+        activeSystem={activeSystem}
+        hoveredSystem={hoveredModule}
+        selectedModule={selectedModule}
+        onSystemClick={(systemId) => {
+          setSelectedModule(systemId);
+          setShowRecommendations(false);
+        }}
+      />
+
       {/* Back button */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -361,25 +419,11 @@ export default function KnowledgeUniverse({ locale }: Props) {
         </Link>
       </motion.div>
 
-      {/* Title */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
-      >
-        <div className="px-4 py-2 rounded-full bg-white/5 border border-cyan-500/20 backdrop-blur-sm">
-          <span className="text-sm font-mono tracking-wider text-cyan-400/80">
-            {locale === "zh" ? "空间站蓝图" : "Station Blueprint"}
-          </span>
-        </div>
-      </motion.div>
-
       {/* Recommended Entry Points */}
       <AnimatePresence>
         {showRecommendations && !selectedModule && (
           <motion.div
-            className="fixed top-20 left-1/2 -translate-x-1/2 z-40"
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-40"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -430,10 +474,19 @@ export default function KnowledgeUniverse({ locale }: Props) {
       </AnimatePresence>
 
       {/* Main Blueprint SVG */}
-      <div
+      <motion.div
         ref={containerRef}
         className="relative z-20 w-full h-screen flex items-center justify-center p-8"
-        style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }}
+        animate={{
+          scale: focusScale,
+          x: mousePos.x,
+          y: mousePos.y,
+        }}
+        transition={{
+          scale: { duration: 0.5, ease: "easeOut" },
+          x: { duration: 0 },
+          y: { duration: 0 },
+        }}
       >
         <svg
           viewBox={`0 0 ${blueprintLayout.viewBox.width} ${blueprintLayout.viewBox.height}`}
@@ -647,7 +700,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
             );
           })}
         </svg>
-      </div>
+      </motion.div>
 
       {/* Signal rings animation */}
       <AnimatePresence>
