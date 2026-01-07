@@ -166,15 +166,14 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
 
   const actualCircleCount = isMobile ? Math.floor(circleCount * 0.4) : circleCount;
   const heroRadius = Math.min(dimensions.width, dimensions.height) * (isMobile ? 0.22 : 0.28);
-  // 眼睛图标位于页面上方（内容块居中，眼睛在内容顶部），向上偏移约 12%
-  const eyeYOffset = isMobile ? dimensions.height * 0.08 : dimensions.height * 0.12;
-  const heroCenter = { x: dimensions.width / 2, y: dimensions.height / 2 - eyeYOffset };
+  // 眼睛图标位于页面上方中央，约 12% 高度处（与 EnhancedHero.tsx 中的定位一致）
+  const heroCenter = { x: dimensions.width / 2, y: dimensions.height * (isMobile ? 0.15 : 0.12) };
 
   // Initialize circles
   const initCircles = useCallback((width: number, height: number) => {
     const questions = getBalancedQuestions(actualCircleCount);
-    const eyeOffset = isMobile ? height * 0.08 : height * 0.12;
-    const center = { x: width / 2, y: height / 2 - eyeOffset };
+    // 眼睛位于页面上方中央，约 12% 高度处
+    const center = { x: width / 2, y: height * (isMobile ? 0.15 : 0.12) };
     const radius = Math.min(width, height) * (isMobile ? 0.22 : 0.28);
     const now = Date.now();
 
