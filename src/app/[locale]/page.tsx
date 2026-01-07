@@ -2109,7 +2109,7 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <motion.h2
-                className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-relaxed"
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -2123,7 +2123,7 @@ export default function HomePage() {
                 >
                   <span className="text-[var(--foreground)]">没有</span>
                   <motion.span
-                    className="relative inline-block mx-0.5"
+                    className="inline-flex items-baseline mx-0.5"
                     whileHover={{
                       textShadow: "0 0 20px var(--neon-yellow)",
                     }}
@@ -2132,8 +2132,8 @@ export default function HomePage() {
                       问题
                     </span>
                     <motion.span
-                      className="absolute -top-0.5 -right-1.5 text-[10px]"
-                      animate={{ rotate: [0, 15, 0], y: [0, -2, 0] }}
+                      className="inline-block ml-0.5 text-[1.2em] font-black text-[var(--neon-yellow)] drop-shadow-[0_0_8px_var(--neon-yellow)]"
+                      animate={{ rotate: [0, 15, 0], scale: [1, 1.15, 1] }}
                       transition={{ duration: 2, repeat: Infinity, type: "tween" }}
                     >
                       ?
@@ -2161,7 +2161,7 @@ export default function HomePage() {
                 >
                   <span className="text-[var(--foreground)]">没有</span>
                   <motion.span
-                    className="relative inline-block mx-0.5"
+                    className="inline-flex items-baseline mx-0.5"
                     whileHover={{
                       textShadow: "0 0 20px var(--neon-pink)",
                     }}
@@ -2170,8 +2170,8 @@ export default function HomePage() {
                       想法
                     </span>
                     <motion.span
-                      className="absolute -top-0.5 -right-1.5 text-[10px]"
-                      animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
+                      className="inline-block ml-0.5 text-[1.2em] drop-shadow-[0_0_8px_var(--neon-yellow)]"
+                      animate={{ scale: [1, 1.2, 1], filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
                       💡
