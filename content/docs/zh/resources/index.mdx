@@ -14,14 +14,65 @@ description: 从理念到实践的桥梁 | AI 赋能的实践工具矩阵
 资源工具库是 OWL 体系中**从理念到实践的桥梁**，将知识库的洞见转化为可操作的平台工具。
 
 <Callout type="info">
-**核心定位**：知识库的"执行引擎"——将静态的方法论转化为动态的生产力。每个工具 (Txx) 都对应一个或多个知识模块 (Mxx)，是知识的算法化封装。
+**核心定位**：知识库的"执行引擎"——将静态的方法论转化为动态的生产力。每个工具都对应一个或多个知识模块 (Mxx)，是知识的算法化封装。
 </Callout>
+
+---
+
+## OWL 创意工具箱
+
+六个精选工具，与首页"OWL 创意工具箱"一一对应：
+
+| ID | 工具名称 | 核心功能 | 状态 |
+|---|---------|---------|-----|
+| **[T01](/docs/resources/tools/t01-space-designer)** | AI 空间设计器 | 智能布局生成、3D可视化、Allen曲线分析 | ✅ Live |
+| **[T02](/docs/resources/tools/t02-research-team)** | 虚拟课题组 | 组建跨校际研究小组、协作探究真实科研问题 | 📅 Plan |
+| **[T03](/docs/resources/tools/t03-game-workshop)** | 游戏工坊 | 设计游戏化课程活动、生成学习路径地图 | 📅 Plan |
+| **[T04](/docs/resources/tools/t04-connector)** | 智慧连接器 | 发现OWL节点网络、探索跨学科意外联系 | 📅 Plan |
+| **[T05](/docs/resources/tools/t05-showcase-generator)** | 作品展示生成器 | AI生成项目海报、研究摘要、展示PPT | 📅 Plan |
+| **[T06](/docs/resources/tools/t06-opensource-hub)** | 开源资源库 | 精选开源硬件、软件、课程资源导航 | ✅ Live |
+
+---
+
+## 精选工具快速入口
+
+<Cards>
+  <Card title="T01 AI 空间设计器" href="/lab/floor-plan">
+    智能生成实验室布局 ✅
+  </Card>
+  <Card title="T06 开源资源库" href="/docs/resources/tools/t06-opensource-hub">
+    探索开源资源宝藏 ✅
+  </Card>
+</Cards>
+
+---
+
+## 其他工具
+
+除了精选工具外，还有以下辅助工具支持实验室建设和运营：
+
+| 工具名称 | 核心功能 | 对应模块 | 状态 |
+|---------|---------|---------|-----|
+| **[智能规划向导](/docs/resources/tools/planning-wizard)** | 快速估算建设与运营成本 | M05 / M08 | 🚧 Beta |
+| **[课程设计伴侣](/docs/resources/tools/curriculum-designer)** | 生成 PBL 项目大纲 | M04 / M09 | 📅 Plan |
+| **[开源硬件选型库](/docs/resources/tools/hardware-selector)** | 交互式对比选型 | M05 | ✅ Live |
+| **[安全评估向导](/docs/resources/tools/safety-assessor)** | 自动化安全风险排查 | M06 | 📅 Plan |
+| **[全球案例地图](/docs/resources/tools/case-map)** | 可视化浏览全球案例 | M02 | 📅 Plan |
+
+<Cards>
+  <Card title="智能规划向导" href="/lab">
+    快速估算建设成本 🚧
+  </Card>
+  <Card title="开源硬件选型" href="/docs/core/05-tools/extend/opensource-hardware">
+    开源硬件对比选型 ✅
+  </Card>
+</Cards>
 
 ---
 
 ## 架构模型
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                    OWL 知识与工具体系                            │
 ├─────────────────────────────────────────────────────────────────┤
@@ -34,10 +85,10 @@ description: 从理念到实践的桥梁 | AI 赋能的实践工具矩阵
 │                        知识算法化封装                             │
 │                              ↓                                   │
 │  ┌────────────────────────────────────────────────────────────┐ │
-│  │  工具层 (Platform Tools) - 资源工具库                       │ │
+│  │  工具层 (Platform Tools) - OWL 创意工具箱                   │ │
 │  │                                                              │ │
-│  │   T01 布局生成器    T02 规划向导    T03 课程伴侣            │ │
-│  │   T04 硬件选型库    T05 安全评估    T06 案例地图            │ │
+│  │   T01 空间设计器  T02 虚拟课题组  T03 游戏工坊              │ │
+│  │   T04 智慧连接器  T05 展示生成器  T06 开源资源库            │ │
 │  └────────────────────────────────────────────────────────────┘ │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
@@ -45,58 +96,22 @@ description: 从理念到实践的桥梁 | AI 赋能的实践工具矩阵
 
 ---
 
-## 工具矩阵
+## 工具与知识模块的关系
 
-| ID | 工具名称 | 对应知识模块 | 核心功能 | 状态 |
-|---|---------|-------------|---------|-----|
-| **[T01](/docs/resources/tools/t01-layout-generator)** | AI 布局生成器 | M03 空间 | 智能生成实验室平面图 | ✅ Live |
-| **[T02](/docs/resources/tools/t02-planning-wizard)** | 智能规划向导 | M05 资产 / M08 运营 | 快速估算建设与运营成本 | 🚧 Beta |
-| **[T03](/docs/resources/tools/t03-curriculum-designer)** | 课程设计伴侣 | M04 课程 | 生成 PBL 项目大纲 | 📅 Plan |
-| **[T04](/docs/resources/tools/t04-hardware-selector)** | 开源硬件选型库 | M05 资产 | 交互式对比选型 | ✅ Live |
-| **[T05](/docs/resources/tools/t05-safety-assessor)** | 安全评估向导 | M06 安全 | 自动化安全风险排查 | 📅 Plan |
-| **[T06](/docs/resources/tools/t06-case-map)** | 全球案例地图 | M02 治理 | 可视化浏览全球案例 | 📅 Plan |
-
----
-
-## 快速入口
-
-<Cards>
-  <Card title="T01 布局生成器" href="/lab/floor-plan">
-    智能生成实验室平面图 ✅
-  </Card>
-  <Card title="T02 规划向导" href="/lab">
-    快速估算建设成本 🚧
-  </Card>
-  <Card title="T04 硬件选型" href="/docs/core/05-tools/extend/opensource-hardware">
-    开源硬件对比选型 ✅
-  </Card>
-</Cards>
-
----
-
-## 与知识库的关系
-
-### 知行合一
-
-每一个工具 (Txx) 都对应一个或多个知识模块 (Mxx)：
+每一个工具都对应一个或多个知识模块：
 
 ```mermaid
 graph LR
-    M03[M03 空间] --> T01[T01 布局生成器]
-    M05[M05 工具] --> T02[T02 规划向导]
-    M05 --> T04[T04 硬件选型库]
-    M04[M04 课程] --> T03[T03 课程伴侣]
-    M06[M06 安全] --> T05[T05 安全评估]
-    M02[M02 治理] --> T06[T06 案例地图]
+    M03[M03 空间] --> T01[T01 空间设计器]
+    M02[M02 治理] --> T02[T02 虚拟课题组]
+    M04[M04 课程] --> T02
+    M04 --> T03[T03 游戏工坊]
+    M09[M09 评估] --> T03
+    M02 --> T04[T04 智慧连接器]
+    M01[M01 理念] --> T04
+    M09 --> T05[T05 展示生成器]
+    M05[M05 工具] --> T06[T06 开源资源库]
 ```
-
-### 差异化定位
-
-| 维度 | 核心标准 (M05 等) | 资源工具 (T01 等) |
-|------|------------------|------------------|
-| **内容性质** | 原理性、知识性 | 实践性、操作性 |
-| **主要对象** | 物理工具（硬件、设备） | 平台工具（AI、软件） |
-| **用户场景** | "我想理解工具体系" | "我想立即使用工具" |
 
 ---
 
@@ -144,10 +159,10 @@ graph LR
 
 | 阶段 | 目标 |
 |------|------|
-| **Phase 1** | T01, T04 上线 ✅ |
-| **Phase 2** | T02 Beta 测试 🚧 |
-| **Phase 3** | T03, T05 开发 |
-| **Phase 4** | T06 开发，全面整合 |
+| **Phase 1** | T01 空间设计器、T06 开源资源库上线 ✅ |
+| **Phase 2** | 智能规划向导 Beta 测试 🚧 |
+| **Phase 3** | T02-T05 精选工具开发 |
+| **Phase 4** | 全面整合、跨工具联动 |
 
 ---
 

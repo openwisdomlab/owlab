@@ -3,11 +3,18 @@
   "description": "AI 赋能的实践工具矩阵",
   "defaultOpen": true,
   "pages": [
-    "t01-layout-generator",
-    "t02-planning-wizard",
-    "t03-curriculum-designer",
-    "t04-hardware-selector",
-    "t05-safety-assessor",
-    "t06-case-map"
+    "---精选工具---",
+    "t01-space-designer",
+    "t02-research-team",
+    "t03-game-workshop",
+    "t04-connector",
+    "t05-showcase-generator",
+    "t06-opensource-hub",
+    "---其他工具---",
+    "planning-wizard",
+    "curriculum-designer",
+    "hardware-selector",
+    "safety-assessor",
+    "case-map"
   ]
 }
