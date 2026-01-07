@@ -249,7 +249,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -456,7 +456,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
 
               {/* The main badge */}
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm pointer-events-auto"
                 style={{
                   background: isDark
                     ? `linear-gradient(135deg, ${brandColors.violet}20, ${brandColors.neonPink}15)`
@@ -771,7 +771,7 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
+            className="flex flex-wrap items-center justify-center gap-4 md:gap-6 pointer-events-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}

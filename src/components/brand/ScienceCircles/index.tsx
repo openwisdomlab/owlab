@@ -52,11 +52,12 @@ const CURIOSITY_QUOTES = [
 ];
 
 const EYE_DISCOVERY_MESSAGES = [
-  "🔮 这个问题被好奇心之眼捕获了...",
-  "✨ 问题正在洞察之眼中沉淀...",
-  "👁 你发现了一个隐藏的思考空间",
-  "💫 这个问题值得更深入的凝视...",
-  "🌀 问题正在眼中发酵，等待新的视角...",
+  "如果这个问题有答案，会带来什么新问题？",
+  "谁第一次问出这个问题？他们在想什么？",
+  "如果一千年后有人再问这个问题，会有不同的含义吗？",
+  "这个问题背后，藏着什么更大的未知？",
+  "你愿意用多长时间去追寻这个问题的答案？",
+  "如果这个问题永远没有答案，它还值得被问吗？",
 ];
 
 // 彩蛋引导性问题 - 用提问方式激发更多思考
@@ -627,7 +628,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     <div
       ref={containerRef}
       className={`absolute inset-0 overflow-hidden ${className}`}
-      style={{ zIndex: 1 }}
+      style={{ zIndex: draggingCircle ? 20 : 1 }}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -737,7 +738,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                {eyeDiscovery.message}
+                👁 {eyeDiscovery.message}
               </motion.p>
 
               {/* 主问题 */}
@@ -784,7 +785,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                         className="text-xs font-semibold mb-2"
                         style={{ color: brandColors.neonCyan }}
                       >
-                        🌀 这个问题还能引出更多问题...
+                        💭 如果再往深想一步呢？
                       </p>
                       <ul className="space-y-2">
                         {eyeDiscovery.deepThought.followUpQuestions.map((q, i) => (
@@ -825,7 +826,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                         className="text-xs font-semibold mb-1"
                         style={{ color: brandColors.violet }}
                       >
-                        🎭 如果你来设计一个思想实验...
+                        🎭 想象一下…
                       </p>
                       <p
                         className="text-xs leading-relaxed"
@@ -848,7 +849,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                         className="text-xs"
                         style={{ color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)' }}
                       >
-                        这和什么有关？
+                        🔗 还能连接到…
                       </span>
                       {eyeDiscovery.deepThought.connections.map((conn, i) => (
                         <span
@@ -879,7 +880,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2.2 }}
               >
-                这个问题会停留在这里... 你打算思考多久？ ✨
+                这个问题会陪伴你一段时间…你会想到什么？
               </motion.p>
             </div>
           </motion.div>
