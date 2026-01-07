@@ -19,6 +19,7 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
+  const eyeRef = useRef<HTMLButtonElement>(null);
 
   const { capturedQuestions, recentlyCapturedId, removeQuestion, clearAll } =
     useCuriosityCaptureStore();
@@ -70,11 +71,12 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
     <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
       {/* 眼睛按钮 */}
       <motion.button
+        ref={eyeRef}
         onClick={() => setIsOpen(!isOpen)}
         className="relative w-20 h-20 flex items-center justify-center cursor-pointer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="好奇心宝箱"
+        aria-label="好奇心捕获"
       >
         {/* 背景光晕 */}
         <div
@@ -139,20 +141,78 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
         </AnimatePresence>
       </motion.button>
 
-      {/* Popover 面板 */}
+      {/* 连接射线动画 - 从眼睛到左侧卡片 */}
+      <AnimatePresence>
+        {isOpen && count > 0 && !isMobile && (
+          <motion.svg
+            className="absolute pointer-events-none"
+            style={{
+              top: "50%",
+              right: "100%",
+              width: 120,
+              height: 60,
+              transform: "translateY(-50%)",
+              overflow: "visible",
+              zIndex: 90,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* 种子发射轨迹 */}
+            <motion.path
+              d="M 120 30 Q 80 30 40 30"
+              stroke={brandColors.neonCyan}
+              strokeWidth="2"
+              fill="none"
+              strokeDasharray="8 4"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.6 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+            {/* 发光粒子效果 */}
+            <motion.circle
+              r="3"
+              fill={brandColors.neonCyan}
+              initial={{ cx: 120, cy: 30, opacity: 1 }}
+              animate={{
+                cx: [120, 40],
+                opacity: [1, 0.3],
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              style={{ filter: `drop-shadow(0 0 6px ${brandColors.neonCyan})` }}
+            />
+          </motion.svg>
+        )}
+      </AnimatePresence>
+
+      {/* Popover 面板 - 移到左侧 */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: -10 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="absolute left-1/2 -translate-x-1/2 mt-2"
+            initial={{ opacity: 0, x: 30, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 30, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            className="fixed md:absolute"
             style={{
-              top: "100%",
-              width: isMobile ? "calc(100vw - 32px)" : 340,
-              maxWidth: 340,
-              maxHeight: isMobile ? "60vh" : 420,
+              // 移动端：底部弹出；桌面端：左侧展开
+              ...(isMobile
+                ? {
+                    left: 16,
+                    right: 16,
+                    bottom: 80,
+                    width: "auto",
+                  }
+                : {
+                    right: "100%",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    marginRight: 20,
+                    width: 320,
+                  }),
+              maxHeight: isMobile ? "60vh" : 400,
               zIndex: 100,
               borderRadius: 16,
               background: isDark
@@ -161,11 +221,19 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
               border: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
               backdropFilter: "blur(16px)",
               boxShadow: isDark
-                ? `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${withAlpha(brandColors.neonCyan, 0.1)}`
+                ? `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${withAlpha(brandColors.neonCyan, 0.15)}`
                 : "0 20px 50px rgba(0,0,0,0.15)",
               overflow: "hidden",
             }}
           >
+            {/* 左边缘装饰条 */}
+            <div
+              className="absolute left-0 top-0 bottom-0 w-1"
+              style={{
+                background: `linear-gradient(180deg, ${brandColors.neonCyan}, ${brandColors.violet}, ${brandColors.neonPink})`,
+              }}
+            />
+
             {/* 头部 */}
             <div
               className="flex items-center justify-between px-4 py-3 border-b"
@@ -174,15 +242,30 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
               }}
             >
               <div className="flex items-center gap-2">
-                <Eye
-                  className="w-5 h-5"
-                  style={{ color: brandColors.neonCyan }}
-                />
+                <motion.div
+                  className="w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{
+                    background: `linear-gradient(135deg, ${withAlpha(brandColors.neonCyan, 0.2)}, ${withAlpha(brandColors.violet, 0.15)})`,
+                  }}
+                  animate={{
+                    boxShadow: [
+                      `0 0 8px ${withAlpha(brandColors.neonCyan, 0.3)}`,
+                      `0 0 16px ${withAlpha(brandColors.neonCyan, 0.5)}`,
+                      `0 0 8px ${withAlpha(brandColors.neonCyan, 0.3)}`,
+                    ],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Eye
+                    className="w-4 h-4"
+                    style={{ color: brandColors.neonCyan }}
+                  />
+                </motion.div>
                 <span
                   className="font-semibold"
                   style={{ color: isDark ? "#fff" : "#1a1a2e" }}
                 >
-                  好奇心宝箱
+                  好奇心捕获
                 </span>
                 <span
                   className="text-xs px-2 py-0.5 rounded-full"
@@ -228,18 +311,22 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
             {/* 内容区 */}
             <div
               className="overflow-y-auto"
-              style={{ maxHeight: isMobile ? "calc(60vh - 60px)" : 360 }}
+              style={{ maxHeight: isMobile ? "calc(60vh - 60px)" : 340 }}
             >
               {count === 0 ? (
                 /* 空状态 */
                 <div className="p-6 text-center">
-                  <div
+                  <motion.div
                     className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
                     style={{
                       background: isDark
                         ? withAlpha(brandColors.neonCyan, 0.1)
                         : withAlpha(brandColors.blue, 0.08),
                     }}
+                    animate={{
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
                   >
                     <Eye
                       className="w-8 h-8"
@@ -248,7 +335,7 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
                         opacity: 0.6,
                       }}
                     />
-                  </div>
+                  </motion.div>
                   <p
                     className="text-sm mb-2"
                     style={{
@@ -263,13 +350,13 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
                       color: isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.35)",
                     }}
                   >
-                    试试拖动问题到这里
+                    将问题拖入眼睛图标来捕获
                   </p>
                 </div>
               ) : (
                 /* 问题列表 */
                 <div className="p-2">
-                  {capturedQuestions.map((item) => (
+                  {capturedQuestions.map((item, index) => (
                     <QuestionCard
                       key={item.id}
                       item={item}
@@ -282,6 +369,7 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
                       onRemove={() => removeQuestion(item.id)}
                       formatTime={formatTime}
                       getGravityLabel={getGravityLabel}
+                      index={index}
                     />
                   ))}
                 </div>
@@ -304,6 +392,7 @@ interface QuestionCardProps {
   onRemove: () => void;
   formatTime: (t: number) => string;
   getGravityLabel: (g: number) => string;
+  index: number;
 }
 
 function QuestionCard({
@@ -315,6 +404,7 @@ function QuestionCard({
   onRemove,
   formatTime,
   getGravityLabel,
+  index,
 }: QuestionCardProps) {
   const { question } = item;
 
@@ -332,8 +422,9 @@ function QuestionCard({
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.05 }}
       className="mb-2 rounded-xl overflow-hidden"
       style={{
         background: isDark
@@ -363,9 +454,18 @@ function QuestionCard({
       >
         <div className="flex items-start gap-2">
           {/* 颜色指示器 */}
-          <div
+          <motion.div
             className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
             style={{ background: color }}
+            animate={isRecent ? {
+              scale: [1, 1.3, 1],
+              boxShadow: [
+                `0 0 4px ${color}`,
+                `0 0 12px ${color}`,
+                `0 0 4px ${color}`,
+              ],
+            } : {}}
+            transition={{ duration: 1.5, repeat: isRecent ? 2 : 0 }}
           />
           {/* 问题文本 */}
           <div className="flex-1 min-w-0">

@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { ScienceQuestion } from "@/data/science-questions";
 
-// 收集问题数量上限
-export const MAX_CAPTURED_QUESTIONS = 10;
+// 收集问题数量上限（避免信息过载）
+export const MAX_CAPTURED_QUESTIONS = 5;
 
 export interface CapturedQuestion {
   id: string;
