@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { useTranslations } from "next-intl";
+import { useTheme } from "@/components/ui/ThemeProvider";
 import {
   Rocket, Compass, Target, Wrench, Shield,
   GraduationCap, BookOpen, BarChart3, Layers,
@@ -78,6 +79,27 @@ export default function KnowledgeUniverse({ locale }: Props) {
   const tDocs = useTranslations("docs.knowledgeBase");
   const tLiving = useTranslations("home.livingModules");
   const reduceMotion = useReducedMotion();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
+  // Theme-aware colors
+  const themeColors = useMemo(() => ({
+    // Background
+    bgPrimary: isDark ? "#020617" : "#f8fafc",
+    bgSecondary: isDark ? "rgba(15, 23, 42, 0.95)" : "rgba(255, 255, 255, 0.95)",
+    // Text
+    textPrimary: isDark ? "#fff" : "#0f172a",
+    textMuted: isDark ? "rgba(255, 255, 255, 0.6)" : "rgba(15, 23, 42, 0.6)",
+    textSubtle: isDark ? "rgba(255, 255, 255, 0.4)" : "rgba(15, 23, 42, 0.4)",
+    // Glass effects
+    glassOverlay: isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.02)",
+    glassBorder: isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.08)",
+    // Grid
+    gridColor: isDark ? "rgba(0, 217, 255, 0.3)" : "rgba(37, 99, 235, 0.15)",
+    // Nebula/Atmosphere
+    nebulaOpacity: isDark ? 0.7 : 0.3,
+    atmosphereBlend: isDark ? "screen" : "multiply",
+  }), [isDark]);
 
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
@@ -245,20 +267,32 @@ export default function KnowledgeUniverse({ locale }: Props) {
       ctx.clearRect(0, 0, w, h);
       nctx.clearRect(0, 0, w, h);
 
-      // Blueprint-style gradient (darker, more technical)
+      // Blueprint-style gradient - different for light/dark
       const grad = nctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.7);
-      grad.addColorStop(0, "rgba(0, 40, 80, 0.15)");
-      grad.addColorStop(0.5, "rgba(0, 20, 50, 0.1)");
-      grad.addColorStop(1, "transparent");
+      if (isDark) {
+        grad.addColorStop(0, "rgba(0, 40, 80, 0.15)");
+        grad.addColorStop(0.5, "rgba(0, 20, 50, 0.1)");
+        grad.addColorStop(1, "transparent");
+      } else {
+        // Light mode: soft blue sky gradient
+        grad.addColorStop(0, "rgba(56, 189, 248, 0.08)");
+        grad.addColorStop(0.5, "rgba(147, 197, 253, 0.05)");
+        grad.addColorStop(1, "transparent");
+      }
       nctx.fillStyle = grad;
       nctx.fillRect(0, 0, w, h);
 
-      // Drifting nebula clouds
+      // Drifting nebula clouds / atmosphere clouds
       const time = Date.now() * 0.0001;
-      const nebulaClouds = [
+      const nebulaClouds = isDark ? [
         { x: w * 0.3 + Math.sin(time) * 50, y: h * 0.25, size: 300, color: "0, 100, 150", opacity: 0.06 },
         { x: w * 0.7 + Math.cos(time * 0.7) * 40, y: h * 0.6, size: 250, color: "80, 40, 120", opacity: 0.05 },
         { x: w * 0.5 + Math.sin(time * 0.5) * 60, y: h * 0.8, size: 350, color: "20, 60, 100", opacity: 0.04 },
+      ] : [
+        // Light mode: soft white/blue clouds
+        { x: w * 0.3 + Math.sin(time) * 50, y: h * 0.25, size: 400, color: "147, 197, 253", opacity: 0.15 },
+        { x: w * 0.7 + Math.cos(time * 0.7) * 40, y: h * 0.5, size: 350, color: "196, 181, 253", opacity: 0.1 },
+        { x: w * 0.2 + Math.sin(time * 0.5) * 60, y: h * 0.7, size: 300, color: "167, 243, 208", opacity: 0.08 },
       ];
       nebulaClouds.forEach(cloud => {
         const cloudGrad = nctx.createRadialGradient(cloud.x, cloud.y, 0, cloud.x, cloud.y, cloud.size);
@@ -270,6 +304,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
       });
 
       // Corner glows for L modules
+      const glowOpacity = isDark ? 0.12 : 0.08;
       const cornerGlows = [
         { x: w * 0.08, y: h * 0.15, color: "0, 217, 255" },
         { x: w * 0.92, y: h * 0.15, color: "139, 92, 246" },
@@ -278,14 +313,14 @@ export default function KnowledgeUniverse({ locale }: Props) {
       ];
       cornerGlows.forEach(glow => {
         const bgrad = nctx.createRadialGradient(glow.x, glow.y, 0, glow.x, glow.y, 200);
-        bgrad.addColorStop(0, `rgba(${glow.color}, 0.12)`);
+        bgrad.addColorStop(0, `rgba(${glow.color}, ${glowOpacity})`);
         bgrad.addColorStop(1, "transparent");
         nctx.fillStyle = bgrad;
         nctx.fillRect(0, 0, w, h);
       });
 
-      // Shooting stars
-      if (Math.random() < 0.003 && shootingStarsRef.current.length < 2) {
+      // Shooting stars (only in dark mode)
+      if (isDark && Math.random() < 0.003 && shootingStarsRef.current.length < 2) {
         shootingStarsRef.current.push({
           x: Math.random() * w,
           y: 0,
@@ -308,13 +343,15 @@ export default function KnowledgeUniverse({ locale }: Props) {
       });
       shootingStarsRef.current = shootingStarsRef.current.filter(s => s.y < h && s.opacity > 0);
 
-      // Stars
-      ctx.fillStyle = "#fff";
+      // Stars (fainter in light mode, white in dark mode)
+      const starColor = isDark ? "#fff" : "#64748b";
+      const starOpacityMultiplier = isDark ? 1 : 0.3;
+      ctx.fillStyle = starColor;
       starsRef.current.forEach((s) => {
         s.y += 0.03 + s.z * 0.05;
         if (s.y > h) s.y = 0;
 
-        ctx.globalAlpha = s.a * (0.2 + 0.3 * Math.abs(Math.sin(Date.now() * 0.001 * s.z + s.a * 10)));
+        ctx.globalAlpha = s.a * (0.2 + 0.3 * Math.abs(Math.sin(Date.now() * 0.001 * s.z + s.a * 10))) * starOpacityMultiplier;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.z + 0.3, 0, Math.PI * 2);
         ctx.fill();
@@ -329,7 +366,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
     window.addEventListener("resize", () => { resize(); createStars(); });
 
     return () => cancelAnimationFrame(animationId);
-  }, []);
+  }, [isDark]);
 
   // Trigger signal ring
   const triggerSignal = useCallback((x: number, y: number, color: string) => {
@@ -392,43 +429,77 @@ export default function KnowledgeUniverse({ locale }: Props) {
       };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white overflow-hidden relative">
+    <div
+      className="min-h-screen overflow-hidden relative transition-colors duration-500"
+      style={{
+        backgroundColor: themeColors.bgPrimary,
+        color: themeColors.textPrimary,
+      }}
+    >
       {/* Camera rig with subtle drift */}
       <motion.div
         className="absolute inset-0"
         animate={cameraAnim}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* Layer 1: Deep space */}
+        {/* Layer 1: Deep space / Atmosphere */}
         <div className="absolute inset-0">
           {/* Nebula canvas */}
           <canvas
             ref={nebulaRef}
-            className="absolute inset-0 z-0 opacity-70 blur-[80px] mix-blend-screen"
+            className="absolute inset-0 z-0 blur-[80px] transition-opacity duration-500"
+            style={{
+              opacity: themeColors.nebulaOpacity,
+              mixBlendMode: themeColors.atmosphereBlend as "screen" | "multiply",
+            }}
           />
 
           {/* Star field canvas */}
           <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
-          {/* Nebula blobs */}
-          <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl mix-blend-screen" />
-          <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-purple-500/8 blur-3xl mix-blend-screen" />
+          {/* Nebula blobs / Atmosphere clouds */}
+          <div
+            className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full blur-3xl transition-colors duration-500"
+            style={{
+              backgroundColor: isDark ? "rgba(6, 182, 212, 0.1)" : "rgba(147, 197, 253, 0.2)",
+              mixBlendMode: themeColors.atmosphereBlend as "screen" | "multiply",
+            }}
+          />
+          <div
+            className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full blur-3xl transition-colors duration-500"
+            style={{
+              backgroundColor: isDark ? "rgba(168, 85, 247, 0.08)" : "rgba(196, 181, 253, 0.15)",
+              mixBlendMode: themeColors.atmosphereBlend as "screen" | "multiply",
+            }}
+          />
         </div>
 
-        {/* Layer 2: Mid space - Planet limb */}
+        {/* Layer 2: Mid space - Planet limb / Horizon */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -bottom-1/3 -left-1/4 h-2/3 w-[140%] opacity-30">
-            <div className="h-full w-full rounded-[100%] bg-gradient-to-t from-cyan-900/50 via-slate-950 to-transparent border-t border-cyan-500/20" />
+          <div
+            className="absolute -bottom-1/3 -left-1/4 h-2/3 w-[140%] transition-opacity duration-500"
+            style={{ opacity: isDark ? 0.3 : 0.15 }}
+          >
+            <div
+              className="h-full w-full rounded-[100%] border-t transition-colors duration-500"
+              style={{
+                background: isDark
+                  ? "linear-gradient(to top, rgba(8, 145, 178, 0.5), rgba(15, 23, 42, 1), transparent)"
+                  : "linear-gradient(to top, rgba(147, 197, 253, 0.3), rgba(248, 250, 252, 0.5), transparent)",
+                borderColor: isDark ? "rgba(6, 182, 212, 0.2)" : "rgba(59, 130, 246, 0.15)",
+              }}
+            />
           </div>
         </div>
 
         {/* Blueprint grid overlay */}
         <div
-          className="absolute inset-0 z-[1] pointer-events-none opacity-[0.03]"
+          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-500"
           style={{
+            opacity: isDark ? 0.03 : 0.04,
             backgroundImage: `
-              linear-gradient(rgba(0, 217, 255, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 217, 255, 0.3) 1px, transparent 1px)
+              linear-gradient(${themeColors.gridColor} 1px, transparent 1px),
+              linear-gradient(90deg, ${themeColors.gridColor} 1px, transparent 1px)
             `,
             backgroundSize: "50px 50px",
           }}
@@ -436,14 +507,31 @@ export default function KnowledgeUniverse({ locale }: Props) {
 
         {/* Cockpit frame vignette */}
         <div
-          className="fixed inset-0 z-10 pointer-events-none"
-          style={{ boxShadow: "inset 0 0 200px 80px rgba(2, 6, 23, 0.9)" }}
+          className="fixed inset-0 z-10 pointer-events-none transition-all duration-500"
+          style={{
+            boxShadow: isDark
+              ? "inset 0 0 200px 80px rgba(2, 6, 23, 0.9)"
+              : "inset 0 0 200px 80px rgba(248, 250, 252, 0.7)",
+          }}
         />
 
         {/* Glass glare effects */}
         <div className="pointer-events-none absolute inset-0 z-[11]">
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-40" />
-          <div className="absolute -left-1/4 top-0 h-full w-1/2 rotate-12 bg-white/3 blur-2xl opacity-30" />
+          <div
+            className="absolute inset-0 opacity-40 transition-colors duration-500"
+            style={{
+              background: isDark
+                ? "linear-gradient(to bottom right, rgba(255,255,255,0.05), transparent, transparent)"
+                : "linear-gradient(to bottom right, rgba(255,255,255,0.3), transparent, transparent)",
+            }}
+          />
+          <div
+            className="absolute -left-1/4 top-0 h-full w-1/2 rotate-12 blur-2xl transition-opacity duration-500"
+            style={{
+              backgroundColor: isDark ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.2)",
+              opacity: isDark ? 0.3 : 0.5,
+            }}
+          />
         </div>
 
         {/* Dust motes with depth */}
@@ -451,13 +539,14 @@ export default function KnowledgeUniverse({ locale }: Props) {
           {dustParticles.map((p, i) => (
             <motion.div
               key={i}
-              className={`absolute rounded-full bg-white ${p.blur}`}
+              className={`absolute rounded-full ${p.blur}`}
               style={{
                 top: `${p.top}%`,
                 left: `${p.left}%`,
                 width: `${p.size}px`,
                 height: `${p.size}px`,
-                opacity: p.opacity,
+                opacity: p.opacity * (isDark ? 1 : 0.6),
+                backgroundColor: isDark ? "#fff" : "#64748b",
               }}
               animate={
                 reduceMotion
@@ -478,10 +567,11 @@ export default function KnowledgeUniverse({ locale }: Props) {
       <StationFrame
         activeSystem={activeSystem}
         hoveredSystem={hoveredModule?.startsWith("L") ? hoveredModule : null}
+        isDark={isDark}
       />
 
       {/* Environment Effects (ambient lighting, pipes, debris) */}
-      <EnvironmentEffects activeSystem={activeSystem} />
+      <EnvironmentEffects activeSystem={activeSystem} isDark={isDark} />
 
       {/* Station HUD (top status bar) */}
       <StationHUD
@@ -489,6 +579,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
         activeSystem={activeSystem}
         hoveredSystem={hoveredModule}
         selectedModule={selectedModule}
+        isDark={isDark}
         onSystemClick={(systemId) => {
           setSelectedModule(systemId);
           setShowRecommendations(false);
@@ -504,7 +595,12 @@ export default function KnowledgeUniverse({ locale }: Props) {
       >
         <Link
           href={`/${locale}`}
-          className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-sm"
+          className="flex items-center gap-2 px-4 py-2 rounded-full transition-all text-sm"
+          style={{
+            backgroundColor: themeColors.glassOverlay,
+            borderWidth: 1,
+            borderColor: themeColors.glassBorder,
+          }}
         >
           <ArrowLeft size={16} />
           {t("back")}
@@ -521,8 +617,15 @@ export default function KnowledgeUniverse({ locale }: Props) {
             exit={{ opacity: 0, y: -10 }}
             transition={{ delay: 0.6 }}
           >
-            <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-              <span className="text-xs text-white/40 mr-1">
+            <div
+              className="flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm transition-colors duration-500"
+              style={{
+                backgroundColor: themeColors.glassOverlay,
+                borderWidth: 1,
+                borderColor: themeColors.glassBorder,
+              }}
+            >
+              <span className="text-xs mr-1" style={{ color: themeColors.textSubtle }}>
                 {locale === "zh" ? "推荐入口" : "Start here"}:
               </span>
               {recommendedPaths.map((path) => {
@@ -555,7 +658,8 @@ export default function KnowledgeUniverse({ locale }: Props) {
                 );
               })}
               <button
-                className="ml-1 text-white/30 hover:text-white/60 transition-colors"
+                className="ml-1 transition-colors"
+                style={{ color: themeColors.textSubtle }}
                 onClick={() => setShowRecommendations(false)}
               >
                 ×
@@ -755,8 +859,11 @@ export default function KnowledgeUniverse({ locale }: Props) {
                 />
                 {/* Icon */}
                 <foreignObject x={-14} y={-22} width={28} height={28}>
-                  <div className="w-full h-full flex items-center justify-center">
-                    <Icon size={20} className="text-white/90" />
+                  <div
+                    className="w-full h-full flex items-center justify-center"
+                    style={{ color: themeColors.textPrimary, opacity: 0.9 }}
+                  >
+                    <Icon size={20} />
                   </div>
                 </foreignObject>
                 {/* Module ID */}
@@ -773,7 +880,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
                 {/* Module title (abbreviated) */}
                 <text
                   y={38}
-                  fill="white"
+                  fill={themeColors.textPrimary}
                   fontSize={9}
                   textAnchor="middle"
                   opacity={0.6}
@@ -816,21 +923,23 @@ export default function KnowledgeUniverse({ locale }: Props) {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
             <div
-              className="max-w-2xl mx-auto rounded-2xl border backdrop-blur-xl p-5"
+              className="max-w-2xl mx-auto rounded-2xl border backdrop-blur-xl p-5 transition-colors duration-500"
               style={{
-                background: "rgba(15, 23, 42, 0.95)",
+                background: themeColors.bgSecondary,
                 borderColor: `rgba(${selectedInfo.colorRgb}, 0.3)`,
-                boxShadow: `0 0 60px rgba(${selectedInfo.colorRgb}, 0.15)`,
+                boxShadow: `0 0 60px rgba(${selectedInfo.colorRgb}, ${isDark ? 0.15 : 0.1})`,
               }}
             >
-              {/* Scanline effect */}
-              <div
-                className="absolute inset-0 rounded-2xl pointer-events-none opacity-10"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)`,
-                  backgroundSize: "100% 2px",
-                }}
-              />
+              {/* Scanline effect (only in dark mode) */}
+              {isDark && (
+                <div
+                  className="absolute inset-0 rounded-2xl pointer-events-none opacity-10"
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)`,
+                    backgroundSize: "100% 2px",
+                  }}
+                />
+              )}
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-3">
@@ -852,7 +961,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
                     <span className="text-xl font-bold" style={{ color: selectedInfo.color }}>
                       {selectedModule}
                     </span>
-                    <span className="text-lg text-white/90">
+                    <span className="text-lg" style={{ color: themeColors.textPrimary, opacity: 0.9 }}>
                       {selectedInfo.isL
                         ? tLiving(`modules.${selectedModule === "L01" ? "spaceAsEducator" : selectedModule === "L02" ? "extendedMind" : selectedModule === "L03" ? "emergentWisdom" : "poeticsOfTechnology"}.title`)
                         : tDocs(`modules.${selectedModule}.title`)
@@ -861,7 +970,8 @@ export default function KnowledgeUniverse({ locale }: Props) {
                   </div>
                   <button
                     onClick={() => setSelectedModule(null)}
-                    className="text-white/40 hover:text-white/80 transition-colors text-sm"
+                    className="transition-colors text-sm"
+                    style={{ color: themeColors.textSubtle }}
                   >
                     ESC
                   </button>
@@ -873,7 +983,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
                   if (!connInfo) return null;
                   return (
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs text-white/40">
+                      <span className="text-xs" style={{ color: themeColors.textSubtle }}>
                         {connInfo.type === "powers"
                           ? (locale === "zh" ? "为以下模块供能:" : "Powers:")
                           : (locale === "zh" ? "由以下系统支撑:" : "Powered by:")
@@ -901,7 +1011,7 @@ export default function KnowledgeUniverse({ locale }: Props) {
                   );
                 })()}
 
-                <p className="text-sm text-white/60 mb-4 line-clamp-2">
+                <p className="text-sm mb-4 line-clamp-2" style={{ color: themeColors.textMuted }}>
                   {selectedInfo.isL
                     ? tLiving(`modules.${selectedModule === "L01" ? "spaceAsEducator" : selectedModule === "L02" ? "extendedMind" : selectedModule === "L03" ? "emergentWisdom" : "poeticsOfTechnology"}.subtitle`)
                     : tDocs(`modules.${selectedModule}.description`)
@@ -971,7 +1081,8 @@ export default function KnowledgeUniverse({ locale }: Props) {
 
       {/* Keyboard hints */}
       <motion.div
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 text-xs text-white/30 font-mono"
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 text-xs font-mono"
+        style={{ color: themeColors.textSubtle }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
@@ -981,11 +1092,21 @@ export default function KnowledgeUniverse({ locale }: Props) {
         </span>
       </motion.div>
 
-      {/* Post FX: Scanlines overlay */}
-      <div className="pointer-events-none fixed inset-0 z-[100] opacity-15 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_3px]" />
+      {/* Post FX: Scanlines overlay (only in dark mode) */}
+      {isDark && (
+        <div className="pointer-events-none fixed inset-0 z-[100] opacity-15 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_3px]" />
+      )}
 
       {/* Subtle noise texture */}
-      <div className="pointer-events-none fixed inset-0 z-[101] opacity-[0.04] bg-[radial-gradient(circle,white_1px,transparent_1px)] bg-[length:3px_3px]" />
+      <div
+        className="pointer-events-none fixed inset-0 z-[101] bg-[length:3px_3px] transition-opacity duration-500"
+        style={{
+          opacity: isDark ? 0.04 : 0.02,
+          backgroundImage: isDark
+            ? "radial-gradient(circle, white 1px, transparent 1px)"
+            : "radial-gradient(circle, #64748b 1px, transparent 1px)",
+        }}
+      />
 
       {/* Alert flash */}
       <AnimatePresence>

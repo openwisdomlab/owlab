@@ -7,6 +7,7 @@ import { moduleConnections } from "./module-connections";
 interface StationFrameProps {
   activeSystem: string | null;
   hoveredSystem: string | null;
+  isDark?: boolean;
 }
 
 // Corner airlock positions (matching L module positions)
@@ -25,7 +26,7 @@ const rivetPositions = {
   right: [15, 35, 55, 75],
 };
 
-export default function StationFrame({ activeSystem, hoveredSystem }: StationFrameProps) {
+export default function StationFrame({ activeSystem, hoveredSystem, isDark = true }: StationFrameProps) {
   const getSystemColor = (systemId: string) => {
     const conn = moduleConnections[systemId as keyof typeof moduleConnections];
     return conn?.color || brandColors.neonCyan;
@@ -35,41 +36,46 @@ export default function StationFrame({ activeSystem, hoveredSystem }: StationFra
     return activeSystem === systemId || hoveredSystem === systemId;
   };
 
+  // Theme-aware opacity multiplier
+  const opacityMult = isDark ? 1 : 0.6;
+
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       {/* Main frame border with glow */}
       <div
         className="absolute inset-4 rounded-2xl border-2 transition-all duration-500"
         style={{
-          borderColor: withAlpha(brandColors.neonCyan, activeSystem ? 0.4 : 0.2),
+          borderColor: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, activeSystem ? 0.4 * opacityMult : 0.2 * opacityMult),
           boxShadow: activeSystem
-            ? `inset 0 0 60px ${withAlpha(getSystemColor(activeSystem), 0.1)}, 0 0 30px ${withAlpha(getSystemColor(activeSystem), 0.15)}`
-            : `inset 0 0 40px ${withAlpha(brandColors.neonCyan, 0.05)}`,
+            ? `inset 0 0 60px ${withAlpha(getSystemColor(activeSystem), 0.1 * opacityMult)}, 0 0 30px ${withAlpha(getSystemColor(activeSystem), 0.15 * opacityMult)}`
+            : `inset 0 0 40px ${withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, 0.05 * opacityMult)}`,
         }}
       >
         {/* Inner glow line */}
         <div
           className="absolute inset-2 rounded-xl border transition-all duration-500"
           style={{
-            borderColor: withAlpha(brandColors.neonCyan, 0.1),
+            borderColor: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, 0.1 * opacityMult),
           }}
         />
 
-        {/* Scanning line effect */}
-        <motion.div
-          className="absolute left-0 right-0 h-px"
-          style={{
-            background: `linear-gradient(90deg, transparent, ${withAlpha(brandColors.neonCyan, 0.5)}, transparent)`,
-          }}
-          animate={{
-            top: ["0%", "100%", "0%"],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
+        {/* Scanning line effect (only in dark mode) */}
+        {isDark && (
+          <motion.div
+            className="absolute left-0 right-0 h-px"
+            style={{
+              background: `linear-gradient(90deg, transparent, ${withAlpha(brandColors.neonCyan, 0.5)}, transparent)`,
+            }}
+            animate={{
+              top: ["0%", "100%", "0%"],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        )}
       </div>
 
       {/* Corner Airlocks */}
@@ -197,7 +203,7 @@ export default function StationFrame({ activeSystem, hoveredSystem }: StationFra
             key={`top-${i}`}
             className="w-1.5 h-1.5 rounded-full"
             style={{
-              background: withAlpha(brandColors.neonCyan, activeSystem ? 0.5 : 0.3),
+              background: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, (activeSystem ? 0.5 : 0.3) * opacityMult),
             }}
             animate={activeSystem ? {
               opacity: [0.3, 0.8, 0.3],
@@ -218,7 +224,7 @@ export default function StationFrame({ activeSystem, hoveredSystem }: StationFra
             key={`bottom-${i}`}
             className="w-1.5 h-1.5 rounded-full"
             style={{
-              background: withAlpha(brandColors.neonCyan, activeSystem ? 0.5 : 0.3),
+              background: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, (activeSystem ? 0.5 : 0.3) * opacityMult),
             }}
             animate={activeSystem ? {
               opacity: [0.3, 0.8, 0.3],
@@ -237,7 +243,7 @@ export default function StationFrame({ activeSystem, hoveredSystem }: StationFra
         <div
           className="h-full w-px mx-auto transition-all duration-500"
           style={{
-            background: `linear-gradient(to bottom, transparent, ${withAlpha(brandColors.neonCyan, activeSystem ? 0.4 : 0.2)}, transparent)`,
+            background: `linear-gradient(to bottom, transparent, ${withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, (activeSystem ? 0.4 : 0.2) * opacityMult)}, transparent)`,
           }}
         />
       </div>
@@ -245,7 +251,7 @@ export default function StationFrame({ activeSystem, hoveredSystem }: StationFra
         <div
           className="h-full w-px mx-auto transition-all duration-500"
           style={{
-            background: `linear-gradient(to bottom, transparent, ${withAlpha(brandColors.neonCyan, activeSystem ? 0.4 : 0.2)}, transparent)`,
+            background: `linear-gradient(to bottom, transparent, ${withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, (activeSystem ? 0.4 : 0.2) * opacityMult)}, transparent)`,
           }}
         />
       </div>

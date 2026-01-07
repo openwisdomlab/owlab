@@ -7,6 +7,7 @@ import { moduleConnections } from "./module-connections";
 
 interface EnvironmentEffectsProps {
   activeSystem: string | null;
+  isDark?: boolean;
 }
 
 // Floating debris configuration
@@ -17,16 +18,19 @@ const debrisConfig = [
   { id: 4, size: 2, duration: 28, startX: 105, endX: -5, y: 85 },
 ];
 
-export default function EnvironmentEffects({ activeSystem }: EnvironmentEffectsProps) {
+export default function EnvironmentEffects({ activeSystem, isDark = true }: EnvironmentEffectsProps) {
   const [breathPhase, setBreathPhase] = useState(0);
+
+  // Theme-aware opacity
+  const opacityMult = isDark ? 1 : 0.5;
 
   // Compute ambient color based on active system
   const ambientColor = useMemo(() => {
     if (activeSystem && moduleConnections[activeSystem as keyof typeof moduleConnections]) {
       return moduleConnections[activeSystem as keyof typeof moduleConnections].color;
     }
-    return brandColors.neonCyan;
-  }, [activeSystem]);
+    return isDark ? brandColors.neonCyan : brandColors.blue;
+  }, [activeSystem, isDark]);
 
   // Breathing effect
   useEffect(() => {
@@ -54,7 +58,7 @@ export default function EnvironmentEffects({ activeSystem }: EnvironmentEffectsP
           <div
             className="absolute top-0 left-0 right-0 h-32 transition-opacity duration-500"
             style={{
-              background: `linear-gradient(to bottom, ${withAlpha(ambientColor, breathIntensity * 0.15)}, transparent)`,
+              background: `linear-gradient(to bottom, ${withAlpha(ambientColor, breathIntensity * 0.15 * opacityMult)}, transparent)`,
               opacity: activeSystem ? 1 : 0.5,
             }}
           />
@@ -62,7 +66,7 @@ export default function EnvironmentEffects({ activeSystem }: EnvironmentEffectsP
           <div
             className="absolute bottom-0 left-0 right-0 h-32 transition-opacity duration-500"
             style={{
-              background: `linear-gradient(to top, ${withAlpha(ambientColor, breathIntensity * 0.15)}, transparent)`,
+              background: `linear-gradient(to top, ${withAlpha(ambientColor, breathIntensity * 0.15 * opacityMult)}, transparent)`,
               opacity: activeSystem ? 1 : 0.5,
             }}
           />
@@ -70,7 +74,7 @@ export default function EnvironmentEffects({ activeSystem }: EnvironmentEffectsP
           <div
             className="absolute top-0 bottom-0 left-0 w-32 transition-opacity duration-500"
             style={{
-              background: `linear-gradient(to right, ${withAlpha(ambientColor, breathIntensity * 0.1)}, transparent)`,
+              background: `linear-gradient(to right, ${withAlpha(ambientColor, breathIntensity * 0.1 * opacityMult)}, transparent)`,
               opacity: activeSystem ? 1 : 0.5,
             }}
           />
@@ -78,7 +82,7 @@ export default function EnvironmentEffects({ activeSystem }: EnvironmentEffectsP
           <div
             className="absolute top-0 bottom-0 right-0 w-32 transition-opacity duration-500"
             style={{
-              background: `linear-gradient(to left, ${withAlpha(ambientColor, breathIntensity * 0.1)}, transparent)`,
+              background: `linear-gradient(to left, ${withAlpha(ambientColor, breathIntensity * 0.1 * opacityMult)}, transparent)`,
               opacity: activeSystem ? 1 : 0.5,
             }}
           />

@@ -9,6 +9,7 @@ interface StationHUDProps {
   activeSystem: string | null;
   hoveredSystem: string | null;
   selectedModule: string | null;
+  isDark?: boolean;
   onSystemClick: (systemId: string) => void;
 }
 
@@ -25,8 +26,15 @@ export default function StationHUD({
   activeSystem,
   hoveredSystem,
   selectedModule,
+  isDark = true,
   onSystemClick,
 }: StationHUDProps) {
+  // Theme-aware colors
+  const bgColor = isDark ? "#0a0a0f" : "#ffffff";
+  const bgSecondary = isDark ? "#0f1419" : "#f8fafc";
+  const textMuted = isDark ? "rgba(255, 255, 255, 0.5)" : "rgba(15, 23, 42, 0.5)";
+  const textSubtle = isDark ? "rgba(255, 255, 255, 0.4)" : "rgba(15, 23, 42, 0.4)";
+  const opacityMult = isDark ? 1 : 0.7;
   // Get current deck based on selected M module
   const currentDeck = selectedModule?.startsWith("M")
     ? getDeckForModule(selectedModule)
@@ -44,11 +52,13 @@ export default function StationHUD({
     <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
       {/* Main HUD container */}
       <motion.div
-        className="relative px-6 py-3 rounded-lg backdrop-blur-md"
+        className="relative px-6 py-3 rounded-lg backdrop-blur-md transition-colors duration-500"
         style={{
-          background: `linear-gradient(135deg, ${withAlpha("#0a0a0f", 0.9)}, ${withAlpha("#0f1419", 0.85)})`,
-          border: `1px solid ${withAlpha(brandColors.neonCyan, 0.3)}`,
-          boxShadow: `0 4px 20px ${withAlpha("#000", 0.5)}, inset 0 1px 0 ${withAlpha(brandColors.neonCyan, 0.1)}`,
+          background: `linear-gradient(135deg, ${withAlpha(bgColor, 0.9)}, ${withAlpha(bgSecondary, 0.85)})`,
+          border: `1px solid ${withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, 0.3 * opacityMult)}`,
+          boxShadow: isDark
+            ? `0 4px 20px ${withAlpha("#000", 0.5)}, inset 0 1px 0 ${withAlpha(brandColors.neonCyan, 0.1)}`
+            : `0 4px 20px ${withAlpha("#000", 0.1)}, inset 0 1px 0 ${withAlpha(brandColors.blue, 0.08)}`,
         }}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -56,9 +66,10 @@ export default function StationHUD({
       >
         {/* Top accent line */}
         <div
-          className="absolute top-0 left-8 right-8 h-px"
+          className="absolute top-0 left-8 right-8 h-px transition-colors duration-500"
           style={{
-            background: `linear-gradient(90deg, transparent, ${brandColors.neonCyan}, transparent)`,
+            background: `linear-gradient(90deg, transparent, ${isDark ? brandColors.neonCyan : brandColors.blue}, transparent)`,
+            opacity: opacityMult,
           }}
         />
 
@@ -70,8 +81,8 @@ export default function StationHUD({
               style={{ background: brandColors.emerald }}
             />
             <span
-              className="text-xs font-mono tracking-wider"
-              style={{ color: withAlpha(brandColors.neonCyan, 0.7) }}
+              className="text-xs font-mono tracking-wider transition-colors duration-500"
+              style={{ color: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, 0.7) }}
             >
               {getStationTime()}
             </span>
@@ -79,8 +90,8 @@ export default function StationHUD({
 
           {/* Separator */}
           <div
-            className="w-px h-6"
-            style={{ background: withAlpha(brandColors.neonCyan, 0.3) }}
+            className="w-px h-6 transition-colors duration-500"
+            style={{ background: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, 0.3 * opacityMult) }}
           />
 
           {/* System Status Indicators */}
@@ -131,7 +142,7 @@ export default function StationHUD({
                   <span
                     className="text-[10px] font-mono uppercase tracking-wide transition-colors"
                     style={{
-                      color: shouldHighlight ? data.color : withAlpha("#fff", 0.5),
+                      color: shouldHighlight ? data.color : textMuted,
                     }}
                   >
                     {locale === "zh" ? systemLabels[systemId].zh : systemLabels[systemId].en}
@@ -143,8 +154,8 @@ export default function StationHUD({
 
           {/* Separator */}
           <div
-            className="w-px h-6"
-            style={{ background: withAlpha(brandColors.neonCyan, 0.3) }}
+            className="w-px h-6 transition-colors duration-500"
+            style={{ background: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, 0.3 * opacityMult) }}
           />
 
           {/* Current Deck Display */}
@@ -173,7 +184,7 @@ export default function StationHUD({
               ) : (
                 <span
                   className="text-xs"
-                  style={{ color: withAlpha("#fff", 0.4) }}
+                  style={{ color: textSubtle }}
                 >
                   {locale === "zh" ? "选择模块..." : "Select module..."}
                 </span>
@@ -187,9 +198,9 @@ export default function StationHUD({
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="w-1 h-1 rounded-full"
+              className="w-1 h-1 rounded-full transition-colors duration-500"
               style={{
-                background: withAlpha(brandColors.neonCyan, i === 1 ? 0.6 : 0.3),
+                background: withAlpha(isDark ? brandColors.neonCyan : brandColors.blue, (i === 1 ? 0.6 : 0.3) * opacityMult),
               }}
             />
           ))}
@@ -200,16 +211,16 @@ export default function StationHUD({
       <AnimatePresence>
         {hoveredSystem && hoveredSystem.startsWith("L") && (
           <motion.div
-            className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded text-xs"
+            className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded text-xs transition-colors duration-500"
             style={{
-              background: withAlpha("#0a0a0f", 0.95),
+              background: withAlpha(bgColor, 0.95),
               border: `1px solid ${withAlpha(moduleConnections[hoveredSystem as keyof typeof moduleConnections]?.color || "#fff", 0.3)}`,
             }}
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
           >
-            <span style={{ color: withAlpha("#fff", 0.6) }}>
+            <span style={{ color: textMuted }}>
               {hoveredSystem} →{" "}
             </span>
             <span

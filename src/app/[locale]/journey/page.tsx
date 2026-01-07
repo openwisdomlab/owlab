@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/components/ui/Link";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useTheme } from "@/components/ui/ThemeProvider";
 import {
   Rocket, Compass, Target, Lightbulb, CheckCircle2,
   ArrowLeft, ArrowRight, Sparkles, Brain, Layers,
@@ -115,6 +116,23 @@ export default function JourneyPage() {
   const params = useParams();
   const locale = params.locale as string;
   const t = useTranslations("journey");
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
+  // Theme-aware colors
+  const themeColors = useMemo(() => ({
+    bgPrimary: isDark ? "#020617" : "#f8fafc",
+    bgSecondary: isDark ? "rgba(15, 23, 42, 0.75)" : "rgba(255, 255, 255, 0.85)",
+    textPrimary: isDark ? "#fff" : "#0f172a",
+    textMuted: isDark ? "rgba(255, 255, 255, 0.6)" : "rgba(15, 23, 42, 0.6)",
+    textSubtle: isDark ? "rgba(255, 255, 255, 0.4)" : "rgba(15, 23, 42, 0.4)",
+    glassOverlay: isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.03)",
+    glassBorder: isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.08)",
+    scanlineOpacity: isDark ? 0.3 : 0.1,
+    kbdBg: isDark ? "#1e293b" : "#e2e8f0",
+    kbdBorder: isDark ? "#475569" : "#cbd5e1",
+    kbdText: isDark ? "#fff" : "#0f172a",
+  }), [isDark]);
 
   // Build missionStages with translated content
   const missionStages = stageConfig.map((config, idx) => ({
@@ -381,13 +399,22 @@ export default function JourneyPage() {
 
   return (
     <div
-      className="min-h-screen bg-[#020617] text-white overflow-hidden relative"
-      style={{ "--accent": stage.color, "--accent-rgb": stage.colorRgb } as React.CSSProperties}
+      className="min-h-screen overflow-hidden relative transition-colors duration-500"
+      style={{
+        backgroundColor: themeColors.bgPrimary,
+        color: themeColors.textPrimary,
+        "--accent": stage.color,
+        "--accent-rgb": stage.colorRgb,
+      } as React.CSSProperties}
     >
       {/* Nebula canvas */}
       <canvas
         ref={nebulaRef}
-        className="absolute inset-0 z-0 opacity-40 blur-[60px] mix-blend-color-dodge"
+        className="absolute inset-0 z-0 blur-[60px] transition-opacity duration-500"
+        style={{
+          opacity: isDark ? 0.4 : 0.2,
+          mixBlendMode: isDark ? "color-dodge" : "multiply",
+        }}
       />
 
       {/* Star field canvas */}
@@ -406,7 +433,12 @@ export default function JourneyPage() {
       {/* Back button */}
       <Link
         href={`/${locale}`}
-        className="fixed top-6 left-6 z-[100] flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm hover:bg-white/10 transition-all"
+        className="fixed top-6 left-6 z-[100] flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md text-sm transition-all"
+        style={{
+          backgroundColor: themeColors.glassOverlay,
+          borderWidth: 1,
+          borderColor: themeColors.glassBorder,
+        }}
       >
         <ArrowLeft className="w-4 h-4" />
         <span>{t("back")}</span>
@@ -1081,23 +1113,41 @@ export default function JourneyPage() {
       </motion.div>
 
       {/* HUD Panel */}
-      <div className="absolute bottom-0 left-0 right-0 z-[100] h-[38vh] bg-gradient-to-t from-[#020617] via-[#020617]/80 to-transparent border-t border-white/10">
+      <div
+        className="absolute bottom-0 left-0 right-0 z-[100] h-[38vh] border-t transition-colors duration-500"
+        style={{
+          background: isDark
+            ? "linear-gradient(to top, #020617, rgba(2, 6, 23, 0.8), transparent)"
+            : "linear-gradient(to top, #f8fafc, rgba(248, 250, 252, 0.8), transparent)",
+          borderColor: themeColors.glassBorder,
+        }}
+      >
         <div className="h-full max-w-7xl mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Left Panel - Metrics with scanline overlay */}
-          <div className="hidden md:flex flex-col gap-4 p-6 bg-[rgba(15,23,42,0.75)] border border-white/10 rounded-3xl backdrop-blur-xl relative overflow-hidden">
-            {/* Scanline overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none z-10 opacity-30"
-              style={{
-                backgroundImage: `
-                  linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                  linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))
-                `,
-                backgroundSize: "100% 2px, 3px 100%",
-              }}
-            />
+          <div
+            className="hidden md:flex flex-col gap-4 p-6 rounded-3xl backdrop-blur-xl relative overflow-hidden transition-colors duration-500"
+            style={{
+              backgroundColor: themeColors.bgSecondary,
+              borderWidth: 1,
+              borderColor: themeColors.glassBorder,
+            }}
+          >
+            {/* Scanline overlay (only in dark mode) */}
+            {isDark && (
+              <div
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  opacity: themeColors.scanlineOpacity,
+                  backgroundImage: `
+                    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))
+                  `,
+                  backgroundSize: "100% 2px, 3px 100%",
+                }}
+              />
+            )}
             <div className="flex justify-between items-baseline">
-              <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("metrics.title")}</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider" style={{ color: themeColors.textMuted }}>{t("metrics.title")}</span>
               <motion.span
                 className="text-xs text-green-500"
                 animate={{ opacity: [1, 0.7, 1] }}
@@ -1107,7 +1157,7 @@ export default function JourneyPage() {
               </motion.span>
             </div>
             <div className="flex justify-between items-baseline">
-              <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("metrics.heartRate")}</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider" style={{ color: themeColors.textMuted }}>{t("metrics.heartRate")}</span>
               <motion.span
                 className="font-mono text-xl font-bold"
                 style={{ color: stage.color }}
@@ -1122,7 +1172,7 @@ export default function JourneyPage() {
               <canvas ref={ecgRef} className="w-full h-full" />
             </div>
             <div className="flex justify-between items-baseline">
-              <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("metrics.entropy")}</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider" style={{ color: themeColors.textMuted }}>{t("metrics.entropy")}</span>
               <motion.span
                 className="font-mono text-xl font-bold"
                 style={{ color: stage.color }}
@@ -1134,7 +1184,7 @@ export default function JourneyPage() {
             </div>
             {/* Thinking wave */}
             <div>
-              <div className="font-mono text-[10px] text-slate-400 uppercase tracking-wider mb-2">{t("metrics.thinking")}</div>
+              <div className="font-mono text-[10px] uppercase tracking-wider mb-2" style={{ color: themeColors.textMuted }}>{t("metrics.thinking")}</div>
               <div className="relative h-[60px] bg-white/5 rounded-xl overflow-hidden flex items-center justify-center">
                 <motion.div
                   className="h-1 rounded-full"
@@ -1149,8 +1199,8 @@ export default function JourneyPage() {
             </div>
             {/* Log */}
             <div className="border-t border-white/10 pt-4 mt-auto">
-              <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("metrics.log")}</span>
-              <p className="text-sm italic mt-2 text-white leading-relaxed">&quot;{stage.log}&quot;</p>
+              <span className="font-mono text-[10px] uppercase tracking-wider" style={{ color: themeColors.textMuted }}>{t("metrics.log")}</span>
+              <p className="text-sm italic mt-2 leading-relaxed" style={{ color: themeColors.textPrimary }}>&quot;{stage.log}&quot;</p>
             </div>
           </div>
 
@@ -1165,10 +1215,17 @@ export default function JourneyPage() {
                 <span className="ml-2 opacity-60">[{stage.distance}]</span>
               )}
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+            <h1
+              className="text-2xl md:text-3xl font-bold mb-3 bg-clip-text text-transparent"
+              style={{
+                backgroundImage: isDark
+                  ? "linear-gradient(to right, #fff, #94a3b8)"
+                  : "linear-gradient(to right, #0f172a, #475569)",
+              }}
+            >
               {stage.title}
             </h1>
-            <p className="text-sm text-slate-400 max-w-lg leading-relaxed mb-4">{stage.desc}</p>
+            <p className="text-sm max-w-lg leading-relaxed mb-4" style={{ color: themeColors.textMuted }}>{stage.desc}</p>
             {/* Related modules */}
             <div className="flex gap-2 mb-4">
               {stage.modules.map((m) => {
@@ -1177,7 +1234,13 @@ export default function JourneyPage() {
                   <Link
                     key={m}
                     href={`/${locale}/docs/core/${m.toLowerCase().replace("m", "")}-${m === "M01" ? "foundations" : m === "M02" ? "governance" : m === "M03" ? "space" : m === "M04" ? "programs" : m === "M05" ? "tools" : m === "M06" ? "safety" : m === "M07" ? "people" : m === "M08" ? "operations" : "assessment"}`}
-                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs hover:bg-white/10 transition-colors"
+                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs transition-colors"
+                    style={{
+                      backgroundColor: themeColors.glassOverlay,
+                      borderWidth: 1,
+                      borderColor: themeColors.glassBorder,
+                      color: themeColors.textPrimary,
+                    }}
                   >
                     {Icon && <Icon className="w-3 h-3" style={{ color: stage.color }} />}
                     <span>{m}</span>
@@ -1190,7 +1253,13 @@ export default function JourneyPage() {
               <button
                 onClick={() => setStage(activeIdx - 1)}
                 disabled={activeIdx === 0}
-                className="p-2 rounded-full bg-white/5 border border-white/10 disabled:opacity-30 hover:bg-white/10 transition-colors"
+                className="p-2 rounded-full disabled:opacity-30 transition-colors"
+                style={{
+                  backgroundColor: themeColors.glassOverlay,
+                  borderWidth: 1,
+                  borderColor: themeColors.glassBorder,
+                  color: themeColors.textPrimary,
+                }}
                 aria-label={t("navigate")}
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -1198,7 +1267,13 @@ export default function JourneyPage() {
               <button
                 onClick={() => setStage(activeIdx + 1)}
                 disabled={activeIdx === missionStages.length - 1}
-                className="p-2 rounded-full bg-white/5 border border-white/10 disabled:opacity-30 hover:bg-white/10 transition-colors"
+                className="p-2 rounded-full disabled:opacity-30 transition-colors"
+                style={{
+                  backgroundColor: themeColors.glassOverlay,
+                  borderWidth: 1,
+                  borderColor: themeColors.glassBorder,
+                  color: themeColors.textPrimary,
+                }}
                 aria-label={t("navigate")}
               >
                 <ArrowRight className="w-5 h-5" />
@@ -1206,31 +1281,47 @@ export default function JourneyPage() {
             </div>
             {/* Mobile metrics - condensed view with jitter */}
             <div className="flex md:hidden gap-4 mt-4 text-xs font-mono">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                <span className="text-slate-400">{t("metrics.heartRate")}:</span>
+              <div
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg"
+                style={{ backgroundColor: themeColors.glassOverlay, borderWidth: 1, borderColor: themeColors.glassBorder }}
+              >
+                <span style={{ color: themeColors.textMuted }}>{t("metrics.heartRate")}:</span>
                 <span style={{ color: stage.color }}>{jitterBpm}</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                <span className="text-slate-400">{t("metrics.entropy")}:</span>
+              <div
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg"
+                style={{ backgroundColor: themeColors.glassOverlay, borderWidth: 1, borderColor: themeColors.glassBorder }}
+              >
+                <span style={{ color: themeColors.textMuted }}>{t("metrics.entropy")}:</span>
                 <span style={{ color: stage.color }}>{jitterEntropy.toFixed(2)}</span>
               </div>
             </div>
           </div>
 
           {/* Right Panel - Protocols with scanline overlay */}
-          <div className="hidden md:flex flex-col gap-4 p-6 bg-[rgba(15,23,42,0.75)] border border-white/10 rounded-3xl backdrop-blur-xl relative overflow-hidden">
-            {/* Scanline overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none z-10 opacity-30"
-              style={{
-                backgroundImage: `
-                  linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                  linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))
-                `,
-                backgroundSize: "100% 2px, 3px 100%",
-              }}
-            />
-            <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">{t("protocols.title")}</span>
+          <div
+            className="hidden md:flex flex-col gap-4 p-6 rounded-3xl backdrop-blur-xl relative overflow-hidden transition-colors duration-500"
+            style={{
+              backgroundColor: themeColors.bgSecondary,
+              borderWidth: 1,
+              borderColor: themeColors.glassBorder,
+            }}
+          >
+            {/* Scanline overlay (only in dark mode) */}
+            {isDark && (
+              <div
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  opacity: themeColors.scanlineOpacity,
+                  backgroundImage: `
+                    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))
+                  `,
+                  backgroundSize: "100% 2px, 3px 100%",
+                }}
+              />
+            )}
+            <span className="font-mono text-[10px] uppercase tracking-wider" style={{ color: themeColors.textMuted }}>{t("protocols.title")}</span>
             <ul className="flex flex-col gap-3" role="list" aria-label={t("protocols.title")}>
               {tasks.map((task, i) => (
                 <li
@@ -1277,13 +1368,28 @@ export default function JourneyPage() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 2 }}
-        className="fixed bottom-6 right-6 z-[200] flex items-center gap-3 px-4 py-2 rounded-full bg-[rgba(15,23,42,0.6)] border border-white/10 backdrop-blur-md font-mono text-xs text-slate-400"
+        className="fixed bottom-6 right-6 z-[200] flex items-center gap-3 px-4 py-2 rounded-full backdrop-blur-md font-mono text-xs transition-colors duration-500"
+        style={{
+          backgroundColor: themeColors.bgSecondary,
+          borderWidth: 1,
+          borderColor: themeColors.glassBorder,
+          color: themeColors.textMuted,
+        }}
       >
-        <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-600 text-white">1-5</kbd>
+        <kbd
+          className="px-1.5 py-0.5 rounded transition-colors"
+          style={{ backgroundColor: themeColors.kbdBg, borderWidth: 1, borderColor: themeColors.kbdBorder, color: themeColors.kbdText }}
+        >1-5</kbd>
         <span>{t("selectStage")}</span>
         <span className="opacity-30">|</span>
-        <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-600 text-white">←</kbd>
-        <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-600 text-white">→</kbd>
+        <kbd
+          className="px-1.5 py-0.5 rounded transition-colors"
+          style={{ backgroundColor: themeColors.kbdBg, borderWidth: 1, borderColor: themeColors.kbdBorder, color: themeColors.kbdText }}
+        >←</kbd>
+        <kbd
+          className="px-1.5 py-0.5 rounded transition-colors"
+          style={{ backgroundColor: themeColors.kbdBg, borderWidth: 1, borderColor: themeColors.kbdBorder, color: themeColors.kbdText }}
+        >→</kbd>
         <span>{t("navigate")}</span>
       </motion.div>
     </div>
