@@ -30,6 +30,8 @@ interface CircleState {
   isBeingSucked: boolean; // 是否正在被吸入
   suckStartTime: number; // 吸入开始时间
   suckProgress: number; // 吸入进度 0-1
+  suckStartX: number; // 吸入开始时的X位置
+  suckStartY: number; // 吸入开始时的Y位置
 }
 
 // ============ Constants ============
@@ -210,6 +212,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
         isBeingSucked: false,
         suckStartTime: 0,
         suckProgress: 0,
+        suckStartX: 0,
+        suckStartY: 0,
       };
     });
 
@@ -268,7 +272,7 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
 
     const now = Date.now();
 
-    // 标记圆圈开始被吸入
+    // 标记圆圈开始被吸入，保存初始位置
     circlesRef.current = circlesRef.current.map(c => {
       if (c.id === circleId) {
         return {
@@ -276,10 +280,13 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           isBeingSucked: true,
           suckStartTime: now,
           suckProgress: 0,
+          suckStartX: c.x, // 保存初始X位置
+          suckStartY: c.y, // 保存初始Y位置
         };
       }
       return c;
     });
+    setCircles([...circlesRef.current]);
 
     setCaptureAnimation({ active: true, circleId, startTime: now });
 
@@ -408,9 +415,9 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
           const elapsed = now - circle.suckStartTime;
           const progress = Math.min(1, elapsed / GRAVITY_VORTEX_CONFIG.suckDuration);
 
-          // 螺旋路径计算
-          const startDist = distance(circle.x, circle.y, heroCenter.x, heroCenter.y);
-          const startAngle = Math.atan2(circle.y - heroCenter.y, circle.x - heroCenter.x);
+          // 使用保存的初始位置计算螺旋路径
+          const startDist = distance(circle.suckStartX, circle.suckStartY, heroCenter.x, heroCenter.y);
+          const startAngle = Math.atan2(circle.suckStartY - heroCenter.y, circle.suckStartX - heroCenter.x);
 
           // 使用缓动函数让吸入更自然（先慢后快）
           const easedProgress = 1 - Math.pow(1 - progress, 3);
@@ -433,8 +440,6 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             x: newX,
             y: newY,
             suckProgress: progress,
-            opacity: circle.opacity * (1 - progress * 0.3), // 轻微透明
-            size: circle.size * (1 - progress * 0.4), // 逐渐缩小
           };
         }
 
@@ -607,6 +612,8 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
             isBeingSucked: false,
             suckStartTime: 0,
             suckProgress: 0,
+            suckStartX: 0,
+            suckStartY: 0,
           };
 
           circlesRef.current = [...circlesRef.current, newCircle];
