@@ -141,6 +141,45 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
         </AnimatePresence>
       </motion.button>
 
+      {/* 眼睛打开时的注意力引导动效 */}
+      <AnimatePresence>
+        {isOpen && !isMobile && (
+          <>
+            {/* 扩散波纹效果 - 引导视线 */}
+            <motion.div
+              className="absolute pointer-events-none"
+              style={{
+                left: 40,
+                top: 40,
+                width: 0,
+                height: 0,
+              }}
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    border: `2px solid ${brandColors.neonCyan}`,
+                    left: -20,
+                    top: -20,
+                    width: 40,
+                    height: 40,
+                  }}
+                  initial={{ scale: 0.5, opacity: 0.8 }}
+                  animate={{ scale: 3, opacity: 0 }}
+                  transition={{
+                    duration: 1.2,
+                    delay: i * 0.2,
+                    ease: "easeOut",
+                  }}
+                />
+              ))}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       {/* 连接射线动画 - 从眼睛到右侧卡片 */}
       <AnimatePresence>
         {isOpen && count > 0 && !isMobile && (
@@ -187,20 +226,23 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 style={{ filter: `drop-shadow(0 0 8px ${brandColors.neonCyan})` }}
               />
-              {/* 发光粒子沿线移动 */}
-              <motion.circle
-                r="3"
-                fill={brandColors.neonCyan}
-                cx={0}
-                cy={40}
-                initial={{ opacity: 1 }}
-                animate={{
-                  cx: [0, 180],
-                  opacity: [1, 0.4],
-                }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                style={{ filter: `drop-shadow(0 0 8px ${brandColors.neonCyan})` }}
-              />
+              {/* 发光粒子沿线移动 - 多个粒子依次移动 */}
+              {[0, 1, 2].map((i) => (
+                <motion.circle
+                  key={i}
+                  r="3"
+                  fill={brandColors.neonCyan}
+                  cx={0}
+                  cy={40}
+                  initial={{ opacity: 1 }}
+                  animate={{
+                    cx: [0, 180],
+                    opacity: [1, 0.4],
+                  }}
+                  transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
+                  style={{ filter: `drop-shadow(0 0 8px ${brandColors.neonCyan})` }}
+                />
+              ))}
               {/* 终点连接点 */}
               <motion.circle
                 r="5"
