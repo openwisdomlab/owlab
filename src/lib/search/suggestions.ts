@@ -36,14 +36,14 @@ export const popularSearches: Record<string, SearchSuggestion[]> = {
 export const moduleQuickLinks: Record<string, { title: string; path: string }[]> = {
   zh: [
     { title: "M01 发射台", path: "/zh/docs/core/01-foundations" },
-    { title: "M02 航道", path: "/zh/docs/core/02-governance" },
+    { title: "M02 新航道", path: "/zh/docs/core/02-governance" },
     { title: "M03 空间站", path: "/zh/docs/core/03-space" },
-    { title: "M04 航线", path: "/zh/docs/core/04-programs" },
+    { title: "M04 探索线", path: "/zh/docs/core/04-programs" },
     { title: "M05 装备舱", path: "/zh/docs/core/05-tools" },
     { title: "M06 安全舱", path: "/zh/docs/core/06-safety" },
     { title: "M07 领航员", path: "/zh/docs/core/07-people" },
     { title: "M08 补给站", path: "/zh/docs/core/08-operations" },
-    { title: "M09 星轨", path: "/zh/docs/core/09-assessment" },
+    { title: "M09 成长轨", path: "/zh/docs/core/09-assessment" },
   ],
   en: [
     { title: "M01 Launchpad", path: "/en/docs/core/01-foundations" },
