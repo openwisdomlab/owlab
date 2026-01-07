@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import {
   Rocket, Compass, Target, Wrench, Shield,
   GraduationCap, BookOpen, BarChart3, Layers,
-  ArrowLeft, ExternalLink, ChevronDown
+  ArrowLeft, ExternalLink, ChevronDown, Sparkles, Settings
 } from "lucide-react";
 import { brandColors, withAlpha } from "@/lib/brand/colors";
 import { SpaceIcon, MindIcon, EmergenceIcon, PoeticsIcon } from "@/components/icons/LivingModuleIcons";
@@ -66,6 +66,37 @@ const livingModules = [
   { id: "L04", position: "bottom-right", Icon: PoeticsIcon, color: brandColors.neonPink, colorRgb: "217, 26, 122", name: "poeticsOfTechnology" },
 ];
 
+// Recommended entry points for different user types
+const recommendedPaths = [
+  {
+    id: "newcomer",
+    icon: Sparkles,
+    module: "M01",
+    labelZh: "新手入门",
+    labelEn: "New Explorer",
+    descZh: "从发射台开始你的探索之旅",
+    descEn: "Start your journey from the Launch Pad",
+  },
+  {
+    id: "builder",
+    icon: Layers,
+    module: "M03",
+    labelZh: "空间建设者",
+    labelEn: "Space Builder",
+    descZh: "直接进入空间站规划",
+    descEn: "Jump into Space Station planning",
+  },
+  {
+    id: "operator",
+    icon: Settings,
+    module: "M08",
+    labelZh: "运营管理",
+    labelEn: "Operations",
+    descZh: "聚焦日常运营与管理",
+    descEn: "Focus on daily operations",
+  },
+];
+
 interface Props {
   locale: string;
 }
@@ -77,8 +108,10 @@ export default function KnowledgeUniverse({ locale }: Props) {
 
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
+  const [activeLayer, setActiveLayer] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [signalRings, setSignalRings] = useState<{ x: number; y: number; id: number; color: string }[]>([]);
+  const [showRecommendations, setShowRecommendations] = useState(true);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nebulaRef = useRef<HTMLCanvasElement>(null);
@@ -311,6 +344,129 @@ export default function KnowledgeUniverse({ locale }: Props) {
         </div>
       </motion.div>
 
+      {/* Layer Navigation Sidebar */}
+      <motion.div
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        {layers.map((layer, idx) => {
+          const isActive = activeLayer === layer.id;
+          return (
+            <motion.button
+              key={layer.id}
+              className="group relative flex items-center justify-end gap-2"
+              onClick={() => {
+                const el = document.getElementById(`layer-${layer.id}`);
+                el?.scrollIntoView({ behavior: "smooth", block: "center" });
+              }}
+              onHoverStart={() => setActiveLayer(layer.id)}
+              onHoverEnd={() => setActiveLayer(null)}
+            >
+              {/* Label tooltip */}
+              <motion.span
+                className="text-xs font-mono whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ color: layer.color }}
+              >
+                {locale === "zh" ? layer.label : layer.labelEn}
+              </motion.span>
+
+              {/* Indicator dot */}
+              <motion.div
+                className="w-2.5 h-2.5 rounded-full border-2 transition-all"
+                style={{
+                  borderColor: layer.color,
+                  background: isActive ? layer.color : "transparent",
+                }}
+                animate={{
+                  scale: isActive ? 1.3 : 1,
+                  boxShadow: isActive ? `0 0 12px ${layer.color}` : "none",
+                }}
+              />
+
+              {/* Connector line (except last) */}
+              {idx < layers.length - 1 && (
+                <div
+                  className="absolute top-full right-[4px] w-0.5 h-3 opacity-20"
+                  style={{ background: layer.color }}
+                />
+              )}
+            </motion.button>
+          );
+        })}
+      </motion.div>
+
+      {/* Recommended Entry Points */}
+      <AnimatePresence>
+        {showRecommendations && !selectedModule && (
+          <motion.div
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-40"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+              <span className="text-xs text-white/40 mr-1">
+                {locale === "zh" ? "推荐入口" : "Start here"}:
+              </span>
+              {recommendedPaths.map((path) => {
+                const PathIcon = path.icon;
+                const targetModule = layers.reduce<{ color: string } | undefined>(
+                  (found, layer) => found || layer.modules.find(m => m.id === path.module),
+                  undefined
+                );
+
+                return (
+                  <motion.button
+                    key={path.id}
+                    className="group relative flex items-center gap-1.5 px-2.5 py-1 rounded-full border transition-all"
+                    style={{
+                      borderColor: withAlpha(targetModule?.color || "#fff", 0.2),
+                      background: withAlpha(targetModule?.color || "#fff", 0.05),
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                      borderColor: withAlpha(targetModule?.color || "#fff", 0.5),
+                      background: withAlpha(targetModule?.color || "#fff", 0.15),
+                    }}
+                    onClick={() => {
+                      setSelectedModule(path.module);
+                      setShowRecommendations(false);
+                    }}
+                  >
+                    <PathIcon size={12} style={{ color: targetModule?.color }} />
+                    <span className="text-xs" style={{ color: targetModule?.color }}>
+                      {locale === "zh" ? path.labelZh : path.labelEn}
+                    </span>
+
+                    {/* Hover tooltip */}
+                    <motion.div
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 rounded text-[10px] whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none"
+                      style={{
+                        background: withAlpha(targetModule?.color || "#fff", 0.2),
+                        color: targetModule?.color,
+                      }}
+                    >
+                      {locale === "zh" ? path.descZh : path.descEn}
+                    </motion.div>
+                  </motion.button>
+                );
+              })}
+
+              {/* Close button */}
+              <button
+                className="ml-1 text-white/30 hover:text-white/60 transition-colors"
+                onClick={() => setShowRecommendations(false)}
+              >
+                ×
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Living Modules - Corner Atmosphere */}
       {livingModules.map((module) => {
         const positionStyles: Record<string, React.CSSProperties> = {
@@ -396,10 +552,12 @@ export default function KnowledgeUniverse({ locale }: Props) {
           {layers.map((layer, layerIdx) => (
             <motion.div
               key={layer.id}
-              className="w-full"
+              id={`layer-${layer.id}`}
+              className="w-full scroll-mt-24"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + layerIdx * 0.15 }}
+              onViewportEnter={() => setActiveLayer(layer.id)}
             >
               {/* Layer container */}
               <div
@@ -611,6 +769,16 @@ export default function KnowledgeUniverse({ locale }: Props) {
                   </button>
                 </div>
 
+                {/* Layer description for core modules */}
+                {"layer" in selectedModuleInfo && (
+                  <p className="text-xs text-white/40 mb-2">
+                    {locale === "zh"
+                      ? (selectedModuleInfo as { layer: typeof layers[0] }).layer.description
+                      : (selectedModuleInfo as { layer: typeof layers[0] }).layer.descriptionEn
+                    }
+                  </p>
+                )}
+
                 <p className="text-sm text-white/60 mb-4 line-clamp-2">
                   {selectedModule.startsWith("L")
                     ? tLiving(`modules.${(selectedModuleInfo as typeof livingModules[0]).name}.subtitle`)
@@ -618,18 +786,64 @@ export default function KnowledgeUniverse({ locale }: Props) {
                   }
                 </p>
 
-                <Link
-                  href={getModuleLink(selectedModule)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105"
-                  style={{
-                    background: `rgba(${(selectedModuleInfo as { colorRgb: string }).colorRgb}, 0.2)`,
-                    color: (selectedModuleInfo as { color: string }).color,
-                    border: `1px solid rgba(${(selectedModuleInfo as { colorRgb: string }).colorRgb}, 0.3)`,
-                  }}
-                >
-                  {t("universe.explore")}
-                  <ExternalLink size={14} />
-                </Link>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={getModuleLink(selectedModule)}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105"
+                    style={{
+                      background: `rgba(${(selectedModuleInfo as { colorRgb: string }).colorRgb}, 0.2)`,
+                      color: (selectedModuleInfo as { color: string }).color,
+                      border: `1px solid rgba(${(selectedModuleInfo as { colorRgb: string }).colorRgb}, 0.3)`,
+                    }}
+                  >
+                    {t("universe.explore")}
+                    <ExternalLink size={14} />
+                  </Link>
+
+                  {/* Module navigation for core modules */}
+                  {selectedModule.startsWith("M") && (
+                    <div className="flex items-center gap-2">
+                      {(() => {
+                        const currentNum = parseInt(selectedModule.slice(1));
+                        const prevModule = currentNum > 1 ? `M0${currentNum - 1}` : null;
+                        const nextModule = currentNum < 9 ? `M0${currentNum + 1}` : null;
+                        const prevInfo = prevModule ? getModuleInfo(prevModule) : null;
+                        const nextInfo = nextModule ? getModuleInfo(nextModule) : null;
+
+                        return (
+                          <>
+                            {prevModule && prevInfo && (
+                              <motion.button
+                                className="flex items-center gap-1 px-2 py-1 rounded text-xs transition-all"
+                                style={{
+                                  color: (prevInfo as { color: string }).color,
+                                  background: withAlpha((prevInfo as { color: string }).color, 0.1),
+                                }}
+                                whileHover={{ scale: 1.05 }}
+                                onClick={() => setSelectedModule(prevModule)}
+                              >
+                                ← {prevModule}
+                              </motion.button>
+                            )}
+                            {nextModule && nextInfo && (
+                              <motion.button
+                                className="flex items-center gap-1 px-2 py-1 rounded text-xs transition-all"
+                                style={{
+                                  color: (nextInfo as { color: string }).color,
+                                  background: withAlpha((nextInfo as { color: string }).color, 0.1),
+                                }}
+                                whileHover={{ scale: 1.05 }}
+                                onClick={() => setSelectedModule(nextModule)}
+                              >
+                                {nextModule} →
+                              </motion.button>
+                            )}
+                          </>
+                        );
+                      })()}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>
