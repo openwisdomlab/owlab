@@ -1556,6 +1556,7 @@ export default function HomePage() {
                     fontFamily: "'Source Han Serif CN', 'Noto Serif SC', 'STSong', serif",
                     letterSpacing: '0.02em',
                     lineHeight: '1.8',
+                    borderLeft: 'none',
                   }}
                 >
                   提出一个问题往往比解决一个问题更重要。因为解决问题也许仅是一个数学上或实验上的技能而已，而提出新的问题，却需要有创造性的想象力，标志着科学的真正进步。
