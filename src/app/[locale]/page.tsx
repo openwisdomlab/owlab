@@ -1985,80 +1985,24 @@ export default function HomePage() {
                   transition={{ duration: 4, repeat: Infinity, delay: 2, type: "tween" }}
                 />
 
-                {/* 引言内容 */}
-                <motion.h2
-                  className="relative z-10 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-relaxed md:leading-relaxed"
+                {/* 引言内容 - 单行版本 */}
+                <motion.p
+                  className="relative z-10 text-base sm:text-lg md:text-xl font-medium leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  {/* 第一句 */}
-                  <span className="block md:inline">
-                    <span className="text-[var(--foreground)]">没有</span>
-                    <motion.span
-                      className="inline-flex items-baseline mx-1"
-                      whileHover={{
-                        textShadow: "0 0 20px var(--neon-yellow)",
-                      }}
-                    >
-                      <span className="bg-gradient-to-r from-[var(--neon-yellow)] via-[var(--neon-orange)] to-[var(--neon-yellow)] bg-clip-text text-transparent font-black">
-                        问题
-                      </span>
-                      <motion.span
-                        className="inline-block ml-0.5 text-[1.1em] font-black text-[var(--neon-yellow)] drop-shadow-[0_0_12px_var(--neon-yellow)]"
-                        animate={{ rotate: [0, 15, 0], scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, type: "tween" }}
-                      >
-                        ?
-                      </motion.span>
-                    </motion.span>
-                    <span className="text-[var(--foreground)]">是太</span>
-                    <motion.span
-                      className="inline-block bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] bg-clip-text text-transparent mx-1 font-black"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      愚蠢
-                    </motion.span>
-                    <span className="text-[var(--foreground)]">的</span>
-                  </span>
-
-                  {/* 分隔符 - 在移动端换行 */}
-                  <span className="hidden md:inline mx-3 text-[var(--foreground)]/30 font-light">|</span>
-                  <span className="block md:hidden h-3" />
-
-                  {/* 第二句 */}
-                  <span className="block md:inline">
-                    <span className="text-[var(--foreground)]">没有</span>
-                    <motion.span
-                      className="inline-flex items-baseline mx-1"
-                      whileHover={{
-                        textShadow: "0 0 20px var(--neon-pink)",
-                      }}
-                    >
-                      <span className="bg-gradient-to-r from-[var(--neon-pink)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent font-black">
-                        想法
-                      </span>
-                      <motion.span
-                        className="inline-block ml-0.5 text-[1.1em] drop-shadow-[0_0_12px_var(--neon-yellow)]"
-                        animate={{ scale: [1, 1.3, 1], filter: ["brightness(1)", "brightness(1.4)", "brightness(1)"] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        💡
-                      </motion.span>
-                    </motion.span>
-                    <span className="text-[var(--foreground)]">是太</span>
-                    <motion.span
-                      className="inline-block bg-gradient-to-r from-[var(--neon-orange)] to-[var(--neon-pink)] bg-clip-text text-transparent mx-1 font-black"
-                      whileHover={{ scale: 1.1, rotate: 2 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      疯狂
-                    </motion.span>
-                    <span className="text-[var(--foreground)]">的</span>
-                  </span>
-                </motion.h2>
+                  <span className="text-[var(--foreground)]">没有</span>
+                  <span className="bg-gradient-to-r from-[var(--neon-yellow)] via-[var(--neon-orange)] to-[var(--neon-yellow)] bg-clip-text text-transparent font-bold mx-0.5">问题</span>
+                  <span className="text-[var(--foreground)]">是太</span>
+                  <span className="bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-violet)] bg-clip-text text-transparent font-bold mx-0.5">愚蠢</span>
+                  <span className="text-[var(--foreground)]">的，没有</span>
+                  <span className="bg-gradient-to-r from-[var(--neon-pink)] via-[var(--neon-violet)] to-[var(--neon-pink)] bg-clip-text text-transparent font-bold mx-0.5">想法</span>
+                  <span className="text-[var(--foreground)]">是太</span>
+                  <span className="bg-gradient-to-r from-[var(--neon-orange)] to-[var(--neon-pink)] bg-clip-text text-transparent font-bold mx-0.5">疯狂</span>
+                  <span className="text-[var(--foreground)]">的</span>
+                </motion.p>
 
                 {/* 装饰性角标 */}
                 <div className="absolute top-4 left-4 text-2xl opacity-20 text-[var(--neon-yellow)]">"</div>
