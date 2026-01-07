@@ -22,11 +22,13 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
   const handleClick = useCallback(() => {
     setClickCount(prev => prev + 1);
     setIsActivated(true);
-    setTimeout(() => setIsActivated(false), 1200);
+    setTimeout(() => setIsActivated(false), 1500);
   }, []);
 
   // Energy wave ripples on click
-  const ripples = Array.from({ length: 3 }, (_, i) => i);
+  const ripples = Array.from({ length: 4 }, (_, i) => i);
+  // Orbiting particles
+  const orbitingParticles = Array.from({ length: 6 }, (_, i) => i);
 
   return (
     <motion.div
@@ -34,22 +36,76 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onClick={handleClick}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.92 }}
     >
+      {/* Orbiting electron particles */}
+      {orbitingParticles.map((i) => (
+        <motion.div
+          key={`orbit-${i}`}
+          className="absolute pointer-events-none"
+          style={{
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            background: i % 2 === 0 ? primaryColor : accentColor,
+            boxShadow: `0 0 6px ${i % 2 === 0 ? primaryColor : accentColor}`,
+            left: '50%',
+            top: '50%',
+          }}
+          animate={{
+            x: [
+              Math.cos((i * Math.PI * 2) / 6) * (isHovered ? 35 : 25) - 2,
+              Math.cos((i * Math.PI * 2) / 6 + Math.PI) * (isHovered ? 35 : 25) - 2,
+              Math.cos((i * Math.PI * 2) / 6) * (isHovered ? 35 : 25) - 2,
+            ],
+            y: [
+              Math.sin((i * Math.PI * 2) / 6) * (isHovered ? 25 : 18) - 2,
+              Math.sin((i * Math.PI * 2) / 6 + Math.PI) * (isHovered ? 25 : 18) - 2,
+              Math.sin((i * Math.PI * 2) / 6) * (isHovered ? 25 : 18) - 2,
+            ],
+            opacity: isHovered || isActivated ? [0.4, 0.9, 0.4] : [0.2, 0.4, 0.2],
+            scale: isActivated ? [1, 2, 0] : isHovered ? [1, 1.3, 1] : 1,
+          }}
+          transition={{
+            duration: isActivated ? 0.8 : 3 + i * 0.3,
+            repeat: isActivated ? 0 : Infinity,
+            ease: "linear",
+            delay: i * 0.2,
+          }}
+        />
+      ))}
+
       {/* Persistent subtle pulse - the formula is "alive" */}
       <motion.div
         className="absolute inset-0 rounded-xl"
         style={{
-          background: `radial-gradient(circle, ${primaryColor}15 0%, transparent 70%)`,
-          filter: 'blur(8px)',
+          background: `radial-gradient(circle, ${primaryColor}20 0%, transparent 70%)`,
+          filter: 'blur(10px)',
         }}
         animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.3, 0.5, 0.3],
+          scale: isHovered ? [1, 1.3, 1] : [1, 1.15, 1],
+          opacity: isHovered ? [0.5, 0.8, 0.5] : [0.3, 0.5, 0.3],
         }}
         transition={{
-          duration: 2,
+          duration: isHovered ? 1.5 : 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Outer glow ring on hover */}
+      <motion.div
+        className="absolute inset-0 rounded-xl pointer-events-none"
+        style={{
+          border: `1px solid ${energyColor}`,
+        }}
+        animate={{
+          opacity: isHovered ? [0.3, 0.6, 0.3] : 0,
+          scale: isHovered ? [1.1, 1.2, 1.1] : 1,
+        }}
+        transition={{
+          duration: 1.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -60,15 +116,31 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
         className="relative px-2.5 py-1.5 md:px-3 md:py-2 rounded-lg"
         style={{
           background: isDark
-            ? 'rgba(14, 14, 20, 0.7)'
-            : 'rgba(255, 255, 255, 0.8)',
-          border: `1.5px solid ${isHovered ? energyColor : primaryColor}50`,
+            ? 'rgba(14, 14, 20, 0.85)'
+            : 'rgba(255, 255, 255, 0.9)',
+          border: `1.5px solid ${isHovered ? energyColor : primaryColor}60`,
           boxShadow: isHovered
-            ? `0 0 20px ${energyColor}30`
-            : `0 0 10px ${primaryColor}15`,
+            ? `0 0 25px ${energyColor}40, inset 0 0 15px ${primaryColor}10`
+            : `0 0 12px ${primaryColor}20`,
           transition: 'border-color 0.3s, box-shadow 0.3s',
         }}
       >
+        {/* Energy field background effect */}
+        <motion.div
+          className="absolute inset-0 rounded-lg pointer-events-none overflow-hidden"
+          style={{
+            background: `linear-gradient(45deg, transparent 30%, ${primaryColor}08 50%, transparent 70%)`,
+          }}
+          animate={{
+            backgroundPosition: isHovered ? ['0% 0%', '200% 200%'] : '0% 0%',
+          }}
+          transition={{
+            duration: 2,
+            repeat: isHovered ? Infinity : 0,
+            ease: "linear",
+          }}
+        />
+
         {/* The formula */}
         <div className="relative flex items-baseline">
           {/* E - Energy */}
@@ -80,11 +152,11 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
             }}
             animate={{
               textShadow: isHovered
-                ? `0 0 12px ${primaryColor}`
+                ? `0 0 15px ${primaryColor}, 0 0 25px ${primaryColor}50`
                 : isActivated
-                  ? [`0 0 0px ${primaryColor}`, `0 0 25px ${primaryColor}`, `0 0 8px ${primaryColor}`]
-                  : `0 0 4px ${primaryColor}60`,
-              scale: isActivated ? [1, 1.15, 1] : 1,
+                  ? [`0 0 0px ${primaryColor}`, `0 0 30px ${primaryColor}`, `0 0 10px ${primaryColor}`]
+                  : `0 0 5px ${primaryColor}70`,
+              scale: isActivated ? [1, 1.2, 1] : 1,
             }}
             transition={{ duration: 0.4 }}
           >
@@ -95,8 +167,8 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
           <motion.span
             className="text-sm md:text-base lg:text-lg font-bold mx-0.5 relative overflow-hidden"
             style={{
-              color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
-              width: '12px',
+              color: isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)',
+              width: '14px',
               textAlign: 'center',
             }}
           >
@@ -112,7 +184,7 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
                 opacity: isHovered || isActivated ? 1 : 0,
               }}
               transition={{
-                x: { duration: 0.6, repeat: isHovered ? Infinity : 0, ease: "linear" },
+                x: { duration: 0.5, repeat: isHovered ? Infinity : 0, ease: "linear" },
                 opacity: { duration: 0.2 },
               }}
             />
@@ -127,11 +199,11 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
             }}
             animate={{
               textShadow: isHovered
-                ? `0 0 12px ${accentColor}`
+                ? `0 0 15px ${accentColor}, 0 0 25px ${accentColor}50`
                 : isActivated
-                  ? [`0 0 0px ${accentColor}`, `0 0 25px ${accentColor}`, `0 0 8px ${accentColor}`]
-                  : `0 0 4px ${accentColor}60`,
-              scale: isActivated ? [1, 1.1, 1] : 1,
+                  ? [`0 0 0px ${accentColor}`, `0 0 30px ${accentColor}`, `0 0 10px ${accentColor}`]
+                  : `0 0 5px ${accentColor}70`,
+              scale: isActivated ? [1, 1.15, 1] : 1,
             }}
             transition={{ duration: 0.4, delay: isActivated ? 0.1 : 0 }}
           >
@@ -147,28 +219,29 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
             }}
             animate={{
               textShadow: isHovered
-                ? `0 0 12px ${energyColor}`
+                ? `0 0 15px ${energyColor}, 0 0 25px ${energyColor}50`
                 : isActivated
-                  ? [`0 0 0px ${energyColor}`, `0 0 30px ${energyColor}`, `0 0 10px ${energyColor}`]
-                  : `0 0 4px ${energyColor}60`,
-              scale: isActivated ? [1, 1.2, 1] : 1,
+                  ? [`0 0 0px ${energyColor}`, `0 0 35px ${energyColor}`, `0 0 12px ${energyColor}`]
+                  : `0 0 5px ${energyColor}70`,
+              scale: isActivated ? [1, 1.25, 1] : 1,
             }}
             transition={{ duration: 0.4, delay: isActivated ? 0.2 : 0 }}
           >
             C
-            {/* Superscript 2 */}
+            {/* Superscript 2 with spinning animation */}
             <motion.sup
-              className="absolute -top-0.5 -right-2 text-[10px] md:text-xs font-bold"
+              className="absolute -top-0.5 -right-2.5 text-[10px] md:text-xs font-bold"
               style={{
                 color: primaryColor,
                 fontStyle: 'normal',
               }}
               animate={{
-                rotate: isActivated ? [0, 360] : 0,
-                scale: isHovered ? [1, 1.2, 1] : 1,
+                rotate: isActivated ? [0, 720] : isHovered ? [0, 360] : 0,
+                scale: isHovered ? [1, 1.3, 1] : isActivated ? [1, 1.5, 1] : 1,
+                textShadow: isHovered ? `0 0 8px ${primaryColor}` : 'none',
               }}
               transition={{
-                rotate: { duration: 0.5, ease: "easeOut" },
+                rotate: { duration: isActivated ? 0.8 : 2, ease: "easeOut", repeat: isHovered && !isActivated ? Infinity : 0 },
                 scale: { duration: 1, repeat: isHovered ? Infinity : 0 },
               }}
             >
@@ -184,30 +257,61 @@ function InteractiveFormula({ isDark }: { isDark: boolean }) {
           <motion.div
             key={`${clickCount}-${i}`}
             className="absolute inset-0 rounded-lg pointer-events-none"
-            initial={{ opacity: 0.6, scale: 1 }}
-            animate={{ opacity: 0, scale: 2 + i * 0.5 }}
+            initial={{ opacity: 0.7, scale: 1 }}
+            animate={{ opacity: 0, scale: 2.5 + i * 0.6 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, delay: i * 0.15, ease: "easeOut" }}
+            transition={{ duration: 1, delay: i * 0.12, ease: "easeOut" }}
             style={{
-              border: `1px solid ${i === 0 ? energyColor : i === 1 ? accentColor : primaryColor}`,
+              border: `2px solid ${i === 0 ? energyColor : i === 1 ? accentColor : i === 2 ? primaryColor : energyColor}`,
+              boxShadow: `0 0 10px ${i === 0 ? energyColor : i === 1 ? accentColor : primaryColor}50`,
             }}
           />
         ))}
       </AnimatePresence>
 
-      {/* Hover tooltip - light speed */}
+      {/* Energy burst particles on click */}
+      <AnimatePresence>
+        {isActivated && Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={`burst-${clickCount}-${i}`}
+            className="absolute pointer-events-none"
+            style={{
+              width: '3px',
+              height: '3px',
+              borderRadius: '50%',
+              background: i % 3 === 0 ? energyColor : i % 3 === 1 ? accentColor : primaryColor,
+              boxShadow: `0 0 6px ${i % 3 === 0 ? energyColor : i % 3 === 1 ? accentColor : primaryColor}`,
+              left: '50%',
+              top: '50%',
+            }}
+            initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+            animate={{
+              x: Math.cos((i * Math.PI * 2) / 8) * 60,
+              y: Math.sin((i * Math.PI * 2) / 8) * 45,
+              opacity: 0,
+              scale: 0,
+            }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          />
+        ))}
+      </AnimatePresence>
+
+      {/* Hover tooltip - light speed with enhanced styling */}
       <motion.div
-        className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none"
+        className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none px-2 py-0.5 rounded"
         style={{
-          fontSize: '9px',
-          color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)',
+          fontSize: '8px',
+          color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
           fontFamily: 'monospace',
+          background: isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.8)',
+          border: `1px solid ${primaryColor}30`,
         }}
         animate={{
           opacity: isHovered ? 1 : 0,
-          y: isHovered ? 0 : 3,
+          y: isHovered ? 0 : 5,
         }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.25 }}
       >
         c = 299,792,458 m/s
       </motion.div>
@@ -410,7 +514,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
   const author = "阿尔伯特·爱因斯坦";
 
   return (
-    <section className="relative py-2 md:py-2.5 px-4 overflow-hidden">
+    <section className="relative py-1 md:py-1.5 px-3 overflow-hidden">
       {/* Background gradient */}
       <div
         className="absolute inset-0"
@@ -422,7 +526,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
       />
 
       <div className="relative max-w-4xl mx-auto">
-        <div className="flex flex-row items-center gap-2 md:gap-3">
+        <div className="flex flex-row items-center gap-1.5 md:gap-2">
           {/* Einstein portrait + Formula - Left side (compact) */}
           <motion.div
             className="flex flex-col items-center gap-0.5 flex-shrink-0"
@@ -450,7 +554,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
 
           {/* Quote content - Right side with boundary */}
           <motion.div
-            className="flex-1 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2"
+            className="flex-1 rounded-lg px-2 py-1 md:px-2.5 md:py-1.5"
             style={{
               background: isDark
                 ? 'rgba(255, 255, 255, 0.03)'
@@ -462,21 +566,18 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {/* Quote text */}
-            <blockquote
+            {/* Quote text - using div instead of blockquote to avoid global CSS interference */}
+            <div
               className="text-xs md:text-sm leading-relaxed font-medium"
               style={{
                 color: isDark ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.8)',
                 fontFamily: "'Source Han Serif CN', 'Noto Serif SC', 'STSong', serif",
                 letterSpacing: '0.01em',
-                lineHeight: '1.6',
-                borderLeft: 'none',
-                paddingLeft: 0,
-                background: 'transparent',
+                lineHeight: '1.55',
               }}
             >
               <span
-                className="text-lg md:text-xl font-serif"
+                className="text-base md:text-lg font-serif"
                 style={{
                   color: isDark ? brandColors.violet : brandColors.blue,
                   opacity: 0.4
@@ -486,7 +587,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
               </span>
               {quote}
               <span
-                className="text-lg md:text-xl font-serif"
+                className="text-base md:text-lg font-serif"
                 style={{
                   color: isDark ? brandColors.violet : brandColors.blue,
                   opacity: 0.4
@@ -494,12 +595,12 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
               >
                 "
               </span>
-            </blockquote>
+            </div>
 
             {/* Author - inline right aligned */}
-            <div className="flex justify-end mt-1">
+            <div className="flex justify-end mt-0.5">
               <span
-                className="text-xs md:text-sm font-medium"
+                className="text-[10px] md:text-xs font-medium"
                 style={{
                   color: isDark ? brandColors.neonPink : brandColors.violet,
                 }}
