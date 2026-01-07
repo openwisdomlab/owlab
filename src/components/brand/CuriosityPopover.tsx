@@ -13,9 +13,10 @@ import {
 interface CuriosityPopoverProps {
   isDark: boolean;
   isMobile: boolean;
+  inline?: boolean; // 是否作为"OPEN"中的"O"内联显示
 }
 
-export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
+export function CuriosityPopover({ isDark, isMobile, inline = false }: CuriosityPopoverProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -27,18 +28,25 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
 
   const count = capturedQuestions.length;
 
-  // 滚动检测 - 向下滚动时收起卡片
+  // 滚动检测 - 向下滚动时收起卡片和popover
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const threshold = window.innerHeight * 0.3; // 滚动超过30%视口高度时收起
-      setIsScrolledDown(scrollY > threshold);
+      const wasScrolledDown = isScrolledDown;
+      const nowScrolledDown = scrollY > threshold;
+
+      if (!wasScrolledDown && nowScrolledDown) {
+        // 从顶部滚动到下方时，自动关闭popover
+        setIsOpen(false);
+      }
+      setIsScrolledDown(nowScrolledDown);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // 初始检查
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isScrolledDown]);
 
   // 点击外部关闭
   useEffect(() => {
@@ -83,82 +91,250 @@ export function CuriosityPopover({ isDark, isMobile }: CuriosityPopoverProps) {
 
   return (
     <>
-      {/* 主眼睛按钮 - 在顶部居中位置 */}
+      {/* 主眼睛按钮 - 内联模式作为"O"或独立模式 */}
       <div ref={popoverRef} className="relative inline-flex pointer-events-auto">
-        <motion.button
-          ref={eyeRef}
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative w-20 h-20 flex items-center justify-center cursor-pointer"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label="好奇心捕获"
-        >
-          {/* 背景光晕 */}
-          <div
-            className="absolute inset-0 rounded-full"
+        {inline ? (
+          /* 内联模式：作为"OPEN"中的"O"，与文字融合 */
+          <motion.button
+            ref={eyeRef}
+            onClick={() => setIsOpen(!isOpen)}
+            className="relative cursor-pointer inline-block"
             style={{
-              background: `radial-gradient(circle, ${brandColors.blue}40, transparent)`,
-              filter: "blur(20px)",
+              // 匹配文字大小 - 响应式
+              width: '0.95em',
+              height: '0.95em',
+              verticalAlign: 'baseline',
+              marginRight: '-0.02em',
             }}
-          />
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="好奇心捕获"
+          >
+            {/* 内联眼睛SVG - 与文字渐变融合 */}
+            <svg
+              viewBox="0 0 100 100"
+              className="w-full h-full"
+              style={{ display: 'block' }}
+            >
+              <defs>
+                {/* 渐变与文字匹配 */}
+                <linearGradient id="eyeTextGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor={isDark ? brandColors.neonCyan : brandColors.blue} />
+                  <stop offset="50%" stopColor={brandColors.violet} />
+                  <stop offset="100%" stopColor={brandColors.neonPink} />
+                </linearGradient>
+                {/* 发光滤镜 */}
+                <filter id="inlineEyeGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                {/* 瞳孔渐变 */}
+                <radialGradient id="pupilGradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor={brandColors.neonCyan} />
+                  <stop offset="70%" stopColor={brandColors.violet} />
+                  <stop offset="100%" stopColor={brandColors.neonPink} />
+                </radialGradient>
+              </defs>
 
-          {/* 眼睛图标 */}
-          <Eye
-            className="w-20 h-20 relative z-10"
-            style={{ color: brandColors.neonCyan }}
-          />
+              {/* 眼眶外轮廓 - 类似字母O的形状 */}
+              <motion.ellipse
+                cx="50" cy="50" rx="42" ry="38"
+                fill="none"
+                stroke="url(#eyeTextGradient)"
+                strokeWidth="8"
+                filter="url(#inlineEyeGlow)"
+              />
 
-          {/* 脉动环 */}
-          <motion.div
-            className="absolute inset-0 rounded-full border-2"
-            style={{ borderColor: brandColors.neonPink }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.5, 0, 0.5],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeOut",
-            }}
-          />
+              {/* 眼白/内部 */}
+              <motion.ellipse
+                cx="50" cy="50" rx="30" ry="22"
+                fill={isDark ? "rgba(14, 14, 20, 0.8)" : "rgba(255, 255, 255, 0.9)"}
+                stroke="url(#eyeTextGradient)"
+                strokeWidth="2"
+              />
 
-          {/* 徽章计数 */}
-          <AnimatePresence>
-            {count > 0 && (
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0, opacity: 0 }}
-                className="absolute -top-1 -right-1 z-20 flex items-center justify-center"
-                style={{
-                  minWidth: 22,
-                  height: 22,
-                  borderRadius: 11,
-                  background: brandColors.neonPink,
-                  color: "#fff",
-                  fontSize: 12,
-                  fontWeight: 700,
-                  padding: "0 6px",
-                  boxShadow: `0 2px 8px ${withAlpha(brandColors.neonPink, 0.5)}`,
+              {/* 虹膜 */}
+              <motion.circle
+                cx="50" cy="50" r="15"
+                fill="url(#pupilGradient)"
+                animate={{
+                  scale: [1, 1.1, 1],
                 }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{ transformOrigin: '50px 50px' }}
+              />
+
+              {/* 瞳孔 */}
+              <motion.circle
+                cx="50" cy="50" r="7"
+                fill={isDark ? "#0E0E14" : "#1a1a2e"}
+                animate={{
+                  scale: [1, 0.8, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{ transformOrigin: '50px 50px' }}
+              />
+
+              {/* 瞳孔高光 */}
+              <motion.circle
+                cx="45" cy="45" r="4"
+                fill="white"
+                opacity={0.8}
+                animate={{
+                  opacity: [0.6, 1, 0.6],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                }}
+              />
+
+              {/* 次高光 */}
+              <circle cx="56" cy="54" r="2" fill="white" opacity={0.5} />
+
+              {/* 环绕的光芒效果 */}
+              <motion.g
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                style={{ transformOrigin: '50px 50px' }}
               >
-                <motion.span
-                  key={count}
-                  initial={{ scale: 1.5 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+                  <motion.line
+                    key={angle}
+                    x1={50 + Math.cos(angle * Math.PI / 180) * 44}
+                    y1={50 + Math.sin(angle * Math.PI / 180) * 40}
+                    x2={50 + Math.cos(angle * Math.PI / 180) * 48}
+                    y2={50 + Math.sin(angle * Math.PI / 180) * 44}
+                    stroke="url(#eyeTextGradient)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    opacity={0.4}
+                  />
+                ))}
+              </motion.g>
+            </svg>
+
+            {/* 内联模式徽章 - 右上角小尺寸 */}
+            <AnimatePresence>
+              {count > 0 && (
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  className="absolute z-20 flex items-center justify-center"
+                  style={{
+                    top: '-0.15em',
+                    right: '-0.15em',
+                    minWidth: '0.35em',
+                    height: '0.35em',
+                    borderRadius: '50%',
+                    background: brandColors.neonPink,
+                    color: "#fff",
+                    fontSize: '0.2em',
+                    fontWeight: 700,
+                    boxShadow: `0 0 8px ${withAlpha(brandColors.neonPink, 0.6)}`,
+                  }}
                 >
-                  {count}
-                </motion.span>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
+                  <motion.span
+                    key={count}
+                    initial={{ scale: 1.5 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                  >
+                    {count}
+                  </motion.span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        ) : (
+          /* 独立模式：原始的眼睛图标设计 */
+          <motion.button
+            ref={eyeRef}
+            onClick={() => setIsOpen(!isOpen)}
+            className="relative w-20 h-20 flex items-center justify-center cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="好奇心捕获"
+          >
+            {/* 背景光晕 */}
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: `radial-gradient(circle, ${brandColors.blue}40, transparent)`,
+                filter: "blur(20px)",
+              }}
+            />
+
+            {/* 眼睛图标 */}
+            <Eye
+              className="w-20 h-20 relative z-10"
+              style={{ color: brandColors.neonCyan }}
+            />
+
+            {/* 脉动环 */}
+            <motion.div
+              className="absolute inset-0 rounded-full border-2"
+              style={{ borderColor: brandColors.neonPink }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+            />
+
+            {/* 徽章计数 */}
+            <AnimatePresence>
+              {count > 0 && (
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  className="absolute -top-1 -right-1 z-20 flex items-center justify-center"
+                  style={{
+                    minWidth: 22,
+                    height: 22,
+                    borderRadius: 11,
+                    background: brandColors.neonPink,
+                    color: "#fff",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    padding: "0 6px",
+                    boxShadow: `0 2px 8px ${withAlpha(brandColors.neonPink, 0.5)}`,
+                  }}
+                >
+                  <motion.span
+                    key={count}
+                    initial={{ scale: 1.5 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                  >
+                    {count}
+                  </motion.span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        )}
 
         {/* 眼睛打开时的注意力引导动效 - 延伸线段引导视线到卡片 */}
         <AnimatePresence>
-          {isOpen && !isMobile && !isScrolledDown && (
+          {isOpen && !isMobile && !isScrolledDown && !inline && (
             <GuideLine eyeRef={eyeRef} />
           )}
         </AnimatePresence>

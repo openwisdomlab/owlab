@@ -140,21 +140,32 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
+            {/* OPEN with Eye replacing O - 👁PEN */}
             <span
-              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter"
+              className="flex items-center justify-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter pointer-events-auto"
               style={{
                 fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
-                backgroundImage: isDark
-                  ? `linear-gradient(135deg, ${brandColors.neonCyan} 0%, ${brandColors.violet} 30%, ${brandColors.neonPink} 60%, ${brandColors.blue} 100%)`
-                  : `linear-gradient(135deg, ${brandColors.blue} 0%, ${brandColors.violet} 50%, ${brandColors.neonPink} 100%)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                textShadow: isDark ? `0 0 60px ${brandColors.neonCyan}40` : 'none',
                 letterSpacing: '-0.03em'
               }}
             >
-              OPEN
+              {/* 眼睛作为"O" - 内联模式 */}
+              <span className="relative inline-flex items-center" style={{ marginRight: '-0.02em' }}>
+                <CuriosityPopover isDark={isDark} isMobile={isMobile} inline={true} />
+              </span>
+              {/* PEN 文字 */}
+              <span
+                style={{
+                  backgroundImage: isDark
+                    ? `linear-gradient(135deg, ${brandColors.neonCyan} 0%, ${brandColors.violet} 30%, ${brandColors.neonPink} 60%, ${brandColors.blue} 100%)`
+                    : `linear-gradient(135deg, ${brandColors.blue} 0%, ${brandColors.violet} 50%, ${brandColors.neonPink} 100%)`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: isDark ? `0 0 60px ${brandColors.neonCyan}40` : 'none',
+                }}
+              >
+                PEN
+              </span>
             </span>
             <span
               className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter -mt-2"
@@ -710,22 +721,8 @@ export function EnhancedHero({ locale, t }: EnhancedHeroProps) {
         </motion.div>
       </div>
 
-      {/* Curiosity Capture - Eye positioned directly above OPEN text (centered) */}
-      {!isMobile && (
-        <motion.div
-          className="absolute z-50 pointer-events-none"
-          style={{
-            left: '50%',
-            top: '18%',
-            transform: 'translateX(-50%)',
-          }}
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <CuriosityPopover isDark={isDark} isMobile={isMobile} />
-        </motion.div>
-      )}
+      {/* Curiosity Capture - Eye is now integrated into the OPEN text as 👁PEN */}
+      {/* The mini icon appears in bottom-left when scrolled down - handled by CuriosityPopover */}
 
       {/* Mobile Curiosity Capture - Bottom Fixed */}
       {isMobile && (
