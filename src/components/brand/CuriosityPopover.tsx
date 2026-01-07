@@ -21,6 +21,7 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [isScrolledDown, setIsScrolledDown] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const eyeRef = useRef<HTMLButtonElement>(null);
 
   const { capturedQuestions, recentlyCapturedId, removeQuestion, clearAll } =
@@ -53,10 +54,14 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isOpen]);
 
-  // 点击外部关闭
+  // 点击外部关闭 - 需要检查眼睛按钮和面板两个区域
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (popoverRef.current && !popoverRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      const isOutsideEye = popoverRef.current && !popoverRef.current.contains(target);
+      const isOutsidePanel = panelRef.current && !panelRef.current.contains(target);
+      // 只有当点击在两个区域之外时才关闭
+      if (isOutsideEye && isOutsidePanel) {
         setIsOpen(false);
       }
     };
@@ -383,6 +388,7 @@ export function CuriosityPopover({ isDark, isMobile, inline = false }: Curiosity
         {isOpen && (
           /* 桌面端固定在左下方，移动端固定在底部 */
           <div
+            ref={panelRef}
             className="fixed"
             style={
               isMobile
@@ -804,25 +810,34 @@ function GuideLine({ eyeRef }: GuideLineProps) {
 
       const eyeRect = eyeRef.current.getBoundingClientRect();
       const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-      const eyeBottomY = eyeRect.top + eyeRect.height;
+      const eyeCenterY = eyeRect.top + eyeRect.height / 2;
 
       // 卡片位置: left: 40, bottom: 120 (相对于视口)
       const cardTopX = 200; // 卡片顶部中心位置
       const cardTopY = window.innerHeight - 340; // 卡片顶部位置
 
-      // 计算折线路径点 - 使用温和的折线引导
-      // 从眼睛底部 → 向下延伸 → 向左折 → 向下到卡片
-      const startY = eyeBottomY + 10;
-      const midY1 = startY + 60; // 第一个转折点高度
-      const midX = Math.max(cardTopX + 60, eyeCenterX * 0.5); // 中间过渡点
-      const midY2 = cardTopY - 40; // 第二个转折点高度
+      // 计算折线路径点 - 从眼睛左侧出发，避开OPEN字母
+      // 从眼睛左侧 → 向左延伸 → 向下折 → 到卡片
+      const startX = eyeRect.left - 10; // 从眼睛左侧开始
+      const startY = eyeCenterY; // 从眼睛中心高度开始
+
+      // 第一段：向左水平延伸，避开文字区域
+      const midX1 = Math.min(startX - 80, cardTopX + 100); // 向左延伸
+      const midY1 = startY; // 保持水平
+
+      // 第二段：向下转折
+      const midX2 = midX1;
+      const midY2 = cardTopY - 40;
+
+      // 第三段：向右到卡片上方
+      const midX3 = cardTopX;
+      const midY3 = midY2;
 
       const points = [
-        { x: eyeCenterX, y: startY },
-        { x: eyeCenterX, y: midY1 },
-        { x: midX, y: midY1 },
-        { x: midX, y: midY2 },
-        { x: cardTopX, y: midY2 },
+        { x: startX, y: startY },
+        { x: midX1, y: midY1 },
+        { x: midX2, y: midY2 },
+        { x: midX3, y: midY3 },
         { x: cardTopX, y: cardTopY },
       ];
 
@@ -988,9 +1003,9 @@ function GuideLine({ eyeRef }: GuideLineProps) {
           />
         ))}
 
-        {/* 起点装饰 - 小箭头指向下方 */}
+        {/* 起点装饰 - 小箭头指向左方（从眼睛向左延伸） */}
         <motion.path
-          d={`M ${pathPoints[0].x - 4} ${pathPoints[0].y - 8} L ${pathPoints[0].x} ${pathPoints[0].y} L ${pathPoints[0].x + 4} ${pathPoints[0].y - 8}`}
+          d={`M ${pathPoints[0].x + 8} ${pathPoints[0].y - 4} L ${pathPoints[0].x} ${pathPoints[0].y} L ${pathPoints[0].x + 8} ${pathPoints[0].y + 4}`}
           stroke={brandColors.neonCyan}
           strokeWidth={1.5}
           fill="none"
