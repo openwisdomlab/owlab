@@ -1936,7 +1936,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1987,7 +1987,7 @@ export default function HomePage() {
 
                 {/* 引言内容 - 单行版本 */}
                 <motion.p
-                  className="relative z-10 text-base sm:text-lg md:text-xl font-medium leading-relaxed"
+                  className="relative z-10 text-lg sm:text-xl md:text-2xl font-medium leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
