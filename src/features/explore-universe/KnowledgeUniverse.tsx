@@ -190,6 +190,10 @@ export default function KnowledgeUniverse({ locale }: Props) {
     const updateDimensions = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect();
+        // Guard: Skip update if dimensions are invalid (prevents issues during remount/language switch)
+        if (width < 100 || height < 100) {
+          return;
+        }
         // Maintain aspect ratio but fit container
         const aspectRatio = blueprintLayout.viewBox.width / blueprintLayout.viewBox.height;
         if (width / height > aspectRatio) {

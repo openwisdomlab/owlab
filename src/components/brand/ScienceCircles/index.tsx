@@ -232,6 +232,12 @@ export function ScienceCircles({ className = "", circleCount = 25 }: ScienceCirc
     const updateDimensions = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect();
+        // Guard: Only proceed if dimensions are valid (non-zero, reasonable size)
+        // This prevents circles from clustering at origin when component remounts
+        // during language switching before container is properly measured
+        if (width < 100 || height < 100) {
+          return;
+        }
         setDimensions({ width, height });
         if (circlesRef.current.length === 0 || Math.abs(width - dimensions.width) > 100) {
           initCircles(width, height);
