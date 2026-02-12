@@ -8,26 +8,7 @@ import {
 import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { TOCItemType } from "fumadocs-core/toc";
-import { ModuleCards } from "@/features/doc-viewer/ModuleCards";
-import { ExtendCards } from "@/features/doc-viewer/ExtendCards";
-import { BackToSection } from "@/features/doc-viewer/BackToSection";
-import { TheoryLineage } from "@/features/doc-viewer/TheoryLineage";
-import { FourPFramework } from "@/features/doc-viewer/FourPFramework";
-import { FlowChart, EQUIPMENT_ACCESS_FLOW, SPACE_PLANNING_FLOW } from "@/features/doc-viewer/FlowChart";
-import { KnowledgeGraph } from "@/features/doc-viewer/KnowledgeGraph";
-import { ModuleSummary } from "@/features/doc-viewer/ModuleSummary";
-import { ConceptExplorer } from "@/features/doc-viewer/ConceptExplorer";
-import {
-  GovernanceExplorer,
-  SpaceExplorer,
-  CurriculumExplorer,
-  ToolsExplorer,
-  SafetyExplorer,
-  PeopleExplorer,
-  OperationsExplorer,
-  AssessmentExplorer,
-} from "@/features/doc-viewer/ModuleExplorers";
-import { ModulePageTitle } from "@/features/doc-viewer/ModulePageTitle";
+import { createMdxComponents } from "@/components/mdx";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -81,58 +62,7 @@ export default async function Page({ params }: Props) {
       <DocsBody>
         <MDX components={{
           ...defaultMdxComponents,
-          ModuleCards: () => <ModuleCards locale={locale} />,
-          ExtendCards: (props: { cards: Array<{ title: string; description: string; href: string; type: "extend" | "evidence" | "checklist" | "sop"; status?: "completed" | "in_progress" | "planned" | "draft" }> }) => (
-            <ExtendCards {...props} locale={locale} />
-          ),
-          BackToSection: (props: { href: string; label?: string; moduleId?: string; moduleName?: string }) => (
-            <BackToSection {...props} locale={locale} />
-          ),
-          TheoryLineage: (props: { className?: string; interactive?: boolean }) => (
-            <TheoryLineage {...props} />
-          ),
-          FourPFramework: (props: { className?: string; interactive?: boolean; compact?: boolean }) => (
-            <FourPFramework {...props} />
-          ),
-          FlowChart: FlowChart,
-          KnowledgeGraph: (props: { module?: string; depth?: number; interactive?: boolean; className?: string }) => (
-            <KnowledgeGraph {...props} />
-          ),
-          ModuleSummary: (props: { moduleId: string; tagline: string; philosophy: string; insights: string[]; className?: string }) => (
-            <ModuleSummary {...props} />
-          ),
-          ConceptExplorer: (props: { className?: string }) => (
-            <ConceptExplorer {...props} />
-          ),
-          GovernanceExplorer: (props: { className?: string }) => (
-            <GovernanceExplorer {...props} />
-          ),
-          SpaceExplorer: (props: { className?: string }) => (
-            <SpaceExplorer {...props} />
-          ),
-          CurriculumExplorer: (props: { className?: string }) => (
-            <CurriculumExplorer {...props} />
-          ),
-          ToolsExplorer: (props: { className?: string }) => (
-            <ToolsExplorer {...props} />
-          ),
-          SafetyExplorer: (props: { className?: string }) => (
-            <SafetyExplorer {...props} />
-          ),
-          PeopleExplorer: (props: { className?: string }) => (
-            <PeopleExplorer {...props} />
-          ),
-          OperationsExplorer: (props: { className?: string }) => (
-            <OperationsExplorer {...props} />
-          ),
-          AssessmentExplorer: (props: { className?: string }) => (
-            <AssessmentExplorer {...props} />
-          ),
-          ModulePageTitle: (props: { moduleId: string; className?: string }) => (
-            <ModulePageTitle {...props} />
-          ),
-          EQUIPMENT_ACCESS_FLOW,
-          SPACE_PLANNING_FLOW,
+          ...createMdxComponents(locale),
         }} />
       </DocsBody>
     </DocsPage>
