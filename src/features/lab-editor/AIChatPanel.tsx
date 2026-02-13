@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
+import { useChat } from "@ai-sdk/react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -12,16 +13,17 @@ import {
   User,
   Copy,
   Check,
+  Sparkles,
 } from "lucide-react";
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
+import { DefaultChatTransport, type UIMessage } from "ai";
 import { useToast } from "@/components/ui/Toast";
-
-interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  timestamp: Date;
-}
+import { ThinkingModelCard } from "@/components/genui/ThinkingModelCard";
+import {
+  DataTrendChart,
+  type DataPoint,
+  type SeriesConfig,
+} from "@/components/genui/DataTrendChart";
 
 interface AIChatPanelProps {
   layout: LayoutData;
@@ -36,92 +38,82 @@ export function AIChatPanel({
 }: AIChatPanelProps) {
   const t = useTranslations("lab.chat");
   const toast = useToast();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      role: "assistant",
-      content: t("welcome"),
-      timestamp: new Date(),
-    },
-  ]);
-  const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [inputText, setInputText] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const processedToolCalls = useRef(new Set<string>());
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const { messages, sendMessage, status } = useChat({
+    id: "lab-chat",
+    transport: new DefaultChatTransport({
+      api: "/api/ai/chat",
+      body: { layout },
+    }),
+    messages: [
+      {
+        id: "welcome",
+        role: "assistant",
+        parts: [{ type: "text", text: t("welcome") }],
+      } as UIMessage,
+    ],
+  });
 
+  const isLoading = status === "streaming" || status === "submitted";
+
+  // Auto-scroll to bottom on new messages
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      role: "user",
-      content: input,
-      timestamp: new Date(),
-    };
-
-    setMessages((prev) => [...prev, userMessage]);
-    setInput("");
-    setIsLoading(true);
-
-    try {
-      const response = await fetch("/api/ai/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [...messages, userMessage].map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-          layout,
-        }),
-      });
-
-      if (!response.ok) throw new Error("Failed to get response");
-
-      const data = await response.json();
-
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: data.message,
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-
-      // If the AI returned a new layout, update it
-      if (data.layout) {
-        onLayoutUpdate(data.layout);
-        toast.success("Layout Updated", "The layout has been modified based on your request.");
+  // Detect modifyLayout tool invocations and apply layout updates
+  useEffect(() => {
+    for (const message of messages) {
+      for (const part of message.parts) {
+        // Tool parts have type 'tool-{name}', toolCallId, state, and input
+        const p = part as Record<string, unknown>;
+        if (
+          p.type === "tool-modifyLayout" &&
+          p.state === "output-available" &&
+          typeof p.toolCallId === "string" &&
+          !processedToolCalls.current.has(p.toolCallId)
+        ) {
+          processedToolCalls.current.add(p.toolCallId);
+          onLayoutUpdate(p.input as LayoutData);
+          toast.success(
+            "Layout Updated",
+            "The layout has been modified based on your request."
+          );
+        }
       }
-    } catch (error) {
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: t("error"),
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
-      toast.error("Request Failed", "Unable to process your request. Please try again.");
-    } finally {
-      setIsLoading(false);
     }
-  };
+  }, [messages, onLayoutUpdate, toast]);
 
-  const handleCopy = (content: string, id: string) => {
-    navigator.clipboard.writeText(content);
-    setCopiedId(id);
-    toast.info("Copied", "Message copied to clipboard.");
-    setTimeout(() => setCopiedId(null), 2000);
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!inputText.trim() || isLoading) return;
+      sendMessage({ text: inputText });
+      setInputText("");
+    },
+    [inputText, isLoading, sendMessage]
+  );
+
+  const handleCopy = useCallback(
+    (content: string, id: string) => {
+      navigator.clipboard.writeText(content);
+      setCopiedId(id);
+      toast.info("Copied", "Message copied to clipboard.");
+      setTimeout(() => setCopiedId(null), 2000);
+    },
+    [toast]
+  );
+
+  /** Extract all text content from a UIMessage's parts */
+  const getMessageText = (message: UIMessage): string => {
+    return message.parts
+      .filter((p): p is { type: "text"; text: string } => p.type === "text")
+      .map((p) => p.text)
+      .join("");
   };
 
   const quickActions = [
@@ -160,7 +152,7 @@ export function AIChatPanel({
           {quickActions.map((action, i) => (
             <button
               key={i}
-              onClick={() => setInput(action.prompt)}
+              onClick={() => setInputText(action.prompt)}
               className="px-3 py-1 text-xs rounded-full bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:border-[var(--neon-cyan)] transition-colors"
             >
               {action.label}
@@ -200,37 +192,117 @@ export function AIChatPanel({
                   message.role === "user" ? "text-right" : ""
                 }`}
               >
-                <div
-                  className={`inline-block p-3 rounded-lg max-w-[90%] ${
-                    message.role === "user"
-                      ? "bg-[var(--neon-violet)]/20 text-right"
-                      : "bg-[var(--glass-bg)]"
-                  }`}
-                >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                </div>
-                <div className="flex items-center gap-2 mt-1">
-                  <span className="text-xs text-[var(--muted-foreground)]">
-                    {message.timestamp.toLocaleTimeString()}
-                  </span>
-                  {message.role === "assistant" && (
-                    <button
-                      onClick={() => handleCopy(message.content, message.id)}
-                      className="p-1 rounded hover:bg-[var(--glass-bg)] transition-colors"
-                    >
-                      {copiedId === message.id ? (
-                        <Check className="w-3 h-3 text-[var(--neon-green)]" />
-                      ) : (
-                        <Copy className="w-3 h-3 text-[var(--muted-foreground)]" />
-                      )}
-                    </button>
-                  )}
-                </div>
+                {/* Render message parts */}
+                {message.parts.map((part, partIdx) => {
+                  // Use Record for runtime type checking of tool parts
+                  const p = part as Record<string, unknown>;
+
+                  // Text parts
+                  if (part.type === "text" && "text" in part) {
+                    return (
+                      <div
+                        key={`text-${partIdx}`}
+                        className={`inline-block p-3 rounded-lg max-w-[90%] ${
+                          message.role === "user"
+                            ? "bg-[var(--neon-violet)]/20 text-right"
+                            : "bg-[var(--glass-bg)]"
+                        }`}
+                      >
+                        <p className="text-sm whitespace-pre-wrap">
+                          {String(p.text)}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  // GenUI: ThinkingModel tool
+                  if (p.type === "tool-showThinkingModel" && p.input) {
+                    const input = p.input as {
+                      title: string;
+                      concept: string;
+                      explanation: string;
+                      followUpQuestions?: string[];
+                    };
+                    return (
+                      <div key={`tool-${partIdx}`} className="max-w-[95%]">
+                        <ThinkingModelCard
+                          title={input.title}
+                          concept={input.concept}
+                          explanation={input.explanation}
+                          followUpQuestions={input.followUpQuestions}
+                        />
+                      </div>
+                    );
+                  }
+
+                  // GenUI: DataTrend tool
+                  if (p.type === "tool-showDataTrend" && p.input) {
+                    const input = p.input as {
+                      title: string;
+                      description?: string;
+                      data: DataPoint[];
+                      series: SeriesConfig[];
+                    };
+                    return (
+                      <div key={`tool-${partIdx}`} className="max-w-[95%]">
+                        <DataTrendChart
+                          title={input.title}
+                          description={input.description}
+                          data={input.data}
+                          series={input.series}
+                        />
+                      </div>
+                    );
+                  }
+
+                  // GenUI: Layout modification confirmation
+                  if (p.type === "tool-modifyLayout") {
+                    return (
+                      <motion.div
+                        key={`tool-${partIdx}`}
+                        className="flex items-center gap-2 my-2 px-3 py-2 rounded-lg text-xs"
+                        style={{
+                          background: "rgba(16, 185, 129, 0.1)",
+                          border: "1px solid rgba(16, 185, 129, 0.3)",
+                          color: "#10B981",
+                        }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                      >
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>Layout updated on canvas</span>
+                      </motion.div>
+                    );
+                  }
+
+                  return null;
+                })}
+
+                {/* Timestamp + copy */}
+                {message.role === "assistant" && (
+                  <div className="flex items-center gap-2 mt-1">
+                    {getMessageText(message) && (
+                      <button
+                        onClick={() =>
+                          handleCopy(getMessageText(message), message.id)
+                        }
+                        className="p-1 rounded hover:bg-[var(--glass-bg)] transition-colors"
+                      >
+                        {copiedId === message.id ? (
+                          <Check className="w-3 h-3 text-[var(--neon-green)]" />
+                        ) : (
+                          <Copy className="w-3 h-3 text-[var(--muted-foreground)]" />
+                        )}
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
         </AnimatePresence>
 
+        {/* Streaming indicator */}
         {isLoading && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -259,15 +331,15 @@ export function AIChatPanel({
         <div className="flex gap-2">
           <input
             type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
             placeholder={t("placeholder")}
             disabled={isLoading}
             className="flex-1 px-4 py-3 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-[var(--neon-cyan)] focus:outline-none disabled:opacity-50"
           />
           <button
             type="submit"
-            disabled={isLoading || !input.trim()}
+            disabled={isLoading || !inputText.trim()}
             className="px-4 py-3 rounded-lg bg-[var(--neon-cyan)] text-[var(--background)] disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110 transition-all"
           >
             <Send className="w-5 h-5" />

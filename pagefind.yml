@@ -1,13 +1,17 @@
 # Pagefind Configuration
 # https://pagefind.app/docs/config-options/
 
-# Source directory (Next.js build output)
-site: out
+# Source directory for indexing.
+# Default build uses CLI flag: pagefind --site .next
+# Static export (build:static) uses CLI flag: pagefind --site out
+# This value is a fallback when no --site flag is provided.
+site: .next
 
 # Output directory for search index
 output_subdirectory: _pagefind
 
-# Root selector for content
+# Root selector - indexes rendered content within <main>,
+# which excludes Fumadocs sidebar, TOC panel, and header/footer.
 root_selector: "main"
 
 # Exclude elements from indexing
@@ -19,8 +23,10 @@ exclude_selectors:
   - ".not-prose"
   - ".code-block"
   - "pre"
+  - "[role='search']"
+  - ".fd-toc"
 
-# Force language detection (removed to use auto-detection)
+# Auto-detect content language (supports zh + en)
 # force_language: zh
 
 # Keep index files small
