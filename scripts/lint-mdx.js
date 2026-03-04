@@ -77,17 +77,30 @@ function lintMdxFile(filepath) {
         // Check for language specifier
         hasLangSpec = trimmed.length > 3 && trimmed.slice(3).trim() !== '';
         blockContent = [];
+
+        // Flag any bare opening code fence (no language specifier)
+        if (!hasLangSpec) {
+          issues.push({
+            file: filepath,
+            line: codeBlockStart,
+            type: 'bare_code_block',
+            pattern: 'Code block without language specifier',
+            suggestion: 'Add a language specifier (e.g., ```text, ```bash, ```typescript)',
+            preview: '',
+          });
+        }
       } else {
         // End of code block
         if (!hasLangSpec) {
           const fullContent = blockContent.join('\n');
 
+          // Additionally check for JS-like patterns that are especially dangerous
           for (const pattern of PROBLEMATIC_PATTERNS) {
             if (pattern.regex.test(fullContent)) {
               issues.push({
                 file: filepath,
                 line: codeBlockStart,
-                type: 'bare_code_block',
+                type: 'js_pattern_in_bare_block',
                 pattern: pattern.description,
                 suggestion: pattern.suggestion,
                 preview: fullContent.slice(0, 100).replace(/\n/g, ' '),
