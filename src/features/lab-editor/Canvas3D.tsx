@@ -13,7 +13,7 @@ import {
 import { Loader2, Eye, Move3d } from "lucide-react";
 import { Scene3DRenderer } from "./Scene3DRenderer";
 import type { Zone3D, Camera3DSettings, Light3D } from "@/lib/utils/3d-preview";
-import * as THREE from "three";
+import { Vector3 } from "three";
 
 interface Canvas3DProps {
   zones: Zone3D[];
@@ -56,8 +56,8 @@ function WalkControls({ enabled, moveSpeed = 0.5, onExit }: WalkControlsProps) {
     up: false,
     down: false,
   });
-  const velocity = useRef(new THREE.Vector3());
-  const direction = useRef(new THREE.Vector3());
+  const velocity = useRef(new Vector3());
+  const direction = useRef(new Vector3());
 
   useEffect(() => {
     if (!enabled) return;
@@ -146,14 +146,14 @@ function WalkControls({ enabled, moveSpeed = 0.5, onExit }: WalkControlsProps) {
     direction.current.set(0, 0, 0);
 
     // Get camera's forward direction (ignoring Y for horizontal movement)
-    const forward = new THREE.Vector3();
+    const forward = new Vector3();
     camera.getWorldDirection(forward);
     forward.y = 0;
     forward.normalize();
 
     // Right vector
-    const right = new THREE.Vector3();
-    right.crossVectors(forward, new THREE.Vector3(0, 1, 0)).normalize();
+    const right = new Vector3();
+    right.crossVectors(forward, new Vector3(0, 1, 0)).normalize();
 
     // Apply movement based on key state
     if (moveState.current.forward) {

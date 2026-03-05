@@ -46,7 +46,7 @@ export default function NotFound() {
             Go Back
           </button>
           <Link
-            href="/en/docs"
+            href="/zh/docs"
             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:border-[var(--neon-violet)] transition-colors"
           >
             <Search className="w-4 h-4" />

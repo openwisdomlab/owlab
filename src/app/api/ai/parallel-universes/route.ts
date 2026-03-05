@@ -4,7 +4,12 @@ import {
   generateParallelUniverses,
   fuseUniversesWithAI,
 } from "@/lib/ai/agents/parallel-universe-agent";
+import { applyRateLimit } from "@/lib/rate-limit";
+
 export async function POST(request: NextRequest) {
+  const rateLimited = applyRateLimit(request);
+  if (rateLimited) return rateLimited;
+
   try {
     const body = await request.json();
     const { action, ...params } = body;

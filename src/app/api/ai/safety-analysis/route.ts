@@ -6,6 +6,7 @@ import {
   type SafetyAnalysis,
 } from "@/lib/ai/agents/safety-agent";
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -30,6 +31,9 @@ interface DocumentationRequest {
 }
 
 export async function POST(request: NextRequest) {
+  const rateLimited = applyRateLimit(request);
+  if (rateLimited) return rateLimited;
+
   try {
     const body = await request.json();
     const action = request.nextUrl.searchParams.get("action") || "analyze";

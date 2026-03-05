@@ -286,7 +286,6 @@ export function FloorPlanEditor() {
   );
 
   const handleSaveTemplate = useCallback((template: Template) => {
-    console.log("Template saved:", template);
     const blob = new Blob([JSON.stringify(template, null, 2)], {
       type: "application/json",
     });

@@ -143,7 +143,13 @@
           "meta": "Space as Educator",
           "principles": "6条循证设计原则",
           "checklist": "循证空间设计清单",
-          "tags": ["环境神经科学", "认知空间学", "第三空间2.0", "生物亲和设计", "氛围工程"]
+          "tags": [
+            "环境神经科学",
+            "认知空间学",
+            "第三空间2.0",
+            "生物亲和设计",
+            "氛围工程"
+          ]
         },
         "extendedMind": {
           "id": "L02",
@@ -153,7 +159,13 @@
           "meta": "Extended Mind",
           "principles": "6条循证设计原则",
           "checklist": "AI整合设计清单",
-          "tags": ["人机共生", "认知外包", "AI原生思维", "混合智能", "元认知素养"]
+          "tags": [
+            "人机共生",
+            "认知外包",
+            "AI原生思维",
+            "混合智能",
+            "元认知素养"
+          ]
         },
         "emergentWisdom": {
           "id": "L03",
@@ -163,7 +175,13 @@
           "meta": "Emergent Wisdom",
           "principles": "6条循证设计原则",
           "checklist": "集体智慧建设清单",
-          "tags": ["认知多样性", "群体涌现", "心理安全", "跨界协作", "智慧众包"]
+          "tags": [
+            "认知多样性",
+            "群体涌现",
+            "心理安全",
+            "跨界协作",
+            "智慧众包"
+          ]
         },
         "poeticsOfTechnology": {
           "id": "L04",
@@ -173,7 +191,13 @@
           "meta": "Poetics of Technology",
           "principles": "6条循证设计原则",
           "checklist": "年龄段适配工具矩阵",
-          "tags": ["隐形技术", "具身计算", "后屏幕交互", "可修补性", "技术伦理"]
+          "tags": [
+            "隐形技术",
+            "具身计算",
+            "后屏幕交互",
+            "可修补性",
+            "技术伦理"
+          ]
         }
       },
       "viewAll": "探索完整活模块系统"
@@ -590,7 +614,17 @@
       "zoomOut": "缩小",
       "toggleGrid": "切换网格",
       "aiAssist": "AI 助手",
-      "export": "导出"
+      "export": "导出",
+      "undo": "撤销",
+      "redo": "重做",
+      "save": "保存为模板",
+      "equipment": "设备库",
+      "budget": "预算面板",
+      "templates": "模板库",
+      "colorScheme": "配色方案",
+      "copied": "已复制",
+      "pressCtrlV": "按 Ctrl+V 粘贴",
+      "toggleSnap": "切换网格吸附"
     },
     "launcher": {
       "title": "你好！我来帮你设计实验室空间",
@@ -672,8 +706,121 @@
         "png": "用于演示的高分辨率图像",
         "pdf": "包含布局详情的专业文档",
         "json": "用于导入/导出的原始数据",
-        "md": "用于 Wiki 的 Markdown 文档"
+        "md": "用于 Wiki 的 Markdown 文档",
+        "dxf": "CAD 文件，适用于 AutoCAD、LibreCAD 等软件"
       }
+    },
+    "budget": {
+      "title": "预算汇总",
+      "totalCost": "总费用",
+      "items": "设备数量",
+      "zones": "区域",
+      "categories": "类别",
+      "costByCategory": "按类别分类费用",
+      "costByZone": "按区域分类费用",
+      "allItems": "全部设备",
+      "exportCSV": "导出为 CSV",
+      "noEquipment": "暂未添加设备",
+      "addEquipmentPrompt": "向区域添加设备以查看预算明细",
+      "ofTotal": "占总计"
+    },
+    "equipment": {
+      "title": "设备库",
+      "search": "搜索设备...",
+      "filters": "筛选",
+      "sortBy": "排序方式",
+      "categories": {
+        "all": "全部",
+        "compute": "计算设备",
+        "furniture": "家具",
+        "tools": "工具与机械",
+        "safety": "安全设备",
+        "utilities": "设施与基础设施",
+        "electronics": "电子器件",
+        "software": "软件授权"
+      },
+      "sortOptions": {
+        "name": "名称",
+        "priceAsc": "价格：从低到高",
+        "priceDesc": "价格：从高到低",
+        "category": "类别"
+      },
+      "featuredOnly": "仅显示精选设备",
+      "addToZone": "添加到区域",
+      "details": "详情",
+      "specifications": "规格参数",
+      "tags": "标签",
+      "vendor": "供应商",
+      "price": "价格",
+      "itemsFound": "{count} 件设备"
+    },
+    "saveTemplate": {
+      "title": "保存为模板",
+      "name": "模板名称",
+      "nameRequired": "名称不能为空",
+      "description": "描述",
+      "descriptionRequired": "描述不能为空",
+      "descriptionPlaceholder": "描述此模板的用途和特点...",
+      "category": "类别",
+      "tags": "标签",
+      "tagsPlaceholder": "stem, 机器人, ai（用逗号分隔）",
+      "tagsSeparate": "用逗号分隔标签",
+      "estimatedCost": "预计费用（人民币）",
+      "capacity": "容纳人数",
+      "areaSize": "面积（平方米）",
+      "difficulty": "难度",
+      "layoutSummary": "布局概览",
+      "save": "保存模板",
+      "cancel": "取消"
+    },
+    "templates": {
+      "title": "模板库",
+      "search": "搜索模板...",
+      "filters": "筛选",
+      "sortBy": "排序方式",
+      "categories": {
+        "all": "全部",
+        "k12": "中小学",
+        "university": "高校",
+        "corporate": "企业",
+        "makerSpace": "创客空间",
+        "research": "科研实验室",
+        "training": "培训中心",
+        "community": "社区"
+      },
+      "difficulty": "难度",
+      "sortOptions": {
+        "recent": "最新发布",
+        "popular": "最受欢迎",
+        "name": "名称",
+        "cost": "费用",
+        "capacity": "容量"
+      },
+      "featuredOnly": "仅显示精选模板",
+      "useTemplate": "使用此模板",
+      "estimatedCost": "预计费用",
+      "capacity": "容纳人数",
+      "area": "面积",
+      "category": "类别",
+      "downloads": "次下载",
+      "by": "作者",
+      "templatesFound": "{count} 个模板",
+      "layoutOverview": "布局概览",
+      "dimensions": "尺寸",
+      "equipmentItems": "设备清单",
+      "additionalInfo": "更多信息",
+      "createdBy": "创建者"
+    },
+    "smartPlanner": "智能规划向导",
+    "smartPlannerDesc": "输入面积、预算、目标定位，AI 自动生成个性化建设方案",
+    "startPlanning": "开始规划",
+    "creativeAtmosphere": "创意氛围",
+    "creativeAtmosphereDesc": "选择一个视觉主题，为你的创作过程营造不同氛围",
+    "themes": {
+      "default": "默认主题",
+      "calm": "平静专注",
+      "energetic": "充沛活力",
+      "creative": "创意灵感"
     }
   },
   "footer": {
