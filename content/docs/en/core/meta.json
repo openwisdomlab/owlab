@@ -1,0 +1,15 @@
+{
+  "title": "Core Standards",
+  "defaultOpen": true,
+  "pages": [
+    "01-foundations/index",
+    "02-governance/index",
+    "03-space/index",
+    "04-programs/index",
+    "05-tools/index",
+    "06-safety/index",
+    "07-people/index",
+    "08-operations/index",
+    "09-assessment/index"
+  ]
+}

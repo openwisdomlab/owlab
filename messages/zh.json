@@ -525,25 +525,51 @@
     }
   },
   "dashboard": {
-    "title": "数据分析仪表盘",
-    "description": "实时指标和性能数据",
-    "metrics": {
-      "visitors": "访问者",
-      "pageViews": "页面浏览",
-      "bounceRate": "跳出率",
-      "avgSession": "平均会话"
+    "title": "学习分析",
+    "description": "追踪你在 OWL 9大模块中的学习旅程",
+    "overview": {
+      "modulesExplored": "已探索模块",
+      "checklistsCompleted": "已完成清单",
+      "itemsChecked": "已勾选项目",
+      "lastActive": "最近活跃"
     },
-    "chart": {
-      "title": "流量概览",
-      "visitors": "访问者",
-      "pageViews": "页面浏览"
+    "moduleProgress": {
+      "title": "模块进度",
+      "notStarted": "未开始",
+      "inProgress": "进行中",
+      "completed": "已完成",
+      "viewModule": "查看模块"
     },
-    "table": {
-      "title": "热门页面",
-      "page": "页面",
-      "views": "浏览量",
-      "uniqueVisitors": "独立访客",
-      "avgTime": "平均时长"
+    "modules": {
+      "M01": { "name": "哲学与理论", "tagline": "好奇心为何最珍贵" },
+      "M02": { "name": "治理与网络", "tagline": "连接全球资源" },
+      "M03": { "name": "空间与环境", "tagline": "空间会说话，好奇心在生长" },
+      "M04": { "name": "课程与项目", "tagline": "从好奇到创造" },
+      "M05": { "name": "工具与资产", "tagline": "AI时代创造者工具箱" },
+      "M06": { "name": "安全与伦理", "tagline": "冒险的前提条件" },
+      "M07": { "name": "人员与能力", "tagline": "不是教，而是点燃" },
+      "M08": { "name": "运营管理", "tagline": "让探究持续发生" },
+      "M09": { "name": "评估与影响", "tagline": "看见成长的轨迹" }
+    },
+    "recentActivity": {
+      "title": "最近活动",
+      "noActivity": "暂无活动记录。开始探索模块吧！",
+      "checkedItem": "勾选了一个项目",
+      "today": "今天",
+      "yesterday": "昨天",
+      "daysAgo": "{days} 天前"
+    },
+    "recommendations": {
+      "title": "推荐下一步",
+      "description": "根据你的进度，以下是建议探索的模块",
+      "startHere": "从这里开始",
+      "continueLearning": "继续学习",
+      "explore": "探索"
+    },
+    "status": {
+      "outOf": "共 {total} 个",
+      "percent": "{value}%",
+      "noData": "暂无学习数据"
     }
   },
   "lab": {
@@ -563,6 +589,10 @@
       "case-studies": {
         "title": "案例研究",
         "description": "浏览真实的实验室设计案例，学习行业最佳实践。"
+      },
+      "marketplace": {
+        "title": "设计市集",
+        "description": "发现、分享和复用社区创建的空间设计模板。"
       }
     },
     "features": {
@@ -629,6 +659,20 @@
       "aiAssistant": "AI 助手",
       "more": "更多工具"
     },
+    "simulation": {
+      "title": "模拟",
+      "heatmap": "人流热力图",
+      "lighting": "照明分析",
+      "zoneInfo": "区域信息",
+      "opacity": "透明度",
+      "trafficDensity": "人流密度",
+      "low": "低",
+      "high": "高",
+      "lightTypes": "灯光类型",
+      "warmTask": "暖光（工作区）",
+      "coolGeneral": "冷光（通用）",
+      "dimSpots": "暗区（覆盖空隙）"
+    },
     "concepts": {
       "title": "概念可视化",
       "description": "生成 AI 驱动的概念图和建筑可视化效果",
@@ -674,6 +718,80 @@
         "json": "用于导入/导出的原始数据",
         "md": "用于 Wiki 的 Markdown 文档"
       }
+    }
+  },
+  "marketplace": {
+    "badge": "社区设计",
+    "backToLab": "返回 AI 工具",
+    "hero": {
+      "title": "社区设计市集",
+      "subtitle": "发现、分享和复用社区创建的空间设计模板",
+      "templateCount": "个设计模板"
+    },
+    "search": "搜索模板...",
+    "shareDesign": "分享设计",
+    "filters": {
+      "all": "全部"
+    },
+    "categories": {
+      "makerspace": "创客空间",
+      "stem-lab": "STEM 实验室",
+      "art-studio": "艺术工作室",
+      "science-lab": "科学实验室",
+      "multi-purpose": "多功能空间",
+      "outdoor": "户外空间"
+    },
+    "sort": {
+      "newest": "最新发布",
+      "popular": "最受欢迎",
+      "mostForked": "复用最多"
+    },
+    "card": {
+      "preview": "预览",
+      "fork": "复用",
+      "by": "作者:"
+    },
+    "detail": {
+      "author": "作者",
+      "size": "尺寸",
+      "zones": "区域数",
+      "created": "创建日期",
+      "zoneList": "区域列表",
+      "items": "项设备",
+      "tags": "标签",
+      "likesLabel": "点赞",
+      "forksLabel": "复用",
+      "like": "点赞",
+      "liked": "已赞",
+      "forkToDesigns": "复用到我的设计"
+    },
+    "noResults": "未找到匹配的模板",
+    "noResultsHint": "尝试调整搜索条件或筛选类别",
+    "forkedSuccess": "已成功复用「{name}」到你的设计中",
+    "cta": {
+      "title": "分享你的设计",
+      "description": "将你的空间设计导出为模板，与社区分享你的创意"
+    },
+    "share": {
+      "title": "分享设计模板",
+      "name": "模板名称",
+      "namePlaceholder": "为你的设计起一个名字...",
+      "nameRequired": "请输入模板名称",
+      "description": "描述",
+      "descriptionPlaceholder": "描述这个设计的用途和特色...",
+      "descriptionRequired": "请输入描述",
+      "author": "作者",
+      "authorPlaceholder": "你的名字或团队名称",
+      "authorRequired": "请输入作者名称",
+      "category": "类别",
+      "tags": "标签",
+      "tagsPlaceholder": "stem, 机器人, ai（逗号分隔）",
+      "tagsHint": "使用逗号分隔多个标签",
+      "cancel": "取消",
+      "submit": "发布到市集"
+    },
+    "nav": {
+      "title": "设计市集"
     }
   },
   "footer": {
@@ -885,5 +1003,101 @@
         "validation": "实证验证：理论在现实中的最终检验"
       }
     }
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "您访问的页面不存在或已被移动。",
+    "goHome": "返回首页",
+    "goBack": "返回上页",
+    "browseDocs": "浏览文档"
+  },
+  "habitat": {
+    "corePhilosophy": "核心理念",
+    "corePhilosophyDesc": "OWL 创意工具箱不是一个简单的工具集合，而是一个",
+    "corePhilosophyHighlight": "有灵魂、有记忆、会做梦的生命体",
+    "timeLayer": "时间层",
+    "timeLayerDesc": "空间记得过去，能看见未来",
+    "emotionLayer": "情感层",
+    "emotionLayerDesc": "空间有情绪剧本，能被创作能量影响",
+    "soulLayer": "灵魂层",
+    "soulLayerDesc": "空间可以召唤智慧，生成探索任务",
+    "toolMatrix": "工具矩阵",
+    "toolMatrixDesc": "6个AI工具，覆盖创意空间的完整生命周期",
+    "comingSoon": "即将推出",
+    "aiAgents": "{count} 个 AI 代理",
+    "enter": "进入",
+    "stats": {
+      "tools": "AI 工具",
+      "agents": "智能代理",
+      "layers": "存在层次"
+    },
+    "uxVision": "用户体验愿景",
+    "uxVisionSubtitle": "一个典型的学习旅程",
+    "uxStep1": "学生第一次打开 OWL 创意工具箱，空间「认出」她是新人，播放一段创始故事。她走近木工区，三个「幽灵项目」浮现——过去学生的作品在等待对话。她选择接受一个「世代传承任务」：完成五年前一个学长未竟的飞行器原型。",
+    "uxStep2": "设计遇到瓶颈时，她召唤「达芬奇灵魂」，得到一个意想不到的机翼建议。她把设计放入「平行宇宙」探索三条路线，又用「未来考古学家」视角审视自己的选择。",
+    "uxStep3": "两年后她毕业了，她的项目进入「失败神殿」（因为飞行器最终没能飞起来），但这个「失败圣物」成为下一代学生的灵感起点。",
+    "backToTools": "返回 AI 工具",
+    "features": {
+      "spaceDesigner": ["AI 智能布局", "3D 可视化", "Allen 曲线分析", "平行宇宙模式"],
+      "gameWorkshop": ["科学剧本杀", "密室逃脱生成", "角色扮演引擎", "知识闯关"],
+      "questEngine": ["世代传承任务", "探索发现任务", "技能成就系统", "运营仪表板"],
+      "memoryHeritage": ["项目记忆馆", "失败神殿", "故事工坊", "星际画廊"],
+      "ideaGarden": ["种子库", "培育圃", "嫁接站", "记忆园"],
+      "wisdomAdvisor": ["创作者灵魂召唤", "跨域智慧融合", "未来考古学家", "反向导师"]
+    },
+    "examples": {
+      "time": ["记忆博物馆", "失败神殿", "未来考古学家", "平行宇宙"],
+      "emotion": ["反向情绪设计器", "创作能量场", "情感剧本"],
+      "soul": ["创作者灵魂召唤", "探索任务生成", "智慧顾问"]
+    }
+  },
+  "threeE": {
+    "title": "3E 学习进度",
+    "pageTitle": "学习进度总览",
+    "pageDescription": "追踪你在启发、赋能、实践三个维度的学习旅程。每个维度包含三个核心模块，记录你的探索与成长。",
+    "overall": "总体",
+    "reset": "重置进度",
+    "modules": "模块进度",
+    "demo": "快速测试",
+    "aboutTitle": "关于 3E 框架",
+    "compactTitle": "紧凑视图",
+    "dimensions": {
+      "enlighten": "启发",
+      "empower": "赋能",
+      "engage": "实践"
+    },
+    "descriptions": {
+      "enlighten": "点燃好奇心，打开视野——通过理念、治理和空间模块，建立对创新学习空间的认知基础。",
+      "empower": "提供方法、工具与安全保障——通过课程设计、技术工具和安全体系，赋予实践的能力。",
+      "engage": "连接真实世界，产生影响——通过人员培养、运营管理和评估反馈，让学习成果落地。"
+    }
+  },
+  "annotations": {
+    "title": "批注",
+    "add": "添加批注",
+    "addFirst": "添加第一条批注",
+    "mentor": "导师",
+    "student": "学生",
+    "resolved": "已解决",
+    "unresolved": "未解决",
+    "resolve": "标记解决",
+    "unresolve": "取消解决",
+    "reply": "回复",
+    "delete": "删除",
+    "cancel": "取消",
+    "submit": "提交",
+    "send": "发送",
+    "all": "全部",
+    "empty": "暂无批注",
+    "noSelection": "（未选择文本）",
+    "selectedText": "选中文本",
+    "authorLabel": "作者",
+    "authorPlaceholder": "输入你的姓名",
+    "roleLabel": "角色",
+    "commentLabel": "批注内容",
+    "commentPlaceholder": "输入你的反馈或建议...",
+    "replyPlaceholder": "输入回复...",
+    "authorRequired": "请输入作者姓名",
+    "commentRequired": "请输入批注内容"
   }
 }

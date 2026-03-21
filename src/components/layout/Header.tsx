@@ -6,8 +6,9 @@ import { Link } from "@/components/ui/Link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchButton } from "@/components/search";
-import { BookOpen, Github, FlaskConical, Maximize2, Minimize2 } from "lucide-react";
+import { BookOpen, Github, FlaskConical, LayoutDashboard, Maximize2, Minimize2 } from "lucide-react";
 import { useFocusStore } from "@/stores/focus-store";
+import Image from "next/image";
 import type { Locale } from "@/i18n";
 
 type HeaderProps = {
@@ -21,6 +22,7 @@ export function Header({ locale }: HeaderProps) {
     { href: `/${locale}`, label: t("home"), icon: null },
     { href: `/${locale}/docs/core`, label: t("docs"), icon: BookOpen },
     { href: `/${locale}/lab`, label: t("lab"), icon: FlaskConical },
+    { href: `/${locale}/dashboard`, label: t("dashboard"), icon: LayoutDashboard },
   ];
 
   const { isFocusMode, toggleFocusMode } = useFocusStore();
@@ -51,10 +53,13 @@ export function Header({ locale }: HeaderProps) {
           href={`/${locale}`}
           className="flex items-center gap-2"
         >
-          <img
+          <Image
             src="/logo.png"
             alt="Open Wisdom Lab"
+            width={174}
+            height={64}
             className="h-16 w-auto"
+            priority
           />
         </Link>
 

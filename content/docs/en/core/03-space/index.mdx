@@ -1,0 +1,192 @@
+---
+title: "M03 Station"
+description: "The explorer's creative base"
+module_id: "M03"
+doc_type: "core"
+version: "0.4.0"
+status: "draft"
+last_updated: "2025-12-31"
+
+ai_context_size: "small"
+standalone_readable: true
+dependencies: ["M01", "M06"]
+
+evidence_level: "E2"
+sources_verified: true
+confidence: "high"
+
+sources:
+  - id: "make-space-2012"
+    verified: true
+    note: "Doorley & Witthoft, Make Space (2012) - Stanford d.school space design classic"
+  - id: "moe-2025"
+    verified: true
+    note: "Seven Chinese ministries, Guidelines on Strengthening Science and Technology Education in Primary and Secondary Schools (2025.11)"
+  - id: "fab-foundation-2024"
+    verified: true
+    note: "Fab Foundation Fab Lab Standards 2024"
+
+tags:
+  - M03
+  - core
+  - space design
+  - innovation environment
+  - learning space
+  - accessibility
+  - environmental psychology
+  - four-dimension framework
+  - malleable space
+---
+
+<ModulePageTitle moduleId="M03" />
+
+<ModuleSummary
+  moduleId="M03"
+  tagline="Spaces speak — where curiosity grows freely"
+  philosophy="A great space is not just a container, but silently communicates: here you are allowed to tinker, here you are welcome to try, here failure is not feared. Walking in and wanting to make something — that is the highest achievement of space design."
+  summary="Spaces 'speak.' When a newcomer walks in, within 5 minutes they will sense what this place expects of them — 'everything in its place, don't touch anything' or 'here you can explore and experiment.' OWL's space design uses a three-layer framework: the physical layer handles functional zoning and equipment layout, the digital layer integrates networks and display systems, and the cultural layer cultivates atmosphere and showcases achievements. We provide three validated standard plans at 50m2/100m2/200m2, while emphasizing 'malleability first' — allowing users to reconfigure the space so it grows with needs rather than being locked by fixed designs."
+  insights={[
+    "Three-Layer Framework: Physical layer (functional zoning, equipment layout) + Digital layer (network, displays) + Cultural layer (exhibitions, atmosphere).",
+    "Standard Plans: 50m2 starter -> 100m2 standard -> 200m2 flagship, each size with validated layout templates.",
+    "Sparking Curiosity: Half-finished projects visible, tools within reach, moderate messiness allowed — walk in and want to make something.",
+    "Malleability First: Allow users to 'hack' and reconfigure the space, growing with needs rather than locked by fixed designs."
+  ]}
+/>
+
+## Building Standards
+
+<Callout type="info">
+The core of M03 is "spaces speak." Assessment criteria are designed around **the signals spaces send, the urge to make, and malleability**, using the "Newcomer 5-Minute Test" as the ultimate benchmark — does a stranger walk in and want to start making within 5 minutes?
+</Callout>
+
+### Core Principles
+
+| ID | Core Principle | One-Liner | Practice Signals |
+|----|---------------|-----------|-----------------|
+| **N1** | Spaces Speak | Every detail in the environment communicates values | Walking in, you know "making is welcome here" |
+| **N2** | Within Reach | Tools aren't hidden away; materials are visible | Common tools openly displayed, no application needed |
+| **N3** | Allow Messiness | Excessive tidiness implies "don't touch" — moderate messiness is the soil of creation | Half-finished projects visible |
+| **N4** | Works Visible | Display makes creation seen and remembered | Student works and process records visible everywhere |
+| **N5** | Malleable and Changeable | The space is alive; users can reconfigure it | Furniture is movable; layout is adjustable |
+
+### Mandatory Standards (10 items)
+
+| ID | Standard | Why It Matters | Quantitative Metric | Tier |
+|----|----------|---------------|---------------------|------|
+| **S1** | Tool Accessibility | Within reach lowers the barrier to making | >= 80% of common tools openly displayed, no application needed | Foundation |
+| **S2** | Active Display Wall | Making creation visible | >= 1 display wall, updated monthly | Foundation |
+| **S3** | Safety Signage Complete | Safety is the baseline | Fire exits, first aid kits, safety protocols 100% in place | Foundation |
+| **S4** | Three-Layer Coverage | Physical + Digital + Cultural, all essential | Each layer has >= 1 clearly designed element | Foundation |
+| **S5** | Functional Zoning | Different activities need different spaces | At least creation zone + display zone + storage zone | Foundation |
+| **S6** | Half-Finished Projects Visible | Works-in-progress spark curiosity | >= 3 visible works-in-progress in the space | Growth |
+| **S7** | Movable Furniture | Supports space reconfiguration | >= 50% of furniture is movable or reconfigurable | Growth |
+| **S8** | Newcomer Hands-On Test | The ultimate benchmark | >= 60% of first-time visitors feel the urge to make within 5 minutes | Growth |
+| **S9** | Accessible Design | Space open to everyone | Main areas wheelchair accessible with accessibility signage | Excellence |
+| **S10** | Blank Space | Reserve room for evolution | >= 10% of area without fixed assigned function | Excellence |
+
+### Parameter Metrics
+
+| Metric | Definition | Healthy Range | Warning Signal |
+|--------|-----------|--------------|----------------|
+| **Space Utilization Rate** | (Actual use time / Available time) x 100% | 40%-80% | \<30% space is cold; >90% overcrowded |
+| **Hands-On Conversion Rate** | (Hands-on participants / Total visitors) x 100% | >= 50% | \<30% space may be "scaring away" newcomers |
+| **Display Refresh Frequency** | Display wall content update cycle | 2-4 weeks | >8 weeks display wall "frozen," losing vitality |
+
+### Extension Patterns
+
+| Pattern | Applicable Context | Core Practice | Expected Outcome |
+|---------|-------------------|--------------|-----------------|
+| **Space Makeover Day** | Build user ownership | Invite users quarterly to participate in space layout adjustments, letting them "hack" the space | Users treat the space as "their own place" |
+| **Work-in-Progress Tour** | Spark more curiosity | Regularly showcase and explain ongoing projects, sharing the "not yet finished" state | Lower the "must be perfect to show" pressure |
+
+### Tier Requirements Diagram
+
+```text
+Standards Achievement
+|
+|  +--------------------------------------------------+
+|  |                    Excellence                     |
+|  |         S1-S10 all achieved + metrics healthy     |
+|  |    Space becomes a "speaking teacher" with        |
+|  |    built-in educational function                  |
+|  +--------------------------------------------------+
+|  |                    Growth                         |
+|  |        S1-S8 achieved + hands-on rate >= 50%      |
+|  |      Space sparks curiosity; newcomers want       |
+|  |      to start making                              |
+|  +--------------------------------------------------+
+|  |                    Foundation                     |
+|  |              S1-S5 achieved (baseline)            |
+|  |        Meets safety, function, basic display      |
+|  +--------------------------------------------------+
+|
++----------------------------------------------------> Development Stage
+
+Key transitions:
+Foundation -> Growth: From "usable" to "desirable," sparking the urge to make
+Growth -> Excellence: The space itself becomes part of the teaching
+```
+
+### Assessment Tools
+
+**Newcomer 5-Minute Test (Core Test)**
+
+Invite someone who has never visited to enter the space, then observe and record:
+1. First 30 seconds: What do they notice first?
+2. Within 1 minute: Do they move toward a tool or material?
+3. Within 3 minutes: Do they pick something up?
+4. Within 5 minutes: Do they start trying to make something?
+5. Afterward, ask: Do you feel this place welcomes you to get hands-on?
+
+```text
++---------------------------------------------+
+|  Newcomer 5-Minute Test Scorecard            |
++---------------------------------------------+
+|  [] Notice accessible tools/materials        |
+|     within 30 seconds               +1 pt   |
+|  [] Approach a zone on their own    +1 pt   |
+|     within 1 minute                          |
+|  [] Pick up an object               +2 pts  |
+|     within 3 minutes                         |
+|  [] Start trying to make something  +3 pts  |
+|     within 5 minutes                         |
+|  [] Say "this place welcomes        +3 pts  |
+|     hands-on work" afterward                 |
++---------------------------------------------+
+|  Total: ___/10                               |
+|  >= 7: Excellent  5-6: Pass  <5: Needs work  |
++---------------------------------------------+
+```
+
+**Quarterly Space Language Checklist**
+
+| Checkpoint | Yes | No |
+|------------|-----|----|
+| Are the most commonly used tools within sight? | [] | [] |
+| Are there visible half-finished projects in progress? | [] | [] |
+| Does the display wall have new content this month? | [] | [] |
+| Can users adjust furniture positions? | [] | [] |
+| Does the space send signals that say "trying is okay"? | [] | [] |
+
+> **One-line summary**: Spaces speak — where curiosity grows freely. Great spaces embolden people to ask questions, try things, and walk in wanting to make.
+
+| 3E Dimension | How This Module Embodies It |
+|-------------|---------------------------|
+| **Enlighten** | Use space design to spark the "walk in and want to make" impulse — half-finished projects, accessible tools, an atmosphere that allows messiness |
+| **Empower** | Provide the physical-digital-cultural three-layer design framework and 50/100/200m2 standard plans, giving construction a clear playbook |
+| **Engage** | Create display stages where works are seen and makers' stories are told and remembered |
+
+Space is not merely a container for activities but a tool that shapes behavior. This module defines OWL laboratory space construction standards, advocating the "physical-digital-cultural" three-layer model to construct environments that both meet safety baselines and inspire the spirit of innovation. Research shows that environmental design can significantly influence creativity, willingness to collaborate, and learning outcomes.
+
+## Space Design Explorer
+
+<SpaceExplorer className="my-6" />
+
+---
+
+> *"Space is an organization's 'body language' — it intentionally or unintentionally communicates cultural values."*
+> — Make Space, Stanford d.school
+
+Walking into a lab, the first thing you sense is not the equipment inventory but an atmosphere: tools within arm's reach, half-finished projects everywhere, walls covered with sketches and sticky notes, the faint scent of PLA filament and solder in the air. This atmosphere is itself part of the teaching — it silently says: **here you are allowed to tinker, here you are welcome to try, here failure is not feared**.
+
+The core insight of space design: **space is not merely a container where activities happen — it is itself a tool**. Movable furniture encourages reconfiguration, transparent work areas make learning visible, and "hackable" environments grant users the right to transform their surroundings. Physical, digital, and cultural layers interweave to jointly shape the learning experience, aligning closely with the "learning by doing" and "open sharing" principles in M01. A good lab space must be "low floor" enough that newcomers aren't intimidated, yet "high ceiling" enough for experts to stretch; open enough to spark collaboration, yet with enough private corners to support deep focus; meeting today's needs while leaving room for tomorrow's evolution. This module will help you understand these design tensions and find the balance that works for you. Whether your space is a 30-square-meter community corner or a 500-square-meter professional laboratory, the core principle is the same: **let the space serve people, not people adapt to the space**.

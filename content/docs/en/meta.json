@@ -1,4 +1,10 @@
 {
   "title": "Documentation",
-  "pages": ["index"]
+  "pages": [
+    "---",
+    "core",
+    "research",
+    "resources",
+    "---"
+  ]
 }

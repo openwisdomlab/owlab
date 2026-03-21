@@ -11,6 +11,7 @@ import {
   Loader2,
   RefreshCw,
 } from "lucide-react";
+import NextImage from "next/image";
 
 interface ConceptImage {
   id: string;
@@ -201,10 +202,13 @@ export default function ConceptsPage() {
                   className="glass-card overflow-hidden group"
                 >
                   <div className="relative aspect-square">
-                    <img
+                    <NextImage
                       src={image.imageUrl}
                       alt={image.prompt}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      unoptimized
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                       <div className="absolute bottom-0 left-0 right-0 p-4">

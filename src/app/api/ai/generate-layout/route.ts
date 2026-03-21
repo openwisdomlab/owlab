@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import { generateLayout, analyzeLayout, type LayoutData } from "@/lib/ai/agents/layout-agent";
 
 export const runtime = "nodejs";
@@ -69,10 +70,7 @@ export async function POST(request: NextRequest) {
         const { requirements, existingLayout, modelKey } = body as GenerateLayoutRequest;
 
         if (!requirements) {
-          return NextResponse.json(
-            { error: "Requirements are required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Requirements are required").toResponse();
         }
 
         const layout = await generateLayout({
@@ -88,10 +86,7 @@ export async function POST(request: NextRequest) {
         const { layout, modelKey } = body as AnalyzeLayoutRequest;
 
         if (!layout) {
-          return NextResponse.json(
-            { error: "Layout is required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Layout is required").toResponse();
         }
 
         const analysis = await analyzeLayout(layout, modelKey);
@@ -100,18 +95,10 @@ export async function POST(request: NextRequest) {
       }
 
       default:
-        return NextResponse.json(
-          { error: `Unknown action: ${action}` },
-          { status: 400 }
-        );
+        return new ApiError(ErrorCode.VALIDATION_ERROR, `Unknown action: ${action}`).toResponse();
     }
   } catch (error) {
     console.error("Layout generation error:", error);
-    return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : "Layout generation failed",
-      },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }

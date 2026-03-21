@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { handleApiError } from "@/lib/api-error";
 import {
   generateWithSDXL,
   generateWithFluxSchnell,
@@ -131,11 +132,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Image generation error:", error);
-    return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : "Image generation failed",
-      },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }

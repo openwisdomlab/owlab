@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import {
   analyzeSafety,
   checkRegulationCompliance,
@@ -108,10 +109,7 @@ export async function POST(request: NextRequest) {
           body as SafetyAnalysisRequest;
 
         if (!layout) {
-          return NextResponse.json(
-            { error: "Layout is required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Layout is required").toResponse();
         }
 
         const analysis = await analyzeSafety({
@@ -129,10 +127,7 @@ export async function POST(request: NextRequest) {
           body as RegulationCheckRequest;
 
         if (!layout || !regulation) {
-          return NextResponse.json(
-            { error: "Layout and regulation are required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Layout and regulation are required").toResponse();
         }
 
         const result = await checkRegulationCompliance(
@@ -148,10 +143,7 @@ export async function POST(request: NextRequest) {
         const { layout, analysis, modelKey } = body as DocumentationRequest;
 
         if (!layout || !analysis) {
-          return NextResponse.json(
-            { error: "Layout and analysis are required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Layout and analysis are required").toResponse();
         }
 
         const documentation = await generateSafetyDocumentation(
@@ -164,19 +156,10 @@ export async function POST(request: NextRequest) {
       }
 
       default:
-        return NextResponse.json(
-          { error: `Unknown action: ${action}` },
-          { status: 400 }
-        );
+        return new ApiError(ErrorCode.VALIDATION_ERROR, `Unknown action: ${action}`).toResponse();
     }
   } catch (error) {
     console.error("Safety analysis error:", error);
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error ? error.message : "Safety analysis failed",
-      },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }

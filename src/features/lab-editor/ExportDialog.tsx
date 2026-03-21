@@ -12,8 +12,8 @@ import {
   Loader2,
   Check,
 } from "lucide-react";
-import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
+// html2canvas and jspdf are dynamically imported in their respective functions
+// to avoid loading them at module level
 import type { LayoutData } from "@/lib/ai/agents/layout-agent";
 import { exportLayoutToDXF, downloadDXF } from "@/lib/utils/dxf-export";
 
@@ -71,6 +71,8 @@ export function ExportDialog({ layout, onClose }: ExportDialogProps) {
   const exportAsPNG = async () => {
     const canvas = document.querySelector("[data-floor-plan-canvas]") as HTMLElement;
     if (!canvas) {
+      const html2canvas = (await import("html2canvas")).default;
+
       // Create a simple representation
       const tempDiv = document.createElement("div");
       tempDiv.style.cssText = `
@@ -99,6 +101,7 @@ export function ExportDialog({ layout, onClose }: ExportDialogProps) {
   };
 
   const exportAsPDF = async () => {
+    const { jsPDF } = await import("jspdf");
     const pdf = new jsPDF({
       orientation: "landscape",
       unit: "mm",

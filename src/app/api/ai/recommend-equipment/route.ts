@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import {
   recommendEquipment,
   findComplementaryEquipment,
@@ -102,10 +103,7 @@ export async function POST(request: NextRequest) {
         } = body as RecommendEquipmentRequest;
 
         if (!layout) {
-          return NextResponse.json(
-            { error: "Layout is required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Layout is required").toResponse();
         }
 
         const recommendations = await recommendEquipment({
@@ -125,10 +123,7 @@ export async function POST(request: NextRequest) {
           body as ComplementaryRequest;
 
         if (!equipmentName || !category) {
-          return NextResponse.json(
-            { error: "equipmentName and category are required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "equipmentName and category are required").toResponse();
         }
 
         const complementary = await findComplementaryEquipment(
@@ -145,10 +140,7 @@ export async function POST(request: NextRequest) {
         const { currentEquipment, modelKey } = body as UpgradeRequest;
 
         if (!currentEquipment || currentEquipment.length === 0) {
-          return NextResponse.json(
-            { error: "currentEquipment array is required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "currentEquipment array is required").toResponse();
         }
 
         const upgrades = await suggestUpgrades(currentEquipment, modelKey);
@@ -160,10 +152,7 @@ export async function POST(request: NextRequest) {
         const { zoneType, budgetTier, modelKey } = body as BudgetTierRequest;
 
         if (!zoneType || !budgetTier) {
-          return NextResponse.json(
-            { error: "zoneType and budgetTier are required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "zoneType and budgetTier are required").toResponse();
         }
 
         const recommendations = await recommendByBudget(
@@ -176,21 +165,10 @@ export async function POST(request: NextRequest) {
       }
 
       default:
-        return NextResponse.json(
-          { error: `Unknown action: ${action}` },
-          { status: 400 }
-        );
+        return new ApiError(ErrorCode.VALIDATION_ERROR, `Unknown action: ${action}`).toResponse();
     }
   } catch (error) {
     console.error("Equipment recommendation error:", error);
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error
-            ? error.message
-            : "Equipment recommendation failed",
-      },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }

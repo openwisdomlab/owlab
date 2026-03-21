@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import { getLocalePageTree, flattenPageTree } from "@/lib/source";
 import { SidebarSearchWrapper } from "@/components/search/SidebarSearchWrapper";
+import { ThreeEProgressPanel } from "@/features/doc-viewer/ThreeEProgressPanel";
+import { AnnotationProvider } from "@/features/annotations";
 
 type Props = {
   children: ReactNode;
@@ -32,9 +34,14 @@ export default async function Layout({ children, params }: Props) {
           banner: (
             <SidebarSearchWrapper locale={locale} docs={flatDocs} />
           ),
+          footer: (
+            <ThreeEProgressPanel compact locale={locale} />
+          ),
         }}
       >
-        {children}
+        <AnnotationProvider>
+          {children}
+        </AnnotationProvider>
       </DocsLayout>
     </RootProvider>
   );

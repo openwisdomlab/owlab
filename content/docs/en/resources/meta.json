@@ -1,0 +1,10 @@
+{
+  "title": "Resources & Tools",
+  "description": "The bridge from philosophy to practice",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "---",
+    "...tools"
+  ]
+}

@@ -41,6 +41,24 @@ export function ParticleField({
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationFrameRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
+  const lastFrameTimeRef = useRef(0);
+
+  // Intersection Observer - pause animation when off-screen
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(canvas);
+    return () => observer.disconnect();
+  }, []);
 
   // Initialize particles
   useEffect(() => {
@@ -104,7 +122,23 @@ export function ParticleField({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const animate = () => {
+    const FRAME_INTERVAL = 1000 / 30; // Cap at 30fps
+
+    const animate = (timestamp: number) => {
+      // Skip frame if not visible
+      if (!isVisibleRef.current) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      // Frame rate limiting - cap at 30fps
+      const elapsed = timestamp - lastFrameTimeRef.current;
+      if (elapsed < FRAME_INTERVAL) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTimeRef.current = timestamp - (elapsed % FRAME_INTERVAL);
+
       ctx.clearRect(0, 0, dimensions.width, dimensions.height);
 
       const particles = particlesRef.current;
@@ -196,7 +230,7 @@ export function ParticleField({
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
       if (animationFrameRef.current) {

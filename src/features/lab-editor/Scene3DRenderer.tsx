@@ -147,7 +147,6 @@ function Scene3DLighting({ lights }: Scene3DLightingProps) {
               position={[light.position.x, light.position.y, light.position.z]}
               color={light.color}
               intensity={light.intensity}
-              castShadow
             />
           );
         }

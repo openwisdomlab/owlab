@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import Script from "next/script";
+import Image from "next/image";
 import { ModuleCards } from "@/features/doc-viewer/ModuleCards";
 import { LearningSpaceTagline } from "@/components/ui/LearningSpaceTagline";
 import { EnhancedHero } from "@/components/brand/EnhancedHero";
@@ -2023,9 +2024,11 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               {/* Logo & Copyright */}
               <div className="flex items-center gap-3">
-                <img
+                <Image
                   src="/logo.png"
                   alt="Open Wisdom Lab"
+                  width={109}
+                  height={40}
                   className="h-10 w-auto opacity-80"
                 />
                 <p className="text-sm text-[var(--muted-foreground)]">

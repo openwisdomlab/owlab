@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import {
   analyzeBudget,
   suggestEquipmentAlternatives,
@@ -130,10 +131,7 @@ export async function POST(request: NextRequest) {
         } = body as BudgetAnalysisRequest;
 
         if (!layout) {
-          return NextResponse.json(
-            { error: "Layout is required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Layout is required").toResponse();
         }
 
         const analysis = await analyzeBudget({
@@ -152,12 +150,7 @@ export async function POST(request: NextRequest) {
           body as EquipmentAlternativesRequest;
 
         if (!equipmentName || !currentPrice || !category) {
-          return NextResponse.json(
-            {
-              error: "equipmentName, currentPrice, and category are required",
-            },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "equipmentName, currentPrice, and category are required").toResponse();
         }
 
         const alternatives = await suggestEquipmentAlternatives(
@@ -175,10 +168,7 @@ export async function POST(request: NextRequest) {
           body as CompareScenariosRequest;
 
         if (!scenario1 || !scenario2) {
-          return NextResponse.json(
-            { error: "Both scenarios are required" },
-            { status: 400 }
-          );
+          return new ApiError(ErrorCode.VALIDATION_ERROR, "Both scenarios are required").toResponse();
         }
 
         const comparison = await compareBudgetScenarios(
@@ -191,19 +181,10 @@ export async function POST(request: NextRequest) {
       }
 
       default:
-        return NextResponse.json(
-          { error: `Unknown action: ${action}` },
-          { status: 400 }
-        );
+        return new ApiError(ErrorCode.VALIDATION_ERROR, `Unknown action: ${action}`).toResponse();
     }
   } catch (error) {
     console.error("Budget analysis error:", error);
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error ? error.message : "Budget analysis failed",
-      },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }

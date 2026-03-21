@@ -1,5 +1,6 @@
 // src/app/api/ai/parallel-universes/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import {
   generateParallelUniverses,
   fuseUniversesWithAI,
@@ -10,20 +11,14 @@ export async function POST(request: NextRequest) {
     const { action, ...params } = body;
 
     if (typeof action !== "string") {
-      return NextResponse.json(
-        { error: "action must be a string" },
-        { status: 400 }
-      );
+      return new ApiError(ErrorCode.VALIDATION_ERROR, "action must be a string").toResponse();
     }
 
     if (action === "generate") {
       const { currentLayout, decisionPoint, constraints, modelKey } = params;
 
       if (!currentLayout || !decisionPoint) {
-        return NextResponse.json(
-          { error: "Missing required fields: currentLayout, decisionPoint" },
-          { status: 400 }
-        );
+        return new ApiError(ErrorCode.VALIDATION_ERROR, "Missing required fields: currentLayout, decisionPoint").toResponse();
       }
 
       const universes = await generateParallelUniverses({
@@ -40,10 +35,7 @@ export async function POST(request: NextRequest) {
       const { universes, fusionStrategy, modelKey } = params;
 
       if (!Array.isArray(universes) || universes.length < 2) {
-        return NextResponse.json(
-          { error: "universes must be an array with at least 2 items" },
-          { status: 400 }
-        );
+        return new ApiError(ErrorCode.VALIDATION_ERROR, "universes must be an array with at least 2 items").toResponse();
       }
 
       const fusedLayout = await fuseUniversesWithAI({
@@ -55,15 +47,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ layout: fusedLayout });
     }
 
-    return NextResponse.json(
-      { error: "Invalid action. Use 'generate' or 'fuse'" },
-      { status: 400 }
-    );
+    return new ApiError(ErrorCode.VALIDATION_ERROR, "Invalid action. Use 'generate' or 'fuse'").toResponse();
   } catch (error) {
     console.error("Parallel universe API error:", error);
-    return NextResponse.json(
-      { error: "An unexpected error occurred" },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }

@@ -461,25 +461,51 @@
     }
   },
   "dashboard": {
-    "title": "Analytics Dashboard",
-    "description": "Real-time metrics and performance data",
-    "metrics": {
-      "visitors": "Visitors",
-      "pageViews": "Page Views",
-      "bounceRate": "Bounce Rate",
-      "avgSession": "Avg. Session"
+    "title": "Learning Analytics",
+    "description": "Track your learning journey across all 9 OWL modules",
+    "overview": {
+      "modulesExplored": "Modules Explored",
+      "checklistsCompleted": "Checklists Completed",
+      "itemsChecked": "Items Checked",
+      "lastActive": "Last Active"
     },
-    "chart": {
-      "title": "Traffic Overview",
-      "visitors": "Visitors",
-      "pageViews": "Page Views"
+    "moduleProgress": {
+      "title": "Module Progress",
+      "notStarted": "Not Started",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "viewModule": "View Module"
     },
-    "table": {
-      "title": "Top Pages",
-      "page": "Page",
-      "views": "Views",
-      "uniqueVisitors": "Unique Visitors",
-      "avgTime": "Avg. Time"
+    "modules": {
+      "M01": { "name": "Philosophy & Theory", "tagline": "Why curiosity matters most" },
+      "M02": { "name": "Governance & Network", "tagline": "Connect global resources" },
+      "M03": { "name": "Space & Environment", "tagline": "Space speaks, curiosity grows" },
+      "M04": { "name": "Programs & Projects", "tagline": "From curiosity to creation" },
+      "M05": { "name": "Tools & Assets", "tagline": "AI-era creator toolbox" },
+      "M06": { "name": "Safety & Ethics", "tagline": "Prerequisites for risk-taking" },
+      "M07": { "name": "People & Capability", "tagline": "Not teaching, but igniting" },
+      "M08": { "name": "Operations", "tagline": "Keep inquiry happening" },
+      "M09": { "name": "Assessment & Impact", "tagline": "See the traces of growth" }
+    },
+    "recentActivity": {
+      "title": "Recent Activity",
+      "noActivity": "No activity yet. Start exploring modules!",
+      "checkedItem": "Checked an item",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "daysAgo": "{days} days ago"
+    },
+    "recommendations": {
+      "title": "Recommended Next Steps",
+      "description": "Based on your progress, here are suggested modules to explore next",
+      "startHere": "Start Here",
+      "continueLearning": "Continue Learning",
+      "explore": "Explore"
+    },
+    "status": {
+      "outOf": "out of {total}",
+      "percent": "{value}%",
+      "noData": "No learning data yet"
     }
   },
   "lab": {
@@ -499,6 +525,10 @@
       "case-studies": {
         "title": "Case Studies",
         "description": "Browse real-world lab designs and learn from industry best practices."
+      },
+      "marketplace": {
+        "title": "Marketplace",
+        "description": "Discover, share, and fork space design templates created by the community."
       }
     },
     "features": {
@@ -682,6 +712,20 @@
       "save": "Save Template",
       "cancel": "Cancel"
     },
+    "simulation": {
+      "title": "Simulation",
+      "heatmap": "Traffic Heatmap",
+      "lighting": "Lighting Analysis",
+      "zoneInfo": "Zone Info",
+      "opacity": "Opacity",
+      "trafficDensity": "Traffic Density",
+      "low": "Low",
+      "high": "High",
+      "lightTypes": "Light Types",
+      "warmTask": "Warm (task)",
+      "coolGeneral": "Cool (general)",
+      "dimSpots": "Dim spots (coverage gaps)"
+    },
     "concepts": {
       "title": "Concept Visualizer",
       "description": "Generate AI-powered concept diagrams and architectural visualizations",
@@ -728,6 +772,80 @@
         "json": "Raw data for import/export",
         "md": "Markdown documentation for wikis"
       }
+    }
+  },
+  "marketplace": {
+    "badge": "Community Designs",
+    "backToLab": "Back to AI Tools",
+    "hero": {
+      "title": "Community Design Marketplace",
+      "subtitle": "Discover, share, and fork space design templates created by the community",
+      "templateCount": "design templates"
+    },
+    "search": "Search templates...",
+    "shareDesign": "Share Design",
+    "filters": {
+      "all": "All"
+    },
+    "categories": {
+      "makerspace": "Makerspace",
+      "stem-lab": "STEM Lab",
+      "art-studio": "Art Studio",
+      "science-lab": "Science Lab",
+      "multi-purpose": "Multi-Purpose",
+      "outdoor": "Outdoor"
+    },
+    "sort": {
+      "newest": "Newest",
+      "popular": "Most Popular",
+      "mostForked": "Most Forked"
+    },
+    "card": {
+      "preview": "Preview",
+      "fork": "Fork",
+      "by": "by"
+    },
+    "detail": {
+      "author": "Author",
+      "size": "Size",
+      "zones": "Zones",
+      "created": "Created",
+      "zoneList": "Zone List",
+      "items": "items",
+      "tags": "Tags",
+      "likesLabel": "likes",
+      "forksLabel": "forks",
+      "like": "Like",
+      "liked": "Liked",
+      "forkToDesigns": "Fork to My Designs"
+    },
+    "noResults": "No matching templates found",
+    "noResultsHint": "Try adjusting your search or category filters",
+    "forkedSuccess": "Successfully forked \"{name}\" to your designs",
+    "cta": {
+      "title": "Share Your Design",
+      "description": "Export your space design as a template and share your creativity with the community"
+    },
+    "share": {
+      "title": "Share Design Template",
+      "name": "Template Name",
+      "namePlaceholder": "Give your design a name...",
+      "nameRequired": "Name is required",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe the purpose and features of this design...",
+      "descriptionRequired": "Description is required",
+      "author": "Author",
+      "authorPlaceholder": "Your name or team name",
+      "authorRequired": "Author is required",
+      "category": "Category",
+      "tags": "Tags",
+      "tagsPlaceholder": "stem, robotics, ai (comma-separated)",
+      "tagsHint": "Separate tags with commas",
+      "cancel": "Cancel",
+      "submit": "Publish to Marketplace"
+    },
+    "nav": {
+      "title": "Marketplace"
     }
   },
   "footer": {
@@ -939,5 +1057,101 @@
         "validation": "Empirical Validation: Theory's ultimate test in reality"
       }
     }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "browseDocs": "Browse Docs"
+  },
+  "habitat": {
+    "corePhilosophy": "Core Philosophy",
+    "corePhilosophyDesc": "OWL Creative Toolbox is not a simple tool collection, but a",
+    "corePhilosophyHighlight": "living entity with soul, memory, and dreams",
+    "timeLayer": "Time Layer",
+    "timeLayerDesc": "Space remembers the past, can see the future",
+    "emotionLayer": "Emotion Layer",
+    "emotionLayerDesc": "Space has emotional scripts, influenced by creative energy",
+    "soulLayer": "Soul Layer",
+    "soulLayerDesc": "Space can summon wisdom, generate exploration quests",
+    "toolMatrix": "Tool Matrix",
+    "toolMatrixDesc": "6 AI tools covering the complete lifecycle of creative spaces",
+    "comingSoon": "Coming Soon",
+    "aiAgents": "{count} AI Agents",
+    "enter": "Enter",
+    "stats": {
+      "tools": "AI Tools",
+      "agents": "AI Agents",
+      "layers": "Existence Layers"
+    },
+    "uxVision": "User Experience Vision",
+    "uxVisionSubtitle": "A typical learning journey",
+    "uxStep1": "A student opens the OWL Creative Toolbox for the first time. The space \"recognizes\" her as a newcomer and plays a founding story. She approaches the woodworking area, where three \"ghost projects\" appear — past students' works awaiting dialogue. She accepts a \"generational quest\": completing a flight prototype left unfinished five years ago.",
+    "uxStep2": "When stuck on the design, she summons the \"Da Vinci soul\" and receives an unexpected wing suggestion. She puts the design into \"parallel universes\" to explore three routes, then uses the \"future archaeologist\" perspective to review her choices.",
+    "uxStep3": "Two years later, she graduates. Her project enters the \"Temple of Failure\" (because the aircraft never flew), but this \"sacred failure artifact\" becomes the inspiration starting point for the next generation of students.",
+    "backToTools": "Back to AI Tools",
+    "features": {
+      "spaceDesigner": ["AI Smart Layout", "3D Visualization", "Allen Curve Analysis", "Parallel Universe Mode"],
+      "gameWorkshop": ["Science Murder Mystery", "Escape Room Generator", "Role-Playing Engine", "Knowledge Challenge"],
+      "questEngine": ["Generational Quests", "Discovery Missions", "Skill Achievement System", "Operations Dashboard"],
+      "memoryHeritage": ["Project Memory Hall", "Temple of Failure", "Story Workshop", "Star Gallery"],
+      "ideaGarden": ["Seed Library", "Nursery Plot", "Grafting Station", "Memory Garden"],
+      "wisdomAdvisor": ["Creator Soul Summoning", "Cross-domain Wisdom Fusion", "Future Archaeologist", "Reverse Mentor"]
+    },
+    "examples": {
+      "time": ["Memory Museum", "Temple of Failure", "Future Archaeologist", "Parallel Universes"],
+      "emotion": ["Reverse Emotion Designer", "Creative Energy Field", "Emotional Scripts"],
+      "soul": ["Creator Soul Summoning", "Exploration Quest Generator", "Wisdom Advisor"]
+    }
+  },
+  "threeE": {
+    "title": "3E Learning Progress",
+    "pageTitle": "Learning Progress Overview",
+    "pageDescription": "Track your learning journey across the three dimensions: Enlighten, Empower, and Engage. Each dimension contains three core modules that record your exploration and growth.",
+    "overall": "Overall",
+    "reset": "Reset Progress",
+    "modules": "Module Progress",
+    "demo": "Quick Test",
+    "aboutTitle": "About the 3E Framework",
+    "compactTitle": "Compact View",
+    "dimensions": {
+      "enlighten": "Enlighten",
+      "empower": "Empower",
+      "engage": "Engage"
+    },
+    "descriptions": {
+      "enlighten": "Spark curiosity and open horizons — build cognitive foundations for innovation learning spaces through philosophy, governance, and space design modules.",
+      "empower": "Provide methods, tools, and safety — gain practical capabilities through curriculum design, technology tools, and safety systems.",
+      "engage": "Connect to the real world and create impact — bring learning outcomes to life through people development, operations, and assessment."
+    }
+  },
+  "annotations": {
+    "title": "Annotations",
+    "add": "Add Annotation",
+    "addFirst": "Add your first annotation",
+    "mentor": "Mentor",
+    "student": "Student",
+    "resolved": "Resolved",
+    "unresolved": "Unresolved",
+    "resolve": "Resolve",
+    "unresolve": "Unresolve",
+    "reply": "Reply",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "send": "Send",
+    "all": "All",
+    "empty": "No annotations yet",
+    "noSelection": "(No text selected)",
+    "selectedText": "Selected Text",
+    "authorLabel": "Author",
+    "authorPlaceholder": "Enter your name",
+    "roleLabel": "Role",
+    "commentLabel": "Comment",
+    "commentPlaceholder": "Enter your feedback or suggestions...",
+    "replyPlaceholder": "Write a reply...",
+    "authorRequired": "Author name is required",
+    "commentRequired": "Comment is required"
   }
 }

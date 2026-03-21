@@ -16,6 +16,7 @@ import {
   Palette,
   Leaf,
   Zap,
+  Store,
 } from "lucide-react";
 import { useEmotionStore, type Emotion } from "@/stores/emotion-store";
 import { RecommendationWizard } from "@/features/lab-editor/RecommendationWizard";
@@ -93,6 +94,12 @@ export default function LabPage() {
       icon: BookOpen,
       color: "var(--neon-green)",
       href: `/${locale}/lab/case-studies`,
+    },
+    {
+      id: "marketplace",
+      icon: Store,
+      color: "var(--owl-orange)",
+      href: `/${locale}/lab/marketplace`,
     },
   ];
 

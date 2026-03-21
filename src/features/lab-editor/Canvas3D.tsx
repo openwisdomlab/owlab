@@ -12,7 +12,15 @@ import {
 } from "@react-three/drei";
 import { Loader2, Eye, Move3d } from "lucide-react";
 import { Scene3DRenderer } from "./Scene3DRenderer";
+import {
+  HeatmapOverlay,
+  LightingSimulation,
+  ZoneInfoOverlay,
+  SimulationPanel,
+  type SimulationState,
+} from "./simulations";
 import type { Zone3D, Camera3DSettings, Light3D } from "@/lib/utils/3d-preview";
+import type { ZoneData } from "@/lib/ai/agents/layout-agent";
 import * as THREE from "three";
 
 interface Canvas3DProps {
@@ -25,6 +33,8 @@ interface Canvas3DProps {
   showZones?: boolean;
   showGrid?: boolean;
   onZoneSelect?: (id: string) => void;
+  /** Original ZoneData for equipment lists in ZoneInfoOverlay */
+  zoneData?: ZoneData[];
 }
 
 function LoadingFallback() {
@@ -58,6 +68,9 @@ function WalkControls({ enabled, moveSpeed = 0.5, onExit }: WalkControlsProps) {
   });
   const velocity = useRef(new THREE.Vector3());
   const direction = useRef(new THREE.Vector3());
+  const forward = useRef(new THREE.Vector3());
+  const right = useRef(new THREE.Vector3());
+  const upVector = useRef(new THREE.Vector3(0, 1, 0));
 
   useEffect(() => {
     if (!enabled) return;
@@ -146,27 +159,25 @@ function WalkControls({ enabled, moveSpeed = 0.5, onExit }: WalkControlsProps) {
     direction.current.set(0, 0, 0);
 
     // Get camera's forward direction (ignoring Y for horizontal movement)
-    const forward = new THREE.Vector3();
-    camera.getWorldDirection(forward);
-    forward.y = 0;
-    forward.normalize();
+    camera.getWorldDirection(forward.current);
+    forward.current.y = 0;
+    forward.current.normalize();
 
     // Right vector
-    const right = new THREE.Vector3();
-    right.crossVectors(forward, new THREE.Vector3(0, 1, 0)).normalize();
+    right.current.crossVectors(forward.current, upVector.current).normalize();
 
     // Apply movement based on key state
     if (moveState.current.forward) {
-      direction.current.add(forward);
+      direction.current.add(forward.current);
     }
     if (moveState.current.backward) {
-      direction.current.sub(forward);
+      direction.current.sub(forward.current);
     }
     if (moveState.current.left) {
-      direction.current.sub(right);
+      direction.current.sub(right.current);
     }
     if (moveState.current.right) {
-      direction.current.add(right);
+      direction.current.add(right.current);
     }
     if (moveState.current.up) {
       direction.current.y += 1;
@@ -207,10 +218,17 @@ export function Canvas3D({
   showZones = true,
   showGrid = true,
   onZoneSelect,
+  zoneData,
 }: Canvas3DProps) {
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
   const [walkMode, setWalkMode] = useState(false);
   const canvasRef = useRef<HTMLDivElement>(null);
+  const [simulation, setSimulation] = useState<SimulationState>({
+    heatmap: false,
+    lighting: false,
+    zoneInfo: false,
+    opacity: 0.7,
+  });
 
   const handleZoneSelect = useCallback(
     (id: string) => {
@@ -236,7 +254,7 @@ export function Canvas3D({
       ref={canvasRef}
       className="w-full h-full bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e] rounded-lg overflow-hidden"
     >
-      <Canvas shadows dpr={[1, 2]} gl={{ antialias: true }}>
+      <Canvas dpr={[1, 1.5]} gl={{ antialias: true }}>
         <Suspense fallback={<LoadingFallback />}>
           {/* Camera */}
           <PerspectiveCamera
@@ -289,6 +307,30 @@ export function Canvas3D({
             selectedZoneId={selectedZoneId || undefined}
             onZoneSelect={handleZoneSelect}
           />
+
+          {/* Simulation Overlays */}
+          <HeatmapOverlay
+            zones={zones}
+            layoutWidth={layoutWidth}
+            layoutHeight={layoutHeight}
+            gridSize={gridSize}
+            visible={simulation.heatmap}
+            opacity={simulation.opacity}
+          />
+          <LightingSimulation
+            zones={zones}
+            layoutWidth={layoutWidth}
+            layoutHeight={layoutHeight}
+            gridSize={gridSize}
+            visible={simulation.lighting}
+            opacity={simulation.opacity}
+          />
+          <ZoneInfoOverlay
+            zones={zones}
+            zoneData={zoneData}
+            visible={simulation.zoneInfo}
+            onZoneSelect={handleZoneSelect}
+          />
         </Suspense>
       </Canvas>
 
@@ -338,9 +380,12 @@ export function Canvas3D({
         )}
       </div>
 
+      {/* Simulation Controls Panel */}
+      <SimulationPanel state={simulation} onChange={setSimulation} />
+
       {/* Selected zone info */}
       {selectedZoneId && (
-        <div className="absolute top-4 right-4 bg-black/70 rounded-lg p-3 text-white text-sm">
+        <div className="absolute bottom-4 right-4 bg-black/70 rounded-lg p-3 text-white text-sm">
           <div className="font-semibold text-[var(--neon-cyan)]">
             {zones.find((z) => z.id === selectedZoneId)?.name}
           </div>

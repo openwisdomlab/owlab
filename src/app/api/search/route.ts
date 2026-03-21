@@ -9,7 +9,8 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { search } from "@/lib/search";
-import { UnifiedSearchQuerySchema, ApiErrorSchema } from "@/lib/schemas";
+import { UnifiedSearchQuerySchema } from "@/lib/schemas";
+import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -22,16 +23,11 @@ export async function POST(request: NextRequest) {
     const parseResult = UnifiedSearchQuerySchema.safeParse(body);
 
     if (!parseResult.success) {
-      const error = ApiErrorSchema.parse({
-        error: {
-          code: "VALIDATION_ERROR",
-          message: "Invalid request body",
-          details: parseResult.error.issues,
-        },
-        status: 400,
-      });
-
-      return NextResponse.json(error, { status: 400 });
+      return new ApiError(
+        ErrorCode.VALIDATION_ERROR,
+        "Invalid request body",
+        { issues: parseResult.error.issues }
+      ).toResponse();
     }
 
     const query = parseResult.data;
@@ -48,16 +44,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(response);
   } catch (error) {
     console.error("Search API error:", error);
-
-    const apiError = ApiErrorSchema.parse({
-      error: {
-        code: "INTERNAL_ERROR",
-        message: error instanceof Error ? error.message : "Search failed",
-      },
-      status: 500,
-    });
-
-    return NextResponse.json(apiError, { status: 500 });
+    return handleApiError(error);
   }
 }
 
@@ -67,15 +54,7 @@ export async function GET(request: NextRequest) {
     const query = searchParams.get("q");
 
     if (!query) {
-      const error = ApiErrorSchema.parse({
-        error: {
-          code: "MISSING_QUERY",
-          message: "Query parameter 'q' is required",
-        },
-        status: 400,
-      });
-
-      return NextResponse.json(error, { status: 400 });
+      return new ApiError(ErrorCode.VALIDATION_ERROR, "Query parameter 'q' is required").toResponse();
     }
 
     const mode = searchParams.get("mode") as "auto" | "basic" | "semantic" | "agentic" | null;
@@ -94,15 +73,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(response);
   } catch (error) {
     console.error("Search API error:", error);
-
-    const apiError = ApiErrorSchema.parse({
-      error: {
-        code: "INTERNAL_ERROR",
-        message: error instanceof Error ? error.message : "Search failed",
-      },
-      status: 500,
-    });
-
-    return NextResponse.json(apiError, { status: 500 });
+    return handleApiError(error);
   }
 }

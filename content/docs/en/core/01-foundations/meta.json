@@ -1,0 +1,6 @@
+{
+  "title": "M01 Launchpad",
+  "description": "Where all exploration begins",
+  "icon": "Rocket",
+  "pages": ["index"]
+}

@@ -1,5 +1,6 @@
 // src/app/api/ai/emotion-design/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import { generateEmotionDesign } from "@/lib/ai/agents/emotion-design-agent";
 import { EmotionScriptSchema } from "@/lib/schemas/emotion-design";
 
@@ -10,27 +11,22 @@ export async function POST(request: NextRequest) {
 
     // Validate emotionScript is present and is an object
     if (!emotionScript || typeof emotionScript !== "object") {
-      return NextResponse.json(
-        { error: "emotionScript is required and must be an object" },
-        { status: 400 }
-      );
+      return new ApiError(ErrorCode.VALIDATION_ERROR, "emotionScript is required and must be an object").toResponse();
     }
 
     // Validate emotionScript structure using Zod
     const scriptValidation = EmotionScriptSchema.safeParse(emotionScript);
     if (!scriptValidation.success) {
-      return NextResponse.json(
-        { error: "Invalid emotionScript format", details: scriptValidation.error.issues },
-        { status: 400 }
-      );
+      return new ApiError(
+        ErrorCode.VALIDATION_ERROR,
+        "Invalid emotionScript format",
+        { issues: scriptValidation.error.issues }
+      ).toResponse();
     }
 
     // Validate emotionScript has at least one node
     if (!emotionScript.nodes || emotionScript.nodes.length === 0) {
-      return NextResponse.json(
-        { error: "emotionScript must have at least one emotion node" },
-        { status: 400 }
-      );
+      return new ApiError(ErrorCode.VALIDATION_ERROR, "emotionScript must have at least one emotion node").toResponse();
     }
 
     const result = await generateEmotionDesign({
@@ -42,9 +38,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ result });
   } catch (error) {
     console.error("Emotion design API error:", error);
-    return NextResponse.json(
-      { error: "An unexpected error occurred" },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }

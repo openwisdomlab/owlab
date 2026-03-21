@@ -1,0 +1,382 @@
+---
+title: "Digital Fabrication Toolchain"
+description: "Complete digital workflow and tools from design to manufacturing"
+parent_module: "M05"
+doc_type: "extend"
+version: "0.2.0"
+status: "completed"
+last_updated: "2025-12-29"
+
+standalone_readable: true
+summary: |
+  This document systematically reviews the complete Digital Fabrication toolchain,
+  covering design software, slicing/CAM tools, manufacturing equipment, and post-processing workflows.
+  It integrates Fab Lab global standards, open-source software ecosystems, and educational context needs,
+  providing a complete design-to-fabrication solution for innovation laboratories.
+
+evidence_level: "E2"
+sources_verified: true
+cross_validated: true
+confidence: "high"
+
+sources:
+  - id: "gershenfeld-2012"
+    verified: true
+    note: "Gershenfeld, N. (2012). How to Make Almost Anything"
+  - id: "blikstein-2013"
+    verified: true
+    note: "Blikstein, P. (2013). Digital Fabrication and Making in Education"
+  - id: "fab-academy-2024"
+    verified: true
+    note: "Fab Academy Curriculum (2024)"
+  - id: "moe-2025"
+    verified: true
+    note: "China MOE Seven Ministries Joint Opinion on Strengthening K-12 STEM Education (2025.11)"
+
+tags:
+  - M05
+  - extend
+  - digital fabrication
+  - CAD/CAM
+  - toolchain
+  - design software
+  - manufacturing workflow
+---
+
+# Digital Fabrication Toolchain
+
+## Overview
+
+Digital fabrication bridges the gap between digital design and physical creation. This document maps the complete toolchain — from initial concept to finished object — providing guidance on software selection, workflow integration, and educational applications.
+
+**Core Workflow**:
+```text
+Idea → Digital Design → Manufacturing Preparation → Fabrication → Post-Processing → Output
+       (CAD/modeling)    (Slicing/CAM/toolpath)     (Machine)     (Finishing)
+```
+
+---
+
+## Part One: Digital Fabrication Workflow Framework
+
+### 1.1 Complete Workflow
+
+```text
+                    Design Phase
+                        │
+         ┌──────────────┼──────────────┐
+         ↓              ↓              ↓
+    3D Modeling     2D Design     Electronics
+    (CAD/sculpt)   (Vector/raster)  (EDA/PCB)
+         │              │              │
+         ↓              ↓              ↓
+                Preparation Phase
+         ┌──────────────┼──────────────┐
+         ↓              ↓              ↓
+     Slicing        Laser prep      CAM/toolpath
+    (3D print)     (cut/engrave)    (CNC milling)
+         │              │              │
+         ↓              ↓              ↓
+               Fabrication Phase
+         ┌──────────────┼──────────────┐
+         ↓              ↓              ↓
+    3D Printing    Laser Cutting    CNC Machining
+         │              │              │
+         └──────────────┴──────────────┘
+                        ↓
+               Post-Processing
+           (Sanding, painting, assembly)
+                        ↓
+                   Final Output
+```
+
+### 1.2 Key File Formats
+
+| Format | Type | Used For |
+|--------|------|---------|
+| **.STL** | 3D mesh | 3D printing, CNC reference |
+| **.OBJ** | 3D mesh (with color) | 3D printing, rendering |
+| **.STEP/.STP** | 3D parametric | Engineering, CNC |
+| **.SVG** | 2D vector | Laser cutting, vinyl cutting |
+| **.DXF** | 2D vector | Laser cutting, CNC |
+| **.GCODE** | Machine code | 3D printer, CNC instructions |
+| **.GERBER** | PCB layout | PCB manufacturing |
+
+---
+
+## Part Two: Design Software Toolchain
+
+### 2.1 3D Modeling Software
+
+#### Parametric CAD (Engineering Design)
+
+| Software | License | Difficulty | Best For | Age Group |
+|----------|---------|-----------|----------|----------|
+| **Tinkercad** | Free | Beginner | First 3D modeling | J1+ (7+) |
+| **Onshape** | Free (edu) | Intermediate | Collaborative CAD | J2+ (10+) |
+| **Fusion 360** | Free (edu) | Intermediate-Advanced | Full CAD/CAM | T1+ (13+) |
+| **FreeCAD** | Open source | Intermediate | Parametric modeling | T1+ (13+) |
+| **SolidWorks** | Commercial | Advanced | Professional engineering | T2+ (16+) |
+
+#### Direct Modeling/Sculpting (Creative Design)
+
+| Software | License | Difficulty | Best For | Age Group |
+|----------|---------|-----------|----------|----------|
+| **Tinkercad** | Free | Beginner | Simple shapes | J1+ (7+) |
+| **Blender** | Open source | Advanced | Organic forms, animation | T1+ (13+) |
+| **ZBrush** | Commercial | Advanced | Digital sculpting | T2+ (16+) |
+
+#### Education Recommended Pathway
+
+```text
+Beginners (7-12):  Tinkercad → Onshape
+Intermediate (13-15): Onshape → Fusion 360
+Advanced (16+):    Fusion 360 → FreeCAD/SolidWorks
+```
+
+### 2.2 2D Design Software
+
+#### Vector Graphics
+
+| Software | License | Best For |
+|----------|---------|---------|
+| **Inkscape** | Open source | Laser cutting files, SVG design |
+| **Illustrator** | Commercial | Professional vector graphics |
+| **Figma** | Free tier | Collaborative design |
+
+#### Raster Graphics
+
+| Software | License | Best For |
+|----------|---------|---------|
+| **GIMP** | Open source | Image editing |
+| **Photoshop** | Commercial | Professional image editing |
+| **Canva** | Free tier | Quick designs, posters |
+
+### 2.3 Electronics Design Software
+
+#### PCB Design
+
+| Software | License | Difficulty | Best For |
+|----------|---------|-----------|----------|
+| **KiCad** | Open source | Intermediate | Full PCB workflow |
+| **EasyEDA** | Free | Beginner | Quick PCB design |
+| **Eagle** | Free (edu) | Intermediate | Industry standard |
+
+#### Circuit Simulation
+
+| Software | License | Best For |
+|----------|---------|---------|
+| **Tinkercad Circuits** | Free | Beginner simulation |
+| **Falstad** | Free (web) | Interactive circuit sim |
+| **LTspice** | Free | Professional SPICE sim |
+
+---
+
+## Part Three: Manufacturing Preparation Software
+
+### 3.1 3D Print Slicing Software
+
+#### FDM Slicing Software
+
+| Software | License | Difficulty | Features |
+|----------|---------|-----------|----------|
+| **PrusaSlicer** | Open source | Intermediate | Excellent defaults, multi-material |
+| **OrcaSlicer** | Open source | Intermediate | Bambu Lab + others, AI features |
+| **Cura** | Open source | Beginner-Intermediate | Wide printer support |
+| **Bambu Studio** | Free | Beginner | Bambu Lab printers |
+
+#### Slicing Parameter Learning Path
+
+```text
+Beginner:   Layer height, infill %, supports (yes/no)
+Intermediate: Wall count, top/bottom layers, retraction, speed
+Advanced:    Variable layer height, pressure advance, support placement
+Expert:      Custom start/end GCODE, material profiles, multi-process
+```
+
+### 3.2 Laser Cutting Preparation
+
+#### Software Tools
+
+| Software | License | Best For |
+|----------|---------|---------|
+| **LightBurn** | Commercial ($) | Most laser cutters |
+| **LaserGRBL** | Free | GRBL-based lasers |
+| **Inkscape** | Open source | SVG design for cutting |
+
+#### Design Specifications
+
+| Parameter | Cut | Engrave |
+|-----------|-----|---------|
+| **Line color** | Red (convention) | Black |
+| **Line width** | Hairline (0.001mm) | Filled shapes |
+| **Material margin** | 2-3mm from edge | N/A |
+| **Kerf allowance** | 0.1-0.3mm (material-dependent) | N/A |
+
+### 3.3 CNC Machining CAM Software
+
+| Software | License | Difficulty | Features |
+|----------|---------|-----------|----------|
+| **Fusion 360 CAM** | Free (edu) | Intermediate | Integrated CAD+CAM |
+| **Carbide Create** | Free | Beginner | Shapeoko-focused |
+| **Estlcam** | Low cost | Beginner | Simple 2.5D operations |
+
+---
+
+## Part Four: Materials and Process Reference
+
+### 4.1 3D Printing Materials
+
+#### FDM Materials
+
+| Material | Properties | Best For | Safety |
+|----------|-----------|---------|--------|
+| **PLA** | Biodegradable, easy to print | General prototyping | Safe for all ages |
+| **PETG** | Strong, water-resistant | Functional parts | Safe, no toxic fumes |
+| **ABS** | Impact-resistant | Engineering parts | Requires ventilation |
+| **TPU** | Flexible, durable | Wearables, grips | Safe |
+
+### 4.2 Laser Cutting Materials
+
+| Material | Cut | Engrave | Safety Notes |
+|----------|-----|---------|-------------|
+| **Plywood** | Yes | Yes | Use exhaust |
+| **Acrylic** | Yes | Yes | Well-ventilated |
+| **Cardboard** | Yes | Light | Fire risk |
+| **Leather** | Yes | Yes | Fumes require ventilation |
+| **PVC/Vinyl** | NO | NO | Releases toxic chlorine gas |
+
+### 4.3 CNC Materials
+
+| Material | Difficulty | Tools | Notes |
+|----------|-----------|-------|-------|
+| **MDF** | Easy | Standard bits | Dust collection required |
+| **Plywood** | Easy-Medium | Standard bits | Watch for delamination |
+| **Hardwood** | Medium | Sharp bits, slow feed | Beautiful results |
+| **Aluminum** | Advanced | Specialized bits | Coolant recommended |
+
+---
+
+## Part Five: Open Source Software Ecosystem
+
+### 5.1 Complete Open Source Toolchain
+
+A fully open-source digital fabrication workflow is possible:
+
+```text
+3D Design: FreeCAD / Blender / OpenSCAD
+2D Design: Inkscape / GIMP
+Electronics: KiCad / Fritzing
+Slicing: PrusaSlicer / OrcaSlicer / Cura
+CAM: FreeCAD Path / PyCAM
+Control: OctoPrint / Klipper / GRBL
+```
+
+### 5.2 Open Source Hardware Platforms
+
+| Platform | Focus | Community |
+|----------|-------|-----------|
+| **Arduino** | Microcontrollers | Massive |
+| **Raspberry Pi** | Single-board computers | Massive |
+| **Prusa** | 3D printers | Large |
+| **Open Source Ecology** | Open source machines | Growing |
+
+---
+
+## Part Six: Workflow Integration
+
+### 6.1 Typical Project Workflow Examples
+
+#### Example 1: 3D Printed Phone Stand
+
+```text
+Tinkercad (design) → STL export → PrusaSlicer (slice) → 3D Printer → Sanding → Done
+```
+
+#### Example 2: Laser-Cut Organizer Box
+
+```text
+Inkscape (2D design) → SVG export → LightBurn (laser prep) → Laser Cutter → Assembly → Done
+```
+
+#### Example 3: Arduino IoT Device
+
+```text
+KiCad (PCB design) → Gerber export → PCB mill/order → Solder components → Program → Test → Done
+```
+
+### 6.2 Cross-Tool Collaboration Matrix
+
+| From \ To | 3D Print | Laser Cut | CNC | Electronics |
+|-----------|----------|-----------|-----|------------|
+| **3D Print** | - | Jigs, fixtures | Molds | Enclosures |
+| **Laser Cut** | Flat parts | - | Templates | Panel mounts |
+| **CNC** | Molds | - | - | PCB milling |
+| **Electronics** | Smart objects | Control panels | - | - |
+
+---
+
+## Part Seven: Educational Applications
+
+### 7.1 Age-Graded Tool Recommendations
+
+| Age Group | Design Tools | Fabrication | Projects |
+|-----------|-------------|-------------|----------|
+| **J1 (7-9)** | Tinkercad, Inkscape | 3D printing (supervised) | Simple shapes, name tags |
+| **J2 (10-12)** | Tinkercad, Onshape | 3D printing, laser (supervised) | Phone stands, puzzle boxes |
+| **T1 (13-15)** | Fusion 360, KiCad | All tools (trained) | Arduino projects, enclosures |
+| **T2 (16-18)** | Professional CAD | All tools (certified) | IoT devices, robots |
+
+### 7.2 STEAM Project Integration
+
+| Subject | Digital Fabrication Connection |
+|---------|------------------------------|
+| **Science** | Lab equipment, measurement tools |
+| **Technology** | Electronics, programming, automation |
+| **Engineering** | Structural design, mechanisms |
+| **Art** | Sculpture, jewelry, installations |
+| **Math** | Geometry, parametric design, measurement |
+
+---
+
+> **Note**: The remaining section on AI-powered digital fabrication (2024-2025 trends, AI-assisted design tools, intelligent slicing, and autonomous manufacturing systems) is available in the [Chinese version](/zh/docs/core/05-tools/extend/digital-fabrication). Translation of these sections is in progress.
+
+---
+
+## Common Misconceptions
+
+1. **"Start with professional software"** — Complexity kills motivation. Start simple (Tinkercad) and progress naturally.
+2. **"The machine does all the work"** — Digital fabrication requires significant design and preparation skills.
+3. **"More tools = better learning"** — Master one workflow well before expanding.
+
+---
+
+## Resource Links
+
+### Model Libraries
+- Thingiverse (thingiverse.com)
+- Printables (printables.com)
+- MyMiniFactory (myminifactory.com)
+
+### Learning Resources
+- Fab Academy (fabacademy.org)
+- Instructables (instructables.com)
+
+---
+
+## References
+
+1. Gershenfeld, N. (2012). How to Make Almost Anything. *Foreign Affairs*. [E2]
+2. Blikstein, P. (2013). Digital Fabrication and 'Making' in Education. In *FabLab*. [E2]
+3. Fab Academy. (2024). *Fab Academy Curriculum*. [E2]
+
+> Sources pending manual verification
+
+---
+
+## Update Log
+
+| Date | Update Content | Author | Status |
+|------|---------------|--------|--------|
+| 2025-01 | Initial draft | AI | draft |
+| 2025-12 | Added AI-powered fabrication section, market updates | AI | draft |

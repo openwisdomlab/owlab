@@ -1,0 +1,179 @@
+---
+title: "M08 Supply Station"
+description: "Sustaining the voyage"
+module_id: "M08"
+doc_type: "core"
+version: "0.4.0"
+status: "draft"
+last_updated: "2025-12-31"
+
+ai_context_size: "small"
+standalone_readable: true
+dependencies: ["M03", "M05", "M06", "M07"]
+
+evidence_level: "E1"
+sources_verified: false
+confidence: "medium"
+
+tags:
+  - M08
+  - core
+  - operations
+  - SOP
+  - service
+  - membership
+  - events
+  - finance
+---
+
+<ModulePageTitle moduleId="M08" />
+
+<ModuleSummary
+  moduleId="M08"
+  tagline="Keeping inquiry alive"
+  philosophy="Great operations are invisible. When everything runs smoothly, people only see exciting activities and friendly service — no one notices the checklists and processes behind the scenes. The ultimate goal of operations is to keep inquiry happening, sustainably and over the long term."
+  summary="Great operations don't create miracles — they make the ordinary replicable. When everything runs smoothly, people only see exciting activities, friendly service, and clean environments — no one notices the opening checklists and maintenance schedules behind the scenes. OWL's operational core is making tacit knowledge explicit: version-controlled SOPs make best practices iterable, member lifecycle management (Acquisition -> Activation -> Retention -> Upgrade -> Advocacy) gives user operations a clear playbook, and the PDSA cycle (Plan-Do-Study-Act) ensures continuous improvement rather than one-off projects. The ultimate goal of operations is to keep inquiry happening, sustainably and over the long term."
+  insights={[
+    "Invisible Operations: Processes are systematic; the team focuses on where creativity is truly needed — standardization liberates creativity.",
+    "SOP Management: From opening checklists to crisis response, best practices solidified as iterable knowledge assets.",
+    "Member Lifecycle: Acquisition -> Activation -> Retention -> Upgrade -> Advocacy, each stage with targeted strategies.",
+    "PDSA Improvement: Daily details, weekly processes, monthly strategy — improvement is a continuous process."
+  ]}
+/>
+
+## Building Standards
+
+<Callout type="info">
+The core of M08 is "keeping inquiry alive." Assessment criteria are designed around **whether processes are replicable, whether service is stable, and whether improvement is continuous**, letting great operations "invisibly" support the release of creativity.
+</Callout>
+
+### Core Principles
+
+| ID | Core Principle | One-Liner | Practice Signals |
+|----|---------------|-----------|-----------------|
+| **N1** | Invisible Operations | Great operations let people see only the exciting parts, not the processes | User experience is smooth with no perceived barriers |
+| **N2** | Replicable Processes | Newcomers can ramp up quickly; tacit knowledge made explicit | SOPs exist; new staff can handle duty independently within 3 days |
+| **N3** | User-Centered | Design services around user experience | Service satisfaction continuously tracked |
+| **N4** | Data-Driven | Make decisions with data, not intuition | Operations dashboard exists; data reviewed regularly |
+| **N5** | Continuous Improvement | Improvement is a continuous process, not a one-off project | PDSA cycle operational |
+
+### Mandatory Standards (10 items)
+
+| ID | Standard | Why It Matters | Quantitative Metric | Tier |
+|----|----------|---------------|---------------------|------|
+| **S1** | Core SOPs Established | Foundation for replicable processes | Opening/closing/event execution SOPs 100% established | Foundation |
+| **S2** | Duty Log Records | Operations are traceable | Duty logs 100% completed | Foundation |
+| **S3** | Booking System Operational | Orderly resource management | Booking system functioning normally; no-show rate \<10% | Foundation |
+| **S4** | Open Day Execution | Window for community connection | >= 1 open day event per month | Foundation |
+| **S5** | Basic Member Services | User operations with a clear playbook | New member welcome contact within 24 hours | Foundation |
+| **S6** | Member Retention Management | Building long-term relationships | Monthly active rate >= 50%; renewal rate >= 60% | Growth |
+| **S7** | Operational Data Tracking | Data-driven decisions | Core metrics updated weekly | Growth |
+| **S8** | PDSA Cycle Operational | Continuous improvement mechanism | >= 1 weekly retrospective with improvement records | Growth |
+| **S9** | Service Satisfaction | User experience assurance | Service satisfaction >= 4.0/5.0 | Excellence |
+| **S10** | SOP Iterative Updates | Continuous process optimization | Core SOPs updated >= 1 time per year | Excellence |
+
+### Parameter Metrics
+
+| Metric | Definition | Healthy Range | Warning Signal |
+|--------|-----------|--------------|----------------|
+| **Monthly Member Activity Rate** | Active members / Total members x 100% | 50%-70% | \<40% members may be "dormant" |
+| **First Experience Conversion Rate** | Became member after first experience / First-time visitors x 100% | 20%-40% | \<15% experience design may have issues |
+| **Service Response Time** | Average response time for member inquiries | \<4 hours | >24 hours service may be lagging |
+
+### Extension Patterns
+
+| Pattern | Applicable Context | Core Practice | Expected Outcome |
+|---------|-------------------|--------------|-----------------|
+| **Operations Retrospective** | Strengthening continuous improvement | Fixed weekly team retrospective using the PDSA framework to analyze problems and improvements | Problems discovered promptly; improvement happens continuously |
+| **Member Ambassador Program** | Activating veteran members | Invite active members to become "ambassadors," participating in new member onboarding and event support | Member belonging strengthened; operational burden reduced |
+
+### Tier Requirements Diagram
+
+```text
+Standards Achievement
+|
+|  +--------------------------------------------------+
+|  |                    Excellence                     |
+|  |         S1-S10 all achieved + metrics healthy     |
+|  |    High satisfaction; SOPs continuously iterated; |
+|  |    operations truly "invisible"                   |
+|  +--------------------------------------------------+
+|  |                    Growth                         |
+|  |         S1-S8 achieved + monthly active >= 50%    |
+|  |      Member lifecycle management; data-driven;    |
+|  |      PDSA operational                             |
+|  +--------------------------------------------------+
+|  |                    Foundation                     |
+|  |              S1-S5 achieved (baseline)            |
+|  |     Core SOPs established; daily operations       |
+|  |     orderly; basic services in place              |
+|  +--------------------------------------------------+
+|
++----------------------------------------------------> Development Stage
+
+Key transitions:
+Foundation -> Growth: From "can run" to "has data," operations begin to refine
+Growth -> Excellence: From "has processes" to "continuously optimizes," operations truly "invisible"
+```
+
+### Assessment Tools
+
+**Daily Operations Checklist**
+
+| Time | Checkpoint | Done |
+|------|-----------|------|
+| Opening | Safety check complete? | [] |
+| Opening | Equipment ready? | [] |
+| Opening | Day's activities confirmed? | [] |
+| During ops | Check-in system normal? | [] |
+| During ops | Issues promptly recorded? | [] |
+| Closing | Safety check complete? | [] |
+| Closing | Duty log completed? | [] |
+
+**Monthly Member Lifecycle Health Check**
+
+```text
++-------------------------------------------------------------+
+|  Member Lifecycle Check                                      |
++-------------------------------------------------------------+
+|  Acquisition Stage                                           |
+|  [] Open day executed >= 1 time this month                   |
+|  [] First experience conversion rate >= 20%                  |
++-------------------------------------------------------------+
+|  Activation Stage                                            |
+|  [] New members receive welcome contact within 24 hours      |
+|  [] New members complete first activity within 7 days        |
++-------------------------------------------------------------+
+|  Retention Stage                                             |
+|  [] Monthly activity rate >= 50%                             |
+|  [] Dormant members (3+ months) have reactivation plan       |
++-------------------------------------------------------------+
+|  Upgrade/Advocacy Stage                                      |
+|  [] Members upgraded or referred new members                 |
++-------------------------------------------------------------+
+```
+
+**PDSA Improvement Record Template**
+
+| Field | Content |
+|-------|---------|
+| Date | |
+| Problem Description | What problem was discovered? |
+| Plan | How do we plan to improve? |
+| Do | What was actually done? |
+| Study | What was the result? |
+| Act | What are the next steps? |
+
+> **One-line summary**: Keeping inquiry alive — great operations are invisible, sustaining community vitality and making long-term commitment possible.
+
+| 3E Dimension | How This Module Embodies It |
+|-------------|---------------------------|
+| **Enlighten** | Every visit brings the surprise of new discoveries — continuously updated project displays, constantly iterated activity designs |
+| **Empower** | SOPs ensure basic operations free the mind — when processes are systematic, the team can focus on what truly requires creativity |
+| **Engage** | Community operations build long-term relationships — membership systems, alumni networks, and parent communities form sustained connections |
+
+Excellent operations are invisible. When everything runs smoothly, people only see exciting activities, friendly service, and clean environments — no one notices the opening checklists, equipment maintenance schedules, and member service processes behind the scenes. **Great operations don't create miracles — they make the ordinary replicable**.
+
+## Operations Explorer
+
+<OperationsExplorer className="my-6" />

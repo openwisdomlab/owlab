@@ -1,0 +1,331 @@
+---
+title: "Badge and Points System"
+description: "Gamified incentive design and digital credential framework"
+parent_module: "M07"
+doc_type: "extend"
+version: "0.1.0"
+status: "completed"
+last_updated: "2025-12-30"
+
+standalone_readable: true
+summary: |
+  This document provides design guidelines for the OWL badge and points system,
+  covering gamified incentive mechanisms, digital badge standards, and points rules
+  for motivating continuous development of both learners and educators.
+
+evidence_level: "E1"
+sources_verified: false
+confidence: "medium"
+
+sources:
+  - id: "mozilla-openbadges"
+    verified: false
+    note: "Mozilla Open Badges Standard"
+  - id: "deterding-2011"
+    verified: false
+    note: "Deterding et al. (2011) Gamification"
+
+tags:
+  - M07
+  - extend
+  - badge system
+  - gamification
+  - digital credentials
+  - points
+---
+
+# Badge and Points System
+
+## Overview
+
+A well-designed badge and points system recognizes learning, motivates engagement, and provides visible evidence of growth. This document outlines OWL's approach to gamified recognition — one that celebrates the learning journey without reducing it to mere competition.
+
+**Design Mantra**: Gamified, but not a game. Recognition should intrinsically motivate, not just extrinsically reward.
+
+---
+
+## 1. Design Principles
+
+### 1.1 Gamified But Not a Game
+
+| Principle | Description |
+|-----------|-------------|
+| **Intrinsic motivation first** | Badges recognize existing motivation; they don't create it |
+| **Process over outcome** | Celebrate learning journeys, not just end results |
+| **Mastery not competition** | Compare to yourself, not to others |
+| **Meaningful recognition** | Each badge represents genuine achievement |
+| **Community value** | Badges reflect community values and culture |
+
+### 1.2 Pitfalls to Avoid
+
+| Pitfall | Why It's Bad | Prevention |
+|---------|-------------|-----------|
+| **Over-gamification** | Reduces intrinsic motivation | Keep badges meaningful and rare |
+| **Point inflation** | Devalues the system | Regular calibration |
+| **Competition focus** | Damages psychological safety | No public leaderboards by default |
+| **Badge hoarding** | Collection becomes the goal | Tie badges to genuine competency |
+| **Exclusion** | System favors certain types of achievement | Diverse badge categories |
+
+---
+
+## 2. Badge System
+
+### 2.1 Badge Categories
+
+| Category | Focus | Examples |
+|----------|-------|---------|
+| **Skill Badges** | Technical competencies | 3D Printing Certified, Arduino Pro |
+| **Achievement Badges** | Notable accomplishments | First Project Complete, 100 Hours |
+| **Contribution Badges** | Community contributions | Peer Teacher, Documentation Author |
+| **Exploration Badges** | Trying new things | Cross-Domain Explorer, Risk Taker |
+| **Educator Badges** | Teaching capabilities | Certified Facilitator, Mentor |
+
+### 2.2 Learner Badge System
+
+#### Skill Badges
+
+| Badge | Requirements | Level |
+|-------|-------------|-------|
+| **3D Print Beginner** | Complete first successful print | Bronze |
+| **3D Print Intermediate** | Design and print 3 original objects | Silver |
+| **3D Print Advanced** | Troubleshoot common issues; help others | Gold |
+| **Laser Cutter Certified** | Pass C1 certification | Silver |
+| **Code Creator** | Complete 3 programming projects | Silver |
+| **Electronics Explorer** | Build 3 working circuits | Silver |
+
+#### Achievement Badges
+
+| Badge | Requirements | Level |
+|-------|-------------|-------|
+| **First Spark** | Complete first project | Bronze |
+| **Project Ninja** | Complete 10 projects | Silver |
+| **Marathon Maker** | 100 hours in the space | Gold |
+| **Fail Forward** | Document and share a failure | Bronze |
+| **Showcase Star** | Present at a showcase event | Silver |
+
+#### Contribution Badges
+
+| Badge | Requirements | Level |
+|-------|-------------|-------|
+| **Helpful Hand** | Help 5 other learners | Bronze |
+| **Doc Writer** | Contribute to documentation | Silver |
+| **Peer Teacher** | Lead a peer learning session | Silver |
+| **Community Builder** | Recruit 3 new members | Gold |
+
+### 2.3 Educator Badge System
+
+| Badge | Requirements | Level |
+|-------|-------------|-------|
+| **E0 Apprentice** | Begin educator pathway | Bronze |
+| **E1 Certified** | Pass E1 certification | Silver |
+| **E2 Lead** | Pass E2 certification | Gold |
+| **E3 Expert** | Pass E3 certification | Platinum |
+| **Curriculum Creator** | Design original curriculum | Gold |
+| **Mentor Master** | Mentor 3+ educators | Gold |
+
+---
+
+## 3. Points System
+
+### 3.1 Points Design Principles
+
+| Principle | Description |
+|-----------|-------------|
+| **Activity-based** | Points for participation, not just output |
+| **Balanced** | Making, learning, sharing, and helping all earn points |
+| **Non-competitive** | Points track personal growth, not ranking |
+| **Redeemable** | Points unlock tangible benefits |
+
+### 3.2 Learner Points Rules
+
+| Activity | Points | Frequency |
+|----------|--------|-----------|
+| Attend a session | 10 | Per session |
+| Complete a project | 50 | Per project |
+| Share a project | 20 | Per share |
+| Help another learner | 15 | Per instance |
+| Present at showcase | 30 | Per event |
+| Document a failure | 25 | Per documentation |
+| Try a new tool/domain | 20 | Per new domain |
+| Write documentation | 30 | Per document |
+
+### 3.3 Educator Points Rules
+
+| Activity | Points | Frequency |
+|----------|--------|-----------|
+| Facilitate a session | 20 | Per session |
+| Design new activity | 50 | Per activity |
+| Mentor a learner | 15 | Per session |
+| Contribute to knowledge base | 30 | Per contribution |
+| Attend PD training | 20 | Per event |
+| Present at conference | 50 | Per presentation |
+
+### 3.4 Points Redemption
+
+| Points | Benefit |
+|--------|---------|
+| 100 | Priority equipment booking (1 session) |
+| 200 | Access to advanced materials |
+| 500 | Free workshop attendance |
+| 1000 | Equipment time credit |
+
+---
+
+## 4. Digital Badge Standards
+
+### 4.1 Open Badges Specification
+
+OWL badges follow the Open Badges standard (1EdTech/IMS Global), ensuring portability and verifiability:
+- Badge image with embedded metadata
+- Verifiable issuer information
+- Criteria for earning
+- Evidence of achievement
+- Expiration date (if applicable)
+
+### 4.2 Badge Metadata
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| **Name** | Badge title | "3D Print Advanced" |
+| **Description** | What this badge recognizes | "Demonstrated mastery of 3D printing..." |
+| **Criteria** | How to earn it | "Complete 5 original designs..." |
+| **Issuer** | Who issues the badge | "OWL Innovation Lab" |
+| **Evidence** | Proof of achievement | Portfolio link, project documentation |
+| **Issued date** | When earned | "2025-12-15" |
+| **Expiry** | When it expires (if applicable) | "2027-12-15" |
+
+### 4.3 Badge Example
+
+```json
+{
+  "name": "3D Print Advanced",
+  "description": "Demonstrated advanced 3D printing skills including multi-material printing, troubleshooting, and peer teaching",
+  "criteria": {
+    "narrative": "Complete 5+ original designs, troubleshoot 3 common issues, and help 3 other learners"
+  },
+  "issuer": {
+    "name": "OWL Innovation Lab",
+    "url": "https://owl-lab.org"
+  },
+  "image": "https://owl-lab.org/badges/3d-print-advanced.png"
+}
+```
+
+---
+
+## 5. Display and Recognition
+
+### 5.1 Display Platforms
+
+| Platform | Description |
+|----------|-------------|
+| **OWL profile page** | Personal achievement dashboard |
+| **Physical badge board** | Display in the space |
+| **Digital portfolio** | Portable achievement record |
+| **Social media** | Shareable badge images |
+
+### 5.2 Social Recognition
+
+| Mechanism | Description |
+|-----------|-------------|
+| **Weekly shout-outs** | Recognize new badge earners at community gatherings |
+| **Badge ceremonies** | Quarterly celebration events |
+| **Mentor recognition** | Public acknowledgment of mentoring contributions |
+| **Alumni network** | Continued recognition beyond active membership |
+
+---
+
+## 6. System Implementation
+
+### 6.1 Technical Architecture
+
+For a lightweight implementation:
+
+```text
+Implementation Options:
+├── Low-tech (Phase 1)
+│   ├── Physical badge cards
+│   ├── Spreadsheet tracking
+│   └── Wall display
+├── Mid-tech (Phase 2)
+│   ├── Simple web app
+│   ├── Database tracking
+│   └── Digital badge images
+└── High-tech (Phase 3)
+    ├── Open Badges platform (Badgr, Open Badge Factory)
+    ├── API integration
+    └── Blockchain verification (optional)
+```
+
+### 6.2 Key Features
+
+| Feature | Priority | Description |
+|---------|----------|-------------|
+| Badge issuance | Essential | Create and award badges |
+| Progress tracking | Essential | Track learner journey |
+| Portfolio export | Important | Portable achievement records |
+| Peer nomination | Nice-to-have | Community-driven recognition |
+
+### 6.3 Low-Cost Implementation
+
+| Approach | Cost | Effort |
+|----------|------|--------|
+| **Physical badges** | $1-2 per badge (printed cards) | Low |
+| **Google Forms + Sheets** | Free | Medium setup |
+| **Notion/Airtable** | Free tier | Medium setup |
+| **Badgr** | Free tier | Medium setup |
+
+---
+
+## 7. Operations Management
+
+### 7.1 Daily Operations
+
+- Review and approve badge applications weekly
+- Update points records after each session
+- Display new achievements in the space
+
+### 7.2 Quality Control
+
+- Quarterly review of badge criteria relevance
+- Annual calibration of points values
+- Collect feedback on system fairness and motivation impact
+
+### 7.3 Continuous Improvement
+
+- Survey users on badge/points satisfaction
+- Track correlation between badges and engagement
+- Retire inactive badges; create new ones based on community needs
+
+---
+
+## 8. FAQ
+
+### 8.1 Common Questions
+
+**Q: Won't points make learning feel transactional?**
+A: Points should supplement, not replace, intrinsic motivation. Keep points in the background; foreground the learning and community experience.
+
+**Q: What if someone "games" the system?**
+A: Design badges around authentic achievement. If gaming is possible, the criteria need improvement.
+
+**Q: Should badges expire?**
+A: Skill badges with safety implications should expire (1-2 years). Achievement and contribution badges can be permanent.
+
+### 8.2 Troubleshooting
+
+| Problem | Solution |
+|---------|---------|
+| Low engagement with badges | Make badges more meaningful; involve learners in design |
+| Points inflation | Recalibrate values; add new redemption options |
+| Perceived unfairness | Review criteria transparency; gather feedback |
+
+---
+
+## References
+
+1. Mozilla Foundation. *Open Badges Specification*. openbadges.org [E2]
+2. Deterding, S. et al. (2011). From Game Design Elements to Gamefulness. *MindTrek*. [E2]
+3. Abramovich, S. et al. (2013). Are Badges Useful in Education? *British Journal of Educational Technology*. [E2]
+
+> Sources pending manual verification

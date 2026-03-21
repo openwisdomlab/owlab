@@ -1,0 +1,6 @@
+{
+  "title": "M08 Supply Station",
+  "description": "Sustaining the voyage",
+  "icon": "Fuel",
+  "pages": ["index"]
+}
