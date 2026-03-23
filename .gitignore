@@ -26,6 +26,9 @@ public/_pagefind/
 # production
 /build
 
+# Node.js compile cache (v22+)
+node-compile-cache/
+
 # misc
 .DS_Store
 *.pem
