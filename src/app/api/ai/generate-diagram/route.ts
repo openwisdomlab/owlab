@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { handleApiError } from "@/lib/api-error";
 import {
   generateWithSDXL,
   generateWithFluxSchnell,
   generateWithFluxPro,
 } from "@/lib/ai/providers/replicate";
+import { applyRateLimit } from "@/lib/rate-limit";
 import { generateWithMidjourney, getMidjourneyStatus } from "@/lib/ai/providers/midjourney";
 import {
   LAB_LAYOUT_IMAGE_PROMPT,
@@ -16,18 +18,28 @@ import {
 export const runtime = "nodejs";
 export const maxDuration = 120;
 
-interface GenerateRequest {
-  prompt: string;
-  model: "sdxl" | "flux-schnell" | "flux-pro" | "midjourney";
-  type: "layout" | "concept" | "isometric";
-  width?: number;
-  height?: number;
-}
+const GenerateRequestSchema = z.object({
+  prompt: z.string().min(1).max(2000),
+  model: z.enum(["sdxl", "flux-schnell", "flux-pro", "midjourney"]),
+  type: z.enum(["layout", "concept", "isometric"]),
+  width: z.number().int().min(256).max(2048).optional(),
+  height: z.number().int().min(256).max(2048).optional(),
+});
 
 export async function POST(request: NextRequest) {
+  const rateLimited = applyRateLimit(request);
+  if (rateLimited) return rateLimited;
+
   try {
-    const body: GenerateRequest = await request.json();
-    const { prompt, model, type, width = 1024, height = 1024 } = body;
+    const body = await request.json();
+    const parsed = GenerateRequestSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Invalid input", details: parsed.error.issues },
+        { status: 400 }
+      );
+    }
+    const { prompt, model, type, width = 1024, height = 1024 } = parsed.data;
 
     // Check if API key is configured
     if (!process.env.REPLICATE_API_TOKEN && !process.env.MIDJOURNEY_API_KEY) {

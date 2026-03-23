@@ -3,8 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import { generateEmotionDesign } from "@/lib/ai/agents/emotion-design-agent";
 import { EmotionScriptSchema } from "@/lib/schemas/emotion-design";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
+  const rateLimited = applyRateLimit(request);
+  if (rateLimited) return rateLimited;
+
   try {
     const body = await request.json();
     const { emotionScript, constraints, modelKey } = body;

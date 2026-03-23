@@ -7,7 +7,8 @@ import {
   createUIMessageStreamResponse,
   generateId,
 } from "ai";
-import { z } from "zod/v4";
+import { z } from "zod";
+import { applyRateLimit } from "@/lib/rate-limit";
 import { getTextModel } from "@/lib/ai/providers";
 import {
   LAYOUT_GENERATION_PROMPT,
@@ -77,19 +78,41 @@ function createDemoStreamResponse(): Response {
 }
 
 export async function POST(request: NextRequest) {
+  const rateLimited = applyRateLimit(request);
+  if (rateLimited) return rateLimited;
+
   try {
     const body = await request.json();
+
+    const ChatInputSchema = z.object({
+      messages: z.array(z.object({
+        role: z.enum(["user", "assistant"]),
+        content: z.string().max(50000),
+      })).max(100),
+      layout: z.record(z.string(), z.unknown()),
+      modelKey: z.string().max(50).optional(),
+      discipline: z.string().max(50).optional(),
+    });
+
+    const parsed = ChatInputSchema.safeParse(body);
+    if (!parsed.success) {
+      return new Response(
+        JSON.stringify({ error: "Invalid input", details: parsed.error.issues }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const {
       messages,
       layout,
       modelKey = "claude-sonnet",
       discipline,
-    }: {
+    } = parsed.data as {
       messages: Array<{ role: "user" | "assistant"; content: string }>;
       layout: LayoutData;
       modelKey?: string;
       discipline?: Discipline;
-    } = body;
+    };
 
     // Demo mode: return a valid data stream with a static message
     if (!process.env.ANTHROPIC_API_KEY && !process.env.POE_API_KEY) {
@@ -206,9 +229,7 @@ Guidelines:
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    if (process.env.NODE_ENV === "development") {
-      console.error("Chat API error:", errorMessage);
-    }
+    console.error("Chat API error:", errorMessage);
 
     // Return error as a valid UIMessage stream so useChat can handle it
     const errorPartId = generateId();

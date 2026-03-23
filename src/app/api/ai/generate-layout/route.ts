@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ApiError, ErrorCode, handleApiError } from "@/lib/api-error";
 import { generateLayout, analyzeLayout, type LayoutData } from "@/lib/ai/agents/layout-agent";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -17,6 +18,9 @@ interface AnalyzeLayoutRequest {
 }
 
 export async function POST(request: NextRequest) {
+  const rateLimited = applyRateLimit(request);
+  if (rateLimited) return rateLimited;
+
   try {
     const body = await request.json();
     const action = request.nextUrl.searchParams.get("action") || "generate";

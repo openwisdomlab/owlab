@@ -8,6 +8,7 @@ import {
   type RecommendationResponse,
 } from "@/lib/ai/agents/recommendation-agent";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -44,6 +45,9 @@ interface BudgetTierRequest {
 }
 
 export async function POST(request: NextRequest) {
+  const rateLimited = applyRateLimit(request);
+  if (rateLimited) return rateLimited;
+
   try {
     const body = await request.json();
     const action = request.nextUrl.searchParams.get("action") || "recommend";

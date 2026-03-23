@@ -34,11 +34,11 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const CREATIVE_THEMES = [
+const CREATIVE_THEME_IDS = [
   {
     id: "default" as Emotion,
     name: "Owl",
-    description: "默认主题",
+    themeKey: "default" as const,
     icon: Palette,
     color: "#2563EB",
     bgClass: "from-blue-500/20 to-blue-600/20",
@@ -46,7 +46,7 @@ const CREATIVE_THEMES = [
   {
     id: "calm" as Emotion,
     name: "Forest",
-    description: "平静专注",
+    themeKey: "calm" as const,
     icon: Leaf,
     color: "#10B981",
     bgClass: "from-emerald-500/20 to-emerald-600/20",
@@ -54,7 +54,7 @@ const CREATIVE_THEMES = [
   {
     id: "energetic" as Emotion,
     name: "Solar",
-    description: "充沛活力",
+    themeKey: "energetic" as const,
     icon: Zap,
     color: "#F97316",
     bgClass: "from-orange-500/20 to-orange-600/20",
@@ -62,7 +62,7 @@ const CREATIVE_THEMES = [
   {
     id: "creative" as Emotion,
     name: "Nebula",
-    description: "创意灵感",
+    themeKey: "creative" as const,
     icon: Sparkles,
     color: "#A855F7",
     bgClass: "from-purple-500/20 to-purple-600/20",
@@ -75,6 +75,11 @@ export default function LabPage() {
   const locale = params.locale as string;
   const [showWizard, setShowWizard] = useState(false);
   const { emotion, setEmotion } = useEmotionStore();
+
+  const CREATIVE_THEMES = CREATIVE_THEME_IDS.map((theme) => ({
+    ...theme,
+    description: t(`themes.${theme.themeKey}`),
+  }));
 
   const modules = [
     {
@@ -139,14 +144,14 @@ export default function LabPage() {
                   <Wand2 className="w-7 h-7 text-[var(--neon-purple)]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-xl font-semibold mb-1">智能规划向导</h3>
+                  <h3 className="text-xl font-semibold mb-1">{t("smartPlanner")}</h3>
                   <p className="text-[var(--muted-foreground)]">
-                    输入面积、预算、目标定位，AI 自动生成个性化建设方案
+                    {t("smartPlannerDesc")}
                   </p>
                 </div>
               </div>
               <div className="hidden md:flex items-center gap-2 text-[var(--neon-purple)] font-medium group-hover:gap-3 transition-all">
-                <span>开始规划</span>
+                <span>{t("startPlanning")}</span>
                 <ArrowRight className="w-5 h-5" />
               </div>
             </div>
@@ -193,10 +198,10 @@ export default function LabPage() {
         <motion.div variants={itemVariants} className="glass-card p-8">
           <h2 className="text-2xl font-bold mb-2 flex items-center gap-3">
             <Palette className="w-6 h-6 text-[var(--neon-violet)]" />
-            创意氛围
+            {t("creativeAtmosphere")}
           </h2>
           <p className="text-[var(--muted-foreground)] mb-6">
-            选择一个视觉主题，为你的创作过程营造不同氛围
+            {t("creativeAtmosphereDesc")}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {CREATIVE_THEMES.map((theme) => {

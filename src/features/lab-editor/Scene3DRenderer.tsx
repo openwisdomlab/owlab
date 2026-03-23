@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Text, Line } from "@react-three/drei";
-import * as THREE from "three";
+import { Mesh, DoubleSide } from "three";
 import type { Zone3D, Light3D, Vector3 } from "@/lib/utils/3d-preview";
 
 interface Zone3DMeshProps {
@@ -13,7 +13,7 @@ interface Zone3DMeshProps {
 }
 
 function Zone3DMesh({ zone, isSelected, onSelect }: Zone3DMeshProps) {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<Mesh>(null);
 
   // Subtle hover animation
   useFrame((state) => {
@@ -36,7 +36,7 @@ function Zone3DMesh({ zone, isSelected, onSelect }: Zone3DMeshProps) {
           color={zone.color}
           transparent
           opacity={isSelected ? 0.9 : zone.opacity}
-          side={THREE.DoubleSide}
+          side={DoubleSide}
         />
       </mesh>
 

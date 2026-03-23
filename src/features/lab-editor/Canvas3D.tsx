@@ -21,7 +21,7 @@ import {
 } from "./simulations";
 import type { Zone3D, Camera3DSettings, Light3D } from "@/lib/utils/3d-preview";
 import type { ZoneData } from "@/lib/ai/agents/layout-agent";
-import * as THREE from "three";
+import { Vector3 } from "three";
 
 interface Canvas3DProps {
   zones: Zone3D[];
@@ -66,11 +66,11 @@ function WalkControls({ enabled, moveSpeed = 0.5, onExit }: WalkControlsProps) {
     up: false,
     down: false,
   });
-  const velocity = useRef(new THREE.Vector3());
-  const direction = useRef(new THREE.Vector3());
-  const forward = useRef(new THREE.Vector3());
-  const right = useRef(new THREE.Vector3());
-  const upVector = useRef(new THREE.Vector3(0, 1, 0));
+  const velocity = useRef(new Vector3());
+  const direction = useRef(new Vector3());
+  const forward = useRef(new Vector3());
+  const right = useRef(new Vector3());
+  const upVector = useRef(new Vector3(0, 1, 0));
 
   useEffect(() => {
     if (!enabled) return;
