@@ -1,0 +1,64 @@
+{
+  "discipline": "life-health",
+  "description": "Life Science & Health Laboratory Rules",
+  "descriptionZh": "生命科学与健康实验室规则",
+  "spacingOverrides": [
+    {
+      "ruleId": "sp-004",
+      "minDistanceM": 1.5,
+      "reason": "Life science BSL equipment requires wider clearance for gowned personnel",
+      "reasonZh": "生命科学BSL设备需要更宽的间距以适应穿戴防护服的人员"
+    },
+    {
+      "ruleId": "sp-008",
+      "minDistanceM": 1.8,
+      "reason": "Biological fume hoods need extra clearance for safe sample handling",
+      "reasonZh": "生物通风柜需要额外间距以确保样品安全操作"
+    }
+  ],
+  "ventilationOverrides": [
+    {
+      "zoneType": "lab",
+      "minACH": 10,
+      "exhaustRequired": true,
+      "reason": "Life science labs handle volatile reagents and biological aerosols requiring higher air changes",
+      "reasonZh": "生命科学实验室处理挥发性试剂和生物气溶胶，需要更高的换气次数"
+    },
+    {
+      "zoneType": "waste-handling",
+      "minACH": 12,
+      "exhaustRequired": true,
+      "reason": "Biological waste generates higher aerosol risk than standard chemical waste",
+      "reasonZh": "生物废物比标准化学废物产生更高的气溶胶风险"
+    }
+  ],
+  "additionalAdjacency": [
+    {
+      "id": "adj-lh-001",
+      "zoneTypeA": "lab",
+      "zoneTypeB": "biosafety",
+      "relation": "preferred_adjacent",
+      "reason": "Life science labs benefit from proximity to BSL areas for sample transfer",
+      "reasonZh": "生命科学实验室宜靠近生物安全区域以便样品转移"
+    },
+    {
+      "id": "adj-lh-002",
+      "zoneTypeA": "lab",
+      "zoneTypeB": "pcr-isolation",
+      "relation": "must_adjacent",
+      "reason": "PCR workflows require direct access from sample prep areas",
+      "reasonZh": "PCR工作流程需要从样品制备区域直接进入"
+    },
+    {
+      "id": "adj-lh-003",
+      "zoneTypeA": "changing-room",
+      "zoneTypeB": "lab",
+      "relation": "preferred_adjacent",
+      "reason": "Lab coats and PPE donning should occur near lab entry",
+      "reasonZh": "实验服和防护装备穿戴应在实验室入口附近进行"
+    }
+  ],
+  "requiredZones": ["biosafety", "waste-handling", "changing-room", "chemical-storage"],
+  "notes": "Life science labs must comply with institutional biosafety committee (IBC) protocols in addition to these rules.",
+  "notesZh": "生命科学实验室除遵守以上规则外，还须遵守机构生物安全委员会(IBC)协议。"
+}

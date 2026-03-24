@@ -4,6 +4,7 @@ import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Plus, Trash2, Move, Square, Package, X as XIcon, AlertTriangle } from "lucide-react";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
+import { ZONE_TYPES, ZONE_COLORS } from "@/lib/constants/zone-types";
 import { v4 as uuidv4 } from "uuid";
 import { formatCurrency } from "@/lib/utils/budget";
 
@@ -88,23 +89,6 @@ function checkSafetyDistances(zones: ZoneData[]): SafetyWarning[] {
   return warnings;
 }
 
-const ZONE_TYPES: ZoneData["type"][] = [
-  "compute",
-  "workspace",
-  "meeting",
-  "storage",
-  "utility",
-  "entrance",
-];
-
-const ZONE_COLORS: Record<ZoneData["type"], string> = {
-  compute: "#22d3ee",
-  workspace: "#8b5cf6",
-  meeting: "#10b981",
-  storage: "#f59e0b",
-  utility: "#6b7280",
-  entrance: "#ec4899",
-};
 
 export function FloorPlanCanvas({
   layout,

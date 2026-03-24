@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import * as THREE from "three";
 import type { Zone3D } from "@/lib/utils/3d-preview";
+import { ZONE_LIGHT_SCORES } from "@/lib/constants/zone-types";
 
 interface LightingSimulationProps {
   zones: Zone3D[];
@@ -13,15 +14,6 @@ interface LightingSimulationProps {
   opacity: number;
 }
 
-/** Light score config per zone type */
-const ZONE_LIGHT_SCORES: Record<string, { score: number; warmth: "warm" | "cool" }> = {
-  compute: { score: 0.7, warmth: "cool" },
-  workspace: { score: 0.85, warmth: "warm" },
-  meeting: { score: 0.75, warmth: "warm" },
-  storage: { score: 0.3, warmth: "cool" },
-  utility: { score: 0.4, warmth: "cool" },
-  entrance: { score: 0.6, warmth: "cool" },
-};
 
 /**
  * Lighting coverage visualization.
@@ -43,7 +35,7 @@ export function LightingSimulation({
   // Compute light fixtures: one per zone center, size proportional to zone area
   const fixtures = useMemo(() => {
     return zones.map((zone) => {
-      const { score, warmth } = ZONE_LIGHT_SCORES[zone.type] ?? {
+      const { score, warmth } = (ZONE_LIGHT_SCORES as Record<string, { score: number; warmth: "warm" | "cool" }>)[zone.type] ?? {
         score: 0.5,
         warmth: "cool" as const,
       };

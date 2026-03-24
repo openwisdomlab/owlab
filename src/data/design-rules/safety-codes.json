@@ -1,0 +1,123 @@
+[
+  {
+    "id": "safe-001",
+    "description": "Minimum exit door width",
+    "descriptionZh": "安全出口最小门宽",
+    "measureType": "exit_width",
+    "valueM": 0.81,
+    "constraint": "min",
+    "standard": "NFPA 101 §7.2.1.2",
+    "severity": "error"
+  },
+  {
+    "id": "safe-002",
+    "description": "Minimum corridor width for occupant load > 50",
+    "descriptionZh": "人员负荷大于50人时走廊最小宽度",
+    "measureType": "corridor_width",
+    "valueM": 1.12,
+    "constraint": "min",
+    "standard": "NFPA 101 §7.3.4.1",
+    "severity": "error"
+  },
+  {
+    "id": "safe-003",
+    "description": "Maximum travel distance to exit (sprinklered building)",
+    "descriptionZh": "至安全出口最大行进距离（有喷淋系统）",
+    "measureType": "travel_distance",
+    "valueM": 60,
+    "constraint": "max",
+    "standard": "NFPA 101 §7.6",
+    "severity": "error"
+  },
+  {
+    "id": "safe-004",
+    "description": "Maximum travel distance to exit (non-sprinklered building)",
+    "descriptionZh": "至安全出口最大行进距离（无喷淋系统）",
+    "measureType": "travel_distance",
+    "valueM": 45,
+    "constraint": "max",
+    "standard": "NFPA 101 §7.6",
+    "severity": "error"
+  },
+  {
+    "id": "safe-005",
+    "description": "Maximum dead-end corridor length",
+    "descriptionZh": "最大袋形走廊长度",
+    "measureType": "dead_end_corridor",
+    "valueM": 6,
+    "constraint": "max",
+    "standard": "NFPA 101 §7.5.1.5",
+    "severity": "error"
+  },
+  {
+    "id": "safe-006",
+    "description": "Minimum aisle width between equipment",
+    "descriptionZh": "设备间通道最小宽度",
+    "measureType": "aisle_width",
+    "valueM": 0.71,
+    "constraint": "min",
+    "standard": "OSHA 1910.22(b)(1)",
+    "severity": "error"
+  },
+  {
+    "id": "safe-007",
+    "description": "Maximum travel distance to fire extinguisher (Class A)",
+    "descriptionZh": "至灭火器最大行进距离（A类）",
+    "measureType": "fire_extinguisher_distance",
+    "valueM": 22.8,
+    "constraint": "max",
+    "standard": "NFPA 10 §6.2.1",
+    "severity": "error"
+  },
+  {
+    "id": "safe-008",
+    "description": "Minimum electrical panel clearance (front)",
+    "descriptionZh": "配电箱前方最小净空距离",
+    "measureType": "electrical_clearance",
+    "valueM": 0.91,
+    "constraint": "min",
+    "standard": "NEC 110.26(A)(1)",
+    "severity": "error"
+  },
+  {
+    "id": "safe-009",
+    "description": "Maximum distance to emergency eyewash station (10s travel)",
+    "descriptionZh": "至紧急洗眼器最大距离（10秒行程）",
+    "measureType": "eyewash_distance",
+    "valueM": 16.7,
+    "constraint": "max",
+    "standard": "ANSI Z358.1 §4.5.2",
+    "severity": "error"
+  },
+  {
+    "id": "safe-010",
+    "description": "Minimum number of exits for occupant load > 50",
+    "descriptionZh": "人员负荷大于50人时最少出口数量",
+    "measureType": "exit_count",
+    "valueM": null,
+    "valueCount": 2,
+    "constraint": "min",
+    "standard": "NFPA 101 §7.4.1.2",
+    "severity": "error"
+  },
+  {
+    "id": "safe-011",
+    "description": "Minimum electrical panel clearance width",
+    "descriptionZh": "配电箱前方最小净空宽度",
+    "measureType": "electrical_clearance_width",
+    "valueM": 0.76,
+    "constraint": "min",
+    "standard": "NEC 110.26(A)(2)",
+    "severity": "error"
+  },
+  {
+    "id": "safe-012",
+    "description": "Emergency exit doors must swing in direction of egress travel",
+    "descriptionZh": "安全出口门必须沿疏散方向开启",
+    "measureType": "exit_door_swing",
+    "valueM": null,
+    "constraint": "directional",
+    "standard": "NFPA 101 §7.2.1.4.2",
+    "severity": "error"
+  }
+]

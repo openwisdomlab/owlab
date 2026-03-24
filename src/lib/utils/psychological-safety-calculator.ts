@@ -12,6 +12,7 @@ import type {
   Recommendation,
 } from "@/lib/schemas/psychological-safety";
 import { DIMENSION_LABELS } from "@/lib/schemas/psychological-safety";
+import { ZONE_PSYCH_SAFETY_WEIGHTS } from "@/lib/constants/zone-types";
 
 /**
  * Default dimension weights
@@ -28,14 +29,7 @@ export const DEFAULT_DIMENSION_WEIGHTS: Record<PsychologicalSafetyDimension, num
 /**
  * Weight adjustments by zone type
  */
-export const ZONE_TYPE_WEIGHT_ADJUSTMENTS: Record<string, Partial<Record<PsychologicalSafetyDimension, number>>> = {
-  workspace: { learner: 0.25, restorative: 0.20 },
-  meeting: { contributor: 0.25, challenger: 0.20, privacy: 0.15 },
-  compute: { learner: 0.25, privacy: 0.15 },
-  entrance: { inclusion: 0.35 },
-  storage: { privacy: 0.20 },
-  utility: { privacy: 0.15 },
-};
+export const ZONE_TYPE_WEIGHT_ADJUSTMENTS = ZONE_PSYCH_SAFETY_WEIGHTS;
 
 /**
  * Get adjusted weights for a zone type

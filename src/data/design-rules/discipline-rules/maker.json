@@ -1,0 +1,125 @@
+{
+  "discipline": "maker",
+  "description": "Makerspace & Fabrication Lab Rules",
+  "descriptionZh": "制造空间与加工实验室规则",
+  "spacingOverrides": [
+    {
+      "ruleId": "sp-001",
+      "minDistanceM": 1.8,
+      "reason": "Wider corridors needed for transporting large materials and finished prototypes",
+      "reasonZh": "需要更宽的走廊以运输大型材料和成品原型"
+    },
+    {
+      "ruleId": "sp-002",
+      "minDistanceM": 1.2,
+      "reason": "Secondary aisles must accommodate material carts and equipment dollies",
+      "reasonZh": "次通道必须容纳材料推车和设备台车"
+    },
+    {
+      "ruleId": "sp-005",
+      "minDistanceM": 0.6,
+      "reason": "Machine tool zones need wider safety buffers for operator movement",
+      "reasonZh": "机床区域需要更宽的安全缓冲区以适应操作人员活动"
+    }
+  ],
+  "ventilationOverrides": [
+    {
+      "zoneType": "makerspace",
+      "minACH": 15,
+      "pressurePa": -7.5,
+      "exhaustRequired": true,
+      "reason": "CNC machining, laser cutting, and 3D printing generate significant particulate and VOCs",
+      "reasonZh": "CNC加工、激光切割和3D打印产生大量颗粒物和挥发性有机物"
+    },
+    {
+      "zoneType": "prototyping",
+      "minACH": 8,
+      "pressurePa": -2.5,
+      "exhaustRequired": true,
+      "reason": "Soldering, adhesive use, and paint spraying require local exhaust ventilation",
+      "reasonZh": "焊接、胶粘剂使用和喷漆需要局部排风"
+    }
+  ],
+  "additionalAdjacency": [
+    {
+      "id": "adj-mk-001",
+      "zoneTypeA": "makerspace",
+      "zoneTypeB": "storage",
+      "relation": "must_adjacent",
+      "reason": "Raw materials and tool storage must be directly accessible from fabrication area",
+      "reasonZh": "原材料和工具储存必须从加工区域直接可达"
+    },
+    {
+      "id": "adj-mk-002",
+      "zoneTypeA": "makerspace",
+      "zoneTypeB": "workspace",
+      "relation": "preferred_separate",
+      "reason": "Noise and dust from machining operations should not reach quiet work areas",
+      "reasonZh": "机加工操作的噪音和粉尘不应影响安静工作区域"
+    },
+    {
+      "id": "adj-mk-003",
+      "zoneTypeA": "makerspace",
+      "zoneTypeB": "meeting",
+      "relation": "must_separate",
+      "reason": "Machine noise levels (75-95 dB) exceed acceptable meeting room ambient levels",
+      "reasonZh": "机器噪音水平（75-95 dB）超过会议室可接受的环境噪音水平"
+    },
+    {
+      "id": "adj-mk-004",
+      "zoneTypeA": "prototyping",
+      "zoneTypeB": "observation",
+      "relation": "preferred_adjacent",
+      "reason": "Visitors and mentors can observe prototyping progress through sound-isolated viewing windows",
+      "reasonZh": "访客和导师可通过隔音观察窗观察原型制作进度"
+    }
+  ],
+  "additionalSpacing": [
+    {
+      "id": "sp-mk-001",
+      "description": "CNC machine safety perimeter",
+      "descriptionZh": "CNC机床安全周界",
+      "applicableTo": "makerspace",
+      "minDistanceM": 1.5,
+      "standard": "OSHA 1910.212",
+      "severity": "error"
+    },
+    {
+      "id": "sp-mk-002",
+      "description": "Laser cutter minimum wall clearance",
+      "descriptionZh": "激光切割机最小墙壁间距",
+      "applicableTo": "makerspace",
+      "minDistanceM": 0.9,
+      "standard": "ANSI Z136.1",
+      "severity": "error"
+    },
+    {
+      "id": "sp-mk-003",
+      "description": "Noise barrier minimum STC rating between makerspace and adjacent occupied zones",
+      "descriptionZh": "制造空间与相邻人员活动区域之间隔声屏障最低STC等级",
+      "applicableTo": "partition",
+      "minSTC": 50,
+      "standard": "ASTM E90",
+      "severity": "warning"
+    }
+  ],
+  "additionalSafety": [
+    {
+      "id": "safe-mk-001",
+      "description": "Dust collection system required for woodworking and CNC areas",
+      "descriptionZh": "木工和CNC区域需要配备除尘系统",
+      "standard": "NFPA 652 / OSHA 1910.1000",
+      "severity": "error"
+    },
+    {
+      "id": "safe-mk-002",
+      "description": "Emergency stop buttons within 2m reach of every machine tool",
+      "descriptionZh": "每台机床2米范围内需配备紧急停止按钮",
+      "standard": "IEC 60204-1 §10.7",
+      "severity": "error"
+    }
+  ],
+  "requiredZones": ["makerspace", "storage", "prototyping", "waste-handling"],
+  "notes": "Makerspaces must implement a dust collection system meeting NFPA 652 standards. Noise levels must be monitored; hearing protection zones should be marked at 85 dB threshold per OSHA 1910.95.",
+  "notesZh": "制造空间必须实施符合NFPA 652标准的除尘系统。噪音水平须持续监测；根据OSHA 1910.95，85 dB阈值处应标记听力保护区域。"
+}

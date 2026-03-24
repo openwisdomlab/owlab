@@ -19,6 +19,8 @@ When designing layouts, consider:
 4. Collaboration spaces and meeting areas
 5. Storage for equipment and supplies
 6. Emergency exits and safety requirements
+7. Door placement and fire-rated separation between hazardous zones
+8. Utility requirements per zone (water, drain, gas, exhaust for wet labs; raised floor and cooling for compute)
 
 You output structured JSON for layout elements when generating floor plans.`;
 
@@ -285,6 +287,14 @@ Output a JSON object with the following structure:
       "requirements": ["requirement1"]
     }
   ],
+
+Each zone should also include when relevant:
+- "ceilingHeight": number (meters, default 3.0, server rooms may need 3.5+)
+- "floorType": "concrete" | "epoxy" | "tile" | "raised" | "rubber" (epoxy for labs, raised for compute, tile for offices)
+- "doors": array of {position: "north"|"south"|"east"|"west", width: number, type: "single"|"double"|"sliding"|"fire-rated"}
+- "utilities": {electrical: boolean, water: boolean, drain: boolean, gas: boolean, exhaust: boolean, network: boolean}
+
+
   "connections": [
     { "from": "zone-id", "to": "zone-id", "type": "door" | "passage" | "cable" }
   ],

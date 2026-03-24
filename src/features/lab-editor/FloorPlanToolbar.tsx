@@ -22,6 +22,12 @@ import {
   Globe,
   Heart,
   Link2,
+  Sparkles,
+  ClipboardList,
+  HardHat,
+  CheckSquare,
+  Milestone,
+  FileBarChart,
 } from "lucide-react";
 import { COLOR_SCHEMES, ColorScheme } from "@/lib/utils/canvas";
 
@@ -67,6 +73,19 @@ interface FloorPlanToolbarProps {
   onToggleAllenCurve: () => void;
   show3DPreview: boolean;
   onToggle3DPreview: () => void;
+
+  // Copilot
+  onToggleCopilot?: () => void;
+  showCopilot?: boolean;
+
+  // Lifecycle panels
+  onShowProcurement?: () => void;
+  onShowConstruction?: () => void;
+  onShowAcceptance?: () => void;
+  onShowMilestones?: () => void;
+
+  // Visualization
+  onShowReportSuite?: () => void;
 
   // AI Design Features
   onShowParallelUniverse: () => void;
@@ -116,6 +135,13 @@ export function FloorPlanToolbar({
   onToggleAllenCurve,
   show3DPreview,
   onToggle3DPreview,
+  onToggleCopilot,
+  showCopilot,
+  onShowProcurement,
+  onShowConstruction,
+  onShowAcceptance,
+  onShowMilestones,
+  onShowReportSuite,
   onShowParallelUniverse,
   onShowEmotionDesign,
   showMeasurement,
@@ -335,6 +361,74 @@ export function FloorPlanToolbar({
         >
           <Heart className="w-4 h-4 text-[var(--neon-purple)]" />
         </button>
+
+        <div className="h-6 w-px bg-[var(--glass-border)]" />
+
+        {/* Copilot */}
+        {onToggleCopilot && (
+          <button
+            onClick={onToggleCopilot}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+              showCopilot
+                ? "bg-[var(--neon-cyan)] text-[var(--background)]"
+                : "bg-[var(--glass-bg)] hover:bg-[var(--glass-border)]"
+            }`}
+            title="Copilot"
+          >
+            <Sparkles className="w-4 h-4" />
+          </button>
+        )}
+
+        {/* Lifecycle */}
+        {onShowProcurement && (
+          <button
+            onClick={onShowProcurement}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="采购清单"
+          >
+            <ClipboardList className="w-4 h-4" />
+          </button>
+        )}
+
+        {onShowConstruction && (
+          <button
+            onClick={onShowConstruction}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="施工清单"
+          >
+            <HardHat className="w-4 h-4" />
+          </button>
+        )}
+
+        {onShowAcceptance && (
+          <button
+            onClick={onShowAcceptance}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="验收清单"
+          >
+            <CheckSquare className="w-4 h-4" />
+          </button>
+        )}
+
+        {onShowMilestones && (
+          <button
+            onClick={onShowMilestones}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="里程碑"
+          >
+            <Milestone className="w-4 h-4" />
+          </button>
+        )}
+
+        {onShowReportSuite && (
+          <button
+            onClick={onShowReportSuite}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--glass-bg)] hover:bg-[var(--glass-border)] transition-colors"
+            title="报告生成"
+          >
+            <FileBarChart className="w-4 h-4" />
+          </button>
+        )}
 
         <div className="h-6 w-px bg-[var(--glass-border)]" />
 

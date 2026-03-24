@@ -4,6 +4,7 @@
  */
 
 import { z } from "zod";
+import { ZONE_COLLABORATION_MATRIX } from "@/lib/constants/zone-types";
 
 /**
  * Collaboration intensity levels
@@ -73,58 +74,9 @@ export type AllenCurveAssessment = z.infer<typeof AllenCurveAssessmentSchema>;
 
 /**
  * Zone type collaboration matrix
- * Defines default collaboration intensity between zone types
+ * Re-exported from shared constants for backward compatibility
  */
-export const ZONE_COLLABORATION_MATRIX: Record<string, Record<string, CollaborationIntensity>> = {
-  compute: {
-    compute: "medium",
-    workspace: "high",
-    meeting: "medium",
-    storage: "low",
-    break: "low",
-    entrance: "low",
-  },
-  workspace: {
-    compute: "high",
-    workspace: "medium",
-    meeting: "high",
-    storage: "low",
-    break: "medium",
-    entrance: "medium",
-  },
-  meeting: {
-    compute: "medium",
-    workspace: "high",
-    meeting: "low",
-    storage: "low",
-    break: "medium",
-    entrance: "medium",
-  },
-  storage: {
-    compute: "low",
-    workspace: "low",
-    meeting: "low",
-    storage: "low",
-    break: "low",
-    entrance: "low",
-  },
-  break: {
-    compute: "low",
-    workspace: "medium",
-    meeting: "medium",
-    storage: "low",
-    break: "low",
-    entrance: "medium",
-  },
-  entrance: {
-    compute: "low",
-    workspace: "medium",
-    meeting: "medium",
-    storage: "low",
-    break: "medium",
-    entrance: "low",
-  },
-};
+export { ZONE_COLLABORATION_MATRIX };
 
 /**
  * Intensity labels in Chinese

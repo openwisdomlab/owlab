@@ -13,6 +13,7 @@ import {
   ArrowRight,
   LayoutTemplate,
   PenTool,
+  Wand2,
   X,
 } from "lucide-react";
 import {
@@ -171,6 +172,11 @@ export function SmartLauncher({ onStart, onSkip }: SmartLauncherProps) {
   // Handle blank canvas mode
   const handleBlankClick = useCallback(() => {
     onStart({ mode: "blank" });
+  }, [onStart]);
+
+  // Handle wizard mode
+  const handleWizardClick = useCallback(() => {
+    onStart({ mode: "wizard" });
   }, [onStart]);
 
   return (
@@ -356,6 +362,16 @@ export function SmartLauncher({ onStart, onSkip }: SmartLauncherProps) {
           >
             <PenTool className="w-4 h-4" />
             <span className="text-sm">空白画布</span>
+          </button>
+
+          <span className="text-[var(--muted-foreground)]">|</span>
+
+          <button
+            onClick={handleWizardClick}
+            className="flex items-center gap-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+          >
+            <Wand2 className="w-4 h-4" />
+            <span className="text-sm">向导模式</span>
           </button>
 
           {onSkip && (

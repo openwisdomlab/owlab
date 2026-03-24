@@ -33,6 +33,32 @@ export const EquipmentItemSchema = z.object({
   specs: z.record(z.string(), z.string()).optional(),
   tags: z.array(z.string()).default([]),
   featured: z.boolean().default(false),
+  // Physical properties (Phase 1 addition)
+  dimensions: z.object({
+    width: z.number(),
+    depth: z.number(),
+    height: z.number(),
+    unit: z.enum(["m", "cm"]).default("m"),
+  }).optional(),
+  weight: z.number().optional(), // kg
+  power: z.object({
+    watts: z.number(),
+    voltage: z.number().default(220),
+    phase: z.enum(["1", "3"]).default("1"),
+    needsUPS: z.boolean().default(false),
+  }).optional(),
+  ventilation: z.object({
+    heatOutputW: z.number().default(0),
+    requiresExhaust: z.boolean().default(false),
+    minACH: z.number().optional(),
+  }).optional(),
+  placement: z.object({
+    wallMounted: z.boolean().default(false),
+    floorMounted: z.boolean().default(true),
+    minClearanceM: z.number().default(0.5),
+    requiresFloorDrain: z.boolean().default(false),
+  }).optional(),
+  compatibleZoneTypes: z.array(z.string()).optional(),
 });
 
 export type EquipmentItem = z.infer<typeof EquipmentItemSchema>;

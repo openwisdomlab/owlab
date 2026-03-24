@@ -1,0 +1,254 @@
+[
+  {
+    "id": "adj-001",
+    "zoneTypeA": "biosafety",
+    "zoneTypeB": "break",
+    "relation": "must_separate",
+    "reason": "Biohazard areas must not be adjacent to food/rest areas",
+    "reasonZh": "生物安全区域必须与休息/饮食区域分离",
+    "standard": "CDC BMBL 6th Ed"
+  },
+  {
+    "id": "adj-002",
+    "zoneTypeA": "biosafety",
+    "zoneTypeB": "airlock",
+    "relation": "must_adjacent",
+    "reason": "BSL-2+ labs require airlock entry for containment integrity",
+    "reasonZh": "BSL-2及以上实验室需要气闸入口以保持密封完整性",
+    "standard": "CDC BMBL 6th Ed"
+  },
+  {
+    "id": "adj-003",
+    "zoneTypeA": "biosafety",
+    "zoneTypeB": "changing-room",
+    "relation": "must_adjacent",
+    "reason": "Personnel must don/doff PPE before entering biosafety zones",
+    "reasonZh": "人员进入生物安全区域前必须在更衣室穿脱防护装备",
+    "standard": "CDC BMBL 6th Ed"
+  },
+  {
+    "id": "adj-004",
+    "zoneTypeA": "chemical-storage",
+    "zoneTypeB": "break",
+    "relation": "must_separate",
+    "reason": "Chemical fumes and spill risk must be isolated from food/rest areas",
+    "reasonZh": "化学品气味和泄漏风险必须与饮食/休息区域隔离",
+    "standard": "OSHA 1910.106"
+  },
+  {
+    "id": "adj-005",
+    "zoneTypeA": "chemical-storage",
+    "zoneTypeB": "entrance",
+    "relation": "must_separate",
+    "reason": "Chemical storage must not be adjacent to main entry for emergency egress safety",
+    "reasonZh": "化学品储存区不得靠近主入口，以确保紧急疏散安全",
+    "standard": "NFPA 45 §7.3"
+  },
+  {
+    "id": "adj-006",
+    "zoneTypeA": "waste-handling",
+    "zoneTypeB": "break",
+    "relation": "must_separate",
+    "reason": "Waste handling areas must be separated from food/rest areas to prevent contamination",
+    "reasonZh": "废物处理区域必须与饮食/休息区域分离以防止污染",
+    "standard": "OSHA 1910.141"
+  },
+  {
+    "id": "adj-007",
+    "zoneTypeA": "waste-handling",
+    "zoneTypeB": "chemical-storage",
+    "relation": "preferred_adjacent",
+    "reason": "Proximity reduces hazardous material transport distance through occupied areas",
+    "reasonZh": "邻近布置可减少危险物质在人员活动区域的运输距离",
+    "standard": "NFPA 45 §7.5"
+  },
+  {
+    "id": "adj-008",
+    "zoneTypeA": "pcr-isolation",
+    "zoneTypeB": "lab",
+    "relation": "preferred_adjacent",
+    "reason": "PCR rooms benefit from proximity to general lab for sample transfer efficiency",
+    "reasonZh": "PCR隔离室宜靠近通用实验室，便于样品高效转移",
+    "standard": "WHO PCR Lab Guidelines"
+  },
+  {
+    "id": "adj-009",
+    "zoneTypeA": "clean-room",
+    "zoneTypeB": "airlock",
+    "relation": "must_adjacent",
+    "reason": "Clean rooms require airlock entry to maintain positive pressure and particle control",
+    "reasonZh": "洁净室需要气闸入口以维持正压和颗粒物控制",
+    "standard": "ISO 14644-4"
+  },
+  {
+    "id": "adj-010",
+    "zoneTypeA": "clean-room",
+    "zoneTypeB": "changing-room",
+    "relation": "must_adjacent",
+    "reason": "Gowning room must be immediately adjacent to clean room entry sequence",
+    "reasonZh": "更衣室必须紧邻洁净室入口序列",
+    "standard": "ISO 14644-5"
+  },
+  {
+    "id": "adj-011",
+    "zoneTypeA": "compute",
+    "zoneTypeB": "workspace",
+    "relation": "preferred_adjacent",
+    "reason": "Developers benefit from quick access to compute resources for testing and debugging",
+    "reasonZh": "开发人员受益于快速访问计算资源进行测试和调试",
+    "standard": "ASHRAE TC 9.9"
+  },
+  {
+    "id": "adj-012",
+    "zoneTypeA": "meeting",
+    "zoneTypeB": "workspace",
+    "relation": "preferred_adjacent",
+    "reason": "Reduces transition time between collaborative and individual work",
+    "reasonZh": "减少协作与个人工作之间的转换时间",
+    "standard": "WELL v2 Feature C06"
+  },
+  {
+    "id": "adj-013",
+    "zoneTypeA": "entrance",
+    "zoneTypeB": "workspace",
+    "relation": "preferred_adjacent",
+    "reason": "Natural wayfinding places workspace near entry for visitor orientation",
+    "reasonZh": "自然寻路设计将工作区置于入口附近，便于访客定向",
+    "standard": "ADA §4.3"
+  },
+  {
+    "id": "adj-014",
+    "zoneTypeA": "storage",
+    "zoneTypeB": "entrance",
+    "relation": "preferred_separate",
+    "reason": "Reduce unnecessary traffic through storage areas and improve security",
+    "reasonZh": "减少存储区域的不必要人员流动，提高安全性",
+    "standard": "NFPA 101 §7.1"
+  },
+  {
+    "id": "adj-015",
+    "zoneTypeA": "makerspace",
+    "zoneTypeB": "prototyping",
+    "relation": "preferred_adjacent",
+    "reason": "Iterative design benefits from proximity between fabrication and prototyping",
+    "reasonZh": "迭代设计受益于制造与原型制作的邻近布置",
+    "standard": "MIT Fab Lab Standards"
+  },
+  {
+    "id": "adj-016",
+    "zoneTypeA": "makerspace",
+    "zoneTypeB": "testing",
+    "relation": "preferred_adjacent",
+    "reason": "Quick test-iterate cycles require nearby testing facilities",
+    "reasonZh": "快速测试迭代循环需要就近的测试设施",
+    "standard": "MIT Fab Lab Standards"
+  },
+  {
+    "id": "adj-017",
+    "zoneTypeA": "lab",
+    "zoneTypeB": "chemical-storage",
+    "relation": "preferred_adjacent",
+    "reason": "Minimizes chemical transport distance and exposure risk",
+    "reasonZh": "最大限度减少化学品运输距离和暴露风险",
+    "standard": "NFPA 45 §7.3"
+  },
+  {
+    "id": "adj-018",
+    "zoneTypeA": "lab",
+    "zoneTypeB": "waste-handling",
+    "relation": "preferred_adjacent",
+    "reason": "Reduces hazardous waste transport distance through occupied corridors",
+    "reasonZh": "减少危险废物通过人员通道的运输距离",
+    "standard": "EPA 40 CFR 262"
+  },
+  {
+    "id": "adj-019",
+    "zoneTypeA": "compute",
+    "zoneTypeB": "chemical-storage",
+    "relation": "must_separate",
+    "reason": "Electronics and chemical fumes/spills are incompatible; corrosion and fire risk",
+    "reasonZh": "电子设备与化学品烟雾/泄漏不兼容，存在腐蚀和火灾风险",
+    "standard": "ASHRAE TC 9.9 / NFPA 45"
+  },
+  {
+    "id": "adj-020",
+    "zoneTypeA": "simulation",
+    "zoneTypeB": "compute",
+    "relation": "preferred_adjacent",
+    "reason": "Simulation workloads benefit from low-latency access to compute infrastructure",
+    "reasonZh": "仿真工作负载受益于对计算基础设施的低延迟访问",
+    "standard": "ASHRAE TC 9.9"
+  },
+  {
+    "id": "adj-021",
+    "zoneTypeA": "observation",
+    "zoneTypeB": "lab",
+    "relation": "preferred_adjacent",
+    "reason": "Observation rooms should have direct visual access to laboratory activities",
+    "reasonZh": "观察室应能直接观察实验室活动",
+    "standard": "SEFA 8 §3.2"
+  },
+  {
+    "id": "adj-022",
+    "zoneTypeA": "observation",
+    "zoneTypeB": "makerspace",
+    "relation": "preferred_adjacent",
+    "reason": "Allows mentors and visitors to observe maker activities without entering work zone",
+    "reasonZh": "允许导师和访客在不进入工作区的情况下观察制造活动",
+    "standard": "MIT Fab Lab Standards"
+  },
+  {
+    "id": "adj-023",
+    "zoneTypeA": "biosafety",
+    "zoneTypeB": "entrance",
+    "relation": "must_separate",
+    "reason": "Biosafety zones must not open directly to building entrance for containment",
+    "reasonZh": "生物安全区域不得直接通向建筑入口，以确保密封性",
+    "standard": "CDC BMBL 6th Ed"
+  },
+  {
+    "id": "adj-024",
+    "zoneTypeA": "clean-room",
+    "zoneTypeB": "makerspace",
+    "relation": "must_separate",
+    "reason": "Dust and particulate from makerspace operations contaminate clean room environments",
+    "reasonZh": "制造空间产生的灰尘和颗粒物会污染洁净室环境",
+    "standard": "ISO 14644-4"
+  },
+  {
+    "id": "adj-025",
+    "zoneTypeA": "utility",
+    "zoneTypeB": "compute",
+    "relation": "preferred_adjacent",
+    "reason": "Mechanical/electrical utilities should be near compute for efficient power and cooling distribution",
+    "reasonZh": "机电设施应靠近计算区域，以实现高效的电力和冷却分配",
+    "standard": "ASHRAE TC 9.9"
+  },
+  {
+    "id": "adj-026",
+    "zoneTypeA": "prototyping",
+    "zoneTypeB": "testing",
+    "relation": "preferred_adjacent",
+    "reason": "Rapid iteration requires quick transition between prototype build and test validation",
+    "reasonZh": "快速迭代需要在原型制作和测试验证之间快速转换",
+    "standard": "ISO 9001 §8.3"
+  },
+  {
+    "id": "adj-027",
+    "zoneTypeA": "waste-handling",
+    "zoneTypeB": "entrance",
+    "relation": "must_separate",
+    "reason": "Waste handling areas must not be adjacent to main entry for hygiene and safety",
+    "reasonZh": "废物处理区域不得靠近主入口，以确保卫生和安全",
+    "standard": "OSHA 1910.141"
+  },
+  {
+    "id": "adj-028",
+    "zoneTypeA": "changing-room",
+    "zoneTypeB": "airlock",
+    "relation": "preferred_adjacent",
+    "reason": "Sequential gowning-airlock entry flow improves contamination control",
+    "reasonZh": "依次的更衣-气闸入口流程有助于改善污染控制",
+    "standard": "ISO 14644-5"
+  }
+]

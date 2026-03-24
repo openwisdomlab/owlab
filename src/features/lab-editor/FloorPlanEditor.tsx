@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Copy } from "lucide-react";
@@ -28,6 +28,12 @@ import { EmotionDesignDialog } from "@/features/lab-editor/EmotionDesignDialog";
 import { QuickStatsPanel } from "@/features/lab-editor/QuickStatsPanel";
 import { SmartLauncher } from "@/features/lab-editor/SmartLauncher";
 import { AISidebar } from "@/features/lab-editor/AISidebar";
+import { LabWizard } from "@/features/lab-editor/wizard";
+import { CopilotPanel } from "@/features/lab-editor/CopilotPanel";
+import { ProcurementList, ConstructionChecklist, AcceptanceChecklist, MilestoneTracker } from "@/features/lab-editor/lifecycle";
+import { ReportSuiteGenerator } from "@/features/lab-editor/visualization/ReportSuiteGenerator";
+import { VisualizationGallery } from "@/features/lab-editor/visualization/VisualizationGallery";
+import { useWizardStore } from "@/stores/wizard-store";
 import { SimplifiedToolbar } from "@/features/lab-editor/SimplifiedToolbar";
 import type { LayoutData, ZoneData } from "@/lib/ai/agents/layout-agent";
 import type { EquipmentItem } from "@/lib/schemas/equipment";
@@ -36,8 +42,9 @@ import type { LauncherState } from "@/lib/schemas/launcher";
 import { getLayoutFromDiscipline } from "@/lib/data/discipline-templates";
 import { useHistory } from "@/hooks/useHistory";
 import { useMeasurementTools } from "@/hooks/useMeasurementTools";
-import { ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
+import { type ColorScheme, applyColorScheme } from "@/lib/utils/canvas";
 import { EMOTION_COLORS } from "@/lib/schemas/emotion-design";
+import { useEditorStore } from "@/stores/editor-store";
 
 const GRID_SIZE = 40; // matches FloorPlanCanvas GRID_SIZE
 
@@ -79,7 +86,7 @@ const defaultLayout: LayoutData = {
 export function FloorPlanEditor() {
   const t = useTranslations("lab.floorPlan");
 
-  // Layout state with undo/redo
+  // Layout state with undo/redo (kept local — layout is the core data, not UI chrome)
   const {
     state: layout,
     setState: setLayout,
@@ -89,36 +96,40 @@ export function FloorPlanEditor() {
     canRedo,
   } = useHistory<LayoutData>(defaultLayout);
 
-  // Launcher state
-  const [showLauncher, setShowLauncher] = useState(true);
-  const [showAISidebar, setShowAISidebar] = useState(false);
-  const [launcherState, setLauncherState] = useState<LauncherState | null>(null);
+  // Editor UI state from Zustand store
+  const panels = useEditorStore((s) => s.panels);
+  const openPanel = useEditorStore((s) => s.openPanel);
+  const closePanel = useEditorStore((s) => s.closePanel);
+  const togglePanel = useEditorStore((s) => s.togglePanel);
 
-  // UI state
-  const [showChat, setShowChat] = useState(false);
-  const [showExport, setShowExport] = useState(false);
-  const [showEquipment, setShowEquipment] = useState(false);
-  const [showBudget, setShowBudget] = useState(false);
-  const [showTemplates, setShowTemplates] = useState(false);
-  const [showSaveTemplate, setShowSaveTemplate] = useState(false);
-  const [showSafety, setShowSafety] = useState(false);
-  const [showPsychologicalSafety, setShowPsychologicalSafety] = useState(false);
-  const [show3DPreview, setShow3DPreview] = useState(false);
-  const [showShortcuts, setShowShortcuts] = useState(false);
-  const [showMeasurement, setShowMeasurement] = useState(false);
-  const [showAllenCurve, setShowAllenCurve] = useState(false);
-  const [hoveredLinkId, setHoveredLinkId] = useState<string | null>(null);
-  const [showParallelUniverse, setShowParallelUniverse] = useState(false);
-  const [showEmotionDesign, setShowEmotionDesign] = useState(false);
-  const [showQuickStats, setShowQuickStats] = useState(false);
-  const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
+  const launcherState = useEditorStore((s) => s.launcherState);
+  const setLauncherState = useEditorStore((s) => s.setLauncherState);
+  const hoveredLinkId = useEditorStore((s) => s.hoveredLinkId);
+  const setHoveredLinkId = useEditorStore((s) => s.setHoveredLinkId);
+  const selectedTemplate = useEditorStore((s) => s.selectedTemplate);
+  const setSelectedTemplate = useEditorStore((s) => s.setSelectedTemplate);
+  const selectedZone = useEditorStore((s) => s.selectedZone);
+  const setSelectedZone = useEditorStore((s) => s.setSelectedZone);
 
-  const [selectedZone, setSelectedZone] = useState<string | null>(null);
-  const [zoom, setZoom] = useState(1);
-  const [showGrid, setShowGrid] = useState(true);
-  const [gridSnap, setGridSnap] = useState(true);
-  const [colorScheme, setColorScheme] = useState<ColorScheme>("neon");
-  const [clipboard, setClipboard] = useState<ZoneData | null>(null);
+  const zoom = useEditorStore((s) => s.zoom);
+  const zoomIn = useEditorStore((s) => s.zoomIn);
+  const zoomOut = useEditorStore((s) => s.zoomOut);
+  const showGrid = useEditorStore((s) => s.showGrid);
+  const gridSnap = useEditorStore((s) => s.gridSnap);
+  const colorScheme = useEditorStore((s) => s.colorScheme);
+  const setColorScheme = useEditorStore((s) => s.setColorScheme);
+  const clipboard = useEditorStore((s) => s.clipboard);
+  const setClipboard = useEditorStore((s) => s.setClipboard);
+
+  const wizardActive = useWizardStore((s) => s.isActive);
+  const consumeTransferLayout = useWizardStore((s) => s.consumeTransferLayout);
+
+  useEffect(() => {
+    const transferredLayout = consumeTransferLayout();
+    if (transferredLayout) {
+      setLayout(transferredLayout);
+    }
+  }, [wizardActive, consumeTransferLayout, setLayout]);
 
   // Canvas ref for measurement positioning
   const canvasContainerRef = useRef<HTMLDivElement>(null);
@@ -160,7 +171,7 @@ export function FloorPlanEditor() {
       }));
       setSelectedZone(null);
     },
-    [setLayout]
+    [setLayout, setSelectedZone]
   );
 
   const handleLayoutFromAI = useCallback(
@@ -173,21 +184,16 @@ export function FloorPlanEditor() {
   // Launcher handlers
   const handleLauncherStart = useCallback(async (state: LauncherState) => {
     setLauncherState(state);
-    setShowLauncher(false);
+    closePanel("launcher");
 
-    // If it's a natural language input, call AI to generate layout
     if (state.mode === "chat" && state.prompt) {
-      // Open AI sidebar for further interaction
-      setShowAISidebar(true);
-
-      // Call AI to generate layout from prompt
+      openPanel("aiSidebar");
       try {
         const response = await fetch("/api/ai/generate-layout", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ requirements: state.prompt }),
         });
-
         if (response.ok) {
           const data = await response.json();
           if (data.layout) {
@@ -199,24 +205,25 @@ export function FloorPlanEditor() {
       }
     }
 
-    // If it's quick select, generate basic layout based on discipline
     if (state.mode === "quick" && state.discipline) {
       const newLayout = getLayoutFromDiscipline(state.discipline);
       setLayout(newLayout);
-      setShowAISidebar(true);
+      openPanel("aiSidebar");
     }
 
-    // If it's template mode, open template library
     if (state.mode === "template") {
-      setShowTemplates(true);
+      openPanel("templates");
     }
 
-    // Blank mode - just start with empty canvas (already default)
-  }, [setLayout]);
+    // Wizard mode - launch the step-by-step wizard
+    if (state.mode === "wizard") {
+      useWizardStore.getState().startWizard();
+    }
+  }, [setLayout, setLauncherState, closePanel, openPanel]);
 
   const handleLauncherSkip = useCallback(() => {
-    setShowLauncher(false);
-  }, []);
+    closePanel("launcher");
+  }, [closePanel]);
 
   // Copy/Paste operations
   const handleCopyZone = useCallback(() => {
@@ -225,7 +232,7 @@ export function FloorPlanEditor() {
     if (zone) {
       setClipboard(zone);
     }
-  }, [selectedZone, layout.zones]);
+  }, [selectedZone, layout.zones, setClipboard]);
 
   const handlePasteZone = useCallback(() => {
     if (!clipboard) return;
@@ -240,7 +247,7 @@ export function FloorPlanEditor() {
     };
     handleAddZone(newZone);
     setSelectedZone(newZone.id);
-  }, [clipboard, handleAddZone]);
+  }, [clipboard, handleAddZone, setSelectedZone]);
 
   // Equipment operations
   const handleAddEquipment = useCallback(
@@ -274,15 +281,15 @@ export function FloorPlanEditor() {
   // Template operations
   const handleSelectTemplate = useCallback((template: Template) => {
     setSelectedTemplate(template);
-  }, []);
+  }, [setSelectedTemplate]);
 
   const handleUseTemplate = useCallback(
     (template: Template) => {
       setLayout(template.layout);
-      setShowTemplates(false);
+      closePanel("templates");
       setSelectedTemplate(null);
     },
-    [setLayout]
+    [setLayout, closePanel, setSelectedTemplate]
   );
 
   const handleSaveTemplate = useCallback((template: Template) => {
@@ -308,18 +315,16 @@ export function FloorPlanEditor() {
         zones: applyColorScheme(prev.zones, scheme),
       }));
     },
-    [setLayout]
+    [setLayout, setColorScheme]
   );
 
   // Toggle measurement mode
   const toggleMeasurement = useCallback(() => {
-    setShowMeasurement((prev) => {
-      if (prev) {
-        measurement.cancelMeasurement();
-      }
-      return !prev;
-    });
-  }, [measurement]);
+    if (panels.measurement) {
+      measurement.cancelMeasurement();
+    }
+    togglePanel("measurement");
+  }, [measurement, panels.measurement, togglePanel]);
 
   // Consolidated keyboard shortcuts handler
   useEffect(() => {
@@ -358,7 +363,7 @@ export function FloorPlanEditor() {
             return;
           case "s":
             e.preventDefault();
-            setShowSaveTemplate(true);
+            openPanel("saveTemplate");
             return;
         }
       }
@@ -369,12 +374,12 @@ export function FloorPlanEditor() {
         case "/":
           if (e.key === "/" && !e.shiftKey) return;
           e.preventDefault();
-          setShowShortcuts(true);
+          openPanel("shortcuts");
           break;
         case "g":
         case "G":
           e.preventDefault();
-          setShowGrid((prev) => !prev);
+          useEditorStore.getState().toggleGrid();
           break;
         case "m":
         case "M":
@@ -384,17 +389,17 @@ export function FloorPlanEditor() {
         case "p":
         case "P":
           e.preventDefault();
-          setShowParallelUniverse(true);
+          openPanel("parallelUniverse");
           break;
         case "e":
         case "E":
           e.preventDefault();
-          setShowEmotionDesign(true);
+          openPanel("emotionDesign");
           break;
         case "q":
         case "Q":
           e.preventDefault();
-          setShowQuickStats((prev) => !prev);
+          togglePanel("quickStats");
           break;
         case "Delete":
         case "Backspace":
@@ -404,7 +409,7 @@ export function FloorPlanEditor() {
           }
           break;
         case "Escape":
-          setShowShortcuts(false);
+          closePanel("shortcuts");
           if (measurement.isActive) {
             measurement.cancelMeasurement();
           }
@@ -426,6 +431,9 @@ export function FloorPlanEditor() {
     handleDeleteZone,
     toggleMeasurement,
     measurement,
+    openPanel,
+    closePanel,
+    togglePanel,
   ]);
 
   // Handle measurement click
@@ -439,8 +447,17 @@ export function FloorPlanEditor() {
     [zoom, measurement]
   );
 
+  // Show wizard if active
+  if (wizardActive) {
+    return (
+      <div className="h-[calc(100vh-4rem)]">
+        <LabWizard />
+      </div>
+    );
+  }
+
   // Show launcher if not dismissed
-  if (showLauncher) {
+  if (panels.launcher) {
     return (
       <SmartLauncher
         onStart={handleLauncherStart}
@@ -457,13 +474,12 @@ export function FloorPlanEditor() {
         showGrid={showGrid}
         canUndo={canUndo}
         canRedo={canRedo}
-        onZoomIn={() => setZoom((z) => Math.min(2, z + 0.1))}
-        onZoomOut={() => setZoom((z) => Math.max(0.5, z - 0.1))}
-        onToggleGrid={() => setShowGrid(!showGrid)}
+        onZoomIn={zoomIn}
+        onZoomOut={zoomOut}
+        onToggleGrid={() => useEditorStore.getState().toggleGrid()}
         onUndo={undo}
         onRedo={redo}
         onAddZone={() => {
-          // Add a new zone at center
           const newZone: ZoneData = {
             id: uuidv4(),
             name: "New Zone",
@@ -475,11 +491,11 @@ export function FloorPlanEditor() {
           };
           handleAddZone(newZone);
         }}
-        onSave={() => setShowSaveTemplate(true)}
-        onExport={() => setShowExport(true)}
-        onPreview3D={() => setShow3DPreview(!show3DPreview)}
-        onToggleAI={() => setShowAISidebar(!showAISidebar)}
-        onMoreOptions={() => setShowShortcuts(true)}
+        onSave={() => openPanel("saveTemplate")}
+        onExport={() => openPanel("export")}
+        onPreview3D={() => togglePanel("preview3D")}
+        onToggleAI={() => togglePanel("aiSidebar")}
+        onMoreOptions={() => openPanel("shortcuts")}
       />
 
       {/* Original Toolbar - Keep as backup/advanced mode */}
@@ -490,37 +506,44 @@ export function FloorPlanEditor() {
         onUndo={undo}
         onRedo={redo}
         zoom={zoom}
-        onZoomIn={() => setZoom((z) => Math.min(2, z + 0.1))}
-        onZoomOut={() => setZoom((z) => Math.max(0.5, z - 0.1))}
+        onZoomIn={zoomIn}
+        onZoomOut={zoomOut}
         showGrid={showGrid}
-        onToggleGrid={() => setShowGrid(!showGrid)}
+        onToggleGrid={() => useEditorStore.getState().toggleGrid()}
         gridSnap={gridSnap}
-        onToggleGridSnap={() => setGridSnap(!gridSnap)}
+        onToggleGridSnap={() => useEditorStore.getState().toggleGridSnap()}
         colorScheme={colorScheme}
         onColorSchemeChange={handleChangeColorScheme}
-        showTemplates={showTemplates}
-        onToggleTemplates={() => setShowTemplates(!showTemplates)}
-        showEquipment={showEquipment}
-        onToggleEquipment={() => setShowEquipment(!showEquipment)}
-        showBudget={showBudget}
-        onToggleBudget={() => setShowBudget(!showBudget)}
-        showChat={showChat}
-        onToggleChat={() => setShowChat(!showChat)}
-        showSafety={showSafety}
-        onToggleSafety={() => setShowSafety(!showSafety)}
-        showPsychologicalSafety={showPsychologicalSafety}
-        onTogglePsychologicalSafety={() => setShowPsychologicalSafety(!showPsychologicalSafety)}
-        showAllenCurve={showAllenCurve}
-        onToggleAllenCurve={() => setShowAllenCurve(!showAllenCurve)}
-        show3DPreview={show3DPreview}
-        onToggle3DPreview={() => setShow3DPreview(!show3DPreview)}
-        onShowParallelUniverse={() => setShowParallelUniverse(true)}
-        onShowEmotionDesign={() => setShowEmotionDesign(true)}
-        showMeasurement={showMeasurement}
+        showTemplates={panels.templates}
+        onToggleTemplates={() => togglePanel("templates")}
+        showEquipment={panels.equipment}
+        onToggleEquipment={() => togglePanel("equipment")}
+        showBudget={panels.budget}
+        onToggleBudget={() => togglePanel("budget")}
+        showChat={panels.chat}
+        onToggleChat={() => togglePanel("chat")}
+        showSafety={panels.safety}
+        onToggleSafety={() => togglePanel("safety")}
+        showPsychologicalSafety={panels.psychologicalSafety}
+        onTogglePsychologicalSafety={() => togglePanel("psychologicalSafety")}
+        showAllenCurve={panels.allenCurve}
+        onToggleAllenCurve={() => togglePanel("allenCurve")}
+        show3DPreview={panels.preview3D}
+        onToggle3DPreview={() => togglePanel("preview3D")}
+        onShowParallelUniverse={() => openPanel("parallelUniverse")}
+        onShowEmotionDesign={() => openPanel("emotionDesign")}
+        showCopilot={panels.copilot}
+        onToggleCopilot={() => togglePanel("copilot")}
+        onShowProcurement={() => openPanel("procurement")}
+        onShowConstruction={() => openPanel("construction")}
+        onShowAcceptance={() => openPanel("acceptance")}
+        onShowMilestones={() => openPanel("milestones")}
+        onShowReportSuite={() => openPanel("reportSuite")}
+        showMeasurement={panels.measurement}
         onToggleMeasurement={toggleMeasurement}
-        onShowShortcuts={() => setShowShortcuts(true)}
-        onSave={() => setShowSaveTemplate(true)}
-        onExport={() => setShowExport(true)}
+        onShowShortcuts={() => openPanel("shortcuts")}
+        onSave={() => openPanel("saveTemplate")}
+        onExport={() => openPanel("export")}
         title={t("title")}
       />
 
@@ -540,7 +563,7 @@ export function FloorPlanEditor() {
           />
 
           {/* Allen Curve Overlay */}
-          {showAllenCurve && (
+          {panels.allenCurve && (
             <AllenCurveOverlay
               layout={layout}
               assessments={assessAllenCurve(layout).links}
@@ -553,7 +576,7 @@ export function FloorPlanEditor() {
           )}
 
           {/* Measurement Toolbar */}
-          {showMeasurement && (
+          {panels.measurement && (
             <MeasurementToolbar
               mode={measurement.mode}
               onModeChange={measurement.startMeasurement}
@@ -565,7 +588,7 @@ export function FloorPlanEditor() {
           )}
 
           {/* Measurement Click Overlay */}
-          {showMeasurement && measurement.mode && (
+          {panels.measurement && measurement.mode && (
             <div
               className="absolute inset-0 z-20"
               style={{ cursor: "crosshair" }}
@@ -574,7 +597,7 @@ export function FloorPlanEditor() {
           )}
 
           {/* Measurement Overlay */}
-          {showMeasurement && (measurement.points.length > 0 || measurement.history.length > 0) && (
+          {panels.measurement && (measurement.points.length > 0 || measurement.history.length > 0) && (
             <div className="absolute inset-0 pointer-events-none">
               <MeasurementOverlay
                 currentPoints={measurement.points}
@@ -597,10 +620,21 @@ export function FloorPlanEditor() {
 
           {/* Quick Stats Panel */}
           <AnimatePresence>
-            {showQuickStats && (
+            {panels.quickStats && (
               <QuickStatsPanel
                 layout={layout}
-                onClose={() => setShowQuickStats(false)}
+                onClose={() => closePanel("quickStats")}
+              />
+            )}
+          </AnimatePresence>
+
+          {/* Copilot Panel */}
+          <AnimatePresence>
+            {panels.copilot && (
+              <CopilotPanel
+                layout={layout}
+                onClose={() => closePanel("copilot")}
+                onApplyFix={(zoneId, updates) => handleZoneUpdate(zoneId, updates)}
               />
             )}
           </AnimatePresence>
@@ -608,7 +642,7 @@ export function FloorPlanEditor() {
 
         {/* Side Panels */}
         <AnimatePresence mode="wait">
-          {showTemplates && (
+          {panels.templates && (
             <motion.div
               key="templates"
               initial={{ x: 400, opacity: 0 }}
@@ -618,12 +652,12 @@ export function FloorPlanEditor() {
             >
               <TemplateGallery
                 onSelectTemplate={handleSelectTemplate}
-                onClose={() => setShowTemplates(false)}
+                onClose={() => closePanel("templates")}
               />
             </motion.div>
           )}
 
-          {showEquipment && (
+          {panels.equipment && (
             <motion.div
               key="equipment"
               initial={{ x: 400, opacity: 0 }}
@@ -633,12 +667,12 @@ export function FloorPlanEditor() {
             >
               <EquipmentLibrary
                 onAddEquipment={handleAddEquipment}
-                onClose={() => setShowEquipment(false)}
+                onClose={() => closePanel("equipment")}
               />
             </motion.div>
           )}
 
-          {showBudget && (
+          {panels.budget && (
             <motion.div
               key="budget"
               initial={{ x: 400, opacity: 0 }}
@@ -648,12 +682,12 @@ export function FloorPlanEditor() {
             >
               <BudgetDashboard
                 layout={layout}
-                onClose={() => setShowBudget(false)}
+                onClose={() => closePanel("budget")}
               />
             </motion.div>
           )}
 
-          {showChat && (
+          {panels.chat && (
             <motion.div
               key="chat"
               initial={{ x: 400, opacity: 0 }}
@@ -664,14 +698,14 @@ export function FloorPlanEditor() {
               <AIChatPanel
                 layout={layout}
                 onLayoutUpdate={handleLayoutFromAI}
-                onClose={() => setShowChat(false)}
+                onClose={() => closePanel("chat")}
               />
             </motion.div>
           )}
 
           {/* Note: AISidebar is rendered outside AnimatePresence as it manages its own animations */}
 
-          {showSafety && (
+          {panels.safety && (
             <motion.div
               key="safety"
               initial={{ x: 400, opacity: 0 }}
@@ -681,12 +715,12 @@ export function FloorPlanEditor() {
             >
               <SafetyPanel
                 layout={layout}
-                onClose={() => setShowSafety(false)}
+                onClose={() => closePanel("safety")}
               />
             </motion.div>
           )}
 
-          {showPsychologicalSafety && (
+          {panels.psychologicalSafety && (
             <motion.div
               key="psychological-safety"
               initial={{ x: 400, opacity: 0 }}
@@ -696,13 +730,13 @@ export function FloorPlanEditor() {
             >
               <PsychologicalSafetyPanel
                 layout={layout}
-                onClose={() => setShowPsychologicalSafety(false)}
+                onClose={() => closePanel("psychologicalSafety")}
                 onZoneSelect={(zoneId) => setSelectedZone(zoneId)}
               />
             </motion.div>
           )}
 
-          {showAllenCurve && (
+          {panels.allenCurve && (
             <motion.div
               key="allen-curve"
               initial={{ x: 400, opacity: 0 }}
@@ -712,14 +746,14 @@ export function FloorPlanEditor() {
             >
               <AllenCurvePanel
                 layout={layout}
-                onClose={() => setShowAllenCurve(false)}
+                onClose={() => closePanel("allenCurve")}
                 onZoneSelect={(zoneId) => setSelectedZone(zoneId)}
                 onLinkHover={setHoveredLinkId}
               />
             </motion.div>
           )}
 
-          {show3DPreview && (
+          {panels.preview3D && (
             <motion.div
               key="3d-preview"
               initial={{ x: 400, opacity: 0 }}
@@ -729,8 +763,36 @@ export function FloorPlanEditor() {
             >
               <Preview3D
                 layout={layout}
-                onClose={() => setShow3DPreview(false)}
+                onClose={() => closePanel("preview3D")}
               />
+            </motion.div>
+          )}
+
+          {panels.procurement && (
+            <motion.div key="procurement" initial={{ x: 400, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 400, opacity: 0 }}
+              className="w-[420px] border-l border-[var(--glass-border)] bg-[var(--background)]">
+              <ProcurementList layout={layout} onClose={() => closePanel("procurement")} />
+            </motion.div>
+          )}
+
+          {panels.construction && (
+            <motion.div key="construction" initial={{ x: 400, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 400, opacity: 0 }}
+              className="w-[420px] border-l border-[var(--glass-border)] bg-[var(--background)]">
+              <ConstructionChecklist layout={layout} onClose={() => closePanel("construction")} />
+            </motion.div>
+          )}
+
+          {panels.acceptance && (
+            <motion.div key="acceptance" initial={{ x: 400, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 400, opacity: 0 }}
+              className="w-[420px] border-l border-[var(--glass-border)] bg-[var(--background)]">
+              <AcceptanceChecklist layout={layout} onClose={() => closePanel("acceptance")} />
+            </motion.div>
+          )}
+
+          {panels.milestones && (
+            <motion.div key="milestones" initial={{ x: 400, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 400, opacity: 0 }}
+              className="w-[420px] border-l border-[var(--glass-border)] bg-[var(--background)]">
+              <MilestoneTracker onClose={() => closePanel("milestones")} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -740,22 +802,22 @@ export function FloorPlanEditor() {
       <AISidebar
         layout={layout}
         onLayoutUpdate={handleLayoutFromAI}
-        isOpen={showAISidebar}
-        onToggle={() => setShowAISidebar(!showAISidebar)}
+        isOpen={panels.aiSidebar}
+        onToggle={() => togglePanel("aiSidebar")}
         discipline={launcherState?.discipline}
       />
 
       {/* Modals/Dialogs */}
       <AnimatePresence>
-        {showExport && (
-          <ExportDialog layout={layout} onClose={() => setShowExport(false)} />
+        {panels.export && (
+          <ExportDialog layout={layout} onClose={() => closePanel("export")} />
         )}
 
-        {showSaveTemplate && (
+        {panels.saveTemplate && (
           <SaveTemplateDialog
             layout={layout}
             onSave={handleSaveTemplate}
-            onClose={() => setShowSaveTemplate(false)}
+            onClose={() => closePanel("saveTemplate")}
           />
         )}
 
@@ -767,17 +829,17 @@ export function FloorPlanEditor() {
           />
         )}
 
-        {showShortcuts && (
-          <KeyboardShortcutsDialog onClose={() => setShowShortcuts(false)} />
+        {panels.shortcuts && (
+          <KeyboardShortcutsDialog onClose={() => closePanel("shortcuts")} />
         )}
 
-        {showParallelUniverse && (
-          <ParallelUniverseDialog onClose={() => setShowParallelUniverse(false)} />
+        {panels.parallelUniverse && (
+          <ParallelUniverseDialog onClose={() => closePanel("parallelUniverse")} />
         )}
 
-        {showEmotionDesign && (
+        {panels.emotionDesign && (
           <EmotionDesignDialog
-            onClose={() => setShowEmotionDesign(false)}
+            onClose={() => closePanel("emotionDesign")}
             onApplyResult={(result) => {
               // Apply the recommended zones from emotion design
               if (result.suggestedZones && result.suggestedZones.length > 0) {
@@ -801,6 +863,14 @@ export function FloorPlanEditor() {
           />
         )}
       </AnimatePresence>
+
+      {panels.reportSuite && (
+        <ReportSuiteGenerator layout={layout} onClose={() => closePanel("reportSuite")} />
+      )}
+
+      {panels.gallery && (
+        <VisualizationGallery images={[]} onClose={() => closePanel("gallery")} />
+      )}
     </div>
   );
 }

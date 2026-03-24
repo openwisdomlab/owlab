@@ -1,0 +1,92 @@
+{
+  "discipline": "ai-ml",
+  "description": "AI/ML Laboratory Rules",
+  "descriptionZh": "人工智能/机器学习实验室规则",
+  "spacingOverrides": [
+    {
+      "ruleId": "sp-003",
+      "minDistanceM": 1.2,
+      "reason": "GPU server racks generate more heat; wider clearance improves airflow",
+      "reasonZh": "GPU服务器机柜产生更多热量，更宽的间距改善气流"
+    },
+    {
+      "ruleId": "sp-009",
+      "minDistanceM": 1.2,
+      "reason": "High-density GPU racks require extra front clearance for hot-swap maintenance",
+      "reasonZh": "高密度GPU机柜需要额外的前方间距用于热插拔维护"
+    },
+    {
+      "ruleId": "sp-010",
+      "minDistanceM": 1.0,
+      "reason": "Dense cabling for GPU clusters requires wider rear access for cable management",
+      "reasonZh": "GPU集群的密集布线需要更宽的后方通道进行线缆管理"
+    }
+  ],
+  "ventilationOverrides": [
+    {
+      "zoneType": "compute",
+      "minACH": 25,
+      "pressurePa": 5.0,
+      "exhaustRequired": false,
+      "reason": "GPU clusters (30-70 kW/rack) require significantly higher cooling capacity",
+      "reasonZh": "GPU集群（30-70 kW/机柜）需要显著更高的冷却能力"
+    },
+    {
+      "zoneType": "workspace",
+      "minACH": 6,
+      "pressurePa": 0,
+      "exhaustRequired": false,
+      "reason": "Adjacent workspace absorbs residual heat from compute zones",
+      "reasonZh": "相邻工作区会吸收计算区域的余热"
+    }
+  ],
+  "additionalAdjacency": [
+    {
+      "id": "adj-ai-001",
+      "zoneTypeA": "compute",
+      "zoneTypeB": "utility",
+      "relation": "must_adjacent",
+      "reason": "High-power GPU clusters need direct access to electrical and cooling infrastructure",
+      "reasonZh": "高功率GPU集群需要直接连接电力和冷却基础设施"
+    },
+    {
+      "id": "adj-ai-002",
+      "zoneTypeA": "compute",
+      "zoneTypeB": "simulation",
+      "relation": "must_adjacent",
+      "reason": "AI/ML simulation workloads require minimal latency to GPU compute",
+      "reasonZh": "AI/ML仿真工作负载需要与GPU计算资源的最低延迟"
+    },
+    {
+      "id": "adj-ai-003",
+      "zoneTypeA": "workspace",
+      "zoneTypeB": "meeting",
+      "relation": "preferred_adjacent",
+      "reason": "ML research teams require frequent whiteboard sessions for model architecture review",
+      "reasonZh": "ML研究团队需要频繁的白板讨论进行模型架构评审"
+    }
+  ],
+  "additionalSpacing": [
+    {
+      "id": "sp-ai-001",
+      "description": "Minimum floor loading capacity for GPU rack zones",
+      "descriptionZh": "GPU机柜区域最小地板承载能力",
+      "applicableTo": "compute",
+      "minLoadKgM2": 1200,
+      "standard": "ASHRAE TC 9.9",
+      "severity": "error"
+    },
+    {
+      "id": "sp-ai-002",
+      "description": "Hot aisle containment minimum ceiling height",
+      "descriptionZh": "热通道封闭最小天花板高度",
+      "applicableTo": "compute",
+      "minHeightM": 2.7,
+      "standard": "ASHRAE TC 9.9",
+      "severity": "warning"
+    }
+  ],
+  "requiredZones": ["compute", "utility", "workspace"],
+  "notes": "AI/ML labs with GPU clusters exceeding 20 kW per rack should implement hot/cold aisle containment. Consider liquid cooling for densities above 40 kW per rack.",
+  "notesZh": "GPU集群超过20 kW/机柜的AI/ML实验室应实施冷热通道封闭。密度超过40 kW/机柜时应考虑液冷方案。"
+}

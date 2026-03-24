@@ -3,6 +3,7 @@ import { generateText } from "ai";
 import { getTextModel } from "../providers";
 import { z } from "zod";
 import type { LayoutData } from "./layout-agent";
+import { ZONE_TYPES } from "@/lib/constants/zone-types";
 
 export const PARALLEL_UNIVERSE_SYSTEM_PROMPT = `你是一个空间设计专家，擅长探索设计的多种可能性。
 
@@ -29,7 +30,7 @@ export const UniverseVariantSchema = z.object({
     zones: z.array(z.object({
       id: z.string(),
       name: z.string(),
-      type: z.enum(["compute", "workspace", "meeting", "storage", "utility", "entrance"]),
+      type: z.enum(ZONE_TYPES),
       position: z.object({ x: z.number(), y: z.number() }),
       size: z.object({ width: z.number(), height: z.number() }),
       color: z.string(),

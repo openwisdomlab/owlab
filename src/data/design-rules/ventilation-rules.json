@@ -1,0 +1,110 @@
+[
+  {
+    "id": "vent-001",
+    "zoneType": "biosafety",
+    "minACH": 12,
+    "pressurePa": -12.5,
+    "hepaClass": "H14",
+    "exhaustRequired": true,
+    "fumeHoodRequired": false,
+    "description": "BSL-2 biosafety lab ventilation — negative pressure, 100% exhaust, HEPA filtered",
+    "descriptionZh": "BSL-2 生物安全实验室通风要求——负压，100%排风，HEPA过滤",
+    "standard": "CDC BMBL 6th Ed §III"
+  },
+  {
+    "id": "vent-002",
+    "zoneType": "pcr-isolation",
+    "minACH": 15,
+    "pressurePa": 12.5,
+    "hepaClass": "H13",
+    "exhaustRequired": true,
+    "fumeHoodRequired": false,
+    "description": "PCR clean room positive pressure to prevent template contamination",
+    "descriptionZh": "PCR洁净室正压防止模板污染",
+    "standard": "WHO PCR Lab Guidelines"
+  },
+  {
+    "id": "vent-003",
+    "zoneType": "clean-room",
+    "minACH": 60,
+    "pressurePa": 12.5,
+    "hepaClass": "H14",
+    "exhaustRequired": false,
+    "fumeHoodRequired": false,
+    "description": "ISO 7 clean room — positive pressure, HEPA ceiling coverage, 60+ ACH",
+    "descriptionZh": "ISO 7 洁净室——正压，HEPA天花板覆盖，60+次/小时换气",
+    "standard": "ISO 14644-3"
+  },
+  {
+    "id": "vent-004",
+    "zoneType": "chemical-storage",
+    "minACH": 6,
+    "pressurePa": -5.0,
+    "hepaClass": null,
+    "exhaustRequired": true,
+    "fumeHoodRequired": false,
+    "description": "Chemical storage ventilation — negative pressure, continuous exhaust at floor level",
+    "descriptionZh": "化学品储存通风——负压，地面排风持续运行",
+    "standard": "NFPA 45 §7.4"
+  },
+  {
+    "id": "vent-005",
+    "zoneType": "waste-handling",
+    "minACH": 10,
+    "pressurePa": -7.5,
+    "hepaClass": null,
+    "exhaustRequired": true,
+    "fumeHoodRequired": false,
+    "description": "Waste handling area ventilation — negative pressure to contain odors and aerosols",
+    "descriptionZh": "废物处理区通风——负压以控制气味和气溶胶",
+    "standard": "OSHA 1910.141 / EPA Guidelines"
+  },
+  {
+    "id": "vent-006",
+    "zoneType": "lab",
+    "minACH": 8,
+    "pressurePa": -2.5,
+    "hepaClass": null,
+    "exhaustRequired": true,
+    "fumeHoodRequired": true,
+    "description": "General laboratory ventilation — slight negative pressure, fume hoods required",
+    "descriptionZh": "通用实验室通风——微负压，需配备通风柜",
+    "standard": "ANSI Z9.5 / ASHRAE 62.1"
+  },
+  {
+    "id": "vent-007",
+    "zoneType": "compute",
+    "minACH": 15,
+    "pressurePa": 2.5,
+    "hepaClass": null,
+    "exhaustRequired": false,
+    "fumeHoodRequired": false,
+    "description": "Server/compute room — positive pressure to exclude dust, high ACH for heat removal",
+    "descriptionZh": "服务器/计算室——正压防尘，高换气次数用于散热",
+    "standard": "ASHRAE TC 9.9 §5.1"
+  },
+  {
+    "id": "vent-008",
+    "zoneType": "workspace",
+    "minACH": 4,
+    "pressurePa": 0,
+    "hepaClass": null,
+    "exhaustRequired": false,
+    "fumeHoodRequired": false,
+    "description": "Office/workspace standard ventilation per ASHRAE comfort guidelines",
+    "descriptionZh": "办公/工作区标准通风，按ASHRAE舒适性指南",
+    "standard": "ASHRAE 62.1 §6.2"
+  },
+  {
+    "id": "vent-009",
+    "zoneType": "makerspace",
+    "minACH": 10,
+    "pressurePa": -5.0,
+    "hepaClass": null,
+    "exhaustRequired": true,
+    "fumeHoodRequired": false,
+    "description": "Makerspace ventilation — negative pressure, local exhaust for dust, fumes from soldering/cutting",
+    "descriptionZh": "制造空间通风——负压，局部排风处理粉尘、焊接/切割烟气",
+    "standard": "OSHA 1910.1000 / ACGIH TLV"
+  }
+]

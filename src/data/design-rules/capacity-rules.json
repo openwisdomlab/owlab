@@ -1,0 +1,172 @@
+[
+  {
+    "id": "cap-001",
+    "zoneType": "compute",
+    "minAreaPerPersonM2": 10,
+    "maxOccupancy": 5,
+    "description": "Server room capacity",
+    "descriptionZh": "服务器机房容量",
+    "standard": "ASHRAE TC 9.9"
+  },
+  {
+    "id": "cap-002",
+    "zoneType": "workspace",
+    "minAreaPerPersonM2": 4.5,
+    "description": "Workspace capacity",
+    "descriptionZh": "工作区容量",
+    "standard": "OSHA 1910.22"
+  },
+  {
+    "id": "cap-003",
+    "zoneType": "meeting",
+    "minAreaPerPersonM2": 2.0,
+    "description": "Meeting room capacity",
+    "descriptionZh": "会议室容量",
+    "standard": "IBC 1004.1"
+  },
+  {
+    "id": "cap-004",
+    "zoneType": "storage",
+    "minAreaPerPersonM2": 20,
+    "maxOccupancy": 3,
+    "description": "Storage room capacity",
+    "descriptionZh": "储存室容量",
+    "standard": "OSHA 1910.176"
+  },
+  {
+    "id": "cap-005",
+    "zoneType": "utility",
+    "minAreaPerPersonM2": 15,
+    "maxOccupancy": 2,
+    "description": "Utility room capacity",
+    "descriptionZh": "设备间容量",
+    "standard": "NFPA 70"
+  },
+  {
+    "id": "cap-006",
+    "zoneType": "entrance",
+    "minAreaPerPersonM2": 3.0,
+    "description": "Entrance/lobby capacity",
+    "descriptionZh": "入口大厅容量",
+    "standard": "IBC 1005.1"
+  },
+  {
+    "id": "cap-007",
+    "zoneType": "lab",
+    "minAreaPerPersonM2": 6.0,
+    "description": "General lab capacity",
+    "descriptionZh": "普通实验室容量",
+    "standard": "ANSI Z9.5"
+  },
+  {
+    "id": "cap-008",
+    "zoneType": "biosafety",
+    "minAreaPerPersonM2": 8.0,
+    "maxOccupancy": 4,
+    "description": "Biosafety lab capacity",
+    "descriptionZh": "生物安全实验室容量",
+    "standard": "CDC/NIH BMBL"
+  },
+  {
+    "id": "cap-009",
+    "zoneType": "pcr-isolation",
+    "minAreaPerPersonM2": 10,
+    "maxOccupancy": 2,
+    "description": "PCR isolation room capacity",
+    "descriptionZh": "PCR隔离室容量",
+    "standard": "ISO 14644"
+  },
+  {
+    "id": "cap-010",
+    "zoneType": "clean-room",
+    "minAreaPerPersonM2": 8.0,
+    "maxOccupancy": 4,
+    "description": "Clean room capacity",
+    "descriptionZh": "洁净室容量",
+    "standard": "ISO 14644"
+  },
+  {
+    "id": "cap-011",
+    "zoneType": "chemical-storage",
+    "minAreaPerPersonM2": 20,
+    "maxOccupancy": 2,
+    "description": "Chemical storage capacity",
+    "descriptionZh": "化学品储存室容量",
+    "standard": "OSHA 1910.106"
+  },
+  {
+    "id": "cap-012",
+    "zoneType": "waste-handling",
+    "minAreaPerPersonM2": 15,
+    "maxOccupancy": 2,
+    "description": "Waste handling area capacity",
+    "descriptionZh": "废物处理区容量",
+    "standard": "EPA RCRA"
+  },
+  {
+    "id": "cap-013",
+    "zoneType": "makerspace",
+    "minAreaPerPersonM2": 5.0,
+    "description": "Makerspace capacity",
+    "descriptionZh": "创客空间容量",
+    "standard": "OSHA 1910.22"
+  },
+  {
+    "id": "cap-014",
+    "zoneType": "prototyping",
+    "minAreaPerPersonM2": 6.0,
+    "description": "Prototyping area capacity",
+    "descriptionZh": "原型制作区容量",
+    "standard": "OSHA 1910.22"
+  },
+  {
+    "id": "cap-015",
+    "zoneType": "testing",
+    "minAreaPerPersonM2": 6.0,
+    "maxOccupancy": 6,
+    "description": "Testing area capacity",
+    "descriptionZh": "测试区容量",
+    "standard": "ANSI Z9.5"
+  },
+  {
+    "id": "cap-016",
+    "zoneType": "observation",
+    "minAreaPerPersonM2": 3.0,
+    "description": "Observation area capacity",
+    "descriptionZh": "观察区容量",
+    "standard": "IBC 1004.1"
+  },
+  {
+    "id": "cap-017",
+    "zoneType": "break",
+    "minAreaPerPersonM2": 2.5,
+    "description": "Break room capacity",
+    "descriptionZh": "休息区容量",
+    "standard": "IBC 1004.1"
+  },
+  {
+    "id": "cap-018",
+    "zoneType": "changing-room",
+    "minAreaPerPersonM2": 2.0,
+    "description": "Changing room capacity",
+    "descriptionZh": "更衣室容量",
+    "standard": "IBC 1004.1"
+  },
+  {
+    "id": "cap-019",
+    "zoneType": "airlock",
+    "minAreaPerPersonM2": 4.0,
+    "maxOccupancy": 2,
+    "description": "Airlock capacity",
+    "descriptionZh": "气闸室容量",
+    "standard": "ISO 14644"
+  },
+  {
+    "id": "cap-020",
+    "zoneType": "simulation",
+    "minAreaPerPersonM2": 8.0,
+    "description": "Simulation room capacity",
+    "descriptionZh": "仿真区容量",
+    "standard": "ANSI Z9.5"
+  }
+]

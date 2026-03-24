@@ -8,14 +8,47 @@
       "price": 75000,
       "currency": "USD",
       "vendor": "NVIDIA",
-      "tags": ["gpu", "ai", "ml", "high-performance"],
+      "tags": [
+        "gpu",
+        "ai",
+        "ml",
+        "high-performance"
+      ],
       "featured": true,
       "specs": {
         "GPU": "8x NVIDIA A100 80GB",
         "CPU": "AMD EPYC 7763",
         "RAM": "512GB DDR4",
         "Storage": "4TB NVMe SSD"
-      }
+      },
+      "dimensions": {
+        "width": 0.48,
+        "depth": 0.82,
+        "height": 0.09,
+        "unit": "m"
+      },
+      "weight": 35,
+      "power": {
+        "watts": 6500,
+        "voltage": 220,
+        "phase": "3",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 6000,
+        "requiresExhaust": true,
+        "minACH": 15
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "compute-lab"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440002",
@@ -25,354 +58,47 @@
       "price": 2500,
       "currency": "USD",
       "vendor": "Dell",
-      "tags": ["workstation", "development", "programming"],
+      "tags": [
+        "workstation",
+        "development",
+        "programming"
+      ],
       "featured": false,
       "specs": {
         "CPU": "Intel i9-13900K",
         "GPU": "NVIDIA RTX 4070",
         "RAM": "64GB DDR5",
         "Storage": "2TB NVMe SSD"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440003",
-      "name": "4K Monitor 32\"",
-      "category": "electronics",
-      "description": "High-resolution display for detailed work",
-      "price": 800,
-      "currency": "USD",
-      "vendor": "LG",
-      "tags": ["monitor", "display", "4k"],
-      "featured": false,
-      "specs": {
-        "Resolution": "3840x2160",
-        "Size": "32 inches",
-        "Panel Type": "IPS",
-        "Refresh Rate": "60Hz"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440004",
-      "name": "Adjustable Standing Desk",
-      "category": "furniture",
-      "description": "Ergonomic electric height-adjustable desk",
-      "price": 600,
-      "currency": "USD",
-      "vendor": "Autonomous",
-      "tags": ["desk", "ergonomic", "furniture"],
-      "featured": false,
-      "specs": {
-        "Width": "60 inches",
-        "Depth": "30 inches",
-        "Height Range": "29-48 inches",
-        "Weight Capacity": "300 lbs"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440005",
-      "name": "Ergonomic Office Chair",
-      "category": "furniture",
-      "description": "Professional office chair with lumbar support",
-      "price": 500,
-      "currency": "USD",
-      "vendor": "Herman Miller",
-      "tags": ["chair", "ergonomic", "furniture"],
-      "featured": false,
-      "specs": {
-        "Type": "Mesh back",
-        "Adjustability": "Full",
-        "Weight Capacity": "300 lbs",
-        "Warranty": "12 years"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440006",
-      "name": "3D Printer (FDM)",
-      "category": "tools",
-      "description": "Professional-grade FDM 3D printer for rapid prototyping",
-      "price": 3500,
-      "currency": "USD",
-      "vendor": "Ultimaker",
-      "tags": ["3d-printer", "prototyping", "manufacturing"],
-      "featured": true,
-      "specs": {
-        "Build Volume": "330 x 240 x 300 mm",
-        "Layer Resolution": "0.25 mm",
-        "Materials": "PLA, ABS, Nylon, TPU",
-        "Connectivity": "WiFi, Ethernet, USB"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440007",
-      "name": "Laser Cutter",
-      "category": "tools",
-      "description": "CO2 laser cutter for precision cutting and engraving",
-      "price": 8000,
-      "currency": "USD",
-      "vendor": "Epilog",
-      "tags": ["laser", "cutting", "engraving"],
-      "featured": true,
-      "specs": {
-        "Work Area": "24\" x 18\"",
-        "Laser Power": "60W",
-        "Materials": "Wood, Acrylic, Fabric, Leather",
-        "Max Thickness": "0.5 inches"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440008",
-      "name": "Oscilloscope",
-      "category": "electronics",
-      "description": "Digital oscilloscope for circuit analysis",
-      "price": 1200,
-      "currency": "USD",
-      "vendor": "Tektronix",
-      "tags": ["oscilloscope", "testing", "electronics"],
-      "featured": false,
-      "specs": {
-        "Channels": "4",
-        "Bandwidth": "100 MHz",
-        "Sample Rate": "1 GS/s",
-        "Display": "10.1\" touchscreen"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440009",
-      "name": "Soldering Station",
-      "category": "tools",
-      "description": "Professional temperature-controlled soldering station",
-      "price": 350,
-      "currency": "USD",
-      "vendor": "Weller",
-      "tags": ["soldering", "electronics", "tools"],
-      "featured": false,
-      "specs": {
-        "Temperature Range": "200-450°C",
-        "Power": "80W",
-        "Display": "Digital LCD",
-        "Features": "Auto-sleep, ESD safe"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440010",
-      "name": "Conference Table (8-person)",
-      "category": "furniture",
-      "description": "Large conference table for meetings and collaboration",
-      "price": 1200,
-      "currency": "USD",
-      "vendor": "HON",
-      "tags": ["table", "meeting", "furniture"],
-      "featured": false,
-      "specs": {
-        "Dimensions": "96\" x 42\" x 29\"",
-        "Capacity": "8 people",
-        "Material": "Laminate top, steel base",
-        "Color": "Espresso"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440011",
-      "name": "Interactive Whiteboard",
-      "category": "electronics",
-      "description": "Smart interactive display for presentations and collaboration",
-      "price": 3000,
-      "currency": "USD",
-      "vendor": "SMART Board",
-      "tags": ["whiteboard", "interactive", "presentation"],
-      "featured": true,
-      "specs": {
-        "Size": "75 inches",
-        "Resolution": "4K UHD",
-        "Touch Points": "20",
-        "Connectivity": "HDMI, USB, WiFi"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440012",
-      "name": "Server Rack (42U)",
-      "category": "utilities",
-      "description": "Standard server rack for equipment housing",
-      "price": 800,
-      "currency": "USD",
-      "vendor": "APC",
-      "tags": ["rack", "server", "infrastructure"],
-      "featured": false,
-      "specs": {
-        "Height": "42U",
-        "Width": "19 inches",
-        "Depth": "36 inches",
-        "Weight Capacity": "3000 lbs"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440013",
-      "name": "Network Switch (48-port)",
-      "category": "compute",
-      "description": "Managed Gigabit Ethernet switch",
-      "price": 1500,
-      "currency": "USD",
-      "vendor": "Cisco",
-      "tags": ["network", "switch", "infrastructure"],
-      "featured": false,
-      "specs": {
-        "Ports": "48x 1GbE + 4x 10GbE SFP+",
-        "Throughput": "176 Gbps",
-        "Management": "Web, CLI, SNMP",
-        "PoE": "PoE+ support"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440014",
-      "name": "UPS Battery Backup (3000VA)",
-      "category": "utilities",
-      "description": "Uninterruptible power supply for critical equipment",
-      "price": 900,
-      "currency": "USD",
-      "vendor": "APC",
-      "tags": ["ups", "power", "backup"],
-      "featured": false,
-      "specs": {
-        "Capacity": "3000VA / 2700W",
-        "Runtime": "10 min at full load",
-        "Outlets": "8x NEMA 5-15R",
-        "Management": "Network card optional"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440015",
-      "name": "HVAC Cooling Unit",
-      "category": "utilities",
-      "description": "Precision air conditioning for server rooms",
-      "price": 5000,
-      "currency": "USD",
-      "vendor": "Liebert",
-      "tags": ["hvac", "cooling", "climate"],
-      "featured": false,
-      "specs": {
-        "Cooling Capacity": "10 kW",
-        "Airflow": "2000 CFM",
-        "Control": "Digital microprocessor",
-        "Efficiency": "Energy Star rated"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440016",
-      "name": "Fire Extinguisher (ABC)",
-      "category": "safety",
-      "description": "Multi-purpose fire extinguisher for electronics",
-      "price": 80,
-      "currency": "USD",
-      "vendor": "Amerex",
-      "tags": ["safety", "fire", "compliance"],
-      "featured": false,
-      "specs": {
-        "Type": "ABC Dry Chemical",
-        "Capacity": "10 lbs",
-        "Rating": "4A:60B:C",
-        "Certification": "UL listed"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440017",
-      "name": "First Aid Kit",
-      "category": "safety",
-      "description": "Comprehensive workplace first aid kit",
-      "price": 150,
-      "currency": "USD",
-      "vendor": "3M",
-      "tags": ["safety", "first-aid", "compliance"],
-      "featured": false,
-      "specs": {
-        "Capacity": "50 people",
-        "Items": "175 pieces",
-        "Cabinet": "Wall-mountable metal",
-        "Compliance": "OSHA/ANSI"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440018",
-      "name": "Storage Cabinet (Metal)",
-      "category": "furniture",
-      "description": "Lockable metal storage cabinet for tools and supplies",
-      "price": 400,
-      "currency": "USD",
-      "vendor": "Sandusky",
-      "tags": ["storage", "cabinet", "organization"],
-      "featured": false,
-      "specs": {
-        "Dimensions": "36\" x 18\" x 72\"",
-        "Shelves": "4 adjustable",
-        "Material": "Steel",
-        "Lock": "Key lock included"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440019",
-      "name": "Robotics Kit (Educational)",
-      "category": "tools",
-      "description": "Complete robotics kit for education and prototyping",
-      "price": 1500,
-      "currency": "USD",
-      "vendor": "VEX Robotics",
-      "tags": ["robotics", "education", "stem"],
-      "featured": true,
-      "specs": {
-        "Platform": "VEX V5",
-        "Includes": "Brain, motors, sensors, structure",
-        "Programming": "C++, Python, Blocks",
-        "Curriculum": "Included"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440020",
-      "name": "Arduino Starter Kit",
-      "category": "electronics",
-      "description": "Complete Arduino kit for beginners",
-      "price": 95,
-      "currency": "USD",
-      "vendor": "Arduino",
-      "tags": ["arduino", "microcontroller", "education"],
-      "featured": false,
-      "specs": {
-        "Board": "Arduino Uno R3",
-        "Components": "170+ pieces",
-        "Projects": "15 guided projects",
-        "Book": "Included guidebook"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440021",
-      "name": "CAD Software License (Annual)",
-      "category": "software",
-      "description": "Professional CAD software subscription",
-      "price": 2000,
-      "currency": "USD",
-      "vendor": "Autodesk",
-      "tags": ["software", "cad", "design"],
-      "featured": true,
-      "specs": {
-        "Product": "Fusion 360",
-        "License": "Commercial annual",
-        "Users": "1 seat",
-        "Support": "Cloud storage, updates"
-      }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440022",
-      "name": "AI Development Platform License",
-      "category": "software",
-      "description": "Enterprise AI development platform subscription",
-      "price": 5000,
-      "currency": "USD",
-      "vendor": "NVIDIA",
-      "tags": ["software", "ai", "ml"],
-      "featured": true,
-      "specs": {
-        "Product": "NVIDIA AI Enterprise",
-        "License": "1-year subscription",
-        "Includes": "Frameworks, tools, support",
-        "GPUs": "Unlimited"
-      }
+      },
+      "dimensions": {
+        "width": 0.2,
+        "depth": 0.45,
+        "height": 0.47,
+        "unit": "m"
+      },
+      "weight": 12,
+      "power": {
+        "watts": 650,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 500,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "classroom",
+        "maker-space"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440023",
@@ -382,14 +108,1634 @@
       "price": 75,
       "currency": "USD",
       "vendor": "Raspberry Pi Foundation",
-      "tags": ["raspberry-pi", "iot", "education"],
+      "tags": [
+        "raspberry-pi",
+        "iot",
+        "education"
+      ],
       "featured": false,
       "specs": {
         "RAM": "8GB LPDDR4",
         "CPU": "Quad-core ARM Cortex-A72",
         "Connectivity": "WiFi, Bluetooth, Gigabit Ethernet",
         "Ports": "2x USB 3.0, 2x USB 2.0, HDMI"
-      }
+      },
+      "dimensions": {
+        "width": 0.085,
+        "depth": 0.056,
+        "height": 0.017,
+        "unit": "m"
+      },
+      "weight": 0.046,
+      "power": {
+        "watts": 15,
+        "voltage": 5,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 10,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.05,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "classroom",
+        "maker-space",
+        "electronics-lab",
+        "office"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440013",
+      "name": "Network Switch (48-port)",
+      "category": "compute",
+      "description": "Managed Gigabit Ethernet switch",
+      "price": 1500,
+      "currency": "USD",
+      "vendor": "Cisco",
+      "tags": [
+        "network",
+        "switch",
+        "infrastructure"
+      ],
+      "featured": false,
+      "specs": {
+        "Ports": "48x 1GbE + 4x 10GbE SFP+",
+        "Throughput": "176 Gbps",
+        "Management": "Web, CLI, SNMP",
+        "PoE": "PoE+ support"
+      },
+      "dimensions": {
+        "width": 0.44,
+        "depth": 0.36,
+        "height": 0.044,
+        "unit": "m"
+      },
+      "weight": 5.5,
+      "power": {
+        "watts": 740,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 200,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "network-closet"
+      ]
+    },
+    {
+      "id": "2555dd31-f29a-48f9-b439-5d3347ea893f",
+      "name": "NAS Storage (4-Bay)",
+      "category": "compute",
+      "description": "Network-attached storage for shared file access and backups",
+      "price": 3200,
+      "currency": "USD",
+      "vendor": "Synology",
+      "tags": [
+        "nas",
+        "storage",
+        "backup",
+        "network"
+      ],
+      "featured": false,
+      "specs": {
+        "Bays": "4x 3.5\" SATA",
+        "CPU": "AMD Ryzen V1500B",
+        "RAM": "8GB ECC",
+        "Max Capacity": "64TB"
+      },
+      "dimensions": {
+        "width": 0.2,
+        "depth": 0.22,
+        "height": 0.17,
+        "unit": "m"
+      },
+      "weight": 4.5,
+      "power": {
+        "watts": 90,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 60,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "office",
+        "compute-lab"
+      ]
+    },
+    {
+      "id": "8a17ad88-2e03-402e-8dc4-0d0318fee083",
+      "name": "Rack-Mount UPS (3000VA)",
+      "category": "compute",
+      "description": "Rack-mountable uninterruptible power supply for server protection",
+      "price": 1800,
+      "currency": "USD",
+      "vendor": "APC",
+      "tags": [
+        "ups",
+        "power",
+        "backup",
+        "rack"
+      ],
+      "featured": false,
+      "specs": {
+        "Capacity": "3000VA / 2700W",
+        "Form": "2U rack-mount",
+        "Runtime": "8 min full load",
+        "Outlets": "8x C13, 2x C19"
+      },
+      "dimensions": {
+        "width": 0.43,
+        "depth": 0.66,
+        "height": 0.089,
+        "unit": "m"
+      },
+      "weight": 32,
+      "power": {
+        "watts": 2700,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 150,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "network-closet"
+      ]
+    },
+    {
+      "id": "578d9aeb-6189-44c6-b168-3b3c1b2d5b01",
+      "name": "Server Rack Cabinet (42U)",
+      "category": "compute",
+      "description": "Enclosed 42U server rack with cable management and cooling",
+      "price": 2200,
+      "currency": "USD",
+      "vendor": "APC",
+      "tags": [
+        "rack",
+        "cabinet",
+        "server",
+        "infrastructure"
+      ],
+      "featured": false,
+      "specs": {
+        "Height": "42U",
+        "Width": "600mm",
+        "Depth": "1070mm",
+        "Weight Capacity": "1360 kg"
+      },
+      "dimensions": {
+        "width": 0.6,
+        "depth": 1.07,
+        "height": 2,
+        "unit": "m"
+      },
+      "weight": 115,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": true,
+        "minACH": 12
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room"
+      ]
+    },
+    {
+      "id": "4572351f-65bf-42ba-adf9-a83985871b9c",
+      "name": "Rack Cooling Unit (In-Row)",
+      "category": "compute",
+      "description": "In-row precision cooling unit for server rack environments",
+      "price": 12000,
+      "currency": "USD",
+      "vendor": "Vertiv",
+      "tags": [
+        "cooling",
+        "hvac",
+        "server",
+        "infrastructure"
+      ],
+      "featured": false,
+      "specs": {
+        "Cooling Capacity": "15 kW",
+        "Airflow": "3000 CFM",
+        "Refrigerant": "R410A",
+        "Control": "iCOM-S"
+      },
+      "dimensions": {
+        "width": 0.3,
+        "depth": 1.07,
+        "height": 2,
+        "unit": "m"
+      },
+      "weight": 180,
+      "power": {
+        "watts": 5000,
+        "voltage": 220,
+        "phase": "3",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": true,
+        "minACH": 20
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.6,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "server-room"
+      ]
+    },
+    {
+      "id": "7db02741-a4e5-47de-8737-3113ab0f09a6",
+      "name": "KVM Switch (16-port)",
+      "category": "compute",
+      "description": "16-port rack KVM switch for managing multiple servers",
+      "price": 1200,
+      "currency": "USD",
+      "vendor": "ATEN",
+      "tags": [
+        "kvm",
+        "server",
+        "management",
+        "rack"
+      ],
+      "featured": false,
+      "specs": {
+        "Ports": "16x RJ-45",
+        "Video": "1920x1200",
+        "Access": "Local + IP remote",
+        "Rack Mount": "1U"
+      },
+      "dimensions": {
+        "width": 0.43,
+        "depth": 0.35,
+        "height": 0.044,
+        "unit": "m"
+      },
+      "weight": 3.8,
+      "power": {
+        "watts": 25,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 20,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.2,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room"
+      ]
+    },
+    {
+      "id": "f5713f20-3871-4222-aa1c-b59c43b2ae6d",
+      "name": "Fiber Patch Panel (24-port)",
+      "category": "compute",
+      "description": "24-port LC duplex fiber optic patch panel for high-speed networking",
+      "price": 350,
+      "currency": "USD",
+      "vendor": "Corning",
+      "tags": [
+        "fiber",
+        "network",
+        "patch-panel",
+        "infrastructure"
+      ],
+      "featured": false,
+      "specs": {
+        "Ports": "24x LC Duplex",
+        "Type": "OS2 Single-mode",
+        "Rack Mount": "1U",
+        "Adapters": "Ceramic ferrule"
+      },
+      "dimensions": {
+        "width": 0.43,
+        "depth": 0.3,
+        "height": 0.044,
+        "unit": "m"
+      },
+      "weight": 2.5,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": true,
+        "minClearanceM": 0.2,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "network-closet"
+      ]
+    },
+    {
+      "id": "18110a0e-0ea8-41e6-bce4-593d95834abc",
+      "name": "Edge Compute Node",
+      "category": "compute",
+      "description": "Compact edge computing device for IoT gateway and local AI inference",
+      "price": 800,
+      "currency": "USD",
+      "vendor": "NVIDIA",
+      "tags": [
+        "edge",
+        "iot",
+        "ai",
+        "inference"
+      ],
+      "featured": false,
+      "specs": {
+        "Platform": "Jetson Orin NX 16GB",
+        "CPU": "8-core ARM Cortex-A78AE",
+        "GPU": "1024 CUDA cores",
+        "Storage": "256GB NVMe"
+      },
+      "dimensions": {
+        "width": 0.13,
+        "depth": 0.13,
+        "height": 0.065,
+        "unit": "m"
+      },
+      "weight": 0.6,
+      "power": {
+        "watts": 25,
+        "voltage": 12,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 20,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": true,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "maker-space",
+        "electronics-lab",
+        "compute-lab",
+        "classroom"
+      ]
+    },
+    {
+      "id": "64566f52-7d9c-49d9-ba8c-05673e741da4",
+      "name": "AI Training Cluster (4-node)",
+      "category": "compute",
+      "description": "Multi-node GPU cluster for distributed AI model training",
+      "price": 320000,
+      "currency": "USD",
+      "vendor": "Supermicro",
+      "tags": [
+        "ai",
+        "training",
+        "cluster",
+        "gpu",
+        "high-performance"
+      ],
+      "featured": true,
+      "specs": {
+        "Nodes": "4x 8-GPU servers",
+        "GPU": "32x NVIDIA H100 80GB",
+        "Interconnect": "InfiniBand NDR 400Gb/s",
+        "Storage": "100TB NVMe shared"
+      },
+      "dimensions": {
+        "width": 0.6,
+        "depth": 1.07,
+        "height": 2,
+        "unit": "m"
+      },
+      "weight": 280,
+      "power": {
+        "watts": 40000,
+        "voltage": 480,
+        "phase": "3",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 38000,
+        "requiresExhaust": true,
+        "minACH": 25
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 1.5,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "server-room"
+      ]
+    },
+    {
+      "id": "fa0aa903-1c91-4485-93cd-2d92677ed8da",
+      "name": "Mini Server (Tower)",
+      "category": "compute",
+      "description": "Compact tower server for small lab environments",
+      "price": 4500,
+      "currency": "USD",
+      "vendor": "HPE",
+      "tags": [
+        "server",
+        "tower",
+        "compact"
+      ],
+      "featured": false,
+      "specs": {
+        "CPU": "Intel Xeon E-2388G",
+        "RAM": "64GB ECC",
+        "Storage": "4x 2TB SAS",
+        "RAID": "HPE Smart Array"
+      },
+      "dimensions": {
+        "width": 0.17,
+        "depth": 0.48,
+        "height": 0.37,
+        "unit": "m"
+      },
+      "weight": 12,
+      "power": {
+        "watts": 350,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 280,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "office",
+        "compute-lab"
+      ]
+    },
+    {
+      "id": "652b71d5-3c27-4cc5-918a-eff508e424fa",
+      "name": "Quad Monitor Array Stand",
+      "category": "compute",
+      "description": "Four-monitor desk mount for multi-display workstations",
+      "price": 450,
+      "currency": "USD",
+      "vendor": "Ergotron",
+      "tags": [
+        "monitor",
+        "mount",
+        "ergonomic",
+        "display"
+      ],
+      "featured": false,
+      "specs": {
+        "Monitors": "4x 24-32 inch",
+        "Max Weight": "10 kg per arm",
+        "Adjustment": "Tilt, swivel, rotate",
+        "Mount": "Desk clamp or grommet"
+      },
+      "dimensions": {
+        "width": 1.5,
+        "depth": 0.15,
+        "height": 0.6,
+        "unit": "m"
+      },
+      "weight": 12,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "classroom"
+      ]
+    },
+    {
+      "id": "091b4be6-f526-46eb-b531-51f266dde55c",
+      "name": "Server Room AC (Precision)",
+      "category": "compute",
+      "description": "Precision air conditioning unit designed for server room environments",
+      "price": 15000,
+      "currency": "USD",
+      "vendor": "Liebert",
+      "tags": [
+        "hvac",
+        "cooling",
+        "server-room",
+        "precision"
+      ],
+      "featured": false,
+      "specs": {
+        "Cooling Capacity": "25 kW",
+        "Airflow": "5000 CFM",
+        "Humidity": "Integrated humidifier",
+        "Redundancy": "N+1 capable"
+      },
+      "dimensions": {
+        "width": 0.9,
+        "depth": 0.85,
+        "height": 1.95,
+        "unit": "m"
+      },
+      "weight": 350,
+      "power": {
+        "watts": 8500,
+        "voltage": 380,
+        "phase": "3",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": true,
+        "minACH": 20
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 1,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "server-room"
+      ]
+    },
+    {
+      "id": "81dd9a0b-3c82-4614-b77c-5aba1c68cf74",
+      "name": "Cable Management Kit",
+      "category": "compute",
+      "description": "Complete cable management system for server racks including trays, ties, and labels",
+      "price": 280,
+      "currency": "USD",
+      "vendor": "Panduit",
+      "tags": [
+        "cable",
+        "management",
+        "rack",
+        "organization"
+      ],
+      "featured": false,
+      "specs": {
+        "Includes": "Vertical managers, horizontal rings, Velcro ties",
+        "Compatibility": "19-inch racks",
+        "Material": "Steel + ABS plastic",
+        "Labels": "Adhesive + printable"
+      },
+      "dimensions": {
+        "width": 0.08,
+        "depth": 0.08,
+        "height": 2,
+        "unit": "m"
+      },
+      "weight": 5,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "network-closet"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "name": "Adjustable Standing Desk",
+      "category": "furniture",
+      "description": "Ergonomic electric height-adjustable desk",
+      "price": 600,
+      "currency": "USD",
+      "vendor": "Autonomous",
+      "tags": [
+        "desk",
+        "ergonomic",
+        "furniture"
+      ],
+      "featured": false,
+      "specs": {
+        "Width": "60 inches",
+        "Depth": "30 inches",
+        "Height Range": "29-48 inches",
+        "Weight Capacity": "300 lbs"
+      },
+      "dimensions": {
+        "width": 1.52,
+        "depth": 0.76,
+        "height": 1.22,
+        "unit": "m"
+      },
+      "weight": 35,
+      "power": {
+        "watts": 150,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.6,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "classroom",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "name": "Ergonomic Office Chair",
+      "category": "furniture",
+      "description": "Professional office chair with lumbar support",
+      "price": 500,
+      "currency": "USD",
+      "vendor": "Herman Miller",
+      "tags": [
+        "chair",
+        "ergonomic",
+        "furniture"
+      ],
+      "featured": false,
+      "specs": {
+        "Type": "Mesh back",
+        "Adjustability": "Full",
+        "Weight Capacity": "300 lbs",
+        "Warranty": "12 years"
+      },
+      "dimensions": {
+        "width": 0.66,
+        "depth": 0.66,
+        "height": 1.1,
+        "unit": "m"
+      },
+      "weight": 20,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "classroom",
+        "meeting-room",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440010",
+      "name": "Conference Table (8-person)",
+      "category": "furniture",
+      "description": "Large conference table for meetings and collaboration",
+      "price": 1200,
+      "currency": "USD",
+      "vendor": "HON",
+      "tags": [
+        "table",
+        "meeting",
+        "furniture"
+      ],
+      "featured": false,
+      "specs": {
+        "Dimensions": "96\" x 42\" x 29\"",
+        "Capacity": "8 people",
+        "Material": "Laminate top, steel base",
+        "Color": "Espresso"
+      },
+      "dimensions": {
+        "width": 2.44,
+        "depth": 1.07,
+        "height": 0.74,
+        "unit": "m"
+      },
+      "weight": 65,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "meeting-room",
+        "classroom"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440018",
+      "name": "Storage Cabinet (Metal)",
+      "category": "furniture",
+      "description": "Lockable metal storage cabinet for tools and supplies",
+      "price": 400,
+      "currency": "USD",
+      "vendor": "Sandusky",
+      "tags": [
+        "storage",
+        "cabinet",
+        "organization"
+      ],
+      "featured": false,
+      "specs": {
+        "Dimensions": "36\" x 18\" x 72\"",
+        "Shelves": "4 adjustable",
+        "Material": "Steel",
+        "Lock": "Key lock included"
+      },
+      "dimensions": {
+        "width": 0.91,
+        "depth": 0.46,
+        "height": 1.83,
+        "unit": "m"
+      },
+      "weight": 50,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "storage",
+        "maker-space",
+        "electronics-lab",
+        "wet-lab",
+        "office"
+      ]
+    },
+    {
+      "id": "cbccc791-d144-43f6-91cd-551d8fa1e035",
+      "name": "Lab Bench (Chemical Resistant)",
+      "category": "furniture",
+      "description": "Heavy-duty lab bench with chemical-resistant epoxy resin top",
+      "price": 2800,
+      "currency": "USD",
+      "vendor": "Fisher Hamilton",
+      "tags": [
+        "bench",
+        "lab",
+        "chemical-resistant"
+      ],
+      "featured": true,
+      "specs": {
+        "Top": "Epoxy resin",
+        "Dimensions": "72\" x 30\" x 36\"",
+        "Weight Capacity": "500 lbs",
+        "Features": "Integrated backsplash, utilities trough"
+      },
+      "dimensions": {
+        "width": 1.83,
+        "depth": 0.76,
+        "height": 0.91,
+        "unit": "m"
+      },
+      "weight": 90,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.8,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "7746c5e1-5fa0-4859-8b45-33615da55585",
+      "name": "Chemical Storage Cabinet (Ventilated)",
+      "category": "furniture",
+      "description": "Ventilated cabinet for flammable and corrosive chemical storage",
+      "price": 1800,
+      "currency": "USD",
+      "vendor": "Justrite",
+      "tags": [
+        "chemical",
+        "storage",
+        "safety",
+        "ventilated"
+      ],
+      "featured": false,
+      "specs": {
+        "Capacity": "45 gallons",
+        "Compliance": "OSHA 1910.106, NFPA 30",
+        "Material": "18-gauge steel",
+        "Ventilation": "Dual vents with filters"
+      },
+      "dimensions": {
+        "width": 1.09,
+        "depth": 0.46,
+        "height": 1.65,
+        "unit": "m"
+      },
+      "weight": 80,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": true,
+        "minACH": 6
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "storage"
+      ]
+    },
+    {
+      "id": "691e1ba3-6d2e-475c-a164-aa15cad16dc0",
+      "name": "Heavy-Duty Shelving Unit",
+      "category": "furniture",
+      "description": "Industrial steel shelving for workshop and storage areas",
+      "price": 350,
+      "currency": "USD",
+      "vendor": "Uline",
+      "tags": [
+        "shelving",
+        "storage",
+        "industrial"
+      ],
+      "featured": false,
+      "specs": {
+        "Levels": "5 shelves",
+        "Per Shelf Capacity": "800 lbs",
+        "Material": "Steel",
+        "Dimensions": "48\" x 24\" x 72\""
+      },
+      "dimensions": {
+        "width": 1.22,
+        "depth": 0.61,
+        "height": 1.83,
+        "unit": "m"
+      },
+      "weight": 40,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "storage",
+        "maker-space",
+        "workshop",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "1bd62294-bc62-4843-96bb-d17fcf539435",
+      "name": "Mobile Utility Cart",
+      "category": "furniture",
+      "description": "3-tier rolling utility cart for transporting tools and supplies",
+      "price": 250,
+      "currency": "USD",
+      "vendor": "Rubbermaid",
+      "tags": [
+        "cart",
+        "mobile",
+        "utility"
+      ],
+      "featured": false,
+      "specs": {
+        "Tiers": "3 shelves",
+        "Weight Capacity": "500 lbs",
+        "Wheels": "4\" casters with locks",
+        "Material": "Structural foam"
+      },
+      "dimensions": {
+        "width": 0.97,
+        "depth": 0.51,
+        "height": 0.97,
+        "unit": "m"
+      },
+      "weight": 15,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "maker-space",
+        "wet-lab",
+        "electronics-lab",
+        "workshop",
+        "classroom"
+      ]
+    },
+    {
+      "id": "7c78ac49-5fa1-485c-a328-88b120c88645",
+      "name": "Whiteboard/Display Stand (Mobile)",
+      "category": "furniture",
+      "description": "Mobile stand for whiteboards and interactive displays, height-adjustable",
+      "price": 550,
+      "currency": "USD",
+      "vendor": "Peerless-AV",
+      "tags": [
+        "stand",
+        "display",
+        "whiteboard",
+        "mobile"
+      ],
+      "featured": false,
+      "specs": {
+        "Display Size": "Up to 86 inches",
+        "Max Weight": "68 kg",
+        "Height": "Adjustable",
+        "Wheels": "Locking casters"
+      },
+      "dimensions": {
+        "width": 1.2,
+        "depth": 0.7,
+        "height": 1.9,
+        "unit": "m"
+      },
+      "weight": 30,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "classroom",
+        "meeting-room",
+        "office"
+      ]
+    },
+    {
+      "id": "a080103d-d55c-4352-b90f-25d473421d86",
+      "name": "Lounge Seating (Modular)",
+      "category": "furniture",
+      "description": "Modular soft seating for informal collaboration and break areas",
+      "price": 900,
+      "currency": "USD",
+      "vendor": "Steelcase",
+      "tags": [
+        "lounge",
+        "seating",
+        "collaboration",
+        "comfort"
+      ],
+      "featured": false,
+      "specs": {
+        "Configuration": "Single seat module",
+        "Fabric": "Commercial-grade polyester",
+        "Seat Height": "17 inches",
+        "Modularity": "Connects to other units"
+      },
+      "dimensions": {
+        "width": 0.75,
+        "depth": 0.75,
+        "height": 0.8,
+        "unit": "m"
+      },
+      "weight": 25,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "lounge",
+        "meeting-room",
+        "classroom"
+      ]
+    },
+    {
+      "id": "5c9d714c-1b9d-45cb-a220-c8c937406757",
+      "name": "Personal Locker (6-compartment)",
+      "category": "furniture",
+      "description": "Six-compartment steel locker for personal belongings storage",
+      "price": 450,
+      "currency": "USD",
+      "vendor": "Hallowell",
+      "tags": [
+        "locker",
+        "personal",
+        "storage",
+        "security"
+      ],
+      "featured": false,
+      "specs": {
+        "Compartments": "6 (2 columns x 3 tiers)",
+        "Material": "16-gauge steel",
+        "Lock": "Padlock hasp",
+        "Ventilation": "Louvered doors"
+      },
+      "dimensions": {
+        "width": 0.76,
+        "depth": 0.46,
+        "height": 1.83,
+        "unit": "m"
+      },
+      "weight": 55,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.6,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "lounge",
+        "hallway",
+        "maker-space",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "ebdfeac6-ba76-4759-b2e9-f7e9c86f12b8",
+      "name": "Laboratory Drying Rack",
+      "category": "furniture",
+      "description": "Wall-mounted drying rack for glassware and lab equipment",
+      "price": 180,
+      "currency": "USD",
+      "vendor": "Bel-Art",
+      "tags": [
+        "drying",
+        "rack",
+        "glassware",
+        "lab"
+      ],
+      "featured": false,
+      "specs": {
+        "Pegs": "72 non-slip pegs",
+        "Material": "Polypropylene",
+        "Mounting": "Wall-mount",
+        "Drip Tray": "Included"
+      },
+      "dimensions": {
+        "width": 0.91,
+        "depth": 0.15,
+        "height": 0.61,
+        "unit": "m"
+      },
+      "weight": 3,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "3d0207d5-c07d-439e-bc21-4ab254686a17",
+      "name": "File Cabinet (4-Drawer)",
+      "category": "furniture",
+      "description": "Vertical 4-drawer filing cabinet for document storage",
+      "price": 320,
+      "currency": "USD",
+      "vendor": "HON",
+      "tags": [
+        "file",
+        "cabinet",
+        "office",
+        "storage"
+      ],
+      "featured": false,
+      "specs": {
+        "Drawers": "4 letter/legal",
+        "Lock": "Core-removable lock",
+        "Material": "Steel",
+        "Drawer Capacity": "25 lbs each"
+      },
+      "dimensions": {
+        "width": 0.38,
+        "depth": 0.64,
+        "height": 1.32,
+        "unit": "m"
+      },
+      "weight": 30,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "meeting-room"
+      ]
+    },
+    {
+      "id": "d93f1ba3-5493-4213-a5f0-116e9c423ccf",
+      "name": "Ergonomic Footrest",
+      "category": "furniture",
+      "description": "Adjustable ergonomic footrest for seated workstations",
+      "price": 80,
+      "currency": "USD",
+      "vendor": "Humanscale",
+      "tags": [
+        "footrest",
+        "ergonomic",
+        "comfort"
+      ],
+      "featured": false,
+      "specs": {
+        "Tilt": "20-degree range",
+        "Surface": "Textured rubber",
+        "Width": "18 inches",
+        "Weight Capacity": "50 lbs"
+      },
+      "dimensions": {
+        "width": 0.46,
+        "depth": 0.33,
+        "height": 0.12,
+        "unit": "m"
+      },
+      "weight": 2,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "classroom"
+      ]
+    },
+    {
+      "id": "0177ba22-25bd-45c7-804b-5904252588ba",
+      "name": "Anti-Fatigue Standing Mat",
+      "category": "furniture",
+      "description": "Industrial-grade anti-fatigue mat for standing workstations",
+      "price": 120,
+      "currency": "USD",
+      "vendor": "Ergodriven",
+      "tags": [
+        "mat",
+        "anti-fatigue",
+        "ergonomic",
+        "standing"
+      ],
+      "featured": false,
+      "specs": {
+        "Dimensions": "36\" x 24\"",
+        "Thickness": "0.75 inches",
+        "Material": "Polyurethane",
+        "Surface": "Non-slip"
+      },
+      "dimensions": {
+        "width": 0.91,
+        "depth": 0.61,
+        "height": 0.02,
+        "unit": "m"
+      },
+      "weight": 3,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "maker-space",
+        "workshop",
+        "wet-lab",
+        "office"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "name": "4K Monitor 32\"",
+      "category": "electronics",
+      "description": "High-resolution display for detailed work",
+      "price": 800,
+      "currency": "USD",
+      "vendor": "LG",
+      "tags": [
+        "monitor",
+        "display",
+        "4k"
+      ],
+      "featured": false,
+      "specs": {
+        "Resolution": "3840x2160",
+        "Size": "32 inches",
+        "Panel Type": "IPS",
+        "Refresh Rate": "60Hz"
+      },
+      "dimensions": {
+        "width": 0.71,
+        "depth": 0.23,
+        "height": 0.47,
+        "unit": "m"
+      },
+      "weight": 7.5,
+      "power": {
+        "watts": 65,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 45,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "classroom",
+        "meeting-room"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440011",
+      "name": "Interactive Whiteboard",
+      "category": "electronics",
+      "description": "Smart interactive display for presentations and collaboration",
+      "price": 3000,
+      "currency": "USD",
+      "vendor": "SMART Board",
+      "tags": [
+        "whiteboard",
+        "interactive",
+        "presentation"
+      ],
+      "featured": true,
+      "specs": {
+        "Size": "75 inches",
+        "Resolution": "4K UHD",
+        "Touch Points": "20",
+        "Connectivity": "HDMI, USB, WiFi"
+      },
+      "dimensions": {
+        "width": 1.7,
+        "depth": 0.08,
+        "height": 1.02,
+        "unit": "m"
+      },
+      "weight": 42,
+      "power": {
+        "watts": 300,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 200,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "classroom",
+        "meeting-room"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440008",
+      "name": "Oscilloscope",
+      "category": "electronics",
+      "description": "Digital oscilloscope for circuit analysis",
+      "price": 1200,
+      "currency": "USD",
+      "vendor": "Tektronix",
+      "tags": [
+        "oscilloscope",
+        "testing",
+        "electronics"
+      ],
+      "featured": false,
+      "specs": {
+        "Channels": "4",
+        "Bandwidth": "100 MHz",
+        "Sample Rate": "1 GS/s",
+        "Display": "10.1\" touchscreen"
+      },
+      "dimensions": {
+        "width": 0.38,
+        "depth": 0.2,
+        "height": 0.17,
+        "unit": "m"
+      },
+      "weight": 4.5,
+      "power": {
+        "watts": 80,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 50,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space",
+        "classroom"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440020",
+      "name": "Arduino Starter Kit",
+      "category": "electronics",
+      "description": "Complete Arduino kit for beginners",
+      "price": 95,
+      "currency": "USD",
+      "vendor": "Arduino",
+      "tags": [
+        "arduino",
+        "microcontroller",
+        "education"
+      ],
+      "featured": false,
+      "specs": {
+        "Board": "Arduino Uno R3",
+        "Components": "170+ pieces",
+        "Projects": "15 guided projects",
+        "Book": "Included guidebook"
+      },
+      "dimensions": {
+        "width": 0.3,
+        "depth": 0.25,
+        "height": 0.08,
+        "unit": "m"
+      },
+      "weight": 0.8,
+      "power": {
+        "watts": 5,
+        "voltage": 5,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 2,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.05,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "classroom",
+        "maker-space"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440024",
@@ -399,14 +1745,46 @@
       "price": 500,
       "currency": "USD",
       "vendor": "Meta",
-      "tags": ["vr", "virtual-reality", "immersive"],
+      "tags": [
+        "vr",
+        "virtual-reality",
+        "immersive"
+      ],
       "featured": true,
       "specs": {
         "Resolution": "2064 x 2208 per eye",
         "Refresh Rate": "120Hz",
         "Storage": "128GB",
         "Features": "Mixed reality, hand tracking"
-      }
+      },
+      "dimensions": {
+        "width": 0.2,
+        "depth": 0.1,
+        "height": 0.1,
+        "unit": "m"
+      },
+      "weight": 0.52,
+      "power": {
+        "watts": 18,
+        "voltage": 5,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 5,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.05,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "classroom",
+        "maker-space",
+        "vr-lab"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440025",
@@ -416,14 +1794,3326 @@
       "price": 450,
       "currency": "USD",
       "vendor": "IPEVO",
-      "tags": ["camera", "document", "presentation"],
+      "tags": [
+        "camera",
+        "document",
+        "presentation"
+      ],
       "featured": false,
       "specs": {
         "Resolution": "1080p Full HD",
         "Zoom": "8x digital",
         "Connection": "USB, HDMI",
         "Lighting": "Built-in LED"
-      }
+      },
+      "dimensions": {
+        "width": 0.12,
+        "depth": 0.14,
+        "height": 0.4,
+        "unit": "m"
+      },
+      "weight": 1.2,
+      "power": {
+        "watts": 10,
+        "voltage": 5,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 5,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "classroom",
+        "meeting-room"
+      ]
+    },
+    {
+      "id": "08f3482f-af3a-457e-8019-92fa50756c77",
+      "name": "Digital Multimeter (Bench)",
+      "category": "electronics",
+      "description": "Precision bench digital multimeter for electronics testing",
+      "price": 650,
+      "currency": "USD",
+      "vendor": "Keysight",
+      "tags": [
+        "multimeter",
+        "testing",
+        "electronics",
+        "bench"
+      ],
+      "featured": false,
+      "specs": {
+        "DC Accuracy": "0.0035%",
+        "Digits": "6.5",
+        "Functions": "DCV, ACV, DCI, ACI, resistance, frequency",
+        "Interface": "USB, LAN, GPIB"
+      },
+      "dimensions": {
+        "width": 0.26,
+        "depth": 0.37,
+        "height": 0.1,
+        "unit": "m"
+      },
+      "weight": 3.5,
+      "power": {
+        "watts": 50,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 30,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "7c3ad671-a7c7-4625-b303-1f574ac2ee22",
+      "name": "Signal Generator (RF)",
+      "category": "electronics",
+      "description": "RF signal generator for testing and prototyping communication systems",
+      "price": 3500,
+      "currency": "USD",
+      "vendor": "Keysight",
+      "tags": [
+        "signal-generator",
+        "rf",
+        "testing"
+      ],
+      "featured": false,
+      "specs": {
+        "Frequency Range": "100 kHz - 6 GHz",
+        "Output Power": "-127 to +20 dBm",
+        "Modulation": "AM, FM, PM, Pulse",
+        "Interface": "USB, LAN, GPIB"
+      },
+      "dimensions": {
+        "width": 0.43,
+        "depth": 0.51,
+        "height": 0.18,
+        "unit": "m"
+      },
+      "weight": 12,
+      "power": {
+        "watts": 200,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 120,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.15,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab"
+      ]
+    },
+    {
+      "id": "7ffa915f-4f81-4671-9c4d-2c038a705451",
+      "name": "Spectrum Analyzer",
+      "category": "electronics",
+      "description": "Real-time spectrum analyzer for RF and EMI measurements",
+      "price": 8000,
+      "currency": "USD",
+      "vendor": "Rohde & Schwarz",
+      "tags": [
+        "spectrum",
+        "analyzer",
+        "rf",
+        "testing"
+      ],
+      "featured": false,
+      "specs": {
+        "Frequency Range": "5 kHz - 7.5 GHz",
+        "DANL": "-165 dBm",
+        "Display": "10.1\" touchscreen",
+        "Analysis": "Real-time spectrum, spectrogram"
+      },
+      "dimensions": {
+        "width": 0.41,
+        "depth": 0.24,
+        "height": 0.18,
+        "unit": "m"
+      },
+      "weight": 6,
+      "power": {
+        "watts": 120,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 80,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.15,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab"
+      ]
+    },
+    {
+      "id": "a9e77ea4-cc4b-4777-9146-5c8f912fdb02",
+      "name": "Logic Analyzer (16-channel)",
+      "category": "electronics",
+      "description": "16-channel logic analyzer for digital circuit debugging",
+      "price": 2200,
+      "currency": "USD",
+      "vendor": "Saleae",
+      "tags": [
+        "logic-analyzer",
+        "digital",
+        "debugging"
+      ],
+      "featured": false,
+      "specs": {
+        "Channels": "16 digital + 4 analog",
+        "Sample Rate": "500 MS/s digital",
+        "Protocol": "I2C, SPI, UART, CAN, and more",
+        "Software": "Logic 2 included"
+      },
+      "dimensions": {
+        "width": 0.17,
+        "depth": 0.09,
+        "height": 0.025,
+        "unit": "m"
+      },
+      "weight": 0.3,
+      "power": {
+        "watts": 5,
+        "voltage": 5,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 3,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.05,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "c5ef937c-bea8-48b6-959a-ec326ef26c4f",
+      "name": "Bench Power Supply (Triple Output)",
+      "category": "electronics",
+      "description": "Programmable triple-output DC bench power supply",
+      "price": 900,
+      "currency": "USD",
+      "vendor": "Keithley",
+      "tags": [
+        "power-supply",
+        "bench",
+        "electronics"
+      ],
+      "featured": false,
+      "specs": {
+        "Outputs": "0-30V/3A x2, 5V/3A x1",
+        "Regulation": "0.01% load, 0.01% line",
+        "Display": "Dual 4-digit LED",
+        "Protection": "OVP, OCP"
+      },
+      "dimensions": {
+        "width": 0.22,
+        "depth": 0.36,
+        "height": 0.13,
+        "unit": "m"
+      },
+      "weight": 5,
+      "power": {
+        "watts": 200,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 80,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "d9e0d960-c5cc-4059-91d9-c0e6fb989245",
+      "name": "PCB Prototyping Machine",
+      "category": "electronics",
+      "description": "Desktop PCB milling machine for rapid circuit board prototyping",
+      "price": 5500,
+      "currency": "USD",
+      "vendor": "LPKF",
+      "tags": [
+        "pcb",
+        "prototyping",
+        "milling"
+      ],
+      "featured": true,
+      "specs": {
+        "Work Area": "229 x 305 mm",
+        "Resolution": "0.5 mil",
+        "Min Track Width": "4 mil",
+        "Software": "CircuitPro included"
+      },
+      "dimensions": {
+        "width": 0.57,
+        "depth": 0.5,
+        "height": 0.35,
+        "unit": "m"
+      },
+      "weight": 22,
+      "power": {
+        "watts": 200,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 50,
+        "requiresExhaust": true
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "520d5880-1c88-4ad1-a5ac-c79b9268bd5c",
+      "name": "Thermal Imaging Camera",
+      "category": "electronics",
+      "description": "Handheld thermal camera for electronics diagnostics and building inspection",
+      "price": 2800,
+      "currency": "USD",
+      "vendor": "FLIR",
+      "tags": [
+        "thermal",
+        "camera",
+        "diagnostics",
+        "imaging"
+      ],
+      "featured": false,
+      "specs": {
+        "Resolution": "320x240 IR",
+        "Temp Range": "-20 to 650C",
+        "Accuracy": "+/- 2C",
+        "Visual Camera": "5MP integrated"
+      },
+      "dimensions": {
+        "width": 0.1,
+        "depth": 0.14,
+        "height": 0.24,
+        "unit": "m"
+      },
+      "weight": 0.9,
+      "power": {
+        "watts": 8,
+        "voltage": 5,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 3,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space",
+        "workshop"
+      ]
+    },
+    {
+      "id": "d27fa04f-2973-47e3-9e89-40b26addaa3a",
+      "name": "Digital Microscope (USB)",
+      "category": "electronics",
+      "description": "High-magnification digital microscope for PCB inspection and biology",
+      "price": 1500,
+      "currency": "USD",
+      "vendor": "Keyence",
+      "tags": [
+        "microscope",
+        "digital",
+        "inspection"
+      ],
+      "featured": false,
+      "specs": {
+        "Magnification": "20x-200x",
+        "Sensor": "5MP CMOS",
+        "LED Ring": "Adjustable brightness",
+        "Output": "USB 3.0, HDMI"
+      },
+      "dimensions": {
+        "width": 0.15,
+        "depth": 0.2,
+        "height": 0.35,
+        "unit": "m"
+      },
+      "weight": 2.5,
+      "power": {
+        "watts": 15,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 8,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "biology-lab",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "name": "3D Printer (FDM)",
+      "category": "tools",
+      "description": "Professional-grade FDM 3D printer for rapid prototyping",
+      "price": 3500,
+      "currency": "USD",
+      "vendor": "Ultimaker",
+      "tags": [
+        "3d-printer",
+        "prototyping",
+        "manufacturing"
+      ],
+      "featured": true,
+      "specs": {
+        "Build Volume": "330 x 240 x 300 mm",
+        "Layer Resolution": "0.25 mm",
+        "Materials": "PLA, ABS, Nylon, TPU",
+        "Connectivity": "WiFi, Ethernet, USB"
+      },
+      "dimensions": {
+        "width": 0.49,
+        "depth": 0.49,
+        "height": 0.64,
+        "unit": "m"
+      },
+      "weight": 21,
+      "power": {
+        "watts": 350,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 200,
+        "requiresExhaust": true
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "maker-space",
+        "workshop",
+        "classroom"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "name": "Laser Cutter",
+      "category": "tools",
+      "description": "CO2 laser cutter for precision cutting and engraving",
+      "price": 8000,
+      "currency": "USD",
+      "vendor": "Epilog",
+      "tags": [
+        "laser",
+        "cutting",
+        "engraving"
+      ],
+      "featured": true,
+      "specs": {
+        "Work Area": "24\" x 18\"",
+        "Laser Power": "60W",
+        "Materials": "Wood, Acrylic, Fabric, Leather",
+        "Max Thickness": "0.5 inches"
+      },
+      "dimensions": {
+        "width": 0.96,
+        "depth": 0.61,
+        "height": 0.42,
+        "unit": "m"
+      },
+      "weight": 52,
+      "power": {
+        "watts": 800,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 400,
+        "requiresExhaust": true,
+        "minACH": 10
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.8,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "maker-space",
+        "workshop"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440009",
+      "name": "Soldering Station",
+      "category": "tools",
+      "description": "Professional temperature-controlled soldering station",
+      "price": 350,
+      "currency": "USD",
+      "vendor": "Weller",
+      "tags": [
+        "soldering",
+        "electronics",
+        "tools"
+      ],
+      "featured": false,
+      "specs": {
+        "Temperature Range": "200-450C",
+        "Power": "80W",
+        "Display": "Digital LCD",
+        "Features": "Auto-sleep, ESD safe"
+      },
+      "dimensions": {
+        "width": 0.15,
+        "depth": 0.22,
+        "height": 0.11,
+        "unit": "m"
+      },
+      "weight": 2.5,
+      "power": {
+        "watts": 80,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 60,
+        "requiresExhaust": true
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.2,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440019",
+      "name": "Robotics Kit (Educational)",
+      "category": "tools",
+      "description": "Complete robotics kit for education and prototyping",
+      "price": 1500,
+      "currency": "USD",
+      "vendor": "VEX Robotics",
+      "tags": [
+        "robotics",
+        "education",
+        "stem"
+      ],
+      "featured": true,
+      "specs": {
+        "Platform": "VEX V5",
+        "Includes": "Brain, motors, sensors, structure",
+        "Programming": "C++, Python, Blocks",
+        "Curriculum": "Included"
+      },
+      "dimensions": {
+        "width": 0.5,
+        "depth": 0.4,
+        "height": 0.2,
+        "unit": "m"
+      },
+      "weight": 8,
+      "power": {
+        "watts": 50,
+        "voltage": 12,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 15,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "maker-space",
+        "classroom",
+        "workshop"
+      ]
+    },
+    {
+      "id": "1840f1ed-8de5-4886-8fd9-ee6ba846cef2",
+      "name": "CNC Milling Machine (Desktop)",
+      "category": "tools",
+      "description": "Desktop CNC mill for precision machining of metals and plastics",
+      "price": 12000,
+      "currency": "USD",
+      "vendor": "Haas",
+      "tags": [
+        "cnc",
+        "milling",
+        "machining",
+        "manufacturing"
+      ],
+      "featured": true,
+      "specs": {
+        "Work Area": "305 x 230 x 305 mm",
+        "Spindle": "10000 RPM",
+        "Materials": "Aluminum, brass, plastics, wood",
+        "Control": "Haas NGC"
+      },
+      "dimensions": {
+        "width": 0.66,
+        "depth": 0.66,
+        "height": 0.64,
+        "unit": "m"
+      },
+      "weight": 120,
+      "power": {
+        "watts": 1500,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 800,
+        "requiresExhaust": true,
+        "minACH": 8
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.8,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "97583733-430a-4267-8074-6d8f259a2471",
+      "name": "Professional Hand Tool Set",
+      "category": "tools",
+      "description": "Comprehensive 230-piece hand tool set for general fabrication",
+      "price": 450,
+      "currency": "USD",
+      "vendor": "Stanley",
+      "tags": [
+        "hand-tools",
+        "toolkit",
+        "general"
+      ],
+      "featured": false,
+      "specs": {
+        "Pieces": "230",
+        "Includes": "Wrenches, pliers, screwdrivers, sockets, hex keys",
+        "Case": "Rolling tool chest",
+        "Material": "Chrome vanadium steel"
+      },
+      "dimensions": {
+        "width": 0.67,
+        "depth": 0.33,
+        "height": 0.47,
+        "unit": "m"
+      },
+      "weight": 25,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space",
+        "electronics-lab"
+      ]
+    },
+    {
+      "id": "2c58d8e8-5103-41f8-94da-4c2906a2e6bf",
+      "name": "Cordless Power Drill Set",
+      "category": "tools",
+      "description": "20V brushless cordless drill/driver with battery and charger",
+      "price": 280,
+      "currency": "USD",
+      "vendor": "DeWalt",
+      "tags": [
+        "drill",
+        "power-tool",
+        "cordless"
+      ],
+      "featured": false,
+      "specs": {
+        "Voltage": "20V MAX",
+        "Torque": "60 Nm",
+        "Speed": "0-2000 RPM",
+        "Battery": "5.0 Ah lithium-ion"
+      },
+      "dimensions": {
+        "width": 0.25,
+        "depth": 0.08,
+        "height": 0.22,
+        "unit": "m"
+      },
+      "weight": 1.8,
+      "power": {
+        "watts": 500,
+        "voltage": 20,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "bd73b843-4e8c-46c8-978d-a755bd6b8fe1",
+      "name": "Precision Screwdriver Kit (64-in-1)",
+      "category": "tools",
+      "description": "64-in-1 precision screwdriver kit for electronics repair",
+      "price": 45,
+      "currency": "USD",
+      "vendor": "iFixit",
+      "tags": [
+        "screwdriver",
+        "precision",
+        "repair"
+      ],
+      "featured": false,
+      "specs": {
+        "Bits": "64 4mm precision bits",
+        "Handle": "Swivel-top aluminum",
+        "Case": "Magnetic mat included",
+        "Includes": "Spudgers, tweezers, suction cups"
+      },
+      "dimensions": {
+        "width": 0.22,
+        "depth": 0.15,
+        "height": 0.04,
+        "unit": "m"
+      },
+      "weight": 0.4,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space",
+        "workshop"
+      ]
+    },
+    {
+      "id": "ca0ee5f6-31fa-4f5a-a70e-e55f613f75c3",
+      "name": "Torque Wrench Set",
+      "category": "tools",
+      "description": "Calibrated torque wrench set for precision fastening",
+      "price": 320,
+      "currency": "USD",
+      "vendor": "Snap-on",
+      "tags": [
+        "torque",
+        "wrench",
+        "precision",
+        "calibrated"
+      ],
+      "featured": false,
+      "specs": {
+        "Range": "10-150 ft-lbs",
+        "Accuracy": "+/- 3%",
+        "Drive": "3/8\" and 1/2\"",
+        "Calibration": "Certificate included"
+      },
+      "dimensions": {
+        "width": 0.5,
+        "depth": 0.15,
+        "height": 0.08,
+        "unit": "m"
+      },
+      "weight": 3,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "8d521f6d-5a91-436d-91bc-88a739aa4a90",
+      "name": "Heat Gun (Industrial)",
+      "category": "tools",
+      "description": "Variable temperature industrial heat gun for shrink tubing and material forming",
+      "price": 120,
+      "currency": "USD",
+      "vendor": "Wagner",
+      "tags": [
+        "heat-gun",
+        "thermal",
+        "industrial"
+      ],
+      "featured": false,
+      "specs": {
+        "Temp Range": "120-590C",
+        "Wattage": "1500W",
+        "Airflow": "17 CFM",
+        "Nozzles": "4 included"
+      },
+      "dimensions": {
+        "width": 0.1,
+        "depth": 0.22,
+        "height": 0.25,
+        "unit": "m"
+      },
+      "weight": 0.9,
+      "power": {
+        "watts": 1500,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 200,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space",
+        "electronics-lab"
+      ]
+    },
+    {
+      "id": "a4f043b8-62c3-49ac-a7d3-f45caf61be47",
+      "name": "Crimping Tool Kit",
+      "category": "tools",
+      "description": "Professional ratcheting crimping tool kit for wire terminals and connectors",
+      "price": 180,
+      "currency": "USD",
+      "vendor": "Knipex",
+      "tags": [
+        "crimping",
+        "wire",
+        "connectors"
+      ],
+      "featured": false,
+      "specs": {
+        "Die Sets": "5 interchangeable",
+        "Wire Range": "AWG 10-22",
+        "Mechanism": "Ratcheting",
+        "Case": "Molded carrying case"
+      },
+      "dimensions": {
+        "width": 0.3,
+        "depth": 0.2,
+        "height": 0.06,
+        "unit": "m"
+      },
+      "weight": 1.5,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "b09c295c-3e7d-4389-8f39-8471c8ad6116",
+      "name": "Wire Stripper (Automatic)",
+      "category": "tools",
+      "description": "Self-adjusting automatic wire stripper for various gauge wires",
+      "price": 65,
+      "currency": "USD",
+      "vendor": "Knipex",
+      "tags": [
+        "wire-stripper",
+        "electrical",
+        "automatic"
+      ],
+      "featured": false,
+      "specs": {
+        "Wire Range": "AWG 8-24",
+        "Action": "Self-adjusting",
+        "Length": "200mm",
+        "Features": "Built-in cutter"
+      },
+      "dimensions": {
+        "width": 0.06,
+        "depth": 0.02,
+        "height": 0.2,
+        "unit": "m"
+      },
+      "weight": 0.3,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "6868b858-95a5-437c-ad30-b86a38da5214",
+      "name": "Digital Caliper (Stainless Steel)",
+      "category": "tools",
+      "description": "High-precision digital caliper for dimensional measurements",
+      "price": 95,
+      "currency": "USD",
+      "vendor": "Mitutoyo",
+      "tags": [
+        "caliper",
+        "measurement",
+        "precision"
+      ],
+      "featured": false,
+      "specs": {
+        "Range": "0-150mm",
+        "Resolution": "0.01mm",
+        "Accuracy": "+/- 0.02mm",
+        "Material": "Stainless steel"
+      },
+      "dimensions": {
+        "width": 0.24,
+        "depth": 0.08,
+        "height": 0.02,
+        "unit": "m"
+      },
+      "weight": 0.2,
+      "power": {
+        "watts": 0,
+        "voltage": 1.5,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space",
+        "electronics-lab"
+      ]
+    },
+    {
+      "id": "1d88a57a-87ba-4722-aab0-2b75fcb91dda",
+      "name": "Magnifying Lamp (LED)",
+      "category": "tools",
+      "description": "Articulating LED magnifying lamp for close-up precision work",
+      "price": 150,
+      "currency": "USD",
+      "vendor": "Aven",
+      "tags": [
+        "magnifying",
+        "lamp",
+        "precision",
+        "led"
+      ],
+      "featured": false,
+      "specs": {
+        "Magnification": "3x with 8x inset",
+        "LED Output": "1200 lumens",
+        "Color Temp": "5600K daylight",
+        "Arm": "36\" spring-loaded"
+      },
+      "dimensions": {
+        "width": 0.18,
+        "depth": 0.18,
+        "height": 0.91,
+        "unit": "m"
+      },
+      "weight": 3,
+      "power": {
+        "watts": 14,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 5,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "maker-space",
+        "workshop"
+      ]
+    },
+    {
+      "id": "a4797c49-8b10-4b57-8749-28c830239cd5",
+      "name": "Bench Vise (Heavy-Duty)",
+      "category": "tools",
+      "description": "Heavy-duty bench vise with swivel base for workshop use",
+      "price": 220,
+      "currency": "USD",
+      "vendor": "Wilton",
+      "tags": [
+        "vise",
+        "clamp",
+        "workshop"
+      ],
+      "featured": false,
+      "specs": {
+        "Jaw Width": "6 inches",
+        "Opening": "7 inches",
+        "Swivel Base": "360 degrees",
+        "Material": "Ductile iron"
+      },
+      "dimensions": {
+        "width": 0.22,
+        "depth": 0.38,
+        "height": 0.22,
+        "unit": "m"
+      },
+      "weight": 18,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "2ee10043-2f63-41a7-97f4-5eafab9e9eb0",
+      "name": "Parts Organizer (Multi-Drawer)",
+      "category": "tools",
+      "description": "60-drawer small parts organizer for components and fasteners",
+      "price": 85,
+      "currency": "USD",
+      "vendor": "Akro-Mils",
+      "tags": [
+        "organizer",
+        "parts",
+        "storage",
+        "components"
+      ],
+      "featured": false,
+      "specs": {
+        "Drawers": "60 small drawers",
+        "Material": "High-impact plastic",
+        "Mounting": "Wall or bench",
+        "Dividers": "Included"
+      },
+      "dimensions": {
+        "width": 0.51,
+        "depth": 0.16,
+        "height": 0.44,
+        "unit": "m"
+      },
+      "weight": 4,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "electronics-lab",
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440016",
+      "name": "Fire Extinguisher (ABC)",
+      "category": "safety",
+      "description": "Multi-purpose fire extinguisher for electronics",
+      "price": 80,
+      "currency": "USD",
+      "vendor": "Amerex",
+      "tags": [
+        "safety",
+        "fire",
+        "compliance"
+      ],
+      "featured": false,
+      "specs": {
+        "Type": "ABC Dry Chemical",
+        "Capacity": "10 lbs",
+        "Rating": "4A:60B:C",
+        "Certification": "UL listed"
+      },
+      "dimensions": {
+        "width": 0.18,
+        "depth": 0.18,
+        "height": 0.53,
+        "unit": "m"
+      },
+      "weight": 6.5,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "maker-space",
+        "electronics-lab",
+        "workshop",
+        "classroom",
+        "server-room",
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab",
+        "meeting-room",
+        "storage",
+        "lounge"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440017",
+      "name": "First Aid Kit",
+      "category": "safety",
+      "description": "Comprehensive workplace first aid kit",
+      "price": 150,
+      "currency": "USD",
+      "vendor": "3M",
+      "tags": [
+        "safety",
+        "first-aid",
+        "compliance"
+      ],
+      "featured": false,
+      "specs": {
+        "Capacity": "50 people",
+        "Items": "175 pieces",
+        "Cabinet": "Wall-mountable metal",
+        "Compliance": "OSHA/ANSI"
+      },
+      "dimensions": {
+        "width": 0.38,
+        "depth": 0.13,
+        "height": 0.27,
+        "unit": "m"
+      },
+      "weight": 3.5,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "maker-space",
+        "electronics-lab",
+        "workshop",
+        "classroom",
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab",
+        "meeting-room",
+        "lounge"
+      ]
+    },
+    {
+      "id": "dc3c6b81-e127-4829-a2d8-de9624c10eb8",
+      "name": "Smoke Detector (Photoelectric)",
+      "category": "safety",
+      "description": "Addressable photoelectric smoke detector with base",
+      "price": 120,
+      "currency": "USD",
+      "vendor": "Notifier",
+      "tags": [
+        "smoke",
+        "detector",
+        "fire",
+        "alarm"
+      ],
+      "featured": false,
+      "specs": {
+        "Type": "Photoelectric",
+        "Coverage": "900 sq ft",
+        "Power": "24VDC loop",
+        "Compliance": "UL 268, NFPA 72"
+      },
+      "dimensions": {
+        "width": 0.12,
+        "depth": 0.12,
+        "height": 0.06,
+        "unit": "m"
+      },
+      "weight": 0.2,
+      "power": {
+        "watts": 0.5,
+        "voltage": 24,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "maker-space",
+        "electronics-lab",
+        "workshop",
+        "classroom",
+        "server-room",
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab",
+        "meeting-room",
+        "storage",
+        "lounge",
+        "hallway"
+      ]
+    },
+    {
+      "id": "aeaa6ea1-c652-4f9c-a33d-287221a7fab1",
+      "name": "Emergency Shower Station",
+      "category": "safety",
+      "description": "Combination emergency drench shower and eyewash station",
+      "price": 1200,
+      "currency": "USD",
+      "vendor": "Bradley",
+      "tags": [
+        "emergency",
+        "shower",
+        "eyewash",
+        "safety"
+      ],
+      "featured": false,
+      "specs": {
+        "Shower": "20 GPM flow",
+        "Eyewash": "3.0 GPM dual spray",
+        "Compliance": "ANSI Z358.1",
+        "Activation": "Pull rod + push handle"
+      },
+      "dimensions": {
+        "width": 0.61,
+        "depth": 0.61,
+        "height": 2.3,
+        "unit": "m"
+      },
+      "weight": 25,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 1,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "7a6f6307-a032-473d-a88b-329da8682b51",
+      "name": "Eyewash Station (Countertop)",
+      "category": "safety",
+      "description": "Countertop-mounted emergency eyewash station",
+      "price": 350,
+      "currency": "USD",
+      "vendor": "Haws",
+      "tags": [
+        "eyewash",
+        "emergency",
+        "safety"
+      ],
+      "featured": false,
+      "specs": {
+        "Flow": "3.0 GPM",
+        "Duration": "15 minutes min",
+        "Mounting": "Countertop/wall",
+        "Compliance": "ANSI Z358.1"
+      },
+      "dimensions": {
+        "width": 0.25,
+        "depth": 0.3,
+        "height": 0.45,
+        "unit": "m"
+      },
+      "weight": 4,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "b1f2228f-7e83-40d4-93f9-e621a0bf6bad",
+      "name": "Chemical Spill Kit",
+      "category": "safety",
+      "description": "Universal chemical spill containment and cleanup kit",
+      "price": 280,
+      "currency": "USD",
+      "vendor": "PIG",
+      "tags": [
+        "spill",
+        "chemical",
+        "cleanup",
+        "containment"
+      ],
+      "featured": false,
+      "specs": {
+        "Capacity": "20 gallons",
+        "Contents": "Pads, socks, pillows, bags, goggles",
+        "Container": "High-visibility drum",
+        "Types": "Universal (oils, water, chemicals)"
+      },
+      "dimensions": {
+        "width": 0.4,
+        "depth": 0.4,
+        "height": 0.7,
+        "unit": "m"
+      },
+      "weight": 12,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab",
+        "workshop"
+      ]
+    },
+    {
+      "id": "2956a493-1cb9-4d17-af42-60b6627dd655",
+      "name": "Safety Goggles (Set of 30)",
+      "category": "safety",
+      "description": "Chemical splash safety goggles, class set of 30",
+      "price": 250,
+      "currency": "USD",
+      "vendor": "3M",
+      "tags": [
+        "goggles",
+        "eye-protection",
+        "ppe"
+      ],
+      "featured": false,
+      "specs": {
+        "Quantity": "30 pairs",
+        "Lens": "Polycarbonate anti-fog",
+        "Protection": "ANSI Z87.1",
+        "Features": "Indirect ventilation, fits over glasses"
+      },
+      "dimensions": {
+        "width": 0.5,
+        "depth": 0.35,
+        "height": 0.25,
+        "unit": "m"
+      },
+      "weight": 3,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "a481442f-805d-4124-9c0d-d6575c433626",
+      "name": "Lab Coat Set (10 coats)",
+      "category": "safety",
+      "description": "Flame-resistant lab coats for general laboratory use, set of 10",
+      "price": 350,
+      "currency": "USD",
+      "vendor": "VWR",
+      "tags": [
+        "lab-coat",
+        "ppe",
+        "clothing"
+      ],
+      "featured": false,
+      "specs": {
+        "Quantity": "10 coats",
+        "Material": "FR cotton blend",
+        "Sizes": "S, M, L, XL",
+        "Features": "Snap buttons, chest pocket"
+      },
+      "dimensions": {
+        "width": 0.4,
+        "depth": 0.3,
+        "height": 0.3,
+        "unit": "m"
+      },
+      "weight": 5,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "aeecfb70-f699-42c6-9215-35a8004f4523",
+      "name": "Fume Hood (Ducted, 6ft)",
+      "category": "safety",
+      "description": "6-foot ducted chemical fume hood with variable air volume",
+      "price": 12000,
+      "currency": "USD",
+      "vendor": "Labconco",
+      "tags": [
+        "fume-hood",
+        "ventilation",
+        "chemical",
+        "safety"
+      ],
+      "featured": true,
+      "specs": {
+        "Width": "6 feet",
+        "Face Velocity": "100 fpm",
+        "Sash": "Combination vertical/horizontal",
+        "Interior Lining": "Chemical-resistant composite"
+      },
+      "dimensions": {
+        "width": 1.83,
+        "depth": 0.94,
+        "height": 2.3,
+        "unit": "m"
+      },
+      "weight": 350,
+      "power": {
+        "watts": 800,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 200,
+        "requiresExhaust": true,
+        "minACH": 12
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "chemistry-lab",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "3829dc26-1ffc-4ec6-8833-dfe4fd22f3e2",
+      "name": "Biosafety Cabinet (Class II Type A2)",
+      "category": "safety",
+      "description": "Class II Type A2 biosafety cabinet for biological sample handling",
+      "price": 18000,
+      "currency": "USD",
+      "vendor": "Thermo Fisher",
+      "tags": [
+        "biosafety",
+        "cabinet",
+        "biological",
+        "containment"
+      ],
+      "featured": true,
+      "specs": {
+        "Class": "II Type A2",
+        "Width": "4 feet",
+        "HEPA Filters": "Supply and exhaust",
+        "Compliance": "NSF/ANSI 49"
+      },
+      "dimensions": {
+        "width": 1.3,
+        "depth": 0.78,
+        "height": 1.6,
+        "unit": "m"
+      },
+      "weight": 250,
+      "power": {
+        "watts": 500,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 300,
+        "requiresExhaust": true,
+        "minACH": 12
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.8,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "6c289ff7-134c-4180-a98c-bb371c6d747b",
+      "name": "Emergency LED Exit Sign",
+      "category": "safety",
+      "description": "Dual-face LED emergency exit sign with battery backup",
+      "price": 65,
+      "currency": "USD",
+      "vendor": "Lithonia",
+      "tags": [
+        "emergency",
+        "exit",
+        "lighting",
+        "sign"
+      ],
+      "featured": false,
+      "specs": {
+        "Type": "LED dual-face",
+        "Battery": "90-minute NiCd backup",
+        "Compliance": "UL 924, NFPA 101",
+        "Mounting": "Ceiling or wall"
+      },
+      "dimensions": {
+        "width": 0.33,
+        "depth": 0.05,
+        "height": 0.2,
+        "unit": "m"
+      },
+      "weight": 1.2,
+      "power": {
+        "watts": 4,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 2,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "maker-space",
+        "electronics-lab",
+        "workshop",
+        "classroom",
+        "server-room",
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab",
+        "meeting-room",
+        "storage",
+        "lounge",
+        "hallway"
+      ]
+    },
+    {
+      "id": "cfb8eb91-5d42-4468-9949-944aaca8c640",
+      "name": "Fire Blanket (1.2m x 1.8m)",
+      "category": "safety",
+      "description": "Fiberglass fire blanket in quick-release wall-mount container",
+      "price": 45,
+      "currency": "USD",
+      "vendor": "Sellstrom",
+      "tags": [
+        "fire",
+        "blanket",
+        "safety",
+        "emergency"
+      ],
+      "featured": false,
+      "specs": {
+        "Material": "Fiberglass (550C rated)",
+        "Size": "1.2m x 1.8m",
+        "Container": "Quick-release wall mount",
+        "Compliance": "EN 1869"
+      },
+      "dimensions": {
+        "width": 0.2,
+        "depth": 0.08,
+        "height": 0.3,
+        "unit": "m"
+      },
+      "weight": 1.5,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "chemistry-lab",
+        "wet-lab",
+        "workshop",
+        "maker-space",
+        "kitchen"
+      ]
+    },
+    {
+      "id": "cbb7fa4b-dc38-4ffb-a784-eb4d5b1c7810",
+      "name": "Gas Detector (Multi-Gas)",
+      "category": "safety",
+      "description": "Portable 4-gas detector for O2, LEL, CO, and H2S monitoring",
+      "price": 800,
+      "currency": "USD",
+      "vendor": "MSA",
+      "tags": [
+        "gas",
+        "detector",
+        "safety",
+        "monitoring"
+      ],
+      "featured": false,
+      "specs": {
+        "Gases": "O2, LEL, CO, H2S",
+        "Runtime": "18 hours",
+        "Display": "LCD with backlight",
+        "Alarms": "Audible, visual, vibration"
+      },
+      "dimensions": {
+        "width": 0.07,
+        "depth": 0.04,
+        "height": 0.13,
+        "unit": "m"
+      },
+      "weight": 0.3,
+      "power": {
+        "watts": 1,
+        "voltage": 3.7,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "chemistry-lab",
+        "wet-lab",
+        "server-room"
+      ]
+    },
+    {
+      "id": "4ac8f58d-0511-45f5-b9eb-1fe76ab0833b",
+      "name": "PPE Dispenser Station",
+      "category": "safety",
+      "description": "Wall-mounted multi-compartment PPE dispensing station",
+      "price": 220,
+      "currency": "USD",
+      "vendor": "Uline",
+      "tags": [
+        "ppe",
+        "dispenser",
+        "safety",
+        "organization"
+      ],
+      "featured": false,
+      "specs": {
+        "Compartments": "4 (gloves, goggles, masks, ear plugs)",
+        "Material": "Acrylic",
+        "Mounting": "Wall-mount",
+        "Capacity": "100+ items per compartment"
+      },
+      "dimensions": {
+        "width": 0.6,
+        "depth": 0.15,
+        "height": 0.5,
+        "unit": "m"
+      },
+      "weight": 3,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": true,
+        "floorMounted": false,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab",
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "c5042c08-ed15-4a50-91a8-60184af07c5a",
+      "name": "Chemical Fume Hood (Ductless)",
+      "category": "safety",
+      "description": "Ductless filtered fume hood for low-toxicity chemical work",
+      "price": 4500,
+      "currency": "USD",
+      "vendor": "Erlab",
+      "tags": [
+        "fume-hood",
+        "ductless",
+        "filtration",
+        "safety"
+      ],
+      "featured": false,
+      "specs": {
+        "Width": "4 feet",
+        "Filtration": "Carbon + HEPA",
+        "Alarm": "Filter saturation sensor",
+        "Mobility": "Relocatable, no ductwork"
+      },
+      "dimensions": {
+        "width": 1.22,
+        "depth": 0.7,
+        "height": 1.1,
+        "unit": "m"
+      },
+      "weight": 65,
+      "power": {
+        "watts": 200,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 50,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "chemistry-lab",
+        "wet-lab",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440012",
+      "name": "Server Rack (42U)",
+      "category": "utilities",
+      "description": "Standard server rack for equipment housing",
+      "price": 800,
+      "currency": "USD",
+      "vendor": "APC",
+      "tags": [
+        "rack",
+        "server",
+        "infrastructure"
+      ],
+      "featured": false,
+      "specs": {
+        "Height": "42U",
+        "Width": "19 inches",
+        "Depth": "36 inches",
+        "Weight Capacity": "3000 lbs"
+      },
+      "dimensions": {
+        "width": 0.6,
+        "depth": 0.91,
+        "height": 2,
+        "unit": "m"
+      },
+      "weight": 100,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.8,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "network-closet"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440014",
+      "name": "UPS Battery Backup (3000VA)",
+      "category": "utilities",
+      "description": "Uninterruptible power supply for critical equipment",
+      "price": 900,
+      "currency": "USD",
+      "vendor": "APC",
+      "tags": [
+        "ups",
+        "power",
+        "backup"
+      ],
+      "featured": false,
+      "specs": {
+        "Capacity": "3000VA / 2700W",
+        "Runtime": "10 min at full load",
+        "Outlets": "8x NEMA 5-15R",
+        "Management": "Network card optional"
+      },
+      "dimensions": {
+        "width": 0.43,
+        "depth": 0.66,
+        "height": 0.22,
+        "unit": "m"
+      },
+      "weight": 30,
+      "power": {
+        "watts": 2700,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 100,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "compute-lab",
+        "electronics-lab"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440015",
+      "name": "HVAC Cooling Unit",
+      "category": "utilities",
+      "description": "Precision air conditioning for server rooms",
+      "price": 5000,
+      "currency": "USD",
+      "vendor": "Liebert",
+      "tags": [
+        "hvac",
+        "cooling",
+        "climate"
+      ],
+      "featured": false,
+      "specs": {
+        "Cooling Capacity": "10 kW",
+        "Airflow": "2000 CFM",
+        "Control": "Digital microprocessor",
+        "Efficiency": "Energy Star rated"
+      },
+      "dimensions": {
+        "width": 0.6,
+        "depth": 0.6,
+        "height": 1.8,
+        "unit": "m"
+      },
+      "weight": 180,
+      "power": {
+        "watts": 3500,
+        "voltage": 220,
+        "phase": "3",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": true,
+        "minACH": 15
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.8,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "server-room"
+      ]
+    },
+    {
+      "id": "f4fb588a-7b63-4f89-8eb6-69eef1b50da9",
+      "name": "Air Compressor (Oil-Free)",
+      "category": "utilities",
+      "description": "Oil-free quiet air compressor for lab and shop use",
+      "price": 1800,
+      "currency": "USD",
+      "vendor": "Jun-Air",
+      "tags": [
+        "compressor",
+        "air",
+        "pneumatic"
+      ],
+      "featured": false,
+      "specs": {
+        "Pressure": "120 PSI max",
+        "Tank": "15 gallon",
+        "Noise Level": "48 dB",
+        "Features": "Oil-free, auto drain"
+      },
+      "dimensions": {
+        "width": 0.5,
+        "depth": 0.5,
+        "height": 0.8,
+        "unit": "m"
+      },
+      "weight": 35,
+      "power": {
+        "watts": 750,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 400,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "workshop",
+        "maker-space"
+      ]
+    },
+    {
+      "id": "3f8beea5-b08d-4a4d-a286-6512e64e18d0",
+      "name": "Vacuum Pump (Rotary Vane)",
+      "category": "utilities",
+      "description": "Rotary vane vacuum pump for laboratory filtration and aspiration",
+      "price": 2200,
+      "currency": "USD",
+      "vendor": "Welch",
+      "tags": [
+        "vacuum",
+        "pump",
+        "lab"
+      ],
+      "featured": false,
+      "specs": {
+        "Ultimate Vacuum": "1 x 10^-3 mbar",
+        "Pumping Speed": "33 L/min",
+        "Noise Level": "52 dB",
+        "Motor": "1/4 HP"
+      },
+      "dimensions": {
+        "width": 0.3,
+        "depth": 0.2,
+        "height": 0.25,
+        "unit": "m"
+      },
+      "weight": 10,
+      "power": {
+        "watts": 190,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 100,
+        "requiresExhaust": true
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab"
+      ]
+    },
+    {
+      "id": "73e3be05-4a58-41bb-a7b3-086fa9c48588",
+      "name": "Deionized Water System",
+      "category": "utilities",
+      "description": "Benchtop deionized water purification system producing Type II water",
+      "price": 3500,
+      "currency": "USD",
+      "vendor": "Millipore",
+      "tags": [
+        "water",
+        "purification",
+        "deionized",
+        "lab"
+      ],
+      "featured": false,
+      "specs": {
+        "Water Quality": "Type II (1-15 MOhm-cm)",
+        "Flow Rate": "1.5 L/min",
+        "Filters": "Carbon + DI cartridges",
+        "Monitor": "Resistivity display"
+      },
+      "dimensions": {
+        "width": 0.38,
+        "depth": 0.48,
+        "height": 0.55,
+        "unit": "m"
+      },
+      "weight": 12,
+      "power": {
+        "watts": 50,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 20,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.2,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "95cc81e8-ea80-4941-a921-41ac7bd4f4fd",
+      "name": "Autoclave (Benchtop)",
+      "category": "utilities",
+      "description": "Benchtop steam autoclave for sterilization of lab equipment",
+      "price": 6500,
+      "currency": "USD",
+      "vendor": "Tuttnauer",
+      "tags": [
+        "autoclave",
+        "sterilization",
+        "lab"
+      ],
+      "featured": false,
+      "specs": {
+        "Chamber": "23L capacity",
+        "Temperature": "121-134C",
+        "Cycles": "Gravity, liquid, wrapped",
+        "Compliance": "FDA cleared"
+      },
+      "dimensions": {
+        "width": 0.5,
+        "depth": 0.65,
+        "height": 0.45,
+        "unit": "m"
+      },
+      "weight": 45,
+      "power": {
+        "watts": 1800,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 1200,
+        "requiresExhaust": true
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": true
+      },
+      "compatibleZoneTypes": [
+        "biology-lab",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "f5c3c322-9231-41ac-b2a8-45b7d94bcfdf",
+      "name": "Centrifuge (Microcentrifuge)",
+      "category": "utilities",
+      "description": "High-speed microcentrifuge for molecular biology applications",
+      "price": 2800,
+      "currency": "USD",
+      "vendor": "Eppendorf",
+      "tags": [
+        "centrifuge",
+        "molecular-biology",
+        "lab"
+      ],
+      "featured": false,
+      "specs": {
+        "Max Speed": "14,800 RPM",
+        "Max RCF": "21,130 x g",
+        "Rotor": "24 x 1.5/2.0 mL",
+        "Temperature": "Ambient"
+      },
+      "dimensions": {
+        "width": 0.23,
+        "depth": 0.26,
+        "height": 0.16,
+        "unit": "m"
+      },
+      "weight": 7.5,
+      "power": {
+        "watts": 200,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 80,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.15,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "f4cd5fbf-080d-44a7-a29b-3a5e95615084",
+      "name": "Incubator (CO2)",
+      "category": "utilities",
+      "description": "CO2 incubator for cell culture and microbiological applications",
+      "price": 8000,
+      "currency": "USD",
+      "vendor": "Thermo Fisher",
+      "tags": [
+        "incubator",
+        "cell-culture",
+        "co2",
+        "biology"
+      ],
+      "featured": false,
+      "specs": {
+        "Volume": "184L",
+        "Temp Range": "RT+5 to 60C",
+        "CO2": "0-20% range",
+        "Humidity": "Passive/active humidification"
+      },
+      "dimensions": {
+        "width": 0.65,
+        "depth": 0.75,
+        "height": 0.95,
+        "unit": "m"
+      },
+      "weight": 90,
+      "power": {
+        "watts": 800,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 200,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "701ec14a-0784-460c-a196-b580dba65d19",
+      "name": "Laboratory Freezer (-20C)",
+      "category": "utilities",
+      "description": "General-purpose laboratory freezer for reagent and sample storage",
+      "price": 2500,
+      "currency": "USD",
+      "vendor": "Fisher Scientific",
+      "tags": [
+        "freezer",
+        "storage",
+        "temperature"
+      ],
+      "featured": false,
+      "specs": {
+        "Temperature": "-20C",
+        "Volume": "600L",
+        "Shelves": "4 adjustable",
+        "Alarm": "Audio/visual high-temp alarm"
+      },
+      "dimensions": {
+        "width": 0.7,
+        "depth": 0.7,
+        "height": 1.8,
+        "unit": "m"
+      },
+      "weight": 85,
+      "power": {
+        "watts": 350,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 250,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.3,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab",
+        "wet-lab",
+        "chemistry-lab"
+      ]
+    },
+    {
+      "id": "c9032225-15b6-4ee6-819f-c907f17ab13d",
+      "name": "Ultra-Low Freezer (-80C)",
+      "category": "utilities",
+      "description": "Ultra-low temperature freezer for long-term biological sample storage",
+      "price": 12000,
+      "currency": "USD",
+      "vendor": "Thermo Fisher",
+      "tags": [
+        "freezer",
+        "ultra-low",
+        "-80",
+        "biological"
+      ],
+      "featured": true,
+      "specs": {
+        "Temperature": "-86C to -50C",
+        "Volume": "490L",
+        "Compressors": "Dual cascade",
+        "Backup": "CO2 backup system"
+      },
+      "dimensions": {
+        "width": 0.8,
+        "depth": 0.85,
+        "height": 1.98,
+        "unit": "m"
+      },
+      "weight": 180,
+      "power": {
+        "watts": 1100,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 800,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "a124c15b-f8b4-44f1-91ed-14581ab29fd0",
+      "name": "Water Bath (Digital)",
+      "category": "utilities",
+      "description": "Digital water bath for incubation and sample warming",
+      "price": 600,
+      "currency": "USD",
+      "vendor": "VWR",
+      "tags": [
+        "water-bath",
+        "incubation",
+        "temperature"
+      ],
+      "featured": false,
+      "specs": {
+        "Volume": "20L",
+        "Temp Range": "Ambient+5 to 99.9C",
+        "Stability": "+/- 0.1C",
+        "Display": "Digital PID controller"
+      },
+      "dimensions": {
+        "width": 0.36,
+        "depth": 0.3,
+        "height": 0.28,
+        "unit": "m"
+      },
+      "weight": 6,
+      "power": {
+        "watts": 1000,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 500,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab",
+        "wet-lab",
+        "chemistry-lab"
+      ]
+    },
+    {
+      "id": "dcdac871-b2af-4556-b636-e92241e29bc7",
+      "name": "Orbital Shaker",
+      "category": "utilities",
+      "description": "Orbital shaker for mixing solutions and bacterial culture",
+      "price": 1500,
+      "currency": "USD",
+      "vendor": "IKA",
+      "tags": [
+        "shaker",
+        "orbital",
+        "mixing",
+        "culture"
+      ],
+      "featured": false,
+      "specs": {
+        "Speed Range": "50-500 RPM",
+        "Orbit": "10mm",
+        "Platform": "Universal clamp system",
+        "Timer": "0-99 min or continuous"
+      },
+      "dimensions": {
+        "width": 0.4,
+        "depth": 0.4,
+        "height": 0.15,
+        "unit": "m"
+      },
+      "weight": 8,
+      "power": {
+        "watts": 100,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 30,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab",
+        "wet-lab",
+        "chemistry-lab"
+      ]
+    },
+    {
+      "id": "a5f1cd4d-7113-4577-9f56-7b9b03708ef6",
+      "name": "Spectrophotometer (UV-Vis)",
+      "category": "utilities",
+      "description": "UV-Vis spectrophotometer for quantitative analysis",
+      "price": 5500,
+      "currency": "USD",
+      "vendor": "Agilent",
+      "tags": [
+        "spectrophotometer",
+        "uv-vis",
+        "analysis"
+      ],
+      "featured": false,
+      "specs": {
+        "Wavelength Range": "190-1100 nm",
+        "Bandwidth": "1.5 nm",
+        "Scan Speed": "3200 nm/min",
+        "Cuvette": "Standard 10mm"
+      },
+      "dimensions": {
+        "width": 0.45,
+        "depth": 0.55,
+        "height": 0.25,
+        "unit": "m"
+      },
+      "weight": 15,
+      "power": {
+        "watts": 150,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 60,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.15,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "chemistry-lab",
+        "biology-lab",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "ae833b52-9a6e-45e5-86e5-a3a88110712c",
+      "name": "PCR Thermal Cycler",
+      "category": "utilities",
+      "description": "96-well thermal cycler for polymerase chain reaction",
+      "price": 4500,
+      "currency": "USD",
+      "vendor": "Bio-Rad",
+      "tags": [
+        "pcr",
+        "thermal-cycler",
+        "molecular-biology"
+      ],
+      "featured": false,
+      "specs": {
+        "Wells": "96 x 0.2mL",
+        "Temp Range": "0-100C",
+        "Ramp Rate": "5C/s",
+        "Block Uniformity": "+/- 0.4C"
+      },
+      "dimensions": {
+        "width": 0.25,
+        "depth": 0.45,
+        "height": 0.25,
+        "unit": "m"
+      },
+      "weight": 10,
+      "power": {
+        "watts": 600,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": true
+      },
+      "ventilation": {
+        "heatOutputW": 200,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0.1,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab"
+      ]
+    },
+    {
+      "id": "e6f56bde-5603-464d-b0b8-32b0c95a4c94",
+      "name": "Laminar Flow Hood (Horizontal)",
+      "category": "utilities",
+      "description": "Horizontal laminar flow clean bench for sterile work",
+      "price": 5000,
+      "currency": "USD",
+      "vendor": "Labconco",
+      "tags": [
+        "laminar-flow",
+        "clean-bench",
+        "sterile"
+      ],
+      "featured": false,
+      "specs": {
+        "Width": "4 feet",
+        "HEPA Filter": "99.99% at 0.3 micron",
+        "Airflow": "Horizontal unidirectional",
+        "UV Light": "Germicidal included"
+      },
+      "dimensions": {
+        "width": 1.3,
+        "depth": 0.75,
+        "height": 1.55,
+        "unit": "m"
+      },
+      "weight": 110,
+      "power": {
+        "watts": 350,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 150,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": true,
+        "minClearanceM": 0.5,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "biology-lab",
+        "wet-lab"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440021",
+      "name": "CAD Software License (Annual)",
+      "category": "software",
+      "description": "Professional CAD software subscription",
+      "price": 2000,
+      "currency": "USD",
+      "vendor": "Autodesk",
+      "tags": [
+        "software",
+        "cad",
+        "design"
+      ],
+      "featured": true,
+      "specs": {
+        "Product": "Fusion 360",
+        "License": "Commercial annual",
+        "Users": "1 seat",
+        "Support": "Cloud storage, updates"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "maker-space",
+        "classroom"
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440022",
+      "name": "AI Development Platform License",
+      "category": "software",
+      "description": "Enterprise AI development platform subscription",
+      "price": 5000,
+      "currency": "USD",
+      "vendor": "NVIDIA",
+      "tags": [
+        "software",
+        "ai",
+        "ml"
+      ],
+      "featured": true,
+      "specs": {
+        "Product": "NVIDIA AI Enterprise",
+        "License": "1-year subscription",
+        "Includes": "Frameworks, tools, support",
+        "GPUs": "Unlimited"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "compute-lab",
+        "server-room"
+      ]
+    },
+    {
+      "id": "442cf718-b981-408c-ba2a-a44848631c95",
+      "name": "Simulation Software (Multiphysics)",
+      "category": "software",
+      "description": "Multiphysics simulation platform for engineering analysis",
+      "price": 8000,
+      "currency": "USD",
+      "vendor": "COMSOL",
+      "tags": [
+        "software",
+        "simulation",
+        "engineering",
+        "physics"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "COMSOL Multiphysics",
+        "License": "Floating, annual",
+        "Modules": "Structural, CFD, Heat Transfer",
+        "Users": "1 concurrent"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "compute-lab",
+        "office"
+      ]
+    },
+    {
+      "id": "147ab87b-1d5f-4c5b-912e-2ee552c9c1c5",
+      "name": "Lab Information Management System (LIMS)",
+      "category": "software",
+      "description": "Cloud-based LIMS for sample tracking and lab management",
+      "price": 6000,
+      "currency": "USD",
+      "vendor": "LabArchives",
+      "tags": [
+        "software",
+        "lims",
+        "lab-management",
+        "tracking"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "LabArchives LIMS",
+        "License": "Annual subscription",
+        "Users": "Up to 25",
+        "Features": "Sample tracking, ELN, compliance"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "wet-lab",
+        "biology-lab",
+        "chemistry-lab",
+        "office"
+      ]
+    },
+    {
+      "id": "c465628c-a3e2-4414-b61c-c94bf63c02e5",
+      "name": "Data Analysis Suite",
+      "category": "software",
+      "description": "Statistical data analysis and visualization software",
+      "price": 1500,
+      "currency": "USD",
+      "vendor": "MathWorks",
+      "tags": [
+        "software",
+        "data",
+        "analysis",
+        "statistics",
+        "matlab"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "MATLAB + Statistics Toolbox",
+        "License": "Academic annual",
+        "Users": "1 seat",
+        "Toolboxes": "Statistics, Signal Processing, Image Processing"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "compute-lab",
+        "office",
+        "classroom"
+      ]
+    },
+    {
+      "id": "a772c9ea-a3af-4169-b2b6-e818af09b873",
+      "name": "Collaboration Platform",
+      "category": "software",
+      "description": "Team collaboration and project management platform",
+      "price": 600,
+      "currency": "USD",
+      "vendor": "Atlassian",
+      "tags": [
+        "software",
+        "collaboration",
+        "project-management"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "Jira + Confluence Cloud",
+        "License": "Annual per user",
+        "Users": "Up to 50",
+        "Features": "Project tracking, wiki, integrations"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "compute-lab",
+        "classroom"
+      ]
+    },
+    {
+      "id": "5a258ac6-edab-4f57-9b45-7f78375a7c8b",
+      "name": "Version Control System (Self-Hosted)",
+      "category": "software",
+      "description": "Self-hosted Git platform for code management and CI/CD",
+      "price": 3000,
+      "currency": "USD",
+      "vendor": "GitLab",
+      "tags": [
+        "software",
+        "git",
+        "version-control",
+        "ci-cd"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "GitLab Premium Self-Managed",
+        "License": "Annual per user",
+        "Users": "Up to 50",
+        "Features": "CI/CD, code review, security scanning"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "compute-lab",
+        "server-room"
+      ]
+    },
+    {
+      "id": "da30d577-aa0c-45ee-88a8-d003d3ba9107",
+      "name": "Infrastructure Monitoring Dashboard",
+      "category": "software",
+      "description": "Real-time infrastructure monitoring and alerting platform",
+      "price": 2400,
+      "currency": "USD",
+      "vendor": "Grafana Labs",
+      "tags": [
+        "software",
+        "monitoring",
+        "dashboard",
+        "infrastructure"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "Grafana Cloud Pro",
+        "License": "Annual",
+        "Metrics": "100K active series",
+        "Features": "Dashboards, alerting, logs, traces"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "server-room",
+        "compute-lab",
+        "office"
+      ]
+    },
+    {
+      "id": "59a02e92-7d3e-4b9f-a927-eaab2fc69e9b",
+      "name": "Safety Compliance Software",
+      "category": "software",
+      "description": "EHS safety compliance and incident management platform",
+      "price": 4000,
+      "currency": "USD",
+      "vendor": "Intelex",
+      "tags": [
+        "software",
+        "safety",
+        "compliance",
+        "ehs"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "Intelex EHS Platform",
+        "License": "Annual subscription",
+        "Modules": "Incident, audit, training, chemical",
+        "Compliance": "OSHA, ISO 45001"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "wet-lab",
+        "chemistry-lab",
+        "biology-lab",
+        "workshop"
+      ]
+    },
+    {
+      "id": "f73ca9cd-5c59-4316-bb25-a87f2481c1c3",
+      "name": "Training & LMS Platform",
+      "category": "software",
+      "description": "Learning management system for lab safety and skills training",
+      "price": 3500,
+      "currency": "USD",
+      "vendor": "Moodle",
+      "tags": [
+        "software",
+        "training",
+        "lms",
+        "education"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "Moodle Workplace",
+        "License": "Annual hosted",
+        "Users": "Up to 200",
+        "Features": "Courses, certifications, reporting, mobile"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "classroom",
+        "office"
+      ]
+    },
+    {
+      "id": "9b5fff45-ee73-4317-8589-c85dce17f786",
+      "name": "Inventory Management System",
+      "category": "software",
+      "description": "Equipment and consumables inventory tracking software",
+      "price": 2000,
+      "currency": "USD",
+      "vendor": "Quartzy",
+      "tags": [
+        "software",
+        "inventory",
+        "tracking",
+        "management"
+      ],
+      "featured": false,
+      "specs": {
+        "Product": "Quartzy Pro",
+        "License": "Annual subscription",
+        "Features": "Order management, inventory, budgets",
+        "Integration": "Vendor catalogs, PO generation"
+      },
+      "dimensions": {
+        "width": 0,
+        "depth": 0,
+        "height": 0,
+        "unit": "m"
+      },
+      "weight": 0,
+      "power": {
+        "watts": 0,
+        "voltage": 220,
+        "phase": "1",
+        "needsUPS": false
+      },
+      "ventilation": {
+        "heatOutputW": 0,
+        "requiresExhaust": false
+      },
+      "placement": {
+        "wallMounted": false,
+        "floorMounted": false,
+        "minClearanceM": 0,
+        "requiresFloorDrain": false
+      },
+      "compatibleZoneTypes": [
+        "office",
+        "wet-lab",
+        "maker-space"
+      ]
     }
   ]
 }

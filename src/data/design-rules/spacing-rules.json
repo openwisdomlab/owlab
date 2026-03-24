@@ -1,0 +1,128 @@
+[
+  {
+    "id": "sp-001",
+    "description": "Main corridor minimum width",
+    "descriptionZh": "主通道最小宽度",
+    "applicableTo": "pathway",
+    "minDistanceM": 1.5,
+    "standard": "NFPA 101 §7.3.4",
+    "severity": "error"
+  },
+  {
+    "id": "sp-002",
+    "description": "Secondary aisle minimum width",
+    "descriptionZh": "次通道最小宽度",
+    "applicableTo": "pathway",
+    "minDistanceM": 0.9,
+    "standard": "OSHA 1910.22(b)",
+    "severity": "warning"
+  },
+  {
+    "id": "sp-003",
+    "description": "Equipment clearance in compute zones",
+    "descriptionZh": "计算区域设备间距",
+    "applicableTo": "compute",
+    "minDistanceM": 1.0,
+    "standard": "ASHRAE TC 9.9",
+    "severity": "warning"
+  },
+  {
+    "id": "sp-004",
+    "description": "Equipment clearance in biosafety zones",
+    "descriptionZh": "生物安全区域设备间距",
+    "applicableTo": "biosafety",
+    "minDistanceM": 1.2,
+    "standard": "CDC BMBL 6th Ed",
+    "severity": "error"
+  },
+  {
+    "id": "sp-005",
+    "description": "Zone-to-zone general gap",
+    "descriptionZh": "区域间通用间距",
+    "applicableTo": "zone_boundary",
+    "minDistanceM": 0.3,
+    "standard": "IBC §1005.1",
+    "severity": "warning"
+  },
+  {
+    "id": "sp-006",
+    "description": "Maximum exit access travel distance (sprinklered)",
+    "descriptionZh": "最大疏散通道行进距离（有喷淋系统）",
+    "applicableTo": "exit_access",
+    "maxDistanceM": 60,
+    "standard": "NFPA 101 §7.6",
+    "severity": "error"
+  },
+  {
+    "id": "sp-007",
+    "description": "Chemical storage minimum distance to occupied zones",
+    "descriptionZh": "化学品储存区与人员活动区域最小距离",
+    "applicableTo": "chemical-storage",
+    "minDistanceM": 3.0,
+    "standard": "NFPA 45 §7.3.1",
+    "severity": "error"
+  },
+  {
+    "id": "sp-008",
+    "description": "Fume hood front clearance",
+    "descriptionZh": "通风柜前方净空距离",
+    "applicableTo": "fume_hood",
+    "minDistanceM": 1.5,
+    "standard": "ANSI Z9.5 §5.2",
+    "severity": "error"
+  },
+  {
+    "id": "sp-009",
+    "description": "Server rack front clearance for maintenance access",
+    "descriptionZh": "服务器机柜前方维护通道",
+    "applicableTo": "server_rack_front",
+    "minDistanceM": 1.0,
+    "standard": "ASHRAE TC 9.9",
+    "severity": "warning"
+  },
+  {
+    "id": "sp-010",
+    "description": "Server rack rear clearance for cable management and airflow",
+    "descriptionZh": "服务器机柜后方走线及通风间距",
+    "applicableTo": "server_rack_rear",
+    "minDistanceM": 0.8,
+    "standard": "ASHRAE TC 9.9",
+    "severity": "warning"
+  },
+  {
+    "id": "sp-011",
+    "description": "Emergency shower/eyewash maximum reach distance (10s travel)",
+    "descriptionZh": "紧急喷淋/洗眼器最大到达距离（10秒行程）",
+    "applicableTo": "emergency_shower",
+    "maxDistanceM": 15,
+    "standard": "ANSI Z358.1 §4.5",
+    "severity": "error"
+  },
+  {
+    "id": "sp-012",
+    "description": "Wheelchair turning space minimum diameter",
+    "descriptionZh": "轮椅转弯空间最小直径",
+    "applicableTo": "accessible_space",
+    "minDistanceM": 1.5,
+    "standard": "ADA §304.3",
+    "severity": "error"
+  },
+  {
+    "id": "sp-013",
+    "description": "Biosafety cabinet minimum clearance from doors and traffic paths",
+    "descriptionZh": "生物安全柜与门及人行通道的最小距离",
+    "applicableTo": "biosafety_cabinet",
+    "minDistanceM": 1.5,
+    "standard": "NSF/ANSI 49 §6.4",
+    "severity": "error"
+  },
+  {
+    "id": "sp-014",
+    "description": "Clean room gowning area minimum depth",
+    "descriptionZh": "洁净室更衣区最小进深",
+    "applicableTo": "changing-room",
+    "minDistanceM": 2.0,
+    "standard": "ISO 14644-5",
+    "severity": "warning"
+  }
+]

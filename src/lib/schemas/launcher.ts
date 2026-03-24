@@ -9,7 +9,7 @@ import { z } from "zod";
 // Launch Mode Schema
 // ============================================
 
-export const LaunchModeSchema = z.enum(["chat", "quick", "template", "blank"]);
+export const LaunchModeSchema = z.enum(["chat", "quick", "template", "blank", "wizard"]);
 
 export type LaunchMode = z.infer<typeof LaunchModeSchema>;
 

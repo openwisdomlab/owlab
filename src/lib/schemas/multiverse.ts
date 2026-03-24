@@ -81,13 +81,27 @@ export function calculateLayoutMetrics(layout: LayoutData): LayoutMetrics {
 
   // Estimate cost based on zone types (simplified estimation)
   // In a real implementation, this would use actual equipment costs
-  const zoneCostMultipliers: Record<ZoneData["type"], number> = {
+  const zoneCostMultipliers: Partial<Record<ZoneData["type"], number>> = {
     compute: 5000,
     workspace: 2000,
     meeting: 1500,
     storage: 1000,
     utility: 3000,
     entrance: 500,
+    lab: 4000,
+    biosafety: 8000,
+    "pcr-isolation": 7000,
+    "clean-room": 10000,
+    "chemical-storage": 3000,
+    "waste-handling": 2500,
+    makerspace: 3500,
+    prototyping: 4000,
+    testing: 3500,
+    observation: 2000,
+    break: 1000,
+    "changing-room": 1500,
+    airlock: 6000,
+    simulation: 5000,
   };
 
   const estimatedCost = zones.reduce((acc, zone) => {
