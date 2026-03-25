@@ -158,6 +158,23 @@ export default function LabPage() {
           </motion.button>
         </motion.div>
 
+        {/* Showcase Card */}
+        <motion.div variants={itemVariants}>
+          <Link
+            href={`/${locale}/lab/showcase`}
+            className="group block p-6 rounded-2xl border border-[var(--glass-border)] bg-gradient-to-br from-cyan-500/10 to-blue-500/10 hover:border-[var(--neon-cyan)]/50 transition-all"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <Sparkles className="w-6 h-6 text-[var(--neon-cyan)]" />
+              <h3 className="text-lg font-semibold">标杆方案</h3>
+            </div>
+            <p className="text-sm text-[var(--muted-foreground)] mb-3">3 个标准规格的创新实验室设计方案，从 150m² 到 1200m²</p>
+            <div className="flex items-center gap-1 text-sm text-[var(--neon-cyan)]">
+              查看方案 <ArrowRight className="w-4 h-4" />
+            </div>
+          </Link>
+        </motion.div>
+
         {/* Module Cards */}
         <motion.div
           variants={itemVariants}

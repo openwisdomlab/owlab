@@ -83,7 +83,11 @@ const defaultLayout: LayoutData = {
   ],
 };
 
-export function FloorPlanEditor() {
+interface FloorPlanEditorProps {
+  initialTemplate?: string;
+}
+
+export function FloorPlanEditor({ initialTemplate }: FloorPlanEditorProps) {
   const t = useTranslations("lab.floorPlan");
 
   // Layout state with undo/redo (kept local — layout is the core data, not UI chrome)
@@ -130,6 +134,22 @@ export function FloorPlanEditor() {
       setLayout(transferredLayout);
     }
   }, [wizardActive, consumeTransferLayout, setLayout]);
+
+  // Load initial template from URL parameter
+  useEffect(() => {
+    if (!initialTemplate) return;
+
+    if (initialTemplate.startsWith("showcase-")) {
+      const idx = parseInt(initialTemplate.split("-")[1], 10);
+      import("@/data/showcase-prototypes").then(({ SHOWCASE_PROTOTYPES }) => {
+        if (SHOWCASE_PROTOTYPES[idx]) {
+          setLayout(SHOWCASE_PROTOTYPES[idx].layout);
+          closePanel("launcher");
+        }
+      });
+    }
+    // Future: handle case-study-{id}, marketplace-{id}
+  }, [initialTemplate, setLayout, closePanel]);
 
   // Canvas ref for measurement positioning
   const canvasContainerRef = useRef<HTMLDivElement>(null);

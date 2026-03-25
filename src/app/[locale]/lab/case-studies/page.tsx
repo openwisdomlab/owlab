@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
+import { Link } from "@/components/ui/Link";
 import {
   BookOpen,
   Building2,
@@ -87,6 +89,8 @@ const categories = [
 
 export default function CaseStudiesPage() {
   const t = useTranslations("lab.caseStudies");
+  const params = useParams();
+  const locale = params.locale as string;
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -201,11 +205,20 @@ export default function CaseStudiesPage() {
                   )}
                 </div>
 
-                {/* View Button */}
-                <button className="flex items-center gap-2 text-[var(--neon-cyan)] font-medium group-hover:gap-3 transition-all">
-                  <span>{t("viewDetails")}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                {/* Action Buttons */}
+                <div className="flex items-center gap-3">
+                  <button className="flex items-center gap-2 text-[var(--neon-cyan)] font-medium group-hover:gap-3 transition-all">
+                    <span>{t("viewDetails")}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <Link
+                    href={`/${locale}/lab/floor-plan?template=case-study-${study.id}`}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--neon-cyan)] text-black text-sm font-medium"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    使用此方案 <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}

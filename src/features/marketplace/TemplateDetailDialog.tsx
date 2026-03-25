@@ -12,7 +12,10 @@ import {
   User,
   Calendar,
   Download,
+  ArrowRight,
 } from "lucide-react";
+import { Link } from "@/components/ui/Link";
+import { useParams } from "next/navigation";
 import {
   type DesignTemplate,
   CATEGORY_COLORS,
@@ -36,6 +39,8 @@ export function TemplateDetailDialog({
   onLike,
 }: TemplateDetailDialogProps) {
   const t = useTranslations("marketplace");
+  const params = useParams();
+  const locale = params?.locale as string || "zh";
 
   if (!template) return null;
 
@@ -226,6 +231,12 @@ export function TemplateDetailDialog({
                   <Download className="w-4 h-4" />
                   {t("detail.forkToDesigns")}
                 </motion.button>
+                <Link
+                  href={`/${locale}/lab/floor-plan?template=marketplace-${template.id}`}
+                  className="flex items-center gap-1 text-sm text-[var(--neon-cyan)] hover:underline"
+                >
+                  在编辑器中打开 <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
           </motion.div>
