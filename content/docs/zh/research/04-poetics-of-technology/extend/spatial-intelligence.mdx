@@ -858,7 +858,7 @@ def analyze_comfort(temp, humidity, co2, lux, activity="学习"):
     elif humidity < 40 or humidity > 60:
         score -= 5
 
-    # CO2 评估 (最佳: <1000ppm)
+    # CO2 评估 (最佳: &lt;1000ppm)
     if co2 > 2000:
         score -= 30
         suggestions.append("⚠️ CO2 严重超标，立即通风!")
