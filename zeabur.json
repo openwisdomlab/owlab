@@ -2,13 +2,13 @@
   "$schema": "https://json-schema.zeabur.app/schema.json",
   "build": {
     "type": "nextjs",
-    "buildCommand": "npm run build",
-    "installCommand": "npm install",
+    "buildCommand": "pnpm run build",
+    "installCommand": "npm i -g pnpm && pnpm install",
     "outputDirectory": ".next"
   },
   "runtime": {
     "framework": "nextjs",
-    "startCommand": "npm start"
+    "startCommand": "pnpm start"
   },
   "deploy": {
     "region": "hkg",
@@ -24,8 +24,8 @@
   },
   "resources": {
     "limits": {
-      "memory": "1024Mi",
-      "cpu": "1000m"
+      "memory": "2048Mi",
+      "cpu": "2000m"
     }
   }
 }

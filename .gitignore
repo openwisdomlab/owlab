@@ -94,7 +94,6 @@ next-env.d.ts
 # Gemini UI and API routes
 /src/app/\[locale\]/lab/image-gen/
 /src/app/api/ai/gemini-image/
-/src/lib/ai/providers/gemini-image.ts
 
 # Temporary test files and logs
 **/test_gemini*.py
