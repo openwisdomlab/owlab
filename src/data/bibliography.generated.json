@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T11:37:54.158Z",
-  "total": 108,
+  "generated_at": "2026-04-30T11:39:52.172Z",
+  "total": 112,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -3131,6 +3131,147 @@
       "verified_date": null,
       "notes": "NYSATA 2024 - 视觉艺术作品集评估实施指南",
       "module": "M09"
+    },
+    "L01-2024-Springer-MartinDominguez": {
+      "id": "L01-2024-Springer-MartinDominguez",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Martín Domínguez, G."
+      ],
+      "year": 2024,
+      "title": "The beauty of the unusual: An architectural inquiry into the Reggio Emilia approach",
+      "venue": "Interchange (Springer)",
+      "doi": "10.1007/s10780-024-09525-y",
+      "url": "https://link.springer.com/article/10.1007/s10780-024-09525-y",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "Reggio-Emilia",
+        "atelier",
+        "third-teacher",
+        "architecture"
+      ],
+      "key_claims": [
+        "把 Malaguzzi「建筑教育学」的命题翻译为建筑师视角的设计语法",
+        "「不寻常之美」作为空间-儿童关系的设计准则",
+        "Reggio Emilia 空间的「非层级化」「可见性」「关系性」是其教育性的来源"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/neuroarchitecture.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Springer Interchange 2024 - 建筑师视角下的 Reggio Emilia",
+      "module": "L01"
+    },
+    "L01-2025-IntechOpen-Domingues": {
+      "id": "L01-2025-IntechOpen-Domingues",
+      "aliases": [],
+      "type": "book_chapter",
+      "authors": [
+        "Domingues, M."
+      ],
+      "year": 2025,
+      "title": "Environment as the third (virtual) teacher: Documenting Remida Reggio Emilia-inspired early childhood teacher education spaces",
+      "venue": "IntechOpen",
+      "doi": null,
+      "url": "https://www.intechopen.com/online-first/1224204",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "third-teacher",
+        "virtual-environment",
+        "Remida",
+        "teacher-education"
+      ],
+      "key_claims": [
+        "把 Reggio Emilia 第三教师概念扩展到虚拟空间",
+        "Remida（Reggio 创意循环中心）作为可被远程访问的「教育性环境」",
+        "OWL 数字空间设计可借鉴此「虚拟第三教师」的实证文档"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/third-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IntechOpen 2025 - 虚拟空间作为第三教师",
+      "module": "L01"
+    },
+    "L01-2025-ARTFinc-Hyde": {
+      "id": "L01-2025-ARTFinc-Hyde",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Hyde, B."
+      ],
+      "year": 2025,
+      "title": "Constructed spaces: Affordances and a theory of the built",
+      "venue": "ARTFinc",
+      "doi": null,
+      "url": "https://godlyplay.com.au/wp-content/uploads/2025/02/Constructed-Spaces_Final-Report_ARTFinc-4.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "affordance",
+        "Gibson",
+        "constructed-space",
+        "phenomenology"
+      ],
+      "key_claims": [
+        "现象学分析揭示构建空间产生五类可供性：情感、具身、物理、关系、神学",
+        "把 Gibson 的 ecological 可供性理论扩展到学习环境的构建实践",
+        "为「空间作为教师」提供了可分析的可供性分类法"
+      ],
+      "used_in": [
+        "extend/affordance-ecology.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "ARTFinc 2025 - 可供性理论应用于早教空间",
+      "module": "L01"
+    },
+    "L01-2025-ReggioChildren-Atelier": {
+      "id": "L01-2025-ReggioChildren-Atelier",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Reggio Children"
+      ],
+      "year": 2025,
+      "title": "Progettare spazi educativi: l'ambiente del nido e della scuola come 'atelier diffuso'",
+      "venue": "Reggio Children",
+      "doi": null,
+      "url": "https://www.reggiochildren.it/rc/formazione/gruppi-di-studio/2024-2025/progettare-spazi-educativi/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "atelier-diffuso",
+        "Reggio-Children",
+        "design"
+      ],
+      "key_claims": [
+        "从 Reggio Emilia 教育实践中提炼的空间设计「弥散式 atelier」原则",
+        "可见性、关系性、参与性、非层级性作为空间品质的核心维度"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/third-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Reggio Children 2024-2025 atelier 弥散研究小组",
+      "module": "L01"
     }
   },
   "byModule": {
@@ -3259,6 +3400,12 @@
       "M09-2026-MDPI-Cognitive",
       "M09-2024-NCME-PortfolioModule",
       "M09-2024-NYSATA-Portfolio"
+    ],
+    "L01": [
+      "L01-2024-Springer-MartinDominguez",
+      "L01-2025-IntechOpen-Domingues",
+      "L01-2025-ARTFinc-Hyde",
+      "L01-2025-ReggioChildren-Atelier"
     ]
   }
 }
