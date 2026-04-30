@@ -116,9 +116,28 @@ Each module addresses a key aspect of building and operating innovation learning
 ## Content Architecture
 
 The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
-- **Core**: Essential principles (≤2000 chars per module)
-- **Extend**: Deep research, case studies, visualizations
-- **Evidence**: Structured citations and verification records
+- **Core**: Essential principles per module. Hard cap: **≤6000 字符** for the module `index.mdx`. Anything longer must be extracted into `extend/`.
+- **Extend**: Deep research, case studies, visualizations, methods, taxonomies, full prose treatments. No length cap.
+- **Evidence**: Structured citations (`evidence/refs.json`), verification records, and the `<References scope="module" />` view.
+
+### Core Index Four-Block Scaffold (mandatory)
+
+Every Core module `index.mdx` MUST follow this skeleton, in order:
+
+1. **`## Core 论断`** — 3-7 first-principle propositions that define the module. State each as a single sentence + one-line warrant. No tables, no SOPs, no case detail. This is the "if a reader only reads one section, what must they take away."
+2. **`## 3E 映射`** — Explicit mapping to Enlighten / Empower / Engage. One row per dimension, ≤2 sentences each. Use the existing `<ModuleSummary />` or a 3-row table.
+3. **`## 关键证据`** — 3-8 citation-anchored claims. Each claim is one paragraph that ends with `<Cite id="..."/>` or `<Cite ids="a,b"/>`. Prefer E2/E3 sources from 2024-2026 where available.
+4. **`## Extend 索引`** — `<ExtendCards />` listing every `extend/*.mdx`, `cases/*.mdx`, and `evidence/*.mdx` page that belongs to this module. This is the navigation entry into depth.
+
+End with `<References scope="page" />` so the page renders its own bibliography.
+
+### Citation System
+
+- Per-module bibliographies: `content/docs/zh/core/0X-*\/evidence/refs.json` and `content/docs/zh/research/0X-*\/extend/refs.json`.
+- Global aggregated index (generated): `src/data/bibliography.generated.json`, produced by `scripts/build-bibliography.mjs` and consumed by `<Cite>` / `<References>`.
+- Use `<Cite id="M03-2024-CRJ-Allen" />` inline; the page-bottom `<References scope="page" />` auto-numbers and renders the list.
+- Citation id slug convention for new entries: `<MODULE>-<YEAR>-<VENUE-ABBR>-<FirstAuthor>` (e.g., `M05-2025-AERA-Lee`). Legacy IDs like `M03-001` remain valid; if you need to rename, add the old ID to `aliases: []`.
+- Evidence tiers (E0-E3) defined in `content/docs/zh/core/_meta/evidence-levels.mdx`. Every citation must carry `evidence_tier` (preferred) or legacy `evidence_level`.
 
 ### Documentation Structure
 
