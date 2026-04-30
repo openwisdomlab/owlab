@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T11:33:35.846Z",
-  "total": 100,
+  "generated_at": "2026-04-30T11:35:54.602Z",
+  "total": 104,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -2726,6 +2726,147 @@
       "notes": "",
       "module": "M08"
     },
+    "M08-2025-Beyond100K-TinyInnovators": {
+      "id": "M08-2025-Beyond100K-TinyInnovators",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Beyond 100K"
+      ],
+      "year": 2025,
+      "title": "Tiny Innovators: A toolkit for creating an ECE STEAM makerspace",
+      "venue": "California State University Beyond 100K",
+      "doi": null,
+      "url": "https://elp.calstate.edu/sites/default/files/2025-07/Tiny%20Innovators.%20ECE%20STEAM%20Makerspace%20Toolkit.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "makerspace-operations",
+        "sustainability",
+        "community-engagement",
+        "SMART-goals"
+      ],
+      "key_claims": [
+        "幼教阶段创客空间的运营全流程工具包",
+        "用 SMART 目标 + 参与率/作品产出/反馈/技能评估四类指标度量成功",
+        "家庭与社区参与是可持续性的核心使能因素"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Beyond 100K 2025 - ECE STEAM 创客空间运营工具包",
+      "module": "M08"
+    },
+    "M08-2025-AarhusPD-Sustaining": {
+      "id": "M08-2025-AarhusPD-Sustaining",
+      "aliases": [],
+      "type": "book_chapter",
+      "authors": [
+        "Aarhus University Participatory Design group"
+      ],
+      "year": 2024,
+      "title": "A participatory design approach to sustaining makerspace initiatives",
+      "venue": "Aarhus University",
+      "doi": null,
+      "url": "https://pure.au.dk/portal/en/publications/a-participatory-design-approach-to-sustaining-makerspace-initiati/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "participatory-design",
+        "infrastructure",
+        "sustainability"
+      ],
+      "key_claims": [
+        "11 个丹麦市政创客空间案例提炼出六步可持续框架",
+        "强调 stakeholder involvement、infrastructuring、垂直/水平对齐",
+        "OWL 节点上线流程可直接借鉴"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Aarhus University 2024 - 参与式设计可持续框架",
+      "module": "M08"
+    },
+    "M08-2025-GreenSTEAM-Ecosystem": {
+      "id": "M08-2025-GreenSTEAM-Ecosystem",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Green STEAM Ecosystems Project (Latvia, Lithuania, Estonia, Finland)"
+      ],
+      "year": 2025,
+      "title": "Green STEAM ecosystems handbook",
+      "venue": "University of Turku",
+      "doi": null,
+      "url": "https://blog.edu.turku.fi/steam/files/2025/06/Green_STEAM_ecosystems_handbook_2025.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "STEAM-ecosystem",
+        "sustainability",
+        "policy",
+        "Northern-Europe"
+      ],
+      "key_claims": [
+        "STEAM 生态系统五阶段：初始 → 结构化 → 整合 → 社区 → 可持续",
+        "市政支持 + 法规配合是规模化的硬条件",
+        "公共活动（科学集市、绿色黑客松、创新展）作为可见性与参与度引擎"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Green STEAM Ecosystems 2025 - 北欧四国手册",
+      "module": "M08"
+    },
+    "M08-2025-Mechanism-Community": {
+      "id": "M08-2025-Mechanism-Community",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Mechanism"
+      ],
+      "year": 2025,
+      "title": "Community makerspace development strategy",
+      "venue": "Mechanism Community",
+      "doi": null,
+      "url": "https://www.mechanism.community/resources/community-makerspace-development-strategy",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "makerspace",
+        "community-ownership",
+        "operations"
+      ],
+      "key_claims": [
+        "Relational Principles：参与、包容、共同目的是创客空间增长的基础",
+        "工具与一致期望的可靠性 ≥ 访问机会本身——「volunteer energy 推动空间，可靠工具留住人」",
+        "把成员从用户升级为 co-creator 是社区所有权的核心机制"
+      ],
+      "used_in": [
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Mechanism 2025 - 社区创客空间发展策略",
+      "module": "M08"
+    },
     "M09-001": {
       "id": "M09-001",
       "aliases": [],
@@ -2960,7 +3101,11 @@
       "M08-001",
       "M08-002",
       "M08-003",
-      "M08-004"
+      "M08-004",
+      "M08-2025-Beyond100K-TinyInnovators",
+      "M08-2025-AarhusPD-Sustaining",
+      "M08-2025-GreenSTEAM-Ecosystem",
+      "M08-2025-Mechanism-Community"
     ],
     "M09": [
       "M09-001",
