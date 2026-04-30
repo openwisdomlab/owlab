@@ -1,0 +1,1681 @@
+{
+  "generated_at": "2026-04-30T10:48:39.384Z",
+  "total": 65,
+  "byId": {
+    "M01-001": {
+      "id": "M01-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Papert, S. (1980). Mindstorms: Children, computers, and powerful ideas. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "Constructionism: 学习在创造可分享的制品时效果最佳",
+        "计算机作为思维工具的潜力"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/constructionism.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Constructionism 理论奠基作品",
+      "module": "M01"
+    },
+    "M01-002": {
+      "id": "M01-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Vygotsky, L.S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "最近发展区 (ZPD) 概念",
+        "社会互动在认知发展中的核心作用",
+        "语言作为思维工具"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "社会建构主义核心文献",
+      "module": "M01"
+    },
+    "M01-003": {
+      "id": "M01-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Lave, J., & Wenger, E. (1991). Situated learning: Legitimate peripheral participation. Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "学习嵌入在情境和文化中",
+        "实践社区 (Communities of Practice) 概念",
+        "合法的边缘性参与"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "情境学习理论核心文献",
+      "module": "M01"
+    },
+    "M01-004": {
+      "id": "M01-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Piaget, J. (1952). The origins of intelligence in children. International Universities Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "知识由学习者主动建构",
+        "认知发展阶段理论",
+        "同化与顺应机制"
+      ],
+      "used_in": [
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "建构主义核心文献",
+      "module": "M01"
+    },
+    "M01-005": {
+      "id": "M01-005",
+      "aliases": [],
+      "type": "book_chapter",
+      "citation": "Krajcik, J.S., & Shin, N. (2014). Project-based learning. In R.K. Sawyer (Ed.), The Cambridge handbook of the learning sciences (2nd ed., pp. 275-297). Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "PBL 提高深度理解和知识迁移",
+        "驱动性问题的设计原则"
+      ],
+      "used_in": [
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PBL 理论综述",
+      "module": "M01"
+    },
+    "M01-006": {
+      "id": "M01-006",
+      "aliases": [],
+      "type": "book",
+      "citation": "Dougherty, D. (2012). The maker movement. Innovations: Technology, Governance, Globalization, 7(3), 11-14.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客运动的定义和核心价值",
+        "创客文化的社会意义"
+      ],
+      "used_in": [
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Make Magazine 创始人的创客运动概述",
+      "module": "M01"
+    },
+    "M01-007": {
+      "id": "M01-007",
+      "aliases": [],
+      "type": "book",
+      "citation": "Martinez, S.L., & Stager, G.S. (2013). Invent to learn: Making, tinkering, and engineering in the classroom. Constructing Modern Knowledge Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客教育的课堂实践指南",
+        "Constructionism 在教育中的应用"
+      ],
+      "used_in": [
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "创客教育实践指南",
+      "module": "M01"
+    },
+    "M01-008": {
+      "id": "M01-008",
+      "aliases": [],
+      "type": "book",
+      "citation": "Resnick, M. (2017). Lifelong kindergarten: Cultivating creativity through projects, passion, peers, and play. MIT Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "4P 学习框架: Projects, Passion, Peers, Play",
+        "创造性学习的终身发展"
+      ],
+      "used_in": [
+        "extend/constructionism.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "MIT Media Lab Scratch 团队负责人的著作",
+      "module": "M01"
+    },
+    "M01-009": {
+      "id": "M01-009",
+      "aliases": [],
+      "type": "book",
+      "citation": "Yakman, G. (2008). STEAM education: An overview of creating a model of integrative education. PATT-17 & PATT-19 Conference Proceedings.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "STEAM 教育框架定义",
+        "艺术整合的价值"
+      ],
+      "used_in": [
+        "extend/steam-framework.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "STEAM 概念提出者",
+      "module": "M01"
+    },
+    "M01-010": {
+      "id": "M01-010",
+      "aliases": [],
+      "type": "journal",
+      "citation": "Halverson, E.R., & Sheridan, K. (2014). The maker movement in education. Harvard Educational Review, 84(4), 495-504.",
+      "doi": null,
+      "url": "https://doi.org/10.17763/haer.84.4.34j1g68140382063",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客运动在教育中的应用综述",
+        "创客空间的教育价值"
+      ],
+      "used_in": [
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Harvard Educational Review 综述文章",
+      "module": "M01"
+    },
+    "M02-001": {
+      "id": "M02-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Ostrom, E. (1990). Governing the Commons: The Evolution of Institutions for Collective Action. Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "社区可以有效自治管理共享资源",
+        "成功的公共资源治理需要清晰的边界、规则和冲突解决机制"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-002": {
+      "id": "M02-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Benkler, Y. (2006). The Wealth of Networks: How Social Production Transforms Markets and Freedom. Yale University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "网络化协作可以创造显著的社会价值",
+        "开放式协作需要新的治理模式"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-003": {
+      "id": "M02-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Chesbrough, H. (2003). Open Innovation: The New Imperative for Creating and Profiting from Technology. Harvard Business School Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "开放式创新可以加速创新过程",
+        "组织边界的开放需要新的治理结构"
+      ],
+      "used_in": [
+        "extend/network-governance.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-004": {
+      "id": "M02-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Gershenfeld, N. (2005). Fab: The Coming Revolution on Your Desktop--from Personal Computers to Personal Fabrication. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "数字制造工具民主化将改变创新模式",
+        "Fab Lab 网络可实现全球知识共享与协作"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-005": {
+      "id": "M02-005",
+      "aliases": [],
+      "type": "web",
+      "citation": "MIT Center for Bits and Atoms. The Fab Charter. http://fab.cba.mit.edu/about/charter/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "Fab Lab 的使命是为个人提供技术发明工具",
+        "发明归个人所有，但设计过程应开放共享供学习"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-006": {
+      "id": "M02-006",
+      "aliases": [],
+      "type": "web",
+      "citation": "Fab Foundation. Fab Lab Network. https://fabfoundation.org/global-community/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "全球 Fab Lab 网络超过 1750 个实验室，覆盖 100+ 国家",
+        "Fab Lab 网络形成分布式研究室和分布式技术教育校园"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-007": {
+      "id": "M02-007",
+      "aliases": [],
+      "type": "web",
+      "citation": "European Network of Living Labs (ENoLL). Living Labs Methodology. https://enoll.org/living-labs/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Living Lab 是以用户为中心的开放式创新生态系统",
+        "四螺旋模型强调公民、学术界、产业界和政府的深度协作"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-008": {
+      "id": "M02-008",
+      "aliases": [],
+      "type": "article",
+      "citation": "Troxler, P. (2013). Making the Third Industrial Revolution: The Struggle for Polycentric Structures and a New Peer-Production Commons in the Fab Lab Community. In J. Walter-Herrmann & C. Büching (Eds.), FabLab: Of Machines, Makers and Inventors. transcript Verlag.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Fab Lab 社区展示了多中心治理结构的可能性",
+        "同行生产模式需要新的公共资源治理机制"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-009": {
+      "id": "M02-009",
+      "aliases": [],
+      "type": "article",
+      "citation": "Almirall, E., Lee, M., & Wareham, J. (2012). Mapping Living Labs in the Landscape of Innovation Methodologies. Technology Innovation Management Review, 2(9), 12-18.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Living Lab 将真实世界作为实验场",
+        "用户协同创造是 Living Lab 的核心方法论"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-010": {
+      "id": "M02-010",
+      "aliases": [],
+      "type": "web",
+      "citation": "Hackerspace Wiki. Hackerspace Definition. https://wiki.hackerspaces.org/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "黑客空间强调点对点学习、知识共享和信息自由",
+        "Doocracy（谁做事谁负责）是黑客空间的核心治理哲学"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M03-001": {
+      "id": "M03-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Doorley, S., & Witthoft, S. (2012). Make space: How to set the stage for creative collaboration. Wiley.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "空间布局影响协作模式",
+        "可移动家具增加灵活性",
+        "斯坦福d.school空间设计原则"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "斯坦福 d.school 空间设计实践总结",
+      "module": "M03"
+    },
+    "M03-002": {
+      "id": "M03-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Boys, J. (2010). Towards creative learning spaces: Re-thinking the architecture of post-compulsory education. Routledge.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "学习空间设计影响教学方法",
+        "空间应支持多种学习模式"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/physical-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "学习空间设计理论",
+      "module": "M03"
+    },
+    "M03-003": {
+      "id": "M03-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Amabile, T.M. (1996). Creativity in context: Update to the social psychology of creativity. Westview Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "创造力成分模型",
+        "环境因素对创造力的影响",
+        "内在动机的重要性"
+      ],
+      "used_in": [
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "创造力研究经典著作",
+      "module": "M03"
+    },
+    "M03-004": {
+      "id": "M03-004",
+      "aliases": [],
+      "type": "journal",
+      "citation": "Mehta, R., Zhu, R., & Cheema, A. (2012). Is noise always bad? Exploring the effects of ambient noise on creative cognition. Journal of Consumer Research, 39(4), 784-799.",
+      "doi": null,
+      "url": "https://doi.org/10.1086/665048",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "中等噪音水平(70dB)最有利于创造性思维",
+        "过高或过低噪音都不利于创造力"
+      ],
+      "used_in": [
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "环境噪音对创造力影响的实验研究",
+      "module": "M03"
+    },
+    "M03-005": {
+      "id": "M03-005",
+      "aliases": [],
+      "type": "report",
+      "citation": "IDEO. (2012). Design thinking for educators toolkit (2nd ed.). IDEO.",
+      "doi": null,
+      "url": "https://designthinkingforeducators.com/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "设计思维在教育中的应用",
+        "空间作为设计思维的载体"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IDEO 设计思维教育工具包",
+      "module": "M03"
+    },
+    "M03-006": {
+      "id": "M03-006",
+      "aliases": [],
+      "type": "book",
+      "citation": "Oblinger, D.G. (Ed.). (2006). Learning spaces. EDUCAUSE.",
+      "doi": null,
+      "url": "https://www.educause.edu/research-and-publications/books/learning-spaces",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "学习空间设计原则",
+        "技术与空间的整合"
+      ],
+      "used_in": [
+        "extend/physical-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "EDUCAUSE 学习空间设计指南",
+      "module": "M03"
+    },
+    "M03-007": {
+      "id": "M03-007",
+      "aliases": [],
+      "type": "book",
+      "citation": "Sheridan, K., Halverson, E.R., Litts, B., Brahms, L., Jacobs-Priebe, L., & Owens, T. (2014). Learning in the making: A comparative case study of three makerspaces. Harvard Educational Review, 84(4), 505-531.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客空间的学习模式",
+        "不同类型创客空间的比较"
+      ],
+      "used_in": [
+        "extend/physical-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "创客空间比较案例研究",
+      "module": "M03"
+    },
+    "M03-008": {
+      "id": "M03-008",
+      "aliases": [],
+      "type": "standard",
+      "citation": "CAST. (2018). Universal Design for Learning Guidelines version 2.2.",
+      "doi": null,
+      "url": "http://udlguidelines.cast.org",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "通用学习设计原则",
+        "多元表征、多元表达、多元参与"
+      ],
+      "used_in": [
+        "extend/accessibility.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "UDL 通用学习设计指南",
+      "module": "M03"
+    },
+    "M04-001": {
+      "id": "M04-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Larmer, J., Mergendoller, J., & Boss, S. (2015). Setting the Standard for Project Based Learning. ASCD.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "PBL 黄金标准七要素：挑战性问题、持续探究、真实性、学生声音与选择、反思、批评与修订、公开展示",
+        "高质量 PBL 需要精心设计的驱动问题"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-002": {
+      "id": "M04-002",
+      "aliases": [],
+      "type": "chapter",
+      "citation": "Krajcik, J.S., & Shin, N. (2014). Project-Based Learning. In R.K. Sawyer (Ed.), The Cambridge Handbook of the Learning Sciences (2nd ed.). Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "PBL 促进深度理解和迁移",
+        "脚手架设计对 PBL 成功至关重要"
+      ],
+      "used_in": [
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-003": {
+      "id": "M04-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Resnick, M. (2017). Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play. MIT Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创造性学习螺旋：想象-创造-游戏-分享-反思-想象",
+        "4P 学习框架：项目、热情、同伴、游戏"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/creative-learning.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-004": {
+      "id": "M04-004",
+      "aliases": [],
+      "type": "article",
+      "citation": "Kolodner, J.L. et al. (2003). Problem-Based Learning Meets Case-Based Reasoning in the Middle-School Science Classroom. Journal of the Learning Sciences, 12(4), 495-547.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "设计型学习促进科学概念理解",
+        "学生通过设计活动发展工程思维"
+      ],
+      "used_in": [
+        "extend/design-based-learning.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-005": {
+      "id": "M04-005",
+      "aliases": [],
+      "type": "book",
+      "citation": "Wiggins, G., & McTighe, J. (2005). Understanding by Design (2nd ed.). ASCD.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "逆向设计：从学习目标出发设计课程",
+        "理解六面向：解释、诠释、应用、洞察、同理、自知"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/curriculum-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M05-001": {
+      "id": "M05-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Papert, S. (1980). Mindstorms: Children, Computers, and Powerful Ideas. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "工具应该具有低门槛和高天花板",
+        "好的工具让学习者成为主动的建构者"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M05-002": {
+      "id": "M05-002",
+      "aliases": [],
+      "type": "article",
+      "citation": "Resnick, M. et al. (2009). Scratch: Programming for All. Communications of the ACM, 52(11), 60-67.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "低门槛、高天花板、宽围墙的设计原则",
+        "编程工具应支持创造和分享"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/tool-selection.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M05-003": {
+      "id": "M05-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Gershenfeld, N. (2005). Fab: The Coming Revolution on Your Desktop. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "数字制造工具民主化生产",
+        "Fab Lab 模式使个人制造成为可能"
+      ],
+      "used_in": [
+        "extend/digital-fabrication.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M05-004": {
+      "id": "M05-004",
+      "aliases": [],
+      "type": "article",
+      "citation": "Blikstein, P. (2013). Digital Fabrication and 'Making' in Education. In J. Walter-Herrmann & C. Büching (Eds.), FabLab: Of Machines, Makers and Inventors. Transcript Publishers.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "数字制造工具支持建构式学习",
+        "工具使用需要配合适当的教学设计"
+      ],
+      "used_in": [
+        "extend/digital-fabrication.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M06-001": {
+      "id": "M06-001",
+      "aliases": [],
+      "type": "report",
+      "citation": "UNESCO. (2021). Recommendation on the Ethics of Artificial Intelligence. UNESCO.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "AI 应以人为本，尊重人权",
+        "AI 使用需要透明、可解释、负责任"
+      ],
+      "used_in": [
+        "extend/ai-ethics.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-002": {
+      "id": "M06-002",
+      "aliases": [],
+      "type": "legal",
+      "citation": "European Union. (2024). Artificial Intelligence Act. Official Journal of the European Union.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "AI 系统需要进行风险分级",
+        "高风险 AI 需要特殊监管"
+      ],
+      "used_in": [
+        "extend/ai-ethics.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-003": {
+      "id": "M06-003",
+      "aliases": [],
+      "type": "standard",
+      "citation": "ISO 45001:2018. Occupational health and safety management systems. International Organization for Standardization.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "系统化的安全管理可降低事故风险",
+        "安全管理需要全员参与和持续改进"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/safety-training.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-004": {
+      "id": "M06-004",
+      "aliases": [],
+      "type": "guideline",
+      "citation": "OSHA. (2016). Recommended Practices for Safety and Health Programs. Occupational Safety and Health Administration.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "预防优于应对",
+        "安全文化需要领导层承诺"
+      ],
+      "used_in": [
+        "index.mdx",
+        "checklists/safety-check.mdx",
+        "extend/safety-training.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-005": {
+      "id": "M06-005",
+      "aliases": [],
+      "type": "article",
+      "citation": "Beijing AI Principles. (2019). Beijing Academy of Artificial Intelligence.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "AI 发展应以人为本",
+        "AI 研发应负责任、可控"
+      ],
+      "used_in": [
+        "extend/ai-ethics.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-006": {
+      "id": "M06-006",
+      "aliases": [],
+      "type": "guideline",
+      "citation": "MIT Fab Lab. The Fab Charter. fab.cba.mit.edu/about/charter/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "用户需负责安全（不伤害他人或损坏机器）",
+        "用户需负责运营（协助清洁、维护和改善实验室）",
+        "用户需负责知识共享（为知识库和教学文档做贡献）"
+      ],
+      "used_in": [
+        "extend/equipment-access.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-007": {
+      "id": "M06-007",
+      "aliases": [],
+      "type": "guideline",
+      "citation": "Fab Foundation. (2024). Global Fab Lab Network Standards.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Fab Lab 共享核心能力清单",
+        "标准化工具配置确保全球协作"
+      ],
+      "used_in": [
+        "extend/equipment-access.mdx",
+        "extend/safety-training.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-008": {
+      "id": "M06-008",
+      "aliases": [],
+      "type": "policy",
+      "citation": "教育部等七部门. (2025). 关于加强中小学科技教育的意见.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "强化科技教育与安全管理融合",
+        "建立适龄的科技教育体系"
+      ],
+      "used_in": [
+        "extend/equipment-access.mdx",
+        "extend/safety-training.mdx",
+        "extend/age-guidelines.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-009": {
+      "id": "M06-009",
+      "aliases": [],
+      "type": "standard",
+      "citation": "ISO 31000:2018. Risk management - Guidelines. International Organization for Standardization.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "风险评估应系统化、结构化",
+        "风险管理是持续改进过程"
+      ],
+      "used_in": [
+        "extend/risk-assessment.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-010": {
+      "id": "M06-010",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《中华人民共和国消防法》",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "单位应当制定灭火和应急疏散预案",
+        "定期组织消防演练"
+      ],
+      "used_in": [
+        "extend/emergency-response.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-011": {
+      "id": "M06-011",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《中华人民共和国个人信息保护法》(2021)",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "处理个人信息应当遵循最小必要原则",
+        "处理不满十四周岁未成年人个人信息应取得监护人同意"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-012": {
+      "id": "M06-012",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《中华人民共和国未成年人保护法》(2020修订)",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "网络产品和服务提供者不得侵害未成年人身心健康",
+        "处理未成年人个人信息应当遵循合法、正当、必要原则"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx",
+        "extend/age-guidelines.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-013": {
+      "id": "M06-013",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《儿童个人信息网络保护规定》(2019)",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "网络运营者应当设置专门的儿童个人信息保护规则",
+        "收集使用儿童个人信息应当征得监护人同意"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-014": {
+      "id": "M06-014",
+      "aliases": [],
+      "type": "standard",
+      "citation": "GB/T 35273-2020. 信息安全技术 个人信息安全规范.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "个人信息收集应遵循最小化原则",
+        "应制定个人信息安全事件应急预案"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M07-001": {
+      "id": "M07-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Schön, D.A. (1983). The Reflective Practitioner: How Professionals Think in Action. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "专业能力通过反思实践发展",
+        "行动中反思与行动后反思同样重要"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/reflection-tools.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-002": {
+      "id": "M07-002",
+      "aliases": [],
+      "type": "article",
+      "citation": "Darling-Hammond, L. et al. (2017). Effective Teacher Professional Development. Learning Policy Institute.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "有效的教师发展需要持续、嵌入实践、协作式",
+        "内容聚焦和主动学习是关键要素"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/training-system.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-003": {
+      "id": "M07-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Dweck, C.S. (2006). Mindset: The New Psychology of Success. Random House.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "成长型思维促进学习和发展",
+        "对能力的信念影响学习行为"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-004": {
+      "id": "M07-004",
+      "aliases": [],
+      "type": "article",
+      "citation": "Lave, J., & Wenger, E. (1991). Situated Learning: Legitimate Peripheral Participation. Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "学习发生在实践共同体中",
+        "从边缘到核心的参与是学习的过程"
+      ],
+      "used_in": [
+        "extend/competency-model.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-005": {
+      "id": "M07-005",
+      "aliases": [],
+      "type": "article",
+      "citation": "Shulman, L.S. (1986). Those Who Understand: Knowledge Growth in Teaching. Educational Researcher, 15(2), 4-14.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "教学内容知识 (PCK) 是教师专业知识的核心",
+        "学科知识和教学知识的整合是教学专业性的体现"
+      ],
+      "used_in": [
+        "extend/competency-model.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M08-001": {
+      "id": "M08-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Liker, J.K. (2004). The Toyota Way: 14 Management Principles from the World's Greatest Manufacturer. McGraw-Hill.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "标准化是持续改进的基础",
+        "流程标准化不意味着僵化"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M08-002": {
+      "id": "M08-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Deming, W.E. (1986). Out of the Crisis. MIT Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "PDSA 循环是持续改进的核心方法",
+        "质量管理需要系统思维"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/continuous-improvement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M08-003": {
+      "id": "M08-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Pine, B.J., & Gilmore, J.H. (1999). The Experience Economy. Harvard Business School Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "体验是新的经济产物",
+        "服务设计需要关注用户体验"
+      ],
+      "used_in": [
+        "extend/service-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M08-004": {
+      "id": "M08-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Stickdorn, M. et al. (2018). This Is Service Design Doing. O'Reilly Media.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "服务设计需要关注全流程体验",
+        "服务蓝图帮助可视化服务流程"
+      ],
+      "used_in": [
+        "extend/service-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M09-001": {
+      "id": "M09-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Black, P., & Wiliam, D. (1998). Inside the Black Box: Raising Standards Through Classroom Assessment. King's College London.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "形成性评价显著促进学习",
+        "有效反馈是形成性评价的核心"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/formative-assessment.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-002": {
+      "id": "M09-002",
+      "aliases": [],
+      "type": "article",
+      "citation": "Hattie, J., & Timperley, H. (2007). The Power of Feedback. Review of Educational Research, 77(1), 81-112.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "反馈是影响学习最重要的因素之一",
+        "有效反馈回答三个问题：目标、现状、下一步"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/feedback-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-003": {
+      "id": "M09-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Wiggins, G. (1998). Educative Assessment: Designing Assessments to Inform and Improve Student Performance. Jossey-Bass.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "真实性评价反映真实世界任务",
+        "好的评价任务本身就是学习机会"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/authentic-assessment.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-004": {
+      "id": "M09-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Earl, L.M. (2012). Assessment as Learning: Using Classroom Assessment to Maximize Student Learning (2nd ed.). Corwin.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "学习性评价让学生成为自己学习的评估者",
+        "元认知能力是学习性评价的目标"
+      ],
+      "used_in": [
+        "extend/assessment-for-learning.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-005": {
+      "id": "M09-005",
+      "aliases": [],
+      "type": "article",
+      "citation": "Brookhart, S.M. (2013). How to Create and Use Rubrics for Formative Assessment and Grading. ASCD.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "量规使评价标准透明",
+        "好的量规描述质量而非数量"
+      ],
+      "used_in": [
+        "extend/rubric-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    }
+  },
+  "byModule": {
+    "M01": [
+      "M01-001",
+      "M01-002",
+      "M01-003",
+      "M01-004",
+      "M01-005",
+      "M01-006",
+      "M01-007",
+      "M01-008",
+      "M01-009",
+      "M01-010"
+    ],
+    "M02": [
+      "M02-001",
+      "M02-002",
+      "M02-003",
+      "M02-004",
+      "M02-005",
+      "M02-006",
+      "M02-007",
+      "M02-008",
+      "M02-009",
+      "M02-010"
+    ],
+    "M03": [
+      "M03-001",
+      "M03-002",
+      "M03-003",
+      "M03-004",
+      "M03-005",
+      "M03-006",
+      "M03-007",
+      "M03-008"
+    ],
+    "M04": [
+      "M04-001",
+      "M04-002",
+      "M04-003",
+      "M04-004",
+      "M04-005"
+    ],
+    "M05": [
+      "M05-001",
+      "M05-002",
+      "M05-003",
+      "M05-004"
+    ],
+    "M06": [
+      "M06-001",
+      "M06-002",
+      "M06-003",
+      "M06-004",
+      "M06-005",
+      "M06-006",
+      "M06-007",
+      "M06-008",
+      "M06-009",
+      "M06-010",
+      "M06-011",
+      "M06-012",
+      "M06-013",
+      "M06-014"
+    ],
+    "M07": [
+      "M07-001",
+      "M07-002",
+      "M07-003",
+      "M07-004",
+      "M07-005"
+    ],
+    "M08": [
+      "M08-001",
+      "M08-002",
+      "M08-003",
+      "M08-004"
+    ],
+    "M09": [
+      "M09-001",
+      "M09-002",
+      "M09-003",
+      "M09-004",
+      "M09-005"
+    ]
+  }
+}
