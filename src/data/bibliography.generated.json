@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T11:31:18.068Z",
-  "total": 96,
+  "generated_at": "2026-04-30T11:33:35.846Z",
+  "total": 100,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -2484,6 +2484,151 @@
       "notes": "",
       "module": "M07"
     },
+    "M07-2025-TATE-Ackermann": {
+      "id": "M07-2025-TATE-Ackermann",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Ackermann, J.M."
+      ],
+      "year": 2025,
+      "title": "The effectiveness of mentoring, coaching, and induction practices for early career teachers: A scoping review",
+      "venue": "Teaching and Teacher Education",
+      "doi": "10.1016/j.tate.2025.105116",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0742051X25001416",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "mentoring",
+        "coaching",
+        "early-career",
+        "scoping-review"
+      ],
+      "key_claims": [
+        "Global North 文献的 scoping review：mentor/coach/induction 概念混淆",
+        "四类目的影响有效性：技能掌握、文化适应、专业自治、留任",
+        "OWL 导师培训应明确区分目的并设计差异化路径"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/training-system.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "TATE 2025 - 早期生涯教师导师 scoping review",
+      "module": "M07"
+    },
+    "M07-2025-SciRep-DigitalMentor": {
+      "id": "M07-2025-SciRep-DigitalMentor",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Iqbal, M.J.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Sustainable professional growth through digital mentorship: evidence from language teachers in low-resource settings",
+      "venue": "Scientific Reports",
+      "doi": "10.1038/s41598-025-29242-5",
+      "url": "https://www.nature.com/articles/s41598-025-29242-5",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "digital-mentorship",
+        "professional-growth",
+        "low-resource"
+      ],
+      "key_claims": [
+        "PLS-SEM + 定性混合方法（120 名教师）：导师制三路径",
+        "教学重构、反思赋权、社会-情感脚手架",
+        "数字/混合导师模型在低资源环境下尤其有效"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/remote-mentoring.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Scientific Reports 2025 - 数字化导师 PLS-SEM",
+      "module": "M07"
+    },
+    "M07-2025-JeLKS-MentorQ": {
+      "id": "M07-2025-JeLKS-MentorQ",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Mangione, G.R.J.",
+        "Panzavolta, S.",
+        "Rossi, F."
+      ],
+      "year": 2025,
+      "title": "Mentoring and networking for innovation in the school ecosystem: from enabling conditions to MentorQ self-evaluation tool",
+      "venue": "Journal of e-Learning and Knowledge Society",
+      "doi": null,
+      "url": "https://www.je-lks.org/ojs/index.php/Je-LKS_EN/article/view/1136183",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "school-mentoring",
+        "hub-and-spoke",
+        "MentorQ"
+      ],
+      "key_claims": [
+        "10 个使能因素：共同目标、对照实践、资源访问、专业能力增强等",
+        "Hub-and-spoke 模型在传播创新与适应本地的双重目标上有效",
+        "提供 MentorQ 自评工具——可作为 OWL 节点导师评估的范式"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/training-system.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "JeLKS 2025 - 学校 hub-and-spoke mentoring + MentorQ",
+      "module": "M07"
+    },
+    "M07-2024-IJSRM-Network": {
+      "id": "M07-2024-IJSRM-Network",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "van Dam, L.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "The effectiveness of interventions for youth that activate the social network: a meta-analytic study",
+      "venue": "International Journal of Social Research Methodology",
+      "doi": null,
+      "url": "https://research-portal.uu.nl/ws/portalfiles/portal/272576043/The_effectiveness_of_interventions_for_youth_that_activate_the_social_network_a_meta-analytic_study.pdf",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "youth-mentoring",
+        "social-network",
+        "meta-analysis"
+      ],
+      "key_claims": [
+        "三层级元分析（83 项研究 409 效应）：网络激活整体效应不显著",
+        "条件性显著：青年发起式 mentoring（YIM）d=0.46；自选 mentor d=0.52",
+        "OWL 大导师网络应优先采用 YIM 模式而非指派"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/peer-mentoring.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Utrecht University 2024 - 青年发起式 mentoring 元分析",
+      "module": "M07"
+    },
     "M08-001": {
       "id": "M08-001",
       "aliases": [],
@@ -2805,7 +2950,11 @@
       "M07-002",
       "M07-003",
       "M07-004",
-      "M07-005"
+      "M07-005",
+      "M07-2025-TATE-Ackermann",
+      "M07-2025-SciRep-DigitalMentor",
+      "M07-2025-JeLKS-MentorQ",
+      "M07-2024-IJSRM-Network"
     ],
     "M08": [
       "M08-001",
