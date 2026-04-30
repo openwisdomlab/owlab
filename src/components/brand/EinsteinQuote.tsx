@@ -583,7 +583,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
                   opacity: 0.4
                 }}
               >
-                "
+                &ldquo;
               </span>
               {quote}
               <span
@@ -593,7 +593,7 @@ export function EinsteinQuote({ locale }: EinsteinQuoteProps) {
                   opacity: 0.4
                 }}
               >
-                "
+                &rdquo;
               </span>
             </div>
 

@@ -221,7 +221,7 @@ function ConceptCard({ concept, layer, isExpanded, onToggle }: ConceptCardProps)
                   核心洞见
                 </p>
                 <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
-                  "{concept.insight}"
+                  &ldquo;{concept.insight}&rdquo;
                 </p>
               </div>
             </div>

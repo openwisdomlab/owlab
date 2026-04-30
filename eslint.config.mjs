@@ -18,6 +18,17 @@ const eslintConfig = defineConfig([
     },
   },
 
+  // ── Build & maintenance scripts ───────────────────────────────────────
+  // CommonJS scripts (.js without ESM "type": "module") legitimately use
+  // require(); they are run by Node directly, not bundled.
+  {
+    name: "owlab/scripts-cjs",
+    files: ["scripts/**/*.js"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
+
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

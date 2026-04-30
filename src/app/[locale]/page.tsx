@@ -1959,8 +1959,8 @@ export default function HomePage() {
                 </motion.p>
 
                 {/* 装饰性角标 */}
-                <div className="absolute top-4 left-4 text-2xl opacity-20 text-[var(--neon-yellow)]">"</div>
-                <div className="absolute bottom-4 right-4 text-2xl opacity-20 text-[var(--neon-pink)]">"</div>
+                <div className="absolute top-4 left-4 text-2xl opacity-20 text-[var(--neon-yellow)]">&ldquo;</div>
+                <div className="absolute bottom-4 right-4 text-2xl opacity-20 text-[var(--neon-pink)]">&rdquo;</div>
               </motion.div>
             </motion.div>
           </motion.div>

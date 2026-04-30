@@ -3,6 +3,7 @@
 import { Component, type ReactNode } from "react";
 import { AlertTriangle, RefreshCw, Home } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface Props {
   children: ReactNode;
@@ -60,13 +61,13 @@ export class ErrorBoundary extends Component<Props, State> {
                 <RefreshCw className="w-4 h-4" />
                 Try Again
               </button>
-              <a
+              <Link
                 href="/"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--neon-cyan)] text-[var(--background)] font-medium hover:opacity-90 transition-opacity"
               >
                 <Home className="w-4 h-4" />
                 Go Home
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -116,13 +117,13 @@ export function ErrorFallback({
               Try Again
             </button>
           )}
-          <a
+          <Link
             href="/"
             className="neon-button inline-flex items-center gap-2"
           >
             <Home className="w-4 h-4" />
             Return Home
-          </a>
+          </Link>
         </div>
       </motion.div>
     </div>

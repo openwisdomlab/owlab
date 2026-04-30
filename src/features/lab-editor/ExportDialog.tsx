@@ -292,7 +292,7 @@ export function ExportDialog({ layout, onClose }: ExportDialogProps) {
 function generateCanvasHTML(layout: LayoutData): string {
   const GRID_SIZE = 30;
 
-  let zonesHTML = layout.zones
+  const zonesHTML = layout.zones
     .map(
       (zone) => `
     <div style="
