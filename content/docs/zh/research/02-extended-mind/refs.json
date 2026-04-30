@@ -1,0 +1,97 @@
+{
+  "module": "L02",
+  "version": "0.1.0",
+  "last_updated": "2026-04-30",
+  "references": [
+    {
+      "id": "L02-1998-AnalysisClark",
+      "type": "journal",
+      "authors": ["Clark, A.", "Chalmers, D."],
+      "year": 1998,
+      "title": "The extended mind",
+      "venue": "Analysis",
+      "doi": "10.1093/analys/58.1.7",
+      "url": "https://consc.net/papers/extended.html",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["extended-mind", "Clark-Chalmers", "active-externalism"],
+      "key_claims": [
+        "心智在世界中通过工具与环境的活动外延",
+        "Parity Principle：若内在过程被算作认知，外在过程同等条件下也应",
+        "Otto 与 Inga 的笔记本案例：认知系统的边界由功能耦合定义"
+      ],
+      "used_in": ["index.mdx", "extend/embodied-cognition.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Clark & Chalmers 1998 - 延伸心智假说奠基论文"
+    },
+    {
+      "id": "L02-2025-NatureComm-Clark",
+      "type": "journal",
+      "authors": ["Clark, A."],
+      "year": 2025,
+      "title": "Extending minds with generative AI",
+      "venue": "Nature Communications",
+      "doi": "10.1038/s41467-025-59906-9",
+      "url": "https://www.nature.com/articles/s41467-025-59906-9",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["GenAI", "extended-mind", "cognitive-hygiene", "Clark"],
+      "key_claims": [
+        "GenAI 时代的延伸心智：人类一直是混合思考系统",
+        "需要从早期就培养「延伸认知卫生」（extended cognitive hygiene）",
+        "教育核心目标转向：成为对工具值不值得信任的精明评估者"
+      ],
+      "used_in": ["index.mdx", "extend/research-updates-2025.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Clark 2025 - 把延伸心智论扩展到 GenAI 时代（Nature Communications）"
+    },
+    {
+      "id": "L02-2025-Synthese-DigitalAndy",
+      "type": "journal",
+      "authors": ["Smart, P.R."],
+      "year": 2025,
+      "title": "ChatGPT, extended: Large language models and the extended mind",
+      "venue": "Synthese",
+      "doi": "10.1007/s11229-025-05046-y",
+      "url": "https://link.springer.com/article/10.1007/s11229-025-05046-y",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["LLM", "extended-mind", "RAG", "philosophy"],
+      "key_claims": [
+        "RAG（检索增强生成）作为延伸心智的具体技术实例",
+        "「Digital Andy」实验：把 Clark 著作变成可问答的外部记忆",
+        "LLM 的认知能力部分依赖于「在线计算生态」而非纯内部参数"
+      ],
+      "used_in": ["index.mdx", "extend/research-updates-2025.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Synthese 2025 - LLM 与延伸心智的哲学分析"
+    },
+    {
+      "id": "L02-2026-Zenodo-AmplifiedMind",
+      "type": "preprint",
+      "authors": ["[Author per Zenodo record]"],
+      "year": 2026,
+      "title": "From extended to amplified: The generative mind in the age of LLMs",
+      "venue": "Zenodo",
+      "doi": "10.5281/zenodo.18123925",
+      "url": "https://zenodo.org/records/18123925",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["amplified-mind", "LLM", "4E-cognition", "generative"],
+      "key_claims": [
+        "提出「放大心智」假说：LLM 不仅延伸还放大认知",
+        "从 Parity Principle 推广到 Amplification Principle",
+        "Neo-Otto 与 Generative Inga 思想实验：导航生成可能性空间"
+      ],
+      "used_in": ["index.mdx", "extend/research-updates-2025.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Zenodo 2026 - 延伸心智到放大心智的理论扩展"
+    }
+  ],
+  "notes": "L02 研究层引用——延伸心智假说与 AI 时代的认知整合",
+  "cross_validation_status": "pending"
+}
