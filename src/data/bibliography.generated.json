@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T11:23:58.654Z",
-  "total": 82,
+  "generated_at": "2026-04-30T11:26:34.274Z",
+  "total": 87,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -1423,6 +1423,182 @@
       "notes": "",
       "module": "M04"
     },
+    "M04-2025-HSSC-IBSE": {
+      "id": "M04-2025-HSSC-IBSE",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Capraro, R.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "The impact of long-term inquiry-based science education on students' motivation and knowledge acquisition",
+      "venue": "Humanities and Social Sciences Communications (Nature)",
+      "doi": "10.1057/s41599-025-04437-3",
+      "url": "https://www.nature.com/articles/s41599-025-04437-3",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "IBSE",
+        "longitudinal",
+        "science-education",
+        "retention"
+      ],
+      "key_claims": [
+        "长期 IBSE 在 3 个月后保留测试中显著优于传统实验",
+        "动机与知识双轨提升——年度纵向准实验",
+        "支持把驱动问题作为长周期课程主线"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/long-cycle-projects.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Nature HSSC 2025 — 整学年纵向 IBSE 实验",
+      "module": "M04"
+    },
+    "M04-2025-EJMSTE-Arifin": {
+      "id": "M04-2025-EJMSTE-Arifin",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Arifin, Z.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "The effect of inquiry-based learning on students' critical thinking skills in science education: A systematic review and meta-analysis",
+      "venue": "Eurasia Journal of Mathematics, Science and Technology Education",
+      "doi": "10.29333/ejmste/15988",
+      "url": "https://www.ejmste.com/article/the-effect-of-inquiry-based-learning-on-students-critical-thinking-skills-in-science-education-a-15988",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "IBL",
+        "critical-thinking",
+        "meta-analysis"
+      ],
+      "key_claims": [
+        "25 篇 36 项研究的元分析：IBL 对批判性思维大效应（SMD=1.27, 95%CI 0.78-1.76）",
+        "效应受教育阶段、教学策略、ICT、时长、评估方式调节"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Scopus + ERIC 2000-2024 文献库元分析（2025）",
+      "module": "M04"
+    },
+    "M04-2025-FrontEdu-GuidedInquiry": {
+      "id": "M04-2025-FrontEdu-GuidedInquiry",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Furtak, E.M.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Guided inquiry in school science: a mini review of orchestration, assessment, and AI",
+      "venue": "Frontiers in Education",
+      "doi": "10.3389/feduc.2025.1534358",
+      "url": "https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1534358",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "guided-inquiry",
+        "orchestration",
+        "AI"
+      ],
+      "key_claims": [
+        "重要的不是「探究频率」，而是「准备-调查-巩固」的相位敏感设计",
+        "AI 应作为「形成性基础设施」——引出预测、显化证据、结构化反思",
+        "保持学习者与教师能动性，而非把 AI 当解题机器"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-in-curriculum.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Frontiers in Education 2025 探究教学 AI 整合综述",
+      "module": "M04"
+    },
+    "M04-2024-Greek-IBL": {
+      "id": "M04-2024-Greek-IBL",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Kotsis, K.T.",
+        "Tsiouri, S."
+      ],
+      "year": 2024,
+      "title": "The new Greek inquiry-based learning science curriculum for primary education",
+      "venue": "International Electronic Journal of Mathematics Education",
+      "doi": null,
+      "url": "https://www.mathsciteacher.com/download/the-new-greek-inquiry-based-learning-science-curriculum-for-primary-education-16846.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "IBL",
+        "national-curriculum",
+        "primary-education"
+      ],
+      "key_claims": [
+        "国家级 IBL 课程的设计、试点与评估方法",
+        "数字工具、跨学科 STEM 协作与包容性教学的整合"
+      ],
+      "used_in": [
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "希腊国家小学 IBL 课程改革（2024 颁布）",
+      "module": "M04"
+    },
+    "M04-2025-Educ-CroatianSTEM": {
+      "id": "M04-2025-Educ-CroatianSTEM",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Tomas, V.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Impact of scientific inquiry-based activities on STEM interest in Croatian primary schools",
+      "venue": "Education Sciences (MDPI)",
+      "doi": "10.3390/educsci15091237",
+      "url": "https://www.mdpi.com/2227-7102/15/9/1237",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "STEM-interest",
+        "inquiry",
+        "primary-school"
+      ],
+      "key_claims": [
+        "650 名小学生 3 个月干预实验：探究活动显著提升 STEM 兴趣",
+        "10 岁年龄段无统计学性别差异——「兴趣窗口」可被设计干预"
+      ],
+      "used_in": [
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "克罗地亚 Sa STEMom raSTEMo 项目准实验（2025）",
+      "module": "M04"
+    },
     "M05-001": {
       "id": "M05-001",
       "aliases": [],
@@ -2264,7 +2440,12 @@
       "M04-002",
       "M04-003",
       "M04-004",
-      "M04-005"
+      "M04-005",
+      "M04-2025-HSSC-IBSE",
+      "M04-2025-EJMSTE-Arifin",
+      "M04-2025-FrontEdu-GuidedInquiry",
+      "M04-2024-Greek-IBL",
+      "M04-2025-Educ-CroatianSTEM"
     ],
     "M05": [
       "M05-001",
