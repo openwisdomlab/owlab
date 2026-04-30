@@ -53,7 +53,7 @@ export function References({
   if (entries.length === 0) {
     return (
       <section className="my-8 rounded border border-dashed border-zinc-700 p-4 text-sm text-zinc-500">
-        <p>本页暂无引用。在 MDX 中使用 <code>&lt;Cite id="..." /&gt;</code> 后会自动出现在此处。</p>
+        <p>本页暂无引用。在 MDX 中使用 <code>{'<Cite id="..." />'}</code> 后会自动出现在此处。</p>
       </section>
     );
   }
