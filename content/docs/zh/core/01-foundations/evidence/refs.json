@@ -168,12 +168,164 @@
       ],
       "used_in": ["extend/maker-movement.mdx"],
       "notes": "Harvard Educational Review 综述文章"
+    },
+    {
+      "id": "M01-2024-TiCS-Lau",
+      "type": "journal",
+      "authors": ["Lau, J.K.L.", "Ozono, H.", "Kuratomi, K.", "Komiya, A.", "Murayama, K."],
+      "year": 2024,
+      "title": "Curiosity and the dynamics of optimal exploration",
+      "venue": "Trends in Cognitive Sciences",
+      "doi": "10.1016/j.tics.2024.02.001",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1364661324000287",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["curiosity", "exploration", "learning-progress", "neuroscience"],
+      "key_claims": [
+        "好奇心整合「求知」与「学习进度」两类驱动",
+        "学习进度（Learning Progress）是好奇心的关键机制",
+        "好奇心作为「探索的共同货币」与安全等其他驱动平衡"
+      ],
+      "used_in": ["index.mdx", "extend/curiosity-cultivation.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "好奇心整合理论的最新综述（Trends in Cognitive Sciences 2024）"
+    },
+    {
+      "id": "M01-2024-HSSC-Lin",
+      "type": "journal",
+      "authors": ["Lin, L.", "Shadiev, R.", "Hwang, W.-Y.", "Shen, S."],
+      "year": 2024,
+      "title": "A meta-analysis of the effects of design thinking on student learning",
+      "venue": "Humanities and Social Sciences Communications (Nature)",
+      "doi": "10.1057/s41599-024-03237-5",
+      "url": "https://www.nature.com/articles/s41599-024-03237-5",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["design-thinking", "meta-analysis", "creativity", "PBL"],
+      "key_claims": [
+        "设计思维对学生学习有上中等正效应（r=0.436, 25 项研究）",
+        "≥3 个月长期实践、≤30 人小班、≤7 人小组效果最佳",
+        "对学习投入、动机、问题解决与学业成就均有显著提升"
+      ],
+      "used_in": ["index.mdx", "extend/4p-creative-learning.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Nature 旗下 HSSC 2024 元分析（25 项研究）"
+    },
+    {
+      "id": "M01-2025-STEME-Kwon",
+      "type": "journal",
+      "authors": ["Kwon, H.", "Lee, Y."],
+      "year": 2025,
+      "title": "A meta-analysis of STEM project-based learning on creativity",
+      "venue": "STEM Education (AIMS)",
+      "doi": "10.3934/steme.2025014",
+      "url": "https://aimspress.com/aimspress-data/steme/2025/2/PDF/steme-05-02-014.pdf",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["STEM-PBL", "meta-analysis", "creativity"],
+      "key_claims": [
+        "STEM 项目制学习对创造力效应巨大（ES=3.888，95%CI 3.609-4.166）",
+        "效应跨创造性思维、想象力、好奇心、创造过程"
+      ],
+      "used_in": ["index.mdx", "extend/4p-creative-learning.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "8 项研究 13 个效应量的元分析（2025）"
+    },
+    {
+      "id": "M01-2024-IJTDE-Seitamaa",
+      "type": "journal",
+      "authors": ["Seitamaa-Hakkarainen, P.", "Korhonen, T.", "Kangas, K."],
+      "year": 2024,
+      "title": "Research on K-12 maker education in the early 2020s — a systematic literature review",
+      "venue": "International Journal of Technology and Design Education",
+      "doi": "10.1007/s10798-024-09921-6",
+      "url": "https://link.springer.com/article/10.1007/s10798-024-09921-6",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["maker-education", "K-12", "systematic-review"],
+      "key_claims": [
+        "创客教育在 21 世纪能力与跨学科创造性问题解决上的实证支持",
+        "强调创造性、设计思维、协作与数字-物理工具组合"
+      ],
+      "used_in": ["index.mdx", "extend/maker-movement.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "K-12 创客教育 2020s 早期研究系统综述（Springer 2024）"
+    },
+    {
+      "id": "M01-2025-TechTrends-Mishra",
+      "type": "journal",
+      "authors": ["Mishra, P.", "Henriksen, D."],
+      "year": 2025,
+      "title": "The curiosity paradox: How sycophantic GenAI may undermine learning",
+      "venue": "TechTrends",
+      "doi": "10.1007/s11528-025-01156-z",
+      "url": "https://link.springer.com/article/10.1007/s11528-025-01156-z",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["GenAI", "curiosity", "AI-education", "epistemic-risk"],
+      "key_claims": [
+        "迎合型生成式 AI 可能反而削弱学习者的好奇心与认知投入",
+        "AI 时代教育需主动设计「不舒适」与「悬而未决」以保护好奇心"
+      ],
+      "used_in": ["index.mdx", "extend/ai-maker-education.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "GenAI 削弱好奇心的关键警示（TechTrends 2025）"
+    },
+    {
+      "id": "M01-2025-FrontPsy-Curiosity",
+      "type": "journal",
+      "authors": ["Wang, Y.", "Liu, J.", "Chen, X."],
+      "year": 2025,
+      "title": "The impact of time-limited context and feedback methods on epistemic curiosity",
+      "venue": "Frontiers in Psychology",
+      "doi": "10.3389/fpsyg.2025.1717846",
+      "url": "https://www.frontiersin.org/articles/10.3389/fpsyg.2025.1717846",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["epistemic-curiosity", "feedback", "classroom"],
+      "key_claims": [
+        "时限情境显著提升认知好奇心",
+        "正确性反馈维持好奇心；分数/排名反馈则消除该效应"
+      ],
+      "used_in": ["index.mdx", "extend/curiosity-cultivation.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "时限与反馈机制对好奇心影响的 2 个准实验（2025）"
+    },
+    {
+      "id": "M01-2025-Educ-Piele",
+      "type": "journal",
+      "authors": ["Piele, A.N."],
+      "year": 2025,
+      "title": "Makerspaces as catalysts for entrepreneurial education: Insights from a systematic literature review",
+      "venue": "Education Sciences (MDPI)",
+      "doi": "10.3390/educsci15101295",
+      "url": "https://www.mdpi.com/2227-7102/15/10/1295",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["makerspace", "entrepreneurship", "systematic-review"],
+      "key_claims": [
+        "创客空间在中学阶段能有效培养创业胜任力",
+        "需有意图的教学设计、协作环境与结构化项目"
+      ],
+      "used_in": ["index.mdx", "extend/maker-movement.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "35 项研究的创客空间-创业教育系统综述（2025）"
     }
   ],
 
   "pending_verification": [
     "M01-001", "M01-002", "M01-003", "M01-004", "M01-005",
-    "M01-006", "M01-007", "M01-008", "M01-009", "M01-010"
+    "M01-006", "M01-007", "M01-008", "M01-009", "M01-010",
+    "M01-2024-TiCS-Lau", "M01-2024-HSSC-Lin", "M01-2025-STEME-Kwon",
+    "M01-2024-IJTDE-Seitamaa", "M01-2025-TechTrends-Mishra",
+    "M01-2025-FrontPsy-Curiosity", "M01-2025-Educ-Piele"
   ],
 
   "topics_covered": [
@@ -183,6 +335,9 @@
     "Constructionism",
     "项目制学习",
     "创客运动",
-    "STEAM教育"
+    "STEAM教育",
+    "好奇心理论",
+    "设计思维元分析",
+    "AI 时代学习"
   ]
 }
