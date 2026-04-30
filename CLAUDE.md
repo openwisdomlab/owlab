@@ -276,10 +276,25 @@ Even with `text` specifier, avoid patterns that look like JS expressions:
 - ❌ `{value=123}` - looks like JSX expression
 - ✅ `r = 0.72` or `相关系数: 0.72`
 
-#### Rule 4: Run Lint Before Build
+#### Rule 4: JSX 字符串属性内不要直接嵌入 ASCII 双引号
+
+Turbopack MDX 解析器会把 JSX 属性 `attr="..."` 的第一个内层 `"` 视为属性结束，
+然后把后续字符当作下一个属性名解析；若紧跟全/半角逗号或中文字符，会触发
+`Unexpected character` 构建错误。
+
+```text
+❌ <ModuleSummary philosophy="他示范"我也不知道"的求知姿态。" />
+✅ <ModuleSummary philosophy="他示范「我也不知道」的求知姿态。" />
+✅ <ModuleSummary philosophy={`他示范"我也不知道"的求知姿态。`} />
+```
+
+写中文 JSX 属性时优先使用 CJK 引号 `「…」` / `『…』`；需要 ASCII 引号时改用
+JSX 表达式 `{`…`}` 或 `&quot;`。`pnpm lint:mdx` 会扫到这种漏写。
+
+#### Rule 5: Run Lint Before Build
 
 ```bash
-pnpm lint:mdx          # Check for MDX issues
+pnpm lint:mdx          # Check for MDX issues (incl. JSX inner-quote check)
 pnpm build             # prebuild script runs lint-mdx.js automatically
 ```
 
@@ -290,6 +305,7 @@ pnpm build             # prebuild script runs lint-mdx.js automatically
 | `Unexpected character before name` | Code block without language specifier | Add `text` or appropriate language |
 | `Error evaluating Node.js code` | Turbopack treating content as JS | Add language specifier to code block |
 | Position like `52:52` in error | Usually points to content after bare code block | Find and fix the bare ` ``` ` above that line |
+| `Unexpected character `，` (U+FF0C) in attribute name` | JSX 属性值含未转义的内层 ASCII `"` | 内层引号改为 CJK `「」` 或用 `{`…`}` 表达式包裹 |
 
 # context-mode — MANDATORY routing rules
 
