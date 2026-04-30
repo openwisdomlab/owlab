@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T11:26:34.274Z",
-  "total": 87,
+  "generated_at": "2026-04-30T11:29:06.560Z",
+  "total": 92,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -1696,6 +1696,187 @@
       "notes": "",
       "module": "M05"
     },
+    "M05-2026-CompEduAI-LLMScaffolding": {
+      "id": "M05-2026-CompEduAI-LLMScaffolding",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Jin, Y.",
+        "et al."
+      ],
+      "year": 2026,
+      "title": "Scaffolding critical thinking with generative AI: Design principles for integrating large language models in higher education",
+      "venue": "Computers and Education: Artificial Intelligence",
+      "doi": "10.1016/j.caeai.2026.100342",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2666920X26000342",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "LLM",
+        "scaffolding",
+        "critical-thinking",
+        "design-principles"
+      ],
+      "key_claims": [
+        "8 条把 LLM 整合为「临时思考伙伴」而非「答案引擎」的设计原则",
+        "保留认知摩擦、嵌入评估、AI 阶段与无 AI 阶段交替",
+        "支撑六类批判性过程：概念诠释、推理、评价、元认知调节、好奇心、认知诚信"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Computers and Education: AI 2026 - 设计原则框架",
+      "module": "M05"
+    },
+    "M05-2025-PMC-CogOffload": {
+      "id": "M05-2025-PMC-CogOffload",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Chen, X.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Generative AI tool use enhances academic achievement in sustainable education through shared metacognition and cognitive offloading among preservice teachers",
+      "venue": "Scientific Reports (PMC)",
+      "doi": null,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12075473/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "GenAI",
+        "cognitive-offloading",
+        "metacognition",
+        "preservice-teachers"
+      ],
+      "key_claims": [
+        "PLS-SEM 中介模型：GenAI 通过认知卸载与共享元认知提升学业成就",
+        "卸载简单任务释放认知资源以投入复杂任务",
+        "需配合显式的元认知反思以避免「全卸载」"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Scientific Reports 2025 - 准教师 GenAI 使用 PLS-SEM 中介模型",
+      "module": "M05"
+    },
+    "M05-2026-IJSTEM-CogScaffold": {
+      "id": "M05-2026-IJSTEM-CogScaffold",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Lyu, X.",
+        "et al."
+      ],
+      "year": 2026,
+      "title": "Tool, tutor, or crutch? A grounded theory of cognitive scaffolding and offloading in AI-assisted programming education",
+      "venue": "International Journal of STEM Education",
+      "doi": "10.1186/s40594-025-00592-w",
+      "url": "https://stemeducationjournal.springeropen.com/article/10.1186/s40594-025-00592-w",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "AI-assisted",
+        "scaffolding",
+        "offloading",
+        "expertise-reversal"
+      ],
+      "key_claims": [
+        "扎根理论模型：领域掌握 vs 工具掌握的张力 + 战略切换 + 信任难验证",
+        "脚手架 vs 卸载的双循环：脚手架降无关负载、保留有效负载；卸载两者皆降",
+        "专家逆转效应：新手的有用支持对专家成为冗余开销"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IJSTEM Education 2026 - AI 辅助编程的认知负载模型",
+      "module": "M05"
+    },
+    "M05-2025-Microsoft-CritThink": {
+      "id": "M05-2025-Microsoft-CritThink",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Lee, H.-P.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "The impact of generative AI on critical thinking: Self-reported reductions in cognitive effort and confidence effects from a survey of knowledge workers",
+      "venue": "Microsoft Research / CHI 2025",
+      "doi": null,
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "GenAI",
+        "critical-thinking",
+        "knowledge-workers"
+      ],
+      "key_claims": [
+        "对 GenAI 信任度高时，使用者自报告的认知投入与批判性思维显著下降",
+        "信心配置改变：从「自我把关」转向「AI 把关」",
+        "需在工具使用规范中显式引入二次校验环节"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Microsoft / CHI 2025 - 319 名知识工作者调查",
+      "module": "M05"
+    },
+    "M05-2024-arXiv-LearnLens": {
+      "id": "M05-2024-arXiv-LearnLens",
+      "aliases": [],
+      "type": "preprint",
+      "authors": [
+        "Srivastava, N.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "LearnLens: An AI-enhanced dashboard to support teachers in open-ended classrooms",
+      "venue": "arXiv",
+      "doi": null,
+      "url": "https://arxiv.org/html/2509.10582v1/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "teacher-dashboard",
+        "LLM",
+        "open-ended-learning"
+      ],
+      "key_claims": [
+        "面向教师的 AI 仪表板可在开放式课堂中可视化集体理解与共性误概念",
+        "把 AI 用作教学决策辅助而非黑箱解题"
+      ],
+      "used_in": [
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "arXiv 2024 - AI 教师仪表板原型",
+      "module": "M05"
+    },
     "M06-001": {
       "id": "M06-001",
       "aliases": [],
@@ -2451,7 +2632,12 @@
       "M05-001",
       "M05-002",
       "M05-003",
-      "M05-004"
+      "M05-004",
+      "M05-2026-CompEduAI-LLMScaffolding",
+      "M05-2025-PMC-CogOffload",
+      "M05-2026-IJSTEM-CogScaffold",
+      "M05-2025-Microsoft-CritThink",
+      "M05-2024-arXiv-LearnLens"
     ],
     "M06": [
       "M06-001",
