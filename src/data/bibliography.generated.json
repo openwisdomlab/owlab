@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T11:41:32.929Z",
-  "total": 116,
+  "generated_at": "2026-04-30T11:44:40.616Z",
+  "total": 124,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -3416,6 +3416,297 @@
       "verified_date": null,
       "notes": "Zenodo 2026 - 延伸心智到放大心智的理论扩展",
       "module": "L02"
+    },
+    "L03-2021-PNAS-Woolley": {
+      "id": "L03-2021-PNAS-Woolley",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Riedl, C.",
+        "Kim, Y.J.",
+        "Gupta, P.",
+        "Malone, T.W.",
+        "Woolley, A.W."
+      ],
+      "year": 2021,
+      "title": "Quantifying collective intelligence in human groups",
+      "venue": "PNAS",
+      "doi": "10.1073/pnas.2005737118",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2005737118",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "collective-intelligence",
+        "team-performance",
+        "PNAS"
+      ],
+      "key_claims": [
+        "1356 名参与者元分析：CI（集体智能）可可靠预测群体在多种任务的表现",
+        "CI 主要由「群体协作过程」预测，其次个体技能、群体构成",
+        "女性比例与社会感知度正向预测 CI；高年龄差异负向影响"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/cognitive-diversity.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PNAS 2021 - 集体智能的元分析量化",
+      "module": "L03"
+    },
+    "L03-2024-arXiv-AICI": {
+      "id": "L03-2024-arXiv-AICI",
+      "aliases": [],
+      "type": "preprint",
+      "authors": [
+        "Yang, H.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "AI-enhanced collective intelligence",
+      "venue": "arXiv",
+      "doi": null,
+      "url": "https://arxiv.org/html/2403.10433v4",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "AI-CI",
+        "human-AI-team",
+        "synergy"
+      ],
+      "key_claims": [
+        "AI 增强集体智能（CI）需要在多样性、协作过程、信息流上同时设计",
+        "多样性的两面性：增加创新潜力但也带来情感冲突与压力",
+        "网络密度、互动规则与任务复杂度共同决定 AI 增强效果"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/research-updates-2025.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "arXiv 2024 - AI 增强集体智能综述",
+      "module": "L03"
+    },
+    "L03-2020-PNAS-AdaptiveNetworks": {
+      "id": "L03-2020-PNAS-AdaptiveNetworks",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Almaatouq, A.",
+        "Noriega-Campero, A.",
+        "Alotaibi, A.",
+        "Krafft, P.M.",
+        "Moussaid, M.",
+        "Pentland, A."
+      ],
+      "year": 2020,
+      "title": "Adaptive social networks promote the wisdom of crowds",
+      "venue": "PNAS",
+      "doi": "10.1073/pnas.1917687117",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.1917687117",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "wisdom-of-crowds",
+        "social-network",
+        "adaptive-networks"
+      ],
+      "key_claims": [
+        "网络可塑性 + 反馈使集体估值优于最佳个体",
+        "全局适应（结构改变）+ 局部适应（高准确度个体抗社会影响）",
+        "OWL 节点的导师-学习者网络应允许动态重组"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/cognitive-diversity.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PNAS 2020 - 自适应社会网络与集体智能",
+      "module": "L03"
+    },
+    "L03-2024-IEEE-CSI": {
+      "id": "L03-2024-IEEE-CSI",
+      "aliases": [],
+      "type": "conference",
+      "authors": [
+        "Rosenberg, L.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "Conversational swarm intelligence amplifies accuracy in collective deliberation",
+      "venue": "IEEE CCWC 2024",
+      "doi": null,
+      "url": "https://unanimous.ai/wp-content/uploads/2024/01/Conversational-Swarm-Intelligence-Amplifies-Accuracy-CCWC-2024-IEEE.pdf",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "swarm-intelligence",
+        "deliberation",
+        "LLM-mediated"
+      ],
+      "key_claims": [
+        "对话型群智（CSI）让 25-2500 人组实时审议",
+        "11 周实验：CSI 显著优于 WoC 投票（p<0.001）",
+        "LLM-based AI agent 作为子组协调者扩展集体审议规模"
+      ],
+      "used_in": [
+        "extend/research-updates-2025.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IEEE CCWC 2024 - 对话型群智实证",
+      "module": "L03"
+    },
+    "L04-1995-Xerox-Weiser": {
+      "id": "L04-1995-Xerox-Weiser",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Weiser, M.",
+        "Brown, J.S."
+      ],
+      "year": 1995,
+      "title": "Designing calm technology",
+      "venue": "Xerox PARC",
+      "doi": null,
+      "url": "https://calmtech.com/papers/designing-calm-technology",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "calm-technology",
+        "ubiquitous-computing",
+        "Weiser"
+      ],
+      "key_claims": [
+        "Calm technology 在「中心-外围」之间自由切换",
+        "外围连接（locatedness）是更人性化设计的基础",
+        "「Dangling String」作为外围反馈的视觉范例"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/embodied-tech.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Xerox PARC 1995 - Calm Technology 奠基论文",
+      "module": "L04"
+    },
+    "L04-1996-Xerox-WeiserCalm": {
+      "id": "L04-1996-Xerox-WeiserCalm",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Weiser, M.",
+        "Brown, J.S."
+      ],
+      "year": 1996,
+      "title": "The coming age of calm technology",
+      "venue": "Xerox PARC",
+      "doi": null,
+      "url": "https://calmtech.com/papers/coming-age-calm-technology",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "calm-technology",
+        "ubiquitous-computing"
+      ],
+      "key_claims": [
+        "无所不在计算时代的根本挑战是「冷静」",
+        "Calm 技术让人保持沉着与控制",
+        "Calmness 是未来五十年技术设计的核心命题"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Xerox PARC 1996 - Calm Technology 推进文章",
+      "module": "L04"
+    },
+    "L04-2024-CalmTech-Institute": {
+      "id": "L04-2024-CalmTech-Institute",
+      "aliases": [],
+      "type": "web",
+      "authors": [
+        "Case, A.",
+        "Calm Tech Institute"
+      ],
+      "year": 2024,
+      "title": "Calm Tech Principles & Calm Tech Certified™",
+      "venue": "Calm Tech Institute",
+      "doi": null,
+      "url": "https://www.calmtech.institute/calm-tech-principles",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "calm-technology",
+        "design-principles",
+        "certification"
+      ],
+      "key_claims": [
+        "Calm Tech 八条原则：最小注意、外围利用、失败仍可用、最小技术、尊重社会规范等",
+        "2024 推出 Calm Tech Certified™——81 项框架的认证标准",
+        "把抽象哲学翻译为可工程化的设计准则"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/edutech-frontier.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Calm Tech Institute 2024 - 认证标准发布",
+      "module": "L04"
+    },
+    "L04-2026-IxDF-CalmComputing": {
+      "id": "L04-2026-IxDF-CalmComputing",
+      "aliases": [],
+      "type": "web",
+      "authors": [
+        "Interaction Design Foundation"
+      ],
+      "year": 2026,
+      "title": "What is calm computing? — updated 2026",
+      "venue": "IxDF",
+      "doi": null,
+      "url": "https://assets.interaction-design.org/literature/topics/calm-computing",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "calm-computing",
+        "HCI",
+        "ubiquitous-computing"
+      ],
+      "key_claims": [
+        "Calm computing 在中心与外围之间流动信息",
+        "信息可视化（cone tree）等技术可让外围注意预处理细节",
+        "技术应支持而非要求注意"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/edutech-frontier.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IxDF 2026 - calm computing 综述更新版",
+      "module": "L04"
     }
   },
   "byModule": {
@@ -3556,6 +3847,18 @@
       "L02-2025-NatureComm-Clark",
       "L02-2025-Synthese-DigitalAndy",
       "L02-2026-Zenodo-AmplifiedMind"
+    ],
+    "L03": [
+      "L03-2021-PNAS-Woolley",
+      "L03-2024-arXiv-AICI",
+      "L03-2020-PNAS-AdaptiveNetworks",
+      "L03-2024-IEEE-CSI"
+    ],
+    "L04": [
+      "L04-1995-Xerox-Weiser",
+      "L04-1996-Xerox-WeiserCalm",
+      "L04-2024-CalmTech-Institute",
+      "L04-2026-IxDF-CalmComputing"
     ]
   }
 }

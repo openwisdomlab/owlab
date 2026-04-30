@@ -1,0 +1,93 @@
+{
+  "module": "L04",
+  "version": "0.1.0",
+  "last_updated": "2026-04-30",
+  "references": [
+    {
+      "id": "L04-1995-Xerox-Weiser",
+      "type": "report",
+      "authors": ["Weiser, M.", "Brown, J.S."],
+      "year": 1995,
+      "title": "Designing calm technology",
+      "venue": "Xerox PARC",
+      "url": "https://calmtech.com/papers/designing-calm-technology",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["calm-technology", "ubiquitous-computing", "Weiser"],
+      "key_claims": [
+        "Calm technology 在「中心-外围」之间自由切换",
+        "外围连接（locatedness）是更人性化设计的基础",
+        "「Dangling String」作为外围反馈的视觉范例"
+      ],
+      "used_in": ["index.mdx", "extend/embodied-tech.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Xerox PARC 1995 - Calm Technology 奠基论文"
+    },
+    {
+      "id": "L04-1996-Xerox-WeiserCalm",
+      "type": "report",
+      "authors": ["Weiser, M.", "Brown, J.S."],
+      "year": 1996,
+      "title": "The coming age of calm technology",
+      "venue": "Xerox PARC",
+      "url": "https://calmtech.com/papers/coming-age-calm-technology",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["calm-technology", "ubiquitous-computing"],
+      "key_claims": [
+        "无所不在计算时代的根本挑战是「冷静」",
+        "Calm 技术让人保持沉着与控制",
+        "Calmness 是未来五十年技术设计的核心命题"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Xerox PARC 1996 - Calm Technology 推进文章"
+    },
+    {
+      "id": "L04-2024-CalmTech-Institute",
+      "type": "web",
+      "authors": ["Case, A.", "Calm Tech Institute"],
+      "year": 2024,
+      "title": "Calm Tech Principles & Calm Tech Certified™",
+      "venue": "Calm Tech Institute",
+      "url": "https://www.calmtech.institute/calm-tech-principles",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": ["calm-technology", "design-principles", "certification"],
+      "key_claims": [
+        "Calm Tech 八条原则：最小注意、外围利用、失败仍可用、最小技术、尊重社会规范等",
+        "2024 推出 Calm Tech Certified™——81 项框架的认证标准",
+        "把抽象哲学翻译为可工程化的设计准则"
+      ],
+      "used_in": ["index.mdx", "extend/edutech-frontier.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Calm Tech Institute 2024 - 认证标准发布"
+    },
+    {
+      "id": "L04-2026-IxDF-CalmComputing",
+      "type": "web",
+      "authors": ["Interaction Design Foundation"],
+      "year": 2026,
+      "title": "What is calm computing? — updated 2026",
+      "venue": "IxDF",
+      "url": "https://assets.interaction-design.org/literature/topics/calm-computing",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": ["calm-computing", "HCI", "ubiquitous-computing"],
+      "key_claims": [
+        "Calm computing 在中心与外围之间流动信息",
+        "信息可视化（cone tree）等技术可让外围注意预处理细节",
+        "技术应支持而非要求注意"
+      ],
+      "used_in": ["index.mdx", "extend/edutech-frontier.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "IxDF 2026 - calm computing 综述更新版"
+    }
+  ],
+  "notes": "L04 研究层引用——技术诗学：calm tech、ubiquitous computing、后屏幕设计",
+  "cross_validation_status": "pending"
+}
