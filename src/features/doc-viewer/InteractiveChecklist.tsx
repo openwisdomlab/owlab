@@ -40,22 +40,19 @@ export function InteractiveChecklist({
   onProgressChange,
   className = "",
 }: InteractiveChecklistProps) {
-  const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
+  const [checkedItems, setCheckedItems] = useState<Set<string>>(() => {
+    if (typeof window === "undefined") return new Set();
+    const saved = localStorage.getItem(`checklist-${id}`);
+    if (!saved) return new Set();
+    try {
+      return new Set(JSON.parse(saved));
+    } catch (e) {
+      console.error("Failed to parse saved checklist:", e);
+      return new Set();
+    }
+  });
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
   const [showShareToast, setShowShareToast] = useState(false);
-
-  // Load from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem(`checklist-${id}`);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setCheckedItems(new Set(parsed));
-      } catch (e) {
-        console.error("Failed to parse saved checklist:", e);
-      }
-    }
-  }, [id]);
 
   // Save to localStorage when checked items change
   useEffect(() => {

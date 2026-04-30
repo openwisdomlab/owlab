@@ -159,7 +159,7 @@ export async function exportLayoutToDXF(layout: LayoutData): Promise<string> {
     dxf.addLayer("NOTES", DxfWriterClass.ACI.YELLOW, "CONTINUOUS");
     dxf.setActiveLayer("NOTES");
 
-    let notesY = -30;
+    const notesY = -30;
     dxf.drawText(10, notesY, 4, 0, "Notes:");
     layout.notes.forEach((note, index) => {
       dxf.drawText(10, notesY - (index + 1) * 5, 3, 0, `${index + 1}. ${note}`);

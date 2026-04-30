@@ -12,6 +12,66 @@ const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 let errors = 0;
 let checkedFiles = 0;
 let mdxSyntaxErrors = 0;
+let citationErrors = 0;
+
+/**
+ * Build the set of valid citation IDs by scanning every refs.json under
+ * content/docs. IDs and aliases both count as resolvable.
+ */
+function loadCitationIds() {
+    const ids = new Set();
+    function walk(dir) {
+        if (!fs.existsSync(dir)) return;
+        for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+            const full = path.join(dir, entry.name);
+            if (entry.isDirectory()) walk(full);
+            else if (entry.isFile() && /(^|\W)refs\.json$/.test(entry.name)) {
+                try {
+                    const parsed = JSON.parse(fs.readFileSync(full, 'utf-8'));
+                    for (const ref of parsed.references ?? []) {
+                        if (ref.id) ids.add(ref.id);
+                        for (const a of ref.aliases ?? []) ids.add(a);
+                    }
+                } catch {
+                    /* ignore — build-bibliography.mjs reports parse errors */
+                }
+            }
+        }
+    }
+    walk(CONTENT_DIR);
+    return ids;
+}
+
+const VALID_CITE_IDS = loadCitationIds();
+const DOI_RE = /^10\.\d{4,9}\/\S+$/;
+
+/**
+ * Scan MDX content for <Cite id="..."/> and <Cite ids="a,b"/> usage.
+ * Fail when a referenced id does not exist in any refs.json.
+ */
+function checkCitations(content, filePath) {
+    const rel = path.relative(ROOT_DIR, filePath);
+    const singleRe = /<Cite\s+[^>]*\bid=["']([^"']+)["']/g;
+    const multiRe = /<Cite\s+[^>]*\bids=["']([^"']+)["']/g;
+
+    let m;
+    while ((m = singleRe.exec(content)) !== null) {
+        const id = m[1].trim();
+        if (!VALID_CITE_IDS.has(id)) {
+            console.error(`[CITATION ERROR] ${rel}: unresolved <Cite id="${id}" />`);
+            citationErrors++;
+        }
+    }
+    while ((m = multiRe.exec(content)) !== null) {
+        const ids = m[1].split(',').map((s) => s.trim()).filter(Boolean);
+        for (const id of ids) {
+            if (!VALID_CITE_IDS.has(id)) {
+                console.error(`[CITATION ERROR] ${rel}: unresolved <Cite ids="...,${id},..." />`);
+                citationErrors++;
+            }
+        }
+    }
+}
 
 /**
  * Check for MDX syntax issues that would cause build errors.
@@ -153,6 +213,7 @@ if (fs.existsSync(CONTENT_DIR)) {
             // Check for MDX syntax issues (unescaped < before numbers)
             if (filePath.endsWith('.mdx')) {
                 checkMdxSyntax(content, filePath);
+                checkCitations(content, filePath);
             }
 
             // Match [text](url)
@@ -174,9 +235,9 @@ if (fs.existsSync(CONTENT_DIR)) {
     console.warn('No content directory found.');
 }
 
-console.log(`Validation Complete. Checked ${checkedFiles} files.`);
+console.log(`Validation Complete. Checked ${checkedFiles} files. Loaded ${VALID_CITE_IDS.size} citation ids.`);
 
-const totalErrors = errors + mdxSyntaxErrors;
+const totalErrors = errors + mdxSyntaxErrors + citationErrors;
 
 if (totalErrors > 0) {
     if (errors > 0) {
@@ -185,6 +246,10 @@ if (totalErrors > 0) {
     if (mdxSyntaxErrors > 0) {
         console.error(`Found ${mdxSyntaxErrors} MDX syntax errors.`);
         console.error(`\nTo fix MDX syntax errors: Replace '<' with '\\<' before numbers (e.g., '<50' → '\\<50')`);
+    }
+    if (citationErrors > 0) {
+        console.error(`Found ${citationErrors} unresolved <Cite> references.`);
+        console.error(`\nTo fix: ensure each <Cite id="..."/> id matches an entry in any content/docs/zh/**\/refs.json.`);
     }
     process.exit(1);
 } else {

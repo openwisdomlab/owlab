@@ -930,3 +930,48 @@ package.json                            # Add prebuild script (Pillar 3)
 ```
 src/hooks/useHistory.ts                 # Replaced by editor-store temporal (Pillar 2)
 ```
+
+---
+
+## Citation Graph (added 2026-04 by C004)
+
+The 2026-04 文档系统全量研究化迭代 added a **structured-bibliography pipeline** that
+naturally feeds the proposed knowledge-graph architecture. Each citation in
+`src/data/bibliography.generated.json` carries:
+
+- `module` — the module owner (M01-M09 / L01-L04)
+- `tags[]` — topical labels usable as graph edges
+- `key_claims[]` — semantic anchors for cross-reference clustering
+- `used_in[]` — explicit MDX-page → citation links
+- `evidence_tier` — E0-E3, can weight node importance in the visualisation
+- `aliases[]` — backwards-compatible IDs for legacy refs
+
+### Graph derivation pseudocode
+
+```text
+nodes = {
+  ...modules (M01-M09, L01-L04),       # primary nodes
+  ...citations,                          # secondary nodes (124 total as of 2026-04)
+  ...mdx-pages (used_in references),     # tertiary nodes
+}
+
+edges = {
+  module --owns--> citation,             # citation.module
+  citation --tagged--> tag,              # citation.tags[]
+  mdx-page --cites--> citation,          # citation.used_in[]
+  module --crosslinks--> module,         # ExtendCards related-module entries
+                                         # (e.g., L01↔M03, L02↔M05, L03↔M07, L04↔M05+M06)
+}
+
+edge-weight  =  E3:1.0  E2:0.7  E1:0.4  E0:0.2
+```
+
+### Implementation hook
+
+When implementing Pillar 3 (Semantic Universe) the build script should:
+
+1. Read `src/data/bibliography.generated.json` (already produced by `scripts/build-bibliography.mjs` in `pnpm prebuild`).
+2. Read all `meta.json` and the `frontmatter` of each `index.mdx` for module-level metadata.
+3. Combine into a single `src/data/graph-data.json` consumable by `KnowledgeUniverse.tsx`.
+
+This means **the citation graph is already half built** — we now have edge-weighted module-citation-tag-page connections without any extra MDX authoring effort.

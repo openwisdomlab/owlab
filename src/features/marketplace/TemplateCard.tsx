@@ -158,44 +158,23 @@ function MiniLayoutPreview({
   layoutData: string;
   color: string;
 }) {
-  try {
-    const layout = JSON.parse(layoutData);
-    const zones = layout.zones || [];
-    const dims = layout.dimensions || { width: 20, height: 15 };
+  let layout: {
+    zones?: Array<{
+      id: string;
+      position: { x: number; y: number };
+      size: { width: number; height: number };
+      color?: string;
+    }>;
+    dimensions?: { width: number; height: number };
+  } | null = null;
 
-    return (
-      <svg
-        viewBox={`0 0 ${dims.width} ${dims.height}`}
-        className="w-full h-full"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {zones.map(
-          (
-            zone: {
-              id: string;
-              position: { x: number; y: number };
-              size: { width: number; height: number };
-              color?: string;
-            },
-            i: number
-          ) => (
-            <rect
-              key={zone.id || i}
-              x={zone.position.x}
-              y={zone.position.y}
-              width={zone.size.width}
-              height={zone.size.height}
-              fill={zone.color || color}
-              opacity={0.6}
-              rx={0.3}
-              stroke="rgba(255,255,255,0.2)"
-              strokeWidth={0.15}
-            />
-          )
-        )}
-      </svg>
-    );
+  try {
+    layout = JSON.parse(layoutData);
   } catch {
+    layout = null;
+  }
+
+  if (!layout) {
     return (
       <div
         className="w-16 h-16 rounded-lg opacity-30"
@@ -203,4 +182,30 @@ function MiniLayoutPreview({
       />
     );
   }
+
+  const zones = layout.zones ?? [];
+  const dims = layout.dimensions ?? { width: 20, height: 15 };
+
+  return (
+    <svg
+      viewBox={`0 0 ${dims.width} ${dims.height}`}
+      className="w-full h-full"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      {zones.map((zone, i) => (
+        <rect
+          key={zone.id || i}
+          x={zone.position.x}
+          y={zone.position.y}
+          width={zone.size.width}
+          height={zone.size.height}
+          fill={zone.color || color}
+          opacity={0.6}
+          rx={0.3}
+          stroke="rgba(255,255,255,0.2)"
+          strokeWidth={0.15}
+        />
+      ))}
+    </svg>
+  );
 }

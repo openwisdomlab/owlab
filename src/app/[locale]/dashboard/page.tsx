@@ -193,6 +193,7 @@ function useLocalStorageProgress() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot localStorage scan on mount; cannot lazy-init because scanProgress depends on stable callback identity for the storage listener
     scanProgress();
 
     // Listen for storage changes (from other tabs or InteractiveChecklist)
@@ -308,6 +309,7 @@ export default function DashboardPage() {
 
     let lastActive: string | null = null;
     if (latestActivity) {
+      // eslint-disable-next-line react-hooks/purity -- Date.now() needed for live "X days ago" labels; computed inside useMemo so still stable per render
       const diff = Date.now() - latestActivity;
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       if (days === 0) lastActive = t("recentActivity.today");
@@ -543,6 +545,7 @@ export default function DashboardPage() {
                 {activities.slice(0, 6).map((activity) => {
                   const Icon = MODULE_ICONS[activity.moduleId];
                   const color = MODULE_COLORS[activity.moduleId];
+                  // eslint-disable-next-line react-hooks/purity -- live relative-time display
                   const diff = Date.now() - activity.timestamp;
                   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                   const timeLabel =

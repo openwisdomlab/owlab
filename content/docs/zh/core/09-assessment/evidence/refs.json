@@ -72,8 +72,94 @@
         "好的量规描述质量而非数量"
       ],
       "used_in": ["extend/rubric-design.mdx"]
+    },
+    {
+      "id": "M09-2025-SAGE-DigitalAuthentic",
+      "type": "journal",
+      "authors": ["Tran, T.", "et al."],
+      "year": 2025,
+      "title": "Digital technologies in authentic assessment in higher education: A systematic review",
+      "venue": "SAGE Open",
+      "doi": "10.1177/21582440251357198",
+      "url": "https://journals.sagepub.com/doi/10.1177/21582440251357198",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["authentic-assessment", "digital", "systematic-review"],
+      "key_claims": [
+        "52 项研究系统综述：数字技术在真实评估四步中分布严重失衡",
+        "工具集中在「任务设计」步，对「评价判断」「反馈机制」覆盖薄弱",
+        "电子作品集、社交媒体、模拟应用为「学生即知识创造者」提供平台"
+      ],
+      "used_in": ["index.mdx", "extend/portfolio-assessment.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "SAGE Open 2025 - 52 项研究真实评估系统综述"
+    },
+    {
+      "id": "M09-2026-MDPI-Cognitive",
+      "type": "journal",
+      "authors": ["Lăcătuș, R."],
+      "year": 2026,
+      "title": "Cognitive education and innovative assessment in primary school: Aligning inclusion, learning progressions, and Romania's OECD-PISA challenges",
+      "venue": "Social Sciences (MDPI)",
+      "doi": "10.3390/socsci15010024",
+      "url": "https://www.mdpi.com/2076-0760/15/1/24",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["formative-assessment", "learning-progressions", "multimodal", "inclusion"],
+      "key_claims": [
+        "评估应作为「学习过程的支撑机制」而非仅评判结果",
+        "提出四维模型：UDL 多模态接入、迭代反馈、学习进度、真实表现任务",
+        "作品集、学习日志、概念图、轶事记录共同呈现成长轨迹"
+      ],
+      "used_in": ["index.mdx", "extend/portfolio-assessment.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "MDPI Social Sciences 2026 - OECD Learning Compass 对接"
+    },
+    {
+      "id": "M09-2024-NCME-PortfolioModule",
+      "type": "report",
+      "authors": ["NCME"],
+      "year": 2025,
+      "title": "Module 11: Classroom assessment III — Portfolio assessment",
+      "venue": "National Council on Measurement in Education",
+      "url": "https://ncme.org/wp-content/uploads/2025/10/Module-11-Classroom-Assessment-III-Portfolio-Asses-2.pdf",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["portfolio", "authenticity", "psychometrics"],
+      "key_claims": [
+        "作品集不自动等于真实——内容由课程与教学决定",
+        "外部技能（如阅读难度、社交能力）会污染目标能力的测量——需要任务设计去除",
+        "评分者间一致性需要针对作品集的特殊训练"
+      ],
+      "used_in": ["index.mdx", "extend/portfolio-assessment.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "NCME 2025 - 作品集评估的心理测量学注意事项"
+    },
+    {
+      "id": "M09-2024-NYSATA-Portfolio",
+      "type": "report",
+      "authors": ["New York State Art Teachers Association"],
+      "year": 2024,
+      "title": "Portfolio Project 2.0: Authentic assessment in visual arts education",
+      "venue": "NYSATA",
+      "url": "https://www.nysata.org/assets/documents/PortfolioProject/Portfolio%20Project%202.0%20Overview.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["portfolio", "authentic-assessment", "visual-arts"],
+      "key_claims": [
+        "作品集让学生成为自己学习的评估者，培养元认知与自我表达",
+        "10 个区域专业培训提升评分者一致性",
+        "学生学会与成人就自己的学习进行清晰对话"
+      ],
+      "used_in": ["index.mdx", "extend/portfolio-assessment.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "NYSATA 2024 - 视觉艺术作品集评估实施指南"
     }
   ],
-  "notes": "评估相关文献待人工验证",
+  "notes": "评估相关文献待人工验证。2026-04 更新：新增 4 篇 portfolio / authentic assessment 2024-2026 文献。",
   "cross_validation_status": "pending"
 }

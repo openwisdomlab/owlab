@@ -199,8 +199,95 @@
         "应制定个人信息安全事件应急预案"
       ],
       "used_in": ["extend/digital-security.mdx"]
+    },
+    {
+      "id": "M06-2023-AROB-Edmondson",
+      "type": "journal",
+      "authors": ["Edmondson, A.C.", "Bransby, D.P."],
+      "year": 2023,
+      "title": "Psychological safety comes of age: Observed themes in an established literature",
+      "venue": "Annual Review of Organizational Psychology and Organizational Behavior",
+      "doi": "10.1146/annurev-orgpsych-120920-055217",
+      "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=63309",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["psychological-safety", "Edmondson", "team-learning"],
+      "key_claims": [
+        "心理安全研究 9 年 185 篇文献综述",
+        "四大主题：完成任务、学习行为、改善体验、领导力",
+        "中高心理安全条件下「从失败中学习」最为活跃；TMS 是中介机制"
+      ],
+      "used_in": ["index.mdx", "extend/psychological-safety.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Edmondson 心理安全 2023 系统综述（Annual Review）"
+    },
+    {
+      "id": "M06-2024-CIPD-PSReview",
+      "type": "report",
+      "authors": ["CIPD / CEBMa"],
+      "year": 2024,
+      "title": "Psychological safety: Scientific summary of a rapid evidence assessment",
+      "venue": "Chartered Institute of Personnel and Development",
+      "url": "https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/evidence-reviews/2024-pdfs/8550-psychological-safety-scientific-summary.pdf",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["psychological-safety", "evidence-review", "antecedents"],
+      "key_claims": [
+        "心理安全确实显著提升组织主动行为、知识共享与创新",
+        "前因强度排序：领导风格、信任、团队多样性、清晰目标",
+        "教育类干预（模拟、视频、案例）对医疗领域心理安全产生大正效应"
+      ],
+      "used_in": ["index.mdx", "extend/psychological-safety.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "CIPD 2024 - 快速证据评估"
+    },
+    {
+      "id": "M06-2025-IST-PSSoftware",
+      "type": "journal",
+      "authors": ["Caballero-Espinosa, E.", "et al."],
+      "year": 2025,
+      "title": "Psychological safety in software workplaces: A systematic literature review",
+      "venue": "Information and Software Technology",
+      "doi": "10.1016/j.infsof.2025.107708",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0950584925001776",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["psychological-safety", "software", "systematic-review"],
+      "key_claims": [
+        "28 项研究系统综述：心理安全在软件团队的前因/后果",
+        "前因：团队自主、敏捷方法、领导行为；后果：质量、技术卓越、满意度",
+        "对 OWL 创客团队同样适用——技术工作天然需要试错容忍"
+      ],
+      "used_in": ["extend/psychological-safety.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Information and Software Technology 2025 - 系统综述"
+    },
+    {
+      "id": "M06-2024-medRxiv-PSMeasures",
+      "type": "preprint",
+      "authors": ["Cox, K.J.", "et al."],
+      "year": 2024,
+      "title": "Meta-analysis and systematic review of the measures of psychological safety",
+      "venue": "medRxiv",
+      "doi": "10.1101/2024.02.09.24302562",
+      "url": "https://www.medrxiv.org/content/10.1101/2024.02.09.24302562v1.full-text",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["psychological-safety", "measurement", "meta-analysis"],
+      "key_claims": [
+        "Edmondson PSS 单维测量在多元构念下已显不足",
+        "新构念应纳入：支持性领导、明确角色与价值、凝聚的氛围/网络",
+        "OWL 心理安全评估须超越单一量表"
+      ],
+      "used_in": ["extend/psychological-safety.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "medRxiv 2024 - 心理安全测量元分析"
     }
   ],
-  "notes": "安全与伦理相关文献待人工验证。2025-12-29更新：新增分级准入、培训体系、风险评估、应急响应、数字安全相关参考文献。",
+  "notes": "安全与伦理相关文献待人工验证。2026-04 更新：新增 4 篇心理安全 2023-2025 高分位证据。",
   "cross_validation_status": "pending"
 }

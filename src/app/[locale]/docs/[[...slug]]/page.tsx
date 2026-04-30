@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { TOCItemType } from "fumadocs-core/toc";
 import { createMdxComponents } from "@/components/mdx";
+import { CitationProvider } from "@/features/doc-viewer/Citation";
 
 type Props = {
   params: Promise<{ slug?: string[]; locale: string }>;
@@ -60,10 +61,12 @@ export default async function Page({ params }: Props) {
       <DocsTitle>{data.title}</DocsTitle>
       <DocsDescription>{data.description}</DocsDescription>
       <DocsBody>
-        <MDX components={{
-          ...defaultMdxComponents,
-          ...createMdxComponents(locale),
-        }} />
+        <CitationProvider>
+          <MDX components={{
+            ...defaultMdxComponents,
+            ...createMdxComponents(locale),
+          }} />
+        </CitationProvider>
       </DocsBody>
     </DocsPage>
   );

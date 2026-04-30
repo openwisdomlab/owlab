@@ -42,6 +42,7 @@ import { ModulePageTitle } from "@/features/doc-viewer/ModulePageTitle";
 import { ThinkingZone } from "@/components/brand/ThinkingZone";
 import { EinsteinQuote } from "@/components/brand/EinsteinQuote";
 import { ParticleField } from "@/components/brand/ParticleField";
+import { Cite, References } from "@/features/doc-viewer/Citation";
 
 /**
  * Create the full MDX component map for a given locale.
@@ -138,6 +139,16 @@ export function createMdxComponents(locale: string) {
     ModulePageTitle: (props: { moduleId: string; className?: string }) => (
       <ModulePageTitle {...props} />
     ),
+
+    // ── Citations ─────────────────────────────────────────────────
+    Cite: (props: { id?: string; ids?: string; children?: React.ReactNode }) => (
+      <Cite {...props} />
+    ),
+    References: (props: {
+      scope?: "page" | "module";
+      module?: string;
+      title?: string;
+    }) => <References {...props} />,
 
     // ── Pre-built Flow Constants ──────────────────────────────────
     EQUIPMENT_ACCESS_FLOW,

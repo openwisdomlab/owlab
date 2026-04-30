@@ -43,6 +43,13 @@ export function SidebarSearch({ locale, docs, className }: SidebarSearchProps) {
       .slice(0, 8); // Limit to 8 results for quick navigation
   }, [query, docs]);
 
+  // Reset selection when results change (canonical React pattern: setState during render).
+  const [prevFilteredDocs, setPrevFilteredDocs] = useState(filteredDocs);
+  if (prevFilteredDocs !== filteredDocs) {
+    setPrevFilteredDocs(filteredDocs);
+    setSelectedIndex(0);
+  }
+
   const showResults = isFocused && query.trim().length > 0;
 
   // Navigate to selected doc
@@ -84,11 +91,6 @@ export function SidebarSearch({ locale, docs, className }: SidebarSearchProps) {
         break;
     }
   }, [showResults, filteredDocs, selectedIndex, navigateToDoc]);
-
-  // Reset selected index when results change
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [filteredDocs]);
 
   // Scroll selected item into view
   useEffect(() => {

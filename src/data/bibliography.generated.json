@@ -1,0 +1,3864 @@
+{
+  "generated_at": "2026-04-30T15:37:51.031Z",
+  "total": 124,
+  "byId": {
+    "M01-001": {
+      "id": "M01-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Papert, S. (1980). Mindstorms: Children, computers, and powerful ideas. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "Constructionism: 学习在创造可分享的制品时效果最佳",
+        "计算机作为思维工具的潜力"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/constructionism.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Constructionism 理论奠基作品",
+      "module": "M01"
+    },
+    "M01-002": {
+      "id": "M01-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Vygotsky, L.S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "最近发展区 (ZPD) 概念",
+        "社会互动在认知发展中的核心作用",
+        "语言作为思维工具"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "社会建构主义核心文献",
+      "module": "M01"
+    },
+    "M01-003": {
+      "id": "M01-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Lave, J., & Wenger, E. (1991). Situated learning: Legitimate peripheral participation. Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "学习嵌入在情境和文化中",
+        "实践社区 (Communities of Practice) 概念",
+        "合法的边缘性参与"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "情境学习理论核心文献",
+      "module": "M01"
+    },
+    "M01-004": {
+      "id": "M01-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Piaget, J. (1952). The origins of intelligence in children. International Universities Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "知识由学习者主动建构",
+        "认知发展阶段理论",
+        "同化与顺应机制"
+      ],
+      "used_in": [
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "建构主义核心文献",
+      "module": "M01"
+    },
+    "M01-005": {
+      "id": "M01-005",
+      "aliases": [],
+      "type": "book_chapter",
+      "citation": "Krajcik, J.S., & Shin, N. (2014). Project-based learning. In R.K. Sawyer (Ed.), The Cambridge handbook of the learning sciences (2nd ed., pp. 275-297). Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "PBL 提高深度理解和知识迁移",
+        "驱动性问题的设计原则"
+      ],
+      "used_in": [
+        "extend/learning-theories.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PBL 理论综述",
+      "module": "M01"
+    },
+    "M01-006": {
+      "id": "M01-006",
+      "aliases": [],
+      "type": "book",
+      "citation": "Dougherty, D. (2012). The maker movement. Innovations: Technology, Governance, Globalization, 7(3), 11-14.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客运动的定义和核心价值",
+        "创客文化的社会意义"
+      ],
+      "used_in": [
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Make Magazine 创始人的创客运动概述",
+      "module": "M01"
+    },
+    "M01-007": {
+      "id": "M01-007",
+      "aliases": [],
+      "type": "book",
+      "citation": "Martinez, S.L., & Stager, G.S. (2013). Invent to learn: Making, tinkering, and engineering in the classroom. Constructing Modern Knowledge Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客教育的课堂实践指南",
+        "Constructionism 在教育中的应用"
+      ],
+      "used_in": [
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "创客教育实践指南",
+      "module": "M01"
+    },
+    "M01-008": {
+      "id": "M01-008",
+      "aliases": [],
+      "type": "book",
+      "citation": "Resnick, M. (2017). Lifelong kindergarten: Cultivating creativity through projects, passion, peers, and play. MIT Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "4P 学习框架: Projects, Passion, Peers, Play",
+        "创造性学习的终身发展"
+      ],
+      "used_in": [
+        "extend/constructionism.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "MIT Media Lab Scratch 团队负责人的著作",
+      "module": "M01"
+    },
+    "M01-009": {
+      "id": "M01-009",
+      "aliases": [],
+      "type": "book",
+      "citation": "Yakman, G. (2008). STEAM education: An overview of creating a model of integrative education. PATT-17 & PATT-19 Conference Proceedings.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "STEAM 教育框架定义",
+        "艺术整合的价值"
+      ],
+      "used_in": [
+        "extend/steam-framework.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "STEAM 概念提出者",
+      "module": "M01"
+    },
+    "M01-010": {
+      "id": "M01-010",
+      "aliases": [],
+      "type": "journal",
+      "citation": "Halverson, E.R., & Sheridan, K. (2014). The maker movement in education. Harvard Educational Review, 84(4), 495-504.",
+      "doi": null,
+      "url": "https://doi.org/10.17763/haer.84.4.34j1g68140382063",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客运动在教育中的应用综述",
+        "创客空间的教育价值"
+      ],
+      "used_in": [
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Harvard Educational Review 综述文章",
+      "module": "M01"
+    },
+    "M01-2024-TiCS-Lau": {
+      "id": "M01-2024-TiCS-Lau",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Lau, J.K.L.",
+        "Ozono, H.",
+        "Kuratomi, K.",
+        "Komiya, A.",
+        "Murayama, K."
+      ],
+      "year": 2024,
+      "title": "Curiosity and the dynamics of optimal exploration",
+      "venue": "Trends in Cognitive Sciences",
+      "doi": "10.1016/j.tics.2024.02.001",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1364661324000287",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "curiosity",
+        "exploration",
+        "learning-progress",
+        "neuroscience"
+      ],
+      "key_claims": [
+        "好奇心整合「求知」与「学习进度」两类驱动",
+        "学习进度（Learning Progress）是好奇心的关键机制",
+        "好奇心作为「探索的共同货币」与安全等其他驱动平衡"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/curiosity-cultivation.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "好奇心整合理论的最新综述（Trends in Cognitive Sciences 2024）",
+      "module": "M01"
+    },
+    "M01-2024-HSSC-Lin": {
+      "id": "M01-2024-HSSC-Lin",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Lin, L.",
+        "Shadiev, R.",
+        "Hwang, W.-Y.",
+        "Shen, S."
+      ],
+      "year": 2024,
+      "title": "A meta-analysis of the effects of design thinking on student learning",
+      "venue": "Humanities and Social Sciences Communications (Nature)",
+      "doi": "10.1057/s41599-024-03237-5",
+      "url": "https://www.nature.com/articles/s41599-024-03237-5",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "design-thinking",
+        "meta-analysis",
+        "creativity",
+        "PBL"
+      ],
+      "key_claims": [
+        "设计思维对学生学习有上中等正效应（r=0.436, 25 项研究）",
+        "≥3 个月长期实践、≤30 人小班、≤7 人小组效果最佳",
+        "对学习投入、动机、问题解决与学业成就均有显著提升"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/4p-creative-learning.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Nature 旗下 HSSC 2024 元分析（25 项研究）",
+      "module": "M01"
+    },
+    "M01-2025-STEME-Kwon": {
+      "id": "M01-2025-STEME-Kwon",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Kwon, H.",
+        "Lee, Y."
+      ],
+      "year": 2025,
+      "title": "A meta-analysis of STEM project-based learning on creativity",
+      "venue": "STEM Education (AIMS)",
+      "doi": "10.3934/steme.2025014",
+      "url": "https://aimspress.com/aimspress-data/steme/2025/2/PDF/steme-05-02-014.pdf",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "STEM-PBL",
+        "meta-analysis",
+        "creativity"
+      ],
+      "key_claims": [
+        "STEM 项目制学习对创造力效应巨大（ES=3.888，95%CI 3.609-4.166）",
+        "效应跨创造性思维、想象力、好奇心、创造过程"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/4p-creative-learning.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "8 项研究 13 个效应量的元分析（2025）",
+      "module": "M01"
+    },
+    "M01-2024-IJTDE-Seitamaa": {
+      "id": "M01-2024-IJTDE-Seitamaa",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Seitamaa-Hakkarainen, P.",
+        "Korhonen, T.",
+        "Kangas, K."
+      ],
+      "year": 2024,
+      "title": "Research on K-12 maker education in the early 2020s — a systematic literature review",
+      "venue": "International Journal of Technology and Design Education",
+      "doi": "10.1007/s10798-024-09921-6",
+      "url": "https://link.springer.com/article/10.1007/s10798-024-09921-6",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "maker-education",
+        "K-12",
+        "systematic-review"
+      ],
+      "key_claims": [
+        "创客教育在 21 世纪能力与跨学科创造性问题解决上的实证支持",
+        "强调创造性、设计思维、协作与数字-物理工具组合"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "K-12 创客教育 2020s 早期研究系统综述（Springer 2024）",
+      "module": "M01"
+    },
+    "M01-2025-TechTrends-Mishra": {
+      "id": "M01-2025-TechTrends-Mishra",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Mishra, P.",
+        "Henriksen, D."
+      ],
+      "year": 2025,
+      "title": "The curiosity paradox: How sycophantic GenAI may undermine learning",
+      "venue": "TechTrends",
+      "doi": "10.1007/s11528-025-01156-z",
+      "url": "https://link.springer.com/article/10.1007/s11528-025-01156-z",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "GenAI",
+        "curiosity",
+        "AI-education",
+        "epistemic-risk"
+      ],
+      "key_claims": [
+        "迎合型生成式 AI 可能反而削弱学习者的好奇心与认知投入",
+        "AI 时代教育需主动设计「不舒适」与「悬而未决」以保护好奇心"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-maker-education.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "GenAI 削弱好奇心的关键警示（TechTrends 2025）",
+      "module": "M01"
+    },
+    "M01-2025-FrontPsy-Curiosity": {
+      "id": "M01-2025-FrontPsy-Curiosity",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Wang, Y.",
+        "Liu, J.",
+        "Chen, X."
+      ],
+      "year": 2025,
+      "title": "The impact of time-limited context and feedback methods on epistemic curiosity",
+      "venue": "Frontiers in Psychology",
+      "doi": "10.3389/fpsyg.2025.1717846",
+      "url": "https://www.frontiersin.org/articles/10.3389/fpsyg.2025.1717846",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "epistemic-curiosity",
+        "feedback",
+        "classroom"
+      ],
+      "key_claims": [
+        "时限情境显著提升认知好奇心",
+        "正确性反馈维持好奇心；分数/排名反馈则消除该效应"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/curiosity-cultivation.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "时限与反馈机制对好奇心影响的 2 个准实验（2025）",
+      "module": "M01"
+    },
+    "M01-2025-Educ-Piele": {
+      "id": "M01-2025-Educ-Piele",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Piele, A.N."
+      ],
+      "year": 2025,
+      "title": "Makerspaces as catalysts for entrepreneurial education: Insights from a systematic literature review",
+      "venue": "Education Sciences (MDPI)",
+      "doi": "10.3390/educsci15101295",
+      "url": "https://www.mdpi.com/2227-7102/15/10/1295",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "makerspace",
+        "entrepreneurship",
+        "systematic-review"
+      ],
+      "key_claims": [
+        "创客空间在中学阶段能有效培养创业胜任力",
+        "需有意图的教学设计、协作环境与结构化项目"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/maker-movement.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "35 项研究的创客空间-创业教育系统综述（2025）",
+      "module": "M01"
+    },
+    "M02-001": {
+      "id": "M02-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Ostrom, E. (1990). Governing the Commons: The Evolution of Institutions for Collective Action. Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "社区可以有效自治管理共享资源",
+        "成功的公共资源治理需要清晰的边界、规则和冲突解决机制"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-002": {
+      "id": "M02-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Benkler, Y. (2006). The Wealth of Networks: How Social Production Transforms Markets and Freedom. Yale University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "网络化协作可以创造显著的社会价值",
+        "开放式协作需要新的治理模式"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-003": {
+      "id": "M02-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Chesbrough, H. (2003). Open Innovation: The New Imperative for Creating and Profiting from Technology. Harvard Business School Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "开放式创新可以加速创新过程",
+        "组织边界的开放需要新的治理结构"
+      ],
+      "used_in": [
+        "extend/network-governance.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-004": {
+      "id": "M02-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Gershenfeld, N. (2005). Fab: The Coming Revolution on Your Desktop--from Personal Computers to Personal Fabrication. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "数字制造工具民主化将改变创新模式",
+        "Fab Lab 网络可实现全球知识共享与协作"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-005": {
+      "id": "M02-005",
+      "aliases": [],
+      "type": "web",
+      "citation": "MIT Center for Bits and Atoms. The Fab Charter. http://fab.cba.mit.edu/about/charter/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "Fab Lab 的使命是为个人提供技术发明工具",
+        "发明归个人所有，但设计过程应开放共享供学习"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-006": {
+      "id": "M02-006",
+      "aliases": [],
+      "type": "web",
+      "citation": "Fab Foundation. Fab Lab Network. https://fabfoundation.org/global-community/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "全球 Fab Lab 网络超过 1750 个实验室，覆盖 100+ 国家",
+        "Fab Lab 网络形成分布式研究室和分布式技术教育校园"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-007": {
+      "id": "M02-007",
+      "aliases": [],
+      "type": "web",
+      "citation": "European Network of Living Labs (ENoLL). Living Labs Methodology. https://enoll.org/living-labs/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Living Lab 是以用户为中心的开放式创新生态系统",
+        "四螺旋模型强调公民、学术界、产业界和政府的深度协作"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-008": {
+      "id": "M02-008",
+      "aliases": [],
+      "type": "article",
+      "citation": "Troxler, P. (2013). Making the Third Industrial Revolution: The Struggle for Polycentric Structures and a New Peer-Production Commons in the Fab Lab Community. In J. Walter-Herrmann & C. Büching (Eds.), FabLab: Of Machines, Makers and Inventors. transcript Verlag.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Fab Lab 社区展示了多中心治理结构的可能性",
+        "同行生产模式需要新的公共资源治理机制"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-009": {
+      "id": "M02-009",
+      "aliases": [],
+      "type": "article",
+      "citation": "Almirall, E., Lee, M., & Wareham, J. (2012). Mapping Living Labs in the Landscape of Innovation Methodologies. Technology Innovation Management Review, 2(9), 12-18.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Living Lab 将真实世界作为实验场",
+        "用户协同创造是 Living Lab 的核心方法论"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-010": {
+      "id": "M02-010",
+      "aliases": [],
+      "type": "web",
+      "citation": "Hackerspace Wiki. Hackerspace Definition. https://wiki.hackerspaces.org/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "黑客空间强调点对点学习、知识共享和信息自由",
+        "Doocracy（谁做事谁负责）是黑客空间的核心治理哲学"
+      ],
+      "used_in": [
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M02"
+    },
+    "M02-2026-CYSR-Youth": {
+      "id": "M02-2026-CYSR-Youth",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "van der Laan, J.",
+        "Bouma, H.",
+        "ten Brummelaar, M."
+      ],
+      "year": 2026,
+      "title": "Between promise and practice: a scoping review of the democratic outcomes of youth participation in local governance",
+      "venue": "Children and Youth Services Review",
+      "doi": "10.1016/j.childyouth.2025.108738",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0190740925006218",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "youth-participation",
+        "governance",
+        "democratic-outcomes"
+      ],
+      "key_claims": [
+        "48 项研究 24 国 scoping review：青年参与治理在个人/社区/政府三层皆有正负效应",
+        "结果不是「参与本身有效」，而是受机制设计、把关动态与条件性所支配",
+        "提出可用于评估与设计「青年响应式参与机制」的标准"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/multi-stakeholder.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "48 项研究的 scoping review（CYSR 2026）",
+      "module": "M02"
+    },
+    "M02-2025-medRxiv-CoCreation": {
+      "id": "M02-2025-medRxiv-CoCreation",
+      "aliases": [],
+      "type": "preprint",
+      "authors": [
+        "Wang, S.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Youth co-creation in health interventions: a systematic review and meta-analysis",
+      "venue": "medRxiv",
+      "doi": "10.1101/2025.10.20.25338251",
+      "url": "https://www.medrxiv.org/content/10.1101/2025.10.20.25338251v1.full-text",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "youth-co-creation",
+        "decision-rights",
+        "meta-analysis"
+      ],
+      "key_claims": [
+        "68 项研究系统综述+元分析：制度化青年共创显著优于一次性咨询",
+        "需明确决策权、专项资源与组织级问责标准",
+        "支撑「嵌入式参与」而非「礼仪式参与」的治理设计"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/node-governance-model.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Cochrane 方法系统综述（PROSPERO 注册）",
+      "module": "M02"
+    },
+    "M02-2026-Sustain-OERCommons": {
+      "id": "M02-2026-Sustain-OERCommons",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Atenas, J.",
+        "Havemann, L.",
+        "Priego, E."
+      ],
+      "year": 2026,
+      "title": "Governing open educational resources as sustainable knowledge commons: A policy and institutional framework for higher education",
+      "venue": "Sustainability",
+      "doi": "10.3390/su18084024",
+      "url": "https://www.mdpi.com/2071-1050/18/8/4024",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "OER",
+        "knowledge-commons",
+        "Ostrom",
+        "sustainability"
+      ],
+      "key_claims": [
+        "可持续 OER 生态需要四个治理维度：制度嵌入、参与式 stewardship、公平接入、长期资源可持续",
+        "把 OER 重新框定为知识共有物（commons）而非素材仓库"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/distributed-innovation.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "OER as commons 的策略综合分析（2024-2026 文献）",
+      "module": "M02"
+    },
+    "M02-2025-CambJIE-Polycentric": {
+      "id": "M02-2025-CambJIE-Polycentric",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Aligica, P.D.",
+        "Tarko, V."
+      ],
+      "year": 2025,
+      "title": "A public economy approach to education: school choice and co-production revisited",
+      "venue": "Journal of Institutional Economics (Cambridge)",
+      "doi": "10.1017/S1744137425100131",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1FDFFF001C5A378E2D2EE05835248D28",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "polycentricity",
+        "Ostrom",
+        "co-production",
+        "education-governance"
+      ],
+      "key_claims": [
+        "更新 Davis & Ostrom（1991）多中心治理在教育中的论述",
+        "多中心治理的三大价值：适应性、问责性、创新——通过竞争与试验涌现",
+        "支持把 OWL 网络架构理解为多中心节点 + 共生产"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/node-governance-model.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Ostrom 多中心治理在教育的最新理论更新",
+      "module": "M02"
+    },
+    "M02-2025-Frontiers-Blockchain": {
+      "id": "M02-2025-Frontiers-Blockchain",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "De Filippi, P.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Blockchain governance and the digital commons: revisiting Ostrom in the Web3 era",
+      "venue": "Frontiers in Blockchain",
+      "doi": "10.3389/fbloc.2025.1538227",
+      "url": "https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2025.1538227",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "blockchain",
+        "DAO",
+        "digital-commons",
+        "Ostrom"
+      ],
+      "key_claims": [
+        "Web3/区块链治理与 Ostrom 集体选择原则的对照",
+        "数字共有物管理需在技术机制之上设计参与与问责"
+      ],
+      "used_in": [
+        "extend/node-governance-model.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "为后续 OWL 网络是否引入链上声誉/凭证提供学理参照",
+      "module": "M02"
+    },
+    "M03-001": {
+      "id": "M03-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Doorley, S., & Witthoft, S. (2012). Make space: How to set the stage for creative collaboration. Wiley.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "空间布局影响协作模式",
+        "可移动家具增加灵活性",
+        "斯坦福d.school空间设计原则"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "斯坦福 d.school 空间设计实践总结",
+      "module": "M03"
+    },
+    "M03-002": {
+      "id": "M03-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Boys, J. (2010). Towards creative learning spaces: Re-thinking the architecture of post-compulsory education. Routledge.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "学习空间设计影响教学方法",
+        "空间应支持多种学习模式"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/physical-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "学习空间设计理论",
+      "module": "M03"
+    },
+    "M03-003": {
+      "id": "M03-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Amabile, T.M. (1996). Creativity in context: Update to the social psychology of creativity. Westview Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "创造力成分模型",
+        "环境因素对创造力的影响",
+        "内在动机的重要性"
+      ],
+      "used_in": [
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "创造力研究经典著作",
+      "module": "M03"
+    },
+    "M03-004": {
+      "id": "M03-004",
+      "aliases": [],
+      "type": "journal",
+      "citation": "Mehta, R., Zhu, R., & Cheema, A. (2012). Is noise always bad? Exploring the effects of ambient noise on creative cognition. Journal of Consumer Research, 39(4), 784-799.",
+      "doi": null,
+      "url": "https://doi.org/10.1086/665048",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "中等噪音水平(70dB)最有利于创造性思维",
+        "过高或过低噪音都不利于创造力"
+      ],
+      "used_in": [
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "环境噪音对创造力影响的实验研究",
+      "module": "M03"
+    },
+    "M03-005": {
+      "id": "M03-005",
+      "aliases": [],
+      "type": "report",
+      "citation": "IDEO. (2012). Design thinking for educators toolkit (2nd ed.). IDEO.",
+      "doi": null,
+      "url": "https://designthinkingforeducators.com/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "设计思维在教育中的应用",
+        "空间作为设计思维的载体"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IDEO 设计思维教育工具包",
+      "module": "M03"
+    },
+    "M03-006": {
+      "id": "M03-006",
+      "aliases": [],
+      "type": "book",
+      "citation": "Oblinger, D.G. (Ed.). (2006). Learning spaces. EDUCAUSE.",
+      "doi": null,
+      "url": "https://www.educause.edu/research-and-publications/books/learning-spaces",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "学习空间设计原则",
+        "技术与空间的整合"
+      ],
+      "used_in": [
+        "extend/physical-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "EDUCAUSE 学习空间设计指南",
+      "module": "M03"
+    },
+    "M03-007": {
+      "id": "M03-007",
+      "aliases": [],
+      "type": "book",
+      "citation": "Sheridan, K., Halverson, E.R., Litts, B., Brahms, L., Jacobs-Priebe, L., & Owens, T. (2014). Learning in the making: A comparative case study of three makerspaces. Harvard Educational Review, 84(4), 505-531.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创客空间的学习模式",
+        "不同类型创客空间的比较"
+      ],
+      "used_in": [
+        "extend/physical-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "创客空间比较案例研究",
+      "module": "M03"
+    },
+    "M03-008": {
+      "id": "M03-008",
+      "aliases": [],
+      "type": "standard",
+      "citation": "CAST. (2018). Universal Design for Learning Guidelines version 2.2.",
+      "doi": null,
+      "url": "http://udlguidelines.cast.org",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "通用学习设计原则",
+        "多元表征、多元表达、多元参与"
+      ],
+      "used_in": [
+        "extend/accessibility.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "UDL 通用学习设计指南",
+      "module": "M03"
+    },
+    "M03-2025-SLE-HyperHybrid": {
+      "id": "M03-2025-SLE-HyperHybrid",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Bezegová, E.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "A Hyper-hybrid space for representational and liminal learning in higher education (Collabits)",
+      "venue": "Smart Learning Environments (Springer)",
+      "doi": "10.1186/s40561-025-00421-1",
+      "url": "https://link.springer.com/article/10.1186/s40561-025-00421-1",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "hybrid-space",
+        "liminal-learning",
+        "digital-physical"
+      ],
+      "key_claims": [
+        "「超混合空间」融合物理课堂与数字环境的可供性",
+        "支持师生在「呈现 / 体验 / 重塑」三态间切换",
+        "数字工具不应仅传递内容，而应承载意义生成"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/digital-augmented-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Springer Smart Learning Environments 2025",
+      "module": "M03"
+    },
+    "M03-2025-DiscEd-Active": {
+      "id": "M03-2025-DiscEd-Active",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Orihuela, M.J."
+      ],
+      "year": 2025,
+      "title": "Active learning environments tailored to pedagogical principles: a spatial design tool for school workshop spaces",
+      "venue": "Discover Education (Springer)",
+      "doi": "10.1007/s44217-025-00869-w",
+      "url": "https://link.springer.com/article/10.1007/s44217-025-00869-w",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "pedagogical-spaces",
+        "Reggio-Emilia",
+        "Montessori",
+        "makerspace"
+      ],
+      "key_claims": [
+        "把空间设计与三种主动教学法（Reggio Emilia atelier、Montessori、Waldorf）显式对齐",
+        "提供可操作的工坊空间设计工具",
+        "强调安静室、原型室、展示室在创客生态中的角色"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/zone-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Discover Education 2025 — 把教学法与空间设计直接耦合",
+      "module": "M03"
+    },
+    "M03-2025-CCD-Creativity": {
+      "id": "M03-2025-CCD-Creativity",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Mosquera-González, A."
+      ],
+      "year": 2025,
+      "title": "Work environments as creativity rooms: An evidence-based cognitive-emotional approach",
+      "venue": "Centre for Conscious Design",
+      "doi": null,
+      "url": "https://theccd.org/article/work-environments-as-creativity-rooms-an-evidence-based-cognitive-emotional-approach/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "creativity-room",
+        "neuroarchitecture",
+        "DMN-ECN"
+      ],
+      "key_claims": [
+        "把空间组织为「Wallas 创造性四阶段」（准备/孵化/启迪/验证）对应的四区",
+        "对接神经科学 DMN/ECN/突显网络的状态调节",
+        "光照/声学/生物嵌入/多感官输入/灵活布置作为可验证设计杠杆"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "CCD 2025 — 把神经科学翻译为 65 m² 创造性空间案例",
+      "module": "M03"
+    },
+    "M03-2023-A4LE-Neuroarch": {
+      "id": "M03-2023-A4LE-Neuroarch",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "A4LE (Association for Learning Environments)"
+      ],
+      "year": 2023,
+      "title": "Neuroarchitecture: Designing schools that nurture the brain",
+      "venue": "A4LE White Paper",
+      "doi": null,
+      "url": "https://media.a4le.org/WhitePapers/Neuroarchitecture.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "neuroarchitecture",
+        "school-design",
+        "biophilic",
+        "small-learning-community"
+      ],
+      "key_claims": [
+        "灵活学习空间应支持独立、同侪辅导、项目制等多种模式",
+        "Sense of place（场所感）作为身份与归属的设计要素",
+        "Biophilic design 与小型学习社区显著影响学业与情绪"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "A4LE 神经建筑学综述（2023）",
+      "module": "M03"
+    },
+    "M03-2025-DistrictNOMA-ThirdSpace": {
+      "id": "M03-2025-DistrictNOMA-ThirdSpace",
+      "aliases": [],
+      "type": "web",
+      "authors": [
+        "Clarke, N."
+      ],
+      "year": 2025,
+      "title": "Third Spaces & Neuroarchitecture",
+      "venue": "DC NOMA",
+      "doi": null,
+      "url": "https://www.districtnoma.org/blog/2025/6/22/third-spaces-amp-neuroarchitecture",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "third-space",
+        "psychological-ownership",
+        "neuroarchitecture"
+      ],
+      "key_claims": [
+        "心理性所有权（psychological ownership）是第三空间舒适度的关键变量",
+        "第三空间不应作为附属性元素，而应作为一级设计对象"
+      ],
+      "used_in": [
+        "extend/third-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "实践观点文章，作为 E0 级补充",
+      "module": "M03"
+    },
+    "M04-001": {
+      "id": "M04-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Larmer, J., Mergendoller, J., & Boss, S. (2015). Setting the Standard for Project Based Learning. ASCD.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "PBL 黄金标准七要素：挑战性问题、持续探究、真实性、学生声音与选择、反思、批评与修订、公开展示",
+        "高质量 PBL 需要精心设计的驱动问题"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-002": {
+      "id": "M04-002",
+      "aliases": [],
+      "type": "chapter",
+      "citation": "Krajcik, J.S., & Shin, N. (2014). Project-Based Learning. In R.K. Sawyer (Ed.), The Cambridge Handbook of the Learning Sciences (2nd ed.). Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "PBL 促进深度理解和迁移",
+        "脚手架设计对 PBL 成功至关重要"
+      ],
+      "used_in": [
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-003": {
+      "id": "M04-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Resnick, M. (2017). Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play. MIT Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "创造性学习螺旋：想象-创造-游戏-分享-反思-想象",
+        "4P 学习框架：项目、热情、同伴、游戏"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/creative-learning.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-004": {
+      "id": "M04-004",
+      "aliases": [],
+      "type": "article",
+      "citation": "Kolodner, J.L. et al. (2003). Problem-Based Learning Meets Case-Based Reasoning in the Middle-School Science Classroom. Journal of the Learning Sciences, 12(4), 495-547.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "设计型学习促进科学概念理解",
+        "学生通过设计活动发展工程思维"
+      ],
+      "used_in": [
+        "extend/design-based-learning.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-005": {
+      "id": "M04-005",
+      "aliases": [],
+      "type": "book",
+      "citation": "Wiggins, G., & McTighe, J. (2005). Understanding by Design (2nd ed.). ASCD.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "逆向设计：从学习目标出发设计课程",
+        "理解六面向：解释、诠释、应用、洞察、同理、自知"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/curriculum-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M04"
+    },
+    "M04-2025-HSSC-IBSE": {
+      "id": "M04-2025-HSSC-IBSE",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Capraro, R.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "The impact of long-term inquiry-based science education on students' motivation and knowledge acquisition",
+      "venue": "Humanities and Social Sciences Communications (Nature)",
+      "doi": "10.1057/s41599-025-04437-3",
+      "url": "https://www.nature.com/articles/s41599-025-04437-3",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "IBSE",
+        "longitudinal",
+        "science-education",
+        "retention"
+      ],
+      "key_claims": [
+        "长期 IBSE 在 3 个月后保留测试中显著优于传统实验",
+        "动机与知识双轨提升——年度纵向准实验",
+        "支持把驱动问题作为长周期课程主线"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/long-cycle-projects.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Nature HSSC 2025 — 整学年纵向 IBSE 实验",
+      "module": "M04"
+    },
+    "M04-2025-EJMSTE-Arifin": {
+      "id": "M04-2025-EJMSTE-Arifin",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Arifin, Z.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "The effect of inquiry-based learning on students' critical thinking skills in science education: A systematic review and meta-analysis",
+      "venue": "Eurasia Journal of Mathematics, Science and Technology Education",
+      "doi": "10.29333/ejmste/15988",
+      "url": "https://www.ejmste.com/article/the-effect-of-inquiry-based-learning-on-students-critical-thinking-skills-in-science-education-a-15988",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "IBL",
+        "critical-thinking",
+        "meta-analysis"
+      ],
+      "key_claims": [
+        "25 篇 36 项研究的元分析：IBL 对批判性思维大效应（SMD=1.27, 95%CI 0.78-1.76）",
+        "效应受教育阶段、教学策略、ICT、时长、评估方式调节"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Scopus + ERIC 2000-2024 文献库元分析（2025）",
+      "module": "M04"
+    },
+    "M04-2025-FrontEdu-GuidedInquiry": {
+      "id": "M04-2025-FrontEdu-GuidedInquiry",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Furtak, E.M.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Guided inquiry in school science: a mini review of orchestration, assessment, and AI",
+      "venue": "Frontiers in Education",
+      "doi": "10.3389/feduc.2025.1534358",
+      "url": "https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1534358",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "guided-inquiry",
+        "orchestration",
+        "AI"
+      ],
+      "key_claims": [
+        "重要的不是「探究频率」，而是「准备-调查-巩固」的相位敏感设计",
+        "AI 应作为「形成性基础设施」——引出预测、显化证据、结构化反思",
+        "保持学习者与教师能动性，而非把 AI 当解题机器"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-in-curriculum.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Frontiers in Education 2025 探究教学 AI 整合综述",
+      "module": "M04"
+    },
+    "M04-2024-Greek-IBL": {
+      "id": "M04-2024-Greek-IBL",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Kotsis, K.T.",
+        "Tsiouri, S."
+      ],
+      "year": 2024,
+      "title": "The new Greek inquiry-based learning science curriculum for primary education",
+      "venue": "International Electronic Journal of Mathematics Education",
+      "doi": null,
+      "url": "https://www.mathsciteacher.com/download/the-new-greek-inquiry-based-learning-science-curriculum-for-primary-education-16846.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "IBL",
+        "national-curriculum",
+        "primary-education"
+      ],
+      "key_claims": [
+        "国家级 IBL 课程的设计、试点与评估方法",
+        "数字工具、跨学科 STEM 协作与包容性教学的整合"
+      ],
+      "used_in": [
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "希腊国家小学 IBL 课程改革（2024 颁布）",
+      "module": "M04"
+    },
+    "M04-2025-Educ-CroatianSTEM": {
+      "id": "M04-2025-Educ-CroatianSTEM",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Tomas, V.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Impact of scientific inquiry-based activities on STEM interest in Croatian primary schools",
+      "venue": "Education Sciences (MDPI)",
+      "doi": "10.3390/educsci15091237",
+      "url": "https://www.mdpi.com/2227-7102/15/9/1237",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "STEM-interest",
+        "inquiry",
+        "primary-school"
+      ],
+      "key_claims": [
+        "650 名小学生 3 个月干预实验：探究活动显著提升 STEM 兴趣",
+        "10 岁年龄段无统计学性别差异——「兴趣窗口」可被设计干预"
+      ],
+      "used_in": [
+        "extend/pbl-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "克罗地亚 Sa STEMom raSTEMo 项目准实验（2025）",
+      "module": "M04"
+    },
+    "M05-001": {
+      "id": "M05-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Papert, S. (1980). Mindstorms: Children, Computers, and Powerful Ideas. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "工具应该具有低门槛和高天花板",
+        "好的工具让学习者成为主动的建构者"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M05-002": {
+      "id": "M05-002",
+      "aliases": [],
+      "type": "article",
+      "citation": "Resnick, M. et al. (2009). Scratch: Programming for All. Communications of the ACM, 52(11), 60-67.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "低门槛、高天花板、宽围墙的设计原则",
+        "编程工具应支持创造和分享"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/tool-selection.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M05-003": {
+      "id": "M05-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Gershenfeld, N. (2005). Fab: The Coming Revolution on Your Desktop. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "数字制造工具民主化生产",
+        "Fab Lab 模式使个人制造成为可能"
+      ],
+      "used_in": [
+        "extend/digital-fabrication.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M05-004": {
+      "id": "M05-004",
+      "aliases": [],
+      "type": "article",
+      "citation": "Blikstein, P. (2013). Digital Fabrication and 'Making' in Education. In J. Walter-Herrmann & C. Büching (Eds.), FabLab: Of Machines, Makers and Inventors. Transcript Publishers.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "数字制造工具支持建构式学习",
+        "工具使用需要配合适当的教学设计"
+      ],
+      "used_in": [
+        "extend/digital-fabrication.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M05"
+    },
+    "M05-2026-CompEduAI-LLMScaffolding": {
+      "id": "M05-2026-CompEduAI-LLMScaffolding",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Jin, Y.",
+        "et al."
+      ],
+      "year": 2026,
+      "title": "Scaffolding critical thinking with generative AI: Design principles for integrating large language models in higher education",
+      "venue": "Computers and Education: Artificial Intelligence",
+      "doi": "10.1016/j.caeai.2026.100342",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2666920X26000342",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "LLM",
+        "scaffolding",
+        "critical-thinking",
+        "design-principles"
+      ],
+      "key_claims": [
+        "8 条把 LLM 整合为「临时思考伙伴」而非「答案引擎」的设计原则",
+        "保留认知摩擦、嵌入评估、AI 阶段与无 AI 阶段交替",
+        "支撑六类批判性过程：概念诠释、推理、评价、元认知调节、好奇心、认知诚信"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Computers and Education: AI 2026 - 设计原则框架",
+      "module": "M05"
+    },
+    "M05-2025-PMC-CogOffload": {
+      "id": "M05-2025-PMC-CogOffload",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Chen, X.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Generative AI tool use enhances academic achievement in sustainable education through shared metacognition and cognitive offloading among preservice teachers",
+      "venue": "Scientific Reports (PMC)",
+      "doi": null,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12075473/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "GenAI",
+        "cognitive-offloading",
+        "metacognition",
+        "preservice-teachers"
+      ],
+      "key_claims": [
+        "PLS-SEM 中介模型：GenAI 通过认知卸载与共享元认知提升学业成就",
+        "卸载简单任务释放认知资源以投入复杂任务",
+        "需配合显式的元认知反思以避免「全卸载」"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Scientific Reports 2025 - 准教师 GenAI 使用 PLS-SEM 中介模型",
+      "module": "M05"
+    },
+    "M05-2026-IJSTEM-CogScaffold": {
+      "id": "M05-2026-IJSTEM-CogScaffold",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Lyu, X.",
+        "et al."
+      ],
+      "year": 2026,
+      "title": "Tool, tutor, or crutch? A grounded theory of cognitive scaffolding and offloading in AI-assisted programming education",
+      "venue": "International Journal of STEM Education",
+      "doi": "10.1186/s40594-025-00592-w",
+      "url": "https://stemeducationjournal.springeropen.com/article/10.1186/s40594-025-00592-w",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "AI-assisted",
+        "scaffolding",
+        "offloading",
+        "expertise-reversal"
+      ],
+      "key_claims": [
+        "扎根理论模型：领域掌握 vs 工具掌握的张力 + 战略切换 + 信任难验证",
+        "脚手架 vs 卸载的双循环：脚手架降无关负载、保留有效负载；卸载两者皆降",
+        "专家逆转效应：新手的有用支持对专家成为冗余开销"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IJSTEM Education 2026 - AI 辅助编程的认知负载模型",
+      "module": "M05"
+    },
+    "M05-2025-Microsoft-CritThink": {
+      "id": "M05-2025-Microsoft-CritThink",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Lee, H.-P.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "The impact of generative AI on critical thinking: Self-reported reductions in cognitive effort and confidence effects from a survey of knowledge workers",
+      "venue": "Microsoft Research / CHI 2025",
+      "doi": null,
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "GenAI",
+        "critical-thinking",
+        "knowledge-workers"
+      ],
+      "key_claims": [
+        "对 GenAI 信任度高时，使用者自报告的认知投入与批判性思维显著下降",
+        "信心配置改变：从「自我把关」转向「AI 把关」",
+        "需在工具使用规范中显式引入二次校验环节"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Microsoft / CHI 2025 - 319 名知识工作者调查",
+      "module": "M05"
+    },
+    "M05-2024-arXiv-LearnLens": {
+      "id": "M05-2024-arXiv-LearnLens",
+      "aliases": [],
+      "type": "preprint",
+      "authors": [
+        "Srivastava, N.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "LearnLens: An AI-enhanced dashboard to support teachers in open-ended classrooms",
+      "venue": "arXiv",
+      "doi": null,
+      "url": "https://arxiv.org/html/2509.10582v1/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "teacher-dashboard",
+        "LLM",
+        "open-ended-learning"
+      ],
+      "key_claims": [
+        "面向教师的 AI 仪表板可在开放式课堂中可视化集体理解与共性误概念",
+        "把 AI 用作教学决策辅助而非黑箱解题"
+      ],
+      "used_in": [
+        "extend/ai-tools-guide.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "arXiv 2024 - AI 教师仪表板原型",
+      "module": "M05"
+    },
+    "M06-001": {
+      "id": "M06-001",
+      "aliases": [],
+      "type": "report",
+      "citation": "UNESCO. (2021). Recommendation on the Ethics of Artificial Intelligence. UNESCO.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "AI 应以人为本，尊重人权",
+        "AI 使用需要透明、可解释、负责任"
+      ],
+      "used_in": [
+        "extend/ai-ethics.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-002": {
+      "id": "M06-002",
+      "aliases": [],
+      "type": "legal",
+      "citation": "European Union. (2024). Artificial Intelligence Act. Official Journal of the European Union.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "AI 系统需要进行风险分级",
+        "高风险 AI 需要特殊监管"
+      ],
+      "used_in": [
+        "extend/ai-ethics.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-003": {
+      "id": "M06-003",
+      "aliases": [],
+      "type": "standard",
+      "citation": "ISO 45001:2018. Occupational health and safety management systems. International Organization for Standardization.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "系统化的安全管理可降低事故风险",
+        "安全管理需要全员参与和持续改进"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/safety-training.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-004": {
+      "id": "M06-004",
+      "aliases": [],
+      "type": "guideline",
+      "citation": "OSHA. (2016). Recommended Practices for Safety and Health Programs. Occupational Safety and Health Administration.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "预防优于应对",
+        "安全文化需要领导层承诺"
+      ],
+      "used_in": [
+        "index.mdx",
+        "checklists/safety-check.mdx",
+        "extend/safety-training.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-005": {
+      "id": "M06-005",
+      "aliases": [],
+      "type": "article",
+      "citation": "Beijing AI Principles. (2019). Beijing Academy of Artificial Intelligence.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "AI 发展应以人为本",
+        "AI 研发应负责任、可控"
+      ],
+      "used_in": [
+        "extend/ai-ethics.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-006": {
+      "id": "M06-006",
+      "aliases": [],
+      "type": "guideline",
+      "citation": "MIT Fab Lab. The Fab Charter. fab.cba.mit.edu/about/charter/",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "用户需负责安全（不伤害他人或损坏机器）",
+        "用户需负责运营（协助清洁、维护和改善实验室）",
+        "用户需负责知识共享（为知识库和教学文档做贡献）"
+      ],
+      "used_in": [
+        "extend/equipment-access.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-007": {
+      "id": "M06-007",
+      "aliases": [],
+      "type": "guideline",
+      "citation": "Fab Foundation. (2024). Global Fab Lab Network Standards.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "Fab Lab 共享核心能力清单",
+        "标准化工具配置确保全球协作"
+      ],
+      "used_in": [
+        "extend/equipment-access.mdx",
+        "extend/safety-training.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-008": {
+      "id": "M06-008",
+      "aliases": [],
+      "type": "policy",
+      "citation": "教育部等七部门. (2025). 关于加强中小学科技教育的意见.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "强化科技教育与安全管理融合",
+        "建立适龄的科技教育体系"
+      ],
+      "used_in": [
+        "extend/equipment-access.mdx",
+        "extend/safety-training.mdx",
+        "extend/age-guidelines.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-009": {
+      "id": "M06-009",
+      "aliases": [],
+      "type": "standard",
+      "citation": "ISO 31000:2018. Risk management - Guidelines. International Organization for Standardization.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "风险评估应系统化、结构化",
+        "风险管理是持续改进过程"
+      ],
+      "used_in": [
+        "extend/risk-assessment.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-010": {
+      "id": "M06-010",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《中华人民共和国消防法》",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "单位应当制定灭火和应急疏散预案",
+        "定期组织消防演练"
+      ],
+      "used_in": [
+        "extend/emergency-response.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-011": {
+      "id": "M06-011",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《中华人民共和国个人信息保护法》(2021)",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "处理个人信息应当遵循最小必要原则",
+        "处理不满十四周岁未成年人个人信息应取得监护人同意"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-012": {
+      "id": "M06-012",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《中华人民共和国未成年人保护法》(2020修订)",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "网络产品和服务提供者不得侵害未成年人身心健康",
+        "处理未成年人个人信息应当遵循合法、正当、必要原则"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx",
+        "extend/age-guidelines.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-013": {
+      "id": "M06-013",
+      "aliases": [],
+      "type": "legal",
+      "citation": "《儿童个人信息网络保护规定》(2019)",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "网络运营者应当设置专门的儿童个人信息保护规则",
+        "收集使用儿童个人信息应当征得监护人同意"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-014": {
+      "id": "M06-014",
+      "aliases": [],
+      "type": "standard",
+      "citation": "GB/T 35273-2020. 信息安全技术 个人信息安全规范.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "个人信息收集应遵循最小化原则",
+        "应制定个人信息安全事件应急预案"
+      ],
+      "used_in": [
+        "extend/digital-security.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M06"
+    },
+    "M06-2023-AROB-Edmondson": {
+      "id": "M06-2023-AROB-Edmondson",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Edmondson, A.C.",
+        "Bransby, D.P."
+      ],
+      "year": 2023,
+      "title": "Psychological safety comes of age: Observed themes in an established literature",
+      "venue": "Annual Review of Organizational Psychology and Organizational Behavior",
+      "doi": "10.1146/annurev-orgpsych-120920-055217",
+      "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=63309",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "psychological-safety",
+        "Edmondson",
+        "team-learning"
+      ],
+      "key_claims": [
+        "心理安全研究 9 年 185 篇文献综述",
+        "四大主题：完成任务、学习行为、改善体验、领导力",
+        "中高心理安全条件下「从失败中学习」最为活跃；TMS 是中介机制"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/psychological-safety.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Edmondson 心理安全 2023 系统综述（Annual Review）",
+      "module": "M06"
+    },
+    "M06-2024-CIPD-PSReview": {
+      "id": "M06-2024-CIPD-PSReview",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "CIPD / CEBMa"
+      ],
+      "year": 2024,
+      "title": "Psychological safety: Scientific summary of a rapid evidence assessment",
+      "venue": "Chartered Institute of Personnel and Development",
+      "doi": null,
+      "url": "https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/evidence-reviews/2024-pdfs/8550-psychological-safety-scientific-summary.pdf",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "psychological-safety",
+        "evidence-review",
+        "antecedents"
+      ],
+      "key_claims": [
+        "心理安全确实显著提升组织主动行为、知识共享与创新",
+        "前因强度排序：领导风格、信任、团队多样性、清晰目标",
+        "教育类干预（模拟、视频、案例）对医疗领域心理安全产生大正效应"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/psychological-safety.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "CIPD 2024 - 快速证据评估",
+      "module": "M06"
+    },
+    "M06-2025-IST-PSSoftware": {
+      "id": "M06-2025-IST-PSSoftware",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Caballero-Espinosa, E.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Psychological safety in software workplaces: A systematic literature review",
+      "venue": "Information and Software Technology",
+      "doi": "10.1016/j.infsof.2025.107708",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0950584925001776",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "psychological-safety",
+        "software",
+        "systematic-review"
+      ],
+      "key_claims": [
+        "28 项研究系统综述：心理安全在软件团队的前因/后果",
+        "前因：团队自主、敏捷方法、领导行为；后果：质量、技术卓越、满意度",
+        "对 OWL 创客团队同样适用——技术工作天然需要试错容忍"
+      ],
+      "used_in": [
+        "extend/psychological-safety.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Information and Software Technology 2025 - 系统综述",
+      "module": "M06"
+    },
+    "M06-2024-medRxiv-PSMeasures": {
+      "id": "M06-2024-medRxiv-PSMeasures",
+      "aliases": [],
+      "type": "preprint",
+      "authors": [
+        "Cox, K.J.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "Meta-analysis and systematic review of the measures of psychological safety",
+      "venue": "medRxiv",
+      "doi": "10.1101/2024.02.09.24302562",
+      "url": "https://www.medrxiv.org/content/10.1101/2024.02.09.24302562v1.full-text",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "psychological-safety",
+        "measurement",
+        "meta-analysis"
+      ],
+      "key_claims": [
+        "Edmondson PSS 单维测量在多元构念下已显不足",
+        "新构念应纳入：支持性领导、明确角色与价值、凝聚的氛围/网络",
+        "OWL 心理安全评估须超越单一量表"
+      ],
+      "used_in": [
+        "extend/psychological-safety.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "medRxiv 2024 - 心理安全测量元分析",
+      "module": "M06"
+    },
+    "M07-001": {
+      "id": "M07-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Schön, D.A. (1983). The Reflective Practitioner: How Professionals Think in Action. Basic Books.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "专业能力通过反思实践发展",
+        "行动中反思与行动后反思同样重要"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/reflection-tools.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-002": {
+      "id": "M07-002",
+      "aliases": [],
+      "type": "article",
+      "citation": "Darling-Hammond, L. et al. (2017). Effective Teacher Professional Development. Learning Policy Institute.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "有效的教师发展需要持续、嵌入实践、协作式",
+        "内容聚焦和主动学习是关键要素"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/training-system.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-003": {
+      "id": "M07-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Dweck, C.S. (2006). Mindset: The New Psychology of Success. Random House.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "成长型思维促进学习和发展",
+        "对能力的信念影响学习行为"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-004": {
+      "id": "M07-004",
+      "aliases": [],
+      "type": "article",
+      "citation": "Lave, J., & Wenger, E. (1991). Situated Learning: Legitimate Peripheral Participation. Cambridge University Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "学习发生在实践共同体中",
+        "从边缘到核心的参与是学习的过程"
+      ],
+      "used_in": [
+        "extend/competency-model.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-005": {
+      "id": "M07-005",
+      "aliases": [],
+      "type": "article",
+      "citation": "Shulman, L.S. (1986). Those Who Understand: Knowledge Growth in Teaching. Educational Researcher, 15(2), 4-14.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "教学内容知识 (PCK) 是教师专业知识的核心",
+        "学科知识和教学知识的整合是教学专业性的体现"
+      ],
+      "used_in": [
+        "extend/competency-model.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M07"
+    },
+    "M07-2025-TATE-Ackermann": {
+      "id": "M07-2025-TATE-Ackermann",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Ackermann, J.M."
+      ],
+      "year": 2025,
+      "title": "The effectiveness of mentoring, coaching, and induction practices for early career teachers: A scoping review",
+      "venue": "Teaching and Teacher Education",
+      "doi": "10.1016/j.tate.2025.105116",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0742051X25001416",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "mentoring",
+        "coaching",
+        "early-career",
+        "scoping-review"
+      ],
+      "key_claims": [
+        "Global North 文献的 scoping review：mentor/coach/induction 概念混淆",
+        "四类目的影响有效性：技能掌握、文化适应、专业自治、留任",
+        "OWL 导师培训应明确区分目的并设计差异化路径"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/training-system.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "TATE 2025 - 早期生涯教师导师 scoping review",
+      "module": "M07"
+    },
+    "M07-2025-SciRep-DigitalMentor": {
+      "id": "M07-2025-SciRep-DigitalMentor",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Iqbal, M.J.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Sustainable professional growth through digital mentorship: evidence from language teachers in low-resource settings",
+      "venue": "Scientific Reports",
+      "doi": "10.1038/s41598-025-29242-5",
+      "url": "https://www.nature.com/articles/s41598-025-29242-5",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "digital-mentorship",
+        "professional-growth",
+        "low-resource"
+      ],
+      "key_claims": [
+        "PLS-SEM + 定性混合方法（120 名教师）：导师制三路径",
+        "教学重构、反思赋权、社会-情感脚手架",
+        "数字/混合导师模型在低资源环境下尤其有效"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/remote-mentoring.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Scientific Reports 2025 - 数字化导师 PLS-SEM",
+      "module": "M07"
+    },
+    "M07-2025-JeLKS-MentorQ": {
+      "id": "M07-2025-JeLKS-MentorQ",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Mangione, G.R.J.",
+        "Panzavolta, S.",
+        "Rossi, F."
+      ],
+      "year": 2025,
+      "title": "Mentoring and networking for innovation in the school ecosystem: from enabling conditions to MentorQ self-evaluation tool",
+      "venue": "Journal of e-Learning and Knowledge Society",
+      "doi": null,
+      "url": "https://www.je-lks.org/ojs/index.php/Je-LKS_EN/article/view/1136183",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "school-mentoring",
+        "hub-and-spoke",
+        "MentorQ"
+      ],
+      "key_claims": [
+        "10 个使能因素：共同目标、对照实践、资源访问、专业能力增强等",
+        "Hub-and-spoke 模型在传播创新与适应本地的双重目标上有效",
+        "提供 MentorQ 自评工具——可作为 OWL 节点导师评估的范式"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/training-system.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "JeLKS 2025 - 学校 hub-and-spoke mentoring + MentorQ",
+      "module": "M07"
+    },
+    "M07-2024-IJSRM-Network": {
+      "id": "M07-2024-IJSRM-Network",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "van Dam, L.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "The effectiveness of interventions for youth that activate the social network: a meta-analytic study",
+      "venue": "International Journal of Social Research Methodology",
+      "doi": null,
+      "url": "https://research-portal.uu.nl/ws/portalfiles/portal/272576043/The_effectiveness_of_interventions_for_youth_that_activate_the_social_network_a_meta-analytic_study.pdf",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "youth-mentoring",
+        "social-network",
+        "meta-analysis"
+      ],
+      "key_claims": [
+        "三层级元分析（83 项研究 409 效应）：网络激活整体效应不显著",
+        "条件性显著：青年发起式 mentoring（YIM）d=0.46；自选 mentor d=0.52",
+        "OWL 大导师网络应优先采用 YIM 模式而非指派"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/peer-mentoring.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Utrecht University 2024 - 青年发起式 mentoring 元分析",
+      "module": "M07"
+    },
+    "M08-001": {
+      "id": "M08-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Liker, J.K. (2004). The Toyota Way: 14 Management Principles from the World's Greatest Manufacturer. McGraw-Hill.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "标准化是持续改进的基础",
+        "流程标准化不意味着僵化"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M08-002": {
+      "id": "M08-002",
+      "aliases": [],
+      "type": "book",
+      "citation": "Deming, W.E. (1986). Out of the Crisis. MIT Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "PDSA 循环是持续改进的核心方法",
+        "质量管理需要系统思维"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/continuous-improvement.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M08-003": {
+      "id": "M08-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Pine, B.J., & Gilmore, J.H. (1999). The Experience Economy. Harvard Business School Press.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "体验是新的经济产物",
+        "服务设计需要关注用户体验"
+      ],
+      "used_in": [
+        "extend/service-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M08-004": {
+      "id": "M08-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Stickdorn, M. et al. (2018). This Is Service Design Doing. O'Reilly Media.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "服务设计需要关注全流程体验",
+        "服务蓝图帮助可视化服务流程"
+      ],
+      "used_in": [
+        "extend/service-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M08"
+    },
+    "M08-2025-Beyond100K-TinyInnovators": {
+      "id": "M08-2025-Beyond100K-TinyInnovators",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Beyond 100K"
+      ],
+      "year": 2025,
+      "title": "Tiny Innovators: A toolkit for creating an ECE STEAM makerspace",
+      "venue": "California State University Beyond 100K",
+      "doi": null,
+      "url": "https://elp.calstate.edu/sites/default/files/2025-07/Tiny%20Innovators.%20ECE%20STEAM%20Makerspace%20Toolkit.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "makerspace-operations",
+        "sustainability",
+        "community-engagement",
+        "SMART-goals"
+      ],
+      "key_claims": [
+        "幼教阶段创客空间的运营全流程工具包",
+        "用 SMART 目标 + 参与率/作品产出/反馈/技能评估四类指标度量成功",
+        "家庭与社区参与是可持续性的核心使能因素"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Beyond 100K 2025 - ECE STEAM 创客空间运营工具包",
+      "module": "M08"
+    },
+    "M08-2025-AarhusPD-Sustaining": {
+      "id": "M08-2025-AarhusPD-Sustaining",
+      "aliases": [],
+      "type": "book_chapter",
+      "authors": [
+        "Aarhus University Participatory Design group"
+      ],
+      "year": 2024,
+      "title": "A participatory design approach to sustaining makerspace initiatives",
+      "venue": "Aarhus University",
+      "doi": null,
+      "url": "https://pure.au.dk/portal/en/publications/a-participatory-design-approach-to-sustaining-makerspace-initiati/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "participatory-design",
+        "infrastructure",
+        "sustainability"
+      ],
+      "key_claims": [
+        "11 个丹麦市政创客空间案例提炼出六步可持续框架",
+        "强调 stakeholder involvement、infrastructuring、垂直/水平对齐",
+        "OWL 节点上线流程可直接借鉴"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Aarhus University 2024 - 参与式设计可持续框架",
+      "module": "M08"
+    },
+    "M08-2025-GreenSTEAM-Ecosystem": {
+      "id": "M08-2025-GreenSTEAM-Ecosystem",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Green STEAM Ecosystems Project (Latvia, Lithuania, Estonia, Finland)"
+      ],
+      "year": 2025,
+      "title": "Green STEAM ecosystems handbook",
+      "venue": "University of Turku",
+      "doi": null,
+      "url": "https://blog.edu.turku.fi/steam/files/2025/06/Green_STEAM_ecosystems_handbook_2025.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "STEAM-ecosystem",
+        "sustainability",
+        "policy",
+        "Northern-Europe"
+      ],
+      "key_claims": [
+        "STEAM 生态系统五阶段：初始 → 结构化 → 整合 → 社区 → 可持续",
+        "市政支持 + 法规配合是规模化的硬条件",
+        "公共活动（科学集市、绿色黑客松、创新展）作为可见性与参与度引擎"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Green STEAM Ecosystems 2025 - 北欧四国手册",
+      "module": "M08"
+    },
+    "M08-2025-Mechanism-Community": {
+      "id": "M08-2025-Mechanism-Community",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Mechanism"
+      ],
+      "year": 2025,
+      "title": "Community makerspace development strategy",
+      "venue": "Mechanism Community",
+      "doi": null,
+      "url": "https://www.mechanism.community/resources/community-makerspace-development-strategy",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "makerspace",
+        "community-ownership",
+        "operations"
+      ],
+      "key_claims": [
+        "Relational Principles：参与、包容、共同目的是创客空间增长的基础",
+        "工具与一致期望的可靠性 ≥ 访问机会本身——「volunteer energy 推动空间，可靠工具留住人」",
+        "把成员从用户升级为 co-creator 是社区所有权的核心机制"
+      ],
+      "used_in": [
+        "extend/build-standards-and-principles.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Mechanism 2025 - 社区创客空间发展策略",
+      "module": "M08"
+    },
+    "M09-001": {
+      "id": "M09-001",
+      "aliases": [],
+      "type": "book",
+      "citation": "Black, P., & Wiliam, D. (1998). Inside the Black Box: Raising Standards Through Classroom Assessment. King's College London.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "形成性评价显著促进学习",
+        "有效反馈是形成性评价的核心"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/formative-assessment.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-002": {
+      "id": "M09-002",
+      "aliases": [],
+      "type": "article",
+      "citation": "Hattie, J., & Timperley, H. (2007). The Power of Feedback. Review of Educational Research, 77(1), 81-112.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [],
+      "key_claims": [
+        "反馈是影响学习最重要的因素之一",
+        "有效反馈回答三个问题：目标、现状、下一步"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/feedback-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-003": {
+      "id": "M09-003",
+      "aliases": [],
+      "type": "book",
+      "citation": "Wiggins, G. (1998). Educative Assessment: Designing Assessments to Inform and Improve Student Performance. Jossey-Bass.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "真实性评价反映真实世界任务",
+        "好的评价任务本身就是学习机会"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/authentic-assessment.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-004": {
+      "id": "M09-004",
+      "aliases": [],
+      "type": "book",
+      "citation": "Earl, L.M. (2012). Assessment as Learning: Using Classroom Assessment to Maximize Student Learning (2nd ed.). Corwin.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [],
+      "key_claims": [
+        "学习性评价让学生成为自己学习的评估者",
+        "元认知能力是学习性评价的目标"
+      ],
+      "used_in": [
+        "extend/assessment-for-learning.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-005": {
+      "id": "M09-005",
+      "aliases": [],
+      "type": "article",
+      "citation": "Brookhart, S.M. (2013). How to Create and Use Rubrics for Formative Assessment and Grading. ASCD.",
+      "doi": null,
+      "url": null,
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [],
+      "key_claims": [
+        "量规使评价标准透明",
+        "好的量规描述质量而非数量"
+      ],
+      "used_in": [
+        "extend/rubric-design.mdx"
+      ],
+      "retrieval_date": null,
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "",
+      "module": "M09"
+    },
+    "M09-2025-SAGE-DigitalAuthentic": {
+      "id": "M09-2025-SAGE-DigitalAuthentic",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Tran, T.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "Digital technologies in authentic assessment in higher education: A systematic review",
+      "venue": "SAGE Open",
+      "doi": "10.1177/21582440251357198",
+      "url": "https://journals.sagepub.com/doi/10.1177/21582440251357198",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "authentic-assessment",
+        "digital",
+        "systematic-review"
+      ],
+      "key_claims": [
+        "52 项研究系统综述：数字技术在真实评估四步中分布严重失衡",
+        "工具集中在「任务设计」步，对「评价判断」「反馈机制」覆盖薄弱",
+        "电子作品集、社交媒体、模拟应用为「学生即知识创造者」提供平台"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/portfolio-assessment.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "SAGE Open 2025 - 52 项研究真实评估系统综述",
+      "module": "M09"
+    },
+    "M09-2026-MDPI-Cognitive": {
+      "id": "M09-2026-MDPI-Cognitive",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Lăcătuș, R."
+      ],
+      "year": 2026,
+      "title": "Cognitive education and innovative assessment in primary school: Aligning inclusion, learning progressions, and Romania's OECD-PISA challenges",
+      "venue": "Social Sciences (MDPI)",
+      "doi": "10.3390/socsci15010024",
+      "url": "https://www.mdpi.com/2076-0760/15/1/24",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "formative-assessment",
+        "learning-progressions",
+        "multimodal",
+        "inclusion"
+      ],
+      "key_claims": [
+        "评估应作为「学习过程的支撑机制」而非仅评判结果",
+        "提出四维模型：UDL 多模态接入、迭代反馈、学习进度、真实表现任务",
+        "作品集、学习日志、概念图、轶事记录共同呈现成长轨迹"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/portfolio-assessment.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "MDPI Social Sciences 2026 - OECD Learning Compass 对接",
+      "module": "M09"
+    },
+    "M09-2024-NCME-PortfolioModule": {
+      "id": "M09-2024-NCME-PortfolioModule",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "NCME"
+      ],
+      "year": 2025,
+      "title": "Module 11: Classroom assessment III — Portfolio assessment",
+      "venue": "National Council on Measurement in Education",
+      "doi": null,
+      "url": "https://ncme.org/wp-content/uploads/2025/10/Module-11-Classroom-Assessment-III-Portfolio-Asses-2.pdf",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "portfolio",
+        "authenticity",
+        "psychometrics"
+      ],
+      "key_claims": [
+        "作品集不自动等于真实——内容由课程与教学决定",
+        "外部技能（如阅读难度、社交能力）会污染目标能力的测量——需要任务设计去除",
+        "评分者间一致性需要针对作品集的特殊训练"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/portfolio-assessment.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "NCME 2025 - 作品集评估的心理测量学注意事项",
+      "module": "M09"
+    },
+    "M09-2024-NYSATA-Portfolio": {
+      "id": "M09-2024-NYSATA-Portfolio",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "New York State Art Teachers Association"
+      ],
+      "year": 2024,
+      "title": "Portfolio Project 2.0: Authentic assessment in visual arts education",
+      "venue": "NYSATA",
+      "doi": null,
+      "url": "https://www.nysata.org/assets/documents/PortfolioProject/Portfolio%20Project%202.0%20Overview.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "portfolio",
+        "authentic-assessment",
+        "visual-arts"
+      ],
+      "key_claims": [
+        "作品集让学生成为自己学习的评估者，培养元认知与自我表达",
+        "10 个区域专业培训提升评分者一致性",
+        "学生学会与成人就自己的学习进行清晰对话"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/portfolio-assessment.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "NYSATA 2024 - 视觉艺术作品集评估实施指南",
+      "module": "M09"
+    },
+    "L01-2024-Springer-MartinDominguez": {
+      "id": "L01-2024-Springer-MartinDominguez",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Martín Domínguez, G."
+      ],
+      "year": 2024,
+      "title": "The beauty of the unusual: An architectural inquiry into the Reggio Emilia approach",
+      "venue": "Interchange (Springer)",
+      "doi": "10.1007/s10780-024-09525-y",
+      "url": "https://link.springer.com/article/10.1007/s10780-024-09525-y",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "Reggio-Emilia",
+        "atelier",
+        "third-teacher",
+        "architecture"
+      ],
+      "key_claims": [
+        "把 Malaguzzi「建筑教育学」的命题翻译为建筑师视角的设计语法",
+        "「不寻常之美」作为空间-儿童关系的设计准则",
+        "Reggio Emilia 空间的「非层级化」「可见性」「关系性」是其教育性的来源"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/neuroarchitecture.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Springer Interchange 2024 - 建筑师视角下的 Reggio Emilia",
+      "module": "L01"
+    },
+    "L01-2025-IntechOpen-Domingues": {
+      "id": "L01-2025-IntechOpen-Domingues",
+      "aliases": [],
+      "type": "book_chapter",
+      "authors": [
+        "Domingues, M."
+      ],
+      "year": 2025,
+      "title": "Environment as the third (virtual) teacher: Documenting Remida Reggio Emilia-inspired early childhood teacher education spaces",
+      "venue": "IntechOpen",
+      "doi": null,
+      "url": "https://www.intechopen.com/online-first/1224204",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "third-teacher",
+        "virtual-environment",
+        "Remida",
+        "teacher-education"
+      ],
+      "key_claims": [
+        "把 Reggio Emilia 第三教师概念扩展到虚拟空间",
+        "Remida（Reggio 创意循环中心）作为可被远程访问的「教育性环境」",
+        "OWL 数字空间设计可借鉴此「虚拟第三教师」的实证文档"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/third-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IntechOpen 2025 - 虚拟空间作为第三教师",
+      "module": "L01"
+    },
+    "L01-2025-ARTFinc-Hyde": {
+      "id": "L01-2025-ARTFinc-Hyde",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Hyde, B."
+      ],
+      "year": 2025,
+      "title": "Constructed spaces: Affordances and a theory of the built",
+      "venue": "ARTFinc",
+      "doi": null,
+      "url": "https://godlyplay.com.au/wp-content/uploads/2025/02/Constructed-Spaces_Final-Report_ARTFinc-4.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "affordance",
+        "Gibson",
+        "constructed-space",
+        "phenomenology"
+      ],
+      "key_claims": [
+        "现象学分析揭示构建空间产生五类可供性：情感、具身、物理、关系、神学",
+        "把 Gibson 的 ecological 可供性理论扩展到学习环境的构建实践",
+        "为「空间作为教师」提供了可分析的可供性分类法"
+      ],
+      "used_in": [
+        "extend/affordance-ecology.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "ARTFinc 2025 - 可供性理论应用于早教空间",
+      "module": "L01"
+    },
+    "L01-2025-ReggioChildren-Atelier": {
+      "id": "L01-2025-ReggioChildren-Atelier",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Reggio Children"
+      ],
+      "year": 2025,
+      "title": "Progettare spazi educativi: l'ambiente del nido e della scuola come 'atelier diffuso'",
+      "venue": "Reggio Children",
+      "doi": null,
+      "url": "https://www.reggiochildren.it/rc/formazione/gruppi-di-studio/2024-2025/progettare-spazi-educativi/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "atelier-diffuso",
+        "Reggio-Children",
+        "design"
+      ],
+      "key_claims": [
+        "从 Reggio Emilia 教育实践中提炼的空间设计「弥散式 atelier」原则",
+        "可见性、关系性、参与性、非层级性作为空间品质的核心维度"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/third-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Reggio Children 2024-2025 atelier 弥散研究小组",
+      "module": "L01"
+    },
+    "L02-1998-AnalysisClark": {
+      "id": "L02-1998-AnalysisClark",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Clark, A.",
+        "Chalmers, D."
+      ],
+      "year": 1998,
+      "title": "The extended mind",
+      "venue": "Analysis",
+      "doi": "10.1093/analys/58.1.7",
+      "url": "https://consc.net/papers/extended.html",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "extended-mind",
+        "Clark-Chalmers",
+        "active-externalism"
+      ],
+      "key_claims": [
+        "心智在世界中通过工具与环境的活动外延",
+        "Parity Principle：若内在过程被算作认知，外在过程同等条件下也应",
+        "Otto 与 Inga 的笔记本案例：认知系统的边界由功能耦合定义"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/embodied-cognition.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Clark & Chalmers 1998 - 延伸心智假说奠基论文",
+      "module": "L02"
+    },
+    "L02-2025-NatureComm-Clark": {
+      "id": "L02-2025-NatureComm-Clark",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Clark, A."
+      ],
+      "year": 2025,
+      "title": "Extending minds with generative AI",
+      "venue": "Nature Communications",
+      "doi": "10.1038/s41467-025-59906-9",
+      "url": "https://www.nature.com/articles/s41467-025-59906-9",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "GenAI",
+        "extended-mind",
+        "cognitive-hygiene",
+        "Clark"
+      ],
+      "key_claims": [
+        "GenAI 时代的延伸心智：人类一直是混合思考系统",
+        "需要从早期就培养「延伸认知卫生」（extended cognitive hygiene）",
+        "教育核心目标转向：成为对工具值不值得信任的精明评估者"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/research-updates-2025.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Clark 2025 - 把延伸心智论扩展到 GenAI 时代（Nature Communications）",
+      "module": "L02"
+    },
+    "L02-2025-Synthese-DigitalAndy": {
+      "id": "L02-2025-Synthese-DigitalAndy",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Smart, P.R."
+      ],
+      "year": 2025,
+      "title": "ChatGPT, extended: Large language models and the extended mind",
+      "venue": "Synthese",
+      "doi": "10.1007/s11229-025-05046-y",
+      "url": "https://link.springer.com/article/10.1007/s11229-025-05046-y",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "LLM",
+        "extended-mind",
+        "RAG",
+        "philosophy"
+      ],
+      "key_claims": [
+        "RAG（检索增强生成）作为延伸心智的具体技术实例",
+        "「Digital Andy」实验：把 Clark 著作变成可问答的外部记忆",
+        "LLM 的认知能力部分依赖于「在线计算生态」而非纯内部参数"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/research-updates-2025.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Synthese 2025 - LLM 与延伸心智的哲学分析",
+      "module": "L02"
+    },
+    "L02-2026-Zenodo-AmplifiedMind": {
+      "id": "L02-2026-Zenodo-AmplifiedMind",
+      "aliases": [],
+      "type": "preprint",
+      "authors": [
+        "[Author per Zenodo record]"
+      ],
+      "year": 2026,
+      "title": "From extended to amplified: The generative mind in the age of LLMs",
+      "venue": "Zenodo",
+      "doi": "10.5281/zenodo.18123925",
+      "url": "https://zenodo.org/records/18123925",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "amplified-mind",
+        "LLM",
+        "4E-cognition",
+        "generative"
+      ],
+      "key_claims": [
+        "提出「放大心智」假说：LLM 不仅延伸还放大认知",
+        "从 Parity Principle 推广到 Amplification Principle",
+        "Neo-Otto 与 Generative Inga 思想实验：导航生成可能性空间"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/research-updates-2025.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Zenodo 2026 - 延伸心智到放大心智的理论扩展",
+      "module": "L02"
+    },
+    "L03-2021-PNAS-Woolley": {
+      "id": "L03-2021-PNAS-Woolley",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Riedl, C.",
+        "Kim, Y.J.",
+        "Gupta, P.",
+        "Malone, T.W.",
+        "Woolley, A.W."
+      ],
+      "year": 2021,
+      "title": "Quantifying collective intelligence in human groups",
+      "venue": "PNAS",
+      "doi": "10.1073/pnas.2005737118",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2005737118",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "collective-intelligence",
+        "team-performance",
+        "PNAS"
+      ],
+      "key_claims": [
+        "1356 名参与者元分析：CI（集体智能）可可靠预测群体在多种任务的表现",
+        "CI 主要由「群体协作过程」预测，其次个体技能、群体构成",
+        "女性比例与社会感知度正向预测 CI；高年龄差异负向影响"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/cognitive-diversity.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PNAS 2021 - 集体智能的元分析量化",
+      "module": "L03"
+    },
+    "L03-2024-arXiv-AICI": {
+      "id": "L03-2024-arXiv-AICI",
+      "aliases": [],
+      "type": "preprint",
+      "authors": [
+        "Yang, H.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "AI-enhanced collective intelligence",
+      "venue": "arXiv",
+      "doi": null,
+      "url": "https://arxiv.org/html/2403.10433v4",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "AI-CI",
+        "human-AI-team",
+        "synergy"
+      ],
+      "key_claims": [
+        "AI 增强集体智能（CI）需要在多样性、协作过程、信息流上同时设计",
+        "多样性的两面性：增加创新潜力但也带来情感冲突与压力",
+        "网络密度、互动规则与任务复杂度共同决定 AI 增强效果"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/research-updates-2025.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "arXiv 2024 - AI 增强集体智能综述",
+      "module": "L03"
+    },
+    "L03-2020-PNAS-AdaptiveNetworks": {
+      "id": "L03-2020-PNAS-AdaptiveNetworks",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Almaatouq, A.",
+        "Noriega-Campero, A.",
+        "Alotaibi, A.",
+        "Krafft, P.M.",
+        "Moussaid, M.",
+        "Pentland, A."
+      ],
+      "year": 2020,
+      "title": "Adaptive social networks promote the wisdom of crowds",
+      "venue": "PNAS",
+      "doi": "10.1073/pnas.1917687117",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.1917687117",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "wisdom-of-crowds",
+        "social-network",
+        "adaptive-networks"
+      ],
+      "key_claims": [
+        "网络可塑性 + 反馈使集体估值优于最佳个体",
+        "全局适应（结构改变）+ 局部适应（高准确度个体抗社会影响）",
+        "OWL 节点的导师-学习者网络应允许动态重组"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/cognitive-diversity.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PNAS 2020 - 自适应社会网络与集体智能",
+      "module": "L03"
+    },
+    "L03-2024-IEEE-CSI": {
+      "id": "L03-2024-IEEE-CSI",
+      "aliases": [],
+      "type": "conference",
+      "authors": [
+        "Rosenberg, L.",
+        "et al."
+      ],
+      "year": 2024,
+      "title": "Conversational swarm intelligence amplifies accuracy in collective deliberation",
+      "venue": "IEEE CCWC 2024",
+      "doi": null,
+      "url": "https://unanimous.ai/wp-content/uploads/2024/01/Conversational-Swarm-Intelligence-Amplifies-Accuracy-CCWC-2024-IEEE.pdf",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "swarm-intelligence",
+        "deliberation",
+        "LLM-mediated"
+      ],
+      "key_claims": [
+        "对话型群智（CSI）让 25-2500 人组实时审议",
+        "11 周实验：CSI 显著优于 WoC 投票（p<0.001）",
+        "LLM-based AI agent 作为子组协调者扩展集体审议规模"
+      ],
+      "used_in": [
+        "extend/research-updates-2025.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IEEE CCWC 2024 - 对话型群智实证",
+      "module": "L03"
+    },
+    "L04-1995-Xerox-Weiser": {
+      "id": "L04-1995-Xerox-Weiser",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Weiser, M.",
+        "Brown, J.S."
+      ],
+      "year": 1995,
+      "title": "Designing calm technology",
+      "venue": "Xerox PARC",
+      "doi": null,
+      "url": "https://calmtech.com/papers/designing-calm-technology",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "calm-technology",
+        "ubiquitous-computing",
+        "Weiser"
+      ],
+      "key_claims": [
+        "Calm technology 在「中心-外围」之间自由切换",
+        "外围连接（locatedness）是更人性化设计的基础",
+        "「Dangling String」作为外围反馈的视觉范例"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/embodied-tech.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Xerox PARC 1995 - Calm Technology 奠基论文",
+      "module": "L04"
+    },
+    "L04-1996-Xerox-WeiserCalm": {
+      "id": "L04-1996-Xerox-WeiserCalm",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Weiser, M.",
+        "Brown, J.S."
+      ],
+      "year": 1996,
+      "title": "The coming age of calm technology",
+      "venue": "Xerox PARC",
+      "doi": null,
+      "url": "https://calmtech.com/papers/coming-age-calm-technology",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "calm-technology",
+        "ubiquitous-computing"
+      ],
+      "key_claims": [
+        "无所不在计算时代的根本挑战是「冷静」",
+        "Calm 技术让人保持沉着与控制",
+        "Calmness 是未来五十年技术设计的核心命题"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Xerox PARC 1996 - Calm Technology 推进文章",
+      "module": "L04"
+    },
+    "L04-2024-CalmTech-Institute": {
+      "id": "L04-2024-CalmTech-Institute",
+      "aliases": [],
+      "type": "web",
+      "authors": [
+        "Case, A.",
+        "Calm Tech Institute"
+      ],
+      "year": 2024,
+      "title": "Calm Tech Principles & Calm Tech Certified™",
+      "venue": "Calm Tech Institute",
+      "doi": null,
+      "url": "https://www.calmtech.institute/calm-tech-principles",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "calm-technology",
+        "design-principles",
+        "certification"
+      ],
+      "key_claims": [
+        "Calm Tech 八条原则：最小注意、外围利用、失败仍可用、最小技术、尊重社会规范等",
+        "2024 推出 Calm Tech Certified™——81 项框架的认证标准",
+        "把抽象哲学翻译为可工程化的设计准则"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/edutech-frontier.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Calm Tech Institute 2024 - 认证标准发布",
+      "module": "L04"
+    },
+    "L04-2026-IxDF-CalmComputing": {
+      "id": "L04-2026-IxDF-CalmComputing",
+      "aliases": [],
+      "type": "web",
+      "authors": [
+        "Interaction Design Foundation"
+      ],
+      "year": 2026,
+      "title": "What is calm computing? — updated 2026",
+      "venue": "IxDF",
+      "doi": null,
+      "url": "https://assets.interaction-design.org/literature/topics/calm-computing",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "calm-computing",
+        "HCI",
+        "ubiquitous-computing"
+      ],
+      "key_claims": [
+        "Calm computing 在中心与外围之间流动信息",
+        "信息可视化（cone tree）等技术可让外围注意预处理细节",
+        "技术应支持而非要求注意"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/edutech-frontier.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "IxDF 2026 - calm computing 综述更新版",
+      "module": "L04"
+    }
+  },
+  "byModule": {
+    "M01": [
+      "M01-001",
+      "M01-002",
+      "M01-003",
+      "M01-004",
+      "M01-005",
+      "M01-006",
+      "M01-007",
+      "M01-008",
+      "M01-009",
+      "M01-010",
+      "M01-2024-TiCS-Lau",
+      "M01-2024-HSSC-Lin",
+      "M01-2025-STEME-Kwon",
+      "M01-2024-IJTDE-Seitamaa",
+      "M01-2025-TechTrends-Mishra",
+      "M01-2025-FrontPsy-Curiosity",
+      "M01-2025-Educ-Piele"
+    ],
+    "M02": [
+      "M02-001",
+      "M02-002",
+      "M02-003",
+      "M02-004",
+      "M02-005",
+      "M02-006",
+      "M02-007",
+      "M02-008",
+      "M02-009",
+      "M02-010",
+      "M02-2026-CYSR-Youth",
+      "M02-2025-medRxiv-CoCreation",
+      "M02-2026-Sustain-OERCommons",
+      "M02-2025-CambJIE-Polycentric",
+      "M02-2025-Frontiers-Blockchain"
+    ],
+    "M03": [
+      "M03-001",
+      "M03-002",
+      "M03-003",
+      "M03-004",
+      "M03-005",
+      "M03-006",
+      "M03-007",
+      "M03-008",
+      "M03-2025-SLE-HyperHybrid",
+      "M03-2025-DiscEd-Active",
+      "M03-2025-CCD-Creativity",
+      "M03-2023-A4LE-Neuroarch",
+      "M03-2025-DistrictNOMA-ThirdSpace"
+    ],
+    "M04": [
+      "M04-001",
+      "M04-002",
+      "M04-003",
+      "M04-004",
+      "M04-005",
+      "M04-2025-HSSC-IBSE",
+      "M04-2025-EJMSTE-Arifin",
+      "M04-2025-FrontEdu-GuidedInquiry",
+      "M04-2024-Greek-IBL",
+      "M04-2025-Educ-CroatianSTEM"
+    ],
+    "M05": [
+      "M05-001",
+      "M05-002",
+      "M05-003",
+      "M05-004",
+      "M05-2026-CompEduAI-LLMScaffolding",
+      "M05-2025-PMC-CogOffload",
+      "M05-2026-IJSTEM-CogScaffold",
+      "M05-2025-Microsoft-CritThink",
+      "M05-2024-arXiv-LearnLens"
+    ],
+    "M06": [
+      "M06-001",
+      "M06-002",
+      "M06-003",
+      "M06-004",
+      "M06-005",
+      "M06-006",
+      "M06-007",
+      "M06-008",
+      "M06-009",
+      "M06-010",
+      "M06-011",
+      "M06-012",
+      "M06-013",
+      "M06-014",
+      "M06-2023-AROB-Edmondson",
+      "M06-2024-CIPD-PSReview",
+      "M06-2025-IST-PSSoftware",
+      "M06-2024-medRxiv-PSMeasures"
+    ],
+    "M07": [
+      "M07-001",
+      "M07-002",
+      "M07-003",
+      "M07-004",
+      "M07-005",
+      "M07-2025-TATE-Ackermann",
+      "M07-2025-SciRep-DigitalMentor",
+      "M07-2025-JeLKS-MentorQ",
+      "M07-2024-IJSRM-Network"
+    ],
+    "M08": [
+      "M08-001",
+      "M08-002",
+      "M08-003",
+      "M08-004",
+      "M08-2025-Beyond100K-TinyInnovators",
+      "M08-2025-AarhusPD-Sustaining",
+      "M08-2025-GreenSTEAM-Ecosystem",
+      "M08-2025-Mechanism-Community"
+    ],
+    "M09": [
+      "M09-001",
+      "M09-002",
+      "M09-003",
+      "M09-004",
+      "M09-005",
+      "M09-2025-SAGE-DigitalAuthentic",
+      "M09-2026-MDPI-Cognitive",
+      "M09-2024-NCME-PortfolioModule",
+      "M09-2024-NYSATA-Portfolio"
+    ],
+    "L01": [
+      "L01-2024-Springer-MartinDominguez",
+      "L01-2025-IntechOpen-Domingues",
+      "L01-2025-ARTFinc-Hyde",
+      "L01-2025-ReggioChildren-Atelier"
+    ],
+    "L02": [
+      "L02-1998-AnalysisClark",
+      "L02-2025-NatureComm-Clark",
+      "L02-2025-Synthese-DigitalAndy",
+      "L02-2026-Zenodo-AmplifiedMind"
+    ],
+    "L03": [
+      "L03-2021-PNAS-Woolley",
+      "L03-2024-arXiv-AICI",
+      "L03-2020-PNAS-AdaptiveNetworks",
+      "L03-2024-IEEE-CSI"
+    ],
+    "L04": [
+      "L04-1995-Xerox-Weiser",
+      "L04-1996-Xerox-WeiserCalm",
+      "L04-2024-CalmTech-Institute",
+      "L04-2026-IxDF-CalmComputing"
+    ]
+  }
+}

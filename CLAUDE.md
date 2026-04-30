@@ -116,9 +116,28 @@ Each module addresses a key aspect of building and operating innovation learning
 ## Content Architecture
 
 The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
-- **Core**: Essential principles (≤2000 chars per module)
-- **Extend**: Deep research, case studies, visualizations
-- **Evidence**: Structured citations and verification records
+- **Core**: Essential principles per module. Hard cap: **≤6000 字符** for the module `index.mdx`. Anything longer must be extracted into `extend/`.
+- **Extend**: Deep research, case studies, visualizations, methods, taxonomies, full prose treatments. No length cap.
+- **Evidence**: Structured citations (`evidence/refs.json`), verification records, and the `<References scope="module" />` view.
+
+### Core Index Four-Block Scaffold (mandatory)
+
+Every Core module `index.mdx` MUST follow this skeleton, in order:
+
+1. **`## Core 论断`** — 3-7 first-principle propositions that define the module. State each as a single sentence + one-line warrant. No tables, no SOPs, no case detail. This is the "if a reader only reads one section, what must they take away."
+2. **`## 3E 映射`** — Explicit mapping to Enlighten / Empower / Engage. One row per dimension, ≤2 sentences each. Use the existing `<ModuleSummary />` or a 3-row table.
+3. **`## 关键证据`** — 3-8 citation-anchored claims. Each claim is one paragraph that ends with `<Cite id="..."/>` or `<Cite ids="a,b"/>`. Prefer E2/E3 sources from 2024-2026 where available.
+4. **`## Extend 索引`** — `<ExtendCards />` listing every `extend/*.mdx`, `cases/*.mdx`, and `evidence/*.mdx` page that belongs to this module. This is the navigation entry into depth.
+
+End with `<References scope="page" />` so the page renders its own bibliography.
+
+### Citation System
+
+- Per-module bibliographies: `content/docs/zh/core/0X-*\/evidence/refs.json` and `content/docs/zh/research/0X-*\/extend/refs.json`.
+- Global aggregated index (generated): `src/data/bibliography.generated.json`, produced by `scripts/build-bibliography.mjs` and consumed by `<Cite>` / `<References>`.
+- Use `<Cite id="M03-2024-CRJ-Allen" />` inline; the page-bottom `<References scope="page" />` auto-numbers and renders the list.
+- Citation id slug convention for new entries: `<MODULE>-<YEAR>-<VENUE-ABBR>-<FirstAuthor>` (e.g., `M05-2025-AERA-Lee`). Legacy IDs like `M03-001` remain valid; if you need to rename, add the old ID to `aliases: []`.
+- Evidence tiers (E0-E3) defined in `content/docs/zh/core/_meta/evidence-levels.mdx`. Every citation must carry `evidence_tier` (preferred) or legacy `evidence_level`.
 
 ### Documentation Structure
 
@@ -257,10 +276,25 @@ Even with `text` specifier, avoid patterns that look like JS expressions:
 - ❌ `{value=123}` - looks like JSX expression
 - ✅ `r = 0.72` or `相关系数: 0.72`
 
-#### Rule 4: Run Lint Before Build
+#### Rule 4: JSX 字符串属性内不要直接嵌入 ASCII 双引号
+
+Turbopack MDX 解析器会把 JSX 属性 `attr="..."` 的第一个内层 `"` 视为属性结束，
+然后把后续字符当作下一个属性名解析；若紧跟全/半角逗号或中文字符，会触发
+`Unexpected character` 构建错误。
+
+```text
+❌ <ModuleSummary philosophy="他示范"我也不知道"的求知姿态。" />
+✅ <ModuleSummary philosophy="他示范「我也不知道」的求知姿态。" />
+✅ <ModuleSummary philosophy={`他示范"我也不知道"的求知姿态。`} />
+```
+
+写中文 JSX 属性时优先使用 CJK 引号 `「…」` / `『…』`；需要 ASCII 引号时改用
+JSX 表达式 `{`…`}` 或 `&quot;`。`pnpm lint:mdx` 会扫到这种漏写。
+
+#### Rule 5: Run Lint Before Build
 
 ```bash
-pnpm lint:mdx          # Check for MDX issues
+pnpm lint:mdx          # Check for MDX issues (incl. JSX inner-quote check)
 pnpm build             # prebuild script runs lint-mdx.js automatically
 ```
 
@@ -271,6 +305,7 @@ pnpm build             # prebuild script runs lint-mdx.js automatically
 | `Unexpected character before name` | Code block without language specifier | Add `text` or appropriate language |
 | `Error evaluating Node.js code` | Turbopack treating content as JS | Add language specifier to code block |
 | Position like `52:52` in error | Usually points to content after bare code block | Find and fix the bare ` ``` ` above that line |
+| `Unexpected character `，` (U+FF0C) in attribute name` | JSX 属性值含未转义的内层 ASCII `"` | 内层引号改为 CJK `「」` 或用 `{`…`}` 表达式包裹 |
 
 # context-mode — MANDATORY routing rules
 

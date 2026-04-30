@@ -5,6 +5,9 @@
  * Detects potential issues in MDX files that could cause Turbopack build errors:
  * 1. Code blocks without language specifiers containing JS-like patterns
  * 2. Patterns like (r=+0.72) that could be interpreted as JavaScript
+ * 3. JSX string attributes containing un-escaped inner double quotes
+ *    (e.g. <Tag prop="...含 "内嵌" 引号..." />), which cause Turbopack to
+ *    terminate the attribute early and choke on the next character.
  *
  * Usage: node scripts/lint-mdx.js [path]
  *
@@ -55,6 +58,43 @@ function findMdxFiles(dir) {
   return files;
 }
 
+// Detect a JSX attribute line whose value contains an un-escaped inner double
+// quote. The Turbopack MDX parser terminates the attribute at the first inner
+// `"`, then chokes on whatever follows.
+//
+// Pattern flagged: a line that *starts* (after leading whitespace) with
+// `<TagName ` or `attrName="`, where the *first* attribute on the line has the
+// shape  attr="...PRE..."INNER..."POST..." — i.e. 3+ ASCII double quotes after
+// the `=`.
+//
+// To avoid false positives on lines like `<Cite id="A" /> ... <Cite id="B" />`
+// (legitimate, multiple separate attributes), we only flag lines where the
+// first `"` after a `=` is *not* immediately followed by the matching closing
+// `"` before whitespace / `/>` / another `\w+=`.
+function findUnclosedJsxAttribute(line) {
+  // Trim leading whitespace; only inspect lines that look like JSX attributes.
+  const m = line.match(/^\s*(\w+)="([^]*)$/);
+  if (!m) return null;
+
+  const attrName = m[1];
+  const rest = m[2];
+
+  // Walk through `rest`. The attribute should close at the first un-escaped `"`.
+  // After that closer, the remainder of the line must be empty / start a new
+  // JSX-shaped token (whitespace, `/>`, `>`, `\w+=`). If instead we see
+  // additional non-whitespace characters before another `"`, it's a buggy line.
+  const closeIdx = rest.indexOf('"');
+  if (closeIdx === -1) return null;
+  const after = rest.slice(closeIdx + 1).trim();
+  // Empty / closing tag / next attribute → fine.
+  if (after === '' || /^[/>]/.test(after) || /^\w+\s*=/.test(after)) return null;
+  // Another `"` later on the line → likely an inner quote that closed early.
+  if (after.includes('"')) {
+    return { attrName, snippet: line.trim().slice(0, 100) };
+  }
+  return null;
+}
+
 function lintMdxFile(filepath) {
   const issues = [];
   const content = fs.readFileSync(filepath, 'utf-8');
@@ -68,6 +108,21 @@ function lintMdxFile(filepath) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const trimmed = line.trim();
+
+    // Check for buggy JSX attribute lines (only outside code blocks).
+    if (!inCodeBlock) {
+      const bad = findUnclosedJsxAttribute(line);
+      if (bad) {
+        issues.push({
+          file: filepath,
+          line: i + 1,
+          type: 'jsx_unclosed_attribute',
+          pattern: `JSX attribute "${bad.attrName}" appears to contain an un-escaped inner double quote`,
+          suggestion: 'Replace inner ASCII " with CJK quotes 「」 or with &quot;',
+          preview: bad.snippet,
+        });
+      }
+    }
 
     if (trimmed.startsWith('```')) {
       if (!inCodeBlock) {

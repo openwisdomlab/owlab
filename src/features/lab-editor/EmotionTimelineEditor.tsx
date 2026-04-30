@@ -243,7 +243,7 @@ export function EmotionTimelineEditor({
       {/* Empty State */}
       {script.nodes.length === 0 && (
         <div className="text-center py-8 text-[var(--muted-foreground)] text-sm">
-          点击"添加节点"开始创建情绪时间轴
+          点击&ldquo;添加节点&rdquo;开始创建情绪时间轴
         </div>
       )}
     </div>

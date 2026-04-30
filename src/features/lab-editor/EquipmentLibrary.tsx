@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -49,20 +49,14 @@ export function EquipmentLibrary({
   onAddEquipment,
   onClose,
 }: EquipmentLibraryProps) {
-  const [equipment, setEquipment] = useState<EquipmentItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Equipment catalog is statically available; load lazily once.
+  const [equipment] = useState<EquipmentItem[]>(() => getAllEquipment());
   const [filter, setFilter] = useState<EquipmentFilter>({
     sortBy: "name",
   });
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
   const [selectedItem, setSelectedItem] = useState<EquipmentItem | null>(null);
-
-  useEffect(() => {
-    // Load equipment catalog from typed data layer
-    setEquipment(getAllEquipment());
-    setLoading(false);
-  }, []);
 
   const filteredEquipment = useMemo(() => {
     let result = [...equipment];
@@ -119,14 +113,6 @@ export function EquipmentLibrary({
     onAddEquipment(item);
     setSelectedItem(null);
   };
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-[var(--muted-foreground)]">Loading equipment...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="h-full flex flex-col bg-[var(--background)]">
