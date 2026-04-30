@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T11:20:26.345Z",
-  "total": 77,
+  "generated_at": "2026-04-30T11:23:58.654Z",
+  "total": 82,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -1124,6 +1124,182 @@
       "notes": "UDL 通用学习设计指南",
       "module": "M03"
     },
+    "M03-2025-SLE-HyperHybrid": {
+      "id": "M03-2025-SLE-HyperHybrid",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Bezegová, E.",
+        "et al."
+      ],
+      "year": 2025,
+      "title": "A Hyper-hybrid space for representational and liminal learning in higher education (Collabits)",
+      "venue": "Smart Learning Environments (Springer)",
+      "doi": "10.1186/s40561-025-00421-1",
+      "url": "https://link.springer.com/article/10.1186/s40561-025-00421-1",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "hybrid-space",
+        "liminal-learning",
+        "digital-physical"
+      ],
+      "key_claims": [
+        "「超混合空间」融合物理课堂与数字环境的可供性",
+        "支持师生在「呈现 / 体验 / 重塑」三态间切换",
+        "数字工具不应仅传递内容，而应承载意义生成"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/digital-augmented-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Springer Smart Learning Environments 2025",
+      "module": "M03"
+    },
+    "M03-2025-DiscEd-Active": {
+      "id": "M03-2025-DiscEd-Active",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Orihuela, M.J."
+      ],
+      "year": 2025,
+      "title": "Active learning environments tailored to pedagogical principles: a spatial design tool for school workshop spaces",
+      "venue": "Discover Education (Springer)",
+      "doi": "10.1007/s44217-025-00869-w",
+      "url": "https://link.springer.com/article/10.1007/s44217-025-00869-w",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "pedagogical-spaces",
+        "Reggio-Emilia",
+        "Montessori",
+        "makerspace"
+      ],
+      "key_claims": [
+        "把空间设计与三种主动教学法（Reggio Emilia atelier、Montessori、Waldorf）显式对齐",
+        "提供可操作的工坊空间设计工具",
+        "强调安静室、原型室、展示室在创客生态中的角色"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/zone-design.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Discover Education 2025 — 把教学法与空间设计直接耦合",
+      "module": "M03"
+    },
+    "M03-2025-CCD-Creativity": {
+      "id": "M03-2025-CCD-Creativity",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Mosquera-González, A."
+      ],
+      "year": 2025,
+      "title": "Work environments as creativity rooms: An evidence-based cognitive-emotional approach",
+      "venue": "Centre for Conscious Design",
+      "doi": null,
+      "url": "https://theccd.org/article/work-environments-as-creativity-rooms-an-evidence-based-cognitive-emotional-approach/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "creativity-room",
+        "neuroarchitecture",
+        "DMN-ECN"
+      ],
+      "key_claims": [
+        "把空间组织为「Wallas 创造性四阶段」（准备/孵化/启迪/验证）对应的四区",
+        "对接神经科学 DMN/ECN/突显网络的状态调节",
+        "光照/声学/生物嵌入/多感官输入/灵活布置作为可验证设计杠杆"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "CCD 2025 — 把神经科学翻译为 65 m² 创造性空间案例",
+      "module": "M03"
+    },
+    "M03-2023-A4LE-Neuroarch": {
+      "id": "M03-2023-A4LE-Neuroarch",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "A4LE (Association for Learning Environments)"
+      ],
+      "year": 2023,
+      "title": "Neuroarchitecture: Designing schools that nurture the brain",
+      "venue": "A4LE White Paper",
+      "doi": null,
+      "url": "https://media.a4le.org/WhitePapers/Neuroarchitecture.pdf",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "neuroarchitecture",
+        "school-design",
+        "biophilic",
+        "small-learning-community"
+      ],
+      "key_claims": [
+        "灵活学习空间应支持独立、同侪辅导、项目制等多种模式",
+        "Sense of place（场所感）作为身份与归属的设计要素",
+        "Biophilic design 与小型学习社区显著影响学业与情绪"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/innovation-friendly.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "A4LE 神经建筑学综述（2023）",
+      "module": "M03"
+    },
+    "M03-2025-DistrictNOMA-ThirdSpace": {
+      "id": "M03-2025-DistrictNOMA-ThirdSpace",
+      "aliases": [],
+      "type": "web",
+      "authors": [
+        "Clarke, N."
+      ],
+      "year": 2025,
+      "title": "Third Spaces & Neuroarchitecture",
+      "venue": "DC NOMA",
+      "doi": null,
+      "url": "https://www.districtnoma.org/blog/2025/6/22/third-spaces-amp-neuroarchitecture",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "third-space",
+        "psychological-ownership",
+        "neuroarchitecture"
+      ],
+      "key_claims": [
+        "心理性所有权（psychological ownership）是第三空间舒适度的关键变量",
+        "第三空间不应作为附属性元素，而应作为一级设计对象"
+      ],
+      "used_in": [
+        "extend/third-space.mdx"
+      ],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "实践观点文章，作为 E0 级补充",
+      "module": "M03"
+    },
     "M04-001": {
       "id": "M04-001",
       "aliases": [],
@@ -2076,7 +2252,12 @@
       "M03-005",
       "M03-006",
       "M03-007",
-      "M03-008"
+      "M03-008",
+      "M03-2025-SLE-HyperHybrid",
+      "M03-2025-DiscEd-Active",
+      "M03-2025-CCD-Creativity",
+      "M03-2023-A4LE-Neuroarch",
+      "M03-2025-DistrictNOMA-ThirdSpace"
     ],
     "M04": [
       "M04-001",
