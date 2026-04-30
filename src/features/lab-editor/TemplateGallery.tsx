@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -46,17 +46,11 @@ export function TemplateGallery({
   onSelectTemplate,
   onClose,
 }: TemplateGalleryProps) {
-  const [templates, setTemplates] = useState<Template[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Templates are statically available from the typed data layer.
+  const [templates] = useState<Template[]>(() => getAllTemplates());
   const [filter, setFilter] = useState<TemplateFilter>({ sortBy: "recent" });
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
-
-  useEffect(() => {
-    // Load templates from typed data layer
-    setTemplates(getAllTemplates());
-    setLoading(false);
-  }, []);
 
   const filteredTemplates = useMemo(() => {
     let result = [...templates];
@@ -150,14 +144,6 @@ export function TemplateGallery({
 
     return result;
   }, [templates, searchQuery, filter]);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-[var(--muted-foreground)]">Loading templates...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="h-full flex flex-col bg-[var(--background)]">

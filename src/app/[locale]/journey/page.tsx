@@ -167,6 +167,7 @@ export default function JourneyPage() {
   const stage = missionStages[activeIdx];
 
   // Set stage with warp effect
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization -- explicit useCallback for the warp transition; React Compiler can't infer the dependency on `activeIdx`
   const setStage = useCallback((idx: number) => {
     if (idx < 0 || idx >= missionStages.length || idx === activeIdx) return;
     setIsWarping(true);

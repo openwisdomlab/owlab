@@ -15,6 +15,52 @@ import {
   Bird,
 } from "lucide-react";
 
+interface ToolButtonProps {
+  icon: typeof Plus;
+  label: string;
+  onClick: () => void;
+  disabled?: boolean;
+  active?: boolean;
+  highlight?: boolean;
+}
+
+function ToolButton({
+  icon: Icon,
+  label,
+  onClick,
+  disabled,
+  active,
+  highlight,
+}: ToolButtonProps) {
+  return (
+    <motion.button
+      whileHover={{ scale: disabled ? 1 : 1.05 }}
+      whileTap={{ scale: disabled ? 1 : 0.95 }}
+      onClick={onClick}
+      disabled={disabled}
+      className={`p-2 rounded-lg transition-colors relative group ${
+        disabled
+          ? "opacity-40 cursor-not-allowed"
+          : active
+            ? "bg-emerald-500/20 text-emerald-400"
+            : highlight
+              ? "bg-emerald-500 text-white hover:bg-emerald-600"
+              : "hover:bg-[var(--glass-bg)]"
+      }`}
+      title={label}
+    >
+      <Icon className="w-5 h-5" />
+      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+        {label}
+      </span>
+    </motion.button>
+  );
+}
+
+function Divider() {
+  return <div className="w-px h-6 bg-[var(--glass-border)] mx-1" />;
+}
+
 interface SimplifiedToolbarProps {
   zoom: number;
   showGrid: boolean;
@@ -50,46 +96,6 @@ export function SimplifiedToolbar({
   onToggleAI,
   onMoreOptions,
 }: SimplifiedToolbarProps) {
-  const ToolButton = ({
-    icon: Icon,
-    label,
-    onClick,
-    disabled,
-    active,
-    highlight,
-  }: {
-    icon: typeof Plus;
-    label: string;
-    onClick: () => void;
-    disabled?: boolean;
-    active?: boolean;
-    highlight?: boolean;
-  }) => (
-    <motion.button
-      whileHover={{ scale: disabled ? 1 : 1.05 }}
-      whileTap={{ scale: disabled ? 1 : 0.95 }}
-      onClick={onClick}
-      disabled={disabled}
-      className={`p-2 rounded-lg transition-colors relative group ${
-        disabled
-          ? "opacity-40 cursor-not-allowed"
-          : active
-            ? "bg-emerald-500/20 text-emerald-400"
-            : highlight
-              ? "bg-emerald-500 text-white hover:bg-emerald-600"
-              : "hover:bg-[var(--glass-bg)]"
-      }`}
-      title={label}
-    >
-      <Icon className="w-5 h-5" />
-      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-        {label}
-      </span>
-    </motion.button>
-  );
-
-  const Divider = () => <div className="w-px h-6 bg-[var(--glass-border)] mx-1" />;
-
   return (
     <div className="glass-card px-4 py-2 flex items-center gap-1">
       {/* 主要操作 */}

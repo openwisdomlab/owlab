@@ -1,5 +1,6 @@
 "use client";
 
+import { createElement } from "react";
 import { useTranslations } from "next-intl";
 import { getModuleIcon } from "@/components/icons/ModuleIcons";
 
@@ -47,7 +48,7 @@ export function ModulePageTitle({ moduleId, className }: ModulePageTitleProps) {
           className="w-16 h-16 rounded-xl flex items-center justify-center"
           style={{ backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)` }}
         >
-          <ModuleIcon className="w-14 h-14" color={color} />
+          {createElement(ModuleIcon, { className: "w-14 h-14", color })}
         </div>
         <div>
           {/* 模块ID */}

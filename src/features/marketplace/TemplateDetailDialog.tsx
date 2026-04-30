@@ -248,85 +248,90 @@ export function TemplateDetailDialog({
 
 // Larger layout preview for detail dialog
 function LayoutPreview({ layoutData }: { layoutData: string }) {
+  let layout: {
+    zones?: Array<{
+      id: string;
+      name: string;
+      position: { x: number; y: number };
+      size: { width: number; height: number };
+      color?: string;
+    }>;
+    dimensions?: { width: number; height: number };
+  } | null = null;
+
   try {
-    const layout = JSON.parse(layoutData);
-    const zones = layout.zones || [];
-    const dims = layout.dimensions || { width: 20, height: 15 };
-
-    return (
-      <svg
-        viewBox={`-0.5 -0.5 ${dims.width + 1} ${dims.height + 1}`}
-        className="w-full h-auto"
-        style={{ maxHeight: "300px" }}
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {/* Grid background */}
-        <defs>
-          <pattern
-            id="detail-grid"
-            width="1"
-            height="1"
-            patternUnits="userSpaceOnUse"
-          >
-            <rect width="1" height="1" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.02" />
-          </pattern>
-        </defs>
-        <rect x="-0.5" y="-0.5" width={dims.width + 1} height={dims.height + 1} fill="url(#detail-grid)" />
-
-        {/* Zones */}
-        {zones.map(
-          (
-            zone: {
-              id: string;
-              name: string;
-              position: { x: number; y: number };
-              size: { width: number; height: number };
-              color?: string;
-            },
-            i: number
-          ) => (
-            <g key={zone.id || i}>
-              <rect
-                x={zone.position.x}
-                y={zone.position.y}
-                width={zone.size.width}
-                height={zone.size.height}
-                fill={zone.color || "#3B82F6"}
-                opacity={0.4}
-                rx={0.2}
-                stroke={zone.color || "#3B82F6"}
-                strokeWidth={0.1}
-                strokeOpacity={0.8}
-              />
-              <text
-                x={zone.position.x + zone.size.width / 2}
-                y={zone.position.y + zone.size.height / 2}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill="white"
-                fontSize={Math.min(zone.size.width, zone.size.height) * 0.2}
-                opacity={0.8}
-              >
-                {zone.name.length > 12 ? zone.name.slice(0, 12) + "..." : zone.name}
-              </text>
-            </g>
-          )
-        )}
-
-        {/* Dimension labels */}
-        <text x={dims.width / 2} y={dims.height + 0.7} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="0.5">
-          {dims.width}m
-        </text>
-        <text x={-0.3} y={dims.height / 2} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="0.5" transform={`rotate(-90, -0.3, ${dims.height / 2})`}>
-          {dims.height}m
-        </text>
-      </svg>
-    );
+    layout = JSON.parse(layoutData);
   } catch {
+    layout = null;
+  }
+
+  if (!layout) {
     return (
       <div className="h-48 flex items-center justify-center text-[var(--muted-foreground)]">
         Preview unavailable
       </div>
     );
   }
+
+  const zones = layout.zones ?? [];
+  const dims = layout.dimensions ?? { width: 20, height: 15 };
+
+  return (
+    <svg
+      viewBox={`-0.5 -0.5 ${dims.width + 1} ${dims.height + 1}`}
+      className="w-full h-auto"
+      style={{ maxHeight: "300px" }}
+      preserveAspectRatio="xMidYMid meet"
+    >
+      {/* Grid background */}
+      <defs>
+        <pattern
+          id="detail-grid"
+          width="1"
+          height="1"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect width="1" height="1" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.02" />
+        </pattern>
+      </defs>
+      <rect x="-0.5" y="-0.5" width={dims.width + 1} height={dims.height + 1} fill="url(#detail-grid)" />
+
+      {/* Zones */}
+      {zones.map((zone, i) => (
+        <g key={zone.id || i}>
+          <rect
+            x={zone.position.x}
+            y={zone.position.y}
+            width={zone.size.width}
+            height={zone.size.height}
+            fill={zone.color || "#3B82F6"}
+            opacity={0.4}
+            rx={0.2}
+            stroke={zone.color || "#3B82F6"}
+            strokeWidth={0.1}
+            strokeOpacity={0.8}
+          />
+          <text
+            x={zone.position.x + zone.size.width / 2}
+            y={zone.position.y + zone.size.height / 2}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="white"
+            fontSize={Math.min(zone.size.width, zone.size.height) * 0.2}
+            opacity={0.8}
+          >
+            {zone.name.length > 12 ? zone.name.slice(0, 12) + "..." : zone.name}
+          </text>
+        </g>
+      ))}
+
+      {/* Dimension labels */}
+      <text x={dims.width / 2} y={dims.height + 0.7} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="0.5">
+        {dims.width}m
+      </text>
+      <text x={-0.3} y={dims.height / 2} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="0.5" transform={`rotate(-90, -0.3, ${dims.height / 2})`}>
+        {dims.height}m
+      </text>
+    </svg>
+  );
 }

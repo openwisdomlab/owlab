@@ -1,40 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+
+function subscribeOnline(cb: () => void) {
+  window.addEventListener("online", cb);
+  window.addEventListener("offline", cb);
+  return () => {
+    window.removeEventListener("online", cb);
+    window.removeEventListener("offline", cb);
+  };
+}
+
+const getOnlineSnapshot = () => navigator.onLine;
+const getOnlineServerSnapshot = () => true;
 
 export function OfflineIndicator() {
-  const [isOnline, setIsOnline] = useState(true);
+  const isOnline = useSyncExternalStore(
+    subscribeOnline,
+    getOnlineSnapshot,
+    getOnlineServerSnapshot,
+  );
   const [showOffline, setShowOffline] = useState(false);
 
-  useEffect(() => {
-    // 初始状态
-    setIsOnline(navigator.onLine);
-
-    const handleOnline = () => {
-      setIsOnline(true);
-      setShowOffline(false);
-    };
-
-    const handleOffline = () => {
-      setIsOnline(false);
-      setShowOffline(true);
-    };
-
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
+  // Track offline transitions to drive the toast.
+  const handleVisibility = useCallback(() => {
+    if (!navigator.onLine) setShowOffline(true);
   }, []);
 
-  // 在线状态恢复后，3秒后隐藏提示
+  useEffect(() => {
+    window.addEventListener("offline", handleVisibility);
+    return () => window.removeEventListener("offline", handleVisibility);
+  }, [handleVisibility]);
+
+  // Auto-hide the recovered banner 3 s after coming back online.
   useEffect(() => {
     if (isOnline && showOffline) {
-      const timer = setTimeout(() => {
-        setShowOffline(false);
-      }, 3000);
+      const timer = setTimeout(() => setShowOffline(false), 3000);
       return () => clearTimeout(timer);
     }
   }, [isOnline, showOffline]);
