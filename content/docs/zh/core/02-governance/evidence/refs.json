@@ -142,8 +142,116 @@
         "Doocracy（谁做事谁负责）是黑客空间的核心治理哲学"
       ],
       "used_in": ["extend/distributed-innovation.mdx"]
+    },
+    {
+      "id": "M02-2026-CYSR-Youth",
+      "type": "journal",
+      "authors": ["van der Laan, J.", "Bouma, H.", "ten Brummelaar, M."],
+      "year": 2026,
+      "title": "Between promise and practice: a scoping review of the democratic outcomes of youth participation in local governance",
+      "venue": "Children and Youth Services Review",
+      "doi": "10.1016/j.childyouth.2025.108738",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0190740925006218",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["youth-participation", "governance", "democratic-outcomes"],
+      "key_claims": [
+        "48 项研究 24 国 scoping review：青年参与治理在个人/社区/政府三层皆有正负效应",
+        "结果不是「参与本身有效」，而是受机制设计、把关动态与条件性所支配",
+        "提出可用于评估与设计「青年响应式参与机制」的标准"
+      ],
+      "used_in": ["index.mdx", "extend/multi-stakeholder.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "48 项研究的 scoping review（CYSR 2026）"
+    },
+    {
+      "id": "M02-2025-medRxiv-CoCreation",
+      "type": "preprint",
+      "authors": ["Wang, S.", "et al."],
+      "year": 2025,
+      "title": "Youth co-creation in health interventions: a systematic review and meta-analysis",
+      "venue": "medRxiv",
+      "doi": "10.1101/2025.10.20.25338251",
+      "url": "https://www.medrxiv.org/content/10.1101/2025.10.20.25338251v1.full-text",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["youth-co-creation", "decision-rights", "meta-analysis"],
+      "key_claims": [
+        "68 项研究系统综述+元分析：制度化青年共创显著优于一次性咨询",
+        "需明确决策权、专项资源与组织级问责标准",
+        "支撑「嵌入式参与」而非「礼仪式参与」的治理设计"
+      ],
+      "used_in": ["index.mdx", "extend/node-governance-model.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Cochrane 方法系统综述（PROSPERO 注册）"
+    },
+    {
+      "id": "M02-2026-Sustain-OERCommons",
+      "type": "journal",
+      "authors": ["Atenas, J.", "Havemann, L.", "Priego, E."],
+      "year": 2026,
+      "title": "Governing open educational resources as sustainable knowledge commons: A policy and institutional framework for higher education",
+      "venue": "Sustainability",
+      "doi": "10.3390/su18084024",
+      "url": "https://www.mdpi.com/2071-1050/18/8/4024",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["OER", "knowledge-commons", "Ostrom", "sustainability"],
+      "key_claims": [
+        "可持续 OER 生态需要四个治理维度：制度嵌入、参与式 stewardship、公平接入、长期资源可持续",
+        "把 OER 重新框定为知识共有物（commons）而非素材仓库"
+      ],
+      "used_in": ["index.mdx", "extend/distributed-innovation.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "OER as commons 的策略综合分析（2024-2026 文献）"
+    },
+    {
+      "id": "M02-2025-CambJIE-Polycentric",
+      "type": "journal",
+      "authors": ["Aligica, P.D.", "Tarko, V."],
+      "year": 2025,
+      "title": "A public economy approach to education: school choice and co-production revisited",
+      "venue": "Journal of Institutional Economics (Cambridge)",
+      "doi": "10.1017/S1744137425100131",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1FDFFF001C5A378E2D2EE05835248D28",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["polycentricity", "Ostrom", "co-production", "education-governance"],
+      "key_claims": [
+        "更新 Davis & Ostrom（1991）多中心治理在教育中的论述",
+        "多中心治理的三大价值：适应性、问责性、创新——通过竞争与试验涌现",
+        "支持把 OWL 网络架构理解为多中心节点 + 共生产"
+      ],
+      "used_in": ["index.mdx", "extend/node-governance-model.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "Ostrom 多中心治理在教育的最新理论更新"
+    },
+    {
+      "id": "M02-2025-Frontiers-Blockchain",
+      "type": "journal",
+      "authors": ["De Filippi, P.", "et al."],
+      "year": 2025,
+      "title": "Blockchain governance and the digital commons: revisiting Ostrom in the Web3 era",
+      "venue": "Frontiers in Blockchain",
+      "doi": "10.3389/fbloc.2025.1538227",
+      "url": "https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2025.1538227",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["blockchain", "DAO", "digital-commons", "Ostrom"],
+      "key_claims": [
+        "Web3/区块链治理与 Ostrom 集体选择原则的对照",
+        "数字共有物管理需在技术机制之上设计参与与问责"
+      ],
+      "used_in": ["extend/node-governance-model.mdx"],
+      "retrieval_date": "2026-04-30",
+      "verified": false,
+      "notes": "为后续 OWL 网络是否引入链上声誉/凭证提供学理参照"
     }
   ],
-  "notes": "治理与分布式创新相关文献待人工验证",
+  "notes": "治理与分布式创新相关文献待人工验证；2024-2026 部分已审编。",
   "cross_validation_status": "pending"
 }
