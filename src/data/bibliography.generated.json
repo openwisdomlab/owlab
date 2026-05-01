@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-01T14:36:33.229Z",
-  "total": 142,
+  "generated_at": "2026-05-01T18:09:47.123Z",
+  "total": 163,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -2229,6 +2229,362 @@
       "notes": "克罗地亚 Sa STEMom raSTEMo 项目准实验（2025）",
       "module": "M04"
     },
+    "M04-2000-Thomas-PBLReview": {
+      "id": "M04-2000-Thomas-PBLReview",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Thomas, J.W."
+      ],
+      "year": 2000,
+      "title": "A Review of Research on Project-Based Learning",
+      "venue": "Autodesk Foundation",
+      "doi": null,
+      "url": "https://www.bie.org/object/document/a_review_of_research_on_project_based_learning",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "PBL",
+        "literature-review",
+        "classic"
+      ],
+      "key_claims": [
+        "PBL 五个核心特征：中心性、驱动问题、建构性调查、学生自主、真实性",
+        "PBL 在动机、问题解决、深度理解上优于传统教学",
+        "PBL 实施挑战：教师准备、评估、时间管理"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PBL 研究的经典综述——后续 20 年研究的起点文献",
+      "module": "M04"
+    },
+    "M04-2004-EdPsy-HmeloSilver": {
+      "id": "M04-2004-EdPsy-HmeloSilver",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Hmelo-Silver, C.E."
+      ],
+      "year": 2004,
+      "title": "Problem-Based Learning: What and How Do Students Learn?",
+      "venue": "Educational Psychology Review",
+      "doi": "10.1023/B:EDPR.0000034022.16470.f3",
+      "url": "https://link.springer.com/article/10.1023/B:EDPR.0000034022.16470.f3",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "PBL",
+        "self-directed-learning",
+        "scaffolding"
+      ],
+      "key_claims": [
+        "PBL 学生在长期保留与自主学习能力上优于传统教学",
+        "PBL 须配以认知与元认知脚手架才能成功",
+        "教师角色从传授者转为认知教练"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PBL 学生学习机制的经典综述",
+      "module": "M04"
+    },
+    "M04-2017-MDRC-Condliffe": {
+      "id": "M04-2017-MDRC-Condliffe",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Condliffe, B.",
+        "Quint, J.",
+        "Visher, M.G.",
+        "Bangser, M.R.",
+        "Drohojowska, S.",
+        "Saco, L.",
+        "Nelson, E."
+      ],
+      "year": 2017,
+      "title": "Project-Based Learning: A Literature Review",
+      "venue": "MDRC",
+      "doi": null,
+      "url": "https://www.mdrc.org/work/publications/project-based-learning",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "PBL",
+        "literature-review",
+        "implementation"
+      ],
+      "key_claims": [
+        "PBL 在科学、社会研究、写作上有可量化效益；数学证据较弱",
+        "教师专业发展是 PBL 实施成败的关键变量",
+        "学校文化与时间安排对 PBL 持续性影响巨大"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "MDRC 综合 PBL 文献综述（2017）",
+      "module": "M04"
+    },
+    "M04-2019-EduRes-Chen": {
+      "id": "M04-2019-EduRes-Chen",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Chen, C.-H.",
+        "Yang, Y.-C."
+      ],
+      "year": 2019,
+      "title": "Revisiting the effects of project-based learning on students' academic achievement: A meta-analysis investigating moderators",
+      "venue": "Educational Research Review",
+      "doi": "10.1016/j.edurev.2018.11.001",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1747938X18305608",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "PBL",
+        "meta-analysis",
+        "academic-achievement"
+      ],
+      "key_claims": [
+        "46 项研究元分析：PBL 中等效应（g=0.71）显著优于传统教学",
+        "效应受教育阶段、学科、干预时长、信息技术使用调节",
+        "中学阶段、社会科学、长周期、ICT 增强条件下效应最大"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PBL 学业成就的关键元分析（46 项研究）",
+      "module": "M04"
+    },
+    "M04-2007-NRC-TakingScience": {
+      "id": "M04-2007-NRC-TakingScience",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "National Research Council"
+      ],
+      "year": 2007,
+      "title": "Taking Science to School: Learning and Teaching Science in Grades K-8",
+      "venue": "National Academies Press",
+      "doi": "10.17226/11625",
+      "url": "https://nap.nationalacademies.org/catalog/11625/taking-science-to-school-learning-and-teaching-science-in-grades",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "age-differentiation",
+        "K-8",
+        "science-education",
+        "developmental"
+      ],
+      "key_claims": [
+        "K-8 科学学习的发展轨迹：儿童具备远超传统假设的科学推理能力",
+        "年龄分层课程设计须围绕核心概念螺旋展开，而非按年龄分割知识",
+        "「科学实践」四要素：知识、推理、参与、认识论"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/age-differentiation.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "美国国家研究委员会 K-8 科学教育里程碑——年龄差异化主场依据",
+      "module": "M04"
+    },
+    "M04-2013-Vasquez-STEMByGrade": {
+      "id": "M04-2013-Vasquez-STEMByGrade",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Vasquez, J.A.",
+        "Sneider, C.",
+        "Comer, M."
+      ],
+      "year": 2013,
+      "title": "STEM Lesson Essentials, Grades 3-8: Integrating Science, Technology, Engineering, and Mathematics",
+      "venue": "Heinemann",
+      "doi": null,
+      "url": "https://www.heinemann.com/products/E04358.aspx",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "age-differentiation",
+        "STEM",
+        "grade-specific",
+        "integration"
+      ],
+      "key_claims": [
+        "STEM 整合的四个层次：disciplinary、multidisciplinary、interdisciplinary、transdisciplinary",
+        "3-8 年级 STEM 课程的认知与技能阶梯",
+        "年龄适配的工具、词汇、项目复杂度参考表"
+      ],
+      "used_in": [
+        "index.mdx",
+        "extend/age-differentiation.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "K-12 STEM 整合年龄分层的实操指南",
+      "module": "M04"
+    },
+    "M04-2022-UNESCO-ReimaginingFutures": {
+      "id": "M04-2022-UNESCO-ReimaginingFutures",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "UNESCO International Commission on the Futures of Education"
+      ],
+      "year": 2022,
+      "title": "Reimagining Our Futures Together: A New Social Contract for Education",
+      "venue": "UNESCO",
+      "doi": null,
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000379707",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "UNESCO",
+        "global-curriculum",
+        "social-contract"
+      ],
+      "key_claims": [
+        "新教育社会契约：合作团结、共同学习、协同创造",
+        "课程须围绕生态、智识、社会、技术四个能力领域重构",
+        "终身学习与跨年龄共学是未来课程的核心范式"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "UNESCO 教育未来委员会全球课程愿景",
+      "module": "M04"
+    },
+    "M04-2022-MOE-CourseStandards": {
+      "id": "M04-2022-MOE-CourseStandards",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "中华人民共和国教育部"
+      ],
+      "year": 2022,
+      "title": "义务教育课程方案和课程标准（2022 年版）",
+      "venue": "北京师范大学出版社",
+      "doi": null,
+      "url": "http://www.moe.gov.cn/srcsite/A26/s8001/202204/t20220420_619921.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "policy",
+        "K-9-curriculum"
+      ],
+      "key_claims": [
+        "中国义务教育课程方案 2022 年版：核心素养导向、跨学科主题学习",
+        "「跨学科主题学习」不少于课时总数 10%",
+        "OWL 课程在中国境内合规对标的国家课程标准"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土合规依据：教育部 2022 课程标准",
+      "module": "M04"
+    },
+    "M04-2020-CER-SangGuoyuan": {
+      "id": "M04-2020-CER-SangGuoyuan",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "桑国元",
+        "叶碧欣"
+      ],
+      "year": 2020,
+      "title": "项目化学习的核心要素与实施策略——基于深度学习视角",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202003.htm",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "China-local",
+        "PBL",
+        "deep-learning"
+      ],
+      "key_claims": [
+        "项目化学习的核心要素：真实问题、持续探究、公开成果、深度反思",
+        "本土实施策略：教师角色、学生自主、跨学科整合、评价改革",
+        "中国 PBL 实践与本土文化的融合路径"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：项目化学习的本土深化研究",
+      "module": "M04"
+    },
+    "M04-2018-Krajcik-Czerniak": {
+      "id": "M04-2018-Krajcik-Czerniak",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Krajcik, J.S.",
+        "Czerniak, C.M."
+      ],
+      "year": 2018,
+      "title": "Teaching Science in Elementary and Middle School: A Project-Based Learning Approach (5th ed.)",
+      "venue": "Routledge",
+      "doi": "10.4324/9781315205014",
+      "url": "https://www.routledge.com/Teaching-Science-in-Elementary-and-Middle-School-A-Project-Based-Learning/Krajcik-Czerniak/p/book/9781138802735",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "PBL",
+        "K-8",
+        "science-education",
+        "implementation"
+      ],
+      "key_claims": [
+        "PBL 在 K-8 科学教育中的具体实施框架",
+        "驱动问题、调查活动、协作社区、技术使用、可见产物五要素",
+        "教师角色：学习活动设计者、思维促进者、资源协调者"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "PBL K-8 科学教学的权威实施手册（第 5 版）",
+      "module": "M04"
+    },
     "M05-001": {
       "id": "M05-001",
       "aliases": [],
@@ -2505,6 +2861,390 @@
       "verified_by": null,
       "verified_date": null,
       "notes": "arXiv 2024 - AI 教师仪表板原型",
+      "module": "M05"
+    },
+    "M05-2012-Anderson-Makers": {
+      "id": "M05-2012-Anderson-Makers",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Anderson, C."
+      ],
+      "year": 2012,
+      "title": "Makers: The New Industrial Revolution",
+      "venue": "Crown Business",
+      "doi": null,
+      "url": "https://www.penguinrandomhouse.com/books/207020/makers-by-chris-anderson/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "maker-movement",
+        "tool-democratization",
+        "manufacturing"
+      ],
+      "key_claims": [
+        "数字制造工具（3D 打印、激光切割、CNC）使个人可承担工业级制造",
+        "工具民主化是新工业革命的核心动因",
+        "OWL 工具论的政治经济学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "工具民主化主场依据：Wired 前主编的奠基性论述",
+      "module": "M05"
+    },
+    "M05-2014-Hatch-Manifesto": {
+      "id": "M05-2014-Hatch-Manifesto",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Hatch, M."
+      ],
+      "year": 2014,
+      "title": "The Maker Movement Manifesto: Rules for Innovation in the New World of Crafters, Hackers, and Tinkerers",
+      "venue": "McGraw-Hill",
+      "doi": null,
+      "url": "https://www.mhprofessional.com/9780071821131-usa-the-maker-movement-manifesto-rules-for-innovation-in-the-new-world-of-crafters-hackers-and-tinkerers-group",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "maker-movement",
+        "values",
+        "manifesto"
+      ],
+      "key_claims": [
+        "创客运动九条核心价值：制作、分享、给予、学习、装备、玩、参与、支持、改变",
+        "工具不只是器物，承载共同体的价值观",
+        "OWL 工具规范的价值观源头"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "TechShop 创始人的创客运动宣言",
+      "module": "M05"
+    },
+    "M05-2014-HER-HalversonSheridan": {
+      "id": "M05-2014-HER-HalversonSheridan",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Halverson, E.R.",
+        "Sheridan, K."
+      ],
+      "year": 2014,
+      "title": "The Maker Movement in Education",
+      "venue": "Harvard Educational Review",
+      "doi": "10.17763/haer.84.4.34j1g68140382063",
+      "url": "https://meridian.allenpress.com/her/article-abstract/84/4/495/32116/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "maker-education",
+        "review"
+      ],
+      "key_claims": [
+        "创客教育在三个维度：制作、创客身份、创客空间",
+        "教育创客实践需在「学习者主体」与「教学结构」间平衡",
+        "工具选择影响创客身份的形成"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Harvard Educational Review 创客教育权威综述（与 M01-010 同源，alias 标注）",
+      "module": "M05"
+    },
+    "M05-2012-Pearce-Science": {
+      "id": "M05-2012-Pearce-Science",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Pearce, J.M."
+      ],
+      "year": 2012,
+      "title": "Building Research Equipment with Free, Open-Source Hardware",
+      "venue": "Science",
+      "doi": "10.1126/science.1228183",
+      "url": "https://www.science.org/doi/10.1126/science.1228183",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "open-source-hardware",
+        "scientific-equipment",
+        "cost-reduction"
+      ],
+      "key_claims": [
+        "开源硬件可将科研设备成本降低 90% 以上",
+        "开放设计实现「全球设计、本地制造」",
+        "OWL 教育级研究仪器配置的成本优化路径"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Science 期刊 — 开源硬件应用于科研的奠基论述",
+      "module": "M05"
+    },
+    "M05-2013-Wittbrodt-3DEcon": {
+      "id": "M05-2013-Wittbrodt-3DEcon",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Wittbrodt, B.T.",
+        "Glover, A.G.",
+        "Laureto, J.",
+        "Anzalone, G.C.",
+        "Oppliger, D.",
+        "Irwin, J.L.",
+        "Pearce, J.M."
+      ],
+      "year": 2013,
+      "title": "Life-cycle economic analysis of distributed manufacturing with open-source 3-D printers",
+      "venue": "Mechatronics",
+      "doi": "10.1016/j.mechatronics.2013.06.002",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0957415813001153",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "3D-printing",
+        "open-source",
+        "economic-analysis"
+      ],
+      "key_claims": [
+        "家用 3D 打印机的全生命周期投资回报率 200%-1000%（取决于打印物品）",
+        "开源工具供应链显著降低硬件总成本",
+        "OWL 设备采购的低成本-高资源双轨依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "3D 打印生命周期经济分析的经典实证",
+      "module": "M05"
+    },
+    "M05-2021-IJTDE-Niiranen": {
+      "id": "M05-2021-IJTDE-Niiranen",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Niiranen, S."
+      ],
+      "year": 2021,
+      "title": "Maker pedagogy in the framework of constructive learning",
+      "venue": "International Journal of Technology and Design Education",
+      "doi": "10.1007/s10798-021-09681-7",
+      "url": "https://link.springer.com/article/10.1007/s10798-021-09681-7",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "maker-pedagogy",
+        "constructive-learning",
+        "review"
+      ],
+      "key_claims": [
+        "创客教学法在建构主义框架下的系统化梳理",
+        "工具的可见性、可摆弄性、可组合性是关键设计变量",
+        "教师作为 maker mentor 的角色定位"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "建构主义框架下的创客教学法综述",
+      "module": "M05"
+    },
+    "M05-2023-UNESCO-GenAI": {
+      "id": "M05-2023-UNESCO-GenAI",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "UNESCO"
+      ],
+      "year": 2023,
+      "title": "Guidance for Generative AI in Education and Research",
+      "venue": "UNESCO",
+      "doi": null,
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000386693",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "GenAI",
+        "policy",
+        "education",
+        "ethics"
+      ],
+      "key_claims": [
+        "GenAI 在教育中应用的国际政策指南",
+        "数据保护、年龄限制、教师能力建设是三大支柱",
+        "13 岁以下用户使用 GenAI 须有教师/监护人监督"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "UNESCO GenAI 教育政策指南——OWL AI 工具上架对标",
+      "module": "M05"
+    },
+    "M05-2024-LMI-Selwyn": {
+      "id": "M05-2024-LMI-Selwyn",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Selwyn, N."
+      ],
+      "year": 2024,
+      "title": "On the limits of artificial intelligence (AI) in education",
+      "venue": "Nordisk tidsskrift for pedagogikk og kritikk",
+      "doi": "10.23865/ntpk.v10.6062",
+      "url": "https://pedagogikkogkritikk.no/index.php/ntpk/article/view/6062",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "AI-critique",
+        "limits",
+        "education"
+      ],
+      "key_claims": [
+        "AI 在教育中存在结构性局限：去情境、去关系、去主体",
+        "工具民主化的阴面：算力与数据集中加剧不平等",
+        "OWL 工具论必须包含「不使用 AI」作为正当选项"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "教育 AI 批判视角——平衡乐观叙事的必要参照",
+      "module": "M05"
+    },
+    "M05-2021-CET-LiMang": {
+      "id": "M05-2021-CET-LiMang",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "李芒",
+        "申静洁"
+      ],
+      "year": 2021,
+      "title": "教育技术学视野下的创客教育及其本土化路径",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202105.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "maker-education",
+        "localization"
+      ],
+      "key_claims": [
+        "中国创客教育需在引进 + 本土化间找平衡",
+        "本土化路径：政策合规、文化适应、师资建设、评价改革",
+        "工具引入须与本土课程标准（M04 引用）耦合"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：创客教育本土化路径",
+      "module": "M05"
+    },
+    "M05-2018-MET-ZhongBaichang": {
+      "id": "M05-2018-MET-ZhongBaichang",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "钟柏昌",
+        "刘晓凡"
+      ],
+      "year": 2018,
+      "title": "论创客教育的课程论建构",
+      "venue": "现代教育技术",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-XJJS201810.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "maker-curriculum",
+        "theory"
+      ],
+      "key_claims": [
+        "中国创客教育课程论的本土建构",
+        "工具、项目、空间、人员四位一体的课程结构",
+        "本土工具栈选择须考虑供应链可持续性与维修可行性"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 2：创客教育课程论",
+      "module": "M05"
+    },
+    "M05-2020-IJSTEM-Vargas": {
+      "id": "M05-2020-IJSTEM-Vargas",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Vargas-Madriz, L.F.",
+        "Nocente, N."
+      ],
+      "year": 2020,
+      "title": "A systematic review of empirical studies on student engagement in makerspaces and other maker contexts",
+      "venue": "International Journal of STEM Education",
+      "doi": "10.1186/s40594-020-00226-3",
+      "url": "https://stemeducationjournal.springeropen.com/articles/10.1186/s40594-020-00226-3",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "makerspace",
+        "engagement",
+        "systematic-review"
+      ],
+      "key_claims": [
+        "47 项实证研究的系统综述：创客空间在投入感、协作、创造力上的可量化效益",
+        "工具触手可及与教师在场是投入感的核心驱动",
+        "评估方法的多样性是该领域的主要研究空白"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "创客空间投入感的系统综述（IJ STEM Education 2020）",
       "module": "M05"
     },
     "M06-001": {
@@ -4419,7 +5159,17 @@
       "M04-2025-EJMSTE-Arifin",
       "M04-2025-FrontEdu-GuidedInquiry",
       "M04-2024-Greek-IBL",
-      "M04-2025-Educ-CroatianSTEM"
+      "M04-2025-Educ-CroatianSTEM",
+      "M04-2000-Thomas-PBLReview",
+      "M04-2004-EdPsy-HmeloSilver",
+      "M04-2017-MDRC-Condliffe",
+      "M04-2019-EduRes-Chen",
+      "M04-2007-NRC-TakingScience",
+      "M04-2013-Vasquez-STEMByGrade",
+      "M04-2022-UNESCO-ReimaginingFutures",
+      "M04-2022-MOE-CourseStandards",
+      "M04-2020-CER-SangGuoyuan",
+      "M04-2018-Krajcik-Czerniak"
     ],
     "M05": [
       "M05-001",
@@ -4430,7 +5180,18 @@
       "M05-2025-PMC-CogOffload",
       "M05-2026-IJSTEM-CogScaffold",
       "M05-2025-Microsoft-CritThink",
-      "M05-2024-arXiv-LearnLens"
+      "M05-2024-arXiv-LearnLens",
+      "M05-2012-Anderson-Makers",
+      "M05-2014-Hatch-Manifesto",
+      "M05-2014-HER-HalversonSheridan",
+      "M05-2012-Pearce-Science",
+      "M05-2013-Wittbrodt-3DEcon",
+      "M05-2021-IJTDE-Niiranen",
+      "M05-2023-UNESCO-GenAI",
+      "M05-2024-LMI-Selwyn",
+      "M05-2021-CET-LiMang",
+      "M05-2018-MET-ZhongBaichang",
+      "M05-2020-IJSTEM-Vargas"
     ],
     "M06": [
       "M06-001",
