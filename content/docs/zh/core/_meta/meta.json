@@ -1,6 +1,7 @@
 {
   "title": "元数据与配置",
   "pages": [
+    "cross-module-matrix",
     "evidence-levels"
   ]
 }
