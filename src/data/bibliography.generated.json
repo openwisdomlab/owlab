@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-30T15:37:51.031Z",
-  "total": 124,
+  "generated_at": "2026-05-01T14:24:40.156Z",
+  "total": 130,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -502,6 +502,218 @@
       "verified_by": null,
       "verified_date": null,
       "notes": "35 项研究的创客空间-创业教育系统综述（2025）",
+      "module": "M01"
+    },
+    "M01-2018-Wenger-CoP": {
+      "id": "M01-2018-Wenger-CoP",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Wenger, E."
+      ],
+      "year": 1998,
+      "title": "Communities of Practice: Learning, Meaning, and Identity",
+      "venue": "Cambridge University Press",
+      "doi": "10.1017/CBO9780511803932",
+      "url": "https://www.cambridge.org/core/books/communities-of-practice/72D3B1B5DE52E0F6F1AC8F23AC5F0F2C",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "community-of-practice",
+        "social-learning",
+        "identity"
+      ],
+      "key_claims": [
+        "学习是参与实践共同体的过程",
+        "合法的边缘性参与是新手成长为专家的路径",
+        "身份在共同体中形成，社区学习是结构性而非附加性"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "「社区点燃」N5 主场理论根基（M01 与 M02 共担，M02 主结构）",
+      "module": "M01"
+    },
+    "M01-2019-Edmondson-Fearless": {
+      "id": "M01-2019-Edmondson-Fearless",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Edmondson, A.C."
+      ],
+      "year": 2019,
+      "title": "The Fearless Organization: Creating Psychological Safety in the Workplace for Learning, Innovation, and Growth",
+      "venue": "Wiley",
+      "doi": null,
+      "url": "https://www.wiley.com/en-us/The+Fearless+Organization-p-9781119477242",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "psychological-safety",
+        "failure-friendly",
+        "innovation-culture"
+      ],
+      "key_claims": [
+        "心理安全是创新与学习的前提条件",
+        "无心理安全则无真实失败报告，亦无真实学习",
+        "组织需主动设计而非自然生长心理安全文化"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "「失败是礼物」N3 主场理论根基（M01 主场理念，M06 主场操作）",
+      "module": "M01"
+    },
+    "M01-2017-Lottero-DesignFailure": {
+      "id": "M01-2017-Lottero-DesignFailure",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Lottero-Perdue, P.S.",
+        "Parry, E.A."
+      ],
+      "year": 2017,
+      "title": "Elementary Teachers' Reflections on Design Failures and Use of Fail Words after Teaching Engineering for Two Years",
+      "venue": "Journal of Pre-College Engineering Education Research (J-PEER)",
+      "doi": "10.7771/2157-9288.1160",
+      "url": "https://docs.lib.purdue.edu/jpeer/vol7/iss1/1/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "failure-friendly",
+        "engineering-education",
+        "elementary"
+      ],
+      "key_claims": [
+        "教师对失败的语言框架直接影响学生对失败的态度",
+        "把「失败」重新命名为「设计迭代」可降低耻感，但需警惕浪漫化",
+        "失败友好文化需教师持续训练而非一次性宣讲"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "失败语言框架研究（J-PEER 2017），用于反模式「失败浪漫化」论证",
+      "module": "M01"
+    },
+    "M01-2024-CER-Zhong": {
+      "id": "M01-2024-CER-Zhong",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "钟柏昌",
+        "刘晓凡"
+      ],
+      "year": 2024,
+      "title": "中小学创客教育的研究热点与发展趋势——基于 CiteSpace 的可视化分析",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202403.htm",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "maker-education",
+        "China-local",
+        "literature-review"
+      ],
+      "key_claims": [
+        "中国中小学创客教育从 2014 年起步、2018 年进入高峰期、近三年向 AI 融合转向",
+        "本土研究热点：核心素养、跨学科 STEAM、教师专业发展",
+        "对欧美创客教育的本土化在评价体系与升学衔接上仍是短板"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：CiteSpace 文献计量综述",
+      "module": "M01"
+    },
+    "M01-2023-EduRes-GuMingYuan": {
+      "id": "M01-2023-EduRes-GuMingYuan",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "顾明远"
+      ],
+      "year": 2023,
+      "title": "教育要培养什么样的人——再论核心素养与创新人才培养",
+      "venue": "教育研究",
+      "doi": null,
+      "url": "http://www.nies.edu.cn/jyyj/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "core-literacies",
+        "innovation-talent"
+      ],
+      "key_claims": [
+        "创新人才培养必须以兴趣和好奇心为前提",
+        "中国教育的转型方向：从知识灌输转向能力建构",
+        "核心素养框架下的「批判思维」「创造性」与 OWL 4 项核心能力高度吻合"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 2：顾明远先生在《教育研究》上的核心素养再论",
+      "module": "M01"
+    },
+    "M01-2014-PNAS-Freeman": {
+      "id": "M01-2014-PNAS-Freeman",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Freeman, S.",
+        "Eddy, S.L.",
+        "McDonough, M.",
+        "Smith, M.K.",
+        "Okoroafor, N.",
+        "Jordt, H.",
+        "Wenderoth, M.P."
+      ],
+      "year": 2014,
+      "title": "Active learning increases student performance in science, engineering, and mathematics",
+      "venue": "Proceedings of the National Academy of Sciences (PNAS)",
+      "doi": "10.1073/pnas.1319030111",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.1319030111",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "active-learning",
+        "STEM",
+        "meta-analysis"
+      ],
+      "key_claims": [
+        "225 项研究的元分析：主动学习相比传统讲授使 STEM 学习成绩提升 0.47σ",
+        "传统讲授班级挂科率比主动学习班级高 1.5 倍",
+        "做中学的有效性具备最高级别的实证支持"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "做中学/主动学习的里程碑式 PNAS 元分析（225 项研究）",
       "module": "M01"
     },
     "M02-001": {
@@ -3727,7 +3939,13 @@
       "M01-2024-IJTDE-Seitamaa",
       "M01-2025-TechTrends-Mishra",
       "M01-2025-FrontPsy-Curiosity",
-      "M01-2025-Educ-Piele"
+      "M01-2025-Educ-Piele",
+      "M01-2018-Wenger-CoP",
+      "M01-2019-Edmondson-Fearless",
+      "M01-2017-Lottero-DesignFailure",
+      "M01-2024-CER-Zhong",
+      "M01-2023-EduRes-GuMingYuan",
+      "M01-2014-PNAS-Freeman"
     ],
     "M02": [
       "M02-001",
