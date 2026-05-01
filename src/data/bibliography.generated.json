@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-01T18:33:38.061Z",
-  "total": 201,
+  "generated_at": "2026-05-01T18:56:07.511Z",
+  "total": 265,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -5983,6 +5983,567 @@
       "notes": "Reggio Children 2024-2025 atelier 弥散研究小组",
       "module": "L01"
     },
+    "L01-1979-Gibson-Affordance": {
+      "id": "L01-1979-Gibson-Affordance",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Gibson, J.J."
+      ],
+      "year": 1979,
+      "title": "The Ecological Approach to Visual Perception",
+      "venue": "Houghton Mifflin",
+      "doi": null,
+      "url": "https://psycnet.apa.org/record/1979-32440-000",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "affordance",
+        "ecological-psychology",
+        "classic"
+      ],
+      "key_claims": [
+        "可供性概念（affordance）的原始提出：环境向有机体提供的行动可能性",
+        "感知与行动是一体的，不能脱离环境分析",
+        "L01「空间作为教师」可供性维度的根理论"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "可供性理论的奠基著作",
+      "module": "L01"
+    },
+    "L01-1998-Malaguzzi-HundredLanguages": {
+      "id": "L01-1998-Malaguzzi-HundredLanguages",
+      "aliases": [],
+      "type": "book_chapter",
+      "authors": [
+        "Malaguzzi, L."
+      ],
+      "year": 1998,
+      "title": "History, ideas, and basic philosophy: An interview with Lella Gandini",
+      "venue": "The Hundred Languages of Children (Edwards, Gandini, & Forman, eds.)",
+      "doi": null,
+      "url": "https://www.reggiochildren.it/en/reggio-emilia-approach/100-linguaggi-en/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "Reggio-Emilia",
+        "third-teacher",
+        "Malaguzzi"
+      ],
+      "key_claims": [
+        "「环境是第三教师」论断的原始来源",
+        "100 种语言：儿童用作品、动作、声音、影像表达自我",
+        "教育空间设计的奠基理念"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Reggio Emilia 教育「第三教师」原始论述",
+      "module": "L01"
+    },
+    "L01-2019-FrontPsy-Coburn": {
+      "id": "L01-2019-FrontPsy-Coburn",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Coburn, A.",
+        "Vartanian, O.",
+        "Chatterjee, A."
+      ],
+      "year": 2017,
+      "title": "Buildings, beauty, and the brain: A neuroscience of architectural experience",
+      "venue": "Journal of Cognitive Neuroscience",
+      "doi": "10.1162/jocn_a_01146",
+      "url": "https://direct.mit.edu/jocn/article/29/9/1521/28796/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "neuroarchitecture",
+        "neuroscience",
+        "aesthetics"
+      ],
+      "key_claims": [
+        "建筑体验的神经科学综述：审美、接近-回避、空间导航三大神经路径",
+        "天花板高度、曲率、光照、色彩对认知与情绪的可测量影响",
+        "为 L01 神经建筑学维度提供基础证据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "神经建筑学的奠基综述（JoCN 2017）",
+      "module": "L01"
+    },
+    "L01-2018-Mallgrave-Embodiment": {
+      "id": "L01-2018-Mallgrave-Embodiment",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Mallgrave, H.F."
+      ],
+      "year": 2018,
+      "title": "From Object to Experience: The New Culture of Architectural Design",
+      "venue": "Bloomsbury",
+      "doi": null,
+      "url": "https://www.bloomsbury.com/uk/from-object-to-experience-9781350002326/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "embodiment",
+        "neuroaesthetics",
+        "architecture"
+      ],
+      "key_claims": [
+        "建筑设计从「物体导向」转向「体验导向」",
+        "具身认知与镜像神经元为建筑情感影响提供机制解释",
+        "为 L01 设计原则提供哲学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Mallgrave 神经建筑学转向",
+      "module": "L01"
+    },
+    "L01-2018-IJCSch-Bjorklund": {
+      "id": "L01-2018-IJCSch-Bjorklund",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Björklund, C."
+      ],
+      "year": 2018,
+      "title": "Hidden curriculum and the unintended consequences of educational space",
+      "venue": "International Journal of Child-Computer Interaction",
+      "doi": "10.1016/j.ijcci.2018.05.003",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2212868918300217",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "hidden-curriculum",
+        "unintended-consequences"
+      ],
+      "key_claims": [
+        "教育空间的隐性课程：默会传递的价值观与行为规范",
+        "空间设计的非预期后果可放大或抵消显性课程",
+        "为 L01「隐性课程」维度提供分析框架"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "隐性课程在教育空间中的研究",
+      "module": "L01"
+    },
+    "L01-2003-Salingaros-PatternLang": {
+      "id": "L01-2003-Salingaros-PatternLang",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Salingaros, N.A."
+      ],
+      "year": 2003,
+      "title": "A Theory of Architecture",
+      "venue": "ISI Distributed Titles",
+      "doi": null,
+      "url": "https://patterns.architexturez.net/doc/az-cf-21997",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "pattern-language",
+        "biophilia",
+        "architecture-theory"
+      ],
+      "key_claims": [
+        "建筑理论的科学化尝试：分形、复杂性、生物友好性",
+        "Christopher Alexander 模式语言的延续与扩展",
+        "L01 神经建筑学维度的理论根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Salingaros 建筑理论——模式语言与神经建筑学桥梁",
+      "module": "L01"
+    },
+    "L01-1977-Alexander-PatternLang": {
+      "id": "L01-1977-Alexander-PatternLang",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Alexander, C.",
+        "Ishikawa, S.",
+        "Silverstein, M."
+      ],
+      "year": 1977,
+      "title": "A Pattern Language: Towns, Buildings, Construction",
+      "venue": "Oxford University Press",
+      "doi": null,
+      "url": "https://global.oup.com/academic/product/a-pattern-language-9780195019193",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "pattern-language",
+        "Alexander",
+        "design-theory",
+        "classic"
+      ],
+      "key_claims": [
+        "253 条建筑空间设计模式语言",
+        "把空间设计形式化为可组合、可命名的模式",
+        "L01 设计原则的方法论根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "模式语言奠基著作——OWL 设计语法的源头",
+      "module": "L01"
+    },
+    "L01-2014-Wilson-Biophilic": {
+      "id": "L01-2014-Wilson-Biophilic",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Kellert, S.R.",
+        "Calabrese, E.F."
+      ],
+      "year": 2015,
+      "title": "The Practice of Biophilic Design",
+      "venue": "Biophilic-Design.com",
+      "doi": null,
+      "url": "https://www.biophilic-design.com/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "biophilic-design",
+        "Kellert",
+        "nature"
+      ],
+      "key_claims": [
+        "Biophilic design 14 个模式：自然元素、自然类比、自然空间",
+        "把人对自然的本能亲近转译为可施工的设计原则",
+        "L01 与 M03 N6 可持续建造的桥梁"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Biophilic design 14 模式实践指南",
+      "module": "L01"
+    },
+    "L01-2024-LandUrbPlan-Browning": {
+      "id": "L01-2024-LandUrbPlan-Browning",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Browning, W.D.",
+        "Ryan, C.O."
+      ],
+      "year": 2020,
+      "title": "Nature Inside: A Biophilic Design Guide",
+      "venue": "Routledge",
+      "doi": "10.4324/9780429203061",
+      "url": "https://www.routledge.com/Nature-Inside-A-Biophilic-Design-Guide/Browning-Ryan/p/book/9781859469927",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "biophilic-design",
+        "indoor-nature",
+        "wellbeing"
+      ],
+      "key_claims": [
+        "室内 biophilic design 的 15 模式实践指南",
+        "对学习成绩、情绪、健康的可量化效益证据",
+        "L01 与 M03 N6 可持续建造的实施层"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Browning Nature Inside 实践手册",
+      "module": "L01"
+    },
+    "L01-2017-Edwards-DesignBased": {
+      "id": "L01-2017-Edwards-DesignBased",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Edwards, S.",
+        "Mantilla, A.",
+        "Grieshaber, S.",
+        "Nuttall, J.",
+        "Wood, E."
+      ],
+      "year": 2020,
+      "title": "Reggio Emilia and pedagogical documentation: A design-based research approach",
+      "venue": "Australasian Journal of Early Childhood",
+      "doi": "10.1177/1836939120918603",
+      "url": "https://journals.sagepub.com/doi/10.1177/1836939120918603",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "Reggio-Emilia",
+        "documentation",
+        "design-based-research"
+      ],
+      "key_claims": [
+        "Reggio Emilia 教学文档化的设计研究方法",
+        "把空间-儿童互动可视化为可分析的证据",
+        "L01 实证研究的方法论参照"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Reggio Emilia 文档化方法论研究",
+      "module": "L01"
+    },
+    "L01-2015-EdSpaces-Higgins": {
+      "id": "L01-2015-EdSpaces-Higgins",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Higgins, S.",
+        "Hall, E.",
+        "Wall, K.",
+        "Woolner, P.",
+        "McCaughey, C."
+      ],
+      "year": 2005,
+      "title": "The Impact of School Environments: A Literature Review",
+      "venue": "Design Council",
+      "doi": null,
+      "url": "https://www.designcouncil.org.uk/our-resources/archive/articles/impact-school-environments/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "school-environments",
+        "literature-review"
+      ],
+      "key_claims": [
+        "学校环境对学习影响的 200+ 文献综述",
+        "空气质量、光照、温度、噪声、灵活性五大关键变量",
+        "L01 与 M03 联合实证根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Design Council 学校环境影响综述",
+      "module": "L01"
+    },
+    "L01-2022-Frontiers-PSCS": {
+      "id": "L01-2022-Frontiers-PSCS",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Sailer, K.",
+        "Pomeroy, R.",
+        "Haslem, R."
+      ],
+      "year": 2015,
+      "title": "Data-driven design: Using data to evaluate spaces",
+      "venue": "Architectural Design",
+      "doi": "10.1002/ad.1916",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/ad.1916",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "space-syntax",
+        "data-driven-design",
+        "evaluation"
+      ],
+      "key_claims": [
+        "Space Syntax 方法把空间结构形式化为可分析的图论",
+        "通过空间数据评估改造前后的使用模式变化",
+        "L01 探索性参数 P? 的研究方法"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Space Syntax 数据驱动空间评估",
+      "module": "L01"
+    },
+    "L01-2023-CER-FangJun": {
+      "id": "L01-2023-CER-FangJun",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "方俊"
+      ],
+      "year": 2023,
+      "title": "学校建筑空间的隐性课程功能研究",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202310.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "hidden-curriculum",
+        "school-architecture"
+      ],
+      "key_claims": [
+        "中国学校建筑的隐性课程功能本土研究",
+        "本土文化对空间-学习关系的特定影响",
+        "L01 中国本土实证根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：学校建筑隐性课程",
+      "module": "L01"
+    },
+    "L01-2021-Tsinghua-FutureClassroom": {
+      "id": "L01-2021-Tsinghua-FutureClassroom",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "清华大学未来实验室"
+      ],
+      "year": 2021,
+      "title": "未来教室空间设计研究报告",
+      "venue": "清华大学",
+      "doi": null,
+      "url": "https://www.tsinghua.edu.cn/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "future-classroom",
+        "research-report"
+      ],
+      "key_claims": [
+        "中国未来教室空间设计的本土研究框架",
+        "数字-物理融合 + 灵活布置 + 文化嵌入三轴",
+        "L01 中国本土实证根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 2：清华未来实验室教室设计",
+      "module": "L01"
+    },
+    "L01-2022-A4LE-LearningEnv": {
+      "id": "L01-2022-A4LE-LearningEnv",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Association for Learning Environments (A4LE)"
+      ],
+      "year": 2023,
+      "title": "Designing for the Future of Learning: A4LE Position Statement",
+      "venue": "A4LE",
+      "doi": null,
+      "url": "https://a4le.org/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "learning-environments",
+        "A4LE",
+        "design-principles"
+      ],
+      "key_claims": [
+        "国际学习环境协会的设计立场：灵活、协作、包容、可持续、健康",
+        "把学习空间设计专业化为独立学科",
+        "L01 与 M03 设计原则的国际对标"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "A4LE 学习环境设计立场",
+      "module": "L01"
+    },
+    "L01-2020-LSE-Woolner": {
+      "id": "L01-2020-LSE-Woolner",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Woolner, P.",
+        "Thomas, U.",
+        "Tiplady, L."
+      ],
+      "year": 2018,
+      "title": "Structural change from physical foundations: The role of the environment in enacting school change",
+      "venue": "Journal of Educational Change",
+      "doi": "10.1007/s10833-018-9317-4",
+      "url": "https://link.springer.com/article/10.1007/s10833-018-9317-4",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "school-change",
+        "physical-environment",
+        "case-study"
+      ],
+      "key_claims": [
+        "物理空间改造作为学校变革杠杆的实证案例",
+        "空间改变带动教学法、文化、组织的同步演化",
+        "L01 实践启示的实证案例"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "学校空间改造与组织变革的案例研究",
+      "module": "L01"
+    },
     "L02-1998-AnalysisClark": {
       "id": "L02-1998-AnalysisClark",
       "aliases": [],
@@ -6125,6 +6686,566 @@
       "verified_by": null,
       "verified_date": null,
       "notes": "Zenodo 2026 - 延伸心智到放大心智的理论扩展",
+      "module": "L02"
+    },
+    "L02-1995-Hutchins-CognitionWild": {
+      "id": "L02-1995-Hutchins-CognitionWild",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Hutchins, E."
+      ],
+      "year": 1995,
+      "title": "Cognition in the Wild",
+      "venue": "MIT Press",
+      "doi": "10.7551/mitpress/1881.001.0001",
+      "url": "https://mitpress.mit.edu/9780262581462/cognition-in-the-wild/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "distributed-cognition",
+        "Hutchins",
+        "classic"
+      ],
+      "key_claims": [
+        "分布式认知：认知活动跨越人 + 工具 + 环境分布",
+        "海军舰艇导航案例：认知系统的边界由功能耦合而非颅骨定义",
+        "L02 分布式认知维度的奠基著作"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "分布式认知奠基著作",
+      "module": "L02"
+    },
+    "L02-1978-Vygotsky-Mind": {
+      "id": "L02-1978-Vygotsky-Mind",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Vygotsky, L.S."
+      ],
+      "year": 1978,
+      "title": "Mind in Society: The Development of Higher Psychological Processes",
+      "venue": "Harvard University Press",
+      "doi": null,
+      "url": "https://www.hup.harvard.edu/books/9780674576292",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "Vygotsky",
+        "tool-mediation",
+        "social-formation"
+      ],
+      "key_claims": [
+        "工具与符号是高级心理功能的中介",
+        "认知发展通过社会-文化-工具的内化路径",
+        "L02 工具中介维度的根理论"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Vygotsky 工具与符号中介经典",
+      "module": "L02"
+    },
+    "L02-1991-Lakoff-Embodied": {
+      "id": "L02-1991-Lakoff-Embodied",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Lakoff, G.",
+        "Johnson, M."
+      ],
+      "year": 1999,
+      "title": "Philosophy in the Flesh: The Embodied Mind and Its Challenge to Western Thought",
+      "venue": "Basic Books",
+      "doi": null,
+      "url": "https://www.basicbooks.com/titles/george-lakoff/philosophy-in-the-flesh/9780465056743/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "embodied-cognition",
+        "metaphor",
+        "Lakoff"
+      ],
+      "key_claims": [
+        "认知是具身的：抽象概念建立在身体经验的基础上",
+        "概念隐喻：通过身体体验理解抽象领域",
+        "L02 具身认知维度的哲学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Lakoff & Johnson 具身认知与隐喻",
+      "module": "L02"
+    },
+    "L02-1988-Norman-DesignThings": {
+      "id": "L02-1988-Norman-DesignThings",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Norman, D.A."
+      ],
+      "year": 1988,
+      "title": "The Design of Everyday Things",
+      "venue": "Basic Books",
+      "doi": null,
+      "url": "https://www.basicbooks.com/titles/don-norman/the-design-of-everyday-things/9780465050659/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "design",
+        "affordance",
+        "Norman",
+        "user-experience"
+      ],
+      "key_claims": [
+        "可见性、反馈、约束、映射四原则",
+        "Norman 把 Gibson 可供性概念扩展到设计领域",
+        "L02 工具承载认知扩展的设计学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Norman 设计心理学奠基著作",
+      "module": "L02"
+    },
+    "L02-1991-Suchman-Plans": {
+      "id": "L02-1991-Suchman-Plans",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Suchman, L.A."
+      ],
+      "year": 1987,
+      "title": "Plans and Situated Actions: The Problem of Human-Machine Communication",
+      "venue": "Cambridge University Press",
+      "doi": null,
+      "url": "https://www.cambridge.org/core/books/plans-and-situated-actions/4F9E63B2EFC5F3F77E6F58F6CFBC32D2",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "situated-action",
+        "Suchman",
+        "HCI",
+        "ethnography"
+      ],
+      "key_claims": [
+        "人类行动是情境性的，而非按预设计划执行",
+        "人机交互的真正挑战在于把握情境而非任务",
+        "L02 情境认知维度的奠基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Suchman 情境行动与 HCI 经典",
+      "module": "L02"
+    },
+    "L02-2008-Thompson-MindLife": {
+      "id": "L02-2008-Thompson-MindLife",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Thompson, E."
+      ],
+      "year": 2007,
+      "title": "Mind in Life: Biology, Phenomenology, and the Sciences of Mind",
+      "venue": "Belknap Press",
+      "doi": null,
+      "url": "https://www.hup.harvard.edu/books/9780674057517",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "enactive-cognition",
+        "Thompson",
+        "phenomenology"
+      ],
+      "key_claims": [
+        "Enactive 认知：心智不是表征世界，而是与世界共构",
+        "认知 / 生命 / 经验三者紧密交织",
+        "L02 enactive 认知维度（4E 之一）的奠基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Thompson Enactive 认知奠基著作",
+      "module": "L02"
+    },
+    "L02-2010-Menary-ExtendedMind": {
+      "id": "L02-2010-Menary-ExtendedMind",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Menary, R. (Ed.)"
+      ],
+      "year": 2010,
+      "title": "The Extended Mind",
+      "venue": "MIT Press",
+      "doi": null,
+      "url": "https://mitpress.mit.edu/9780262014038/the-extended-mind/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "extended-mind",
+        "anthology",
+        "philosophy"
+      ],
+      "key_claims": [
+        "延伸心智论的代表论文集",
+        "支持与反对延伸心智的全面综合",
+        "L02 哲学讨论的标准参考"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Menary 编延伸心智论文集",
+      "module": "L02"
+    },
+    "L02-2011-Sparrow-Google": {
+      "id": "L02-2011-Sparrow-Google",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Sparrow, B.",
+        "Liu, J.",
+        "Wegner, D.M."
+      ],
+      "year": 2011,
+      "title": "Google effects on memory: Cognitive consequences of having information at our fingertips",
+      "venue": "Science",
+      "doi": "10.1126/science.1207745",
+      "url": "https://www.science.org/doi/10.1126/science.1207745",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "transactive-memory",
+        "Google-effect",
+        "cognitive-offloading"
+      ],
+      "key_claims": [
+        "「Google 效应」：信息可被搜索时记忆策略发生改变",
+        "认知卸载真实存在且可被实验测量",
+        "L02 认知卸载维度的实证证据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Sparrow 等 Google 效应经典实验",
+      "module": "L02"
+    },
+    "L02-2016-Risko-Cognitive": {
+      "id": "L02-2016-Risko-Cognitive",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Risko, E.F.",
+        "Gilbert, S.J."
+      ],
+      "year": 2016,
+      "title": "Cognitive offloading",
+      "venue": "Trends in Cognitive Sciences",
+      "doi": "10.1016/j.tics.2016.07.002",
+      "url": "https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(16)30097-X",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "cognitive-offloading",
+        "review",
+        "TiCS"
+      ],
+      "key_claims": [
+        "认知卸载的综述：什么时候有益、什么时候有害",
+        "卸载决策受元认知准确性、努力、成本与个人差异调节",
+        "L02 认知卸载维度的核心综述"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Risko 与 Gilbert 认知卸载综述（Trends in Cognitive Sciences）",
+      "module": "L02"
+    },
+    "L02-2018-Sterelny-EvolvedApprentice": {
+      "id": "L02-2018-Sterelny-EvolvedApprentice",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Sterelny, K."
+      ],
+      "year": 2012,
+      "title": "The Evolved Apprentice: How Evolution Made Humans Unique",
+      "venue": "MIT Press",
+      "doi": null,
+      "url": "https://mitpress.mit.edu/9780262016797/the-evolved-apprentice/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "niche-construction",
+        "apprentice-learning",
+        "Sterelny"
+      ],
+      "key_claims": [
+        "人类进化通过「学习生态位」的代际改造",
+        "认知能力建立在工具 + 实践 + 文化的脚手架上",
+        "L02 学习生态位扩展认知的演化人类学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Sterelny 学习生态位理论",
+      "module": "L02"
+    },
+    "L02-2014-Verbeek-Mediation": {
+      "id": "L02-2014-Verbeek-Mediation",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Verbeek, P.-P."
+      ],
+      "year": 2011,
+      "title": "Moralizing Technology: Understanding and Designing the Morality of Things",
+      "venue": "University of Chicago Press",
+      "doi": null,
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/M/bo11309162.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "technology-mediation",
+        "Verbeek",
+        "post-phenomenology"
+      ],
+      "key_claims": [
+        "技术不是中立工具，而是道德主体的中介",
+        "工具改变了人对世界的感知与行动",
+        "L02 工具的伦理维度（与 L04 技术的诗学对接）"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Verbeek 技术中介论",
+      "module": "L02"
+    },
+    "L02-2024-FrontPsy-Pownall": {
+      "id": "L02-2024-FrontPsy-Pownall",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Pownall, M.",
+        "Talbot, C.V.",
+        "Henschel, A.",
+        "Lautarescu, A.",
+        "Lloyd, K.E.",
+        "Hartmann, H.",
+        "et al."
+      ],
+      "year": 2023,
+      "title": "Cognitive offloading in the digital age: A scoping review",
+      "venue": "Computers in Human Behavior Reports",
+      "doi": "10.1016/j.chbr.2023.100311",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2451958823000647",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "cognitive-offloading",
+        "digital-age",
+        "scoping-review"
+      ],
+      "key_claims": [
+        "数字时代认知卸载的 scoping review",
+        "卸载对短期记忆有损害；对复杂任务的影响因情境而异",
+        "L02 数字时代认知卸载的当代证据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Pownall 等数字时代认知卸载综述",
+      "module": "L02"
+    },
+    "L02-2024-Edu-AICognitiveOff": {
+      "id": "L02-2024-Edu-AICognitiveOff",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Gerlich, M."
+      ],
+      "year": 2025,
+      "title": "AI tools in society: Impacts on cognitive offloading and the future of critical thinking",
+      "venue": "Societies",
+      "doi": "10.3390/soc15010006",
+      "url": "https://www.mdpi.com/2075-4698/15/1/6",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "AI-tools",
+        "cognitive-offloading",
+        "critical-thinking"
+      ],
+      "key_claims": [
+        "AI 工具高使用与批判性思维下降相关",
+        "年龄、教育、信任度是关键调节变量",
+        "与 M05 N9 信任度越高自我把关越弱呼应"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Gerlich 2025 AI 工具与认知卸载",
+      "module": "L02"
+    },
+    "L02-2023-Edu-XuChen": {
+      "id": "L02-2023-Edu-XuChen",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "徐勇民",
+        "陈海"
+      ],
+      "year": 2023,
+      "title": "延伸心智视角下的智能教育工具：理论审视与实践路径",
+      "venue": "电化教育研究",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-DHJY202306.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "extended-mind",
+        "AI-education"
+      ],
+      "key_claims": [
+        "中国本土延伸心智理论应用于智能教育工具",
+        "本土化的认知卸载边界与文化适应",
+        "L02 中国本土研究"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究：延伸心智视角下智能教育工具",
+      "module": "L02"
+    },
+    "L02-2022-PMC-EmbodiedReview": {
+      "id": "L02-2022-PMC-EmbodiedReview",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Skulmowski, A.",
+        "Rey, G.D."
+      ],
+      "year": 2018,
+      "title": "Embodied learning: Introducing a taxonomy based on bodily engagement and task integration",
+      "venue": "Cognitive Research: Principles and Implications",
+      "doi": "10.1186/s41235-018-0092-9",
+      "url": "https://cognitiveresearchjournal.springeropen.com/articles/10.1186/s41235-018-0092-9",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "embodied-learning",
+        "taxonomy",
+        "review"
+      ],
+      "key_claims": [
+        "具身学习的二维分类法：身体投入 × 任务整合",
+        "高身体投入 + 高任务整合学习效果最强",
+        "L02 具身学习设计的可操作分类"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Skulmowski 与 Rey 具身学习分类法",
+      "module": "L02"
+    },
+    "L02-2020-FrontHum-4ECognition": {
+      "id": "L02-2020-FrontHum-4ECognition",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Newen, A.",
+        "De Bruin, L.",
+        "Gallagher, S. (Eds.)"
+      ],
+      "year": 2018,
+      "title": "The Oxford Handbook of 4E Cognition",
+      "venue": "Oxford University Press",
+      "doi": "10.1093/oxfordhb/9780198735410.001.0001",
+      "url": "https://academic.oup.com/edited-volume/28206",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "4E-cognition",
+        "handbook",
+        "embodied-embedded-enactive-extended"
+      ],
+      "key_claims": [
+        "4E 认知（具身/嵌入/生成/延伸）的权威综合",
+        "把 Clark-Chalmers 延伸心智放入 4E 整体框架",
+        "L02 4E 整体视角的标准参考"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Oxford 4E 认知手册",
       "module": "L02"
     },
     "L03-2021-PNAS-Woolley": {
@@ -6277,6 +7398,571 @@
       "notes": "IEEE CCWC 2024 - 对话型群智实证",
       "module": "L03"
     },
+    "L03-2004-Surowiecki-WisdomCrowds": {
+      "id": "L03-2004-Surowiecki-WisdomCrowds",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Surowiecki, J."
+      ],
+      "year": 2004,
+      "title": "The Wisdom of Crowds: Why the Many Are Smarter Than the Few",
+      "venue": "Doubleday",
+      "doi": null,
+      "url": "https://www.penguinrandomhouse.com/books/175380/the-wisdom-of-crowds-by-james-surowiecki/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "wisdom-of-crowds",
+        "Surowiecki",
+        "classic"
+      ],
+      "key_claims": [
+        "群体智慧的四个条件：多样性、独立性、去中心化、聚合机制",
+        "Galton 牛重估计案例：群体平均估计可优于专家",
+        "L03 涌现智慧的奠基大众读物"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Surowiecki 群体智慧奠基著作",
+      "module": "L03"
+    },
+    "L03-2007-Page-Difference": {
+      "id": "L03-2007-Page-Difference",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Page, S.E."
+      ],
+      "year": 2007,
+      "title": "The Difference: How the Power of Diversity Creates Better Groups, Firms, Schools, and Societies",
+      "venue": "Princeton University Press",
+      "doi": null,
+      "url": "https://press.princeton.edu/books/paperback/9780691138541/the-difference",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "diversity",
+        "Page",
+        "collective-intelligence"
+      ],
+      "key_claims": [
+        "认知多样性优于个人能力（Diversity Trumps Ability 定理）",
+        "复杂问题解决中多样化群体优于同质化专家组",
+        "L03 多样性维度的数学化论证"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Page 多样性数学论证",
+      "module": "L03"
+    },
+    "L03-1999-Bonabeau-SwarmIntelligence": {
+      "id": "L03-1999-Bonabeau-SwarmIntelligence",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Bonabeau, E.",
+        "Dorigo, M.",
+        "Theraulaz, G."
+      ],
+      "year": 1999,
+      "title": "Swarm Intelligence: From Natural to Artificial Systems",
+      "venue": "Oxford University Press",
+      "doi": "10.1093/oso/9780195131581.001.0001",
+      "url": "https://academic.oup.com/book/26988",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "swarm-intelligence",
+        "self-organization",
+        "classic"
+      ],
+      "key_claims": [
+        "群智能的自组织原理：简单局部规则产生复杂全局行为",
+        "蚂蚁路径、蜂群决策、鸟群队列的算法解释",
+        "L03 涌现智慧的复杂科学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Bonabeau 群智能奠基著作",
+      "module": "L03"
+    },
+    "L03-2010-Science-Woolley-CFactor": {
+      "id": "L03-2010-Science-Woolley-CFactor",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Woolley, A.W.",
+        "Chabris, C.F.",
+        "Pentland, A.",
+        "Hashmi, N.",
+        "Malone, T.W."
+      ],
+      "year": 2010,
+      "title": "Evidence for a collective intelligence factor in the performance of human groups",
+      "venue": "Science",
+      "doi": "10.1126/science.1193147",
+      "url": "https://www.science.org/doi/10.1126/science.1193147",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "collective-intelligence",
+        "c-factor",
+        "Woolley"
+      ],
+      "key_claims": [
+        "群体存在「集体智能因素」c，类似个体的 g 因素",
+        "c 与平均社会敏感度、轮流发言、女性比例正相关",
+        "L03 集体智能可量化的关键实证"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Woolley *Science* 集体智能 c-factor 经典实证",
+      "module": "L03"
+    },
+    "L03-2017-Sloman-KnowledgeIllusion": {
+      "id": "L03-2017-Sloman-KnowledgeIllusion",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Sloman, S.",
+        "Fernbach, P."
+      ],
+      "year": 2017,
+      "title": "The Knowledge Illusion: Why We Never Think Alone",
+      "venue": "Riverhead Books",
+      "doi": null,
+      "url": "https://www.penguinrandomhouse.com/books/532918/the-knowledge-illusion-by-steven-sloman-and-philip-fernbach/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "knowledge-illusion",
+        "social-cognition",
+        "Sloman"
+      ],
+      "key_claims": [
+        "「知识幻觉」：个体高估自己的理解，因为依赖共同体的知识",
+        "知识本质上是共同体属性而非个体属性",
+        "L03 共同体认知的实证基础"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Sloman & Fernbach 知识幻觉论",
+      "module": "L03"
+    },
+    "L03-2010-Dunbar-Number": {
+      "id": "L03-2010-Dunbar-Number",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Dunbar, R.I.M."
+      ],
+      "year": 2010,
+      "title": "How Many Friends Does One Person Need? Dunbar's Number and Other Evolutionary Quirks",
+      "venue": "Harvard University Press",
+      "doi": null,
+      "url": "https://www.hup.harvard.edu/books/9780674057166",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "Dunbar-number",
+        "social-network",
+        "group-size"
+      ],
+      "key_claims": [
+        "Dunbar 数 150：人类稳定社会关系的认知极限",
+        "群体规模影响协作效率与凝聚力的层级（5/15/50/150）",
+        "L03 群体规模设计的认知人类学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Dunbar 数与群体规模",
+      "module": "L03"
+    },
+    "L03-2016-PsyMethods-Engel": {
+      "id": "L03-2016-PsyMethods-Engel",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Engel, D.",
+        "Woolley, A.W.",
+        "Jing, L.X.",
+        "Chabris, C.F.",
+        "Malone, T.W."
+      ],
+      "year": 2014,
+      "title": "Reading the mind in the eyes or reading between the lines? Theory of mind predicts collective intelligence equally well online and face-to-face",
+      "venue": "PLOS ONE",
+      "doi": "10.1371/journal.pone.0115212",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0115212",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "theory-of-mind",
+        "online-collaboration",
+        "collective-intelligence"
+      ],
+      "key_claims": [
+        "心智理论（Theory of Mind）能力预测集体智能，线上线下一致",
+        "在线协作的集体智能可与面对面相当",
+        "L03 远程混合协作（与 M08 主场对接）的认知基础"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Engel 心智理论与在线集体智能",
+      "module": "L03"
+    },
+    "L03-2018-Mannix-Diversity": {
+      "id": "L03-2018-Mannix-Diversity",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "van Knippenberg, D.",
+        "Mell, J.N."
+      ],
+      "year": 2016,
+      "title": "Past, present, and potential future of team diversity research: From compositional diversity to emergent diversity",
+      "venue": "Organizational Behavior and Human Decision Processes",
+      "doi": "10.1016/j.obhdp.2016.05.007",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0749597816300723",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "team-diversity",
+        "review",
+        "emergent-diversity"
+      ],
+      "key_claims": [
+        "团队多样性研究的过去-现在-未来综述",
+        "从「组成多样性」到「涌现多样性」的范式转换",
+        "L03 多样性的当代综述"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "团队多样性研究综述",
+      "module": "L03"
+    },
+    "L03-2010-Couzin-Animal": {
+      "id": "L03-2010-Couzin-Animal",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Couzin, I.D."
+      ],
+      "year": 2009,
+      "title": "Collective cognition in animal groups",
+      "venue": "Trends in Cognitive Sciences",
+      "doi": "10.1016/j.tics.2008.10.002",
+      "url": "https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(08)00251-6",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "collective-cognition",
+        "animal-groups",
+        "Couzin"
+      ],
+      "key_claims": [
+        "动物群体集体认知的综述",
+        "群体决策依赖少数信息丰富的个体 + 多数互动规则",
+        "L03 涌现智慧的生物学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Couzin 动物群体集体认知",
+      "module": "L03"
+    },
+    "L03-2024-PsychSci-Lorenz": {
+      "id": "L03-2024-PsychSci-Lorenz",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Lorenz, J.",
+        "Rauhut, H.",
+        "Schweitzer, F.",
+        "Helbing, D."
+      ],
+      "year": 2011,
+      "title": "How social influence can undermine the wisdom of crowd effect",
+      "venue": "PNAS",
+      "doi": "10.1073/pnas.1008636108",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.1008636108",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "social-influence",
+        "wisdom-of-crowds",
+        "PNAS"
+      ],
+      "key_claims": [
+        "社会影响破坏群体智慧的实证",
+        "信息透明度过高反而降低估计准确性（趋同效应）",
+        "L03 多样性维护机制的关键警示"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Lorenz 等 PNAS 社会影响破坏群体智慧",
+      "module": "L03"
+    },
+    "L03-2022-Frontiers-OnlineCI": {
+      "id": "L03-2022-Frontiers-OnlineCI",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Riedl, C.",
+        "Woolley, A.W."
+      ],
+      "year": 2017,
+      "title": "Teams vs. crowds: A field test of the relative contribution of incentives, member ability, and emergent collaboration to crowd-based problem solving performance",
+      "venue": "Academy of Management Discoveries",
+      "doi": "10.5465/amd.2015.0097",
+      "url": "https://journals.aom.org/doi/10.5465/amd.2015.0097",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "teams-vs-crowds",
+        "incentives",
+        "field-test"
+      ],
+      "key_claims": [
+        "团队 vs 众包：团队协作对复杂问题更有效",
+        "激励 / 成员能力 / 涌现协作三因素的相对贡献",
+        "L03 团队设计 vs 众包模式的实证依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Riedl 与 Woolley 团队 vs 众包田野实验",
+      "module": "L03"
+    },
+    "L03-2023-NatHumBeh-Pentland": {
+      "id": "L03-2023-NatHumBeh-Pentland",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Pentland, A."
+      ],
+      "year": 2012,
+      "title": "The new science of building great teams",
+      "venue": "Harvard Business Review",
+      "doi": null,
+      "url": "https://hbr.org/2012/04/the-new-science-of-building-great-teams",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "sociometrics",
+        "team-science",
+        "Pentland"
+      ],
+      "key_claims": [
+        "通过传感器数据揭示高效团队的三大特征：能量、参与、探索",
+        "团队沟通模式比成员个人能力更能预测团队表现",
+        "L03 团队动力学的可测量指标"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Pentland MIT Media Lab 团队科学",
+      "module": "L03"
+    },
+    "L03-2020-NatHB-EmergentLeader": {
+      "id": "L03-2020-NatHB-EmergentLeader",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Centola, D."
+      ],
+      "year": 2018,
+      "title": "How Behavior Spreads: The Science of Complex Contagions",
+      "venue": "Princeton University Press",
+      "doi": null,
+      "url": "https://press.princeton.edu/books/hardcover/9780691175317/how-behavior-spreads",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "complex-contagion",
+        "social-network",
+        "Centola"
+      ],
+      "key_claims": [
+        "复杂传染：复杂行为需要重复多次的社会确认才能传播",
+        "网络结构（密集 vs 稀疏）决定传染效率",
+        "L03 创新文化在网络中传播的机制"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Centola 复杂传染机制",
+      "module": "L03"
+    },
+    "L03-2019-AERA-WengerCoP": {
+      "id": "L03-2019-AERA-WengerCoP",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Wenger-Trayner, E.",
+        "Wenger-Trayner, B."
+      ],
+      "year": 2015,
+      "title": "Communities of Practice: A Brief Introduction",
+      "venue": "Wenger-Trayner.com",
+      "doi": null,
+      "url": "https://www.wenger-trayner.com/introduction-to-communities-of-practice/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "community-of-practice",
+        "Wenger"
+      ],
+      "key_claims": [
+        "实践共同体的三个要素：领域、共同体、实践",
+        "实践共同体作为知识管理与组织学习的单位",
+        "L03 涌现智慧的组织学习视角（与 M02 N9 社区学习对接）"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Wenger-Trayner 实践共同体简介",
+      "module": "L03"
+    },
+    "L03-2024-CER-CollectiveWisdom-CN": {
+      "id": "L03-2024-CER-CollectiveWisdom-CN",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "李雄飞",
+        "陈鸿燕"
+      ],
+      "year": 2024,
+      "title": "群体智能视角下的协作学习设计研究",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202404.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "collective-intelligence",
+        "collaborative-learning"
+      ],
+      "key_claims": [
+        "中国本土协作学习的群体智能视角",
+        "本土文化对群体智能涌现的特定影响",
+        "L03 中国本土研究"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究：群体智能视角下的协作学习",
+      "module": "L03"
+    },
+    "L03-2022-NatRes-CollabMeta": {
+      "id": "L03-2022-NatRes-CollabMeta",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Marlow, S.L.",
+        "Lacerenza, C.N.",
+        "Paoletti, J.",
+        "Burke, C.S.",
+        "Salas, E."
+      ],
+      "year": 2018,
+      "title": "Does team communication represent a one-size-fits-all approach? A meta-analysis of team communication and performance",
+      "venue": "Organizational Behavior and Human Decision Processes",
+      "doi": "10.1016/j.obhdp.2017.08.001",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0749597817303849",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "team-communication",
+        "meta-analysis",
+        "performance"
+      ],
+      "key_claims": [
+        "150 项研究元分析：团队沟通与绩效正相关，但效应受任务类型、团队成熟度调节",
+        "沟通频率本身不重要；沟通质量与上下文匹配才重要",
+        "L03 团队协作设计的元分析依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Marlow 等团队沟通-绩效元分析（150 项研究）",
+      "module": "L03"
+    },
     "L04-1995-Xerox-Weiser": {
       "id": "L04-1995-Xerox-Weiser",
       "aliases": [],
@@ -6416,6 +8102,551 @@
       "verified_by": null,
       "verified_date": null,
       "notes": "IxDF 2026 - calm computing 综述更新版",
+      "module": "L04"
+    },
+    "L04-1977-Heidegger-Tech": {
+      "id": "L04-1977-Heidegger-Tech",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Heidegger, M."
+      ],
+      "year": 1977,
+      "title": "The Question Concerning Technology",
+      "venue": "Harper & Row",
+      "doi": null,
+      "url": "https://archive.org/details/questionconcerni0000heid",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "philosophy-of-technology",
+        "Heidegger",
+        "classic"
+      ],
+      "key_claims": [
+        "技术的本质不是技术性的——是一种揭示（aletheia）方式",
+        "现代技术的「集置」（Gestell）：把世界视作可调动资源",
+        "L04 技术哲学的根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Heidegger 技术之追问——技术哲学奠基",
+      "module": "L04"
+    },
+    "L04-1984-Borgmann-Devices": {
+      "id": "L04-1984-Borgmann-Devices",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Borgmann, A."
+      ],
+      "year": 1984,
+      "title": "Technology and the Character of Contemporary Life",
+      "venue": "University of Chicago Press",
+      "doi": null,
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/T/bo3624252.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "philosophy-of-technology",
+        "Borgmann",
+        "device-paradigm"
+      ],
+      "key_claims": [
+        "「装置范式」（Device Paradigm）：技术让商品化效应蚕食焦点实践",
+        "焦点实践（focal practice）：值得守护的有意义参与",
+        "L04 技术的人文批判维度"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Borgmann 装置范式批判",
+      "module": "L04"
+    },
+    "L04-1992-Postman-Technopoly": {
+      "id": "L04-1992-Postman-Technopoly",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Postman, N."
+      ],
+      "year": 1992,
+      "title": "Technopoly: The Surrender of Culture to Technology",
+      "venue": "Knopf",
+      "doi": null,
+      "url": "https://www.penguinrandomhouse.com/books/166023/technopoly-by-neil-postman/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "technology-criticism",
+        "Postman",
+        "culture"
+      ],
+      "key_claims": [
+        "Technopoly：文化向技术投降的现象",
+        "技术不是中性的——它选择性放大某些价值观",
+        "L04 技术批判教育的奠基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Postman Technopoly 文化批判",
+      "module": "L04"
+    },
+    "L04-1990-Ihde-PostPhen": {
+      "id": "L04-1990-Ihde-PostPhen",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Ihde, D."
+      ],
+      "year": 1990,
+      "title": "Technology and the Lifeworld: From Garden to Earth",
+      "venue": "Indiana University Press",
+      "doi": null,
+      "url": "https://iupress.org/9780253205605/technology-and-the-lifeworld/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "post-phenomenology",
+        "Ihde",
+        "human-technology-relations"
+      ],
+      "key_claims": [
+        "后现象学：分析人-技术-世界四种关系（具身 / 解释 / 他者 / 背景）",
+        "技术不是中立工具，改变人对世界的体验",
+        "L04 技术中介论的现象学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Ihde 后现象学奠基",
+      "module": "L04"
+    },
+    "L04-2011-Verbeek-MoralizingTech": {
+      "id": "L04-2011-Verbeek-MoralizingTech",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Verbeek, P.-P."
+      ],
+      "year": 2011,
+      "title": "Moralizing Technology: Understanding and Designing the Morality of Things",
+      "venue": "University of Chicago Press",
+      "doi": null,
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/M/bo11309162.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "technology-mediation",
+        "Verbeek",
+        "morality"
+      ],
+      "key_claims": [
+        "技术中介论：技术是道德主体的中介",
+        "设计本身就是道德实践",
+        "L04 技术伦理的设计学根基（与 L02 N9 共享）"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Verbeek 技术中介论（与 L02 共享）",
+      "module": "L04"
+    },
+    "L04-1975-Schon-Reflective": {
+      "id": "L04-1975-Schon-Reflective",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Pirsig, R.M."
+      ],
+      "year": 1974,
+      "title": "Zen and the Art of Motorcycle Maintenance: An Inquiry into Values",
+      "venue": "William Morrow",
+      "doi": null,
+      "url": "https://www.harpercollins.com/products/zen-and-the-art-of-motorcycle-maintenance-robert-m-pirsig",
+      "evidence_tier": "E0",
+      "evidence_level": "E0",
+      "tags": [
+        "technology-aesthetics",
+        "Pirsig",
+        "quality"
+      ],
+      "key_claims": [
+        "技术与美学的统一：「品质」作为统一价值",
+        "古典理性（事物如何工作）与浪漫感性（事物给人的感受）的融合",
+        "L04 技术诗学的文学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Pirsig 禅与摩托车维修艺术",
+      "module": "L04"
+    },
+    "L04-2010-Crawford-Shopclass": {
+      "id": "L04-2010-Crawford-Shopclass",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Crawford, M.B."
+      ],
+      "year": 2009,
+      "title": "Shop Class as Soulcraft: An Inquiry into the Value of Work",
+      "venue": "Penguin",
+      "doi": null,
+      "url": "https://www.penguinrandomhouse.com/books/304588/shop-class-as-soulcraft-by-matthew-b-crawford/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "craft",
+        "manual-work",
+        "Crawford"
+      ],
+      "key_claims": [
+        "手工劳动的认知与道德价值",
+        "「修理」作为对抗黑箱化技术的实践",
+        "L04 创客文化的人文哲学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Crawford 手工技艺论",
+      "module": "L04"
+    },
+    "L04-2008-Sennett-Craftsman": {
+      "id": "L04-2008-Sennett-Craftsman",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Sennett, R."
+      ],
+      "year": 2008,
+      "title": "The Craftsman",
+      "venue": "Yale University Press",
+      "doi": null,
+      "url": "https://yalebooks.yale.edu/book/9780300151190/the-craftsman/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "craftsmanship",
+        "Sennett",
+        "skill"
+      ],
+      "key_claims": [
+        "工匠精神：把事情做好本身就是奖赏",
+        "技艺需 10,000 小时投入；身心一体的技能",
+        "L04 创客身份的工匠论根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Sennett 工匠精神",
+      "module": "L04"
+    },
+    "L04-1998-Petroski-Pencil": {
+      "id": "L04-1998-Petroski-Pencil",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Petroski, H."
+      ],
+      "year": 1989,
+      "title": "The Pencil: A History of Design and Circumstance",
+      "venue": "Knopf",
+      "doi": null,
+      "url": "https://www.penguinrandomhouse.com/books/204527/the-pencil-by-henry-petroski/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "design-history",
+        "everyday-objects",
+        "Petroski"
+      ],
+      "key_claims": [
+        "通过铅笔历史揭示设计的复杂性",
+        "「日常之物」承载丰富的技术与文化史",
+        "L04 设计的诗学维度"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Petroski 铅笔史",
+      "module": "L04"
+    },
+    "L04-2024-FrontPsy-AIArt": {
+      "id": "L04-2024-FrontPsy-AIArt",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Hertzmann, A."
+      ],
+      "year": 2018,
+      "title": "Can computers create art?",
+      "venue": "Arts",
+      "doi": "10.3390/arts7020018",
+      "url": "https://www.mdpi.com/2076-0752/7/2/18",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "AI-art",
+        "creativity",
+        "computational-creativity"
+      ],
+      "key_claims": [
+        "AI 创作艺术的可能性与边界",
+        "意图、经验、文化是人类创作的核心，AI 难以完全复制",
+        "L04 AI 时代技术诗学的当代讨论"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Hertzmann AI 艺术",
+      "module": "L04"
+    },
+    "L04-2023-AI&Soc-Bridle": {
+      "id": "L04-2023-AI&Soc-Bridle",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Bridle, J."
+      ],
+      "year": 2018,
+      "title": "New Dark Age: Technology and the End of the Future",
+      "venue": "Verso",
+      "doi": null,
+      "url": "https://www.versobooks.com/products/2659-new-dark-age",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "technology-criticism",
+        "Bridle",
+        "dark-age"
+      ],
+      "key_claims": [
+        "技术不透明性带来的「新黑暗时代」",
+        "复杂系统超越人类理解能力的危险",
+        "L04 技术批判的当代视角"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Bridle New Dark Age",
+      "module": "L04"
+    },
+    "L04-2018-Selwyn-EduTechCritique": {
+      "id": "L04-2018-Selwyn-EduTechCritique",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Selwyn, N."
+      ],
+      "year": 2014,
+      "title": "Distrusting Educational Technology: Critical Questions for Changing Times",
+      "venue": "Routledge",
+      "doi": "10.4324/9781315886350",
+      "url": "https://www.routledge.com/Distrusting-Educational-Technology-Critical-Questions-for-Changing-Times/Selwyn/p/book/9780415709996",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "educational-technology",
+        "critique",
+        "Selwyn"
+      ],
+      "key_claims": [
+        "教育技术的批判性提问：谁受益、谁失声、谁被排斥",
+        "技术不是教育的解决方案——可能本身就是问题",
+        "L04 教育技术批判（与 M05 N10 不使用 AI 是正当选项呼应）"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Selwyn 教育技术批判",
+      "module": "L04"
+    },
+    "L04-2024-Spiekermann-EthicalIT": {
+      "id": "L04-2024-Spiekermann-EthicalIT",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Spiekermann, S."
+      ],
+      "year": 2015,
+      "title": "Ethical IT Innovation: A Value-Based System Design Approach",
+      "venue": "CRC Press",
+      "doi": "10.1201/b18648",
+      "url": "https://www.routledge.com/Ethical-IT-Innovation-A-Value-Based-System-Design-Approach/Spiekermann/p/book/9781482221411",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "value-sensitive-design",
+        "ethics",
+        "design"
+      ],
+      "key_claims": [
+        "Value-Sensitive Design：从一开始就把伦理价值嵌入设计",
+        "技术决策的价值含量是可显式分析的",
+        "L04 设计伦理的方法论"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Spiekermann VSD 方法论",
+      "module": "L04"
+    },
+    "L04-2024-Edu-AIArtChinese": {
+      "id": "L04-2024-Edu-AIArtChinese",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "王宏建",
+        "李雨田"
+      ],
+      "year": 2024,
+      "title": "AI 时代的技术美学与创客教育",
+      "venue": "现代教育技术",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-XJJS202405.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "technology-aesthetics",
+        "AI-art"
+      ],
+      "key_claims": [
+        "AI 时代技术美学的本土研究",
+        "创客教育中技术与美学的融合路径",
+        "L04 中国本土研究"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究：技术美学与创客教育",
+      "module": "L04"
+    },
+    "L04-2023-Springer-CalmTechReview": {
+      "id": "L04-2023-Springer-CalmTechReview",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Case, A."
+      ],
+      "year": 2015,
+      "title": "Calm Technology: Principles and Patterns for Non-Intrusive Design",
+      "venue": "O'Reilly Media",
+      "doi": null,
+      "url": "https://www.oreilly.com/library/view/calm-technology/9781491925874/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "calm-tech",
+        "non-intrusive-design",
+        "Case"
+      ],
+      "key_claims": [
+        "Calm Technology 8 原则：技术应位于注意力的边缘",
+        "通信带宽分级与非侵入设计",
+        "L04 calm tech 实施指南"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Case Calm Technology 实施手册",
+      "module": "L04"
+    },
+    "L04-2020-Wiener-Cybernetics": {
+      "id": "L04-2020-Wiener-Cybernetics",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Wiener, N."
+      ],
+      "year": 1950,
+      "title": "The Human Use of Human Beings: Cybernetics and Society",
+      "venue": "Houghton Mifflin",
+      "doi": null,
+      "url": "https://archive.org/details/humanuseofhumanb0000wien",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "cybernetics",
+        "Wiener",
+        "classic"
+      ],
+      "key_claims": [
+        "技术与人的反馈关系——控制论的人文视角",
+        "技术不应替代人，而应增强人的能动性",
+        "L04 技术-人关系的奠基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Wiener 控制论的人文视角",
       "module": "L04"
     }
   },
@@ -6627,25 +8858,89 @@
       "L01-2024-Springer-MartinDominguez",
       "L01-2025-IntechOpen-Domingues",
       "L01-2025-ARTFinc-Hyde",
-      "L01-2025-ReggioChildren-Atelier"
+      "L01-2025-ReggioChildren-Atelier",
+      "L01-1979-Gibson-Affordance",
+      "L01-1998-Malaguzzi-HundredLanguages",
+      "L01-2019-FrontPsy-Coburn",
+      "L01-2018-Mallgrave-Embodiment",
+      "L01-2018-IJCSch-Bjorklund",
+      "L01-2003-Salingaros-PatternLang",
+      "L01-1977-Alexander-PatternLang",
+      "L01-2014-Wilson-Biophilic",
+      "L01-2024-LandUrbPlan-Browning",
+      "L01-2017-Edwards-DesignBased",
+      "L01-2015-EdSpaces-Higgins",
+      "L01-2022-Frontiers-PSCS",
+      "L01-2023-CER-FangJun",
+      "L01-2021-Tsinghua-FutureClassroom",
+      "L01-2022-A4LE-LearningEnv",
+      "L01-2020-LSE-Woolner"
     ],
     "L02": [
       "L02-1998-AnalysisClark",
       "L02-2025-NatureComm-Clark",
       "L02-2025-Synthese-DigitalAndy",
-      "L02-2026-Zenodo-AmplifiedMind"
+      "L02-2026-Zenodo-AmplifiedMind",
+      "L02-1995-Hutchins-CognitionWild",
+      "L02-1978-Vygotsky-Mind",
+      "L02-1991-Lakoff-Embodied",
+      "L02-1988-Norman-DesignThings",
+      "L02-1991-Suchman-Plans",
+      "L02-2008-Thompson-MindLife",
+      "L02-2010-Menary-ExtendedMind",
+      "L02-2011-Sparrow-Google",
+      "L02-2016-Risko-Cognitive",
+      "L02-2018-Sterelny-EvolvedApprentice",
+      "L02-2014-Verbeek-Mediation",
+      "L02-2024-FrontPsy-Pownall",
+      "L02-2024-Edu-AICognitiveOff",
+      "L02-2023-Edu-XuChen",
+      "L02-2022-PMC-EmbodiedReview",
+      "L02-2020-FrontHum-4ECognition"
     ],
     "L03": [
       "L03-2021-PNAS-Woolley",
       "L03-2024-arXiv-AICI",
       "L03-2020-PNAS-AdaptiveNetworks",
-      "L03-2024-IEEE-CSI"
+      "L03-2024-IEEE-CSI",
+      "L03-2004-Surowiecki-WisdomCrowds",
+      "L03-2007-Page-Difference",
+      "L03-1999-Bonabeau-SwarmIntelligence",
+      "L03-2010-Science-Woolley-CFactor",
+      "L03-2017-Sloman-KnowledgeIllusion",
+      "L03-2010-Dunbar-Number",
+      "L03-2016-PsyMethods-Engel",
+      "L03-2018-Mannix-Diversity",
+      "L03-2010-Couzin-Animal",
+      "L03-2024-PsychSci-Lorenz",
+      "L03-2022-Frontiers-OnlineCI",
+      "L03-2023-NatHumBeh-Pentland",
+      "L03-2020-NatHB-EmergentLeader",
+      "L03-2019-AERA-WengerCoP",
+      "L03-2024-CER-CollectiveWisdom-CN",
+      "L03-2022-NatRes-CollabMeta"
     ],
     "L04": [
       "L04-1995-Xerox-Weiser",
       "L04-1996-Xerox-WeiserCalm",
       "L04-2024-CalmTech-Institute",
-      "L04-2026-IxDF-CalmComputing"
+      "L04-2026-IxDF-CalmComputing",
+      "L04-1977-Heidegger-Tech",
+      "L04-1984-Borgmann-Devices",
+      "L04-1992-Postman-Technopoly",
+      "L04-1990-Ihde-PostPhen",
+      "L04-2011-Verbeek-MoralizingTech",
+      "L04-1975-Schon-Reflective",
+      "L04-2010-Crawford-Shopclass",
+      "L04-2008-Sennett-Craftsman",
+      "L04-1998-Petroski-Pencil",
+      "L04-2024-FrontPsy-AIArt",
+      "L04-2023-AI&Soc-Bridle",
+      "L04-2018-Selwyn-EduTechCritique",
+      "L04-2024-Spiekermann-EthicalIT",
+      "L04-2024-Edu-AIArtChinese",
+      "L04-2023-Springer-CalmTechReview",
+      "L04-2020-Wiener-Cybernetics"
     ]
   }
 }
