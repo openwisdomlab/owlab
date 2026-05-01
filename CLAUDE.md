@@ -116,20 +116,20 @@ Each module addresses a key aspect of building and operating innovation learning
 ## Content Architecture
 
 The knowledge base uses a **Core + Extend + Evidence** three-layer architecture:
-- **Core**: Essential principles per module. Hard cap: **≤6000 字符** for the module `index.mdx`. Anything longer must be extracted into `extend/`.
-- **Extend**: Deep research, case studies, visualizations, methods, taxonomies, full prose treatments. No length cap.
+- **Core**: 必须有完整的论述脉络。`index.mdx` 应当呈现自然的叙事流：从「为什么需要这样一个空间」的引言出发，依次展开建设标准、核心理念、硬性标准、参数指标、层级要求、设计原则、与其他模块的关系、前沿研究证据、参考文献等。**不设字符数上限**——可读性与论述完整性优先于篇幅控制。
+- **Extend**: 单点专题的深度展开——具体研究、案例、工具包、可视化、方法论。No length cap.
 - **Evidence**: Structured citations (`evidence/refs.json`), verification records, and the `<References scope="module" />` view.
 
-### Core Index Four-Block Scaffold (mandatory)
+### Core Index 必备元素 (must merge into the natural narrative — NOT as standalone replacement blocks)
 
-Every Core module `index.mdx` MUST follow this skeleton, in order:
+Every Core/Research module `index.mdx` MUST contain the following elements, **integrated into the natural prose flow**, not as cryptic standalone TL;DR sections that replace the discussion:
 
-1. **`## Core 论断`** — 3-7 first-principle propositions that define the module. State each as a single sentence + one-line warrant. No tables, no SOPs, no case detail. This is the "if a reader only reads one section, what must they take away."
-2. **`## 3E 映射`** — Explicit mapping to Enlighten / Empower / Engage. One row per dimension, ≤2 sentences each. Use the existing `<ModuleSummary />` or a 3-row table.
-3. **`## 关键证据`** — 3-8 citation-anchored claims. Each claim is one paragraph that ends with `<Cite id="..."/>` or `<Cite ids="a,b"/>`. Prefer E2/E3 sources from 2024-2026 where available.
-4. **`## Extend 索引`** — `<ExtendCards />` listing every `extend/*.mdx`, `cases/*.mdx`, and `evidence/*.mdx` page that belongs to this module. This is the navigation entry into depth.
+1. **`<ModuleSummary />`** at the top — captures tagline、philosophy、3-5 条 insights。它已经隐含了"核心论断"与"3E 映射"，无需另立 `## Core 论断` `## 3E 映射` 标题块。
+2. **`## 前沿研究证据`** 段落 — 3-8 条以 `<Cite id="..."/>` / `<Cite ids="a,b"/>` 锚定的研究综述/元分析。**优先选择最新文献**（应当持续追踪近年的元分析与综述），但 **不设硬性年份范围**——经典理论与最新研究都可以，只要对论断有实质支撑。优先放在「## 参考文献」之前，作为对原有论述的实证补强；也鼓励把 `<Cite>` 直接散播到正文相关段落中。
+3. **`## 扩展阅读`**（或保留原有「## 延伸阅读」标题）用 `<ExtendCards />` 列出所有 `extend/*.mdx`、`cases/*.mdx`、`evidence/*.mdx` 页面作为深度入口。
+4. **`<References scope="page" />`** 在文末渲染本页书目。
 
-End with `<References scope="page" />` so the page renders its own bibliography.
+避免把「Core 论断」「3E 映射」「关键证据」「Extend 索引」拆成四个孤立的 `## ` 块直接堆在文首——这种写法虽然结构清晰，但会打断阅读、压缩论述深度，且与 `<ModuleSummary />` 重复。把它们的精神**融入**到原有论述中。
 
 ### Citation System
 
