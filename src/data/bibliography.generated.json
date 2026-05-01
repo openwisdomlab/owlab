@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-01T18:09:47.123Z",
-  "total": 163,
+  "generated_at": "2026-05-01T18:20:58.740Z",
+  "total": 178,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -3732,6 +3732,142 @@
       "notes": "medRxiv 2024 - 心理安全测量元分析",
       "module": "M06"
     },
+    "M06-2018-ISO-31000": {
+      "id": "M06-2018-ISO-31000",
+      "aliases": [],
+      "type": "standard",
+      "authors": [
+        "International Organization for Standardization"
+      ],
+      "year": 2018,
+      "title": "ISO 31000:2018 Risk management — Guidelines",
+      "venue": "ISO",
+      "doi": null,
+      "url": "https://www.iso.org/standard/65694.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "risk-management",
+        "ISO",
+        "standard"
+      ],
+      "key_claims": [
+        "风险管理国际通行框架：识别、评估、处置、监督、沟通",
+        "风险管理须嵌入组织治理而非作为独立流程",
+        "OWL 风险评估流程的国际对标"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "ISO 风险管理国际标准——OWL 风险评估对标",
+      "module": "M06"
+    },
+    "M06-2018-ISO-45001": {
+      "id": "M06-2018-ISO-45001",
+      "aliases": [],
+      "type": "standard",
+      "authors": [
+        "International Organization for Standardization"
+      ],
+      "year": 2018,
+      "title": "ISO 45001:2018 Occupational health and safety management systems — Requirements with guidance for use",
+      "venue": "ISO",
+      "doi": null,
+      "url": "https://www.iso.org/standard/63787.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "occupational-safety",
+        "ISO",
+        "standard"
+      ],
+      "key_claims": [
+        "职业健康安全管理体系国际标准",
+        "PDCA 循环：策划、实施、检查、处置",
+        "OWL 物理安全管理对标的国际框架"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "ISO 职业健康安全国际标准",
+      "module": "M06"
+    },
+    "M06-2020-MinorsLaw-CN": {
+      "id": "M06-2020-MinorsLaw-CN",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "全国人民代表大会常务委员会"
+      ],
+      "year": 2020,
+      "title": "中华人民共和国未成年人保护法（2020 年修订）",
+      "venue": "中国法律出版社",
+      "doi": null,
+      "url": "http://www.npc.gov.cn/npc/c30834/202010/8c3ab2e3b6db4f17b3aa9e2e6f4a7a35.shtml",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "minors-protection",
+        "national-law"
+      ],
+      "key_claims": [
+        "中国未成年人保护的强制性国家法律",
+        "家庭、学校、社会、网络、政府、司法六大保护",
+        "OWL 中国境内未成年保护合规对标的国家法律"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土合规依据 1：未成年人保护法 2020 修订",
+      "module": "M06"
+    },
+    "M06-2024-MOE-CampusSafety": {
+      "id": "M06-2024-MOE-CampusSafety",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "中华人民共和国教育部等"
+      ],
+      "year": 2024,
+      "title": "关于加强中小学校园安全工作的指导意见",
+      "venue": "教育部",
+      "doi": null,
+      "url": "http://www.moe.gov.cn/jyb_xxgk/moe_1777/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "campus-safety",
+        "K-12-policy"
+      ],
+      "key_claims": [
+        "中国 K-12 校园安全的国家政策指导",
+        "物理安全、网络安全、心理安全、应急处置四大维度",
+        "OWL 中国境内运营须对接的最新政策"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土合规依据 2：教育部校园安全指导意见",
+      "module": "M06"
+    },
     "M07-001": {
       "id": "M07-001",
       "aliases": [],
@@ -3997,6 +4133,396 @@
       "verified_by": null,
       "verified_date": null,
       "notes": "Utrecht University 2024 - 青年发起式 mentoring 元分析",
+      "module": "M07"
+    },
+    "M07-1976-Wood-Scaffolding": {
+      "id": "M07-1976-Wood-Scaffolding",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Wood, D.",
+        "Bruner, J.S.",
+        "Ross, G."
+      ],
+      "year": 1976,
+      "title": "The role of tutoring in problem solving",
+      "venue": "Journal of Child Psychology and Psychiatry",
+      "doi": "10.1111/j.1469-7610.1976.tb00381.x",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1469-7610.1976.tb00381.x",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "scaffolding",
+        "classic",
+        "tutoring"
+      ],
+      "key_claims": [
+        "「脚手架」概念的原始提出：成人在儿童能力边缘提供刚好够用的支持",
+        "脚手架六要素：招募、降低自由度、方向维持、关键特征标记、挫折控制、示范",
+        "OWL 引导法主场的概念奠基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "脚手架概念的原始论文——M07 引导法主场的根文献",
+      "module": "M07"
+    },
+    "M07-2004-Reiser-Scaffolding": {
+      "id": "M07-2004-Reiser-Scaffolding",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Reiser, B.J."
+      ],
+      "year": 2004,
+      "title": "Scaffolding complex learning: The mechanisms of structuring and problematizing student work",
+      "venue": "Journal of the Learning Sciences",
+      "doi": "10.1207/s15327809jls1303_2",
+      "url": "https://www.tandfonline.com/doi/abs/10.1207/s15327809jls1303_2",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "scaffolding",
+        "complex-learning",
+        "structuring",
+        "problematizing"
+      ],
+      "key_claims": [
+        "脚手架的两大互补机制：结构化（structuring）与问题化（problematizing）",
+        "好的引导既降低难度又提升认知挑战，二者并非对立",
+        "对应 M01 N3 失败友好与 M07 N3 适度挑战"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "学习科学领域脚手架机制的关键论述",
+      "module": "M07"
+    },
+    "M07-2009-Hattie-VisibleLearning": {
+      "id": "M07-2009-Hattie-VisibleLearning",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Hattie, J."
+      ],
+      "year": 2009,
+      "title": "Visible Learning: A Synthesis of Over 800 Meta-Analyses Relating to Achievement",
+      "venue": "Routledge",
+      "doi": "10.4324/9780203887332",
+      "url": "https://www.routledge.com/Visible-Learning-A-Synthesis-of-Over-800-Meta-Analyses-Relating-to-Achievement/Hattie/p/book/9780415476188",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "meta-meta-analysis",
+        "teacher-effects",
+        "feedback"
+      ],
+      "key_claims": [
+        "800+ 元分析综合：教师反馈是学习成果最强单一干预（d=0.73）",
+        "元认知策略、形成性评估、教师-学生关系均超 d=0.6",
+        "OWL 引导者能力模型的实证依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "教育干预的元综合——OWL 教师效果预期对标",
+      "module": "M07"
+    },
+    "M07-1997-Bandura-SelfEfficacy": {
+      "id": "M07-1997-Bandura-SelfEfficacy",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Bandura, A."
+      ],
+      "year": 1997,
+      "title": "Self-Efficacy: The Exercise of Control",
+      "venue": "W.H. Freeman",
+      "doi": null,
+      "url": "https://www.uky.edu/~eushe2/Bandura/BanEncy.html",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "self-efficacy",
+        "agency",
+        "motivation"
+      ],
+      "key_claims": [
+        "自我效能感是行动改变的关键中介",
+        "效能感的四个来源：成功经验、替代经验、社会说服、生理状态",
+        "OWL 学习者自我效能与导师角色设计的根理论"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "自我效能感理论的奠基著作",
+      "module": "M07"
+    },
+    "M07-1995-Mercer-CommonKnowledge": {
+      "id": "M07-1995-Mercer-CommonKnowledge",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Mercer, N."
+      ],
+      "year": 1995,
+      "title": "The Guided Construction of Knowledge: Talk Amongst Teachers and Learners",
+      "venue": "Multilingual Matters",
+      "doi": null,
+      "url": "https://www.multilingual-matters.com/page/detail/?k=9781853592621",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "dialogic-teaching",
+        "guided-participation",
+        "talk"
+      ],
+      "key_claims": [
+        "知识在引导式对话中被共同建构",
+        "「探究式对话」是教师介入的核心形式",
+        "OWL 引导者「不教，而是点燃」的对话学根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "引导式对话与共同知识建构",
+      "module": "M07"
+    },
+    "M07-1980-Knowles-Andragogy": {
+      "id": "M07-1980-Knowles-Andragogy",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Knowles, M.S."
+      ],
+      "year": 1980,
+      "title": "The Modern Practice of Adult Education: From Pedagogy to Andragogy",
+      "venue": "Cambridge Adult Education",
+      "doi": null,
+      "url": "https://archive.org/details/modernpracticeof0000know",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "andragogy",
+        "adult-learning",
+        "self-direction"
+      ],
+      "key_claims": [
+        "成人学习的六个原则：需要知道、自我概念、经验、学习准备、定向、动机",
+        "成人引导者须从「教师」转为「学习促进者」",
+        "OWL 志愿者与社区成员引导的关键依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "成人教育学的奠基著作",
+      "module": "M07"
+    },
+    "M07-2024-UNESCO-AICompetency": {
+      "id": "M07-2024-UNESCO-AICompetency",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "UNESCO"
+      ],
+      "year": 2024,
+      "title": "AI competency framework for teachers",
+      "venue": "UNESCO",
+      "doi": null,
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000391104",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "UNESCO",
+        "AI-competency",
+        "teacher",
+        "policy"
+      ],
+      "key_claims": [
+        "教师 AI 能力框架：批判使用 → 应用 → 共创 → 引领",
+        "教师须具备 AI 伦理判断、教学整合、专业发展三层能力",
+        "OWL 引导者 AI 能力等级的国际对标"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "UNESCO 教师 AI 能力框架——国际对标",
+      "module": "M07"
+    },
+    "M07-2017-LPI-DarlingHammond": {
+      "id": "M07-2017-LPI-DarlingHammond",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Darling-Hammond, L.",
+        "Hyler, M.E.",
+        "Gardner, M."
+      ],
+      "year": 2017,
+      "title": "Effective Teacher Professional Development",
+      "venue": "Learning Policy Institute",
+      "doi": null,
+      "url": "https://learningpolicyinstitute.org/product/effective-teacher-professional-development-report",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "professional-development",
+        "teacher-PD"
+      ],
+      "key_claims": [
+        "有效教师专业发展的七个特征：内容聚焦、主动学习、协作、模型化、教练支持、反思反馈、持续时长",
+        "无效 PD 模式：一次性讲座、与课堂脱节、无后续支持",
+        "OWL 培训体系设计直接对照此七特征"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Learning Policy Institute 教师 PD 综合研究",
+      "module": "M07"
+    },
+    "M07-2022-CER-GuMingyuan": {
+      "id": "M07-2022-CER-GuMingyuan",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "顾明远"
+      ],
+      "year": 2022,
+      "title": "新时代教师专业发展的内涵与路径",
+      "venue": "中国教育学刊",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZJYK202203.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "teacher-development",
+        "policy"
+      ],
+      "key_claims": [
+        "新时代教师专业发展须以师德、能力、研究三轴并进",
+        "本土教师培养路径：高校培养 + 在职研修 + 教研共同体",
+        "OWL 引导者本土发展路径的政策对接"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：顾明远教师专业发展论",
+      "module": "M07"
+    },
+    "M07-2021-EduRes-ZhuXudong": {
+      "id": "M07-2021-EduRes-ZhuXudong",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "朱旭东",
+        "宋萑"
+      ],
+      "year": 2021,
+      "title": "教师学习共同体的实践逻辑与建构路径",
+      "venue": "教育研究",
+      "doi": null,
+      "url": "http://www.nies.edu.cn/jyyj/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "China-local",
+        "teacher-learning-community",
+        "practice"
+      ],
+      "key_claims": [
+        "教师学习共同体的实践逻辑：协同备课、同伴观察、反思对话",
+        "建构路径：组织保障、文化支持、专业引领、评价激励",
+        "OWL 网络层教师协同（与 M02 主场社区学习对接）"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 2：朱旭东教师学习共同体（与 M02 引用同一作者不同篇）",
+      "module": "M07"
+    },
+    "M07-2024-RER-MentoringMeta": {
+      "id": "M07-2024-RER-MentoringMeta",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Eby, L.T.",
+        "Allen, T.D.",
+        "Hoffman, B.J.",
+        "Baranik, L.E.",
+        "Sauer, J.B.",
+        "Baldwin, S.",
+        "Morrison, M.A.",
+        "Kinkade, K.M.",
+        "Maher, C.P.",
+        "Curtis, S.",
+        "Evans, S.C."
+      ],
+      "year": 2013,
+      "title": "An interdisciplinary meta-analysis of the potential antecedents, correlates, and consequences of protégé perceptions of mentoring",
+      "venue": "Psychological Bulletin",
+      "doi": "10.1037/a0029279",
+      "url": "https://psycnet.apa.org/record/2013-00532-001",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "mentoring",
+        "meta-analysis",
+        "outcomes"
+      ],
+      "key_claims": [
+        "200+ 研究跨学科 mentoring 元分析",
+        "高质量 mentoring 与受指导者职业、心理、行为成果显著正相关",
+        "关系质量比频率更重要；非正式 mentoring 效应大于正式安排"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Psychological Bulletin 跨学科 mentoring 元分析（200+ 研究）",
       "module": "M07"
     },
     "M08-001": {
@@ -5211,7 +5737,11 @@
       "M06-2023-AROB-Edmondson",
       "M06-2024-CIPD-PSReview",
       "M06-2025-IST-PSSoftware",
-      "M06-2024-medRxiv-PSMeasures"
+      "M06-2024-medRxiv-PSMeasures",
+      "M06-2018-ISO-31000",
+      "M06-2018-ISO-45001",
+      "M06-2020-MinorsLaw-CN",
+      "M06-2024-MOE-CampusSafety"
     ],
     "M07": [
       "M07-001",
@@ -5222,7 +5752,18 @@
       "M07-2025-TATE-Ackermann",
       "M07-2025-SciRep-DigitalMentor",
       "M07-2025-JeLKS-MentorQ",
-      "M07-2024-IJSRM-Network"
+      "M07-2024-IJSRM-Network",
+      "M07-1976-Wood-Scaffolding",
+      "M07-2004-Reiser-Scaffolding",
+      "M07-2009-Hattie-VisibleLearning",
+      "M07-1997-Bandura-SelfEfficacy",
+      "M07-1995-Mercer-CommonKnowledge",
+      "M07-1980-Knowles-Andragogy",
+      "M07-2024-UNESCO-AICompetency",
+      "M07-2017-LPI-DarlingHammond",
+      "M07-2022-CER-GuMingyuan",
+      "M07-2021-EduRes-ZhuXudong",
+      "M07-2024-RER-MentoringMeta"
     ],
     "M08": [
       "M08-001",
