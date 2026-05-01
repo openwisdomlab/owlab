@@ -1,7 +1,9 @@
 {
   "module": "M06",
-  "version": "0.2.0",
-  "last_updated": "2025-12-29",
+  "version": "0.3.0",
+  "last_updated": "2026-05-01",
+  "total_count": 22,
+  "verified_count": 0,
   "references": [
     {
       "id": "M06-001",
@@ -286,8 +288,106 @@
       "retrieval_date": "2026-04-30",
       "verified": false,
       "notes": "medRxiv 2024 - 心理安全测量元分析"
+    },
+    {
+      "id": "M06-2018-ISO-31000",
+      "type": "standard",
+      "authors": ["International Organization for Standardization"],
+      "year": 2018,
+      "title": "ISO 31000:2018 Risk management — Guidelines",
+      "venue": "ISO",
+      "doi": null,
+      "url": "https://www.iso.org/standard/65694.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["risk-management", "ISO", "standard"],
+      "key_claims": [
+        "风险管理国际通行框架：识别、评估、处置、监督、沟通",
+        "风险管理须嵌入组织治理而非作为独立流程",
+        "OWL 风险评估流程的国际对标"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "ISO 风险管理国际标准——OWL 风险评估对标"
+    },
+    {
+      "id": "M06-2018-ISO-45001",
+      "type": "standard",
+      "authors": ["International Organization for Standardization"],
+      "year": 2018,
+      "title": "ISO 45001:2018 Occupational health and safety management systems — Requirements with guidance for use",
+      "venue": "ISO",
+      "doi": null,
+      "url": "https://www.iso.org/standard/63787.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["occupational-safety", "ISO", "standard"],
+      "key_claims": [
+        "职业健康安全管理体系国际标准",
+        "PDCA 循环：策划、实施、检查、处置",
+        "OWL 物理安全管理对标的国际框架"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "ISO 职业健康安全国际标准"
+    },
+    {
+      "id": "M06-2020-MinorsLaw-CN",
+      "type": "policy",
+      "authors": ["全国人民代表大会常务委员会"],
+      "year": 2020,
+      "title": "中华人民共和国未成年人保护法（2020 年修订）",
+      "venue": "中国法律出版社",
+      "doi": null,
+      "url": "http://www.npc.gov.cn/npc/c30834/202010/8c3ab2e3b6db4f17b3aa9e2e6f4a7a35.shtml",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["China-local", "minors-protection", "national-law"],
+      "key_claims": [
+        "中国未成年人保护的强制性国家法律",
+        "家庭、学校、社会、网络、政府、司法六大保护",
+        "OWL 中国境内未成年保护合规对标的国家法律"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土合规依据 1：未成年人保护法 2020 修订"
+    },
+    {
+      "id": "M06-2024-MOE-CampusSafety",
+      "type": "policy",
+      "authors": ["中华人民共和国教育部等"],
+      "year": 2024,
+      "title": "关于加强中小学校园安全工作的指导意见",
+      "venue": "教育部",
+      "doi": null,
+      "url": "http://www.moe.gov.cn/jyb_xxgk/moe_1777/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["China-local", "campus-safety", "K-12-policy"],
+      "key_claims": [
+        "中国 K-12 校园安全的国家政策指导",
+        "物理安全、网络安全、心理安全、应急处置四大维度",
+        "OWL 中国境内运营须对接的最新政策"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土合规依据 2：教育部校园安全指导意见"
     }
   ],
-  "notes": "安全与伦理相关文献待人工验证。2026-04 更新：新增 4 篇心理安全 2023-2025 高分位证据。",
+  "topics_covered": [
+    "心理安全（M06 主场，M07 培训层引用）",
+    "物理安全（M03 提供物质条件，M06 主场操作）",
+    "未成年人保护（中国法律 + UNESCO + 内部 SOP）",
+    "数据安全与隐私",
+    "AI 使用伦理（M05 工具上架由本节伦理底线约束）",
+    "知识产权（M02 治理层引用）",
+    "国际标准（ISO 31000 / 45001 / UNESCO AI 伦理）",
+    "应急处置"
+  ],
+  "notes": "安全与伦理相关文献待人工验证。2026-05 更新：新增 4 条 ISO 风险管理标准与中国本土合规依据。",
   "cross_validation_status": "pending"
 }

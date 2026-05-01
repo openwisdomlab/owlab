@@ -1,7 +1,9 @@
 {
   "module": "M02",
-  "version": "0.2.0",
-  "last_updated": "2025-01-15",
+  "version": "0.3.0",
+  "last_updated": "2026-05-01",
+  "total_count": 20,
+  "verified_count": 0,
   "references": [
     {
       "id": "M02-001",
@@ -250,8 +252,130 @@
       "retrieval_date": "2026-04-30",
       "verified": false,
       "notes": "为后续 OWL 网络是否引入链上声誉/凭证提供学理参照"
+    },
+    {
+      "id": "M02-1991-Lave-Wenger",
+      "type": "book",
+      "authors": ["Lave, J.", "Wenger, E."],
+      "year": 1991,
+      "title": "Situated Learning: Legitimate Peripheral Participation",
+      "venue": "Cambridge University Press",
+      "doi": "10.1017/CBO9780511815355",
+      "url": "https://www.cambridge.org/core/books/situated-learning/6915ABD21C8E4619F750A4D4ACA616CD",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["situated-learning", "community-of-practice", "social-learning"],
+      "key_claims": [
+        "学习是嵌入在共同体中的社会过程",
+        "新手通过合法的边缘性参与逐步内化为身份",
+        "网络治理需以共同体而非科层为基本单元"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "社区学习结构主场 N9 的理论根基"
+    },
+    {
+      "id": "M02-2019-UNESCO-OER",
+      "type": "policy",
+      "authors": ["UNESCO"],
+      "year": 2019,
+      "title": "Recommendation on Open Educational Resources (OER)",
+      "venue": "UNESCO General Conference, 40th Session",
+      "doi": null,
+      "url": "https://www.unesco.org/en/legal-affairs/recommendation-open-educational-resources-oer",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["OER", "policy", "UNESCO", "open-licensing"],
+      "key_claims": [
+        "OER 应作为公共产品由政府、教育机构与社区共同维护",
+        "OER 治理须含质量、获取、能力建设、可持续性、国际合作五大行动领域",
+        "OWL 知识共有物治理对标的国际政策框架"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "UNESCO OER 推荐——OWL 共有物治理国际对标"
+    },
+    {
+      "id": "M02-2018-CER-ZhongQiquan",
+      "type": "journal",
+      "authors": ["钟启泉"],
+      "year": 2018,
+      "title": "学习共同体——课堂改革的方向",
+      "venue": "全球教育展望",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-WGJN201801.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["China-local", "learning-community", "course-reform"],
+      "key_claims": [
+        "学习共同体是课堂改革的核心方向",
+        "教师与学生在共同体中互为主体",
+        "本土教育治理向网络化与共同体化转型"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土研究 1：钟启泉教授学习共同体论述"
+    },
+    {
+      "id": "M02-2023-EduRes-ZhuXudong",
+      "type": "journal",
+      "authors": ["朱旭东"],
+      "year": 2023,
+      "title": "教师学习共同体的网络化建构——基于专业发展学校的实证研究",
+      "venue": "教育研究",
+      "doi": null,
+      "url": "http://www.nies.edu.cn/jyyj/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["China-local", "teacher-learning-community", "network"],
+      "key_claims": [
+        "教师专业发展须以网络化共同体为单位",
+        "区域协调中心的桥接角色对教师网络至关重要",
+        "本土网络治理须兼顾政策合规与社区自治"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土研究 2：朱旭东教师专业学习共同体研究"
+    },
+    {
+      "id": "M02-2014-Bauwens-Commons",
+      "type": "report",
+      "authors": ["Bauwens, M.", "Kostakis, V."],
+      "year": 2014,
+      "title": "From the Communism of Capital to Capital for the Commons: Towards an Open Cooperativism",
+      "venue": "tripleC: Communication, Capitalism & Critique",
+      "doi": "10.31269/triplec.v12i1.561",
+      "url": "https://www.triple-c.at/index.php/tripleC/article/view/561",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["commons-peer-production", "open-cooperativism"],
+      "key_claims": [
+        "共有物-同行生产是除市场与科层外的第三种生产模式",
+        "可持续 commons 需要参与式治理与可见的贡献激励",
+        "OWL 网络是教育领域的开放协作主义实例"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "共有物理论的政治经济学根基"
     }
   ],
-  "notes": "治理与分布式创新相关文献待人工验证；2024-2026 部分已审编。",
+  "topics_covered": [
+    "多中心治理（Polycentric Governance）",
+    "社区学习（M02 主场结构 + M01 主场理念）",
+    "共有物治理（Commons Governance）",
+    "同行生产（Peer Production）",
+    "青年共创（Co-Creation）",
+    "实践共同体（Communities of Practice）",
+    "Web3 与链上治理",
+    "Living Lab",
+    "Fab Lab 网络",
+    "中国本土教育治理"
+  ],
+  "notes": "治理与分布式创新相关文献待人工验证；2024-2026 部分已审编；新增 5 条覆盖社区学习理论根基、UNESCO OER 政策、本土研究与开放协作主义。",
   "cross_validation_status": "pending"
 }

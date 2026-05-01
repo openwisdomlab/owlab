@@ -1,7 +1,9 @@
 {
   "module": "M04",
-  "version": "0.1.0",
-  "last_updated": "2025-01-15",
+  "version": "0.2.0",
+  "last_updated": "2026-05-01",
+  "total_count": 20,
+  "verified_count": 0,
   "references": [
     {
       "id": "M04-001",
@@ -178,8 +180,238 @@
       "retrieval_date": "2026-04-30",
       "verified": false,
       "notes": "克罗地亚 Sa STEMom raSTEMo 项目准实验（2025）"
+    },
+    {
+      "id": "M04-2000-Thomas-PBLReview",
+      "type": "report",
+      "authors": ["Thomas, J.W."],
+      "year": 2000,
+      "title": "A Review of Research on Project-Based Learning",
+      "venue": "Autodesk Foundation",
+      "doi": null,
+      "url": "https://www.bie.org/object/document/a_review_of_research_on_project_based_learning",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["PBL", "literature-review", "classic"],
+      "key_claims": [
+        "PBL 五个核心特征：中心性、驱动问题、建构性调查、学生自主、真实性",
+        "PBL 在动机、问题解决、深度理解上优于传统教学",
+        "PBL 实施挑战：教师准备、评估、时间管理"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "PBL 研究的经典综述——后续 20 年研究的起点文献"
+    },
+    {
+      "id": "M04-2004-EdPsy-HmeloSilver",
+      "type": "journal",
+      "authors": ["Hmelo-Silver, C.E."],
+      "year": 2004,
+      "title": "Problem-Based Learning: What and How Do Students Learn?",
+      "venue": "Educational Psychology Review",
+      "doi": "10.1023/B:EDPR.0000034022.16470.f3",
+      "url": "https://link.springer.com/article/10.1023/B:EDPR.0000034022.16470.f3",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["PBL", "self-directed-learning", "scaffolding"],
+      "key_claims": [
+        "PBL 学生在长期保留与自主学习能力上优于传统教学",
+        "PBL 须配以认知与元认知脚手架才能成功",
+        "教师角色从传授者转为认知教练"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "PBL 学生学习机制的经典综述"
+    },
+    {
+      "id": "M04-2017-MDRC-Condliffe",
+      "type": "report",
+      "authors": ["Condliffe, B.", "Quint, J.", "Visher, M.G.", "Bangser, M.R.", "Drohojowska, S.", "Saco, L.", "Nelson, E."],
+      "year": 2017,
+      "title": "Project-Based Learning: A Literature Review",
+      "venue": "MDRC",
+      "doi": null,
+      "url": "https://www.mdrc.org/work/publications/project-based-learning",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["PBL", "literature-review", "implementation"],
+      "key_claims": [
+        "PBL 在科学、社会研究、写作上有可量化效益；数学证据较弱",
+        "教师专业发展是 PBL 实施成败的关键变量",
+        "学校文化与时间安排对 PBL 持续性影响巨大"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "MDRC 综合 PBL 文献综述（2017）"
+    },
+    {
+      "id": "M04-2019-EduRes-Chen",
+      "type": "journal",
+      "authors": ["Chen, C.-H.", "Yang, Y.-C."],
+      "year": 2019,
+      "title": "Revisiting the effects of project-based learning on students' academic achievement: A meta-analysis investigating moderators",
+      "venue": "Educational Research Review",
+      "doi": "10.1016/j.edurev.2018.11.001",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1747938X18305608",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["PBL", "meta-analysis", "academic-achievement"],
+      "key_claims": [
+        "46 项研究元分析：PBL 中等效应（g=0.71）显著优于传统教学",
+        "效应受教育阶段、学科、干预时长、信息技术使用调节",
+        "中学阶段、社会科学、长周期、ICT 增强条件下效应最大"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "PBL 学业成就的关键元分析（46 项研究）"
+    },
+    {
+      "id": "M04-2007-NRC-TakingScience",
+      "type": "book",
+      "authors": ["National Research Council"],
+      "year": 2007,
+      "title": "Taking Science to School: Learning and Teaching Science in Grades K-8",
+      "venue": "National Academies Press",
+      "doi": "10.17226/11625",
+      "url": "https://nap.nationalacademies.org/catalog/11625/taking-science-to-school-learning-and-teaching-science-in-grades",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["age-differentiation", "K-8", "science-education", "developmental"],
+      "key_claims": [
+        "K-8 科学学习的发展轨迹：儿童具备远超传统假设的科学推理能力",
+        "年龄分层课程设计须围绕核心概念螺旋展开，而非按年龄分割知识",
+        "「科学实践」四要素：知识、推理、参与、认识论"
+      ],
+      "used_in": ["index.mdx", "extend/age-differentiation.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "美国国家研究委员会 K-8 科学教育里程碑——年龄差异化主场依据"
+    },
+    {
+      "id": "M04-2013-Vasquez-STEMByGrade",
+      "type": "book",
+      "authors": ["Vasquez, J.A.", "Sneider, C.", "Comer, M."],
+      "year": 2013,
+      "title": "STEM Lesson Essentials, Grades 3-8: Integrating Science, Technology, Engineering, and Mathematics",
+      "venue": "Heinemann",
+      "doi": null,
+      "url": "https://www.heinemann.com/products/E04358.aspx",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["age-differentiation", "STEM", "grade-specific", "integration"],
+      "key_claims": [
+        "STEM 整合的四个层次：disciplinary、multidisciplinary、interdisciplinary、transdisciplinary",
+        "3-8 年级 STEM 课程的认知与技能阶梯",
+        "年龄适配的工具、词汇、项目复杂度参考表"
+      ],
+      "used_in": ["index.mdx", "extend/age-differentiation.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "K-12 STEM 整合年龄分层的实操指南"
+    },
+    {
+      "id": "M04-2022-UNESCO-ReimaginingFutures",
+      "type": "report",
+      "authors": ["UNESCO International Commission on the Futures of Education"],
+      "year": 2022,
+      "title": "Reimagining Our Futures Together: A New Social Contract for Education",
+      "venue": "UNESCO",
+      "doi": null,
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000379707",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["UNESCO", "global-curriculum", "social-contract"],
+      "key_claims": [
+        "新教育社会契约：合作团结、共同学习、协同创造",
+        "课程须围绕生态、智识、社会、技术四个能力领域重构",
+        "终身学习与跨年龄共学是未来课程的核心范式"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "UNESCO 教育未来委员会全球课程愿景"
+    },
+    {
+      "id": "M04-2022-MOE-CourseStandards",
+      "type": "policy",
+      "authors": ["中华人民共和国教育部"],
+      "year": 2022,
+      "title": "义务教育课程方案和课程标准（2022 年版）",
+      "venue": "北京师范大学出版社",
+      "doi": null,
+      "url": "http://www.moe.gov.cn/srcsite/A26/s8001/202204/t20220420_619921.html",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["China-local", "policy", "K-9-curriculum"],
+      "key_claims": [
+        "中国义务教育课程方案 2022 年版：核心素养导向、跨学科主题学习",
+        "「跨学科主题学习」不少于课时总数 10%",
+        "OWL 课程在中国境内合规对标的国家课程标准"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土合规依据：教育部 2022 课程标准"
+    },
+    {
+      "id": "M04-2020-CER-SangGuoyuan",
+      "type": "journal",
+      "authors": ["桑国元", "叶碧欣"],
+      "year": 2020,
+      "title": "项目化学习的核心要素与实施策略——基于深度学习视角",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202003.htm",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["China-local", "PBL", "deep-learning"],
+      "key_claims": [
+        "项目化学习的核心要素：真实问题、持续探究、公开成果、深度反思",
+        "本土实施策略：教师角色、学生自主、跨学科整合、评价改革",
+        "中国 PBL 实践与本土文化的融合路径"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土研究 1：项目化学习的本土深化研究"
+    },
+    {
+      "id": "M04-2018-Krajcik-Czerniak",
+      "type": "book",
+      "authors": ["Krajcik, J.S.", "Czerniak, C.M."],
+      "year": 2018,
+      "title": "Teaching Science in Elementary and Middle School: A Project-Based Learning Approach (5th ed.)",
+      "venue": "Routledge",
+      "doi": "10.4324/9781315205014",
+      "url": "https://www.routledge.com/Teaching-Science-in-Elementary-and-Middle-School-A-Project-Based-Learning/Krajcik-Czerniak/p/book/9781138802735",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["PBL", "K-8", "science-education", "implementation"],
+      "key_claims": [
+        "PBL 在 K-8 科学教育中的具体实施框架",
+        "驱动问题、调查活动、协作社区、技术使用、可见产物五要素",
+        "教师角色：学习活动设计者、思维促进者、资源协调者"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "PBL K-8 科学教学的权威实施手册（第 5 版）"
     }
   ],
-  "notes": "课程设计相关文献待人工验证；2024-2026 部分已审编。",
+  "topics_covered": [
+    "项目制学习（PBL）",
+    "探究式学习（IBL / IBSE）",
+    "年龄差异化（M04 主场）",
+    "K-8 科学发展轨迹",
+    "STEM 整合分层",
+    "AI 在课程中的形成性应用",
+    "中国本土课程标准与实施",
+    "全球课程愿景"
+  ],
+  "notes": "课程设计相关文献待人工验证；2024-2026 部分已审编；新增 10 条覆盖 PBL 经典与元分析、年龄分层、本土与全球政策。",
   "cross_validation_status": "pending"
 }

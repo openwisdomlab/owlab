@@ -1,7 +1,9 @@
 {
   "module": "M07",
-  "version": "0.1.0",
-  "last_updated": "2025-01-15",
+  "version": "0.2.0",
+  "last_updated": "2026-05-01",
+  "total_count": 20,
+  "verified_count": 0,
   "references": [
     {
       "id": "M07-001",
@@ -158,8 +160,261 @@
       "retrieval_date": "2026-04-30",
       "verified": false,
       "notes": "Utrecht University 2024 - 青年发起式 mentoring 元分析"
+    },
+    {
+      "id": "M07-1976-Wood-Scaffolding",
+      "type": "journal",
+      "authors": ["Wood, D.", "Bruner, J.S.", "Ross, G."],
+      "year": 1976,
+      "title": "The role of tutoring in problem solving",
+      "venue": "Journal of Child Psychology and Psychiatry",
+      "doi": "10.1111/j.1469-7610.1976.tb00381.x",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1469-7610.1976.tb00381.x",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["scaffolding", "classic", "tutoring"],
+      "key_claims": [
+        "「脚手架」概念的原始提出：成人在儿童能力边缘提供刚好够用的支持",
+        "脚手架六要素：招募、降低自由度、方向维持、关键特征标记、挫折控制、示范",
+        "OWL 引导法主场的概念奠基"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "脚手架概念的原始论文——M07 引导法主场的根文献"
+    },
+    {
+      "id": "M07-2004-Reiser-Scaffolding",
+      "type": "journal",
+      "authors": ["Reiser, B.J."],
+      "year": 2004,
+      "title": "Scaffolding complex learning: The mechanisms of structuring and problematizing student work",
+      "venue": "Journal of the Learning Sciences",
+      "doi": "10.1207/s15327809jls1303_2",
+      "url": "https://www.tandfonline.com/doi/abs/10.1207/s15327809jls1303_2",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["scaffolding", "complex-learning", "structuring", "problematizing"],
+      "key_claims": [
+        "脚手架的两大互补机制：结构化（structuring）与问题化（problematizing）",
+        "好的引导既降低难度又提升认知挑战，二者并非对立",
+        "对应 M01 N3 失败友好与 M07 N3 适度挑战"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "学习科学领域脚手架机制的关键论述"
+    },
+    {
+      "id": "M07-2009-Hattie-VisibleLearning",
+      "type": "book",
+      "authors": ["Hattie, J."],
+      "year": 2009,
+      "title": "Visible Learning: A Synthesis of Over 800 Meta-Analyses Relating to Achievement",
+      "venue": "Routledge",
+      "doi": "10.4324/9780203887332",
+      "url": "https://www.routledge.com/Visible-Learning-A-Synthesis-of-Over-800-Meta-Analyses-Relating-to-Achievement/Hattie/p/book/9780415476188",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["meta-meta-analysis", "teacher-effects", "feedback"],
+      "key_claims": [
+        "800+ 元分析综合：教师反馈是学习成果最强单一干预（d=0.73）",
+        "元认知策略、形成性评估、教师-学生关系均超 d=0.6",
+        "OWL 引导者能力模型的实证依据"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "教育干预的元综合——OWL 教师效果预期对标"
+    },
+    {
+      "id": "M07-1997-Bandura-SelfEfficacy",
+      "type": "book",
+      "authors": ["Bandura, A."],
+      "year": 1997,
+      "title": "Self-Efficacy: The Exercise of Control",
+      "venue": "W.H. Freeman",
+      "doi": null,
+      "url": "https://www.uky.edu/~eushe2/Bandura/BanEncy.html",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["self-efficacy", "agency", "motivation"],
+      "key_claims": [
+        "自我效能感是行动改变的关键中介",
+        "效能感的四个来源：成功经验、替代经验、社会说服、生理状态",
+        "OWL 学习者自我效能与导师角色设计的根理论"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "自我效能感理论的奠基著作"
+    },
+    {
+      "id": "M07-1995-Mercer-CommonKnowledge",
+      "type": "book",
+      "authors": ["Mercer, N."],
+      "year": 1995,
+      "title": "The Guided Construction of Knowledge: Talk Amongst Teachers and Learners",
+      "venue": "Multilingual Matters",
+      "doi": null,
+      "url": "https://www.multilingual-matters.com/page/detail/?k=9781853592621",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["dialogic-teaching", "guided-participation", "talk"],
+      "key_claims": [
+        "知识在引导式对话中被共同建构",
+        "「探究式对话」是教师介入的核心形式",
+        "OWL 引导者「不教，而是点燃」的对话学根基"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "引导式对话与共同知识建构"
+    },
+    {
+      "id": "M07-1980-Knowles-Andragogy",
+      "type": "book",
+      "authors": ["Knowles, M.S."],
+      "year": 1980,
+      "title": "The Modern Practice of Adult Education: From Pedagogy to Andragogy",
+      "venue": "Cambridge Adult Education",
+      "doi": null,
+      "url": "https://archive.org/details/modernpracticeof0000know",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["andragogy", "adult-learning", "self-direction"],
+      "key_claims": [
+        "成人学习的六个原则：需要知道、自我概念、经验、学习准备、定向、动机",
+        "成人引导者须从「教师」转为「学习促进者」",
+        "OWL 志愿者与社区成员引导的关键依据"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "成人教育学的奠基著作"
+    },
+    {
+      "id": "M07-2024-UNESCO-AICompetency",
+      "type": "policy",
+      "authors": ["UNESCO"],
+      "year": 2024,
+      "title": "AI competency framework for teachers",
+      "venue": "UNESCO",
+      "doi": null,
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000391104",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["UNESCO", "AI-competency", "teacher", "policy"],
+      "key_claims": [
+        "教师 AI 能力框架：批判使用 → 应用 → 共创 → 引领",
+        "教师须具备 AI 伦理判断、教学整合、专业发展三层能力",
+        "OWL 引导者 AI 能力等级的国际对标"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "UNESCO 教师 AI 能力框架——国际对标"
+    },
+    {
+      "id": "M07-2017-LPI-DarlingHammond",
+      "type": "report",
+      "authors": ["Darling-Hammond, L.", "Hyler, M.E.", "Gardner, M."],
+      "year": 2017,
+      "title": "Effective Teacher Professional Development",
+      "venue": "Learning Policy Institute",
+      "doi": null,
+      "url": "https://learningpolicyinstitute.org/product/effective-teacher-professional-development-report",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["professional-development", "teacher-PD"],
+      "key_claims": [
+        "有效教师专业发展的七个特征：内容聚焦、主动学习、协作、模型化、教练支持、反思反馈、持续时长",
+        "无效 PD 模式：一次性讲座、与课堂脱节、无后续支持",
+        "OWL 培训体系设计直接对照此七特征"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "Learning Policy Institute 教师 PD 综合研究"
+    },
+    {
+      "id": "M07-2022-CER-GuMingyuan",
+      "type": "journal",
+      "authors": ["顾明远"],
+      "year": 2022,
+      "title": "新时代教师专业发展的内涵与路径",
+      "venue": "中国教育学刊",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZJYK202203.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["China-local", "teacher-development", "policy"],
+      "key_claims": [
+        "新时代教师专业发展须以师德、能力、研究三轴并进",
+        "本土教师培养路径：高校培养 + 在职研修 + 教研共同体",
+        "OWL 引导者本土发展路径的政策对接"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土研究 1：顾明远教师专业发展论"
+    },
+    {
+      "id": "M07-2021-EduRes-ZhuXudong",
+      "type": "journal",
+      "authors": ["朱旭东", "宋萑"],
+      "year": 2021,
+      "title": "教师学习共同体的实践逻辑与建构路径",
+      "venue": "教育研究",
+      "doi": null,
+      "url": "http://www.nies.edu.cn/jyyj/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["China-local", "teacher-learning-community", "practice"],
+      "key_claims": [
+        "教师学习共同体的实践逻辑：协同备课、同伴观察、反思对话",
+        "建构路径：组织保障、文化支持、专业引领、评价激励",
+        "OWL 网络层教师协同（与 M02 主场社区学习对接）"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土研究 2：朱旭东教师学习共同体（与 M02 引用同一作者不同篇）"
+    },
+    {
+      "id": "M07-2024-RER-MentoringMeta",
+      "type": "journal",
+      "authors": ["Eby, L.T.", "Allen, T.D.", "Hoffman, B.J.", "Baranik, L.E.", "Sauer, J.B.", "Baldwin, S.", "Morrison, M.A.", "Kinkade, K.M.", "Maher, C.P.", "Curtis, S.", "Evans, S.C."],
+      "year": 2013,
+      "title": "An interdisciplinary meta-analysis of the potential antecedents, correlates, and consequences of protégé perceptions of mentoring",
+      "venue": "Psychological Bulletin",
+      "doi": "10.1037/a0029279",
+      "url": "https://psycnet.apa.org/record/2013-00532-001",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["mentoring", "meta-analysis", "outcomes"],
+      "key_claims": [
+        "200+ 研究跨学科 mentoring 元分析",
+        "高质量 mentoring 与受指导者职业、心理、行为成果显著正相关",
+        "关系质量比频率更重要；非正式 mentoring 效应大于正式安排"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "Psychological Bulletin 跨学科 mentoring 元分析（200+ 研究）"
     }
   ],
-  "notes": "人员发展相关文献待人工验证。2026-04 更新：新增 4 篇 mentoring 2024-2025 高分位证据。",
+  "topics_covered": [
+    "引导法 / 脚手架（M07 主场，M04/L03 引用）",
+    "导师与教练",
+    "成人教育学",
+    "教师专业发展",
+    "自我效能感",
+    "对话学与引导式对话",
+    "AI 时代教师能力",
+    "中国本土教师专业发展",
+    "失败友好（操作侧；理念主场 M01）"
+  ],
+  "notes": "人员发展相关文献待人工验证。2026-05 更新：新增 11 条覆盖脚手架经典、Hattie 元综合、UNESCO 教师 AI 框架、本土教师专业发展。",
   "cross_validation_status": "pending"
 }

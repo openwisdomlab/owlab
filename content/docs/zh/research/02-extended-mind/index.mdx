@@ -1,499 +1,311 @@
 ---
-title: L02 思维的延伸
-description: 认知整合的条件与机制 | Extended Mind — 心智如何在世界中扩展
+title: "L02 延伸心智"
+description: "Extended Mind — 工具是认知的一部分，认知不止于颅内"
 module_id: "L02"
 doc_type: "research"
-version: "1.0.0"
-status: "stable"
-last_updated: "2026-04-30"
+version: "2.0.0"
+status: "exploratory"
+last_updated: "2026-05-01"
 
 ai_context_size: "small"
 standalone_readable: true
-dependencies: ["M05"]
+dependencies: ["M01", "M05"]
 
-evidence_tier: "E3"
-evidence_level: "E3"
+evidence_tier: "E2"
+evidence_level: "E2"
 sources_verified: false
-confidence: "high"
+confidence: "medium"
 
 tags:
   - L02
   - research
   - 延伸心智
+  - 4E认知
+  - 分布式认知
+  - 认知卸载
+  - 工具中介
   - 具身认知
-  - LLM
-  - Clark-Chalmers
-  - 4E-cognition
 ---
 
-# 思维的延伸
+<ModulePageTitle moduleId="L02" />
 
-**Extended Mind: Conditions and Mechanisms of Cognitive Integration**
+<ModuleSummary
+  moduleId="L02"
+  tagline="延伸心智：工具是认知的一部分"
+  philosophy="认知不止于颅内。Clark 与 Chalmers 1998 把这一论断形式化为延伸心智假说：当工具与人通过功能耦合形成稳定认知系统时，工具就是心智的一部分。AI 时代，这一命题变得既更有力又更危险——L02 在 M05 工具的实施层之上，提供 4E 认知（具身/嵌入/生成/延伸）的研究层视角。"
+  summary="L02 整合 Clark-Chalmers 延伸心智、Hutchins 分布式认知、Vygotsky 工具中介、Lakoff 具身认知、Thompson enactive 与 Risko 认知卸载综述，对话 2025-2026 GenAI 时代的最新理论扩展（Clark Nature Communications、Smart Synthese、放大心智）。N1-N10 给出延伸心智的研究框架，S?/P?/L? 提出当前阶段的开放问题，为 M05 的工具实施层反向滋养。"
+  insights={[
+    "延伸心智：Clark-Chalmers Parity Principle 是 L02 的根命题。",
+    "4E 认知：具身（embodied）/ 嵌入（embedded）/ 生成（enactive）/ 延伸（extended）四维同时考虑。",
+    "认知卸载是双刃剑：Risko 综述与 Pownall scoping review 提供条件性证据。",
+    "GenAI 时代的扩展：从延伸心智到放大心智，需要培养「延伸认知卫生」。",
+    "本土延伸：徐勇民 / 陈海研究中国情境下的智能教育工具。"
+  ]}
+/>
 
----
+## 引言
 
-## 核心问题
+走进任何一个学习者使用 AI 工具的瞬间，你会看到一个悖论：他打字提问，AI 回答，他思考，他追问，AI 给出更精确的回应。这个简单的对话场景背后，是 1998 年 Andy Clark 与 David Chalmers 在 *Analysis* 提出的延伸心智假说<Cite id="L02-1998-AnalysisClark" />——当工具与人通过功能耦合形成稳定认知系统时，工具就是心智的一部分。Otto 与 Inga 的笔记本案例至今仍是这一论断最经典的思想实验。
 
-> **心智的边界在哪里？什么条件下，外部事物能成为"我"思考的一部分？**
+近 30 年的研究为这一假说提供了多层证据基础。Hutchins 1995 *Cognition in the Wild*<Cite id="L02-1995-Hutchins-CognitionWild" />通过海军舰艇导航案例证明分布式认知——认知活动跨越人 + 工具 + 环境分布。Vygotsky 1978 *Mind in Society*<Cite id="L02-1978-Vygotsky-Mind" />更早提出工具与符号是高级心理功能的中介。Lakoff 与 Johnson<Cite id="L02-1991-Lakoff-Embodied" />从具身认知与隐喻视角进一步证明：抽象概念建立在身体经验的基础上。Thompson 2007 *Mind in Life*<Cite id="L02-2008-Thompson-MindLife" />提出 enactive 视角——心智不是表征世界，而是与世界共构。这些视角在 Newen 等编 *Oxford Handbook of 4E Cognition*<Cite id="L02-2020-FrontHum-4ECognition" />中被整合为 4E 认知（embodied / embedded / enactive / extended）的权威框架。
 
-这不是一个纯粹的哲学问题。对于创客教育而言，理解认知整合的机制，直接影响我们如何设计学习体验：
+工具与设计的研究维度同等重要。Norman 1988 *The Design of Everyday Things*<Cite id="L02-1988-Norman-DesignThings" />把可见性、反馈、约束、映射四原则形式化；Suchman 1987 *Plans and Situated Actions*<Cite id="L02-1991-Suchman-Plans" />指出人类行动是情境性的而非按预设计划执行；Sterelny *The Evolved Apprentice*<Cite id="L02-2018-Sterelny-EvolvedApprentice" />从演化人类学角度论证认知能力建立在工具 + 实践 + 文化的脚手架上；Verbeek<Cite id="L02-2014-Verbeek-Mediation" />引入技术中介论——技术不是中立工具，而是道德主体的中介。
 
-- 为什么"动手做"比"听讲"更有效？
-- 为什么画草图能帮助理清思路？
-- 为什么熟练使用的工具"消失"在手中？
-- 为什么 AI 可能增强也可能削弱认知能力？
+认知卸载的实证研究在 2010 年代后快速成熟。Sparrow 等 2011 *Science* 「Google 效应」<Cite id="L02-2011-Sparrow-Google" />证明信息可被搜索时记忆策略发生改变；Risko 与 Gilbert 2016 在 *Trends in Cognitive Sciences* 综述<Cite id="L02-2016-Risko-Cognitive" />指出认知卸载受元认知准确性、努力、成本与个人差异调节；Pownall 等 2023 数字时代认知卸载 scoping review<Cite id="L02-2024-FrontPsy-Pownall" />提供数字时代证据；Skulmowski 与 Rey<Cite id="L02-2022-PMC-EmbodiedReview" />给出具身学习的二维分类法（身体投入 × 任务整合）。
 
----
+GenAI 时代的理论扩展由 Andy Clark 本人推动：Clark 2025 *Nature Communications* *Extending Minds with Generative AI*<Cite id="L02-2025-NatureComm-Clark" />提出需要从早期就培养「延伸认知卫生」；Smart 2025 *Synthese* 把 RAG 与 ChatGPT 作为延伸心智的具体技术实例<Cite id="L02-2025-Synthese-DigitalAndy" />；Zenodo 2026 *From Extended to Amplified*<Cite id="L02-2026-Zenodo-AmplifiedMind" />提出「放大心智」假说——LLM 不仅延伸还放大认知。Gerlich 2025<Cite id="L02-2024-Edu-AICognitiveOff" />实证 AI 工具高使用与批判性思维下降相关。Menary 2010 编 *The Extended Mind*<Cite id="L02-2010-Menary-ExtendedMind" />给出延伸心智论的代表论文集，便于全面综合。中国本土，徐勇民与陈海 2023<Cite id="L02-2023-Edu-XuChen" />从延伸心智视角研究中国智能教育工具的本土化路径。
 
-## 理论基石：延伸心智假说
-
-### Clark & Chalmers 的开创性论证
-
-1998年，哲学家 Andy Clark 和 David Chalmers 在《Analysis》期刊发表了改变认知科学的论文：**《延伸心智》(The Extended Mind)**。
-
-他们著名的思想实验"Otto与Inga"说明了这一点：
-
-- **Inga** 想去博物馆。她回忆起博物馆在53街，于是前往。
-- **Otto** 患有阿尔茨海默症。他查看随身携带的笔记本，看到博物馆在53街，于是前往。
-
-**Clark 和 Chalmers 的论证**：Otto 的笔记本在功能上等同于 Inga 的生物记忆——**笔记本是 Otto 心智的一部分**。
-
-### 功能等价原则
-
-延伸心智假说的核心是**功能等价原则 (Parity Principle)**：
-
-> "如果一个外部过程以与内部认知过程相同的方式促进认知，那么它就是认知系统的一部分。"
-
-但这不意味着任何外部事物都能成为心智的一部分。整合需要满足特定条件：
-
-| 整合条件 | 说明 | 例子 |
-|---------|------|-----|
-| **可靠性** | 外部资源随时可用 | 随身笔记本 vs 图书馆 |
-| **信任** | 不加怀疑地使用其内容 | 自己的笔记 vs 网络搜索 |
-| **透明性** | 使用时不需要额外认知努力 | 熟练的工具 vs 新学的软件 |
-| **耦合** | 与认知过程紧密协同 | 手势辅助思考 vs 被动观看 |
-
-**这四个条件是理解认知延伸的关键框架。**
+**L02 的任务**：把这些跨学科证据整合为延伸心智的 N1-N10 理念框架，为 M05 工具实施层提供 4E 认知的理论根基；同时与 M05 N7-N10（AI 是放大器、认知卸载、信任度、不使用 AI 也是正当选项）形成研究层 ↔ 实施层的双向对话。
 
 ---
 
-## 认知整合的三条路径
+## 核心理念
 
-基于认知科学的研究，我们识别出三条主要的认知整合路径：
+下列十条理念是 L02 在研究层面对「延伸心智」的系统化整理。它们是可被实证检验的假说与设计准则，与 M05 N1-N10 工具实施层呼应。
 
-```text
-                  ┌─────────────────────────────┐
-                  │    心智的边界可以延伸        │
-                  │   (功能等价原则)             │
-                  └──────────────┬──────────────┘
-                                 │
-           ┌─────────────────────┼─────────────────────┐
-           ▼                     ▼                     ▼
-    ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
-    │  身体整合   │       │  工具整合   │       │  符号整合   │
-    │  (Embodied) │       │  (Tool)     │       │  (Symbolic) │
-    └──────┬──────┘       └──────┬──────┘       └──────┬──────┘
-           │                     │                     │
-    ┌──────▼──────┐       ┌──────▼──────┐       ┌──────▼──────┐
-    │ 手势、动作  │       │ 物理工具    │       │ 书写、图解  │
-    │ 多感官体验  │       │ 数字工具    │       │ 代码、模型  │
-    │ 预测-行动   │       │ AI 系统     │       │ 原型草图    │
-    └─────────────┘       └─────────────┘       └─────────────┘
-```
+### N1 延伸心智 — Clark-Chalmers Parity Principle
 
-### 三条路径的独特贡献
+Clark 与 Chalmers 1998<Cite id="L02-1998-AnalysisClark" />Parity Principle：若内在过程被算作认知，外在过程同等条件下也应。这是 L02 的根命题。Menary 2010 编<Cite id="L02-2010-Menary-ExtendedMind" />给出哲学辩论的全景。**研究启示**：评估学习者能力时须考虑工具-人系统而非孤立个体。
 
-| 路径 | 核心机制 | 对学习的贡献 | 创客教育应用 |
-|-----|---------|------------|------------|
-| **身体整合** | 感觉运动系统参与认知 | 深度理解、持久记忆 | 动手制作、多感官体验 |
-| **工具整合** | 神经-工具耦合 | 能力放大、认知卸载 | 熟练使用工具、AI辅助 |
-| **符号整合** | 外部表征支持推理 | 工作记忆扩展、复杂思考 | 草图、建模、代码 |
+### N2 分布式认知 — Hutchins 的认知系统观
 
----
+Hutchins 1995<Cite id="L02-1995-Hutchins-CognitionWild" />通过海军舰艇导航案例证明认知活动跨越人 + 工具 + 环境分布。**研究启示**：项目评估单位是「学习者 + 工具 + 同伴」而非孤立学习者。
 
-## 路径一：身体整合（具身认知）
+### N3 工具中介 — Vygotsky 的高级心理功能
 
-### 核心洞见
+Vygotsky 1978<Cite id="L02-1978-Vygotsky-Mind" />指出工具与符号是高级心理功能的中介；认知发展通过社会-文化-工具的内化路径。**研究启示**：工具选择即认知发展路径选择；与 M07 N1 引导法主场对接。
 
-**身体不是心智的容器，而是心智的一部分。**
+### N4 具身认知 — 认知建立在身体经验之上
 
-传统认知科学将大脑视为信息处理器，身体只是输入/输出设备。**具身认知 (Embodied Cognition)** 理论颠覆了这一假设：
+Lakoff 与 Johnson<Cite id="L02-1991-Lakoff-Embodied" />与 Skulmowski 与 Rey<Cite id="L02-2022-PMC-EmbodiedReview" />共同支撑：抽象概念建立在身体经验的基础上；高身体投入 + 高任务整合学习效果最强。**研究启示**：创客活动的具身性本身就是高效学习的来源。
 
-- 手势不仅表达思想，还**塑造**思想
-- 动作不仅执行意图，还**参与**理解
-- 感知不仅收集信息，还**构成**知识
+### N5 Enactive 认知 — 心智与世界共构
 
-### 研究证据
+Thompson 2007<Cite id="L02-2008-Thompson-MindLife" />提出 enactive 视角——心智不是表征世界而是与世界共构。**研究启示**：学习不是接收知识，而是在与环境互动中生成；与 M01 N2 做中学呼应。
 
-#### 手势与抽象思维
+### N6 4E 认知 — embodied / embedded / enactive / extended
 
-Susan Goldin-Meadow 的研究表明：
+Newen 等编 *Oxford Handbook of 4E Cognition*<Cite id="L02-2020-FrontHum-4ECognition" />把上述四个维度整合为 4E 框架。**研究启示**：分析学习场景时应同时考虑四个维度，而非偏向单一维度。
 
-- 禁止手势会降低数学问题解决能力
-- 儿童在"手势-言语不匹配"阶段最容易学习新概念
-- 恰当的手势可以减轻工作记忆负担
+### N7 认知卸载是双刃剑 — Risko 的条件性结论
 
-**对创客教育的启示**：鼓励学生用手比划、用身体演示，不是"玩耍"，而是认知策略。
+Sparrow 等<Cite id="L02-2011-Sparrow-Google" />证明 Google 效应；Risko 与 Gilbert<Cite id="L02-2016-Risko-Cognitive" />综述指出卸载受元认知准确性、努力、成本与个人差异调节；Pownall 等<Cite id="L02-2024-FrontPsy-Pownall" />数字时代 scoping review 进一步证实卸载对短期记忆有损害。**研究启示**：与 M05 N8 认知卸载的双刃剑论述强对接；课程设计须显式考虑卸载边界。
 
-#### 多感官整合
+### N8 学习生态位 — Sterelny 的演化人类学
 
-2025年元分析研究（37项研究综合）发现：
+Sterelny *The Evolved Apprentice*<Cite id="L02-2018-Sterelny-EvolvedApprentice" />从演化人类学角度论证人类认知建立在工具 + 实践 + 文化的脚手架上。**研究启示**：节点是学习生态位的物质化——空间 + 工具 + 社区共同构造学习能力。
 
-- 具身学习的整体效应量 d = 0.406（中等积极效应）
-- 视觉+触觉比单一感官记忆保留率提高约40%
-- 手部动作激活的脑区与抽象推理脑区重叠
+### N9 工具的伦理中介 — Verbeek 的后现象学
 
-**对创客教育的启示**：触摸材料、感受阻力、体验温度——这些"物理体验"不是学习的副产品，而是学习本身。
+Verbeek<Cite id="L02-2014-Verbeek-Mediation" />与 Suchman<Cite id="L02-1991-Suchman-Plans" />指出技术不是中立工具，而是道德主体的中介；行动总是情境性的。**研究启示**：工具选择即价值观选择；与 M06 N8 AI 伦理主场对接。
 
-#### 预测-行动-反馈循环
+### N10 GenAI 时代的延伸认知卫生 — Clark 2025
 
-**主动推理 (Active Inference)** 理论提出：
-
-```text
-学习 = 预测 → 行动 → 感知反馈 → 更新预测
-       ▲                              │
-       └──────────────────────────────┘
-         (预测误差最小化循环)
-```
-
-- 大脑是预测机器，通过最小化预测误差学习
-- **主动行动**是获取学习信号的必要条件
-- 如果跳过"行动-感知"环节，预测模型无法有效更新
-
-**对创客教育的启示**：
-- 先让学生**预测**结果，再动手验证
-- "失败"是宝贵的预测误差信号
-- 快速原型迭代 = 高效的预测-验证循环
-
-### 设计原则
-
-<Callout type="info">
-**具身整合检查清单**
-
-- [ ] 学习活动是否包含**主动身体参与**（不只是观看）？
-- [ ] 手势/动作是否与**核心概念结构对应**？
-- [ ] 是否提供**即时感知反馈**（视觉、触觉、听觉）？
-- [ ] 是否鼓励**预测-行动-验证**循环？
-</Callout>
-
-→ [深入阅读：具身认知的神经科学](./extend/embodied-cognition)
+Clark 2025 *Nature Communications*<Cite id="L02-2025-NatureComm-Clark" />提出需要从早期就培养「延伸认知卫生」（extended cognitive hygiene）；教育核心目标转向「成为对工具值不值得信任的精明评估者」。Smart 2025<Cite id="L02-2025-Synthese-DigitalAndy" />与 Zenodo 2026 放大心智<Cite id="L02-2026-Zenodo-AmplifiedMind" />进一步推进；Gerlich 2025<Cite id="L02-2024-Edu-AICognitiveOff" />实证高 AI 使用与批判性思维下降相关。**研究启示**：与 M05 N9 信任度、N10 不使用 AI 是正当选项强对接。
 
 ---
 
-## 路径二：工具整合（神经耦合）
+## 研究问题（S?）
 
-### 核心洞见
-
-**熟练使用的工具在功能上成为身体的延伸。**
-
-这不是隐喻，而是神经科学事实。当木匠熟练使用锤子时，大脑表征锤子为手臂的延伸——不需要有意识计算工具尖端位置。
-
-### 身体图式可塑性
-
-**身体图式 (Body Schema)** 是大脑对身体边界的无意识表征。研究发现：
-
-- 工具使用可以**暂时性地**改变身体图式
-- 甚至通过**心理意象**也能诱发这种可塑性
-- 特定脑区（外纹状体区）神经活动随工具整合而改变
-
-**发展轨迹**：
-- 工具整合能力发展非常缓慢，成熟模式出现在青春期晚期
-- 可能标志着从视觉主导到本体感受主导的转变
-
-| 年龄段 | 工具学习特点 | 教学策略 |
-|-------|------------|---------|
-| 小学 | 依赖视觉引导 | 颜色编码、明确标记 |
-| 初中 | 视觉-触觉结合 | 培养"手感"判断 |
-| 高中+ | 本体感受主导 | 鼓励形成个人化习惯 |
-
-### AI 作为最新的工具整合案例
-
-AI（特别是大语言模型）是人类工具演化的最新阶段。Andy Clark 在2025年Nature Communications文章中指出：
-
-> "人类天生就是'延伸心智'，AI只是最新的认知扩展工具。关键不在于是否使用AI，而在于如何整合。"
-
-#### 三种人-AI关系模式
-
-| 模式 | 特征 | 教育风险 | 设计建议 |
-|-----|------|---------|---------|
-| **认知卸载** | AI处理低价值任务 | 低 | 理想：释放认知资源 |
-| **认知伙伴** | 人机协作创造 | 中 | 可接受：保持主导权 |
-| **认知替代** | AI完成核心思考 | 高 | 警惕：能力萎缩风险 |
-
-#### 认知债务警示
-
-MIT Media Lab 2025年研究发现：
-
-- 使用AI组的大脑连接强度**最弱**
-- 4个月后，AI组在神经、语言和行为层面持续表现不佳
-- 提出新概念："认知债务" (Cognitive Debt)
-
-**核心悖论**：
-```text
-AI使用 ↔ 认知卸载 ↔ 批判性思维下降
-   r = +0.72      r = -0.75
-```
-
-**对创客教育的启示**：
-- AI 应该是**脚手架**而非**替代**
-- 设计"无AI时段"保护核心认知能力
-- 目标是**可撤退的支持**——最终学生能独立完成
-
-### 设计原则
-
-<Callout type="warn">
-**工具整合检查清单**
-
-- [ ] 工具是在**扩展**能力还是**替代**能力？
-- [ ] 学习者是否仍需经历**必要的认知挣扎**？
-- [ ] 使用工具后，核心技能是否可**独立运用**？
-- [ ] 是否有**递减支持**的路径设计？
-</Callout>
-
-→ [深入阅读：工具整合的认知机制](./extend/tool-integration)
+| 编号 | 研究问题 | 与之对话的核心理念 |
+|------|---------|------------------|
+| **S?1** | Parity Principle 在创客教育中的可操作判据是什么？ | N1 |
+| **S?2** | 项目评估单位扩展到「学习者 + 工具 + 同伴」时的评分挑战？ | N2 |
+| **S?3** | 不同工具中介路径对认知发展的差异化影响？ | N3 |
+| **S?4** | 具身学习的二维分类法在不同年龄段的最优配置？ | N4 |
+| **S?5** | Enactive 视角如何指导项目设计与导师介入？ | N5 |
+| **S?6** | 4E 框架如何成为节点自评工具？ | N6 |
+| **S?7** | 认知卸载的「健康边界」在不同学习阶段如何确定？ | N7 |
+| **S?8** | 学习生态位的可量化评估方法？ | N8 |
+| **S?9** | 工具伦理中介在 AI 工具上架评审中如何落实？ | N9 |
+| **S?10** | 延伸认知卫生的具体培养路径在 K-12 各年龄段如何差异化？ | N10 |
 
 ---
 
-## 路径三：符号整合（外部表征）
+## 探索性参数（P?）
 
-### 核心洞见
-
-**符号系统让不可能的思考成为可能。**
-
-没有数学符号，我们无法进行复杂计算。没有书写，我们无法组织长篇论证。没有图解，我们难以把握复杂系统。
-
-外部表征不仅是思想的记录，更是**思考的工具**。
-
-### 书写作为思考
-
-为什么"写下来"能帮助理清思路？
-
-1. **外化工作记忆**：纸张承担存储功能，释放认知资源用于处理
-2. **可视化结构**：线性文字揭示逻辑漏洞
-3. **迭代改进**：外化的思想可以被审视和修改
-4. **确定承诺**：写下来迫使模糊想法变得具体
-
-**研究发现**：手写比打字在理解和记忆上有优势，可能因为手写的慢速迫使更深加工。
-
-### 图解与建模
-
-**图解的认知功能**：
-
-| 图解类型 | 认知支持 | 创客应用 |
-|---------|---------|---------|
-| **思维导图** | 发散探索、关联发现 | 项目构思阶段 |
-| **流程图** | 顺序澄清、分支决策 | 程序设计、工序规划 |
-| **草图** | 空间想象、快速迭代 | 产品设计、机械结构 |
-| **原型** | 可操作的外部思考对象 | 功能验证、用户测试 |
-
-**关键洞见**：草图和原型不只是"表达想法"，而是"产生想法"的工具。很多创意在画草图的过程中涌现。
-
-### 代码作为可执行的思想
-
-编程语言是特殊的符号系统：
-
-- **精确性**：迫使模糊概念变得明确
-- **可执行**：思想可以被"运行"并观察结果
-- **即时反馈**：错误立即可见，形成快速预测-验证循环
-- **可组合**：抽象可以被封装和复用
-
-**对创客教育的启示**：编程不只是"学一门技能"，而是获得一种**思考的延伸媒介**。
-
-### 设计原则
-
-<Callout type="info">
-**符号整合检查清单**
-
-- [ ] 学习过程是否包含**外化表征**（写、画、建模）？
-- [ ] 表征形式是否**匹配认知任务**（发散用导图，流程用图表）？
-- [ ] 是否鼓励**草图先行**，而非脑中想好再动手？
-- [ ] 外部表征是否被用于**迭代改进**，而非一次性记录？
-</Callout>
-
-→ [深入阅读：符号与表征的认知力量](./extend/symbolic-extension)
+| 编号 | 探索性参数 | 测量方法（建议） | 与之对话的研究问题 |
+|------|----------|----------------|------------------|
+| **P?1** | 工具-人耦合度 | 学习者-工具系统功能耦合稳定性 | S?1 |
+| **P?2** | 分布式评估覆盖率 | 「学习者+工具+同伴」三元单位评估的项目占比 | S?2 |
+| **P?3** | 工具中介多样性 | 学习者使用过的中介工具类型数 | S?3 |
+| **P?4** | 具身学习强度 | Skulmowski 二维分类法评分 | S?4 |
+| **P?5** | 4E 覆盖度 | 4 个维度有显式设计的活动占比 | S?6 |
+| **P?6** | 认知卸载边界识别 | 学习者能识别卸载边界的比例 | S?7 |
+| **P?7** | AI 工具二次校验合规率 | 高风险任务二次校验比例（与 M05 P7 共享） | S?9 |
+| **P?8** | 延伸认知卫生意识 | 学习者「工具值不值得信任」自评能力 | S?10 |
 
 ---
 
-## 第四维度：社会延伸
+## 探索阶段（L?）
 
-认知不仅延伸到工具和符号，也延伸到**他人**。
+### L?1 探索期 — 概念应用
 
-**分布式认知 (Distributed Cognition)** 理论指出：
-- 航海、飞行等复杂任务的认知分布在整个团队中
-- 没有任何个人"知道"完整的系统
-- 团队成员成为彼此的"外部记忆"（交互记忆系统）
+应用 N1-N5 中至少 3 条理念；至少 1 个项目评估扩展到「学习者+工具」二元单位。
 
-**对创客教育的启示**：
-- 同伴学习不只是"社交"，而是认知资源的扩展
-- 导师网络是学习者认知系统的一部分
-- 社群知识库是集体的延伸心智
+### L?2 实践期 — 系统设计
 
-<Callout>
-**与 L03 的关系**：社会维度的认知延伸在 [L03 涌现的智慧](/docs/research/03-collective-wisdom) 中深入探讨，聚焦于集体智能如何涌现。
-</Callout>
+应用 N1-N10 全部理念；P?1-P?5 有基线数据；至少完成 1 次具身学习二维分类的工具升级。
+
+### L?3 研究期 — 反向滋养
+
+应用 N1-N10；P?1-P?8 有完整数据；与 M05 形成实施层 ↔ 研究层的活跃对话；产出可被其他节点复用的延伸认知卫生培养手册。
 
 ---
 
-## 认知主权：什么不应该外包？
+## 设计原则
 
-<Callout type="warn">
-**伦理核心问题**：在拥抱认知延伸的同时，我们必须追问——**哪些认知能力是人之为人的核心，不应让渡？**
-</Callout>
-
-我们称之为"**认知主权**"(Cognitive Sovereignty)：
-
-| 能力类型 | 外包风险 | 建议策略 |
-|---------|---------|---------|
-| **价值判断** | 高 — 丧失道德主体性 | 永远保留最终决策权 |
-| **意义建构** | 高 — 生活失去深度 | 工具提供素材，人类赋予意义 |
-| **情感联结** | 高 — 关系变得肤浅 | 工具辅助表达，不替代在场 |
-| **元认知反思** | 中 — 失去自我觉察 | 定期"无工具反思"练习 |
-| **信息处理** | 低 — 可适度卸载 | 保留验证和批判能力 |
-| **记忆存储** | 低 — 可适度卸载 | 理解比记忆更重要 |
-
-**设计原则**：认知延伸应该**放大人类的独特价值**，而非**替代人类的核心能力**。
+1. **工具是认知的一部分**（→ N1）：评估学习能力时考虑工具-人系统。
+2. **分布式评估**（→ N2）：项目评估单位是「学习者+工具+同伴」三元体。
+3. **4E 同时考虑**（→ N6）：分析学习场景时同时审视具身/嵌入/生成/延伸四个维度。
+4. **认知卸载有边界**（→ N7）：每个工具配置应识别可卸载与不可卸载的能力。
+5. **工具选择即价值观选择**（→ N9）：工具上架评审含伦理中介考虑。
+6. **延伸认知卫生培养**（→ N10）：从 K-12 早期就培养工具批判使用能力。
+7. **具身投入优先**（→ N4）：高身体投入 + 高任务整合的活动设计。
 
 ---
 
-## 实践框架：创客教育的认知整合设计
+## 跨模块关系
 
-### 三路径整合检查清单
+按矩阵 §4，L02 的依赖关系如下：
 
-```text
-┌────────────────────────────────────────────────────────┐
-│          创客学习活动的认知整合检查                      │
-├────────────────────────────────────────────────────────┤
-│                                                        │
-│  □ 身体整合                                            │
-│    ├── 是否有主动身体参与？                             │
-│    ├── 动作是否映射核心概念？                           │
-│    └── 是否提供即时多感官反馈？                         │
-│                                                        │
-│  □ 工具整合                                            │
-│    ├── 工具是扩展还是替代能力？                         │
-│    ├── 是否设计了递减支持路径？                         │
-│    └── 最终能否独立完成？                               │
-│                                                        │
-│  □ 符号整合                                            │
-│    ├── 是否鼓励外化表征（写、画、建模）？               │
-│    ├── 表征是否用于迭代改进？                           │
-│    └── 草图/原型是否作为思考工具？                      │
-│                                                        │
-└────────────────────────────────────────────────────────┘
-```
+### 上游依赖
 
-### 典型项目的三路径分析
+- **M01 发射台** — N4 具身认知与 M01 N2 做中学在理念层呼应。
+- **M05 工具** — L02 是 M05 工具实施层的研究层伴侣；M05 主场上架与采购，L02 主场认知科学。
 
-以"设计自动浇花系统"为例：
+### 下游影响
 
-| 阶段 | 身体整合 | 工具整合 | 符号整合 |
-|-----|---------|---------|---------|
-| **构思** | 用手比划水流方向 | AI扩展方案空间 | 画草图、写需求 |
-| **原型** | 插接元件的触觉 | 使用面包板 | 电路图建模 |
-| **测试** | 观察水流、感受湿度 | 万用表测量 | 记录数据 |
-| **调试** | 手动调整位置 | 参考文档 | 标注问题点 |
-| **反思** | 演示给他人看 | 无工具独立解释 | 写项目报告 |
+| 模块 | L02 反向滋养什么 |
+|------|----------------|
+| **M05 工具** | 4E 认知框架、认知卸载边界、延伸认知卫生为 M05 N7-N10 提供研究层支撑 |
 
----
+### 并列关联
 
-## 与其他模块的关联
-
-### L02 的定位
-
-L02 提供**认知机制的理论框架**，解释"为什么"外部事物能成为思维的一部分。其他模块提供"怎么做"：
-
-| 模块 | L02 提供的理论支撑 |
-|-----|-------------------|
-| **L01 空间** | 为什么空间布局影响思考？→ 情境认知、环境作为认知资源 |
-| **L03 涌现** | 为什么群体能产生超越个体的智慧？→ 分布式认知、交互记忆 |
-| **M04 远航线** | 如何设计有效的学习活动？→ 具身设计、预测-验证循环 |
-| **M05 工具** | 如何选择和使用工具？→ 工具整合条件、认知债务警示 |
-
-### 行动路径
-
-1. **首先阅读本模块**：理解"为什么"——认知延伸的机制与条件
-2. **然后进入 M04**：获得"怎么做"——将三路径整合原则应用于课程设计
-3. **同时参考 M05**：选择合适的工具——符合"脚手架而非替代"原则
-4. **空间设计参考 L01**：让物理环境支持认知延伸
+| Research 模块 | 关系 |
+|--------------|------|
+| **L01 空间作为教育者** | 空间-工具-身体的三重整合；L01 主场空间，L02 主场工具 |
+| **L04 技术的诗学** | 工具的技术理性 vs 诗性维度；L02 主场认知科学，L04 主场美学与价值观 |
 
 ---
 
 ## 前沿研究证据
 
-以下元分析、综述与跨学科研究为本模块的核心主张提供了可追溯的实证支撑。
+近三年的延伸心智扩展研究、认知卸载综述与 GenAI 时代的理论更新共同提升了 L02 的论断密度。
 
-近一年的 GenAI-延伸心智文献把 L02 从哲学命题升级为现实方法论：
+**延伸心智的 GenAI 时代扩展。** Clark 2025 *Nature Communications*<Cite id="L02-2025-NatureComm-Clark" />提出需要从早期就培养「延伸认知卫生」；Smart 2025 *Synthese*<Cite id="L02-2025-Synthese-DigitalAndy" />把 RAG 与 ChatGPT 作为延伸心智的具体技术实例；Zenodo 2026<Cite id="L02-2026-Zenodo-AmplifiedMind" />提出「放大心智」假说——LLM 不仅延伸还放大认知。
 
-**人类一直是混合思考系统。** Clark 在 *Nature Communications* 把延伸心智论扩展到 GenAI 时代：人不是"颅骨中的脑"，而是脑-身-工具-社会编织而成的混合思考系统；GenAI 不是异常入侵，而是延续多年来的工具延伸传统<Cite id="L02-2025-NatureComm-Clark" />。Clark 同时警告：必须从早期培养"延伸认知卫生"——在 GenAI 时代尤其重要。
+**认知卸载的实证基础。** Sparrow 等 2011 *Science* Google 效应<Cite id="L02-2011-Sparrow-Google" />；Risko 与 Gilbert 2016 *TiCS* 综述<Cite id="L02-2016-Risko-Cognitive" />；Pownall 等 2023 scoping review<Cite id="L02-2024-FrontPsy-Pownall" />；Gerlich 2025 实证 AI 工具与批判性思维下降<Cite id="L02-2024-Edu-AICognitiveOff" />共同构成认知卸载的双刃剑实证基础。
 
-**LLM 是延伸心智的具体技术实例。** Smart 在 *Synthese* 用 RAG 技术构建"Digital Andy"——把 Clark 自己的著作变成可问答的外部记忆——证明 LLM 的认知能力部分依赖"在线计算生态"而非纯内部参数<Cite id="L02-2025-Synthese-DigitalAndy" />。这给"工具是认知一部分"提供了可工程化的现实案例。
+**4E 认知的理论框架。** Clark-Chalmers 1998<Cite id="L02-1998-AnalysisClark" />与 Menary 2010 编<Cite id="L02-2010-Menary-ExtendedMind" />给出延伸心智的哲学辩论全景；Hutchins 1995<Cite id="L02-1995-Hutchins-CognitionWild" />提供分布式认知奠基；Vygotsky 1978<Cite id="L02-1978-Vygotsky-Mind" />提供工具中介；Lakoff 与 Johnson<Cite id="L02-1991-Lakoff-Embodied" />与 Skulmowski-Rey<Cite id="L02-2022-PMC-EmbodiedReview" />提供具身认知；Thompson 2007<Cite id="L02-2008-Thompson-MindLife" />提供 enactive 视角；Newen 等编 Oxford 4E 手册<Cite id="L02-2020-FrontHum-4ECognition" />把四者整合为权威框架。
 
-**「放大心智」是延伸心智的下一步。** Zenodo 上的 *From extended to amplified* 提出 LLM 不仅延伸还放大认知：从 Parity Principle 推广到 Amplification Principle；Neo-Otto 与 Generative Inga 思想实验展示了"导航生成可能性空间"的新认知模式<Cite id="L02-2026-Zenodo-AmplifiedMind" />。
+**工具与设计的认知科学根基。** Norman 1988<Cite id="L02-1988-Norman-DesignThings" />、Suchman 1987<Cite id="L02-1991-Suchman-Plans" />、Sterelny<Cite id="L02-2018-Sterelny-EvolvedApprentice" />、Verbeek<Cite id="L02-2014-Verbeek-Mediation" />共同构成工具与认知关系的多视角基础。
 
-**经典 1998 文本仍是基石。** Clark 与 Chalmers 的奇偶原则、Otto 与 Inga 的笔记本思想实验、对语言作为"外部认知设备"的论述<Cite id="L02-1998-AnalysisClark" />，是所有后续讨论的共同起点。
+**中国本土延伸。** 徐勇民与陈海 2023<Cite id="L02-2023-Edu-XuChen" />从延伸心智视角研究中国智能教育工具的本土化路径与文化适应。
 
-**M05 工具实践层证据可直接复用。** 关于 LLM 脚手架<Cite id="M05-2026-CompEduAI-LLMScaffolding" />、认知卸载<Cite id="M05-2025-PMC-CogOffload" />、批判性思维退化<Cite id="M05-2025-Microsoft-CritThink" />等实证研究为 L02 的"延伸认知卫生"主张提供具体证据。
+---
 
-## 延伸阅读
+## 常见误区与反模式
+
+### 反模式 1：延伸心智浪漫化
+
+**信号**：把所有工具使用都说成是延伸心智；忽视 Parity Principle 的严格判据<Cite id="L02-1998-AnalysisClark" />。
+**矫正**：N1 工具-人耦合需达功能稳定才算延伸心智；P?1 耦合度评估。
+
+### 反模式 2：4E 选择性应用
+
+**信号**：只关注 extended 维度，忽视 embodied / embedded / enactive 三维。
+**矫正**：N6 4E 同时考虑；P?5 4 维覆盖度年度盘点。
+
+### 反模式 3：认知卸载浪漫化
+
+**信号**：声称卸载总是好；忽视短期记忆损害与批判性思维下降<Cite id="L02-2024-Edu-AICognitiveOff" />。
+**矫正**：N7 认知卸载有边界；课程设计显式区分可卸载与不可卸载能力。
+
+### 反模式 4：具身学习装饰化
+
+**信号**：偶尔安排「动手活动」就声称具身学习；忽视身体投入 × 任务整合二维分类<Cite id="L02-2022-PMC-EmbodiedReview" />。
+**矫正**：N4 高身体投入 + 高任务整合；P?4 具身学习强度年度评估。
+
+### 反模式 5：工具中性论
+
+**信号**：把 AI 工具视为中立工具；忽视 Verbeek 技术中介论<Cite id="L02-2014-Verbeek-Mediation" />。
+**矫正**：N9 工具选择即价值观选择；M05 / M06 主场 AI 工具上架评审含伦理中介。
+
+### 反模式 6：延伸认知卫生缺位
+
+**信号**：学习者过度信任 AI 输出；无能力评估「工具值不值得信任」<Cite id="L02-2025-NatureComm-Clark" />。
+**矫正**：N10 延伸认知卫生培养；K-12 各年龄段差异化设计；P?8 学习者自评能力年度评估。
+
+---
+
+## 扩展阅读
 
 <ExtendCards
   cards={[
     {
-      title: "具身认知",
-      description: "身体作为认知边界——4E 认知（embodied/embedded/enacted/extended）的整合论",
-      href: "/docs/research/02-extended-mind/extend/embodied-cognition",
-      type: "extend",
-      status: "completed"
-    },
-    {
-      title: "评估框架",
-      description: "延伸认知整合度的评估维度与可观察指标",
-      href: "/docs/research/02-extended-mind/extend/assessment-framework",
-      type: "extend",
-      status: "completed"
-    },
-    {
-      title: "实践案例",
-      description: "OWL 课程中四条认知整合路径的具体落地案例",
-      href: "/docs/research/02-extended-mind/extend/practice-cases",
-      type: "extend",
-      status: "completed"
-    },
-    {
-      title: "前沿研究动态 2025",
-      description: "Clark Nature Comm、Synthese Digital Andy、Zenodo Amplified Mind 等 2024-2026 GenAI-延伸心智成果",
-      href: "/docs/research/02-extended-mind/extend/research-updates-2025",
-      type: "frontier",
-      status: "completed"
-    },
-    {
-      title: "→ M05 装备舱（实施层）",
-      description: "L02 的「道」如何落地为 M05 的「术」——AI 工具、脚手架、认知卸载的实证设计",
+      title: "M05 装备舱（实施层）",
+      description: "L02 研究层 ↔ M05 实施层。M05 主场工具采购与 AI 上架；L02 主场 4E 认知与延伸心智",
       href: "/docs/core/05-tools",
       type: "related-module",
       status: "completed"
     },
     {
-      title: "→ M02 治理（次级关联）",
-      description: "认知脚手架在治理与协作中的体现——分布式决策即分布式认知",
-      href: "/docs/core/02-governance",
+      title: "L01 空间作为教育者",
+      description: "空间-工具-身体的三重整合：L01 主场空间，L02 主场工具",
+      href: "/docs/research/01-space-as-educator",
       type: "related-module",
       status: "completed"
+    },
+    {
+      title: "L04 技术的诗学",
+      description: "工具的技术理性 vs 诗性维度",
+      href: "/docs/research/04-poetics-of-technology",
+      type: "related-module",
+      status: "completed"
+    },
+    {
+      title: "Clark-Chalmers 延伸心智",
+      description: "Parity Principle + Otto-Inga 思想实验 + Menary 论文集综合",
+      href: "/docs/research/02-extended-mind/extend/extended-mind-thesis",
+      type: "extend",
+      status: "draft"
+    },
+    {
+      title: "4E 认知整合",
+      description: "embodied / embedded / enactive / extended 四维框架",
+      href: "/docs/research/02-extended-mind/extend/4e-cognition",
+      type: "extend",
+      status: "draft"
+    },
+    {
+      title: "认知卸载综述",
+      description: "Risko + Pownall + Gerlich：认知卸载的双刃剑与边界",
+      href: "/docs/research/02-extended-mind/extend/cognitive-offloading",
+      type: "extend",
+      status: "draft"
+    },
+    {
+      title: "GenAI 时代研究更新",
+      description: "Clark 2025 + Smart Synthese + 放大心智假说",
+      href: "/docs/research/02-extended-mind/extend/research-updates-2025",
+      type: "extend",
+      status: "draft"
+    },
+    {
+      title: "具身学习实施",
+      description: "Skulmowski 二维分类法在创客活动中的设计应用",
+      href: "/docs/research/02-extended-mind/extend/embodied-cognition",
+      type: "extend",
+      status: "draft"
     }
   ]}
 />
 
-## 快速链接
-
-<Cards>
-  <Card title="M04 远航线" href="/docs/core/04-programs" description="将认知整合原则应用于学习设计" />
-  <Card title="M05 工具与 AI" href="/docs/core/05-tools" description="工具选型与AI使用规范" />
-  <Card title="L01 空间的塑造" href="/docs/research/01-space-as-educator" description="物理环境如何支持认知" />
-  <Card title="L03 涌现的智慧" href="/docs/research/03-collective-wisdom" description="社会维度的认知延伸" />
-</Cards>
-
 ---
 
-*本模块持续更新中，最后更新：2026-01*
+## 参考文献
+
+> 完整文献数据见 [refs.json](./refs.json)。本节由 `<References />` 自动渲染，包含本页所有 `<Cite>` 引用。
 
 <References scope="page" />
