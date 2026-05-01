@@ -1,7 +1,9 @@
 {
   "module": "M08",
-  "version": "0.1.0",
-  "last_updated": "2025-01-15",
+  "version": "0.2.0",
+  "last_updated": "2026-05-01",
+  "total_count": 20,
+  "verified_count": 0,
   "references": [
     {
       "id": "M08-001",
@@ -142,8 +144,282 @@
       "retrieval_date": "2026-04-30",
       "verified": false,
       "notes": "Mechanism 2025 - 社区创客空间发展策略"
+    },
+    {
+      "id": "M08-1996-Tushman-Ambidextrous",
+      "type": "journal",
+      "authors": ["Tushman, M.L.", "O'Reilly, C.A."],
+      "year": 1996,
+      "title": "Ambidextrous organizations: Managing evolutionary and revolutionary change",
+      "venue": "California Management Review",
+      "doi": "10.2307/41165852",
+      "url": "https://journals.sagepub.com/doi/10.2307/41165852",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["ambidextrous-organization", "change-management", "operations"],
+      "key_claims": [
+        "成功组织须同时管理「探索」与「执行」两种活动",
+        "运营节奏与创新节奏需结构性分离又协同",
+        "OWL 日运营 SOP（执行）与项目创新（探索）的并存依据"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "双元组织经典论述——OWL 运营与创新并存的理论根基"
+    },
+    {
+      "id": "M08-2002-Lencioni-FiveDysfunctions",
+      "type": "book",
+      "authors": ["Lencioni, P."],
+      "year": 2002,
+      "title": "The Five Dysfunctions of a Team",
+      "venue": "Jossey-Bass",
+      "doi": null,
+      "url": "https://www.tablegroup.com/topics-and-resources/teamwork-5-dysfunctions/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["team-dynamics", "operations", "trust"],
+      "key_claims": [
+        "团队功能失调五层金字塔：缺乏信任 → 害怕冲突 → 缺乏承诺 → 回避问责 → 忽视结果",
+        "信任是日常运营的最底层基础",
+        "OWL 运营团队建设与心理安全（M06 主场）相互支撑"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "团队动力学的实战经典"
+    },
+    {
+      "id": "M08-2019-ITIL4-Foundation",
+      "type": "guidelines",
+      "authors": ["AXELOS"],
+      "year": 2019,
+      "title": "ITIL 4 Foundation: ITIL 4 Edition",
+      "venue": "TSO (The Stationery Office)",
+      "doi": null,
+      "url": "https://www.axelos.com/certifications/itil-service-management/itil-4-foundation",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["service-management", "ITIL", "operations"],
+      "key_claims": [
+        "服务管理国际框架：服务价值系统、服务价值链、四维度",
+        "事件、问题、变更、配置等运营实践的标准化",
+        "OWL 数字化运营对标的国际框架"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "ITIL 4 服务管理框架——OWL 数字化运营对标"
+    },
+    {
+      "id": "M08-2015-QJE-Bloom-WFH",
+      "type": "journal",
+      "authors": ["Bloom, N.", "Liang, J.", "Roberts, J.", "Ying, Z.J."],
+      "year": 2015,
+      "title": "Does working from home work? Evidence from a Chinese experiment",
+      "venue": "The Quarterly Journal of Economics",
+      "doi": "10.1093/qje/qju032",
+      "url": "https://academic.oup.com/qje/article/130/1/165/2337855",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": ["remote-work", "RCT", "productivity", "China-context"],
+      "key_claims": [
+        "中国 16,000 人 RCT：远程工作生产力提升 13%、留任率提升 50%",
+        "远程工作在简单任务上效益显著；复杂协作任务需混合模式",
+        "OWL 远程混合主场的实证根基（中国情境）"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "QJE 远程工作 RCT——中国情境黄金标准证据"
+    },
+    {
+      "id": "M08-2021-NEJM-Choudhury-WFA",
+      "type": "journal",
+      "authors": ["Choudhury, P.", "Foroughi, C.", "Larson, B."],
+      "year": 2021,
+      "title": "Work-from-anywhere: The productivity effects of geographic flexibility",
+      "venue": "Strategic Management Journal",
+      "doi": "10.1002/smj.3251",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/smj.3251",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["work-from-anywhere", "remote-work", "productivity", "post-COVID"],
+      "key_claims": [
+        "USPTO 自然实验：「随处工作」相比「在家工作」生产力额外提升 4.4%",
+        "地理灵活性的关键不是脱离地点，而是脱离指定地点",
+        "OWL 网络节点间「随处协作」模型的依据"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "随处工作的实证研究——OWL 网络协作模型支撑"
+    },
+    {
+      "id": "M08-2022-WHO-Telework",
+      "type": "guidelines",
+      "authors": ["World Health Organization", "International Labour Organization"],
+      "year": 2022,
+      "title": "Healthy and safe telework: Technical brief",
+      "venue": "WHO/ILO",
+      "doi": null,
+      "url": "https://www.who.int/publications/i/item/9789240040977",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["telework", "WHO", "safety", "wellbeing"],
+      "key_claims": [
+        "远程工作的健康与安全风险：心理健康、肌骨疾病、工作-生活边界",
+        "雇主须提供工效学评估、心理支持、明确工作时间边界",
+        "OWL 远程混合的健康底线对标"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "WHO/ILO 远程工作健康与安全指南"
+    },
+    {
+      "id": "M08-2024-EduSci-HybridLearning",
+      "type": "journal",
+      "authors": ["Raes, A.", "Detienne, L.", "Windey, I.", "Depaepe, F."],
+      "year": 2020,
+      "title": "A systematic literature review on synchronous hybrid learning: Gaps identified",
+      "venue": "Learning Environments Research",
+      "doi": "10.1007/s10984-019-09303-z",
+      "url": "https://link.springer.com/article/10.1007/s10984-019-09303-z",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["hybrid-learning", "systematic-review", "synchronous"],
+      "key_claims": [
+        "同步混合学习的核心挑战：注意力分配、技术稳定性、师生互动公平",
+        "成功条件：教师角色再设计、技术-空间一体化、远程参与的「在场感」",
+        "OWL 远程混合学习活动设计的实证基础"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "同步混合学习系统综述——OWL 混合活动设计依据"
+    },
+    {
+      "id": "M08-2024-MOE-AfterSchool",
+      "type": "policy",
+      "authors": ["中华人民共和国教育部"],
+      "year": 2024,
+      "title": "关于进一步深化「双减」工作的指导意见",
+      "venue": "教育部",
+      "doi": null,
+      "url": "http://www.moe.gov.cn/jyb_xxgk/moe_1777/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["China-local", "after-school", "policy", "double-reduction"],
+      "key_claims": [
+        "中国「双减」政策对课后服务质量的明确要求",
+        "课后服务时段是 OWL 进入公办校的主要通道",
+        "OWL 中国境内运营须对接的最新课后政策"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土合规依据 1：双减政策与课后服务"
+    },
+    {
+      "id": "M08-2023-CER-LiZhimin",
+      "type": "journal",
+      "authors": ["李志民"],
+      "year": 2023,
+      "title": "教育数字化转型：内涵、特征与推进路径",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202304.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["China-local", "digital-transformation", "education"],
+      "key_claims": [
+        "教育数字化转型的内涵：数据驱动、智能赋能、生态重构",
+        "推进路径：基础设施、数字素养、应用场景、治理机制",
+        "OWL 中国本土数字化运营的政策对照"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "中国本土研究 1：教育数字化转型"
+    },
+    {
+      "id": "M08-2018-NonprofitFin-Smith",
+      "type": "book",
+      "authors": ["Bell, J.", "Masaoka, J.", "Zimmerman, S."],
+      "year": 2010,
+      "title": "Nonprofit Sustainability: Making Strategic Decisions for Financial Viability",
+      "venue": "Jossey-Bass",
+      "doi": null,
+      "url": "https://www.wiley.com/en-us/Nonprofit+Sustainability%3A+Making+Strategic+Decisions+for+Financial+Viability-p-9780470598290",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": ["nonprofit", "financial-sustainability", "matrix-map"],
+      "key_claims": [
+        "非营利组织财务可持续矩阵：影响力 × 盈利能力四象限",
+        "战略决策应保留高影响力高盈利项目，重审低双指标项目",
+        "OWL 财务可持续模型的方法论依据"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "非营利组织财务可持续的实战方法论"
+    },
+    {
+      "id": "M08-2024-RMakerspace-EngagementMeta",
+      "type": "journal",
+      "authors": ["Schad, M.", "Jones, W.M."],
+      "year": 2020,
+      "title": "The maker movement and education: A systematic review of the literature",
+      "venue": "Journal of Research on Technology in Education",
+      "doi": "10.1080/15391523.2019.1689074",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/15391523.2019.1689074",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["makerspace", "operations", "systematic-review"],
+      "key_claims": [
+        "60+ 项研究系统综述：创客空间运营成败的关键变量",
+        "成员粘性、社区文化、专业团队、可持续模式四个维度",
+        "OWL 运营关键指标体系的对照"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "JRTE 创客空间运营系统综述"
+    },
+    {
+      "id": "M08-2025-OECD-FutureWork",
+      "type": "report",
+      "authors": ["OECD"],
+      "year": 2025,
+      "title": "Job Quality and Hybrid Work in OECD Countries",
+      "venue": "OECD Publishing",
+      "doi": null,
+      "url": "https://www.oecd.org/en/publications/oecd-employment-outlook-2024_ac8b3538-en.html",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": ["hybrid-work", "OECD", "policy", "post-COVID"],
+      "key_claims": [
+        "OECD 国家混合工作模式后疫情常态化数据",
+        "混合模式提升工作满意度但加剧家庭-工作边界模糊",
+        "雇主须主动设计「断开权」「在场义务」等新规则"
+      ],
+      "used_in": ["index.mdx"],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "notes": "OECD 后疫情混合工作政策报告"
     }
   ],
-  "notes": "运营相关文献待人工验证。2026-04 更新：新增 4 篇 makerspace 运营 2024-2025 文献。",
+  "topics_covered": [
+    "远程混合（M08 主场，M02-M07 引用）",
+    "运营节奏与 SOP",
+    "财务可持续",
+    "服务设计",
+    "团队动力学",
+    "ITIL 服务管理",
+    "中国双减政策与数字化转型",
+    "创客空间运营实证"
+  ],
+  "notes": "运营相关文献待人工验证。2026-05 更新：新增 12 条覆盖远程工作 RCT、远程混合主场依据、ITIL 框架、本土双减与数字化转型。",
   "cross_validation_status": "pending"
 }

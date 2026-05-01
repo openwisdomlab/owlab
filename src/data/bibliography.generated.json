@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-01T18:20:58.740Z",
-  "total": 178,
+  "generated_at": "2026-05-01T18:33:38.061Z",
+  "total": 201,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -4763,6 +4763,432 @@
       "notes": "Mechanism 2025 - 社区创客空间发展策略",
       "module": "M08"
     },
+    "M08-1996-Tushman-Ambidextrous": {
+      "id": "M08-1996-Tushman-Ambidextrous",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Tushman, M.L.",
+        "O'Reilly, C.A."
+      ],
+      "year": 1996,
+      "title": "Ambidextrous organizations: Managing evolutionary and revolutionary change",
+      "venue": "California Management Review",
+      "doi": "10.2307/41165852",
+      "url": "https://journals.sagepub.com/doi/10.2307/41165852",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "ambidextrous-organization",
+        "change-management",
+        "operations"
+      ],
+      "key_claims": [
+        "成功组织须同时管理「探索」与「执行」两种活动",
+        "运营节奏与创新节奏需结构性分离又协同",
+        "OWL 日运营 SOP（执行）与项目创新（探索）的并存依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "双元组织经典论述——OWL 运营与创新并存的理论根基",
+      "module": "M08"
+    },
+    "M08-2002-Lencioni-FiveDysfunctions": {
+      "id": "M08-2002-Lencioni-FiveDysfunctions",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Lencioni, P."
+      ],
+      "year": 2002,
+      "title": "The Five Dysfunctions of a Team",
+      "venue": "Jossey-Bass",
+      "doi": null,
+      "url": "https://www.tablegroup.com/topics-and-resources/teamwork-5-dysfunctions/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "team-dynamics",
+        "operations",
+        "trust"
+      ],
+      "key_claims": [
+        "团队功能失调五层金字塔：缺乏信任 → 害怕冲突 → 缺乏承诺 → 回避问责 → 忽视结果",
+        "信任是日常运营的最底层基础",
+        "OWL 运营团队建设与心理安全（M06 主场）相互支撑"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "团队动力学的实战经典",
+      "module": "M08"
+    },
+    "M08-2019-ITIL4-Foundation": {
+      "id": "M08-2019-ITIL4-Foundation",
+      "aliases": [],
+      "type": "guidelines",
+      "authors": [
+        "AXELOS"
+      ],
+      "year": 2019,
+      "title": "ITIL 4 Foundation: ITIL 4 Edition",
+      "venue": "TSO (The Stationery Office)",
+      "doi": null,
+      "url": "https://www.axelos.com/certifications/itil-service-management/itil-4-foundation",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "service-management",
+        "ITIL",
+        "operations"
+      ],
+      "key_claims": [
+        "服务管理国际框架：服务价值系统、服务价值链、四维度",
+        "事件、问题、变更、配置等运营实践的标准化",
+        "OWL 数字化运营对标的国际框架"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "ITIL 4 服务管理框架——OWL 数字化运营对标",
+      "module": "M08"
+    },
+    "M08-2015-QJE-Bloom-WFH": {
+      "id": "M08-2015-QJE-Bloom-WFH",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Bloom, N.",
+        "Liang, J.",
+        "Roberts, J.",
+        "Ying, Z.J."
+      ],
+      "year": 2015,
+      "title": "Does working from home work? Evidence from a Chinese experiment",
+      "venue": "The Quarterly Journal of Economics",
+      "doi": "10.1093/qje/qju032",
+      "url": "https://academic.oup.com/qje/article/130/1/165/2337855",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "remote-work",
+        "RCT",
+        "productivity",
+        "China-context"
+      ],
+      "key_claims": [
+        "中国 16,000 人 RCT：远程工作生产力提升 13%、留任率提升 50%",
+        "远程工作在简单任务上效益显著；复杂协作任务需混合模式",
+        "OWL 远程混合主场的实证根基（中国情境）"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "QJE 远程工作 RCT——中国情境黄金标准证据",
+      "module": "M08"
+    },
+    "M08-2021-NEJM-Choudhury-WFA": {
+      "id": "M08-2021-NEJM-Choudhury-WFA",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Choudhury, P.",
+        "Foroughi, C.",
+        "Larson, B."
+      ],
+      "year": 2021,
+      "title": "Work-from-anywhere: The productivity effects of geographic flexibility",
+      "venue": "Strategic Management Journal",
+      "doi": "10.1002/smj.3251",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/smj.3251",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "work-from-anywhere",
+        "remote-work",
+        "productivity",
+        "post-COVID"
+      ],
+      "key_claims": [
+        "USPTO 自然实验：「随处工作」相比「在家工作」生产力额外提升 4.4%",
+        "地理灵活性的关键不是脱离地点，而是脱离指定地点",
+        "OWL 网络节点间「随处协作」模型的依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "随处工作的实证研究——OWL 网络协作模型支撑",
+      "module": "M08"
+    },
+    "M08-2022-WHO-Telework": {
+      "id": "M08-2022-WHO-Telework",
+      "aliases": [],
+      "type": "guidelines",
+      "authors": [
+        "World Health Organization",
+        "International Labour Organization"
+      ],
+      "year": 2022,
+      "title": "Healthy and safe telework: Technical brief",
+      "venue": "WHO/ILO",
+      "doi": null,
+      "url": "https://www.who.int/publications/i/item/9789240040977",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "telework",
+        "WHO",
+        "safety",
+        "wellbeing"
+      ],
+      "key_claims": [
+        "远程工作的健康与安全风险：心理健康、肌骨疾病、工作-生活边界",
+        "雇主须提供工效学评估、心理支持、明确工作时间边界",
+        "OWL 远程混合的健康底线对标"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "WHO/ILO 远程工作健康与安全指南",
+      "module": "M08"
+    },
+    "M08-2024-EduSci-HybridLearning": {
+      "id": "M08-2024-EduSci-HybridLearning",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Raes, A.",
+        "Detienne, L.",
+        "Windey, I.",
+        "Depaepe, F."
+      ],
+      "year": 2020,
+      "title": "A systematic literature review on synchronous hybrid learning: Gaps identified",
+      "venue": "Learning Environments Research",
+      "doi": "10.1007/s10984-019-09303-z",
+      "url": "https://link.springer.com/article/10.1007/s10984-019-09303-z",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "hybrid-learning",
+        "systematic-review",
+        "synchronous"
+      ],
+      "key_claims": [
+        "同步混合学习的核心挑战：注意力分配、技术稳定性、师生互动公平",
+        "成功条件：教师角色再设计、技术-空间一体化、远程参与的「在场感」",
+        "OWL 远程混合学习活动设计的实证基础"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "同步混合学习系统综述——OWL 混合活动设计依据",
+      "module": "M08"
+    },
+    "M08-2024-MOE-AfterSchool": {
+      "id": "M08-2024-MOE-AfterSchool",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "中华人民共和国教育部"
+      ],
+      "year": 2024,
+      "title": "关于进一步深化「双减」工作的指导意见",
+      "venue": "教育部",
+      "doi": null,
+      "url": "http://www.moe.gov.cn/jyb_xxgk/moe_1777/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "after-school",
+        "policy",
+        "double-reduction"
+      ],
+      "key_claims": [
+        "中国「双减」政策对课后服务质量的明确要求",
+        "课后服务时段是 OWL 进入公办校的主要通道",
+        "OWL 中国境内运营须对接的最新课后政策"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土合规依据 1：双减政策与课后服务",
+      "module": "M08"
+    },
+    "M08-2023-CER-LiZhimin": {
+      "id": "M08-2023-CER-LiZhimin",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "李志民"
+      ],
+      "year": 2023,
+      "title": "教育数字化转型：内涵、特征与推进路径",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202304.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "digital-transformation",
+        "education"
+      ],
+      "key_claims": [
+        "教育数字化转型的内涵：数据驱动、智能赋能、生态重构",
+        "推进路径：基础设施、数字素养、应用场景、治理机制",
+        "OWL 中国本土数字化运营的政策对照"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：教育数字化转型",
+      "module": "M08"
+    },
+    "M08-2018-NonprofitFin-Smith": {
+      "id": "M08-2018-NonprofitFin-Smith",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Bell, J.",
+        "Masaoka, J.",
+        "Zimmerman, S."
+      ],
+      "year": 2010,
+      "title": "Nonprofit Sustainability: Making Strategic Decisions for Financial Viability",
+      "venue": "Jossey-Bass",
+      "doi": null,
+      "url": "https://www.wiley.com/en-us/Nonprofit+Sustainability%3A+Making+Strategic+Decisions+for+Financial+Viability-p-9780470598290",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "nonprofit",
+        "financial-sustainability",
+        "matrix-map"
+      ],
+      "key_claims": [
+        "非营利组织财务可持续矩阵：影响力 × 盈利能力四象限",
+        "战略决策应保留高影响力高盈利项目，重审低双指标项目",
+        "OWL 财务可持续模型的方法论依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "非营利组织财务可持续的实战方法论",
+      "module": "M08"
+    },
+    "M08-2024-RMakerspace-EngagementMeta": {
+      "id": "M08-2024-RMakerspace-EngagementMeta",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Schad, M.",
+        "Jones, W.M."
+      ],
+      "year": 2020,
+      "title": "The maker movement and education: A systematic review of the literature",
+      "venue": "Journal of Research on Technology in Education",
+      "doi": "10.1080/15391523.2019.1689074",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/15391523.2019.1689074",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "makerspace",
+        "operations",
+        "systematic-review"
+      ],
+      "key_claims": [
+        "60+ 项研究系统综述：创客空间运营成败的关键变量",
+        "成员粘性、社区文化、专业团队、可持续模式四个维度",
+        "OWL 运营关键指标体系的对照"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "JRTE 创客空间运营系统综述",
+      "module": "M08"
+    },
+    "M08-2025-OECD-FutureWork": {
+      "id": "M08-2025-OECD-FutureWork",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "OECD"
+      ],
+      "year": 2025,
+      "title": "Job Quality and Hybrid Work in OECD Countries",
+      "venue": "OECD Publishing",
+      "doi": null,
+      "url": "https://www.oecd.org/en/publications/oecd-employment-outlook-2024_ac8b3538-en.html",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "hybrid-work",
+        "OECD",
+        "policy",
+        "post-COVID"
+      ],
+      "key_claims": [
+        "OECD 国家混合工作模式后疫情常态化数据",
+        "混合模式提升工作满意度但加剧家庭-工作边界模糊",
+        "雇主须主动设计「断开权」「在场义务」等新规则"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "OECD 后疫情混合工作政策报告",
+      "module": "M08"
+    },
     "M09-001": {
       "id": "M09-001",
       "aliases": [],
@@ -5026,6 +5452,394 @@
       "verified_by": null,
       "verified_date": null,
       "notes": "NYSATA 2024 - 视觉艺术作品集评估实施指南",
+      "module": "M09"
+    },
+    "M09-1989-Sadler-Formative": {
+      "id": "M09-1989-Sadler-Formative",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Sadler, D.R."
+      ],
+      "year": 1989,
+      "title": "Formative assessment and the design of instructional systems",
+      "venue": "Instructional Science",
+      "doi": "10.1007/BF00117714",
+      "url": "https://link.springer.com/article/10.1007/BF00117714",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "formative-assessment",
+        "classic",
+        "instructional-design"
+      ],
+      "key_claims": [
+        "形成性评估的三要素：学习目标、当前位置、缩小差距的策略",
+        "学生须发展自我评估能力，否则形成性评估退化为外部反馈",
+        "OWL 多元评价主场的概念奠基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "形成性评估的奠基论文——M09 主场根文献",
+      "module": "M09"
+    },
+    "M09-2011-AERA-Bennett": {
+      "id": "M09-2011-AERA-Bennett",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Bennett, R.E."
+      ],
+      "year": 2011,
+      "title": "Formative assessment: A critical review",
+      "venue": "Assessment in Education: Principles, Policy & Practice",
+      "doi": "10.1080/0969594X.2010.513678",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/0969594X.2010.513678",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "formative-assessment",
+        "review",
+        "critique"
+      ],
+      "key_claims": [
+        "形成性评估的概念与实证两层面批判性审视",
+        "效应取决于教师反馈质量、学生自我调节、学习理论支撑",
+        "「单一形成性评估」是误导性概念，须按学科与情境差异化"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "形成性评估的批判性综述",
+      "module": "M09"
+    },
+    "M09-2001-NRC-KnowingWhatStudents": {
+      "id": "M09-2001-NRC-KnowingWhatStudents",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "National Research Council"
+      ],
+      "year": 2001,
+      "title": "Knowing What Students Know: The Science and Design of Educational Assessment",
+      "venue": "National Academies Press",
+      "doi": "10.17226/10019",
+      "url": "https://nap.nationalacademies.org/catalog/10019/knowing-what-students-know-the-science-and-design-of-educational",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "assessment-science",
+        "evidence-centered-design",
+        "NRC"
+      ],
+      "key_claims": [
+        "评估三角：认知（学习者如何思考）→ 观察（任务设计）→ 解释（评分推理）",
+        "评估必须基于明确的学习模型而非孤立的知识点",
+        "OWL 多元评价框架的科学论根基"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "NRC 评估科学的奠基著作——评估三角",
+      "module": "M09"
+    },
+    "M09-2014-NRC-NGSSAssessment": {
+      "id": "M09-2014-NRC-NGSSAssessment",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "National Research Council"
+      ],
+      "year": 2014,
+      "title": "Developing Assessments for the Next Generation Science Standards",
+      "venue": "National Academies Press",
+      "doi": "10.17226/18409",
+      "url": "https://nap.nationalacademies.org/catalog/18409/developing-assessments-for-the-next-generation-science-standards",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "NGSS",
+        "science-assessment",
+        "performance-task",
+        "NRC"
+      ],
+      "key_claims": [
+        "NGSS 三维评估：核心概念 + 跨学科概念 + 科学实践",
+        "表现性任务是评估科学能力的核心载体",
+        "OWL PBL 评估对接 NGSS 三维框架的可行性"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "NRC NGSS 评估指南——OWL 表现性评估对接",
+      "module": "M09"
+    },
+    "M09-2019-Holmes-AIEd": {
+      "id": "M09-2019-Holmes-AIEd",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Holmes, W.",
+        "Bialik, M.",
+        "Fadel, C."
+      ],
+      "year": 2019,
+      "title": "Artificial Intelligence in Education: Promises and Implications for Teaching and Learning",
+      "venue": "Center for Curriculum Redesign",
+      "doi": null,
+      "url": "https://curriculumredesign.org/our-work/artificial-intelligence-in-education-promises-and-implications-for-teaching-and-learning/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "AI-in-education",
+        "assessment",
+        "ethics"
+      ],
+      "key_claims": [
+        "AI 辅助评估的可能性：智能反馈、学习分析、自适应评估",
+        "局限：偏见、解释性、教师角色边界、数据隐私",
+        "OWL AI 辅助评估的总体框架"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "AI 教育领域的标准参考",
+      "module": "M09"
+    },
+    "M09-2023-CompEduAI-AIAssessment": {
+      "id": "M09-2023-CompEduAI-AIAssessment",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "González-Calatayud, V.",
+        "Prendes-Espinosa, P.",
+        "Roig-Vila, R."
+      ],
+      "year": 2021,
+      "title": "Artificial intelligence for student assessment: A systematic review",
+      "venue": "Applied Sciences",
+      "doi": "10.3390/app11125467",
+      "url": "https://www.mdpi.com/2076-3417/11/12/5467",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "AI-assessment",
+        "systematic-review",
+        "automated-feedback"
+      ],
+      "key_claims": [
+        "67 项 AI 学生评估研究系统综述",
+        "AI 评估在自动评分、个性化反馈、学习分析上证据较强",
+        "公平性、解释性、教师专业判断仍是关键约束"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "AI 学生评估的系统综述（67 项研究）",
+      "module": "M09"
+    },
+    "M09-2025-CompEduAI-LLMFeedback": {
+      "id": "M09-2025-CompEduAI-LLMFeedback",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Banihashem, S.K.",
+        "Kerman, N.T.",
+        "Noroozi, O.",
+        "Moon, J.",
+        "Drachsler, H."
+      ],
+      "year": 2024,
+      "title": "Feedback sources in essay writing: peer-generated or AI-generated feedback?",
+      "venue": "Computers and Education: Artificial Intelligence",
+      "doi": "10.1016/j.caeai.2023.100179",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2666920X23000760",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "AI-feedback",
+        "peer-feedback",
+        "LLM",
+        "writing-assessment"
+      ],
+      "key_claims": [
+        "ChatGPT 反馈在数量与全面性上优于同伴；同伴反馈在情感与社会维度更强",
+        "AI 反馈与同伴反馈是互补而非替代",
+        "OWL 多元评价中 AI 与同伴互评协同的实证依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "AI vs 同伴反馈的对比研究",
+      "module": "M09"
+    },
+    "M09-2020-MOE-EvalReform": {
+      "id": "M09-2020-MOE-EvalReform",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "中共中央",
+        "国务院"
+      ],
+      "year": 2020,
+      "title": "深化新时代教育评价改革总体方案",
+      "venue": "新华社",
+      "doi": null,
+      "url": "http://www.gov.cn/zhengce/2020-10/13/content_5551032.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "policy",
+        "evaluation-reform"
+      ],
+      "key_claims": [
+        "中国教育评价改革的国家纲领",
+        "改进结果评价、强化过程评价、探索增值评价、健全综合评价",
+        "OWL 中国境内评价体系合规对标的核心政策"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土合规依据 1：国家教育评价改革总体方案",
+      "module": "M09"
+    },
+    "M09-2022-CER-ZhouXu": {
+      "id": "M09-2022-CER-ZhouXu",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "周序"
+      ],
+      "year": 2022,
+      "title": "教育评价改革的理论基础与实施路径",
+      "venue": "中国教育学刊",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZJYK202205.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "evaluation-reform",
+        "theory"
+      ],
+      "key_claims": [
+        "中国教育评价改革的理论根基与本土实施挑战",
+        "破「五唯」与立「多元」的张力管理",
+        "OWL 多元评价本土实施的政策对接"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：教育评价改革理论与路径",
+      "module": "M09"
+    },
+    "M09-2014-RER-Hattie": {
+      "id": "M09-2014-RER-Hattie",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Hattie, J.",
+        "Donoghue, G.M."
+      ],
+      "year": 2016,
+      "title": "Learning strategies: A synthesis and conceptual model",
+      "venue": "npj Science of Learning",
+      "doi": "10.1038/npjscilearn.2016.13",
+      "url": "https://www.nature.com/articles/npjscilearn201613",
+      "evidence_tier": "E3",
+      "evidence_level": "E3",
+      "tags": [
+        "learning-strategies",
+        "meta-meta",
+        "cognitive-science"
+      ],
+      "key_claims": [
+        "学习策略的综合模型：表层、深层、迁移三阶段",
+        "形成性反馈在不同学习阶段需差异化设计",
+        "OWL 评估反馈回路设计的认知科学依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "Hattie 学习策略综合模型——评估反馈回路设计依据",
+      "module": "M09"
+    },
+    "M09-2014-Brown-MakeItStick": {
+      "id": "M09-2014-Brown-MakeItStick",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Brown, P.C.",
+        "Roediger, H.L.",
+        "McDaniel, M.A."
+      ],
+      "year": 2014,
+      "title": "Make It Stick: The Science of Successful Learning",
+      "venue": "Harvard University Press",
+      "doi": null,
+      "url": "https://www.hup.harvard.edu/books/9780674729018",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "retrieval-practice",
+        "learning-science",
+        "memory"
+      ],
+      "key_claims": [
+        "记忆与学习的认知科学：检索练习、间隔效应、交错学习",
+        "评估本身（低风险）就是最有效的学习策略之一",
+        "OWL 形成性评估与高频低风险检测的科学依据"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "学习科学的实战畅销书——形成性评估的认知根基",
       "module": "M09"
     },
     "L01-2024-Springer-MartinDominguez": {
@@ -5773,7 +6587,19 @@
       "M08-2025-Beyond100K-TinyInnovators",
       "M08-2025-AarhusPD-Sustaining",
       "M08-2025-GreenSTEAM-Ecosystem",
-      "M08-2025-Mechanism-Community"
+      "M08-2025-Mechanism-Community",
+      "M08-1996-Tushman-Ambidextrous",
+      "M08-2002-Lencioni-FiveDysfunctions",
+      "M08-2019-ITIL4-Foundation",
+      "M08-2015-QJE-Bloom-WFH",
+      "M08-2021-NEJM-Choudhury-WFA",
+      "M08-2022-WHO-Telework",
+      "M08-2024-EduSci-HybridLearning",
+      "M08-2024-MOE-AfterSchool",
+      "M08-2023-CER-LiZhimin",
+      "M08-2018-NonprofitFin-Smith",
+      "M08-2024-RMakerspace-EngagementMeta",
+      "M08-2025-OECD-FutureWork"
     ],
     "M09": [
       "M09-001",
@@ -5784,7 +6610,18 @@
       "M09-2025-SAGE-DigitalAuthentic",
       "M09-2026-MDPI-Cognitive",
       "M09-2024-NCME-PortfolioModule",
-      "M09-2024-NYSATA-Portfolio"
+      "M09-2024-NYSATA-Portfolio",
+      "M09-1989-Sadler-Formative",
+      "M09-2011-AERA-Bennett",
+      "M09-2001-NRC-KnowingWhatStudents",
+      "M09-2014-NRC-NGSSAssessment",
+      "M09-2019-Holmes-AIEd",
+      "M09-2023-CompEduAI-AIAssessment",
+      "M09-2025-CompEduAI-LLMFeedback",
+      "M09-2020-MOE-EvalReform",
+      "M09-2022-CER-ZhouXu",
+      "M09-2014-RER-Hattie",
+      "M09-2014-Brown-MakeItStick"
     ],
     "L01": [
       "L01-2024-Springer-MartinDominguez",
