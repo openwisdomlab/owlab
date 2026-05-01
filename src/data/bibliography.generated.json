@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-01T14:24:40.156Z",
-  "total": 130,
+  "generated_at": "2026-05-01T14:36:33.229Z",
+  "total": 142,
   "byId": {
     "M01-001": {
       "id": "M01-001",
@@ -1140,6 +1140,178 @@
       "notes": "为后续 OWL 网络是否引入链上声誉/凭证提供学理参照",
       "module": "M02"
     },
+    "M02-1991-Lave-Wenger": {
+      "id": "M02-1991-Lave-Wenger",
+      "aliases": [],
+      "type": "book",
+      "authors": [
+        "Lave, J.",
+        "Wenger, E."
+      ],
+      "year": 1991,
+      "title": "Situated Learning: Legitimate Peripheral Participation",
+      "venue": "Cambridge University Press",
+      "doi": "10.1017/CBO9780511815355",
+      "url": "https://www.cambridge.org/core/books/situated-learning/6915ABD21C8E4619F750A4D4ACA616CD",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "situated-learning",
+        "community-of-practice",
+        "social-learning"
+      ],
+      "key_claims": [
+        "学习是嵌入在共同体中的社会过程",
+        "新手通过合法的边缘性参与逐步内化为身份",
+        "网络治理需以共同体而非科层为基本单元"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "社区学习结构主场 N9 的理论根基",
+      "module": "M02"
+    },
+    "M02-2019-UNESCO-OER": {
+      "id": "M02-2019-UNESCO-OER",
+      "aliases": [],
+      "type": "policy",
+      "authors": [
+        "UNESCO"
+      ],
+      "year": 2019,
+      "title": "Recommendation on Open Educational Resources (OER)",
+      "venue": "UNESCO General Conference, 40th Session",
+      "doi": null,
+      "url": "https://www.unesco.org/en/legal-affairs/recommendation-open-educational-resources-oer",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "OER",
+        "policy",
+        "UNESCO",
+        "open-licensing"
+      ],
+      "key_claims": [
+        "OER 应作为公共产品由政府、教育机构与社区共同维护",
+        "OER 治理须含质量、获取、能力建设、可持续性、国际合作五大行动领域",
+        "OWL 知识共有物治理对标的国际政策框架"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "UNESCO OER 推荐——OWL 共有物治理国际对标",
+      "module": "M02"
+    },
+    "M02-2018-CER-ZhongQiquan": {
+      "id": "M02-2018-CER-ZhongQiquan",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "钟启泉"
+      ],
+      "year": 2018,
+      "title": "学习共同体——课堂改革的方向",
+      "venue": "全球教育展望",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-WGJN201801.htm",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "learning-community",
+        "course-reform"
+      ],
+      "key_claims": [
+        "学习共同体是课堂改革的核心方向",
+        "教师与学生在共同体中互为主体",
+        "本土教育治理向网络化与共同体化转型"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：钟启泉教授学习共同体论述",
+      "module": "M02"
+    },
+    "M02-2023-EduRes-ZhuXudong": {
+      "id": "M02-2023-EduRes-ZhuXudong",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "朱旭东"
+      ],
+      "year": 2023,
+      "title": "教师学习共同体的网络化建构——基于专业发展学校的实证研究",
+      "venue": "教育研究",
+      "doi": null,
+      "url": "http://www.nies.edu.cn/jyyj/",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "China-local",
+        "teacher-learning-community",
+        "network"
+      ],
+      "key_claims": [
+        "教师专业发展须以网络化共同体为单位",
+        "区域协调中心的桥接角色对教师网络至关重要",
+        "本土网络治理须兼顾政策合规与社区自治"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 2：朱旭东教师专业学习共同体研究",
+      "module": "M02"
+    },
+    "M02-2014-Bauwens-Commons": {
+      "id": "M02-2014-Bauwens-Commons",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "Bauwens, M.",
+        "Kostakis, V."
+      ],
+      "year": 2014,
+      "title": "From the Communism of Capital to Capital for the Commons: Towards an Open Cooperativism",
+      "venue": "tripleC: Communication, Capitalism & Critique",
+      "doi": "10.31269/triplec.v12i1.561",
+      "url": "https://www.triple-c.at/index.php/tripleC/article/view/561",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "commons-peer-production",
+        "open-cooperativism"
+      ],
+      "key_claims": [
+        "共有物-同行生产是除市场与科层外的第三种生产模式",
+        "可持续 commons 需要参与式治理与可见的贡献激励",
+        "OWL 网络是教育领域的开放协作主义实例"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "共有物理论的政治经济学根基",
+      "module": "M02"
+    },
     "M03-001": {
       "id": "M03-001",
       "aliases": [],
@@ -1510,6 +1682,252 @@
       "verified_by": null,
       "verified_date": null,
       "notes": "实践观点文章，作为 E0 级补充",
+      "module": "M03"
+    },
+    "M03-2015-Barrett-HEAD": {
+      "id": "M03-2015-Barrett-HEAD",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Barrett, P.",
+        "Davies, F.",
+        "Zhang, Y.",
+        "Barrett, L."
+      ],
+      "year": 2015,
+      "title": "The impact of classroom design on pupils' learning: Final results of a holistic, multi-level analysis",
+      "venue": "Building and Environment",
+      "doi": "10.1016/j.buildenv.2015.02.013",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0360132315000700",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "classroom-design",
+        "learning-outcomes",
+        "HEAD",
+        "evidence-based"
+      ],
+      "key_claims": [
+        "教室物理设计可解释 16% 的学业进步差异（153 个英国教室、3766 名学生）",
+        "自然采光、空气质量、温度、个性化、灵活性是七大关键参数",
+        "刺激度（颜色复杂性）需适中，过低或过高都影响学习"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "HEAD 研究——教室设计对学习影响的里程碑式实证研究",
+      "module": "M03"
+    },
+    "M03-2009-Tanner-SchoolDesign": {
+      "id": "M03-2009-Tanner-SchoolDesign",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "Tanner, C.K."
+      ],
+      "year": 2009,
+      "title": "Effects of school design on student outcomes",
+      "venue": "Journal of Educational Administration",
+      "doi": "10.1108/09578230910955809",
+      "url": "https://www.emerald.com/insight/content/doi/10.1108/09578230910955809/full/html",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "school-design",
+        "movement-pattern",
+        "natural-light",
+        "outcomes"
+      ],
+      "key_claims": [
+        "动线模式、可视性、色彩、自然元素显著影响学业成绩",
+        "好的学校设计在阅读、语言、数学成绩上贡献 5-15 个百分位",
+        "空间设计对低年级学生的影响大于高年级学生"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "学校设计-学生表现关系的经典研究",
+      "module": "M03"
+    },
+    "M03-2008-CAST-UDL3": {
+      "id": "M03-2008-CAST-UDL3",
+      "aliases": [],
+      "type": "guidelines",
+      "authors": [
+        "CAST"
+      ],
+      "year": 2024,
+      "title": "Universal Design for Learning Guidelines version 3.0",
+      "venue": "CAST",
+      "doi": null,
+      "url": "https://udlguidelines.cast.org/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "UDL",
+        "accessibility",
+        "universal-design"
+      ],
+      "key_claims": [
+        "学习环境须提供多样化的参与、表征、行动表达三种途径",
+        "无障碍设计不是适配少数人，而是从一开始就为所有学习者设计",
+        "UDL 3.0 强化了系统性偏见识别与纠正"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "无障碍 / 通用设计的国际权威指南最新版",
+      "module": "M03"
+    },
+    "M03-2012-GB50763": {
+      "id": "M03-2012-GB50763",
+      "aliases": [],
+      "type": "standard",
+      "authors": [
+        "中华人民共和国住房和城乡建设部"
+      ],
+      "year": 2012,
+      "title": "无障碍设计规范 GB 50763-2012",
+      "venue": "中国建筑工业出版社",
+      "doi": null,
+      "url": "https://www.mohurd.gov.cn/gongkai/zhengce/zhengcefilelib/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "accessibility",
+        "national-standard"
+      ],
+      "key_claims": [
+        "中国境内公共建筑无障碍设计的强制性国家标准",
+        "无障碍出入口、轮椅通道、无障碍电梯、无障碍卫生间的最低参数",
+        "OWL 中国境内空间合规对标的国家标准"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土合规依据 1：无障碍设计国家强制标准",
+      "module": "M03"
+    },
+    "M03-2024-USGBC-LEEDSchools": {
+      "id": "M03-2024-USGBC-LEEDSchools",
+      "aliases": [],
+      "type": "guidelines",
+      "authors": [
+        "U.S. Green Building Council"
+      ],
+      "year": 2024,
+      "title": "LEED v4.1 for Schools: Building Design and Construction",
+      "venue": "USGBC",
+      "doi": null,
+      "url": "https://www.usgbc.org/leed/v41",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "sustainability",
+        "green-building",
+        "LEED",
+        "schools"
+      ],
+      "key_claims": [
+        "学校建筑可持续性的国际权威评估体系",
+        "能源效率、室内环境质量、可持续场地、材料与资源四大维度",
+        "OWL 可持续建造对标的国际框架"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "可持续建造主场依据：LEED for Schools v4.1",
+      "module": "M03"
+    },
+    "M03-2023-CER-LiHongmei": {
+      "id": "M03-2023-CER-LiHongmei",
+      "aliases": [],
+      "type": "journal",
+      "authors": [
+        "李红美",
+        "陈丽",
+        "杨珂玮"
+      ],
+      "year": 2023,
+      "title": "面向创新人才培养的高校创客空间设计研究——基于扎根理论的探索",
+      "venue": "中国电化教育",
+      "doi": null,
+      "url": "https://www.cnki.com.cn/Article/CJFDTotal-ZDJY202308.htm",
+      "evidence_tier": "E2",
+      "evidence_level": "E2",
+      "tags": [
+        "China-local",
+        "makerspace-design",
+        "higher-education"
+      ],
+      "key_claims": [
+        "中国高校创客空间设计的扎根理论研究：物理、组织、文化三个维度",
+        "本土实践中「文化氛围」是最薄弱也最关键的设计维度",
+        "中国创客空间须考虑公共安全、噪声扰民、消防合规等本土约束"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 1：高校创客空间设计的扎根理论",
+      "module": "M03"
+    },
+    "M03-2024-DistrictNOMA-ChinaCase": {
+      "id": "M03-2024-DistrictNOMA-ChinaCase",
+      "aliases": [],
+      "type": "report",
+      "authors": [
+        "北京师范大学未来教育高精尖创新中心"
+      ],
+      "year": 2024,
+      "title": "未来学校学习空间设计与建设白皮书",
+      "venue": "北京师范大学",
+      "doi": null,
+      "url": "https://aic.bnu.edu.cn/",
+      "evidence_tier": "E1",
+      "evidence_level": "E1",
+      "tags": [
+        "China-local",
+        "future-school",
+        "learning-space"
+      ],
+      "key_claims": [
+        "中国未来学校学习空间设计的指导框架",
+        "强调灵活、智能、可持续、文化嵌入四个方向",
+        "为 OWL 中国实施提供本土化对标"
+      ],
+      "used_in": [
+        "index.mdx"
+      ],
+      "retrieval_date": "2026-05-01",
+      "verified": false,
+      "verified_by": null,
+      "verified_date": null,
+      "notes": "中国本土研究 2：北师大未来学校空间白皮书",
       "module": "M03"
     },
     "M04-001": {
@@ -3962,7 +4380,12 @@
       "M02-2025-medRxiv-CoCreation",
       "M02-2026-Sustain-OERCommons",
       "M02-2025-CambJIE-Polycentric",
-      "M02-2025-Frontiers-Blockchain"
+      "M02-2025-Frontiers-Blockchain",
+      "M02-1991-Lave-Wenger",
+      "M02-2019-UNESCO-OER",
+      "M02-2018-CER-ZhongQiquan",
+      "M02-2023-EduRes-ZhuXudong",
+      "M02-2014-Bauwens-Commons"
     ],
     "M03": [
       "M03-001",
@@ -3977,7 +4400,14 @@
       "M03-2025-DiscEd-Active",
       "M03-2025-CCD-Creativity",
       "M03-2023-A4LE-Neuroarch",
-      "M03-2025-DistrictNOMA-ThirdSpace"
+      "M03-2025-DistrictNOMA-ThirdSpace",
+      "M03-2015-Barrett-HEAD",
+      "M03-2009-Tanner-SchoolDesign",
+      "M03-2008-CAST-UDL3",
+      "M03-2012-GB50763",
+      "M03-2024-USGBC-LEEDSchools",
+      "M03-2023-CER-LiHongmei",
+      "M03-2024-DistrictNOMA-ChinaCase"
     ],
     "M04": [
       "M04-001",
